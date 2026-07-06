@@ -25,9 +25,13 @@ duality, bilinear forms, and multilinear algebra.
 
 #### References
 
-- Lax: *Linear Algebra and Its Applications*
-- Hoffman and Kunze: *Linear Algebra*
-- Horn and Johnson: *Matrix Analysis*
+- Lax, Peter D. *Linear Algebra and Its Applications*. 2nd ed. Wiley-Interscience, 2007.
+- Hoffman, Kenneth, and Ray Kunze. *Linear Algebra*. 2nd ed. Prentice-Hall, 1971.
+- Horn, Roger A., and Charles R. Johnson. *Matrix Analysis*. 2nd ed. Cambridge University Press, 2013.
+- Roman, Steven. *Advanced Linear Algebra*. 3rd ed. Graduate Texts in Mathematics, vol. 135. Springer, 2008.
+- Axler, Sheldon. *Linear Algebra Done Right*. 4th ed. Undergraduate Texts in Mathematics. Springer, 2023.
+- Halmos, Paul R. *Finite-Dimensional Vector Spaces*. 2nd ed. Springer, 1974.
+- Bhatia, Rajendra. *Matrix Analysis*. Graduate Texts in Mathematics, vol. 169. Springer, 1997.
 
 Lecture notes will be developed and posted here throughout the semester.
 
