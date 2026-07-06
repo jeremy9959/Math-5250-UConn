@@ -1,0 +1,74 @@
+---
+title: "Math 5250: Graduate Linear Algebra"
+---
+
+## Syllabus
+
+| Math 5250 - Graduate Linear Algebra
+| Fall Semester, 2026
+| University of Connecticut
+
+#### Overview
+
+Math 5250 is a graduate course covering abstract linear algebra in depth.
+Topics include abstract vector spaces and linear transformations, eigenvalues
+and eigenvectors, inner product spaces, matrix decompositions, normed spaces,
+duality, bilinear forms, and multilinear algebra.
+
+#### Instructor
+
+| Jeremy Teitelbaum
+| 231 Monteith Hall
+| Email: `jeremy.teitelbaum@uconn.edu`
+| [Math Department Home Page](https://math.uconn.edu/teitelbaum)
+| [Personal Home Page](https://jeremy9959.net)
+
+#### References
+
+- Lax: *Linear Algebra and Its Applications*
+- Hoffman and Kunze: *Linear Algebra*
+- Horn and Johnson: *Matrix Analysis*
+
+Lecture notes will be developed and posted here throughout the semester.
+
+#### Time and Place
+
+| To be announced.
+
+#### Assessments
+
+| To be announced.
+
+#### Disclaimer
+
+The instructor reserves the right to modify or adapt this syllabus, with reasonable notice, to account
+for disruptions due to weather or other unexpected circumstances.
+
+## University Policies
+
+Students with disabilities should work with the [Center for
+Students with Disabilities](https://csd.uconn.edu) to
+ request academic accommodations. The CSD is located in Wilbur Cross, Room 204 and
+can be reached at (860) 486-2020 or at csd@uconn.edu.  Detailed
+information regarding the process to request accommodations is
+available on the CSD website at [www.csd.uconn.edu](https://csd.uconn.edu).
+
+Students are bound by the university's policies on academic misconduct.
+Academic misconduct is dishonest or unethical academic behavior that includes, but is not limited to,
+misrepresenting mastery in an academic area (e.g., cheating), failing to properly credit information,
+research, or ideas to their rightful originators or representing such information, research, or ideas
+as your own (e.g., plagiarism).
+
+Students, faculty, and staff are bound by the university's [policy against discrimination,
+harassment, and related interpersonal violence.](https://policy.uconn.edu/2015/12/29/policy-against-discrimination-harassment-and-related-interpersonal-violence/)
+
+Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
