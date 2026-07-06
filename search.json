@@ -67,14 +67,14 @@
     "href": "notes/Week1/W01.1.html",
     "title": "Week 1 — Vector Space Structure of R^n",
     "section": "",
-    "text": "Notes on the vector space structure of \\(\\mathbb{R}^n\\): subspaces, span, linear independence, basis, and dimension."
+    "text": "Notes on the vector space structure of \\mathbb{R}^n: subspaces, span, linear independence, basis, and dimension."
   },
   {
     "objectID": "notes/Week1/W01.1.html#placeholder",
     "href": "notes/Week1/W01.1.html#placeholder",
     "title": "Week 1 — Vector Space Structure of R^n",
     "section": "",
-    "text": "Notes on the vector space structure of \\(\\mathbb{R}^n\\): subspaces, span, linear independence, basis, and dimension."
+    "text": "Notes on the vector space structure of \\mathbb{R}^n: subspaces, span, linear independence, basis, and dimension."
   },
   {
     "objectID": "notes/Week1/W01.3.html",
@@ -109,14 +109,14 @@
     "href": "notes/Week10-11/W10.1.html",
     "title": "Weeks 10–11 — Linear Functionals and the Dual Space",
     "section": "",
-    "text": "Notes on linear functionals, the dual space \\(V^*\\), and its basic properties."
+    "text": "Notes on linear functionals, the dual space V^*, and its basic properties."
   },
   {
     "objectID": "notes/Week10-11/W10.1.html#placeholder",
     "href": "notes/Week10-11/W10.1.html#placeholder",
     "title": "Weeks 10–11 — Linear Functionals and the Dual Space",
     "section": "",
-    "text": "Notes on linear functionals, the dual space \\(V^*\\), and its basic properties."
+    "text": "Notes on linear functionals, the dual space V^*, and its basic properties."
   },
   {
     "objectID": "notes/Week10-11/W10.2.html",
@@ -151,28 +151,28 @@
     "href": "notes/Week9/W09.2.html",
     "title": "Week 9 — Matrix and Operator Norms",
     "section": "",
-    "text": "Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of \\(AA^\\top\\)."
+    "text": "Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of AA^\\top."
   },
   {
     "objectID": "notes/Week9/W09.2.html#placeholder",
     "href": "notes/Week9/W09.2.html#placeholder",
     "title": "Week 9 — Matrix and Operator Norms",
     "section": "",
-    "text": "Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of \\(AA^\\top\\)."
+    "text": "Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of AA^\\top."
   },
   {
     "objectID": "notes/Week9/W09.1.html",
     "href": "notes/Week9/W09.1.html",
     "title": "Week 9 — Vector Space Norms and Equivalence of Norms",
     "section": "",
-    "text": "Notes on norms on vector spaces, examples, and the equivalence of all norms in finite-dimensional \\(\\mathbb{R}\\)-vector spaces."
+    "text": "Notes on norms on vector spaces, examples, and the equivalence of all norms in finite-dimensional \\mathbb{R}-vector spaces."
   },
   {
     "objectID": "notes/Week9/W09.1.html#placeholder",
     "href": "notes/Week9/W09.1.html#placeholder",
     "title": "Week 9 — Vector Space Norms and Equivalence of Norms",
     "section": "",
-    "text": "Notes on norms on vector spaces, examples, and the equivalence of all norms in finite-dimensional \\(\\mathbb{R}\\)-vector spaces."
+    "text": "Notes on norms on vector spaces, examples, and the equivalence of all norms in finite-dimensional \\mathbb{R}-vector spaces."
   },
   {
     "objectID": "notes/Week13-14/W13.3.html",
@@ -305,14 +305,14 @@
     "href": "notes/Week2-3/W02.1.html",
     "title": "Weeks 2–3 — Abstract Vector Spaces and Subspaces",
     "section": "",
-    "text": "Notes on abstract vector spaces over a field \\(\\mathbb{F}\\), subspaces, and the abstract definitions of span, linear independence, basis, and dimension."
+    "text": "Notes on abstract vector spaces over a field \\mathbb{F}, subspaces, and the abstract definitions of span, linear independence, basis, and dimension."
   },
   {
     "objectID": "notes/Week2-3/W02.1.html#placeholder",
     "href": "notes/Week2-3/W02.1.html#placeholder",
     "title": "Weeks 2–3 — Abstract Vector Spaces and Subspaces",
     "section": "",
-    "text": "Notes on abstract vector spaces over a field \\(\\mathbb{F}\\), subspaces, and the abstract definitions of span, linear independence, basis, and dimension."
+    "text": "Notes on abstract vector spaces over a field \\mathbb{F}, subspaces, and the abstract definitions of span, linear independence, basis, and dimension."
   },
   {
     "objectID": "notes/Week5-6/W05.3.html",
@@ -417,13 +417,13 @@
     "href": "schedule.html",
     "title": "Math 5250 Schedule",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nContent\n\n\n\n\n\n\nTu 09/01\n\n\nWeek 1: Review\n\n\nVector space structure of R^n, subspaces, span, linear independence, basis, dimension\n\n\n\n\nTh 09/03\n\n\nWeek 1: Review\n\n\nMatrices and linear transformations, change of basis; kernel and range, similarity, isomorphisms\n\n\n\n\nTu 09/08\n\n\nWeeks 2–3: Abstract Vector Spaces\n\n\nAbstract vector spaces and subspaces\n\n\n\n\nTh 09/10\n\n\nWeeks 2–3: Abstract Vector Spaces\n\n\nDirect sums and quotient spaces\n\n\n\n\nTu 09/15\n\n\nWeeks 2–3: Abstract Vector Spaces\n\n\nLinear transformations: general theory\n\n\n\n\nTh 09/17\n\n\nWeeks 2–3: Abstract Vector Spaces\n\n\nTrace and determinant\n\n\n\n\nTu 09/22\n\n\nWeek 4: Eigenvalues and Eigenvectors\n\n\nEigenvalues and eigenvectors\n\n\n\n\nTh 09/24\n\n\nWeek 4: Eigenvalues and Eigenvectors\n\n\nCharacteristic polynomials and Cayley-Hamilton theorem; diagonalization\n\n\n\n\nTu 09/29\n\n\nWeeks 5–6: Inner Product Spaces\n\n\nInner product spaces over R, orthogonality, orthogonal bases\n\n\n\n\nTh 10/01\n\n\nWeeks 5–6: Inner Product Spaces\n\n\nGram-Schmidt process, orthogonal projections, orthogonal complement\n\n\n\n\nTu 10/06\n\n\nWeeks 5–6: Inner Product Spaces\n\n\nAdjoint operators; spectral theorem for self-adjoint operators (real case)\n\n\n\n\nTh 10/08\n\n\nWeeks 5–6: Inner Product Spaces\n\n\nComplex inner product spaces; spectral theorem for Hermitian operators\n\n\n\n\nTu 10/13\n\n\nWeeks 7–8: Matrix Decompositions\n\n\nJordan canonical form\n\n\n\n\nTh 10/15\n\n\nWeeks 7–8: Matrix Decompositions\n\n\nPositive definite matrices\n\n\n\n\nTu 10/20\n\n\nWeeks 7–8: Matrix Decompositions\n\n\nQR decomposition, SVD, and polar decomposition\n\n\n\n\nTh 10/22\n\n\nWeeks 7–8: Matrix Decompositions\n\n\nApplications and examples\n\n\n\n\nTu 10/27\n\n\nWeek 9: Norms\n\n\nVector space norms, equivalence of norms in finite dimensions\n\n\n\n\nTh 10/29\n\n\nWeek 9: Norms\n\n\nMatrix and operator norms, Frobenius norm, operator norm formula\n\n\n\n\nTu 11/03\n\n\nWeeks 10–11: Dual Spaces\n\n\nLinear functionals and the dual space\n\n\n\n\nTh 11/05\n\n\nWeeks 10–11: Dual Spaces\n\n\nDuality and inner products\n\n\n\n\nTu 11/10\n\n\nWeeks 10–11: Dual Spaces\n\n\nDual bases and linear maps, transpose matrix, double duality\n\n\n\n\nTh 11/12\n\n\nWeeks 10–11: Dual Spaces\n\n\nApplications and examples\n\n\n\n\nTu 11/17\n\n\nWeek 12: Bilinear Forms\n\n\nBilinear forms, matrix representation, change of basis\n\n\n\n\nTh 11/19\n\n\nWeek 12: Bilinear Forms\n\n\nQuadratic forms, symmetric bilinear forms, equivalence, diagonalization; signature and definiteness\n\n\n\n\nTu 11/24\n\n\nThanksgiving Break\n\n\n\n\n\n\nTh 11/26\n\n\nThanksgiving Break\n\n\n\n\n\n\nTu 12/01\n\n\nWeeks 13–14: Multilinear Algebra\n\n\nTensor products of vector spaces and linear maps\n\n\n\n\nTh 12/03\n\n\nWeeks 13–14: Multilinear Algebra\n\n\nExterior powers of vector spaces\n\n\n\n\nTu 12/08\n\n\nWeeks 13–14: Multilinear Algebra\n\n\nTensor and exterior algebras\n\n\n\n\nTh 12/10\n\n\nWeeks 13–14: Multilinear Algebra\n\n\nApplications and review"
+    "text": "Date\n\n\nTopic\n\n\nContent\n\n\n\n\n\n\nTu 09/01\n\n\nReview\n\n\nVector space structure of R^n, subspaces, span, linear independence, basis, dimension\n\n\n\n\nTh 09/03\n\n\nReview\n\n\nMatrices and linear transformations, change of basis; kernel and range, similarity, isomorphisms\n\n\n\n\nTu 09/08\n\n\nAbstract Vector Spaces\n\n\nAbstract vector spaces and subspaces\n\n\n\n\nTh 09/10\n\n\nAbstract Vector Spaces\n\n\nDirect sums and quotient spaces\n\n\n\n\nTu 09/15\n\n\nAbstract Vector Spaces\n\n\nLinear transformations: general theory\n\n\n\n\nTh 09/17\n\n\nAbstract Vector Spaces\n\n\nTrace and determinant\n\n\n\n\nTu 09/22\n\n\nEigenvalues and Eigenvectors\n\n\nEigenvalues and eigenvectors\n\n\n\n\nTh 09/24\n\n\nEigenvalues and Eigenvectors\n\n\nCharacteristic polynomials and Cayley-Hamilton theorem; diagonalization\n\n\n\n\nTu 09/29\n\n\nInner Product Spaces\n\n\nInner product spaces over R, orthogonality, orthogonal bases\n\n\n\n\nTh 10/01\n\n\nInner Product Spaces\n\n\nGram-Schmidt process, orthogonal projections, orthogonal complement\n\n\n\n\nTu 10/06\n\n\nInner Product Spaces\n\n\nAdjoint operators; spectral theorem for self-adjoint operators (real case)\n\n\n\n\nTh 10/08\n\n\nInner Product Spaces\n\n\nComplex inner product spaces; spectral theorem for Hermitian operators\n\n\n\n\nTu 10/13\n\n\nMatrix Decompositions\n\n\nJordan canonical form\n\n\n\n\nTh 10/15\n\n\nMatrix Decompositions\n\n\nPositive definite matrices\n\n\n\n\nTu 10/20\n\n\nMatrix Decompositions\n\n\nQR decomposition, SVD, and polar decomposition\n\n\n\n\nTh 10/22\n\n\nMatrix Decompositions\n\n\nApplications and examples\n\n\n\n\nTu 10/27\n\n\nNorms\n\n\nVector space norms, equivalence of norms in finite dimensions\n\n\n\n\nTh 10/29\n\n\nNorms\n\n\nMatrix and operator norms, Frobenius norm, operator norm formula\n\n\n\n\nTu 11/03\n\n\nDual Spaces\n\n\nLinear functionals and the dual space\n\n\n\n\nTh 11/05\n\n\nDual Spaces\n\n\nDuality and inner products\n\n\n\n\nTu 11/10\n\n\nDual Spaces\n\n\nDual bases and linear maps, transpose matrix, double duality\n\n\n\n\nTh 11/12\n\n\nDual Spaces\n\n\nApplications and examples\n\n\n\n\nTu 11/17\n\n\nBilinear Forms\n\n\nBilinear forms, matrix representation, change of basis\n\n\n\n\nTh 11/19\n\n\nBilinear Forms\n\n\nQuadratic forms, symmetric bilinear forms, equivalence, diagonalization; signature and definiteness\n\n\n\n\nTu 11/24\n\n\nThanksgiving Break\n\n\n\n\n\n\nTh 11/26\n\n\nThanksgiving Break\n\n\n\n\n\n\nTu 12/01\n\n\nMultilinear Algebra\n\n\nTensor products of vector spaces and linear maps\n\n\n\n\nTh 12/03\n\n\nMultilinear Algebra\n\n\nExterior powers of vector spaces\n\n\n\n\nTu 12/08\n\n\nMultilinear Algebra\n\n\nTensor and exterior algebras\n\n\n\n\nTh 12/10\n\n\nMultilinear Algebra\n\n\nApplications and review"
   },
   {
     "objectID": "schedule.html#schedule",
     "href": "schedule.html#schedule",
     "title": "Math 5250 Schedule",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nContent\n\n\n\n\n\n\nTu 09/01\n\n\nWeek 1: Review\n\n\nVector space structure of R^n, subspaces, span, linear independence, basis, dimension\n\n\n\n\nTh 09/03\n\n\nWeek 1: Review\n\n\nMatrices and linear transformations, change of basis; kernel and range, similarity, isomorphisms\n\n\n\n\nTu 09/08\n\n\nWeeks 2–3: Abstract Vector Spaces\n\n\nAbstract vector spaces and subspaces\n\n\n\n\nTh 09/10\n\n\nWeeks 2–3: Abstract Vector Spaces\n\n\nDirect sums and quotient spaces\n\n\n\n\nTu 09/15\n\n\nWeeks 2–3: Abstract Vector Spaces\n\n\nLinear transformations: general theory\n\n\n\n\nTh 09/17\n\n\nWeeks 2–3: Abstract Vector Spaces\n\n\nTrace and determinant\n\n\n\n\nTu 09/22\n\n\nWeek 4: Eigenvalues and Eigenvectors\n\n\nEigenvalues and eigenvectors\n\n\n\n\nTh 09/24\n\n\nWeek 4: Eigenvalues and Eigenvectors\n\n\nCharacteristic polynomials and Cayley-Hamilton theorem; diagonalization\n\n\n\n\nTu 09/29\n\n\nWeeks 5–6: Inner Product Spaces\n\n\nInner product spaces over R, orthogonality, orthogonal bases\n\n\n\n\nTh 10/01\n\n\nWeeks 5–6: Inner Product Spaces\n\n\nGram-Schmidt process, orthogonal projections, orthogonal complement\n\n\n\n\nTu 10/06\n\n\nWeeks 5–6: Inner Product Spaces\n\n\nAdjoint operators; spectral theorem for self-adjoint operators (real case)\n\n\n\n\nTh 10/08\n\n\nWeeks 5–6: Inner Product Spaces\n\n\nComplex inner product spaces; spectral theorem for Hermitian operators\n\n\n\n\nTu 10/13\n\n\nWeeks 7–8: Matrix Decompositions\n\n\nJordan canonical form\n\n\n\n\nTh 10/15\n\n\nWeeks 7–8: Matrix Decompositions\n\n\nPositive definite matrices\n\n\n\n\nTu 10/20\n\n\nWeeks 7–8: Matrix Decompositions\n\n\nQR decomposition, SVD, and polar decomposition\n\n\n\n\nTh 10/22\n\n\nWeeks 7–8: Matrix Decompositions\n\n\nApplications and examples\n\n\n\n\nTu 10/27\n\n\nWeek 9: Norms\n\n\nVector space norms, equivalence of norms in finite dimensions\n\n\n\n\nTh 10/29\n\n\nWeek 9: Norms\n\n\nMatrix and operator norms, Frobenius norm, operator norm formula\n\n\n\n\nTu 11/03\n\n\nWeeks 10–11: Dual Spaces\n\n\nLinear functionals and the dual space\n\n\n\n\nTh 11/05\n\n\nWeeks 10–11: Dual Spaces\n\n\nDuality and inner products\n\n\n\n\nTu 11/10\n\n\nWeeks 10–11: Dual Spaces\n\n\nDual bases and linear maps, transpose matrix, double duality\n\n\n\n\nTh 11/12\n\n\nWeeks 10–11: Dual Spaces\n\n\nApplications and examples\n\n\n\n\nTu 11/17\n\n\nWeek 12: Bilinear Forms\n\n\nBilinear forms, matrix representation, change of basis\n\n\n\n\nTh 11/19\n\n\nWeek 12: Bilinear Forms\n\n\nQuadratic forms, symmetric bilinear forms, equivalence, diagonalization; signature and definiteness\n\n\n\n\nTu 11/24\n\n\nThanksgiving Break\n\n\n\n\n\n\nTh 11/26\n\n\nThanksgiving Break\n\n\n\n\n\n\nTu 12/01\n\n\nWeeks 13–14: Multilinear Algebra\n\n\nTensor products of vector spaces and linear maps\n\n\n\n\nTh 12/03\n\n\nWeeks 13–14: Multilinear Algebra\n\n\nExterior powers of vector spaces\n\n\n\n\nTu 12/08\n\n\nWeeks 13–14: Multilinear Algebra\n\n\nTensor and exterior algebras\n\n\n\n\nTh 12/10\n\n\nWeeks 13–14: Multilinear Algebra\n\n\nApplications and review"
+    "text": "Date\n\n\nTopic\n\n\nContent\n\n\n\n\n\n\nTu 09/01\n\n\nReview\n\n\nVector space structure of R^n, subspaces, span, linear independence, basis, dimension\n\n\n\n\nTh 09/03\n\n\nReview\n\n\nMatrices and linear transformations, change of basis; kernel and range, similarity, isomorphisms\n\n\n\n\nTu 09/08\n\n\nAbstract Vector Spaces\n\n\nAbstract vector spaces and subspaces\n\n\n\n\nTh 09/10\n\n\nAbstract Vector Spaces\n\n\nDirect sums and quotient spaces\n\n\n\n\nTu 09/15\n\n\nAbstract Vector Spaces\n\n\nLinear transformations: general theory\n\n\n\n\nTh 09/17\n\n\nAbstract Vector Spaces\n\n\nTrace and determinant\n\n\n\n\nTu 09/22\n\n\nEigenvalues and Eigenvectors\n\n\nEigenvalues and eigenvectors\n\n\n\n\nTh 09/24\n\n\nEigenvalues and Eigenvectors\n\n\nCharacteristic polynomials and Cayley-Hamilton theorem; diagonalization\n\n\n\n\nTu 09/29\n\n\nInner Product Spaces\n\n\nInner product spaces over R, orthogonality, orthogonal bases\n\n\n\n\nTh 10/01\n\n\nInner Product Spaces\n\n\nGram-Schmidt process, orthogonal projections, orthogonal complement\n\n\n\n\nTu 10/06\n\n\nInner Product Spaces\n\n\nAdjoint operators; spectral theorem for self-adjoint operators (real case)\n\n\n\n\nTh 10/08\n\n\nInner Product Spaces\n\n\nComplex inner product spaces; spectral theorem for Hermitian operators\n\n\n\n\nTu 10/13\n\n\nMatrix Decompositions\n\n\nJordan canonical form\n\n\n\n\nTh 10/15\n\n\nMatrix Decompositions\n\n\nPositive definite matrices\n\n\n\n\nTu 10/20\n\n\nMatrix Decompositions\n\n\nQR decomposition, SVD, and polar decomposition\n\n\n\n\nTh 10/22\n\n\nMatrix Decompositions\n\n\nApplications and examples\n\n\n\n\nTu 10/27\n\n\nNorms\n\n\nVector space norms, equivalence of norms in finite dimensions\n\n\n\n\nTh 10/29\n\n\nNorms\n\n\nMatrix and operator norms, Frobenius norm, operator norm formula\n\n\n\n\nTu 11/03\n\n\nDual Spaces\n\n\nLinear functionals and the dual space\n\n\n\n\nTh 11/05\n\n\nDual Spaces\n\n\nDuality and inner products\n\n\n\n\nTu 11/10\n\n\nDual Spaces\n\n\nDual bases and linear maps, transpose matrix, double duality\n\n\n\n\nTh 11/12\n\n\nDual Spaces\n\n\nApplications and examples\n\n\n\n\nTu 11/17\n\n\nBilinear Forms\n\n\nBilinear forms, matrix representation, change of basis\n\n\n\n\nTh 11/19\n\n\nBilinear Forms\n\n\nQuadratic forms, symmetric bilinear forms, equivalence, diagonalization; signature and definiteness\n\n\n\n\nTu 11/24\n\n\nThanksgiving Break\n\n\n\n\n\n\nTh 11/26\n\n\nThanksgiving Break\n\n\n\n\n\n\nTu 12/01\n\n\nMultilinear Algebra\n\n\nTensor products of vector spaces and linear maps\n\n\n\n\nTh 12/03\n\n\nMultilinear Algebra\n\n\nExterior powers of vector spaces\n\n\n\n\nTu 12/08\n\n\nMultilinear Algebra\n\n\nTensor and exterior algebras\n\n\n\n\nTh 12/10\n\n\nMultilinear Algebra\n\n\nApplications and review"
   }
 ]
