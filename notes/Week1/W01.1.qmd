@@ -1,20 +1,116 @@
 ---
-title: "Week 1 — Vector Space Structure of R^n"
+title: Vector Space Structure of $\mathbf{R}^{n}$ and $\mathbf{C}^{n}$
 ---
 
 \newcommand{\R}{\mathbf{R}}
 \newcommand{\F}{\mathbf{F}}
 \newcommand{\C}{\mathbf{C}}
 
-## Real and Complex Vectors
+### Real and Complex Vectors
 
 An $n$-dimensional real vector is an $n$-tuple $(x_1,\ldots, x_n)$ where the $x_i$ are real numbers.
 If the $x_i$ are complex instead of real, we have an $n$-dimensional complex vector.
 
 We write $\R^{n}$ and $\C^{n}$ for the sets of $n$-dimensional real and complex vectors respectively.
 
-One can visualize an element $x=(x_1,\ldots,x_n)$ of $\R^{n}$ as an "arrow" with its base at the origin and its endpoint at the point
-$(x_1,\ldots, x_n)$ in $n$-dimensional Euclidean space. 
+One can visualize an element $x=(x_1,\ldots,x_n)$ of $\R^{n}$ as an "arrow" with its base at the origin and its endpoint at the point $(x_1,\ldots, x_n)$ in $n$-dimensional Euclidean space. 
+
+Elements of $\R$ or $\C$ are often called *scalars*.
+
+### Operations
+
+The set $\R^{n}$ allows for:
+
+**Addition of vectors.**  If 
+
+$$x=(x_1,\ldots, x_n)\in R^{n} (or \C^{n})$$ and 
+
+$$y=(y_1,\ldots, y_n)\in\R^{n} (or \C^{n})$$
+
+then 
+$$x+y=(x_1+y_1,\dots, x_n+y_n)$$
+ is in $\R^{n}$ (or $\C^{n}$).
+
+
+**Multiplication of a vector by a scalar.**  If 
+$$a\in\R\ \mathrm{and}\  y=(y_1,\ldots, y_n)\in\R^{n}$$
+
+ then $ay=(ay_1,\ldots, ay_n)$.  Similarly if $a\in\C$
+and $y\in\C^{n}$. 
+
+
+### Axioms
+
+These operations satisfy a list of axioms.  For simplicity let's work with $\R$ and $\R^{n}$ but the same things are true for $\R^{n}$ and $\C^{n}$.
+
+1. Vector addition is commutative, associative, and if $e=(0,\ldots,0)$
+then $x+e=e+x=x$.
+2. Scalar multiplication distributes over addition so that
+$(a+b)x=ax+bx$ and $a(x+y)=ax+ay$.
+3. Scalar multiplication is "associative" in the sense that $a(bx)=(ab)x$.
+4. $1x=x$ and $0x=e$.
+
+### Real (and Complex) Vector spaces
+
+**Definition:** A *vector space* over $\R$ is a set $V$ together with two operations:
+- Addition.  Given $x,y$ in $V$, there is an element $x+y\in V$.
+- Scalar Multiplication.  Given $a\in\R$ and $x\in V$ there is an element $ax\in V$.
+
+The two operations must satisfy the axioms listed above.  In particular there must be an element $e\in V$ so that $x+e=e+x=x$ for all $x\in V$. 
+
+A vector space over $\C$ is the same except that scalar multiplication is defined for $a\in \C$, not just $\R$.
+
+The spaces $\R^{n}$ and $\C^{n}$ above are examples of real and complex vector spaces
+respectively.
+
+### Subspaces
+
+**Definition:** A subspace $W$ of a vector space $V$ (for either $\R$ or $\C$) is a subset of $V$ that is a vector space under the inherited operations from $V$.
+
+**Example:** Consider the set $W$ of vectors $(x_1,x_2,0)$ inside $\R^{3}$.  This is a 
+copy of $\R^{2}$ sitting inside $\R^{3}$ so it's a subspace.  
+
+**Example:** Let $W$ be the set of vectors in $\R^{n}$ that satisfy $x_1+x_2+\cdots+x_n=0$. This is a subspace. Check:
+- If $u=(u_1,\ldots, u_n)$ and $v=(v_1,\ldots, v_n)$ are in $W$, then 
+$u+v$ is in $W$ because 
+
+$$(u_1+v_1)+\cdots+(u_n+v_n)=(u_1+\cdots u_n)+(v_1+\cdots v_n)=0$$
+
+Similarly $au_1+au_2+\cdots+au_n=a(u_1+\cdots u_n)=0$ so $au$ is in $W$.
+
+Finally $e=(0,\ldots,0)$ is in $W$.
+
+The other axioms hold for elements of $W$ since all elements of $W$ are also elements of $V$.
+
+**Example** Let $W$ be the set of vectors in $\R^{n}$ that satisfy $x_1+\cdots+x_n=1$.
+This is **NOT** a subspace.
+
+**Proposition:** A subset $W$ of $V$ is a subspace provided that it contains the element $e$
+and whenever $u,v\in W$ it follows that $u+v\in W$ and $au\in W$ for all $a\in\R$.
+
+You can replace $\R$ by $\C$ in the above to obtain the same results for complex vector spaces.
+
+
+### Span of a set of vectors
+
+**Definition:** Let $V$ be a vector space and let $S=\{v_1,\ldots, v_k\}$ be a set of vectors in $V$.  The **span** of $S$ is defined as either of the following equivalent things:
+
+1.  The set of all vectors $\sum_{i=1}^{n} a_i v_i$ as $(a_1,\ldots, a_n)$ runs over $\R^{n}$. 
+2.  The intersection of all subspaces of $V$ that contain $S$.
+
+The set $H$ in 1 is a subspace that contains $S$. If $W$ is the intersection of all subspaces containing $S$, then $W\subset H$ since $H$ is among the sets being intersected.  On the other hand, since $S$ is contained in $W$, and $W$ is a subspace,
+the elements in $H$ are also in $W$.  So $W=H$.
+
+
+
+
+
+
+### Linear Independence
+
+### Basis
+
+### Dimension
 
 
 
