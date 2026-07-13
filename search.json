@@ -4,426 +4,726 @@
     "href": "index.html",
     "title": "Math 5250: Graduate Linear Algebra",
     "section": "",
-    "text": "Math 5250 - Graduate Linear Algebra\nFall Semester, 2026\nUniversity of Connecticut\n\n\nMath 5250 is a graduate course covering abstract linear algebra in depth. Topics include abstract vector spaces and linear transformations, eigenvalues and eigenvectors, inner product spaces, matrix decompositions, normed spaces, duality, bilinear forms, and multilinear algebra.\n\n\n\nJeremy Teitelbaum\n231 Monteith Hall\nEmail: jeremy.teitelbaum@uconn.edu\nMath Department Home Page\nPersonal Home Page\n\n\n\n\nLax, Peter D. Linear Algebra and Its Applications. 2nd ed. Wiley-Interscience, 2007.\nHoffman, Kenneth, and Ray Kunze. Linear Algebra. 2nd ed. Prentice-Hall, 1971.\nHorn, Roger A., and Charles R. Johnson. Matrix Analysis. 2nd ed. Cambridge University Press, 2013.\nRoman, Steven. Advanced Linear Algebra. 3rd ed. Graduate Texts in Mathematics, vol. 135. Springer, 2008.\nAxler, Sheldon. Linear Algebra Done Right. 4th ed. Undergraduate Texts in Mathematics. Springer, 2023.\nHalmos, Paul R. Finite-Dimensional Vector Spaces. 2nd ed. Springer, 1974.\nBhatia, Rajendra. Matrix Analysis. Graduate Texts in Mathematics, vol. 169. Springer, 1997.\n\nLecture notes will be developed and posted here throughout the semester.\n\n\n\nTuesday, September 1 - Thursday, December 10, 2026. Final exam the week of December 14, 2026.\nTuesdays and Thursdays, 3:30 pm - 4:45 pm\nMonteith 227\n\n\n\nTo be announced.\n\n\n\nThe instructor reserves the right to modify or adapt this syllabus, with reasonable notice, to account for disruptions due to weather or other unexpected circumstances."
+    "text": "Math 5250 - Graduate Linear Algebra\nFall Semester, 2026\nUniversity of Connecticut\n\n\nMath 5250 is a graduate course covering abstract linear algebra in depth. Topics include abstract vector spaces and linear transformations, eigenvalues and eigenvectors, inner product spaces, matrix decompositions, normed spaces, duality, bilinear forms, and multilinear algebra.\n\n\n\nJeremy Teitelbaum\n231 Monteith Hall\nEmail: jeremy.teitelbaum@uconn.edu\nMath Department Home Page\nPersonal Home Page\n\n\n\n\nLax, Peter D. Linear Algebra and Its Applications. 2nd ed. Wiley-Interscience, 2007.\nHoffman, Kenneth, and Ray Kunze. Linear Algebra. 2nd ed. Prentice-Hall, 1971.\nHorn, Roger A., and Charles R. Johnson. Matrix Analysis. 2nd ed. Cambridge University Press, 2013.\nRoman, Steven. Advanced Linear Algebra. 3rd ed. Graduate Texts in Mathematics, vol. 135. Springer, 2008.\nAxler, Sheldon. Linear Algebra Done Right. 4th ed. Undergraduate Texts in Mathematics. Springer, 2023.\nHalmos, Paul R. Finite-Dimensional Vector Spaces. 2nd ed. Springer, 1974.\nBhatia, Rajendra. Matrix Analysis. Graduate Texts in Mathematics, vol. 169. Springer, 1997.\n\nLecture notes will be developed and posted here throughout the semester.\n\n\n\nTuesday, September 1 - Thursday, December 10, 2026. Final exam the week of December 14, 2026.\nTuesdays and Thursdays, 3:30 pm - 4:45 pm\nMonteith 227\n\n\n\nTo be announced.\n\n\n\nThe instructor reserves the right to modify or adapt this syllabus, with reasonable notice, to account for disruptions due to weather or other unexpected circumstances.",
+    "crumbs": [
+      "Home",
+      "Math 5250: Graduate Linear Algebra"
+    ]
   },
   {
     "objectID": "index.html#syllabus",
     "href": "index.html#syllabus",
     "title": "Math 5250: Graduate Linear Algebra",
     "section": "",
-    "text": "Math 5250 - Graduate Linear Algebra\nFall Semester, 2026\nUniversity of Connecticut\n\n\nMath 5250 is a graduate course covering abstract linear algebra in depth. Topics include abstract vector spaces and linear transformations, eigenvalues and eigenvectors, inner product spaces, matrix decompositions, normed spaces, duality, bilinear forms, and multilinear algebra.\n\n\n\nJeremy Teitelbaum\n231 Monteith Hall\nEmail: jeremy.teitelbaum@uconn.edu\nMath Department Home Page\nPersonal Home Page\n\n\n\n\nLax, Peter D. Linear Algebra and Its Applications. 2nd ed. Wiley-Interscience, 2007.\nHoffman, Kenneth, and Ray Kunze. Linear Algebra. 2nd ed. Prentice-Hall, 1971.\nHorn, Roger A., and Charles R. Johnson. Matrix Analysis. 2nd ed. Cambridge University Press, 2013.\nRoman, Steven. Advanced Linear Algebra. 3rd ed. Graduate Texts in Mathematics, vol. 135. Springer, 2008.\nAxler, Sheldon. Linear Algebra Done Right. 4th ed. Undergraduate Texts in Mathematics. Springer, 2023.\nHalmos, Paul R. Finite-Dimensional Vector Spaces. 2nd ed. Springer, 1974.\nBhatia, Rajendra. Matrix Analysis. Graduate Texts in Mathematics, vol. 169. Springer, 1997.\n\nLecture notes will be developed and posted here throughout the semester.\n\n\n\nTuesday, September 1 - Thursday, December 10, 2026. Final exam the week of December 14, 2026.\nTuesdays and Thursdays, 3:30 pm - 4:45 pm\nMonteith 227\n\n\n\nTo be announced.\n\n\n\nThe instructor reserves the right to modify or adapt this syllabus, with reasonable notice, to account for disruptions due to weather or other unexpected circumstances."
+    "text": "Math 5250 - Graduate Linear Algebra\nFall Semester, 2026\nUniversity of Connecticut\n\n\nMath 5250 is a graduate course covering abstract linear algebra in depth. Topics include abstract vector spaces and linear transformations, eigenvalues and eigenvectors, inner product spaces, matrix decompositions, normed spaces, duality, bilinear forms, and multilinear algebra.\n\n\n\nJeremy Teitelbaum\n231 Monteith Hall\nEmail: jeremy.teitelbaum@uconn.edu\nMath Department Home Page\nPersonal Home Page\n\n\n\n\nLax, Peter D. Linear Algebra and Its Applications. 2nd ed. Wiley-Interscience, 2007.\nHoffman, Kenneth, and Ray Kunze. Linear Algebra. 2nd ed. Prentice-Hall, 1971.\nHorn, Roger A., and Charles R. Johnson. Matrix Analysis. 2nd ed. Cambridge University Press, 2013.\nRoman, Steven. Advanced Linear Algebra. 3rd ed. Graduate Texts in Mathematics, vol. 135. Springer, 2008.\nAxler, Sheldon. Linear Algebra Done Right. 4th ed. Undergraduate Texts in Mathematics. Springer, 2023.\nHalmos, Paul R. Finite-Dimensional Vector Spaces. 2nd ed. Springer, 1974.\nBhatia, Rajendra. Matrix Analysis. Graduate Texts in Mathematics, vol. 169. Springer, 1997.\n\nLecture notes will be developed and posted here throughout the semester.\n\n\n\nTuesday, September 1 - Thursday, December 10, 2026. Final exam the week of December 14, 2026.\nTuesdays and Thursdays, 3:30 pm - 4:45 pm\nMonteith 227\n\n\n\nTo be announced.\n\n\n\nThe instructor reserves the right to modify or adapt this syllabus, with reasonable notice, to account for disruptions due to weather or other unexpected circumstances.",
+    "crumbs": [
+      "Home",
+      "Math 5250: Graduate Linear Algebra"
+    ]
   },
   {
     "objectID": "index.html#university-policies",
     "href": "index.html#university-policies",
     "title": "Math 5250: Graduate Linear Algebra",
     "section": "University Policies",
-    "text": "University Policies\nStudents with disabilities should work with the Center for Students with Disabilities to request academic accommodations. The CSD is located in Wilbur Cross, Room 204 and can be reached at (860) 486-2020 or at csd@uconn.edu. Detailed information regarding the process to request accommodations is available on the CSD website at www.csd.uconn.edu.\nStudents are bound by the university’s policies on academic misconduct. Academic misconduct is dishonest or unethical academic behavior that includes, but is not limited to, misrepresenting mastery in an academic area (e.g., cheating), failing to properly credit information, research, or ideas to their rightful originators or representing such information, research, or ideas as your own (e.g., plagiarism).\nStudents, faculty, and staff are bound by the university’s policy against discrimination, harassment, and related interpersonal violence.\nShield: \nThis work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.\n\n\n\nCC BY-SA 4.0"
-  },
-  {
-    "objectID": "notes/Week7-8/W07.1.html",
-    "href": "notes/Week7-8/W07.1.html",
-    "title": "Weeks 7–8 — Jordan Canonical Form",
-    "section": "",
-    "text": "Notes on the Jordan canonical form of a linear operator, Jordan blocks, and generalized eigenvectors."
-  },
-  {
-    "objectID": "notes/Week7-8/W07.1.html#placeholder",
-    "href": "notes/Week7-8/W07.1.html#placeholder",
-    "title": "Weeks 7–8 — Jordan Canonical Form",
-    "section": "",
-    "text": "Notes on the Jordan canonical form of a linear operator, Jordan blocks, and generalized eigenvectors."
-  },
-  {
-    "objectID": "notes/Week7-8/W07.3.html",
-    "href": "notes/Week7-8/W07.3.html",
-    "title": "Weeks 7–8 — QR, SVD, and Polar Decomposition",
-    "section": "",
-    "text": "Notes on QR decomposition, singular value decomposition (SVD), and polar decomposition, including their relationships to orthogonality from weeks 5–6."
-  },
-  {
-    "objectID": "notes/Week7-8/W07.3.html#placeholder",
-    "href": "notes/Week7-8/W07.3.html#placeholder",
-    "title": "Weeks 7–8 — QR, SVD, and Polar Decomposition",
-    "section": "",
-    "text": "Notes on QR decomposition, singular value decomposition (SVD), and polar decomposition, including their relationships to orthogonality from weeks 5–6."
-  },
-  {
-    "objectID": "notes/Week7-8/W07.2.html",
-    "href": "notes/Week7-8/W07.2.html",
-    "title": "Weeks 7–8 — Positive Definite Matrices",
-    "section": "",
-    "text": "Notes on positive definite and positive semidefinite matrices, their characterizations, and connections to inner products and decompositions."
-  },
-  {
-    "objectID": "notes/Week7-8/W07.2.html#placeholder",
-    "href": "notes/Week7-8/W07.2.html#placeholder",
-    "title": "Weeks 7–8 — Positive Definite Matrices",
-    "section": "",
-    "text": "Notes on positive definite and positive semidefinite matrices, their characterizations, and connections to inner products and decompositions."
-  },
-  {
-    "objectID": "notes/Week1/W01.1.html",
-    "href": "notes/Week1/W01.1.html",
-    "title": "Week 1 — Vector Space Structure of R^n",
-    "section": "",
-    "text": "Notes on the vector space structure of \\mathbb{R}^n: subspaces, span, linear independence, basis, and dimension."
-  },
-  {
-    "objectID": "notes/Week1/W01.1.html#placeholder",
-    "href": "notes/Week1/W01.1.html#placeholder",
-    "title": "Week 1 — Vector Space Structure of R^n",
-    "section": "",
-    "text": "Notes on the vector space structure of \\mathbb{R}^n: subspaces, span, linear independence, basis, and dimension."
-  },
-  {
-    "objectID": "notes/Week1/W01.3.html",
-    "href": "notes/Week1/W01.3.html",
-    "title": "Week 1 — Kernel, Range, Similarity, and Isomorphisms",
-    "section": "",
-    "text": "Notes on kernel and range as subspaces, similarity of matrices, determining spanning sets for kernel and range, and vector space isomorphisms."
-  },
-  {
-    "objectID": "notes/Week1/W01.3.html#placeholder",
-    "href": "notes/Week1/W01.3.html#placeholder",
-    "title": "Week 1 — Kernel, Range, Similarity, and Isomorphisms",
-    "section": "",
-    "text": "Notes on kernel and range as subspaces, similarity of matrices, determining spanning sets for kernel and range, and vector space isomorphisms."
-  },
-  {
-    "objectID": "notes/Week1/W01.2.html",
-    "href": "notes/Week1/W01.2.html",
-    "title": "Week 1 — Linear Transformations and Matrices",
-    "section": "",
-    "text": "Notes on representing linear transformations by matrices, and the effect of change of basis on matrix representations."
-  },
-  {
-    "objectID": "notes/Week1/W01.2.html#placeholder",
-    "href": "notes/Week1/W01.2.html#placeholder",
-    "title": "Week 1 — Linear Transformations and Matrices",
-    "section": "",
-    "text": "Notes on representing linear transformations by matrices, and the effect of change of basis on matrix representations."
-  },
-  {
-    "objectID": "notes/Week10-11/W10.1.html",
-    "href": "notes/Week10-11/W10.1.html",
-    "title": "Weeks 10–11 — Linear Functionals and the Dual Space",
-    "section": "",
-    "text": "Notes on linear functionals, the dual space V^*, and its basic properties."
-  },
-  {
-    "objectID": "notes/Week10-11/W10.1.html#placeholder",
-    "href": "notes/Week10-11/W10.1.html#placeholder",
-    "title": "Weeks 10–11 — Linear Functionals and the Dual Space",
-    "section": "",
-    "text": "Notes on linear functionals, the dual space V^*, and its basic properties."
-  },
-  {
-    "objectID": "notes/Week10-11/W10.2.html",
-    "href": "notes/Week10-11/W10.2.html",
-    "title": "Weeks 10–11 — Duality and Inner Products",
-    "section": "",
-    "text": "Notes on the relationship between duality and inner products, including the Riesz representation theorem."
-  },
-  {
-    "objectID": "notes/Week10-11/W10.2.html#placeholder",
-    "href": "notes/Week10-11/W10.2.html#placeholder",
-    "title": "Weeks 10–11 — Duality and Inner Products",
-    "section": "",
-    "text": "Notes on the relationship between duality and inner products, including the Riesz representation theorem."
-  },
-  {
-    "objectID": "notes/Week10-11/W10.3.html",
-    "href": "notes/Week10-11/W10.3.html",
-    "title": "Weeks 10–11 — Dual Bases, Linear Maps, and Double Duality",
-    "section": "",
-    "text": "Notes on dual bases, duality of vector spaces and linear maps, the relationship between the dual linear map and the transpose matrix, and double duality."
-  },
-  {
-    "objectID": "notes/Week10-11/W10.3.html#placeholder",
-    "href": "notes/Week10-11/W10.3.html#placeholder",
-    "title": "Weeks 10–11 — Dual Bases, Linear Maps, and Double Duality",
-    "section": "",
-    "text": "Notes on dual bases, duality of vector spaces and linear maps, the relationship between the dual linear map and the transpose matrix, and double duality."
-  },
-  {
-    "objectID": "notes/Week9/W09.2.html",
-    "href": "notes/Week9/W09.2.html",
-    "title": "Week 9 — Matrix and Operator Norms",
-    "section": "",
-    "text": "Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of AA^\\top."
-  },
-  {
-    "objectID": "notes/Week9/W09.2.html#placeholder",
-    "href": "notes/Week9/W09.2.html#placeholder",
-    "title": "Week 9 — Matrix and Operator Norms",
-    "section": "",
-    "text": "Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of AA^\\top."
-  },
-  {
-    "objectID": "notes/Week9/W09.1.html",
-    "href": "notes/Week9/W09.1.html",
-    "title": "Week 9 — Vector Space Norms and Equivalence of Norms",
-    "section": "",
-    "text": "Notes on norms on vector spaces, examples, and the equivalence of all norms in finite-dimensional \\mathbb{R}-vector spaces."
-  },
-  {
-    "objectID": "notes/Week9/W09.1.html#placeholder",
-    "href": "notes/Week9/W09.1.html#placeholder",
-    "title": "Week 9 — Vector Space Norms and Equivalence of Norms",
-    "section": "",
-    "text": "Notes on norms on vector spaces, examples, and the equivalence of all norms in finite-dimensional \\mathbb{R}-vector spaces."
-  },
-  {
-    "objectID": "notes/Week13-14/W13.3.html",
-    "href": "notes/Week13-14/W13.3.html",
-    "title": "Weeks 13–14 — Tensor and Exterior Algebras",
-    "section": "",
-    "text": "Notes on the tensor algebra and exterior algebra of a vector space."
-  },
-  {
-    "objectID": "notes/Week13-14/W13.3.html#placeholder",
-    "href": "notes/Week13-14/W13.3.html#placeholder",
-    "title": "Weeks 13–14 — Tensor and Exterior Algebras",
-    "section": "",
-    "text": "Notes on the tensor algebra and exterior algebra of a vector space."
-  },
-  {
-    "objectID": "notes/Week13-14/W13.2.html",
-    "href": "notes/Week13-14/W13.2.html",
-    "title": "Weeks 13–14 — Exterior Powers of Vector Spaces",
-    "section": "",
-    "text": "Notes on exterior powers of vector spaces and the exterior powers of linear maps, in both basis-free and matrix form."
-  },
-  {
-    "objectID": "notes/Week13-14/W13.2.html#placeholder",
-    "href": "notes/Week13-14/W13.2.html#placeholder",
-    "title": "Weeks 13–14 — Exterior Powers of Vector Spaces",
-    "section": "",
-    "text": "Notes on exterior powers of vector spaces and the exterior powers of linear maps, in both basis-free and matrix form."
-  },
-  {
-    "objectID": "notes/Week13-14/W13.1.html",
-    "href": "notes/Week13-14/W13.1.html",
-    "title": "Weeks 13–14 — Tensor Products of Vector Spaces",
-    "section": "",
-    "text": "Notes on tensor products of vector spaces and linear maps, both in basis-free and matrix form."
-  },
-  {
-    "objectID": "notes/Week13-14/W13.1.html#placeholder",
-    "href": "notes/Week13-14/W13.1.html#placeholder",
-    "title": "Weeks 13–14 — Tensor Products of Vector Spaces",
-    "section": "",
-    "text": "Notes on tensor products of vector spaces and linear maps, both in basis-free and matrix form."
-  },
-  {
-    "objectID": "notes/Week12/W12.2.html",
-    "href": "notes/Week12/W12.2.html",
-    "title": "Week 12 — Quadratic Forms and Diagonalization",
-    "section": "",
-    "text": "Notes on quadratic forms, their relation to symmetric bilinear forms, equivalence of bilinear forms, and diagonalization."
-  },
-  {
-    "objectID": "notes/Week12/W12.2.html#placeholder",
-    "href": "notes/Week12/W12.2.html#placeholder",
-    "title": "Week 12 — Quadratic Forms and Diagonalization",
-    "section": "",
-    "text": "Notes on quadratic forms, their relation to symmetric bilinear forms, equivalence of bilinear forms, and diagonalization."
-  },
-  {
-    "objectID": "notes/Week12/W12.3.html",
-    "href": "notes/Week12/W12.3.html",
-    "title": "Week 12 — Signature and Definiteness",
-    "section": "",
-    "text": "Notes on positive-definiteness, Sylvester’s law of inertia, and the signature of a symmetric bilinear form."
-  },
-  {
-    "objectID": "notes/Week12/W12.3.html#placeholder",
-    "href": "notes/Week12/W12.3.html#placeholder",
-    "title": "Week 12 — Signature and Definiteness",
-    "section": "",
-    "text": "Notes on positive-definiteness, Sylvester’s law of inertia, and the signature of a symmetric bilinear form."
-  },
-  {
-    "objectID": "notes/Week12/W12.1.html",
-    "href": "notes/Week12/W12.1.html",
-    "title": "Week 12 — Bilinear Forms and Matrix Representations",
-    "section": "",
-    "text": "Notes on degenerate and nondegenerate bilinear forms, their matrix representations, and the effect of change of basis."
-  },
-  {
-    "objectID": "notes/Week12/W12.1.html#placeholder",
-    "href": "notes/Week12/W12.1.html#placeholder",
-    "title": "Week 12 — Bilinear Forms and Matrix Representations",
-    "section": "",
-    "text": "Notes on degenerate and nondegenerate bilinear forms, their matrix representations, and the effect of change of basis."
-  },
-  {
-    "objectID": "notes/Week2-3/W02.2.html",
-    "href": "notes/Week2-3/W02.2.html",
-    "title": "Weeks 2–3 — Direct Sums and Quotient Spaces",
-    "section": "",
-    "text": "Notes on direct sums and quotient spaces of abstract vector spaces."
-  },
-  {
-    "objectID": "notes/Week2-3/W02.2.html#placeholder",
-    "href": "notes/Week2-3/W02.2.html#placeholder",
-    "title": "Weeks 2–3 — Direct Sums and Quotient Spaces",
-    "section": "",
-    "text": "Notes on direct sums and quotient spaces of abstract vector spaces."
-  },
-  {
-    "objectID": "notes/Week2-3/W02.3.html",
-    "href": "notes/Week2-3/W02.3.html",
-    "title": "Weeks 2–3 — Linear Transformations: General Theory",
-    "section": "",
-    "text": "Notes on linear transformations between abstract vector spaces, their matrix representations with respect to chosen bases, and change-of-basis formulas."
-  },
-  {
-    "objectID": "notes/Week2-3/W02.3.html#placeholder",
-    "href": "notes/Week2-3/W02.3.html#placeholder",
-    "title": "Weeks 2–3 — Linear Transformations: General Theory",
-    "section": "",
-    "text": "Notes on linear transformations between abstract vector spaces, their matrix representations with respect to chosen bases, and change-of-basis formulas."
-  },
-  {
-    "objectID": "notes/Week2-3/W02.4.html",
-    "href": "notes/Week2-3/W02.4.html",
-    "title": "Weeks 2–3 — Trace and Determinant",
-    "section": "",
-    "text": "Notes on trace and determinant of linear transformations, including their basis-independence and key properties."
-  },
-  {
-    "objectID": "notes/Week2-3/W02.4.html#placeholder",
-    "href": "notes/Week2-3/W02.4.html#placeholder",
-    "title": "Weeks 2–3 — Trace and Determinant",
-    "section": "",
-    "text": "Notes on trace and determinant of linear transformations, including their basis-independence and key properties."
-  },
-  {
-    "objectID": "notes/Week2-3/W02.1.html",
-    "href": "notes/Week2-3/W02.1.html",
-    "title": "Weeks 2–3 — Abstract Vector Spaces and Subspaces",
-    "section": "",
-    "text": "Notes on abstract vector spaces over a field \\mathbb{F}, subspaces, and the abstract definitions of span, linear independence, basis, and dimension."
-  },
-  {
-    "objectID": "notes/Week2-3/W02.1.html#placeholder",
-    "href": "notes/Week2-3/W02.1.html#placeholder",
-    "title": "Weeks 2–3 — Abstract Vector Spaces and Subspaces",
-    "section": "",
-    "text": "Notes on abstract vector spaces over a field \\mathbb{F}, subspaces, and the abstract definitions of span, linear independence, basis, and dimension."
-  },
-  {
-    "objectID": "notes/Week5-6/W05.3.html",
-    "href": "notes/Week5-6/W05.3.html",
-    "title": "Weeks 5–6 — Spectral Theorem for Self-Adjoint Operators (Real Case)",
-    "section": "",
-    "text": "Notes on adjoint, self-adjoint, and orthogonal operators (transpose, symmetric, and orthogonal matrices); the real spectral theorem."
-  },
-  {
-    "objectID": "notes/Week5-6/W05.3.html#placeholder",
-    "href": "notes/Week5-6/W05.3.html#placeholder",
-    "title": "Weeks 5–6 — Spectral Theorem for Self-Adjoint Operators (Real Case)",
-    "section": "",
-    "text": "Notes on adjoint, self-adjoint, and orthogonal operators (transpose, symmetric, and orthogonal matrices); the real spectral theorem."
-  },
-  {
-    "objectID": "notes/Week5-6/W05.2.html",
-    "href": "notes/Week5-6/W05.2.html",
-    "title": "Weeks 5–6 — Gram-Schmidt Process and Orthogonal Projections",
-    "section": "",
-    "text": "Notes on the Gram-Schmidt orthogonalization process, orthogonal projections, and the orthogonal complement of a subspace."
-  },
-  {
-    "objectID": "notes/Week5-6/W05.2.html#placeholder",
-    "href": "notes/Week5-6/W05.2.html#placeholder",
-    "title": "Weeks 5–6 — Gram-Schmidt Process and Orthogonal Projections",
-    "section": "",
-    "text": "Notes on the Gram-Schmidt orthogonalization process, orthogonal projections, and the orthogonal complement of a subspace."
-  },
-  {
-    "objectID": "notes/Week5-6/W05.1.html",
-    "href": "notes/Week5-6/W05.1.html",
-    "title": "Weeks 5–6 — Inner Product Spaces over R",
-    "section": "",
-    "text": "Notes on real inner product spaces, orthogonality, orthogonal bases, and coordinate-free vs. coordinate descriptions."
-  },
-  {
-    "objectID": "notes/Week5-6/W05.1.html#placeholder",
-    "href": "notes/Week5-6/W05.1.html#placeholder",
-    "title": "Weeks 5–6 — Inner Product Spaces over R",
-    "section": "",
-    "text": "Notes on real inner product spaces, orthogonality, orthogonal bases, and coordinate-free vs. coordinate descriptions."
+    "text": "University Policies\nStudents with disabilities should work with the Center for Students with Disabilities to request academic accommodations. The CSD is located in Wilbur Cross, Room 204 and can be reached at (860) 486-2020 or at csd@uconn.edu. Detailed information regarding the process to request accommodations is available on the CSD website at www.csd.uconn.edu.\nStudents are bound by the university’s policies on academic misconduct. Academic misconduct is dishonest or unethical academic behavior that includes, but is not limited to, misrepresenting mastery in an academic area (e.g., cheating), failing to properly credit information, research, or ideas to their rightful originators or representing such information, research, or ideas as your own (e.g., plagiarism).\nStudents, faculty, and staff are bound by the university’s policy against discrimination, harassment, and related interpersonal violence.\nShield: \nThis work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.\n\n\n\nCC BY-SA 4.0",
+    "crumbs": [
+      "Home",
+      "Math 5250: Graduate Linear Algebra"
+    ]
   },
   {
     "objectID": "notes/Week5-6/W05.4.html",
     "href": "notes/Week5-6/W05.4.html",
     "title": "Weeks 5–6 — Complex Inner Product Spaces and Hermitian Operators",
     "section": "",
-    "text": "Notes on complex (unitary) inner product spaces, the adjoint operator (conjugate transpose), and the spectral theorem for Hermitian operators."
+    "text": "Notes on complex (unitary) inner product spaces, the adjoint operator (conjugate transpose), and the spectral theorem for Hermitian operators.",
+    "crumbs": [
+      "Home",
+      "Weeks 5–6 — Inner Product Spaces",
+      "Complex inner product spaces and Hermitian operators"
+    ]
   },
   {
     "objectID": "notes/Week5-6/W05.4.html#placeholder",
     "href": "notes/Week5-6/W05.4.html#placeholder",
     "title": "Weeks 5–6 — Complex Inner Product Spaces and Hermitian Operators",
     "section": "",
-    "text": "Notes on complex (unitary) inner product spaces, the adjoint operator (conjugate transpose), and the spectral theorem for Hermitian operators."
+    "text": "Notes on complex (unitary) inner product spaces, the adjoint operator (conjugate transpose), and the spectral theorem for Hermitian operators.",
+    "crumbs": [
+      "Home",
+      "Weeks 5–6 — Inner Product Spaces",
+      "Complex inner product spaces and Hermitian operators"
+    ]
   },
   {
-    "objectID": "notes/Week4/W04.2.html",
-    "href": "notes/Week4/W04.2.html",
-    "title": "Week 4 — Characteristic Polynomials and Cayley-Hamilton Theorem",
+    "objectID": "notes/Week5-6/W05.3.html",
+    "href": "notes/Week5-6/W05.3.html",
+    "title": "Weeks 5–6 — Spectral Theorem for Self-Adjoint Operators (Real Case)",
     "section": "",
-    "text": "Notes on the characteristic polynomial, its roots as eigenvalues, and the Cayley-Hamilton theorem."
+    "text": "Notes on adjoint, self-adjoint, and orthogonal operators (transpose, symmetric, and orthogonal matrices); the real spectral theorem.",
+    "crumbs": [
+      "Home",
+      "Weeks 5–6 — Inner Product Spaces",
+      "Spectral theorem for self-adjoint operators (real case)"
+    ]
   },
   {
-    "objectID": "notes/Week4/W04.2.html#placeholder",
-    "href": "notes/Week4/W04.2.html#placeholder",
-    "title": "Week 4 — Characteristic Polynomials and Cayley-Hamilton Theorem",
+    "objectID": "notes/Week5-6/W05.3.html#placeholder",
+    "href": "notes/Week5-6/W05.3.html#placeholder",
+    "title": "Weeks 5–6 — Spectral Theorem for Self-Adjoint Operators (Real Case)",
     "section": "",
-    "text": "Notes on the characteristic polynomial, its roots as eigenvalues, and the Cayley-Hamilton theorem."
+    "text": "Notes on adjoint, self-adjoint, and orthogonal operators (transpose, symmetric, and orthogonal matrices); the real spectral theorem.",
+    "crumbs": [
+      "Home",
+      "Weeks 5–6 — Inner Product Spaces",
+      "Spectral theorem for self-adjoint operators (real case)"
+    ]
   },
   {
     "objectID": "notes/Week4/W04.3.html",
     "href": "notes/Week4/W04.3.html",
     "title": "Week 4 — Diagonalization",
     "section": "",
-    "text": "Notes on conditions for diagonalizability, diagonalization procedures, and applications."
+    "text": "Notes on conditions for diagonalizability, diagonalization procedures, and applications.",
+    "crumbs": [
+      "Home",
+      "Week 4 — Eigenvalues and Eigenvectors",
+      "Diagonalization"
+    ]
   },
   {
     "objectID": "notes/Week4/W04.3.html#placeholder",
     "href": "notes/Week4/W04.3.html#placeholder",
     "title": "Week 4 — Diagonalization",
     "section": "",
-    "text": "Notes on conditions for diagonalizability, diagonalization procedures, and applications."
+    "text": "Notes on conditions for diagonalizability, diagonalization procedures, and applications.",
+    "crumbs": [
+      "Home",
+      "Week 4 — Eigenvalues and Eigenvectors",
+      "Diagonalization"
+    ]
   },
   {
     "objectID": "notes/Week4/W04.1.html",
     "href": "notes/Week4/W04.1.html",
     "title": "Week 4 — Eigenvalues and Eigenvectors",
     "section": "",
-    "text": "Notes on eigenvalues and eigenvectors of linear operators, eigenspaces, and geometric vs. algebraic multiplicity."
+    "text": "Notes on eigenvalues and eigenvectors of linear operators, eigenspaces, and geometric vs. algebraic multiplicity.",
+    "crumbs": [
+      "Home",
+      "Week 4 — Eigenvalues and Eigenvectors",
+      "Eigenvalues and eigenvectors"
+    ]
   },
   {
     "objectID": "notes/Week4/W04.1.html#placeholder",
     "href": "notes/Week4/W04.1.html#placeholder",
     "title": "Week 4 — Eigenvalues and Eigenvectors",
     "section": "",
-    "text": "Notes on eigenvalues and eigenvectors of linear operators, eigenspaces, and geometric vs. algebraic multiplicity."
+    "text": "Notes on eigenvalues and eigenvectors of linear operators, eigenspaces, and geometric vs. algebraic multiplicity.",
+    "crumbs": [
+      "Home",
+      "Week 4 — Eigenvalues and Eigenvectors",
+      "Eigenvalues and eigenvectors"
+    ]
+  },
+  {
+    "objectID": "notes/Week2-3/W02.1.html",
+    "href": "notes/Week2-3/W02.1.html",
+    "title": "Weeks 2–3 — Abstract Vector Spaces and Subspaces",
+    "section": "",
+    "text": "Notes on abstract vector spaces over a field \\mathbb{F}, subspaces, and the abstract definitions of span, linear independence, basis, and dimension.",
+    "crumbs": [
+      "Home",
+      "Weeks 2–3 — Abstract Vector Spaces",
+      "Abstract vector spaces and subspaces"
+    ]
+  },
+  {
+    "objectID": "notes/Week2-3/W02.1.html#placeholder",
+    "href": "notes/Week2-3/W02.1.html#placeholder",
+    "title": "Weeks 2–3 — Abstract Vector Spaces and Subspaces",
+    "section": "",
+    "text": "Notes on abstract vector spaces over a field \\mathbb{F}, subspaces, and the abstract definitions of span, linear independence, basis, and dimension.",
+    "crumbs": [
+      "Home",
+      "Weeks 2–3 — Abstract Vector Spaces",
+      "Abstract vector spaces and subspaces"
+    ]
+  },
+  {
+    "objectID": "notes/Week2-3/W02.3.html",
+    "href": "notes/Week2-3/W02.3.html",
+    "title": "Weeks 2–3 — Linear Transformations: General Theory",
+    "section": "",
+    "text": "Notes on linear transformations between abstract vector spaces, their matrix representations with respect to chosen bases, and change-of-basis formulas.",
+    "crumbs": [
+      "Home",
+      "Weeks 2–3 — Abstract Vector Spaces",
+      "Linear transformations: general theory"
+    ]
+  },
+  {
+    "objectID": "notes/Week2-3/W02.3.html#placeholder",
+    "href": "notes/Week2-3/W02.3.html#placeholder",
+    "title": "Weeks 2–3 — Linear Transformations: General Theory",
+    "section": "",
+    "text": "Notes on linear transformations between abstract vector spaces, their matrix representations with respect to chosen bases, and change-of-basis formulas.",
+    "crumbs": [
+      "Home",
+      "Weeks 2–3 — Abstract Vector Spaces",
+      "Linear transformations: general theory"
+    ]
+  },
+  {
+    "objectID": "notes/Week13-14/W13.1.html",
+    "href": "notes/Week13-14/W13.1.html",
+    "title": "Weeks 13–14 — Tensor Products of Vector Spaces",
+    "section": "",
+    "text": "Notes on tensor products of vector spaces and linear maps, both in basis-free and matrix form.",
+    "crumbs": [
+      "Home",
+      "Weeks 13–14 — Multilinear Algebra",
+      "Tensor products of vector spaces"
+    ]
+  },
+  {
+    "objectID": "notes/Week13-14/W13.1.html#placeholder",
+    "href": "notes/Week13-14/W13.1.html#placeholder",
+    "title": "Weeks 13–14 — Tensor Products of Vector Spaces",
+    "section": "",
+    "text": "Notes on tensor products of vector spaces and linear maps, both in basis-free and matrix form.",
+    "crumbs": [
+      "Home",
+      "Weeks 13–14 — Multilinear Algebra",
+      "Tensor products of vector spaces"
+    ]
+  },
+  {
+    "objectID": "notes/Week12/W12.2.html",
+    "href": "notes/Week12/W12.2.html",
+    "title": "Week 12 — Quadratic Forms and Diagonalization",
+    "section": "",
+    "text": "Notes on quadratic forms, their relation to symmetric bilinear forms, equivalence of bilinear forms, and diagonalization.",
+    "crumbs": [
+      "Home",
+      "Week 12 — Bilinear Forms",
+      "Quadratic forms and diagonalization"
+    ]
+  },
+  {
+    "objectID": "notes/Week12/W12.2.html#placeholder",
+    "href": "notes/Week12/W12.2.html#placeholder",
+    "title": "Week 12 — Quadratic Forms and Diagonalization",
+    "section": "",
+    "text": "Notes on quadratic forms, their relation to symmetric bilinear forms, equivalence of bilinear forms, and diagonalization.",
+    "crumbs": [
+      "Home",
+      "Week 12 — Bilinear Forms",
+      "Quadratic forms and diagonalization"
+    ]
+  },
+  {
+    "objectID": "notes/Week12/W12.1.html",
+    "href": "notes/Week12/W12.1.html",
+    "title": "Week 12 — Bilinear Forms and Matrix Representations",
+    "section": "",
+    "text": "Notes on degenerate and nondegenerate bilinear forms, their matrix representations, and the effect of change of basis.",
+    "crumbs": [
+      "Home",
+      "Week 12 — Bilinear Forms",
+      "Bilinear forms and matrix representations"
+    ]
+  },
+  {
+    "objectID": "notes/Week12/W12.1.html#placeholder",
+    "href": "notes/Week12/W12.1.html#placeholder",
+    "title": "Week 12 — Bilinear Forms and Matrix Representations",
+    "section": "",
+    "text": "Notes on degenerate and nondegenerate bilinear forms, their matrix representations, and the effect of change of basis.",
+    "crumbs": [
+      "Home",
+      "Week 12 — Bilinear Forms",
+      "Bilinear forms and matrix representations"
+    ]
+  },
+  {
+    "objectID": "notes/Week9/W09.2.html",
+    "href": "notes/Week9/W09.2.html",
+    "title": "Week 9 — Matrix and Operator Norms",
+    "section": "",
+    "text": "Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of AA^\\top.",
+    "crumbs": [
+      "Home",
+      "Week 9 — Norms",
+      "Matrix and operator norms"
+    ]
+  },
+  {
+    "objectID": "notes/Week9/W09.2.html#placeholder",
+    "href": "notes/Week9/W09.2.html#placeholder",
+    "title": "Week 9 — Matrix and Operator Norms",
+    "section": "",
+    "text": "Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of AA^\\top.",
+    "crumbs": [
+      "Home",
+      "Week 9 — Norms",
+      "Matrix and operator norms"
+    ]
+  },
+  {
+    "objectID": "notes/Week7-8/W07.2.html",
+    "href": "notes/Week7-8/W07.2.html",
+    "title": "Weeks 7–8 — Positive Definite Matrices",
+    "section": "",
+    "text": "Notes on positive definite and positive semidefinite matrices, their characterizations, and connections to inner products and decompositions.",
+    "crumbs": [
+      "Home",
+      "Weeks 7–8 — Matrix Decompositions",
+      "Positive definite matrices"
+    ]
+  },
+  {
+    "objectID": "notes/Week7-8/W07.2.html#placeholder",
+    "href": "notes/Week7-8/W07.2.html#placeholder",
+    "title": "Weeks 7–8 — Positive Definite Matrices",
+    "section": "",
+    "text": "Notes on positive definite and positive semidefinite matrices, their characterizations, and connections to inner products and decompositions.",
+    "crumbs": [
+      "Home",
+      "Weeks 7–8 — Matrix Decompositions",
+      "Positive definite matrices"
+    ]
+  },
+  {
+    "objectID": "notes/Week1/W01.3.html",
+    "href": "notes/Week1/W01.3.html",
+    "title": "Week 1 — Kernel, Range, Similarity, and Isomorphisms",
+    "section": "",
+    "text": "Notes on kernel and range as subspaces, similarity of matrices, determining spanning sets for kernel and range, and vector space isomorphisms.",
+    "crumbs": [
+      "Home",
+      "Week 1 — Review",
+      "Change of basis, kernel and range, isomorphisms"
+    ]
+  },
+  {
+    "objectID": "notes/Week1/W01.3.html#placeholder",
+    "href": "notes/Week1/W01.3.html#placeholder",
+    "title": "Week 1 — Kernel, Range, Similarity, and Isomorphisms",
+    "section": "",
+    "text": "Notes on kernel and range as subspaces, similarity of matrices, determining spanning sets for kernel and range, and vector space isomorphisms.",
+    "crumbs": [
+      "Home",
+      "Week 1 — Review",
+      "Change of basis, kernel and range, isomorphisms"
+    ]
+  },
+  {
+    "objectID": "notes/Week1/W01.1.html",
+    "href": "notes/Week1/W01.1.html",
+    "title": "Week 1 — Vector Space Structure of R^n",
+    "section": "",
+    "text": "An n-dimensional real vector is an n-tuple (x_1,\\ldots, x_n) where the x_i are real numbers. If the x_i are complex instead of real, we have an n-dimensional complex vector.\nWe write \\mathbf{R}^{n} and \\mathbf{C}^{n} for the sets of n-dimensional real and complex vectors respectively.\nOne can visualize an element x=(x_1,\\ldots,x_n) of \\mathbf{R}^{n} as an “arrow” with its base at the origin and its endpoint at the point (x_1,\\ldots, x_n) in n-dimensional Euclidean space.",
+    "crumbs": [
+      "Home",
+      "Week 1 — Review",
+      "Vector space structure of R^n"
+    ]
+  },
+  {
+    "objectID": "notes/Week1/W01.1.html#real-and-complex-vectors",
+    "href": "notes/Week1/W01.1.html#real-and-complex-vectors",
+    "title": "Week 1 — Vector Space Structure of R^n",
+    "section": "",
+    "text": "An n-dimensional real vector is an n-tuple (x_1,\\ldots, x_n) where the x_i are real numbers. If the x_i are complex instead of real, we have an n-dimensional complex vector.\nWe write \\mathbf{R}^{n} and \\mathbf{C}^{n} for the sets of n-dimensional real and complex vectors respectively.\nOne can visualize an element x=(x_1,\\ldots,x_n) of \\mathbf{R}^{n} as an “arrow” with its base at the origin and its endpoint at the point (x_1,\\ldots, x_n) in n-dimensional Euclidean space.",
+    "crumbs": [
+      "Home",
+      "Week 1 — Review",
+      "Vector space structure of R^n"
+    ]
+  },
+  {
+    "objectID": "notes/Week10-11/W10.3.html",
+    "href": "notes/Week10-11/W10.3.html",
+    "title": "Weeks 10–11 — Dual Bases, Linear Maps, and Double Duality",
+    "section": "",
+    "text": "Notes on dual bases, duality of vector spaces and linear maps, the relationship between the dual linear map and the transpose matrix, and double duality.",
+    "crumbs": [
+      "Home",
+      "Weeks 10–11 — Dual Spaces",
+      "Dual bases, linear maps, and double duality"
+    ]
+  },
+  {
+    "objectID": "notes/Week10-11/W10.3.html#placeholder",
+    "href": "notes/Week10-11/W10.3.html#placeholder",
+    "title": "Weeks 10–11 — Dual Bases, Linear Maps, and Double Duality",
+    "section": "",
+    "text": "Notes on dual bases, duality of vector spaces and linear maps, the relationship between the dual linear map and the transpose matrix, and double duality.",
+    "crumbs": [
+      "Home",
+      "Weeks 10–11 — Dual Spaces",
+      "Dual bases, linear maps, and double duality"
+    ]
+  },
+  {
+    "objectID": "notes/Week10-11/W10.1.html",
+    "href": "notes/Week10-11/W10.1.html",
+    "title": "Weeks 10–11 — Linear Functionals and the Dual Space",
+    "section": "",
+    "text": "Notes on linear functionals, the dual space V^*, and its basic properties.",
+    "crumbs": [
+      "Home",
+      "Weeks 10–11 — Dual Spaces",
+      "Linear functionals and the dual space"
+    ]
+  },
+  {
+    "objectID": "notes/Week10-11/W10.1.html#placeholder",
+    "href": "notes/Week10-11/W10.1.html#placeholder",
+    "title": "Weeks 10–11 — Linear Functionals and the Dual Space",
+    "section": "",
+    "text": "Notes on linear functionals, the dual space V^*, and its basic properties.",
+    "crumbs": [
+      "Home",
+      "Weeks 10–11 — Dual Spaces",
+      "Linear functionals and the dual space"
+    ]
+  },
+  {
+    "objectID": "notes/Week10-11/W10.2.html",
+    "href": "notes/Week10-11/W10.2.html",
+    "title": "Weeks 10–11 — Duality and Inner Products",
+    "section": "",
+    "text": "Notes on the relationship between duality and inner products, including the Riesz representation theorem.",
+    "crumbs": [
+      "Home",
+      "Weeks 10–11 — Dual Spaces",
+      "Duality and inner products"
+    ]
+  },
+  {
+    "objectID": "notes/Week10-11/W10.2.html#placeholder",
+    "href": "notes/Week10-11/W10.2.html#placeholder",
+    "title": "Weeks 10–11 — Duality and Inner Products",
+    "section": "",
+    "text": "Notes on the relationship between duality and inner products, including the Riesz representation theorem.",
+    "crumbs": [
+      "Home",
+      "Weeks 10–11 — Dual Spaces",
+      "Duality and inner products"
+    ]
+  },
+  {
+    "objectID": "notes/Week1/W01.2.html",
+    "href": "notes/Week1/W01.2.html",
+    "title": "Week 1 — Linear Transformations and Matrices",
+    "section": "",
+    "text": "Notes on representing linear transformations by matrices, and the effect of change of basis on matrix representations.",
+    "crumbs": [
+      "Home",
+      "Week 1 — Review",
+      "Linear transformations and matrices"
+    ]
+  },
+  {
+    "objectID": "notes/Week1/W01.2.html#placeholder",
+    "href": "notes/Week1/W01.2.html#placeholder",
+    "title": "Week 1 — Linear Transformations and Matrices",
+    "section": "",
+    "text": "Notes on representing linear transformations by matrices, and the effect of change of basis on matrix representations.",
+    "crumbs": [
+      "Home",
+      "Week 1 — Review",
+      "Linear transformations and matrices"
+    ]
+  },
+  {
+    "objectID": "notes/Week7-8/W07.1.html",
+    "href": "notes/Week7-8/W07.1.html",
+    "title": "Weeks 7–8 — Jordan Canonical Form",
+    "section": "",
+    "text": "Notes on the Jordan canonical form of a linear operator, Jordan blocks, and generalized eigenvectors.",
+    "crumbs": [
+      "Home",
+      "Weeks 7–8 — Matrix Decompositions",
+      "Jordan canonical form"
+    ]
+  },
+  {
+    "objectID": "notes/Week7-8/W07.1.html#placeholder",
+    "href": "notes/Week7-8/W07.1.html#placeholder",
+    "title": "Weeks 7–8 — Jordan Canonical Form",
+    "section": "",
+    "text": "Notes on the Jordan canonical form of a linear operator, Jordan blocks, and generalized eigenvectors.",
+    "crumbs": [
+      "Home",
+      "Weeks 7–8 — Matrix Decompositions",
+      "Jordan canonical form"
+    ]
+  },
+  {
+    "objectID": "notes/Week7-8/W07.3.html",
+    "href": "notes/Week7-8/W07.3.html",
+    "title": "Weeks 7–8 — QR, SVD, and Polar Decomposition",
+    "section": "",
+    "text": "Notes on QR decomposition, singular value decomposition (SVD), and polar decomposition, including their relationships to orthogonality from weeks 5–6.",
+    "crumbs": [
+      "Home",
+      "Weeks 7–8 — Matrix Decompositions",
+      "QR, SVD, and polar decomposition"
+    ]
+  },
+  {
+    "objectID": "notes/Week7-8/W07.3.html#placeholder",
+    "href": "notes/Week7-8/W07.3.html#placeholder",
+    "title": "Weeks 7–8 — QR, SVD, and Polar Decomposition",
+    "section": "",
+    "text": "Notes on QR decomposition, singular value decomposition (SVD), and polar decomposition, including their relationships to orthogonality from weeks 5–6.",
+    "crumbs": [
+      "Home",
+      "Weeks 7–8 — Matrix Decompositions",
+      "QR, SVD, and polar decomposition"
+    ]
+  },
+  {
+    "objectID": "notes/Week9/W09.1.html",
+    "href": "notes/Week9/W09.1.html",
+    "title": "Week 9 — Vector Space Norms and Equivalence of Norms",
+    "section": "",
+    "text": "Notes on norms on vector spaces, examples, and the equivalence of all norms in finite-dimensional \\mathbb{R}-vector spaces.",
+    "crumbs": [
+      "Home",
+      "Week 9 — Norms",
+      "Vector space norms and equivalence of norms"
+    ]
+  },
+  {
+    "objectID": "notes/Week9/W09.1.html#placeholder",
+    "href": "notes/Week9/W09.1.html#placeholder",
+    "title": "Week 9 — Vector Space Norms and Equivalence of Norms",
+    "section": "",
+    "text": "Notes on norms on vector spaces, examples, and the equivalence of all norms in finite-dimensional \\mathbb{R}-vector spaces.",
+    "crumbs": [
+      "Home",
+      "Week 9 — Norms",
+      "Vector space norms and equivalence of norms"
+    ]
+  },
+  {
+    "objectID": "notes/Week12/W12.3.html",
+    "href": "notes/Week12/W12.3.html",
+    "title": "Week 12 — Signature and Definiteness",
+    "section": "",
+    "text": "Notes on positive-definiteness, Sylvester’s law of inertia, and the signature of a symmetric bilinear form.",
+    "crumbs": [
+      "Home",
+      "Week 12 — Bilinear Forms",
+      "Signature and definiteness"
+    ]
+  },
+  {
+    "objectID": "notes/Week12/W12.3.html#placeholder",
+    "href": "notes/Week12/W12.3.html#placeholder",
+    "title": "Week 12 — Signature and Definiteness",
+    "section": "",
+    "text": "Notes on positive-definiteness, Sylvester’s law of inertia, and the signature of a symmetric bilinear form.",
+    "crumbs": [
+      "Home",
+      "Week 12 — Bilinear Forms",
+      "Signature and definiteness"
+    ]
+  },
+  {
+    "objectID": "notes/Week13-14/W13.2.html",
+    "href": "notes/Week13-14/W13.2.html",
+    "title": "Weeks 13–14 — Exterior Powers of Vector Spaces",
+    "section": "",
+    "text": "Notes on exterior powers of vector spaces and the exterior powers of linear maps, in both basis-free and matrix form.",
+    "crumbs": [
+      "Home",
+      "Weeks 13–14 — Multilinear Algebra",
+      "Exterior powers of vector spaces"
+    ]
+  },
+  {
+    "objectID": "notes/Week13-14/W13.2.html#placeholder",
+    "href": "notes/Week13-14/W13.2.html#placeholder",
+    "title": "Weeks 13–14 — Exterior Powers of Vector Spaces",
+    "section": "",
+    "text": "Notes on exterior powers of vector spaces and the exterior powers of linear maps, in both basis-free and matrix form.",
+    "crumbs": [
+      "Home",
+      "Weeks 13–14 — Multilinear Algebra",
+      "Exterior powers of vector spaces"
+    ]
+  },
+  {
+    "objectID": "notes/Week13-14/W13.3.html",
+    "href": "notes/Week13-14/W13.3.html",
+    "title": "Weeks 13–14 — Tensor and Exterior Algebras",
+    "section": "",
+    "text": "Notes on the tensor algebra and exterior algebra of a vector space.",
+    "crumbs": [
+      "Home",
+      "Weeks 13–14 — Multilinear Algebra",
+      "Tensor and exterior algebras"
+    ]
+  },
+  {
+    "objectID": "notes/Week13-14/W13.3.html#placeholder",
+    "href": "notes/Week13-14/W13.3.html#placeholder",
+    "title": "Weeks 13–14 — Tensor and Exterior Algebras",
+    "section": "",
+    "text": "Notes on the tensor algebra and exterior algebra of a vector space.",
+    "crumbs": [
+      "Home",
+      "Weeks 13–14 — Multilinear Algebra",
+      "Tensor and exterior algebras"
+    ]
+  },
+  {
+    "objectID": "notes/Week2-3/W02.4.html",
+    "href": "notes/Week2-3/W02.4.html",
+    "title": "Weeks 2–3 — Trace and Determinant",
+    "section": "",
+    "text": "Notes on trace and determinant of linear transformations, including their basis-independence and key properties.",
+    "crumbs": [
+      "Home",
+      "Weeks 2–3 — Abstract Vector Spaces",
+      "Trace and determinant"
+    ]
+  },
+  {
+    "objectID": "notes/Week2-3/W02.4.html#placeholder",
+    "href": "notes/Week2-3/W02.4.html#placeholder",
+    "title": "Weeks 2–3 — Trace and Determinant",
+    "section": "",
+    "text": "Notes on trace and determinant of linear transformations, including their basis-independence and key properties.",
+    "crumbs": [
+      "Home",
+      "Weeks 2–3 — Abstract Vector Spaces",
+      "Trace and determinant"
+    ]
+  },
+  {
+    "objectID": "notes/Week2-3/W02.2.html",
+    "href": "notes/Week2-3/W02.2.html",
+    "title": "Weeks 2–3 — Direct Sums and Quotient Spaces",
+    "section": "",
+    "text": "Notes on direct sums and quotient spaces of abstract vector spaces.",
+    "crumbs": [
+      "Home",
+      "Weeks 2–3 — Abstract Vector Spaces",
+      "Direct sums and quotient spaces"
+    ]
+  },
+  {
+    "objectID": "notes/Week2-3/W02.2.html#placeholder",
+    "href": "notes/Week2-3/W02.2.html#placeholder",
+    "title": "Weeks 2–3 — Direct Sums and Quotient Spaces",
+    "section": "",
+    "text": "Notes on direct sums and quotient spaces of abstract vector spaces.",
+    "crumbs": [
+      "Home",
+      "Weeks 2–3 — Abstract Vector Spaces",
+      "Direct sums and quotient spaces"
+    ]
+  },
+  {
+    "objectID": "notes/Week4/W04.2.html",
+    "href": "notes/Week4/W04.2.html",
+    "title": "Week 4 — Characteristic Polynomials and Cayley-Hamilton Theorem",
+    "section": "",
+    "text": "Notes on the characteristic polynomial, its roots as eigenvalues, and the Cayley-Hamilton theorem.",
+    "crumbs": [
+      "Home",
+      "Week 4 — Eigenvalues and Eigenvectors",
+      "Characteristic polynomials and Cayley-Hamilton theorem"
+    ]
+  },
+  {
+    "objectID": "notes/Week4/W04.2.html#placeholder",
+    "href": "notes/Week4/W04.2.html#placeholder",
+    "title": "Week 4 — Characteristic Polynomials and Cayley-Hamilton Theorem",
+    "section": "",
+    "text": "Notes on the characteristic polynomial, its roots as eigenvalues, and the Cayley-Hamilton theorem.",
+    "crumbs": [
+      "Home",
+      "Week 4 — Eigenvalues and Eigenvectors",
+      "Characteristic polynomials and Cayley-Hamilton theorem"
+    ]
+  },
+  {
+    "objectID": "notes/Week5-6/W05.2.html",
+    "href": "notes/Week5-6/W05.2.html",
+    "title": "Weeks 5–6 — Gram-Schmidt Process and Orthogonal Projections",
+    "section": "",
+    "text": "Notes on the Gram-Schmidt orthogonalization process, orthogonal projections, and the orthogonal complement of a subspace.",
+    "crumbs": [
+      "Home",
+      "Weeks 5–6 — Inner Product Spaces",
+      "Gram-Schmidt process and orthogonal projections"
+    ]
+  },
+  {
+    "objectID": "notes/Week5-6/W05.2.html#placeholder",
+    "href": "notes/Week5-6/W05.2.html#placeholder",
+    "title": "Weeks 5–6 — Gram-Schmidt Process and Orthogonal Projections",
+    "section": "",
+    "text": "Notes on the Gram-Schmidt orthogonalization process, orthogonal projections, and the orthogonal complement of a subspace.",
+    "crumbs": [
+      "Home",
+      "Weeks 5–6 — Inner Product Spaces",
+      "Gram-Schmidt process and orthogonal projections"
+    ]
+  },
+  {
+    "objectID": "notes/Week5-6/W05.1.html",
+    "href": "notes/Week5-6/W05.1.html",
+    "title": "Weeks 5–6 — Inner Product Spaces over R",
+    "section": "",
+    "text": "Notes on real inner product spaces, orthogonality, orthogonal bases, and coordinate-free vs. coordinate descriptions.",
+    "crumbs": [
+      "Home",
+      "Weeks 5–6 — Inner Product Spaces",
+      "Inner product spaces over R"
+    ]
+  },
+  {
+    "objectID": "notes/Week5-6/W05.1.html#placeholder",
+    "href": "notes/Week5-6/W05.1.html#placeholder",
+    "title": "Weeks 5–6 — Inner Product Spaces over R",
+    "section": "",
+    "text": "Notes on real inner product spaces, orthogonality, orthogonal bases, and coordinate-free vs. coordinate descriptions.",
+    "crumbs": [
+      "Home",
+      "Weeks 5–6 — Inner Product Spaces",
+      "Inner product spaces over R"
+    ]
   },
   {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Math 5250 Schedule",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nContent\n\n\n\n\n\n\nTu 09/01\n\n\nReview\n\n\nVector space structure of R^n, subspaces, span, linear independence, basis, dimension\n\n\n\n\nTh 09/03\n\n\nReview\n\n\nMatrices and linear transformations, change of basis; kernel and range, similarity, isomorphisms\n\n\n\n\nTu 09/08\n\n\nAbstract Vector Spaces\n\n\nAbstract vector spaces and subspaces\n\n\n\n\nTh 09/10\n\n\nAbstract Vector Spaces\n\n\nDirect sums and quotient spaces\n\n\n\n\nTu 09/15\n\n\nAbstract Vector Spaces\n\n\nLinear transformations: general theory\n\n\n\n\nTh 09/17\n\n\nAbstract Vector Spaces\n\n\nTrace and determinant\n\n\n\n\nTu 09/22\n\n\nEigenvalues and Eigenvectors\n\n\nEigenvalues and eigenvectors\n\n\n\n\nTh 09/24\n\n\nEigenvalues and Eigenvectors\n\n\nCharacteristic polynomials and Cayley-Hamilton theorem; diagonalization\n\n\n\n\nTu 09/29\n\n\nInner Product Spaces\n\n\nInner product spaces over R, orthogonality, orthogonal bases\n\n\n\n\nTh 10/01\n\n\nInner Product Spaces\n\n\nGram-Schmidt process, orthogonal projections, orthogonal complement\n\n\n\n\nTu 10/06\n\n\nInner Product Spaces\n\n\nAdjoint operators; spectral theorem for self-adjoint operators (real case)\n\n\n\n\nTh 10/08\n\n\nInner Product Spaces\n\n\nComplex inner product spaces; spectral theorem for Hermitian operators\n\n\n\n\nTu 10/13\n\n\nMatrix Decompositions\n\n\nJordan canonical form\n\n\n\n\nTh 10/15\n\n\nMatrix Decompositions\n\n\nPositive definite matrices\n\n\n\n\nTu 10/20\n\n\nMatrix Decompositions\n\n\nQR decomposition, SVD, and polar decomposition\n\n\n\n\nTh 10/22\n\n\nMatrix Decompositions\n\n\nApplications and examples\n\n\n\n\nTu 10/27\n\n\nNorms\n\n\nVector space norms, equivalence of norms in finite dimensions\n\n\n\n\nTh 10/29\n\n\nNorms\n\n\nMatrix and operator norms, Frobenius norm, operator norm formula\n\n\n\n\nTu 11/03\n\n\nDual Spaces\n\n\nLinear functionals and the dual space\n\n\n\n\nTh 11/05\n\n\nDual Spaces\n\n\nDuality and inner products\n\n\n\n\nTu 11/10\n\n\nDual Spaces\n\n\nDual bases and linear maps, transpose matrix, double duality\n\n\n\n\nTh 11/12\n\n\nDual Spaces\n\n\nApplications and examples\n\n\n\n\nTu 11/17\n\n\nBilinear Forms\n\n\nBilinear forms, matrix representation, change of basis\n\n\n\n\nTh 11/19\n\n\nBilinear Forms\n\n\nQuadratic forms, symmetric bilinear forms, equivalence, diagonalization; signature and definiteness\n\n\n\n\nTu 11/24\n\n\nThanksgiving Break\n\n\n\n\n\n\nTh 11/26\n\n\nThanksgiving Break\n\n\n\n\n\n\nTu 12/01\n\n\nMultilinear Algebra\n\n\nTensor products of vector spaces and linear maps\n\n\n\n\nTh 12/03\n\n\nMultilinear Algebra\n\n\nExterior powers of vector spaces\n\n\n\n\nTu 12/08\n\n\nMultilinear Algebra\n\n\nTensor and exterior algebras\n\n\n\n\nTh 12/10\n\n\nMultilinear Algebra\n\n\nApplications and review"
+    "text": "Date\n\n\nTopic\n\n\nContent\n\n\n\n\n\n\nTu 09/01\n\n\nReview\n\n\nVector space structure of R^n, subspaces, span, linear independence, basis, dimension\n\n\n\n\nTh 09/03\n\n\nReview\n\n\nMatrices and linear transformations, change of basis; kernel and range, similarity, isomorphisms\n\n\n\n\nTu 09/08\n\n\nAbstract Vector Spaces\n\n\nAbstract vector spaces and subspaces\n\n\n\n\nTh 09/10\n\n\nAbstract Vector Spaces\n\n\nDirect sums and quotient spaces\n\n\n\n\nTu 09/15\n\n\nAbstract Vector Spaces\n\n\nLinear transformations: general theory\n\n\n\n\nTh 09/17\n\n\nAbstract Vector Spaces\n\n\nTrace and determinant\n\n\n\n\nTu 09/22\n\n\nEigenvalues and Eigenvectors\n\n\nEigenvalues and eigenvectors\n\n\n\n\nTh 09/24\n\n\nEigenvalues and Eigenvectors\n\n\nCharacteristic polynomials and Cayley-Hamilton theorem; diagonalization\n\n\n\n\nTu 09/29\n\n\nInner Product Spaces\n\n\nInner product spaces over R, orthogonality, orthogonal bases\n\n\n\n\nTh 10/01\n\n\nInner Product Spaces\n\n\nGram-Schmidt process, orthogonal projections, orthogonal complement\n\n\n\n\nTu 10/06\n\n\nInner Product Spaces\n\n\nAdjoint operators; spectral theorem for self-adjoint operators (real case)\n\n\n\n\nTh 10/08\n\n\nInner Product Spaces\n\n\nComplex inner product spaces; spectral theorem for Hermitian operators\n\n\n\n\nTu 10/13\n\n\nMatrix Decompositions\n\n\nJordan canonical form\n\n\n\n\nTh 10/15\n\n\nMatrix Decompositions\n\n\nPositive definite matrices\n\n\n\n\nTu 10/20\n\n\nMatrix Decompositions\n\n\nQR decomposition, SVD, and polar decomposition\n\n\n\n\nTh 10/22\n\n\nMatrix Decompositions\n\n\nApplications and examples\n\n\n\n\nTu 10/27\n\n\nNorms\n\n\nVector space norms, equivalence of norms in finite dimensions\n\n\n\n\nTh 10/29\n\n\nNorms\n\n\nMatrix and operator norms, Frobenius norm, operator norm formula\n\n\n\n\nTu 11/03\n\n\nDual Spaces\n\n\nLinear functionals and the dual space\n\n\n\n\nTh 11/05\n\n\nDual Spaces\n\n\nDuality and inner products\n\n\n\n\nTu 11/10\n\n\nDual Spaces\n\n\nDual bases and linear maps, transpose matrix, double duality\n\n\n\n\nTh 11/12\n\n\nDual Spaces\n\n\nApplications and examples\n\n\n\n\nTu 11/17\n\n\nBilinear Forms\n\n\nBilinear forms, matrix representation, change of basis\n\n\n\n\nTh 11/19\n\n\nBilinear Forms\n\n\nQuadratic forms, symmetric bilinear forms, equivalence, diagonalization; signature and definiteness\n\n\n\n\nTu 11/24\n\n\nThanksgiving Break\n\n\n\n\n\n\nTh 11/26\n\n\nThanksgiving Break\n\n\n\n\n\n\nTu 12/01\n\n\nMultilinear Algebra\n\n\nTensor products of vector spaces and linear maps\n\n\n\n\nTh 12/03\n\n\nMultilinear Algebra\n\n\nExterior powers of vector spaces\n\n\n\n\nTu 12/08\n\n\nMultilinear Algebra\n\n\nTensor and exterior algebras\n\n\n\n\nTh 12/10\n\n\nMultilinear Algebra\n\n\nApplications and review",
+    "crumbs": [
+      "Home",
+      "Math 5250 Schedule"
+    ]
   },
   {
     "objectID": "schedule.html#schedule",
     "href": "schedule.html#schedule",
     "title": "Math 5250 Schedule",
     "section": "",
-    "text": "Date\n\n\nTopic\n\n\nContent\n\n\n\n\n\n\nTu 09/01\n\n\nReview\n\n\nVector space structure of R^n, subspaces, span, linear independence, basis, dimension\n\n\n\n\nTh 09/03\n\n\nReview\n\n\nMatrices and linear transformations, change of basis; kernel and range, similarity, isomorphisms\n\n\n\n\nTu 09/08\n\n\nAbstract Vector Spaces\n\n\nAbstract vector spaces and subspaces\n\n\n\n\nTh 09/10\n\n\nAbstract Vector Spaces\n\n\nDirect sums and quotient spaces\n\n\n\n\nTu 09/15\n\n\nAbstract Vector Spaces\n\n\nLinear transformations: general theory\n\n\n\n\nTh 09/17\n\n\nAbstract Vector Spaces\n\n\nTrace and determinant\n\n\n\n\nTu 09/22\n\n\nEigenvalues and Eigenvectors\n\n\nEigenvalues and eigenvectors\n\n\n\n\nTh 09/24\n\n\nEigenvalues and Eigenvectors\n\n\nCharacteristic polynomials and Cayley-Hamilton theorem; diagonalization\n\n\n\n\nTu 09/29\n\n\nInner Product Spaces\n\n\nInner product spaces over R, orthogonality, orthogonal bases\n\n\n\n\nTh 10/01\n\n\nInner Product Spaces\n\n\nGram-Schmidt process, orthogonal projections, orthogonal complement\n\n\n\n\nTu 10/06\n\n\nInner Product Spaces\n\n\nAdjoint operators; spectral theorem for self-adjoint operators (real case)\n\n\n\n\nTh 10/08\n\n\nInner Product Spaces\n\n\nComplex inner product spaces; spectral theorem for Hermitian operators\n\n\n\n\nTu 10/13\n\n\nMatrix Decompositions\n\n\nJordan canonical form\n\n\n\n\nTh 10/15\n\n\nMatrix Decompositions\n\n\nPositive definite matrices\n\n\n\n\nTu 10/20\n\n\nMatrix Decompositions\n\n\nQR decomposition, SVD, and polar decomposition\n\n\n\n\nTh 10/22\n\n\nMatrix Decompositions\n\n\nApplications and examples\n\n\n\n\nTu 10/27\n\n\nNorms\n\n\nVector space norms, equivalence of norms in finite dimensions\n\n\n\n\nTh 10/29\n\n\nNorms\n\n\nMatrix and operator norms, Frobenius norm, operator norm formula\n\n\n\n\nTu 11/03\n\n\nDual Spaces\n\n\nLinear functionals and the dual space\n\n\n\n\nTh 11/05\n\n\nDual Spaces\n\n\nDuality and inner products\n\n\n\n\nTu 11/10\n\n\nDual Spaces\n\n\nDual bases and linear maps, transpose matrix, double duality\n\n\n\n\nTh 11/12\n\n\nDual Spaces\n\n\nApplications and examples\n\n\n\n\nTu 11/17\n\n\nBilinear Forms\n\n\nBilinear forms, matrix representation, change of basis\n\n\n\n\nTh 11/19\n\n\nBilinear Forms\n\n\nQuadratic forms, symmetric bilinear forms, equivalence, diagonalization; signature and definiteness\n\n\n\n\nTu 11/24\n\n\nThanksgiving Break\n\n\n\n\n\n\nTh 11/26\n\n\nThanksgiving Break\n\n\n\n\n\n\nTu 12/01\n\n\nMultilinear Algebra\n\n\nTensor products of vector spaces and linear maps\n\n\n\n\nTh 12/03\n\n\nMultilinear Algebra\n\n\nExterior powers of vector spaces\n\n\n\n\nTu 12/08\n\n\nMultilinear Algebra\n\n\nTensor and exterior algebras\n\n\n\n\nTh 12/10\n\n\nMultilinear Algebra\n\n\nApplications and review"
+    "text": "Date\n\n\nTopic\n\n\nContent\n\n\n\n\n\n\nTu 09/01\n\n\nReview\n\n\nVector space structure of R^n, subspaces, span, linear independence, basis, dimension\n\n\n\n\nTh 09/03\n\n\nReview\n\n\nMatrices and linear transformations, change of basis; kernel and range, similarity, isomorphisms\n\n\n\n\nTu 09/08\n\n\nAbstract Vector Spaces\n\n\nAbstract vector spaces and subspaces\n\n\n\n\nTh 09/10\n\n\nAbstract Vector Spaces\n\n\nDirect sums and quotient spaces\n\n\n\n\nTu 09/15\n\n\nAbstract Vector Spaces\n\n\nLinear transformations: general theory\n\n\n\n\nTh 09/17\n\n\nAbstract Vector Spaces\n\n\nTrace and determinant\n\n\n\n\nTu 09/22\n\n\nEigenvalues and Eigenvectors\n\n\nEigenvalues and eigenvectors\n\n\n\n\nTh 09/24\n\n\nEigenvalues and Eigenvectors\n\n\nCharacteristic polynomials and Cayley-Hamilton theorem; diagonalization\n\n\n\n\nTu 09/29\n\n\nInner Product Spaces\n\n\nInner product spaces over R, orthogonality, orthogonal bases\n\n\n\n\nTh 10/01\n\n\nInner Product Spaces\n\n\nGram-Schmidt process, orthogonal projections, orthogonal complement\n\n\n\n\nTu 10/06\n\n\nInner Product Spaces\n\n\nAdjoint operators; spectral theorem for self-adjoint operators (real case)\n\n\n\n\nTh 10/08\n\n\nInner Product Spaces\n\n\nComplex inner product spaces; spectral theorem for Hermitian operators\n\n\n\n\nTu 10/13\n\n\nMatrix Decompositions\n\n\nJordan canonical form\n\n\n\n\nTh 10/15\n\n\nMatrix Decompositions\n\n\nPositive definite matrices\n\n\n\n\nTu 10/20\n\n\nMatrix Decompositions\n\n\nQR decomposition, SVD, and polar decomposition\n\n\n\n\nTh 10/22\n\n\nMatrix Decompositions\n\n\nApplications and examples\n\n\n\n\nTu 10/27\n\n\nNorms\n\n\nVector space norms, equivalence of norms in finite dimensions\n\n\n\n\nTh 10/29\n\n\nNorms\n\n\nMatrix and operator norms, Frobenius norm, operator norm formula\n\n\n\n\nTu 11/03\n\n\nDual Spaces\n\n\nLinear functionals and the dual space\n\n\n\n\nTh 11/05\n\n\nDual Spaces\n\n\nDuality and inner products\n\n\n\n\nTu 11/10\n\n\nDual Spaces\n\n\nDual bases and linear maps, transpose matrix, double duality\n\n\n\n\nTh 11/12\n\n\nDual Spaces\n\n\nApplications and examples\n\n\n\n\nTu 11/17\n\n\nBilinear Forms\n\n\nBilinear forms, matrix representation, change of basis\n\n\n\n\nTh 11/19\n\n\nBilinear Forms\n\n\nQuadratic forms, symmetric bilinear forms, equivalence, diagonalization; signature and definiteness\n\n\n\n\nTu 11/24\n\n\nThanksgiving Break\n\n\n\n\n\n\nTh 11/26\n\n\nThanksgiving Break\n\n\n\n\n\n\nTu 12/01\n\n\nMultilinear Algebra\n\n\nTensor products of vector spaces and linear maps\n\n\n\n\nTh 12/03\n\n\nMultilinear Algebra\n\n\nExterior powers of vector spaces\n\n\n\n\nTu 12/08\n\n\nMultilinear Algebra\n\n\nTensor and exterior algebras\n\n\n\n\nTh 12/10\n\n\nMultilinear Algebra\n\n\nApplications and review",
+    "crumbs": [
+      "Home",
+      "Math 5250 Schedule"
+    ]
   }
 ]
