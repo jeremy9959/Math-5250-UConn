@@ -22,77 +22,77 @@ website:
       - section: "Week 1 — Review"
         contents:
           - text: "Vector space structure of R^n"
-            href: notes/Week1/W01.1.md
+            href: notes/Week1/W01.1.qmd
           - text: "Linear transformations and matrices"
-            href: notes/Week1/W01.2.md
+            href: notes/Week1/W01.2.qmd
           - text: "Change of basis, kernel and range, isomorphisms"
-            href: notes/Week1/W01.3.md
+            href: notes/Week1/W01.3.qmd
       - section: "Weeks 2–3 — Abstract Vector Spaces"
         contents:
           - text: "Abstract vector spaces and subspaces"
-            href: notes/Week2-3/W02.1.md
+            href: notes/Week2-3/W02.1.qmd
           - text: "Direct sums and quotient spaces"
-            href: notes/Week2-3/W02.2.md
+            href: notes/Week2-3/W02.2.qmd
           - text: "Linear transformations: general theory"
-            href: notes/Week2-3/W02.3.md
+            href: notes/Week2-3/W02.3.qmd
           - text: "Trace and determinant"
-            href: notes/Week2-3/W02.4.md
+            href: notes/Week2-3/W02.4.qmd
       - section: "Week 4 — Eigenvalues and Eigenvectors"
         contents:
           - text: "Eigenvalues and eigenvectors"
-            href: notes/Week4/W04.1.md
+            href: notes/Week4/W04.1.qmd
           - text: "Characteristic polynomials and Cayley-Hamilton theorem"
-            href: notes/Week4/W04.2.md
+            href: notes/Week4/W04.2.qmd
           - text: "Diagonalization"
-            href: notes/Week4/W04.3.md
+            href: notes/Week4/W04.3.qmd
       - section: "Weeks 5–6 — Inner Product Spaces"
         contents:
           - text: "Inner product spaces over R"
-            href: notes/Week5-6/W05.1.md
+            href: notes/Week5-6/W05.1.qmd
           - text: "Gram-Schmidt process and orthogonal projections"
-            href: notes/Week5-6/W05.2.md
+            href: notes/Week5-6/W05.2.qmd
           - text: "Spectral theorem for self-adjoint operators (real case)"
-            href: notes/Week5-6/W05.3.md
+            href: notes/Week5-6/W05.3.qmd
           - text: "Complex inner product spaces and Hermitian operators"
-            href: notes/Week5-6/W05.4.md
+            href: notes/Week5-6/W05.4.qmd
       - section: "Weeks 7–8 — Matrix Decompositions"
         contents:
           - text: "Jordan canonical form"
-            href: notes/Week7-8/W07.1.md
+            href: notes/Week7-8/W07.1.qmd
           - text: "Positive definite matrices"
-            href: notes/Week7-8/W07.2.md
+            href: notes/Week7-8/W07.2.qmd
           - text: "QR, SVD, and polar decomposition"
-            href: notes/Week7-8/W07.3.md
+            href: notes/Week7-8/W07.3.qmd
       - section: "Week 9 — Norms"
         contents:
           - text: "Vector space norms and equivalence of norms"
-            href: notes/Week9/W09.1.md
+            href: notes/Week9/W09.1.qmd
           - text: "Matrix and operator norms"
-            href: notes/Week9/W09.2.md
+            href: notes/Week9/W09.2.qmd
       - section: "Weeks 10–11 — Dual Spaces"
         contents:
           - text: "Linear functionals and the dual space"
-            href: notes/Week10-11/W10.1.md
+            href: notes/Week10-11/W10.1.qmd
           - text: "Duality and inner products"
-            href: notes/Week10-11/W10.2.md
+            href: notes/Week10-11/W10.2.qmd
           - text: "Dual bases, linear maps, and double duality"
-            href: notes/Week10-11/W10.3.md
+            href: notes/Week10-11/W10.3.qmd
       - section: "Week 12 — Bilinear Forms"
         contents:
           - text: "Bilinear forms and matrix representations"
-            href: notes/Week12/W12.1.md
+            href: notes/Week12/W12.1.qmd
           - text: "Quadratic forms and diagonalization"
-            href: notes/Week12/W12.2.md
+            href: notes/Week12/W12.2.qmd
           - text: "Signature and definiteness"
-            href: notes/Week12/W12.3.md
+            href: notes/Week12/W12.3.qmd
       - section: "Weeks 13–14 — Multilinear Algebra"
         contents:
           - text: "Tensor products of vector spaces"
-            href: notes/Week13-14/W13.1.md
+            href: notes/Week13-14/W13.1.qmd
           - text: "Exterior powers of vector spaces"
-            href: notes/Week13-14/W13.2.md
+            href: notes/Week13-14/W13.2.qmd
           - text: "Tensor and exterior algebras"
-            href: notes/Week13-14/W13.3.md
+            href: notes/Week13-14/W13.3.qmd
 
 format:
   html:

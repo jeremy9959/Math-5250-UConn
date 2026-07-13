@@ -1,0 +1,20 @@
+---
+title: "Week 1 — Vector Space Structure of R^n"
+---
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\C}{\mathbf{C}}
+
+## Real and Complex Vectors
+
+An $n$-dimensional real vector is an $n$-tuple $(x_1,\ldots, x_n)$ where the $x_i$ are real numbers.
+If the $x_i$ are complex instead of real, we have an $n$-dimensional complex vector.
+
+We write $\R^{n}$ and $\C^{n}$ for the sets of $n$-dimensional real and complex vectors respectively.
+
+One can visualize an element $x=(x_1,\ldots,x_n)$ of $\R^{n}$ as an "arrow" with its base at the origin and its endpoint at the point
+$(x_1,\ldots, x_n)$ in $n$-dimensional Euclidean space. 
+
+
+
