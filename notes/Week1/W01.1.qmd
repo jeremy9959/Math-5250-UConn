@@ -91,7 +91,9 @@ and whenever $u,v\in W$ it follows that $u+v\in W$ and $au\in W$ for all $a\in\R
 You can replace $\R$ by $\C$ in the above to obtain the same results for complex vector spaces.
 
 
-### Span of a set of vectors
+### Four Crucial Definitions
+
+#### Span of a set of vectors
 
 **Definition:** Let $V$ be a vector space and let $S=\{v_1,\ldots, v_k\}$ be a set of vectors in $V$.  The **span** of $S$ is defined as either of the following equivalent things:
 
@@ -101,16 +103,40 @@ You can replace $\R$ by $\C$ in the above to obtain the same results for complex
 The set $H$ in 1 is a subspace that contains $S$. If $W$ is the intersection of all subspaces containing $S$, then $W\subset H$ since $H$ is among the sets being intersected.  On the other hand, since $S$ is contained in $W$, and $W$ is a subspace,
 the elements in $H$ are also in $W$.  So $W=H$.
 
+#### Linear Independence
 
+**Definition:** A set of vectors $v_1,\ldots, v_n$ in a vector space $V$ is *linearly independent*
+if the only solution $(a_1,\ldots, a_n)$ to the equation
+$$
+\sum_{i=1}^{n} a_i v_i=0
+$$
+is $(0,\ldots, 0)$.
 
+Equivalently:
 
+- a set $S=\{v_1,\ldots, v_n\}$ is linearly independent if the span of any proper subset of $S$ is a proper subspace of the span of $S$.
 
+- a set $S=\{v_1,\ldots, v_n\}$ is not linearly independent (is *dependent*) if and only if
+there is some $1\le j\le n$ such that
+$$
+v_{j}=\sum_{\substack{i=1 \\ i \neq j}}^{n} a_{i}v_{i}
+$$
 
-### Linear Independence
+#### Basis
 
-### Basis
+A set $S$ of vectors in a vector space $V$ is called a *basis* of $V$ if $\mathrm{Span}(S)=V$ and $S$ is linearly independent.
 
-### Dimension
+#### Dimension
+
+**Theorem:** Every vector space has a basis. 
+
+**Theorem:** Any two bases of a vector space $V$ have the same cardinality.  
+
+**Definition:** The dimension of $V$ is the cardinality of any basis of $V$.
+
+If $V$ has a finite basis, it is said to be
+finite-dimensional; otherwise it is infinite-dimensional.
+
 
 
 
