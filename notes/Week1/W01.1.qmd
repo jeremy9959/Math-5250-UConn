@@ -98,6 +98,7 @@ You can replace $\R$ by $\C$ in the above to obtain the same results for complex
 **Definition:** Let $V$ be a vector space and let $S=\{v_1,\ldots, v_k\}$ be a set of vectors in $V$.  The **span** of $S$ is defined as either of the following equivalent things:
 
 1.  The set of all vectors $\sum_{i=1}^{n} a_i v_i$ as $(a_1,\ldots, a_n)$ runs over $\R^{n}$. 
+
 2.  The intersection of all subspaces of $V$ that contain $S$.
 
 The set $H$ in 1 is a subspace that contains $S$. If $W$ is the intersection of all subspaces containing $S$, then $W\subset H$ since $H$ is among the sets being intersected.  On the other hand, since $S$ is contained in $W$, and $W$ is a subspace,
@@ -107,20 +108,45 @@ the elements in $H$ are also in $W$.  So $W=H$.
 
 **Definition:** A set of vectors $v_1,\ldots, v_n$ in a vector space $V$ is *linearly independent*
 if the only solution $(a_1,\ldots, a_n)$ to the equation
+
 $$
 \sum_{i=1}^{n} a_i v_i=0
 $$
+
 is $(0,\ldots, 0)$.
 
 Equivalently:
 
 - a set $S=\{v_1,\ldots, v_n\}$ is linearly independent if the span of any proper subset of $S$ is a proper subspace of the span of $S$.
 
+Suppose 
+$$
+\sum a_{i}v_{i}=0
+$$
+and that $a_{j}\not=0$.  Then you can "solve"
+for $v_{j}$ in terms of the other vectors:
+$$
+v_{j}=-\sum_{i\not=j} a_{i}/a_{j} v_{i}
+$$
+so $v_{j}$ is in the span of the remaining $v_{i}$.  Thus the span of the set $S\backslash\{v_{j}\}$ is the same as the span of $S$.  
+
+Conversely, if there is a proper subset $U$ of $S$ whose span equals $V$, choose $v_{i}\not\in U$.  Since $v_{i}$ is in the span of $U$, you can write
+$$
+v_{i} = \sum_{v_{j}\in U} b_{j}v_{j} 
+$$ 
+and therefore 
+$$
+-v_{i}+\sum b_{j}v_{j}=0
+$$
+and so $S$ is not linearly independent. 
+
 - a set $S=\{v_1,\ldots, v_n\}$ is not linearly independent (is *dependent*) if and only if
 there is some $1\le j\le n$ such that
 $$
 v_{j}=\sum_{\substack{i=1 \\ i \neq j}}^{n} a_{i}v_{i}
 $$
+
+This is implicit in the argument above. 
 
 #### Basis
 
@@ -130,7 +156,22 @@ A set $S$ of vectors in a vector space $V$ is called a *basis* of $V$ if $\mathr
 
 **Theorem:** Every vector space has a basis. 
 
+**Proof:** This requires Zorn's Lemma.  If $S_{1}\subset S_{2}\subset\cdots$ is an ascending sequence of linearly independent sets, their union is also linearly independent (because any linear relation would only involve finitely many vectors so would hold at some finite level of the chain). Therefore the linearly independent subsets of $V$ form a partially ordered set in which every ascending chain has a maximal element.  It follows that there is a maximal linearly independent set $B$ in $V$.  
+
+Now choose any $v\in V$.  If $v$ is not in the span of $B$, then $B\cap \{v\}$ would be linearly independent, contradicting maximality of $B$.
+
+Hence $B$ spans $V$ and is therefore a basis.
+
 **Theorem:** Any two bases of a vector space $V$ have the same cardinality.  
+
+**Proof:** Suppose that $X$ and $Y$ are bases of the same vector space $V$.
+Each $x\in X$ is a *finite* linear combination of elements of $Y$.  This means
+there is a surjective finite-to-one map from $Y$ to $X$.  The surjectivity tells
+us that $|Y|\ge |X|$.  On the other hand, a theorem in cardinal arithmetic (Hessenberg's
+Theorem) says that if $X$ is infinite and $Y\to X$ is finite-to-one then $|Y|\le |X|$.
+Then The Cantor-Bernstein theorem says that $X$ and $Y$ have the same cardinality.
+)
+We will establish the fact that any two finite bases of $V$ have the same number of elements a little later.
 
 **Definition:** The dimension of $V$ is the cardinality of any basis of $V$.
 
