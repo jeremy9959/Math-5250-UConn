@@ -2,8 +2,59 @@
 title: "Week 1 — Linear Transformations and Matrices"
 ---
 
-\newcommand{\R}{\mathbb{R}}
+\newcommand{\R}{\mathbfsf{R}}
+\newcommand{\C}{\mathbf{C}}
 
-## Placeholder
+### Matrices
 
-Notes on representing linear transformations by matrices, and the effect of change of basis on matrix representations.
+A $n\times m$ matrix over $\R$ is an array of elements of $\R$ with $n$ rows
+and $m$ columns.  The set of such is denoted $M_{n\times m}(\R)$.  Complex arrays
+make up $M_{n\times m}(\C)$.  
+
+The set $M_{n\times m}(\R)$ (or $\C$) is a real (complex) vector space of dimension $nm$ ("unwrap the matrices").
+Addition and scalar multiplication are done entry by entry.
+
+So if $A=(a_{ij})$ and $B=(b_{ij})$ with $1\le i\le n$ and $1\le j\le m$ then 
+$A+B$ has entries $(a_{ij}+b_{ij})$ and $\lambda A$ has entries $(\lambda a_{ij})$
+for $\lambda\in \R$ or $\C$.  
+
+Elements of $\R^{n}$ can be represented as $n\times 1$ matrices (column vectors) or $1\times n$ 
+matrices (row vectors).
+
+Unless we make an explicit remark otherwise, we will view $\R^{n}$ as the space of $n\times 1$ real column vectors (same for $\C$). 
+
+####Matrix Multiplication
+
+Matrix multiplication is defined for a pair $A,B$ if the number of columns of $A$ equals the number of rows of $B$.  The product has the same number of rows as $A$ and the same number of columns as $B$.  Specifically:
+
+If $A=(a_{ij})$ is $n\times m$ and $B=(b_{ij})$ is $m\times k$ then $C=AB$ has entries $(c_{ij})$ where
+$$
+c_{ij} = \sum_{r=1}^{m} a_{ir}b_{rj}
+$$
+for $1\le i\le n$ and $1\le j\le k$. 
+
+Matrix multiplication is associative $(AB)C=A(BC)$ and distributes over addition $(A+B)C=AC+BC$
+and $A(B+C)=AB+AC$ but is not commutative.  Even if both $AB$ and $BA$ are defined, they are typically not equal.
+
+### Linear Maps
+
+### Composition and Matrix Multiplication
+
+### Key subspaces and invariants
+
+#### Range (or image, or column space)
+
+#### Nullspace (or kernel) and nullity
+
+#### Row space
+
+#### Rank
+
+### Linear Systems
+
+### Row and Column Operations and Elementary Matrices
+
+### Row Reduction and Computation
+
+
+
