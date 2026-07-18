@@ -38,23 +38,138 @@ and $A(B+C)=AB+AC$ but is not commutative.  Even if both $AB$ and $BA$ are defin
 
 ### Linear Maps
 
-### Composition and Matrix Multiplication
+A function from $L$ $\R^{m}$ to $\R^{n}$ is *linear* if $L(x+y)=L(x)+L(y)$ and $L(ax)=aL(x)$.
+ 
+Let $A$ be an $n\times m$ matrix.  The function
+$$
+L_{A}(x)=Ax
+$$
+is a function from $\R^{m}$ (viewed as column vectors) to $\R^{n}$. 
+
+If $A$ is an $n\times m$ matrix and $B$ is a $k\times n$ matrix then
+$$
+L_{A}:\R^{m}\to \R^{n}
+$$
+and 
+$$
+L_{B}:\R^{n}\to \R^{k}.
+$$
+
+The composed map $L_{B}\circ L_{A}$ goes from $\R^{n}$ to $\R^{m}$ to $\R^{k}$.
+
+From the associativity of matrix multiplication we have $L_{B}\circ L_{A}=L_{BA}$ since $B(Ax)=(BA)x$.
+
+Everything above holds with $\R$ replaced by $\C$.
 
 ### Key subspaces and invariants
 
-#### Range (or image, or column space)
+Given a matrix $A$ there are a collection of important spaces and numerical invariants that
+describe the linear map $L_{A}$ associated to $A$.
+
+**Definition:** The *column space* of $A\in M_{n\times m}(\R)$ is the subspace of $\R^{n}$ spanned by
+the columns of $A$.
+
+The column space of $A$ is the same as the image of the linear map $L_{A}$ inside $\R^{n}$. 
+
+This is because if $x\in R^{m}$, then one way to interpret the product $Ax$ is as:
+$$
+Ax = \sum A_{.i}x_{i}
+$$
+
+where $A_{.i}$ is the ith column of $A$ and $x_{i}$ is the $ith$ entry of $x$.  Thus the image of $L_{A}$
+is the subspace obtained by taking all linear combinations of columns of $A$, which is the column space.
+
+
+**Definition:** The  *column rank* of $A$ is the dimension of the column space of $A$.
+
 
 #### Nullspace (or kernel) and nullity
 
+The *nullspace* or *kernel* of $A$ is the subspace of $x\in\R^{m}$ such that $Ax=0$.  This is a subspace since, if $x$ and $y$
+satisfy $Ax=Ay=0$, then $A(x+y)=0$; and if $A(x)=0$ then $A(cx)=cA(x)=0$.
+
+The *nullity* of $A$ is the dimension of the nullspace of $A$.
+
 #### Row space
 
-#### Rank
+The *row space* of $A$ is the subspace of $\R^{m}$ spanned by the rows of $A$. 
 
-### Linear Systems
+The *row rank* of $A$ is the dimension of the row space. 
 
 ### Row and Column Operations and Elementary Matrices
 
+The following three types of operations on matrices are called "elementary row operations":
+
+- Swap two rows of $A$.
+- Multiply a row of $A$ by a scalar. 
+- Let $A_{j.}$ be the $j^{th}$ row of $A$ and let $\lambda$ be a scalar.  Given $i$ and $j$, replace $A_{j.}$ by $A_{j.}-\lambda A_{i.}$
+
+Associated with each such operation is a square matrix $E$ called an elementary matrix:
+
+- Swapping row $i$ and row $j$ corresponds to the matrix which has a $1$ in position $i,j$ and $j,i$, $1$'s on the diagonal  in positions other than $i,j$;
+and zeros elsewhere. 
+- Multiplying row $i$ by $\lambda$ corresponds to the matrix which has $1$ on the diagonal in every position except $i$, where it has $\lambda$; and zeros elsewhere.
+- The third operation has $1$'s on the diagonal, together with $-\lambda$ in position row $j$, column $i$. 
+
+Constructing $A'$ from $A$ by an elementary row operation is the same as multiplying $A$ by the corresponding elementary matrix $E$, so $A'=EA$.
+
+The elementary matrices are invertible in the sense that, for each $E$, there is a matrix $F$ so that $FE=EF=I$ where $I$ is the matrix with ones on the diagonal
+and zeros elsewhere.  This is because the elementary row operations themselves can be "undone" by other elementary row operations.
+
+- A swap is undone by a the same swap again.
+- Multiplying a row by $\lambda$ is undone by multiplying by $1/\lambda$.
+- Undoing $A_{j.}\to A_{j.}-\lambda A_{i.}$ is undone by $A_{j.}\to A_{j.}+\lambda A_{i.}$.
+
+**Proposition:** If $A'$ is obtained from $A$ by a sequence of elementary row operations, then:
+
+- The row space of $A'$ is the same as that of $A$.
+- The nullspace of $A'$ is the same as that of $A$.
+- The column rank of $A'$ is the same as that of $A$ (although the column space itself may be different).
+
+To see this, first notice that the first two elementary row operations clearly don't change the subspace spanned by the rows.
+For the third one, since $A_{j.}$ is in the span of $A_{1.},\ldots, A_{j.}-\lambda A_{i.},\ldots, A_{n.}$, the third operation
+also doesn't affect the span of the rows.
+
+For the nullspace, suppose $x$ is in the nullspace of $A$.  Then $A'x=EAx=E(Ax)=0$ so $x$ is in the nullspace of $A'$.
+Conversely, if $x$ is in the nullspace of $A'$, then since $A'=EA$, we have $0=A'x=EAx$.  But there is a matrix $F$ with $FE=I$,
+so $0=FEAx=IAx=Ax$ and $x$ is in the nullspace of $A$.
+
+Now let $e_1,\ldots, e_k$ be a basis for the column space of $A$ and suppose $A'=EA$.  We claim $Ee_1,\ldots, Ee_k$ is a basis
+for the column space of $A'$.  To see this suppose $x$ is in the column space of $A'$.  Then $x=EAy$ for some $y$.  Since $Ay$
+is in the column space of $A$, it is a linear combination of the $e_{i}$ and so $x$ is a linear combination of the $Ee_{i}$.
+This proves the $Ee_{i}$ span the column space of $A'$.  Now suppose $\sum a_{i}Ee_{i}=0$.  Then $E(\sum a_{i}e_{i})=0$.
+Multiplying by $F$ gives $\sum a_{i}e_{i}=0$ and thus all $a_{i}=0$.
+
+Thus the column rank of $A$ and $A'$ are the same. 
+
+
 ### Row Reduction and Computation
+
+A matrix is in *row reduced echelon form* if the following conditions hold:
+
+a. The first nonzero entry in each row is $1$.  These entries are called "pivots".
+b. These  pivots move "down and to the right". So if row $i$ has its first nonzero entry in column $j$, then row $i+1$ has its first
+nonzero entry in a column strictly greater than $j$.
+c. A pivot is the only nonzero entry in its column.
+
+**Proposition:** Given an $n\times m$ matrix $A$, there is a sequence of row operations that transforms $A$ into a matrix $A'$ in row reduced, echelon form.
+
+**Proposition:** If $A$ is in row reduced, echelon form then:
+
+- The row (and column) ranks $r$ are the equal to the number of pivots.  To see this, first observe that every row is either all zero or a pivot row, so the row space
+is spanned by the pivot rows and these are independent.  Then observe that the pivot columns are independent, and any non-pivot column can be written as a linear combination of the pivot columns. 
+- The nullity is equal to $m-r$. To see this, you can manufacture elements of the nullity by choosing a non-pivot column of $A$, say column $j$.  Put a $1$
+in row $j$ of a vector $x$.  Put zeros in all of entries corresponding to other non-pivot columns.  For each remaining entry $a_i$ in row $i$ of the chosen non-pivot column,   put $-a_{i}$ in the entry corresponding to the pivot column for row $i$.  This constructs a vector with $Ax=$ and one can check that the vectors
+corresponding to different non-pivot columns are independent. Now suppose you have a vector in the nullity whose entries in the rows matching non-pivot columns are all zero.  Then the other entries are also zero.  This shows that the constructed vectors span the null space, so its dimension is exactly the number of non-pivot columns.
+
+**Corollary:** For any matrix $A$, we have:
+
+- The row and column ranks of $A$ agree; this number is called the rank of $A$.
+- $\mathrm{rank}(A)+\mathrm{nullity}(A)=m$ where $m$ is the number of columns of $A$.
+
+
+
+
 
 
 
