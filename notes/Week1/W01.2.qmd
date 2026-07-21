@@ -239,7 +239,17 @@ So the $x^{(j)}$, one for each of the $m-r$ non-pivot columns, form a basis of $
 - $\mathrm{rank}(A)+\mathrm{nullity}(A)=m$ where $m$ is the number of columns of $A$.
 
 
+### Algorithms
 
+The algorithm yielding the rref form gives an explicit way to compute the nullity of a matrix. 
+
+To determine if a vector $v$ is in the range of the matrix $A$ we want to determine if there is an $x$
+so that $Ax=v$.
+
+Make the "augmented matrix" $A'=[A,v]$ by adding $v$
+as a column to $A$.  Put it in rref form.
+
+If the last column has a pivot, then $v$ is not in the range.  If it doesn't, then it is in the range.
 
 
 
