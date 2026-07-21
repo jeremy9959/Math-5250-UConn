@@ -2,7 +2,7 @@
 title: "Week 1 — Linear Transformations and Matrices"
 ---
 
-\newcommand{\R}{\mathbfsf{R}}
+\newcommand{\R}{\mathbf{R}}
 \newcommand{\C}{\mathbf{C}}
 
 ### Matrices
@@ -109,7 +109,33 @@ Associated with each such operation is a square matrix $E$ called an elementary 
 - Swapping row $i$ and row $j$ corresponds to the matrix which has a $1$ in position $i,j$ and $j,i$, $1$'s on the diagonal  in positions other than $i,j$;
 and zeros elsewhere. 
 - Multiplying row $i$ by $\lambda$ corresponds to the matrix which has $1$ on the diagonal in every position except $i$, where it has $\lambda$; and zeros elsewhere.
-- The third operation has $1$'s on the diagonal, together with $-\lambda$ in position row $j$, column $i$. 
+- The third operation has $1$'s on the diagonal, together with $-\lambda$ in position row $j$, column $i$.
+
+$$
+P_{ij}=
+\left(\begin{smallmatrix}
+\ddots & & & \\
+ & 0 & 1 & \\
+ & 1 & 0 & \\
+ & & & \ddots
+\end{smallmatrix}\right)
+\quad
+D_i(\lambda)=
+\left(\begin{smallmatrix}
+\ddots & & \\
+ & \lambda & \\
+ & & \ddots
+\end{smallmatrix}\right)
+\quad
+R_{ji}(\lambda)=
+\left(\begin{smallmatrix}
+\ddots & & & & \\
+ & 1 & & & \\
+ & & \ddots & & \\
+ & -\lambda & & 1 & \\
+ & & & & \ddots
+\end{smallmatrix}\right)
+$$
 
 Constructing $A'$ from $A$ by an elementary row operation is the same as multiplying $A$ by the corresponding elementary matrix $E$, so $A'=EA$.
 
@@ -152,15 +178,60 @@ b. These  pivots move "down and to the right". So if row $i$ has its first nonze
 nonzero entry in a column strictly greater than $j$.
 c. A pivot is the only nonzero entry in its column.
 
+A generic matrix in row reduced echelon form looks like this, where $*$ denotes an arbitrary entry:
+
+$$
+\begin{pmatrix}
+\boxed{1} & * & 0 & * & 0 & * \\
+0 & 0 & \boxed{1} & * & 0 & * \\
+0 & 0 & 0 & 0 & \boxed{1} & * \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+$$
+
+Here the pivots (boxed $1$'s) occur in columns $1,3,5$, moving down and to the right; the pivot columns are otherwise all zero; the non-pivot columns ($2,4,6$) may contain arbitrary entries above the next pivot; and any all-zero rows sink to the bottom.
+
 **Proposition:** Given an $n\times m$ matrix $A$, there is a sequence of row operations that transforms $A$ into a matrix $A'$ in row reduced, echelon form.
 
 **Proposition:** If $A$ is in row reduced, echelon form then:
 
 - The row (and column) ranks $r$ are the equal to the number of pivots.  To see this, first observe that every row is either all zero or a pivot row, so the row space
 is spanned by the pivot rows and these are independent.  Then observe that the pivot columns are independent, and any non-pivot column can be written as a linear combination of the pivot columns. 
-- The nullity is equal to $m-r$. To see this, you can manufacture elements of the nullity by choosing a non-pivot column of $A$, say column $j$.  Put a $1$
-in row $j$ of a vector $x$.  Put zeros in all of entries corresponding to other non-pivot columns.  For each remaining entry $a_i$ in row $i$ of the chosen non-pivot column,   put $-a_{i}$ in the entry corresponding to the pivot column for row $i$.  This constructs a vector with $Ax=$ and one can check that the vectors
-corresponding to different non-pivot columns are independent. Now suppose you have a vector in the nullity whose entries in the rows matching non-pivot columns are all zero.  Then the other entries are also zero.  This shows that the constructed vectors span the null space, so its dimension is exactly the number of non-pivot columns.
+- The nullity is equal to $m-r$.  For each non-pivot column $j$, define a vector $x^{(j)}\in\R^m$ by
+$$
+x^{(j)}_k=
+\begin{cases}
+1 & k=j\\
+0 & k \text{ a non-pivot column}, k\neq j\\
+-A_{i,j} & k=p_i, \text{ the pivot column of row } i.
+\end{cases}
+$$
+Since the pivot in row $i$ is the *only* nonzero entry in column $p_i$, row $i$ of $Ax^{(j)}$ is just $A_{i,p_i}x^{(j)}_{p_i}+A_{i,j}x^{(j)}_j=-A_{i,j}+A_{i,j}=0$; the all-zero rows of $A$ contribute nothing. So $x^{(j)}\in\ker A$.
+
+For example, filling in numbers for the $*$'s in the generic matrix above,
+$$
+A=
+\begin{pmatrix}
+1 & 2 & 0 & 3 & 0 & -1\\
+0 & 0 & 1 & 4 & 0 & 5\\
+0 & 0 & 0 & 0 & 1 & 6\\
+0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix},
+$$
+the pivot columns are $1,3,5$ and the non-pivot columns are $2,4,6$. Taking $j=6$, the recipe puts a $1$ in position $6$, $0$'s in positions $2,4$, and $-A_{i,6}$ in position $p_i$ for each pivot row $i$:
+$$
+x^{(6)}=
+\begin{pmatrix}-A_{1,6}\\ 0\\ -A_{2,6}\\ 0\\ -A_{3,6}\\ 1\end{pmatrix}
+=
+\begin{pmatrix}1\\ 0\\ -5\\ 0\\ -6\\ 1\end{pmatrix}.
+$$
+Directly multiplying out confirms $Ax^{(6)}=0$.
+
+These vectors are independent: restricted to the non-pivot coordinates, $x^{(j)}$ is just the $j$-th standard basis vector, so different $j$'s give visibly independent vectors.
+
+They also span $\ker A$: given any $x\in\ker A$, set $y=\sum_{j \text{ non-pivot}} x_j\, x^{(j)}$. By construction $y$ agrees with $x$ on every non-pivot coordinate, so $x-y\in\ker A$ and $x-y$ vanishes on all non-pivot coordinates. But then row $i$ of $A(x-y)=0$ reads $(x-y)_{p_i}=0$ as well, so $x-y=0$, i.e. $x=y$.
+
+So the $x^{(j)}$, one for each of the $m-r$ non-pivot columns, form a basis of $\ker A$.
 
 **Corollary:** For any matrix $A$, we have:
 
