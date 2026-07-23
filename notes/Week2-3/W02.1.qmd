@@ -1,9 +1,92 @@
 ---
-title: "Weeks 2–3 — Abstract Vector Spaces and Subspaces"
+title: Abstract Vector Spaces and Subspaces
 ---
 
 \newcommand{\F}{\mathbb{F}}
 
-## Placeholder
+## Abstract Vector Spaces and Subspaces
 
-Notes on abstract vector spaces over a field $\F$, subspaces, and the abstract definitions of span, linear independence, basis, and dimension.
+### Fields
+
+A *field*  $F$ is a set with two binary operations (addition and multiplication) that satisfy the following axioms:
+
+1. Addition:
+a. is associative ($(x+y)+z=x+(y+z)$ for all $x,y,z\in F$)
+b.  is commutative ($x+y=y+x$ for all $x,y\in F$)
+c.  Has an identity element $0$ such that
+$x+0=0+x=x$ for all $x\in F$.
+d. Has a inverse $-x$ for each $x$ so that $x+(-x)=0$.
+
+2. Multiplication:
+a. is associative ($(xy)z=x(yz)$ for all $x,y,z\in F$.
+b. is commutative ($xy=yx$ for all $x,y\in F$.)
+c. has an identity element $1$ such that $1x=x$ for all $x\in F$.
+d. has an inverse $x^{-1}$ for each nonzero element such that $xx^{-1}=1$.
+
+The two operations are connected by the distributive law: for all $x,y,z\in F$:
+
+$$x(y+z) = xy+xz$$
+
+One can derive many of the standard algebraic facts from these axioms.  For example, to see that $0\cdot b = 0$ for all $b$, consider
+$$
+(0+0)=0
+$$
+which follows from the identity axiom of addition.  Then
+$$
+x0 = x(0+0)=x0+x0
+$$.
+
+Now add $-x0$ to both sides to get
+$$
+x0=0.
+$$
+Similarly you can show that  $(-1)x=-x$.
+
+Some examples:
+
+a. the real numbers $\R$.
+b. the complex numbers $\C$.
+c. the rational numbers $\mathbf{Q}$.
+d. the two-element field $\mathbf{F}_{2}$ which consists of $\{0,1\}$ with operations
+$0+0=1+1=0$, $0+1=1+0=1$, and all products except $1\cdot 1=1$ equal to zero. 
+
+If you're familiar with modular arithmetic, it's also true that $\mathbf{F}_{p}$, the integers modulo $p$ where $p$ is prime, form a field.
+
+Other more complicated examples include 
+a. the field of meromorphic functions on the complex plane (or on a general Riemann surface).
+b. the field of rational functions with complex coefficients in one variable $\mathbf{C}(T)$ or in more variables $\mathbf{C}(T_1,\ldots, T_k)$.  Here $\mathbf{C}$ can be replaced by any other field.
+c.  The field of Laurent polynomials with coefficients in a field $F$, usually written $F((T))$.
+
+### Vector spaces
+
+A vector space $V$ over a field $F$ is a set together with two operations:
+
+1. Addition of elements of $V$ satisfying:
+    a. associativity $(x+y)+z=x+(y+z)$.
+    b. commutativity $x+y=y+x$
+    c. existence of $0$ such that $x+0=0+x=x$
+    d. existence of inverses $-x$ for each $x$ such that $x+(-x)=0$.
+
+2. Scalar multiplication $x\to ax$ for $x\in V$
+and $a\in F$ such that
+    a. 1x = x 
+    b. a(bx)=(ab)x
+    b. a(x+y)=ax+ay
+    c. (a+b)x= ax+bx
+
+So our standard examples of $\C^{n}$ and $\R^{n}$ are vector spaces over $\C$ and $\R$ respectively.
+
+Other examples:
+
+1. $\F^{n}$, the set of vectors of length $n$ with entries from $\F$.
+2. The space of continuous real-valued functions on the unit interval.
+3. The space of differentiable real-valued functions on the unit interval.
+4. The solutions to the linear $n$th-order differential equation
+
+$$
+((\partial)^{n}+a_{n-1}(\partial)^{n-1}+\cdots +a_{0})f=0
+$$
+
+where $\partial=\frac{d}{dx}$ and all $a_{i}\in \C$.
+
+    
