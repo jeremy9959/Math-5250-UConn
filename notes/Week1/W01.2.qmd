@@ -238,6 +238,34 @@ So the $x^{(j)}$, one for each of the $m-r$ non-pivot columns, form a basis of $
 - The row and column ranks of $A$ agree; this number is called the rank of $A$.
 - $\mathrm{rank}(A)+\mathrm{nullity}(A)=m$ where $m$ is the number of columns of $A$.
 
+### Back to dimension
+
+Earlier we claimed that all bases of a finite dimensional vector space have the same number of elements. Now we can complete the proof of that.
+
+Suppose $X=\{e_1,\ldots, e_n\}$ is a spanning set and $Y=\{f_1,\ldots, f_{m}\}$ is a linearly independent set.
+
+Since $X$ spans, we can write, for all $1\le i\le n$ and $1\le j\le m$:
+$$
+f_{i} = \sum_{j} a_{ij} e_{j}
+$$
+for scalars $a_{ij}$.   This gives an $m\times n$ matrix $A=(a_{ij})$.
+
+Suppose we have a relation among the rows of $A$, so that there are $b_{i}$, not all zero,
+with $\sum_{i} b_{i}a_{ij}=0$ for all $j$.
+
+This would mean that 
+$$
+\sum_{i}b_{i}f_{i}=\sum_{i}b_{i}\sum_{j}a_{ij}e_{j}=0
+$$
+
+which contradicts the independence of $Y$.  So the rank of $A$ is at least $m$.
+
+It follows that the number of columns of $A$, which is $|X|$, is at least $m$. So $|X|\ge |Y|$.
+
+As a result, if $X$ and $Y$ are both bases, hence both spanning and linearly independent,
+then $|X|\ge|Y|$ and $|Y|\ge |X|$ so they
+have the same number of elements.
+
 
 ### Algorithms
 
@@ -250,6 +278,8 @@ Make the "augmented matrix" $A'=[A,v]$ by adding $v$
 as a column to $A$.  Put it in rref form.
 
 If the last column has a pivot, then $v$ is not in the range.  If it doesn't, then it is in the range.
+Essentially, you are deciding if the vector $v$ is linearly dependent on the columns of $A$,
+which is the same as asking if it is in the range (or column space) of $A$.
 
 
 
