@@ -1,6 +1,5 @@
 ---
-title: Linear Maps, Change of Basis
-
+title: Linear Maps, Change of Basis, Similarity
 ---
 
 \newcommand{\R}{\mathbf{R}}
