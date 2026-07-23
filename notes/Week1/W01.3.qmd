@@ -6,6 +6,8 @@ title: "Week 1 — Kernel, Range, Similarity, and Isomorphisms"
 
 ### Linear maps and matrices
 
+Here we stick to finite dimensional vector spaces.
+
 Let $L:\R^{n}\to\R^{m}$ be a linear map and let $E=\{e_1,\ldots, e_n\}$ be any basis for $\R^{n}$
 and $F=\{f_1,\ldots,f_{m}\}$ be any basis of $\R^{m}$.
 
@@ -44,3 +46,90 @@ $$
 $$
 
 This matrix $[L]$ is called the matrix of the linear map relative to the chosen bases.
+
+#### Change of basis
+
+The matrix $[L]_{E}^{F}$ depends on the bases $E$ and $F$.  Suppose we used different bases?
+For example, let $E'$ and $F'$ be  different bases for  $\R^{n}$ and $\R^{m}$.   
+How is the matrix $[L]_{E'}^{F'}$ related to $[L]_{E}^{F}$?
+
+We can write the elements of $E$ in terms of $E'$:
+$$
+e_{j} = \sum_{i=0}^{n} a_{ij}e'_{i}
+$$
+
+The columns of the matrix $A=(a_{ij})$ give the coordinates for the basis elements
+$e_{i}$ in terms of the $e'_{i}$.  Consequently, if $x=\sum b_{i}e_{i}$, then $Ax$ gives
+the coordinates of $x$ in the basis $e'_{i}$:
+$$
+A[x]_{E} = A\left[\begin{matrix} b_1 \\ \vdots \\ b_n\end{matrix}\right]=[x]_{E'}.
+$$
+
+Formally speaking, $A=[I]_{E}^{E'}$ is the matrix of the identity map where the "input" basis
+is $E$ and the output bases is $E'$.  
+
+We an make a similar construction with the bases $F$ and $F'$.  
+
+Then
+$$
+[L]_{E}^{F} = [I]_{F'}^{F}[L]_{E'}^{F'}[I]{E}^{E'}.
+$$
+
+It's easy to see that $[I]_{E}^{E'}[I]_{E'}^{E}=[I]_{E}^{E}$, and this last matrix is the "identity"
+matrix with ones on the diagonal and zeros elsewhere.  So 
+$$
+[I]_{E}^{E'}=([I]_{E'}^(E^{-1})
+$$
+
+#### Similarity
+
+If $L:\R^{n}\to\R^{n}$, and $E$ is any basis of $\R^{n}$, then $[L]_{E}^{E}$ is a square matrix.
+If $E'$ is any other basis then 
+$$
+[L]_{E}^{E} = [I]_{E'}^{E}[L]_{E'}^{E'}[I]_{E}^{E'} = PAP^{-1}
+$$
+where $P=[I]_{E'}^{E}$ and $A=[L]_{E'}^{E'}$.  When two square matrices $A$ and $B$ are related by
+$$
+A = PBP^{-1}
+$$
+
+where $P$ is an invertible square matrix, we say that $A$ and $B$ are similar.
+
+In particular, all of the matrices $[L]_{E}^{E}$ associated to a single linear map in different bases are similar.
+
+**Proposition:** Similar matrices have the same rank and nullity.
+
+Let $e_1, \ldots, e_{k}$ be a basis for the null space of $A$.  If $B=PAP^{-1}$, then
+$Pe_{1},\ldots, Pe_{k}$ are linearly independent and belong to the null space of $B$,
+so the nullity of $B$ is at least that of $A$.  On the other hand, $A=P^{-1}BP$,
+so the same argument in reverse shows that the nullity of $A$ is at least that of $B$,
+hence they are equal.
+
+The equality of ranks follows since rank plus nullity is the number of columns.
+
+In particular, the rank and nullity are well defined invariants of linear maps.
+
+#### Isomorphisms
+
+A linear map $L:V\to W$ is *injective* (or one-to-one) if and only if its nullity is zero.
+If the nullity is not zero, then there is a non-zero $x$ with $L(x)=0$, so $L$ is not
+injective.  On the other hand if $L(x)=L(y)$ but $x\not y$, then $L(x-y)=0$ but $x-y\not=0$,
+so the nullity of $L$ is greater than zero. 
+
+A linear map $L:V\to W$ is *surjective* (or onto) if and only if its rank equals the dimension
+of $W$.  This is because the rank of $L$ is the dimension of its image.  So the image of $L$
+is a subspace of $W$ whose dimension is the rank of $L$.  This can only be all of $W$ if the rank of $L$ is the dimension of $W$. 
+
+An *isomorphism* between two vector spaces $V$ and $W$ is a linear map $L:V\to W$ with
+a linear inverse $G:W\to V$.   It's enough for $L$ to be bijective, meaning both injective
+and surjective, which forces $V$ and $W$ to have the same dimension.
+
+**Proposition:** A linear map $L:\R^{n}\to\R^{n}$ is invertible if and only if its nullity is zero.
+
+An $n\times n$ matrix $A$ is invertible if and only if it has rank $n$.  Alternatively,
+if it has nullity zero.
+
+
+
+
+)
