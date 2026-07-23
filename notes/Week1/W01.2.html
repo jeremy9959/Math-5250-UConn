@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 1 — Linear Transformations and Matrices – Math 5250: Graduate Linear Algebra</title>
+<title>Math 5250: Graduate Linear Algebra - Week 1 — Linear Transformations and Matrices</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,29 +30,22 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-81abbb02a59a3b24764cf33dad8a160b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -64,63 +54,77 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Math 5250: Graduate Linear Algebra</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../schedule.html"> 
-<span class="menu-text">Schedule</span></a>
+    <a class="nav-link" href="../../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week1/W01.1.html">Week 1 — Review</a></li><li class="breadcrumb-item"><a href="../../notes/Week1/W01.2.html">Linear transformations and matrices</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week1/W01.1.html">Week 1 — Review</a></li><li class="breadcrumb-item"><a href="../../notes/Week1/W01.2.html">Linear transformations and matrices</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -130,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -152,9 +156,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Week 1 — Review</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -181,9 +185,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Weeks 2–3 — Abstract Vector Spaces</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -216,9 +220,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Week 4 — Eigenvalues and Eigenvectors</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -245,9 +249,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Weeks 5–6 — Inner Product Spaces</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -280,9 +284,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Weeks 7–8 — Matrix Decompositions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -309,9 +313,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Week 9 — Norms</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -332,9 +336,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Weeks 10–11 — Dual Spaces</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -361,9 +365,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">Week 12 — Bilinear Forms</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -390,9 +394,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
  <span class="menu-text">Weeks 13–14 — Multilinear Algebra</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -420,21 +424,27 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a></li>
+  <li><a href="#matrices" id="toc-matrices" class="nav-link active" data-scroll-target="#matrices">Matrices</a></li>
+  <li><a href="#linear-maps" id="toc-linear-maps" class="nav-link" data-scroll-target="#linear-maps">Linear Maps</a></li>
+  <li><a href="#key-subspaces-and-invariants" id="toc-key-subspaces-and-invariants" class="nav-link" data-scroll-target="#key-subspaces-and-invariants">Key subspaces and invariants</a></li>
+  <li><a href="#row-and-column-operations-and-elementary-matrices" id="toc-row-and-column-operations-and-elementary-matrices" class="nav-link" data-scroll-target="#row-and-column-operations-and-elementary-matrices">Row and Column Operations and Elementary Matrices</a></li>
+  <li><a href="#row-reduction-and-computation" id="toc-row-reduction-and-computation" class="nav-link" data-scroll-target="#row-reduction-and-computation">Row Reduction and Computation</a></li>
+  <li><a href="#back-to-dimension" id="toc-back-to-dimension" class="nav-link" data-scroll-target="#back-to-dimension">Back to dimension</a></li>
+  <li><a href="#algorithms" id="toc-algorithms" class="nav-link" data-scroll-target="#algorithms">Algorithms</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week1/W01.1.html">Week 1 — Review</a></li><li class="breadcrumb-item"><a href="../../notes/Week1/W01.2.html">Linear transformations and matrices</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Week 1 — Linear Transformations and Matrices</h1>
 </div>
@@ -449,71 +459,235 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-
 </header>
 
-
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
-<p>Notes on representing linear transformations by matrices, and the effect of change of basis on matrix representations.</p>
+<section id="matrices" class="level3">
+<h3 class="anchored" data-anchor-id="matrices">Matrices</h3>
+<p>A <span class="math inline">n\times m</span> matrix over <span class="math inline">\mathbf{R}</span> is an array of elements of <span class="math inline">\mathbf{R}</span> with <span class="math inline">n</span> rows and <span class="math inline">m</span> columns. The set of such is denoted <span class="math inline">M_{n\times m}(\mathbf{R})</span>. Complex arrays make up <span class="math inline">M_{n\times m}(\mathbf{C})</span>.</p>
+<p>The set <span class="math inline">M_{n\times m}(\mathbf{R})</span> (or <span class="math inline">\mathbf{C}</span>) is a real (complex) vector space of dimension <span class="math inline">nm</span> (“unwrap the matrices”). Addition and scalar multiplication are done entry by entry.</p>
+<p>So if <span class="math inline">A=(a_{ij})</span> and <span class="math inline">B=(b_{ij})</span> with <span class="math inline">1\le i\le n</span> and <span class="math inline">1\le j\le m</span> then <span class="math inline">A+B</span> has entries <span class="math inline">(a_{ij}+b_{ij})</span> and <span class="math inline">\lambda A</span> has entries <span class="math inline">(\lambda a_{ij})</span> for <span class="math inline">\lambda\in \mathbf{R}</span> or <span class="math inline">\mathbf{C}</span>.</p>
+<p>Elements of <span class="math inline">\mathbf{R}^{n}</span> can be represented as <span class="math inline">n\times 1</span> matrices (column vectors) or <span class="math inline">1\times n</span> matrices (row vectors).</p>
+<p>Unless we make an explicit remark otherwise, we will view <span class="math inline">\mathbf{R}^{n}</span> as the space of <span class="math inline">n\times 1</span> real column vectors (same for <span class="math inline">\mathbf{C}</span>).</p>
+<section id="matrix-multiplication" class="level4">
+<h4 class="anchored" data-anchor-id="matrix-multiplication">Matrix Multiplication</h4>
+<p>Matrix multiplication is defined for a pair <span class="math inline">A,B</span> if the number of columns of <span class="math inline">A</span> equals the number of rows of <span class="math inline">B</span>. The product has the same number of rows as <span class="math inline">A</span> and the same number of columns as <span class="math inline">B</span>. Specifically:</p>
+<p>If <span class="math inline">A=(a_{ij})</span> is <span class="math inline">n\times m</span> and <span class="math inline">B=(b_{ij})</span> is <span class="math inline">m\times k</span> then <span class="math inline">C=AB</span> has entries <span class="math inline">(c_{ij})</span> where <span class="math display">
+c_{ij} = \sum_{r=1}^{m} a_{ir}b_{rj}
+</span> for <span class="math inline">1\le i\le n</span> and <span class="math inline">1\le j\le k</span>.</p>
+<p>Matrix multiplication is associative <span class="math inline">(AB)C=A(BC)</span> and distributes over addition <span class="math inline">(A+B)C=AC+BC</span> and <span class="math inline">A(B+C)=AB+AC</span> but is not commutative. Even if both <span class="math inline">AB</span> and <span class="math inline">BA</span> are defined, they are typically not equal.</p>
+</section>
+</section>
+<section id="linear-maps" class="level3">
+<h3 class="anchored" data-anchor-id="linear-maps">Linear Maps</h3>
+<p>A function from <span class="math inline">L:\mathbf{R}^{m}\to\mathbf{R}^{n}</span> is <em>linear</em> if <span class="math inline">L(x+y)=L(x)+L(y)</span> and <span class="math inline">L(ax)=aL(x)</span>.</p>
+<p>Let <span class="math inline">A</span> be an <span class="math inline">n\times m</span> matrix. The function <span class="math display">
+L_{A}(x)=Ax
+</span> is a function from <span class="math inline">\mathbf{R}^{m}</span> (viewed as column vectors) to <span class="math inline">\mathbf{R}^{n}</span>.</p>
+<p>If <span class="math inline">A</span> is an <span class="math inline">n\times m</span> matrix and <span class="math inline">B</span> is a <span class="math inline">k\times n</span> matrix then <span class="math display">
+L_{A}:\mathbf{R}^{m}\to \mathbf{R}^{n}
+</span> and <span class="math display">
+L_{B}:\mathbf{R}^{n}\to \mathbf{R}^{k}.
+</span></p>
+<p>The composed map <span class="math inline">L_{B}\circ L_{A}</span> goes from <span class="math inline">\mathbf{R}^{n}</span> to <span class="math inline">\mathbf{R}^{m}</span> to <span class="math inline">\mathbf{R}^{k}</span>.</p>
+<p>From the associativity of matrix multiplication we have <span class="math inline">L_{B}\circ L_{A}=L_{BA}</span> since <span class="math inline">B(Ax)=(BA)x</span>.</p>
+<p>Everything above holds with <span class="math inline">\mathbf{R}</span> replaced by <span class="math inline">\mathbf{C}</span>.</p>
+</section>
+<section id="key-subspaces-and-invariants" class="level3">
+<h3 class="anchored" data-anchor-id="key-subspaces-and-invariants">Key subspaces and invariants</h3>
+<p>Given a matrix <span class="math inline">A</span> there are a collection of important spaces and numerical invariants that describe the linear map <span class="math inline">L_{A}</span> associated to <span class="math inline">A</span>.</p>
+<p><strong>Definition:</strong> The <em>column space</em> of <span class="math inline">A\in M_{n\times m}(\mathbf{R})</span> is the subspace of <span class="math inline">\mathbf{R}^{n}</span> spanned by the columns of <span class="math inline">A</span>.</p>
+<p>The column space of <span class="math inline">A</span> is the same as the image of the linear map <span class="math inline">L_{A}</span> inside <span class="math inline">\mathbf{R}^{n}</span>.</p>
+<p>This is because if <span class="math inline">x\in R^{m}</span>, then one way to interpret the product <span class="math inline">Ax</span> is as: <span class="math display">
+Ax = \sum A_{.i}x_{i}
+</span></p>
+<p>where <span class="math inline">A_{.i}</span> is the ith column of <span class="math inline">A</span> and <span class="math inline">x_{i}</span> is the <span class="math inline">ith</span> entry of <span class="math inline">x</span>. Thus the image of <span class="math inline">L_{A}</span> is the subspace obtained by taking all linear combinations of columns of <span class="math inline">A</span>, which is the column space.</p>
+<p><strong>Definition:</strong> The <em>column rank</em> of <span class="math inline">A</span> is the dimension of the column space of <span class="math inline">A</span>.</p>
+<section id="nullspace-or-kernel-and-nullity" class="level4">
+<h4 class="anchored" data-anchor-id="nullspace-or-kernel-and-nullity">Nullspace (or kernel) and nullity</h4>
+<p>The <em>nullspace</em> or <em>kernel</em> of <span class="math inline">A</span> is the subspace of <span class="math inline">x\in\mathbf{R}^{m}</span> such that <span class="math inline">Ax=0</span>. This is a subspace since, if <span class="math inline">x</span> and <span class="math inline">y</span> satisfy <span class="math inline">Ax=Ay=0</span>, then <span class="math inline">A(x+y)=0</span>; and if <span class="math inline">A(x)=0</span> then <span class="math inline">A(cx)=cA(x)=0</span>.</p>
+<p>The <em>nullity</em> of <span class="math inline">A</span> is the dimension of the nullspace of <span class="math inline">A</span>.</p>
+</section>
+<section id="row-space" class="level4">
+<h4 class="anchored" data-anchor-id="row-space">Row space</h4>
+<p>The <em>row space</em> of <span class="math inline">A</span> is the subspace of <span class="math inline">\mathbf{R}^{m}</span> spanned by the rows of <span class="math inline">A</span>.</p>
+<p>The <em>row rank</em> of <span class="math inline">A</span> is the dimension of the row space.</p>
+</section>
+</section>
+<section id="row-and-column-operations-and-elementary-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="row-and-column-operations-and-elementary-matrices">Row and Column Operations and Elementary Matrices</h3>
+<p>The following three types of operations on matrices are called “elementary row operations”:</p>
+<ul>
+<li>Swap two rows of <span class="math inline">A</span>.</li>
+<li>Multiply a row of <span class="math inline">A</span> by a scalar.</li>
+<li>Let <span class="math inline">A_{j.}</span> be the <span class="math inline">j^{th}</span> row of <span class="math inline">A</span> and let <span class="math inline">\lambda</span> be a scalar. Given <span class="math inline">i</span> and <span class="math inline">j</span>, replace <span class="math inline">A_{j.}</span> by <span class="math inline">A_{j.}-\lambda A_{i.}</span></li>
+</ul>
+<p>Associated with each such operation is a square matrix <span class="math inline">E</span> called an elementary matrix:</p>
+<ul>
+<li>Swapping row <span class="math inline">i</span> and row <span class="math inline">j</span> corresponds to the matrix which has a <span class="math inline">1</span> in position <span class="math inline">i,j</span> and <span class="math inline">j,i</span>, <span class="math inline">1</span>’s on the diagonal in positions other than <span class="math inline">i,j</span>; and zeros elsewhere.</li>
+<li>Multiplying row <span class="math inline">i</span> by <span class="math inline">\lambda</span> corresponds to the matrix which has <span class="math inline">1</span> on the diagonal in every position except <span class="math inline">i</span>, where it has <span class="math inline">\lambda</span>; and zeros elsewhere.</li>
+<li>The third operation has <span class="math inline">1</span>’s on the diagonal, together with <span class="math inline">-\lambda</span> in position row <span class="math inline">j</span>, column <span class="math inline">i</span>.</li>
+</ul>
+<p><span class="math display">
+P_{ij}=
+\left(\begin{smallmatrix}
+\ddots &amp; &amp; &amp; \\
+&amp; 0 &amp; 1 &amp; \\
+&amp; 1 &amp; 0 &amp; \\
+&amp; &amp; &amp; \ddots
+\end{smallmatrix}\right)
+\quad
+D_i(\lambda)=
+\left(\begin{smallmatrix}
+\ddots &amp; &amp; \\
+&amp; \lambda &amp; \\
+&amp; &amp; \ddots
+\end{smallmatrix}\right)
+\quad
+R_{ji}(\lambda)=
+\left(\begin{smallmatrix}
+\ddots &amp; &amp; &amp; &amp; \\
+&amp; 1 &amp; &amp; &amp; \\
+&amp; &amp; \ddots &amp; &amp; \\
+&amp; -\lambda &amp; &amp; 1 &amp; \\
+&amp; &amp; &amp; &amp; \ddots
+\end{smallmatrix}\right)
+</span></p>
+<p>Constructing <span class="math inline">A'</span> from <span class="math inline">A</span> by an elementary row operation is the same as multiplying <span class="math inline">A</span> by the corresponding elementary matrix <span class="math inline">E</span>, so <span class="math inline">A'=EA</span>.</p>
+<p>The elementary matrices are invertible in the sense that, for each <span class="math inline">E</span>, there is a matrix <span class="math inline">F</span> so that <span class="math inline">FE=EF=I</span> where <span class="math inline">I</span> is the matrix with ones on the diagonal and zeros elsewhere. This is because the elementary row operations themselves can be “undone” by other elementary row operations.</p>
+<ul>
+<li>A swap is undone by a the same swap again.</li>
+<li>Multiplying a row by <span class="math inline">\lambda</span> is undone by multiplying by <span class="math inline">1/\lambda</span>.</li>
+<li>Undoing <span class="math inline">A_{j.}\to A_{j.}-\lambda A_{i.}</span> is undone by <span class="math inline">A_{j.}\to A_{j.}+\lambda A_{i.}</span>.</li>
+</ul>
+<p><strong>Proposition:</strong> If <span class="math inline">A'</span> is obtained from <span class="math inline">A</span> by a sequence of elementary row operations, then:</p>
+<ul>
+<li>The row space of <span class="math inline">A'</span> is the same as that of <span class="math inline">A</span>.</li>
+<li>The nullspace of <span class="math inline">A'</span> is the same as that of <span class="math inline">A</span>.</li>
+<li>The column rank of <span class="math inline">A'</span> is the same as that of <span class="math inline">A</span> (although the column space itself may be different).</li>
+</ul>
+<p>To see this, first notice that the first two elementary row operations clearly don’t change the subspace spanned by the rows. For the third one, since <span class="math inline">A_{j.}</span> is in the span of <span class="math inline">A_{1.},\ldots, A_{j.}-\lambda A_{i.},\ldots, A_{n.}</span>, the third operation also doesn’t affect the span of the rows.</p>
+<p>For the nullspace, suppose <span class="math inline">x</span> is in the nullspace of <span class="math inline">A</span>. Then <span class="math inline">A'x=EAx=E(Ax)=0</span> so <span class="math inline">x</span> is in the nullspace of <span class="math inline">A'</span>. Conversely, if <span class="math inline">x</span> is in the nullspace of <span class="math inline">A'</span>, then since <span class="math inline">A'=EA</span>, we have <span class="math inline">0=A'x=EAx</span>. But there is a matrix <span class="math inline">F</span> with <span class="math inline">FE=I</span>, so <span class="math inline">0=FEAx=IAx=Ax</span> and <span class="math inline">x</span> is in the nullspace of <span class="math inline">A</span>.</p>
+<p>Now let <span class="math inline">e_1,\ldots, e_k</span> be a basis for the column space of <span class="math inline">A</span> and suppose <span class="math inline">A'=EA</span>. We claim <span class="math inline">Ee_1,\ldots, Ee_k</span> is a basis for the column space of <span class="math inline">A'</span>. To see this suppose <span class="math inline">x</span> is in the column space of <span class="math inline">A'</span>. Then <span class="math inline">x=EAy</span> for some <span class="math inline">y</span>. Since <span class="math inline">Ay</span> is in the column space of <span class="math inline">A</span>, it is a linear combination of the <span class="math inline">e_{i}</span> and so <span class="math inline">x</span> is a linear combination of the <span class="math inline">Ee_{i}</span>. This proves the <span class="math inline">Ee_{i}</span> span the column space of <span class="math inline">A'</span>. Now suppose <span class="math inline">\sum a_{i}Ee_{i}=0</span>. Then <span class="math inline">E(\sum a_{i}e_{i})=0</span>. Multiplying by <span class="math inline">F</span> gives <span class="math inline">\sum a_{i}e_{i}=0</span> and thus all <span class="math inline">a_{i}=0</span>.</p>
+<p>Thus the column rank of <span class="math inline">A</span> and <span class="math inline">A'</span> are the same.</p>
+</section>
+<section id="row-reduction-and-computation" class="level3">
+<h3 class="anchored" data-anchor-id="row-reduction-and-computation">Row Reduction and Computation</h3>
+<p>A matrix is in <em>row reduced echelon form</em> if the following conditions hold:</p>
+<ol type="a">
+<li>The first nonzero entry in each row is <span class="math inline">1</span>. These entries are called “pivots”.</li>
+<li>These pivots move “down and to the right”. So if row <span class="math inline">i</span> has its first nonzero entry in column <span class="math inline">j</span>, then row <span class="math inline">i+1</span> has its first nonzero entry in a column strictly greater than <span class="math inline">j</span>.</li>
+<li>A pivot is the only nonzero entry in its column.</li>
+</ol>
+<p>A generic matrix in row reduced echelon form looks like this, where <span class="math inline">*</span> denotes an arbitrary entry:</p>
+<p><span class="math display">
+\begin{pmatrix}
+\boxed{1} &amp; * &amp; 0 &amp; * &amp; 0 &amp; * \\
+0 &amp; 0 &amp; \boxed{1} &amp; * &amp; 0 &amp; * \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \boxed{1} &amp; * \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}
+</span></p>
+<p>Here the pivots (boxed <span class="math inline">1</span>’s) occur in columns <span class="math inline">1,3,5</span>, moving down and to the right; the pivot columns are otherwise all zero; the non-pivot columns (<span class="math inline">2,4,6</span>) may contain arbitrary entries above the next pivot; and any all-zero rows sink to the bottom.</p>
+<p><strong>Proposition:</strong> Given an <span class="math inline">n\times m</span> matrix <span class="math inline">A</span>, there is a sequence of row operations that transforms <span class="math inline">A</span> into a matrix <span class="math inline">A'</span> in row reduced, echelon form.</p>
+<p><strong>Proposition:</strong> If <span class="math inline">A</span> is in row reduced, echelon form then:</p>
+<ul>
+<li>The row (and column) ranks <span class="math inline">r</span> are the equal to the number of pivots. To see this, first observe that every row is either all zero or a pivot row, so the row space is spanned by the pivot rows and these are independent. Then observe that the pivot columns are independent, and any non-pivot column can be written as a linear combination of the pivot columns.</li>
+<li>The nullity is equal to <span class="math inline">m-r</span>. For each non-pivot column <span class="math inline">j</span>, define a vector <span class="math inline">x^{(j)}\in\mathbf{R}^m</span> by <span class="math display">
+x^{(j)}_k=
+\begin{cases}
+1 &amp; k=j\\
+0 &amp; k \text{ a non-pivot column}, k\neq j\\
+-A_{i,j} &amp; k=p_i, \text{ the pivot column of row } i.
+\end{cases}
+</span> Since the pivot in row <span class="math inline">i</span> is the <em>only</em> nonzero entry in column <span class="math inline">p_i</span>, row <span class="math inline">i</span> of <span class="math inline">Ax^{(j)}</span> is just <span class="math inline">A_{i,p_i}x^{(j)}_{p_i}+A_{i,j}x^{(j)}_j=-A_{i,j}+A_{i,j}=0</span>; the all-zero rows of <span class="math inline">A</span> contribute nothing. So <span class="math inline">x^{(j)}\in\ker A</span>.</li>
+</ul>
+<p>For example, filling in numbers for the <span class="math inline">*</span>’s in the generic matrix above, <span class="math display">
+A=
+\begin{pmatrix}
+1 &amp; 2 &amp; 0 &amp; 3 &amp; 0 &amp; -1\\
+0 &amp; 0 &amp; 1 &amp; 4 &amp; 0 &amp; 5\\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 6\\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix},
+</span> the pivot columns are <span class="math inline">1,3,5</span> and the non-pivot columns are <span class="math inline">2,4,6</span>. Taking <span class="math inline">j=6</span>, the recipe puts a <span class="math inline">1</span> in position <span class="math inline">6</span>, <span class="math inline">0</span>’s in positions <span class="math inline">2,4</span>, and <span class="math inline">-A_{i,6}</span> in position <span class="math inline">p_i</span> for each pivot row <span class="math inline">i</span>: <span class="math display">
+x^{(6)}=
+\begin{pmatrix}-A_{1,6}\\ 0\\ -A_{2,6}\\ 0\\ -A_{3,6}\\ 1\end{pmatrix}
+=
+\begin{pmatrix}1\\ 0\\ -5\\ 0\\ -6\\ 1\end{pmatrix}.
+</span> Directly multiplying out confirms <span class="math inline">Ax^{(6)}=0</span>.</p>
+<p>These vectors are independent: restricted to the non-pivot coordinates, <span class="math inline">x^{(j)}</span> is just the <span class="math inline">j</span>-th standard basis vector, so different <span class="math inline">j</span>’s give visibly independent vectors.</p>
+<p>They also span <span class="math inline">\ker A</span>: given any <span class="math inline">x\in\ker A</span>, set <span class="math inline">y=\sum_{j \text{ non-pivot}} x_j\, x^{(j)}</span>. By construction <span class="math inline">y</span> agrees with <span class="math inline">x</span> on every non-pivot coordinate, so <span class="math inline">x-y\in\ker A</span> and <span class="math inline">x-y</span> vanishes on all non-pivot coordinates. But then row <span class="math inline">i</span> of <span class="math inline">A(x-y)=0</span> reads <span class="math inline">(x-y)_{p_i}=0</span> as well, so <span class="math inline">x-y=0</span>, i.e.&nbsp;<span class="math inline">x=y</span>.</p>
+<p>So the <span class="math inline">x^{(j)}</span>, one for each of the <span class="math inline">m-r</span> non-pivot columns, form a basis of <span class="math inline">\ker A</span>.</p>
+<p><strong>Corollary:</strong> For any matrix <span class="math inline">A</span>, we have:</p>
+<ul>
+<li>The row and column ranks of <span class="math inline">A</span> agree; this number is called the rank of <span class="math inline">A</span>.</li>
+<li><span class="math inline">\mathrm{rank}(A)+\mathrm{nullity}(A)=m</span> where <span class="math inline">m</span> is the number of columns of <span class="math inline">A</span>.</li>
+</ul>
+</section>
+<section id="back-to-dimension" class="level3">
+<h3 class="anchored" data-anchor-id="back-to-dimension">Back to dimension</h3>
+<p>Earlier we claimed that all bases of a finite dimensional vector space have the same number of elements. Now we can complete the proof of that.</p>
+<p>Suppose <span class="math inline">X=\{e_1,\ldots, e_n\}</span> is a spanning set and <span class="math inline">Y=\{f_1,\ldots, f_{m}\}</span> is a linearly independent set.</p>
+<p>Since <span class="math inline">X</span> spans, we can write, for all <span class="math inline">1\le i\le n</span> and <span class="math inline">1\le j\le m</span>: <span class="math display">
+f_{i} = \sum_{j} a_{ij} e_{j}
+</span> for scalars <span class="math inline">a_{ij}</span>. This gives an <span class="math inline">m\times n</span> matrix <span class="math inline">A=(a_{ij})</span>.</p>
+<p>Suppose we have a relation among the rows of <span class="math inline">A</span>, so that there are <span class="math inline">b_{i}</span>, not all zero, with <span class="math inline">\sum_{i} b_{i}a_{ij}=0</span> for all <span class="math inline">j</span>.</p>
+<p>This would mean that <span class="math display">
+\sum_{i}b_{i}f_{i}=\sum_{i}b_{i}\sum_{j}a_{ij}e_{j}=0
+</span></p>
+<p>which contradicts the independence of <span class="math inline">Y</span>. So the rank of <span class="math inline">A</span> is at least <span class="math inline">m</span>.</p>
+<p>It follows that the number of columns of <span class="math inline">A</span>, which is <span class="math inline">|X|</span>, is at least <span class="math inline">m</span>. So <span class="math inline">|X|\ge |Y|</span>.</p>
+<p>As a result, if <span class="math inline">X</span> and <span class="math inline">Y</span> are both bases, hence both spanning and linearly independent, then <span class="math inline">|X|\ge|Y|</span> and <span class="math inline">|Y|\ge |X|</span> so they have the same number of elements.</p>
+</section>
+<section id="algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="algorithms">Algorithms</h3>
+<p>The algorithm yielding the rref form gives an explicit way to compute the nullity of a matrix.</p>
+<p>To determine if a vector <span class="math inline">v</span> is in the range of the matrix <span class="math inline">A</span> we want to determine if there is an <span class="math inline">x</span> so that <span class="math inline">Ax=v</span>.</p>
+<p>Make the “augmented matrix” <span class="math inline">A'=[A,v]</span> by adding <span class="math inline">v</span> as a column to <span class="math inline">A</span>. Put it in rref form.</p>
+<p>If the last column has a pivot, then <span class="math inline">v</span> is not in the range. If it doesn’t, then it is in the range. Essentially, you are deciding if the vector <span class="math inline">v</span> is linearly dependent on the columns of <span class="math inline">A</span>, which is the same as asking if it is in the range (or column space) of <span class="math inline">A</span>.</p>
 
 
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -521,348 +695,195 @@ ul.task-list li input[type="checkbox"] {
       }
       return codeEl.innerText;
     }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/jeremy9959\.github\.io\/Math-5250-UConn\/");
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
       }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
-      }
-    }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
-          }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
     };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
         });
       }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
     }
-  });
-  </script>
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
-
 
 
 
