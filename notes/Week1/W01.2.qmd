@@ -1,5 +1,5 @@
 ---
-title: "Week 1 — Linear Transformations and Matrices"
+title: "Week 1 — Matrices, Bases, Rank, Nullity, Dimension
 ---
 
 \newcommand{\R}{\mathbf{R}}

@@ -1,5 +1,5 @@
 ---
-title: "Week 1 — Kernel, Range, Similarity, and Isomorphisms"
+title: "Week 1 — Linear Maps, Change of Basis
 ---
 
 \newcommand{\R}{\mathbf{R}}
