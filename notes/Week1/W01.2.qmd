@@ -1,5 +1,5 @@
 ---
-title: Matrices, Bases, Rank, Nullity, Dimension
+title: Rank, Nullity, Row Reduction
 ---
 
 \newcommand{\R}{\mathbf{R}}

@@ -1,5 +1,5 @@
 ---
-title: Vector Space Structure of $\mathbf{R}^{n}$ and $\mathbf{C}^{n}$
+title: Vector Spaces, subspaces, dimension
 ---
 
 \newcommand{\R}{\mathbf{R}}
