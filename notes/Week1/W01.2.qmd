@@ -2,7 +2,7 @@
 title: "Week 1 — Linear Transformations and Matrices"
 ---
 
-\newcommand{\R}{\mathbfsf{R}}
+\newcommand{\R}{\mathbf{R}}
 \newcommand{\C}{\mathbf{C}}
 
 ### Matrices
@@ -23,7 +23,7 @@ matrices (row vectors).
 
 Unless we make an explicit remark otherwise, we will view $\R^{n}$ as the space of $n\times 1$ real column vectors (same for $\C$). 
 
-####Matrix Multiplication
+#### Matrix Multiplication
 
 Matrix multiplication is defined for a pair $A,B$ if the number of columns of $A$ equals the number of rows of $B$.  The product has the same number of rows as $A$ and the same number of columns as $B$.  Specifically:
 
@@ -38,7 +38,7 @@ and $A(B+C)=AB+AC$ but is not commutative.  Even if both $AB$ and $BA$ are defin
 
 ### Linear Maps
 
-A function from $L$ $\R^{m}$ to $\R^{n}$ is *linear* if $L(x+y)=L(x)+L(y)$ and $L(ax)=aL(x)$.
+A function from $L:\R^{m}\to\R^{n}$ is *linear* if $L(x+y)=L(x)+L(y)$ and $L(ax)=aL(x)$.
  
 Let $A$ be an $n\times m$ matrix.  The function
 $$
