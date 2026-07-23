@@ -2,8 +2,45 @@
 title: "Week 1 — Kernel, Range, Similarity, and Isomorphisms"
 ---
 
-\newcommand{\R}{\mathbb{R}}
+\newcommand{\R}{\mathbf{R}}
 
-## Placeholder
+### Linear maps and matrices
 
-Notes on kernel and range as subspaces, similarity of matrices, determining spanning sets for kernel and range, and vector space isomorphisms.
+Let $L:\R^{n}\to\R^{m}$ be a linear map and let $E=\{e_1,\ldots, e_n\}$ be any basis for $\R^{n}$
+and $F=\{f_1,\ldots,f_{m}\}$ be any basis of $\R^{m}$.
+
+If $x=\sum x_{i}e_{i}$ is an element of $\R^{n}$, then $L(x)$
+is an element of $\R^{m}$ and so there are unique scalars 
+$y_1,\ldots, y_{m}$ so that 
+
+$$
+L(x) = \sum_{i=1}^{m} y_{i}f_{i}.
+$$
+
+If we represent $x$ by the column vector
+$$
+x=\left[\begin{matrix} x_1 \\ \vdots \\ x_{n}\end{matrix}\right]_{E},
+$$
+where the subscript $E$ means that the coordinates depend on the basis $E$, then
+$$
+L(x) = \left[\begin{matrix} y_1 \\ \vdots \\ y_{m}\end{matrix}\right]_{F}
+$$
+
+Linearity tells us that $L$ is determined by its values $L(e_{i})$
+since
+$$
+L(x) = \sum x_{i}L(e_{i}).
+$$
+
+Define a matrix $[L]_{E}^{F}$ whose columns are the vectors
+$$
+L(e_{i}) = \left[\begin{matrix}y_{1i}\\ \vdots \\ y_{mi}\end{matrix}\right].
+$$
+
+This yields an $m\times n$ matrix $[L]_{E}^{F}$ and by its construction it satisfies
+
+$$
+[L(x)]_{F} = [L]_{E}^{F}[x]_{E}
+$$
+
+This matrix $[L]$ is called the matrix of the linear map relative to the chosen bases.
