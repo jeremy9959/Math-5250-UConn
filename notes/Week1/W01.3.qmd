@@ -1,5 +1,6 @@
 ---
-title: "Week 1 — Linear Maps, Change of Basis"
+title: Linear Maps, Change of Basis
+
 ---
 
 \newcommand{\R}{\mathbf{R}}
