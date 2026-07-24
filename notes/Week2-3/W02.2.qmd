@@ -1,9 +1,145 @@
 ---
-title: "Weeks 2–3 — Direct Sums and Quotient Spaces"
+title: Sums and Quotients
 ---
 
-\newcommand{\F}{\mathbb{F}}
+\newcommand{\F}{\mathbf{F}}
 
 ## Placeholder
 
-Notes on direct sums and quotient spaces of abstract vector spaces.
+Let $V$ and $W$ be vector spaces over a field $\F$.  
+
+The *direct sum* of $V$ and $W$ is the
+set of pairs
+$$
+V\oplus W = \{(v,w) : v\in V, w\in W \} 
+$$
+
+This is a vector space with the operations
+$$
+(v,w) + (v',w') = (v+v', w+w').
+$$
+
+and 
+
+$$
+a(v,w) = (av,aw).
+$$
+
+One can define the direct sum of a finite family $\{V_{i}\}_{i=1}^{m}$ of vector spaces to be the set of sequences
+
+$$
+(v_1,\ldots, v_m)
+$$
+
+where $v_{i}\in V_{i}$.
+
+Again the operations are componentwise. 
+
+Infinite direct sums are also defined.  Given an index set $I$ and a family $\{V_{i}\}_{i\in I}$ of vector spaces, then the direct sum 
+$$
+\oplus_{i\in I}V_{i}
+$$
+
+is the set of functions $f:I\to \bigcup_{i\in I}V_{i}$ such that $f(i)\in V_{i}$
+and $f(i)=0$ for all but finitely many $i\in I$.
+
+The field  $\F$ is a one-dimensional vector space over itself. 
+The vector space $\F^{n}$ is just $\oplus_{i=1}^{n}\F$. 
+
+Note that $V$ and $W$ are subspaces of $V\oplus W$ by identifying
+$V$ with the pairs $(v,0)$ and $W$ with the pairs $(0,w)$.  The intersection of these two subspaces is $0=(0,0)$. 
+
+**Proposition:** If $V$ and $W$ are finite dimensional of dimension $n$ and $m$ respectively, then $V\oplus W$ is finite dimensional of dimension $n+m$.
+
+In fact if $v_1,\ldots, v_n$ is a basis for $V$, and $w_1,\ldots, w_m$ is a basis for $W$, then $(v_1,0),\ldots, (v_n,0),(0,w_1),\ldots, (0,w_n)$
+is a basis for $V\oplus W$.  
+
+They span since 
+$$
+(v,w) = (\sum a_{i}v_{i}, \sum b_{i}w_{i}) = \sum a_{i}(v_{i},0) + \sum b_{i}(0,w_{i}).
+$$
+
+They are independent since if 
+$$
+(\sum a_{i}v_{i},\sum b_{i}w_{i})=(0,0)
+$$ 
+
+thus all the $a_{i}$ and $b_{i}$ are zero by independence of the $v$'s and $w$'s. 
+
+
+### Subspace sums and internal direct sums
+
+Let $V$ be a vector space and let $U$ and $W$ be subspaces of $V$.
+The *sum* of $U$ and $W$ is the set
+$$
+U+W = \{u+w : u\in U, w\in W\} 
+$$
+
+This is a subspace of $V$.  
+
+- It is the smallest subspace of $V$ containing both $W$ and $U$. 
+- If $u_1,\ldots, u_n$ span $U$ and $w_1,\ldots, w_k$ span $W$ then
+the union $u_1,\ldots, u_n, w_1,\ldots, w_k$ span $U+W$. 
+- the dimension of $U+W$ is at most $\mathrm{dim}(U)+\mathrm{dim}(V)$.
+It can certainly be smaller (suppose $U=W$ for example).
+
+#### Algorithm to compute a basis for $U+W$.
+
+1. Choose a basis for $V$ and take spanning sets as above for $U$ and $W$.
+Create a matrix $A$whose columns are the $u_i$ and $w_j$ written in the chosen basis for $V$. 
+
+2. Put the matrix $A$ in rref yielding $A'$. 
+
+3.  The columns of $A$ corresponding to the pivot columns of $A'$ are a basis for $V+W$.
+
+4.  The basis constructed in this way will be a subset of the union of the $v_{i}$ and $w_{j}$. 
+
+### Internal direct sum
+
+If $U$ and $W$ are subsets of $V$ such that every element of $x\in U+W$
+has a *unique* representation  $x=u+w$ with $u\in U$ and $w\in W$,
+then $U+W$ is an (internal) direct sum and $U+W$ is isomorphic to $U\oplus W$. 
+
+**Proposition:** $U+W$ is a direct sum if and only if and of the following hold:
+
+a. $U\cap W=0$. 
+b. $\mathrm{dim}(U)+\mathrm{dim}(W)=\mathrm{dim}(U+W).
+
+Suppose that $u+w=u'+w'$ for $u,u'\in U$ and $w,w'\in W$. Then
+$(u-u') = (w'-w)$.  The left side is in $U$, and the right side is in $W$,
+so both $u-u'$ and $w'-w$ are in $U\cap W$.  If $U\cap W=0$ this implies that $u=u'$ and $w=w'$ so the representation is unique.  If not, then
+choose $z\in U\cap W$ with $z\not=0$ and we have $u+w = (u+z) + (w-z)$
+so the representation is not unique. 
+
+For the second, choose  bases $u_1,\ldots, u_n$ of $U$ and $w_1,\ldots, w_k$ of $W$.  Together these span $U+W$.  On the other hand if there is a non trivial linear relation among them, we would have
+$$
+\sum a_{i}u_{i} +\sum b_{j}w_{j}=0.
+$$
+At least one $a_{i}$ and one $b_{j}$ must be nonzero (since the $u$'s and $w$'s are separately independent).  This gives us a non-zero vector
+$$
+\sum a_{i}u_{i} = -\sum b_{j}w_{j}
+$$
+in $U\cap W$.   
+
+Thus they are independent and (b) follows.  Conversely, if we have the relation on dimensions, these $u_i$ and $w_{j}$ must be independent. 
+A nonzero element of $U\cap W$ would give a non-trivial equation 
+$$
+\sum a_{i}u_{i} = \sum b_{j} w_{j}
+$$
+
+which would imply the $u_i$ and $v_j$ are dependent and thus the dimension of $U+W$ is smaller than $n+k$.
+
+One can improve this result a bit to obtain this formula.
+
+**Proposition:** Given subspaces $U$ and $W$ of $V$ we have
+$$
+\mathrm{dim}(U+W) = \mathrm{dim}(U\oplus W)-\mathrm{dim}(U\cap W) = \mathrm{dim}(U)+\mathrm{dim}(W)-\mathrm{dim}(U\cap W)
+$$
+
+This follows from our algorithm above.  Make a matrix $A$ whose columns are the basis elements $u_i$ and $w_j$ for $U$ and $W$ respectively written
+in some basis for $V$.  The rank of $A$ is the dimension of $U+V$ and
+counts the pivot columns of $A$.  The non-pivot columns of $A$ correspond to the nullity of $A$ and give relations among the pivot columns. 
+Since the $u_i$ and $w_j$ are independent, any such relation must involve a mix of both $u_i$ and $w_j$ vectors, and so represents an element of $U\cap W$.  
+
+So the formula above is just the rank plus nullity = columns equation for the matrix $A$.
+

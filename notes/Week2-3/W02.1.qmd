@@ -125,3 +125,9 @@ it defines a linear map from $\F^{m}$ to $\F^{n}$ by $x\mapsto Ax$.
 7.  We have $\mathrm{rank}(A)+\mathrm{nullity}(A) = m$ where $m$ is the number of columns of $A$. This follows from the fact that the row-reduction algorithm works fine for entries from a general field. In particular our proof that all bases of a finite dimensional vector space have the same number of elements works over $\F$. 
 8. A linear map $L:V\to W$ has a matrix representation $[L]_{E}^{F}$ for bases $E$ of $V$ and $F$ of $W$.
 9.  The change of basis rules are all the same. 
+
+#### Isomorphisms
+
+A linear map $F:V\to W$ for vector spaces $V$ and $W$ over $F$ is called an isomorphism if it is bijective. (In this case its inverse is also linear).
+
+If there is a bijective linear map $F:V\to W$, then $V$ and $W$ are said to be *isomorphic*.
