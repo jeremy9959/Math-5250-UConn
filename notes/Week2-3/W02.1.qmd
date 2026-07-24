@@ -131,3 +131,22 @@ it defines a linear map from $\F^{m}$ to $\F^{n}$ by $x\mapsto Ax$.
 A linear map $F:V\to W$ for vector spaces $V$ and $W$ over $F$ is called an isomorphism if it is bijective. (In this case its inverse is also linear).
 
 If there is a bijective linear map $F:V\to W$, then $V$ and $W$ are said to be *isomorphic*.
+
+Now let $V$ be a finite dimensional vector space over a field $F$.  Choose a basis $E=\{v_1,\ldots, v_n\}$ for $V$.  Define a linear map
+$$
+L: \F^{n}\to V
+$$
+by
+$$
+(a_1,\ldots, a_n) \mapsto \sum_{i}a_{i}v_{i}
+$$
+
+This is an isomorphism.   
+
+The inverse map sends $v$ to the vector
+$$
+[v]_{E} = \left[\begin{matrix} a_1 \\ \vdots \\ a_n\end{matrix}\right].
+$$
+
+So in this sense, every finite dimensional vector space over $\F$ is isomorphic to $\F^{n}$,
+in many different ways corresponding to the choice of different bases.
