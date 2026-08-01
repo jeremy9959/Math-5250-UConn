@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 5250: Graduate Linear Algebra - Weeks 2–3 — Abstract Vector Spaces and Subspaces</title>
+<title>Math 5250: Graduate Linear Algebra - Abstract Vector Spaces and Subspaces</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -431,7 +431,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a></li>
+  <li><a href="#abstract-vector-spaces-and-subspaces" id="toc-abstract-vector-spaces-and-subspaces" class="nav-link active" data-scroll-target="#abstract-vector-spaces-and-subspaces">Abstract Vector Spaces and Subspaces</a>
+  <ul class="collapse">
+  <li><a href="#fields" id="toc-fields" class="nav-link" data-scroll-target="#fields">Fields</a></li>
+  <li><a href="#vector-spaces" id="toc-vector-spaces" class="nav-link" data-scroll-target="#vector-spaces">Vector spaces</a></li>
+  <li><a href="#general-machinery" id="toc-general-machinery" class="nav-link" data-scroll-target="#general-machinery">General Machinery</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -440,7 +445,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Weeks 2–3 — Abstract Vector Spaces and Subspaces</h1>
+<h1 class="title">Abstract Vector Spaces and Subspaces</h1>
 </div>
 
 
@@ -455,11 +460,119 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
-<p>Notes on abstract vector spaces over a field <span class="math inline">\mathbb{F}</span>, subspaces, and the abstract definitions of span, linear independence, basis, and dimension.</p>
+<section id="abstract-vector-spaces-and-subspaces" class="level2">
+<h2 class="anchored" data-anchor-id="abstract-vector-spaces-and-subspaces">Abstract Vector Spaces and Subspaces</h2>
+<section id="fields" class="level3">
+<h3 class="anchored" data-anchor-id="fields">Fields</h3>
+<p>A <em>field</em> <span class="math inline">F</span> is a set with two binary operations (addition and multiplication) that satisfy the following axioms:</p>
+<ol type="1">
+<li>Addition:</li>
+</ol>
+<ol type="a">
+<li>is associative (<span class="math inline">(x+y)+z=x+(y+z)</span> for all <span class="math inline">x,y,z\in F</span>)</li>
+<li>is commutative (<span class="math inline">x+y=y+x</span> for all <span class="math inline">x,y\in F</span>)</li>
+<li>Has an identity element <span class="math inline">0</span> such that <span class="math inline">x+0=0+x=x</span> for all <span class="math inline">x\in F</span>.</li>
+<li>Has a inverse <span class="math inline">-x</span> for each <span class="math inline">x</span> so that <span class="math inline">x+(-x)=0</span>.</li>
+</ol>
+<ol start="2" type="1">
+<li>Multiplication:</li>
+</ol>
+<ol type="a">
+<li>is associative (<span class="math inline">(xy)z=x(yz)</span> for all <span class="math inline">x,y,z\in F</span>.)</li>
+<li>is commutative (<span class="math inline">xy=yx</span> for all <span class="math inline">x,y\in F</span>.)</li>
+<li>has an identity element <span class="math inline">1</span> such that <span class="math inline">1x=x</span> for all <span class="math inline">x\in F</span>.</li>
+<li>has an inverse <span class="math inline">x^{-1}</span> for each nonzero element such that <span class="math inline">xx^{-1}=1</span>.</li>
+</ol>
+<p>The two operations are connected by the distributive law: for all <span class="math inline">x,y,z\in F</span>:</p>
+<p><span class="math display">
+x(y+z) = xy+xz
+</span></p>
+<p>One can derive many of the standard algebraic facts from these axioms. For example, to see that <span class="math inline">0\cdot b = 0</span> for all <span class="math inline">b</span>, consider <span class="math display">
+(0+0)=0
+</span></p>
+<p>which follows from the identity axiom of addition. Then <span class="math display">
+x0 = x(0+0)=x0+x0.
+</span></p>
+<p>Now add <span class="math inline">-x0</span> to both sides to get</p>
+<p><span class="math display">
+x0=0.
+</span></p>
+<p>Similarly you can show that <span class="math inline">(-1)x=-x</span>.</p>
+<p>Some examples of fields:</p>
+<ol type="a">
+<li>the real numbers <span class="math inline">\mathbf{R}</span>.</li>
+<li>the complex numbers <span class="math inline">\mathbf{C}</span>.</li>
+<li>the rational numbers <span class="math inline">\mathbf{Q}</span>.</li>
+<li>the two-element field <span class="math inline">\mathbf{F}_{2}</span> which consists of <span class="math inline">\{0,1\}</span> with operations <span class="math inline">0+0=1+1=0</span>, <span class="math inline">0+1=1+0=1</span>, and all products except <span class="math inline">1\cdot 1=1</span> equal to zero.</li>
+</ol>
+<p>If you’re familiar with modular arithmetic, it’s also true that <span class="math inline">\mathbf{F}_{p}</span>, the integers modulo <span class="math inline">p</span> where <span class="math inline">p</span> is prime, form a field.</p>
+<p>Other more complicated examples include:</p>
+<ol type="a">
+<li><p>the field of meromorphic functions on the complex plane (or on a general Riemann surface).</p></li>
+<li><p>the field of rational functions with complex coefficients in one variable <span class="math inline">\mathbf{C}(T)</span> or in more variables <span class="math inline">\mathbf{C}(T_1,\ldots, T_k)</span>. Here <span class="math inline">\mathbf{C}</span> can be replaced by any other field. In fact <span class="math inline">\mathbf{C}(T)</span> is the field of meromorphic functions on the Riemann sphere so is a special case of (a).</p></li>
+<li><p>The field of formal Laurent polynomials with coefficients in a field <span class="math inline">F,</span> usually written <span class="math inline">F((T)).</span></p></li>
+</ol>
+</section>
+<section id="vector-spaces" class="level3">
+<h3 class="anchored" data-anchor-id="vector-spaces">Vector spaces</h3>
+<p>A vector space <span class="math inline">V</span> over a field <span class="math inline">F</span> is a set together with two operations:</p>
+<ol type="1">
+<li>Addition of elements of <span class="math inline">V</span> satisfying:
+<ol type="a">
+<li>associativity <span class="math inline">(x+y)+z=x+(y+z)</span>.</li>
+<li>commutativity <span class="math inline">x+y=y+x</span></li>
+<li>existence of <span class="math inline">0</span> such that <span class="math inline">x+0=0+x=x</span></li>
+<li>existence of inverses <span class="math inline">-x</span> for each <span class="math inline">x</span> such that <span class="math inline">x+(-x)=0</span>.</li>
+</ol></li>
+<li>Scalar multiplication <span class="math inline">x\to ax</span> for <span class="math inline">x\in V</span> and <span class="math inline">a\in F</span> such that
+<ol type="a">
+<li>1x = x</li>
+<li>a(bx)=(ab)x</li>
+<li>a(x+y)=ax+ay</li>
+<li>(a+b)x= ax+bx</li>
+</ol></li>
+</ol>
+<p>So our standard examples of <span class="math inline">\mathbf{C}^{n}</span> and <span class="math inline">\mathbf{R}^{n}</span> are vector spaces over <span class="math inline">\mathbf{C}</span> and <span class="math inline">\mathbf{R}</span> respectively.</p>
+<p>Other examples:</p>
+<ol type="1">
+<li><span class="math inline">\mathbf{F}^{n}</span>, the set of vectors of length <span class="math inline">n</span> with entries from <span class="math inline">\mathbf{F}</span>, where <span class="math inline">\mathbf{F}</span> is any field.</li>
+<li>The space of continuous real-valued functions on the unit interval.</li>
+<li>The space of differentiable real-valued functions on the unit interval.</li>
+<li>The solutions to the linear <span class="math inline">n</span>th-order differential equation</li>
+</ol>
+<p><span class="math display">
+(\partial^{n}+a_{n-1}\partial^{n-1}+\cdots +a_{0})f=0
+</span></p>
+<p>where <span class="math inline">\partial=\frac{d}{dx}</span> and all <span class="math inline">a_{i}\in \mathbf{C}</span>.</p>
+</section>
+<section id="general-machinery" class="level3">
+<h3 class="anchored" data-anchor-id="general-machinery">General Machinery</h3>
+<p>The concepts discussed for <span class="math inline">\mathbf{R}^{n}</span> and <span class="math inline">\mathbf{C}^{n}</span> carry over to the case of a general abstract vector space.</p>
+<p>A map <span class="math inline">L:V\to W</span> between <span class="math inline">\mathbf{F}</span>-vector spaces is linear if: <span class="math display">
+L(x+y)=L(x)+L(y)
+</span> and <span class="math display">
+L(ax) = aL(x)
+</span></p>
+<ol type="1">
+<li>A subspace <span class="math inline">W</span> of <span class="math inline">V</span> is a subset of <span class="math inline">V</span> that is a vector space with the inherited operations. To verify that a subset <span class="math inline">W</span> is a subspace it’s enough to check that it’s closed under addition and scalar multiplication and contains zero.</li>
+<li>The concepts of spanning sets and linearly independent sets carry over, using coefficients from <span class="math inline">\mathbf{F}</span>.</li>
+<li>A vector space <span class="math inline">V</span> is finite dimensional over <span class="math inline">F</span> if it has a finite spanning set.</li>
+<li>A basis for <span class="math inline">V</span> is a linearly independent spanning set. Every vector space has a basis. All bases have the same cardinality; this is called the dimension of <span class="math inline">V</span>.</li>
+<li>If <span class="math inline">A</span> is an <span class="math inline">n\times m</span> matrix then it defines a linear map from <span class="math inline">\mathbf{F}^{m}</span> to <span class="math inline">\mathbf{F}^{n}</span> by <span class="math inline">x\mapsto Ax</span>.</li>
+<li>The row rank, column rank, rank, and nullity of a matrix with coefficients in <span class="math inline">F</span> have the same definitions.<br>
+</li>
+<li>We have <span class="math inline">\mathrm{rank}(A)+\mathrm{nullity}(A) = m</span> where <span class="math inline">m</span> is the number of columns of <span class="math inline">A</span>. This follows from the fact that the row-reduction algorithm works fine for entries from a general field. In particular our proof that all bases of a finite dimensional vector space have the same number of elements works over <span class="math inline">\mathbf{F}</span>.</li>
+<li>A linear map <span class="math inline">L:V\to W</span> has a matrix representation <span class="math inline">[L]_{E}^{F}</span> for bases <span class="math inline">E</span> of <span class="math inline">V</span> and <span class="math inline">F</span> of <span class="math inline">W</span>.</li>
+<li>The change of basis rules are all the same.</li>
+</ol>
+<section id="isomorphisms" class="level4">
+<h4 class="anchored" data-anchor-id="isomorphisms">Isomorphisms</h4>
+<p>A linear map <span class="math inline">F:V\to W</span> for vector spaces <span class="math inline">V</span> and <span class="math inline">W</span> over <span class="math inline">F</span> is called an isomorphism if it is bijective. (In this case its inverse is also linear).</p>
+<p>If there is a bijective linear map <span class="math inline">F:V\to W</span>, then <span class="math inline">V</span> and <span class="math inline">W</span> are said to be <em>isomorphic</em>.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
