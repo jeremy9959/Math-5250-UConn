@@ -3,6 +3,10 @@ title: Sums and Quotients
 ---
 
 \newcommand{\F}{\mathbf{F}}
+\newcommand{\dim}{\mathrm{dim}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\nullity}{\mathrm{nullity}}
+\newcommand{\columns}{\mathrm{columns}}
 
 ## Sums and Quotients
 
@@ -115,6 +119,10 @@ For the second, choose  bases $u_1,\ldots, u_n$ of $U$ and $w_1,\ldots, w_k$ of 
 $$
 \sum a_{i}u_{i} +\sum b_{j}w_{j}=0.
 $$
+The non-pivot columns of $A$ correspond to the nullity of $A$ and give relations among the pivot columns. 
+Since the $u_i$ and $w_j$ are independent, any such relation must involve a mix of both $u_i$ and $w_j$ vectors, and so represents an element of $U\cap W$.  
+
+So the formula above is just the rank plus nullity = columns equation for the matrix $A$.
 At least one $a_{i}$ and one $b_{j}$ must be nonzero (since the $u$'s and $w$'s are separately independent).  This gives us a non-zero vector
 $$
 \sum a_{i}u_{i} = -\sum b_{j}w_{j}
@@ -133,13 +141,134 @@ One can improve this result a bit to obtain this formula.
 
 **Proposition:** Given subspaces $U$ and $W$ of $V$ we have
 $$
-\mathrm{dim}(U+W) = \mathrm{dim}(U\oplus W)-\mathrm{dim}(U\cap W) = \mathrm{dim}(U)+\mathrm{dim}(W)-\mathrm{dim}(U\cap W)
+\begin{aligned}
+\mathrm{dim}(U+W) &= \mathrm{dim}(U\oplus W)-\mathrm{dim}(U\cap W) \\
+&= \mathrm{dim}(U)+\mathrm{dim}(W)-\mathrm{dim}(U\cap W)
+\end{aligned}
 $$
 
 This follows from our algorithm above.  Make a matrix $A$ whose columns are the basis elements $u_i$ and $w_j$ for $U$ and $W$ respectively written
-in some basis for $V$.  The rank of $A$ is the dimension of $U+V$ and
-counts the pivot columns of $A$.  The non-pivot columns of $A$ correspond to the nullity of $A$ and give relations among the pivot columns. 
-Since the $u_i$ and $w_j$ are independent, any such relation must involve a mix of both $u_i$ and $w_j$ vectors, and so represents an element of $U\cap W$.  
+in some basis for $V$.  The rank of $A$ is dimension of the span of the columns of $A$,
+which is the dimension of $U+V$.  Let $y^{(k)}$ be a basis for the null space of $A$.  Each element
+of this basis gives
+a relation
+$$
+\sum_{i=1}^{\dim(U)} y^{(k)}_{i}u_{i} + \sum_{j=1}^{\dim(V)}y^{(k)}_{i+j}v_{j}=0.
+$$
+We can read this relation as:
+$$
+\sum_{i=1}^{\dim(U)} y^{(k)}_{i}u_{i} = - \sum_{j=\dim(U)+1}^{\dim(V)}y^{(k)}_{j}v_{j}.
+$$
+Since the $u_{i}$ and $v_{j}$ are linearly independent, it must be the case that at least one of
+the $y_{i}$ on the left, and one on the right, are non-zero.
+Therefore each element $y^{(k)}$ of the null space of $A$ yields an
+$$
+h_{k}=\sum_{i=1}^{\dim(U)} y^{(k)}_{i}u_{i}
+$$
+that is a non-zero element that belongs to $U\cap V$.  
 
-So the formula above is just the rank plus nullity = columns equation for the matrix $A$.
+We claim that the $h_{k}$ are a basis for $U\cap V$.  The spanning property comes because
+if $h\in U\cap V$, then writing $h=\sum a_{i}u_{i}=\sum b_{j}v_{j}$ in terms of the $u_{i}$ and in terms of the $v_{j}$ gives
+a relation 
+$$
+\sum a_{i}u_{i}-\sum b_{j}v_{j}=0
+$$
+which in turn produces an element of the null space of $A$.  Writing this in terms of the $y^{(k)}$
+in turn yields a linear expression for $h$ in terms of the $h_{k}$. 
+
+To see the independence of the $h_{k}$, suppose
+$$
+\sum_{k} a_{k}h_{k} = \sum_{k}\sum_{i} a_{k}y^{(k)}_{i}u_{i} = 0.
+$$
+The independence of the $u_{i}$ means that, for each $i=1,\ldots,\dim(U)$,  $\sum_{k} a_{k}y^{(k)}_{i}=0$.  A similar expression using the $v_{j}$ gives
+$$
+\sum_{k} b_{k}y^{(k)}_{j}=0
+$$
+for all $j=\dim(U)+1,\ldots, \dim(V)$.  Putting these together gives a relation among the $y^{(k)}$,
+which are independent, so all $a_{k}$ and $b_{k}$ must be zero.
+
+We've shown that the rank of $A$ is $\dim(U+V)$, the number of columns of $A$ is $\dim(U)+\dim(V)$,
+and the nullity of $A$ is $\dim(U\cap V)$, so the desired formula is the known formula
+$$
+\rank(A)+\nullity(A) = \columns(A)
+$$
+
+$$
+\begin{aligned}
+\mathrm{dim}(U+W) &= \mathrm{dim}(U\oplus W)-\mathrm{dim}(U\cap W) \\
+&= \mathrm{dim}(U)+\mathrm{dim}(W)-\mathrm{dim}(U\cap W)
+\end{aligned}
+$$
+
+
+### Quotient Spaces
+
+
+
+An *equivalence relation* on a set $X$ is a
+relation $x\sim y$ between any two elements of $X$ with the properties that:
+
+1. $x\sim x$ for all $x\in X$.
+2. If $x\sim y$, then $y\sim x$ for all $x,y\in X$.
+3. If $x\sim y$ and $y\sim z$ then $x\sim z$ for all $x,y,z\in X$.
+
+An equivalence relation partitions $X$ into equivalence classes.  An equivalence class
+$$
+[x] =\{y\in X : y\sim x\}
+$$
+
+Every element of $X$ belongs to exactly one
+class.  Put another way, given two elements
+$x$ and $y$ in $X$, either $[x]=[y]$ or 
+$[x]\cap [y]=\emptyset$.
+
+To see this, clearly $x\in [x]$.  Suppose
+$a\in [x]\cap [y]$.  Then $a\sim x$ and $a\sim y$ so $y\sim x$.  Therefore $y\in [x]$. If $u\sim y$, then $u\sim x$ so $u\in [x]$.
+Therefore $[y]\subset [x]$.  The same argument
+run "the other way" shows $[x]\subset [y]$.
+So $[x]\cap [y]\not=\emptyset$ implies $[x]=[y]$.
+
+#### Quotient spaces
+
+Now suppose $V$ is a vector space over $F$ and $W$ is a subspace of $V$.  Define an equivalence relation on $V$ by setting
+$$
+x\sim y \iff x-y\in W.
+$$
+
+The set of equivalence classes $[x]$ is called the *quotient space* $V/W$.
+
+In fact $V/W$ is a vector space over $F$.
+We define 
+$$
+[x]+[y] = [x+y]
+$$
+and 
+$$
+a[x]=[ax]
+$$
+
+We have to verify that these operations are well-defined and that they satisfy all the vector space axioms.
+
+To see that addition is well-defined, suppose
+$[x]=[a]$ and $[y]=[b]$.  Then we claim
+$$
+[x+y]=[a+b]
+$$
+This is because
+$$
+(a+b)-(x+y)=(a-x)+(b-y)\in W.
+$$
+
+Similarly if $[x]=[y]$ then $x-y\in W$
+so $ax-ay\in W$ and therefore $[ax]=[ay]$.
+
+Checking all the axioms is tedious but
+straightforward.  For example,
+$$
+\begin{aligned}
+a([x]+[y])&=a([x+y])=[a(x+y)] \\
+&=[ax+ay]=[ax]+[ay]=a[x]+b[y]
+\end{aligned}
+$$
+
 
