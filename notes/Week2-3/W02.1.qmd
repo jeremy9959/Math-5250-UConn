@@ -126,6 +126,20 @@ it defines a linear map from $\F^{m}$ to $\F^{n}$ by $x\mapsto Ax$.
 8. A linear map $L:V\to W$ has a matrix representation $[L]_{E}^{F}$ for bases $E$ of $V$ and $F$ of $W$.
 9.  The change of basis rules are all the same. 
 
+If $f:V\to W$ is any linear map, then
+the null space (or kernel) $\mathrm{null}(f)$ of $f$ is the 
+set of vectors $v\in V$ such that $f(v)=0$.
+
+The image $\mathrm{image}(f)$ of $f$ is the subspace $\{f(v): v\in v\}\subset W$.
+
+**Proposition:** If $V$ is finite dimensional then
+$$
+\dim(\null(f))+\dim(\image(f))=\dim(V). 
+$$
+
+The dimension of the nullspace is also called the nullity of $f$, and the dimension of the image is called the rank of $f$.  This makes sense because, if you choose a basis for $V$ and $W$, and find the matrix associated to $f$ in that basis, then these numbers are respectively the rank and nullity of that matrix.
+
+
 #### Isomorphisms
 
 A linear map $F:V\to W$ for vector spaces $V$ and $W$ over $F$ is called an isomorphism if it is bijective. (In this case its inverse is also linear).
