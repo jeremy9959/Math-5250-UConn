@@ -1,5 +1,5 @@
 ---
-title: Sums and Quotients
+title: Sums, Quotients, and Complexes
 ---
 
 \newcommand{\F}{\mathbf{F}}
