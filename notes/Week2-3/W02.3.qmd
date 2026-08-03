@@ -1,9 +1,50 @@
 ---
-title: "Weeks 2–3 — Linear Transformations: General Theory"
+title: "Trace and Determinant"
 ---
 
-\newcommand{\F}{\mathbb{F}}
+\newcommand{\trace}{\mathrm{trace}}
 
-## Placeholder
 
-Notes on linear transformations between abstract vector spaces, their matrix representations with respect to chosen bases, and change-of-basis formulas.
+
+### Trace
+
+If $A$ is an $n\times n$ square matrix with entries in a field $F$, then
+the *trace* $\trace(A)$ is the sum $\sum_{i=1}^{n} a_{ii}$ of the diagonal elements of $A$.
+
+
+**Proposition:** If $A$ and $B$ are $n\times n$ matrices over $F$,
+then $\trace(AB)=\trace(BA)$.
+
+**Proof:** Let $C=AB$ and $D=BA$.  Then 
+$$
+c_{ij} = \sum_{k} a_{ik}b_{kj}.
+$$
+
+and 
+
+$$
+d_{ij} = \sum_{k} b_{ik}a_{kj}
+$$
+
+Now
+$$
+\trace(AB) = \sum_{i=1}^{n} c_{ii} = \sum_{i}\sum_{k} a_{ik}b_{ki}
+=\sum_{k}\sum_{i} b_{ki}a_{ik} =\sum_{k} d_{kk} = \trace(BA)
+$$
+
+
+Now let $f:V\to V$ be any linear map, where $V$ is a finite dimensional vector space.  Choose a basis $E$ for $V$ and define the trace $\trace(f)$
+to be the trace of the matrix $[f]_{E}^{E}$.  
+
+This is a well-defined invariant of $f$ because if we choose a different basis, say $F$, then $[f]_{F}^{F} =[1]_{F}^{E} [f]_{E}^{E}[1]_{E}^{F}$
+Thus 
+$$
+\begin{aligned}
+\trace([f]_{F}^{F})&=\trace([1]_{F}^{E}[f]_{E}^{E}[1]_{E}^{F})\\
+&=\trace([f]_{E}^{E}[1]_{E}^{F}[1]_{F}^{E})\\
+&=\trace([f]_{E}^{E})
+\end{aligned}
+$$
+
+since $[1]_{F}^{E}[1]_{E}^{F}=[1]_{E}^{E}$ is the identity matrix. 
+

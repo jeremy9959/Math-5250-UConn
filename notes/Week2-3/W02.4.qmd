@@ -1,7 +1,0 @@
----
-title: "Weeks 2–3 — Trace and Determinant"
----
-
-## Placeholder
-
-Notes on trace and determinant of linear transformations, including their basis-independence and key properties.

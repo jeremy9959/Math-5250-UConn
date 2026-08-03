@@ -286,4 +286,63 @@ if and only if $v\in W$.
 
 Thus the dimension relation follows from the rank/nullity theorem for the linear map $f$.
 
+**Proposition:** Let $f:V\to W$ be a linear map and suppose $H\subset V$
+is contained in the kernel of $f$.  Then there is a unique linear map 
+$\overline{f}:V/H\to W$ such that $\overline{f}([v])=f(v)$ for all
+$v\in V$.
 
+Proof: The map $\overline{f}$ defined by $\overline{f}([v])=f(v)$ has
+the desired property and
+is well-defined because if $[v]=[x]$ then $v-x\in H$.  Since $H$
+is contained in the kernel of $f$, this means that $f(v-x)=0$ so $f(v)=f(x)$.
+
+The existence of the map $\overline{f}$ is called *the universal mapping property of the quotient $V/H$.  
+
+One can show that the subspaces of $V/H$ correspond exactly to the subspaces of $V$ containing $H$. 
+
+#### Complexes
+
+**Definition:** A complex of vector spaces is a sequence of vector spaces
+$W^{i}$ connected by linear maps $d_{i}$ 
+$$
+\cdots \to \cdots \to W^{i}\stackrel{\to}{d_{i}} W^{i+1} \stackrel{\to}{d_{i+1}}W^{i+2}\to\cdots
+$$
+
+with the property that $d_{i+1}d_{i}=0$ for all $i$. 
+
+The complex is bounded if all but finitely many $W^{i}$ are zero.
+
+Let $Z^{i}\subset W^{i}$ be the null space of $d_{i}$ and let
+$B^{i}\subset W^{i}$ be the image $d_{i-1}(W_{i-1})\subset W^{i}$. 
+
+The elements of $Z^{i}$ are called cocycles and those of $B^{i}$
+are called coboundaries.
+
+The vector space $Z^{i}/B_{i}$ is the $i^{th}$ cohomology 
+$H^{i}(W^{\cdot})$ of the complex.
+
+Suppose the complex is bounded and all $W^{i}$ are finite dimensional.
+The sum
+$$
+\chi(W^{\cdot})=\sum_{-\infty}^{\infty} (-1)^{i}\dim(W^{i})
+$$
+
+is called the Euler characteristic of the complex.
+
+**Proposition:**. We have
+$$
+\chi(W^{\cdot})=\sum_{-\infty}^{\infty} (-1)^{i}\dim H^{i}(W^{\cdot})
+$$
+
+**Proof:** Notice that $\dim(B^{i+1})=\dim(W^{i})-\dim(Z^{i})$ since
+the image of $d^{i}$ is $B^{i+1}$ and its kernel is $Z^{i}$. 
+So:
+$$
+\sum (-1)^{i}\dim(W^{i}) = \sum (-1)^{i}(\dim(B^{i+1})+\dim(Z^{i})).
+$$
+Now
+$$
+\sum (-1)^{i}(\dim(B^{i+1})+\dim(Z^{i}))=\sum (-1)^{i}(\dim(Z^{i})-\dim(B^{i}))
+$$
+
+which is the alternating sum of the dimensions of the $H^{i}(W^{\cdot})$.
