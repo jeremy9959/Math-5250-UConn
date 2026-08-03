@@ -271,4 +271,19 @@ a([x]+[y])&=a([x+y])=[a(x+y)] \\
 \end{aligned}
 $$
 
+**Proposition:** Suppose that $V$ is finite dimensional and $W\subset V$.  Then $\dim(V/W)=\dim(V)-\dim(W)$.
+
+**Proof:** The map $f:V\to V/W$ defined by $f(v)=[v]$ is an onto linear map with nullspace exactly $W$.  Linearity:
+
+- $f(x+y)=[x+y]=[x]+[y]=f(x)+f(y)$
+- $f(ax) = [ax] = a[x] = af(x)$
+
+The fact that the map is onto is because if 
+$[v]\in V/W$ then $f(v)=[v]$.
+
+Finally, the nullspace of $f$ is the set of $v$ such that $f(v)=[v]=[0]$.  But $[v]=[0]$
+if and only if $v\in W$.
+
+Thus the dimension relation follows from the rank/nullity theorem for the linear map $f$.
+
 
