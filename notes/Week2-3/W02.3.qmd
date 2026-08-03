@@ -48,3 +48,66 @@ $$
 
 since $[1]_{F}^{E}[1]_{E}^{F}=[1]_{E}^{E}$ is the identity matrix. 
 
+### Determinant
+
+**Proposition:** There is a unique
+function (the *determinant*) from $M_n{F)$ to $F$ satisfying the following properties:
+
+1.  $\det$ is multilinear as a function of the rows of $A\in M_{n}(F)$.  In other words,
+if we think of $A$ as made up of $n$ rows $A_{1},\dots, A_{n}$ then
+$$
+\det(A) = \det(A_1,\ldots, A_n)
+$$
+
+is linear in each of its variables separately.
+For each $1\le i\le n$ this means:
+$$
+\det(A_1,\ldots, A_{i}+B_{i},\ldots, A_n) = 
+\det(A_1,\ldots, A_i,\ldots, A_n) + \det(A_1,\ldots, B_{i},\ldots, A_n)
+$$
+
+and
+$$
+\det(A_1,\ldots, aA_{i},\ldots, A_n) = a\det(A_1,\ldots, A_{i},\ldots, A_{n}).
+$$
+
+2. The determinant function is *alternating.*. This means that $\det$ vanishes on any collection of rows $A_1,\ldots, A_n$ where two rows are repeated.  One consequence of this is that swapping any two rows changes the sign of the determinant.
+For example, since 
+$$
+\det(A_1+A_2,A_1+A_2,\ldots, A_n) = 0
+$$
+by linearity we get
+$$
+\begin{aligned}
+\det(A_1,A_1+A_2,\ldots, A_n) &+\det(A_2, A_1+A_2,\ldots, A_n) \\
+&=\det(A_1,A_1,\ldots, A_n) + \det(A_1,A_2,\ldots, A_n) \\
+&\quad+ \det(A_2,A_2,\ldots, A_n) + \det(A_2, A_1,\ldots, A_n) \\
+&=0
+\end{aligned}
+$$
+
+This in turn means
+$$
+\det(A_1,A_2,\ldots, A_n) = -\det(A_2,A_1,\ldots, A_n).
+$$
+
+3.  The determinant of the identity matrix is 1.
+
+Proving the existence of such a function is kind of a pain in the neck, but
+we can make some observations that will help make sense of the situation.
+
+Notice first that *if* the map exists, then the properties above tell
+us exactly how the elementary row operations affect it.  In particular:
+
+a. If $A$ is obtained from $A'$ by interchanging two rows, then $\det(A)=-\det(A')$. This follows from the alternating property. 
+
+b. If $A$ is obtained from $A'$ by multiplying a row by a scalar $a$, then 
+$\det(A)=a\det(A')$. 
+
+c. If $A$ is obtained from $A'$ by adding a multiple of one row to another, then
+$\det(A)=\det(A')$.  To see this note that
+$$
+\det(A_1+aA_i,A_2,\ldots, A_n) = \det(A_1,\ldots, A_n)+a\det(A_i,A_2,\ldots, A_i,\ldots, A_n)
+$$
+
+and the second term in the sum on the right is zero by the alternating property. 
