@@ -237,10 +237,12 @@ $$
 which is $\det(A)$.
 
 **Remark:** We need to check the sign here: the cofactor expansion around row $i$
-gets a sign $(-1)^{i+1}$.
+gets a sign $(-1)^{i+1}$.  This is because you need to cyclically permute the first $i$ rows to make the formula look right.
 
 **Remark:** This gives us an "explicit" formula for the inverse of $A$ as
 $\det(A)^{-1}A^{adj}$. 
+
+**Remark:** An arbitrary permutation  $\sigma$ of $1,\ldots, n$ can be represented by a matrix $E(\sigma)$ that permutes the rows of a matrix $A$ according to this permutation.  The sign of the permutation is $\det(E(\sigma))$.
 
 ## Determinant of a Linear Map
 
