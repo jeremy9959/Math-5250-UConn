@@ -104,12 +104,17 @@ The following three types of operations on matrices are called "elementary row o
 - Multiply a row of $A$ by a scalar. 
 - Let $A_{j.}$ be the $j^{th}$ row of $A$ and let $\lambda$ be a scalar.  Given $i$ and $j$, replace $A_{j.}$ by $A_{j.}-\lambda A_{i.}$
 
-Associated with each such operation is a square matrix $E$ called an elementary matrix:
+::: {#def-elementary-matrix}
+## Elementary matrix
+
+Associated with each such operation is a square matrix $E$ called an *elementary matrix*:
 
 - Swapping row $i$ and row $j$ corresponds to the matrix which has a $1$ in position $i,j$ and $j,i$, $1$'s on the diagonal  in positions other than $i,j$;
-and zeros elsewhere. 
+and zeros elsewhere.
 - Multiplying row $i$ by $\lambda$ corresponds to the matrix which has $1$ on the diagonal in every position except $i$, where it has $\lambda$; and zeros elsewhere.
 - The third operation has $1$'s on the diagonal, together with $-\lambda$ in position row $j$, column $i$.
+:::
+
 
 $$
 P_{ij}=
