@@ -32,6 +32,7 @@ $$
 =\sum_{k}\sum_{i} b_{ki}a_{ik} =\sum_{k} d_{kk} = \trace(BA)
 $$
 
+#### Trace of a linear map
 
 Now let $f:V\to V$ be any linear map, where $V$ is a finite dimensional vector space.  Choose a basis $E$ for $V$ and define the trace $\trace(f)$
 to be the trace of the matrix $[f]_{E}^{E}$.  
