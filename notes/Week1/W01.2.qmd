@@ -7,7 +7,7 @@ title: Rank, Nullity, Row Reduction
 
 ### Matrices
 
-A $n\times m$ matrix over $\R$ is an array of elements of $\R$ with $n$ rows
+An $n\times m$ matrix over $\R$ is an array of elements of $\R$ with $n$ rows
 and $m$ columns.  The set of such is denoted $M_{n\times m}(\R)$.  Complex arrays
 make up $M_{n\times m}(\C)$.  
 
@@ -71,12 +71,12 @@ the columns of $A$.
 
 The column space of $A$ is the same as the image of the linear map $L_{A}$ inside $\R^{n}$. 
 
-This is because if $x\in R^{m}$, then one way to interpret the product $Ax$ is as:
+This is because if $x\in \R^{m}$, then one way to interpret the product $Ax$ is as:
 $$
 Ax = \sum A_{.i}x_{i}
 $$
 
-where $A_{.i}$ is the ith column of $A$ and $x_{i}$ is the $ith$ entry of $x$.  Thus the image of $L_{A}$
+where $A_{.i}$ is the $i^{th}$ column of $A$ and $x_{i}$ is the $i^{th}$ entry of $x$.  Thus the image of $L_{A}$
 is the subspace obtained by taking all linear combinations of columns of $A$, which is the column space.
 
 
@@ -171,17 +171,17 @@ is in the column space of $A$, it is a linear combination of the $e_{i}$ and so 
 This proves the $Ee_{i}$ span the column space of $A'$.  Now suppose $\sum a_{i}Ee_{i}=0$.  Then $E(\sum a_{i}e_{i})=0$.
 Multiplying by $F$ gives $\sum a_{i}e_{i}=0$ and thus all $a_{i}=0$.
 
-Thus the column rank of $A$ and $A'$ are the same. 
+Thus the column ranks of $A$ and $A'$ are the same.
 
 
 ### Row Reduction and Computation
 
 A matrix is in *row reduced echelon form* if the following conditions hold:
 
-a. The first nonzero entry in each row is $1$.  These entries are called "pivots".
-b. These  pivots move "down and to the right". So if row $i$ has its first nonzero entry in column $j$, then row $i+1$ has its first
-nonzero entry in a column strictly greater than $j$.
-c. A pivot is the only nonzero entry in its column.
+a. Any all-zero rows are at the bottom of the matrix.
+b. The first nonzero entry in each nonzero row is $1$.  These entries are called "pivots".
+c. The pivots move "down and to the right": if rows $i$ and $i+1$ are both nonzero and row $i$'s pivot is in column $j$, then row $i+1$'s pivot is in a column strictly greater than $j$.
+d. A pivot is the only nonzero entry in its column.
 
 A generic matrix in row reduced echelon form looks like this, where $*$ denotes an arbitrary entry:
 

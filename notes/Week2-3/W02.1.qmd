@@ -15,7 +15,7 @@ a. is associative ($(x+y)+z=x+(y+z)$ for all $x,y,z\in F$)
 b.  is commutative ($x+y=y+x$ for all $x,y\in F$)
 c.  Has an identity element $0$ such that
 $x+0=0+x=x$ for all $x\in F$.
-d. Has a inverse $-x$ for each $x$ so that $x+(-x)=0$.
+d. Has an inverse $-x$ for each $x$ so that $x+(-x)=0$.
 
 2. Multiplication:
 a. is associative ($(xy)z=x(yz)$ for all $x,y,z\in F$.)
@@ -55,7 +55,7 @@ c. the rational numbers $\mathbf{Q}$.
 d. the two-element field $\mathbf{F}_{2}$ which consists of $\{0,1\}$ with operations
 $0+0=1+1=0$, $0+1=1+0=1$, and all products except $1\cdot 1=1$ equal to zero. 
 
-If you're familiar with modular arithmetic, it's also true that $\mathbf{F}_{p}$, the integers modulo $p$ where $p$ is prime, form a field.
+If you're familiar with modular arithmetic, it's also true that $\mathbf{F}_{p}$, the set of integers modulo $p$ where $p$ is prime, forms a field.
 
 Other more complicated examples include:
 
@@ -64,7 +64,7 @@ a. the field of meromorphic functions on the complex plane (or on a general Riem
 b. the field of rational functions with complex coefficients in one variable $\mathbf{C}(T)$ or in more variables $\mathbf{C}(T_1,\ldots, T_k)$.  Here $\mathbf{C}$ can be replaced by any other field.  In fact $\C(T)$ is the
 field of meromorphic functions on the Riemann sphere so is a special case of (a). 
 
-c.  The field of formal Laurent polynomials with coefficients in a field $F,$ usually written $F((T)).$
+c.  The field of formal Laurent series with coefficients in a field $F,$ usually written $F((T)).$
 
 ### Vector spaces
 
@@ -134,7 +134,7 @@ The image $\mathrm{image}(f)$ of $f$ is the subspace $\{f(v): v\in v\}\subset W$
 
 **Proposition:** If $V$ is finite dimensional then
 $$
-\dim(\null(f))+\dim(\image(f))=\dim(V). 
+\dim(\mathrm{null}(f))+\dim(\mathrm{image}(f))=\dim(V).
 $$
 
 The dimension of the nullspace is also called the nullity of $f$, and the dimension of the image is called the rank of $f$.  This makes sense because, if you choose a basis for $V$ and $W$, and find the matrix associated to $f$ in that basis, then these numbers are respectively the rank and nullity of that matrix.
@@ -142,9 +142,9 @@ The dimension of the nullspace is also called the nullity of $f$, and the dimens
 
 #### Isomorphisms
 
-A linear map $F:V\to W$ for vector spaces $V$ and $W$ over $F$ is called an isomorphism if it is bijective. (In this case its inverse is also linear).
+A linear map $L:V\to W$ for vector spaces $V$ and $W$ over $F$ is called an isomorphism if it is bijective. (In this case its inverse is also linear).
 
-If there is a bijective linear map $F:V\to W$, then $V$ and $W$ are said to be *isomorphic*.
+If there is a bijective linear map $L:V\to W$, then $V$ and $W$ are said to be *isomorphic*.
 
 Now let $V$ be a finite dimensional vector space over a field $F$.  Choose a basis $E=\{v_1,\ldots, v_n\}$ for $V$.  Define a linear map
 $$

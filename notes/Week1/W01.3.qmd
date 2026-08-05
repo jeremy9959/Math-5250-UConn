@@ -55,7 +55,7 @@ How is the matrix $[L]_{E'}^{F'}$ related to $[L]_{E}^{F}$?
 
 We can write the elements of $E$ in terms of $E'$:
 $$
-e_{j} = \sum_{i=0}^{n} a_{ij}e'_{i}
+e_{j} = \sum_{i=1}^{n} a_{ij}e'_{i}
 $$
 
 The columns of the matrix $A=(a_{ij})$ give the coordinates for the basis elements
@@ -66,19 +66,19 @@ A[x]_{E} = A\left[\begin{matrix} b_1 \\ \vdots \\ b_n\end{matrix}\right]=[x]_{E'
 $$
 
 Formally speaking, $A=[I]_{E}^{E'}$ is the matrix of the identity map where the "input" basis
-is $E$ and the output bases is $E'$.  
+is $E$ and the output basis is $E'$.
 
-We an make a similar construction with the bases $F$ and $F'$.  
+We can make a similar construction with the bases $F$ and $F'$.
 
 Then
 $$
-[L]_{E}^{F} = [I]_{F'}^{F}[L]_{E'}^{F'}[I]{E}^{E'}.
+[L]_{E}^{F} = [I]_{F'}^{F}[L]_{E'}^{F'}[I]_{E}^{E'}.
 $$
 
 It's easy to see that $[I]_{E}^{E'}[I]_{E'}^{E}=[I]_{E}^{E}$, and this last matrix is the "identity"
 matrix with ones on the diagonal and zeros elsewhere.  So 
 $$
-[I]_{E}^{E'}=([I]_{E'}^(E^{-1})
+[I]_{E}^{E'}=([I]_{E'}^{E})^{-1}
 $$
 
 #### Similarity
@@ -113,7 +113,7 @@ In particular, the rank and nullity are well defined invariants of linear maps.
 
 A linear map $L:V\to W$ is *injective* (or one-to-one) if and only if its nullity is zero.
 If the nullity is not zero, then there is a non-zero $x$ with $L(x)=0$, so $L$ is not
-injective.  On the other hand if $L(x)=L(y)$ but $x\not y$, then $L(x-y)=0$ but $x-y\not=0$,
+injective.  On the other hand if $L(x)=L(y)$ but $x\neq y$, then $L(x-y)=0$ but $x-y\not=0$,
 so the nullity of $L$ is greater than zero. 
 
 A linear map $L:V\to W$ is *surjective* (or onto) if and only if its rank equals the dimension
@@ -126,10 +126,4 @@ and surjective, which forces $V$ and $W$ to have the same dimension.
 
 **Proposition:** A linear map $L:\R^{n}\to\R^{n}$ is invertible if and only if its nullity is zero.
 
-An $n\times n$ matrix $A$ is invertible if and only if it has rank $n$.  Alternatively,
-if it has nullity zero.
-
-
-
-
-)
+An $n\times n$ matrix $A$ is invertible if and only if it has rank $n$, or, equivalently, if it has nullity zero.
