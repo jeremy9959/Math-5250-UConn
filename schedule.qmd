@@ -36,10 +36,10 @@ title: Math 5250 Schedule
   <td><a href="notes/Week2-3/W02.2.qmd">Direct sums and quotient spaces</a></td></tr>
 <tr><td>Tu 09/15</td>
   <td>Abstract Vector Spaces</td>
-  <td><a href="notes/Week2-3/W02.3.qmd">Linear transformations: general theory</a></td></tr>
+  <td><a href="notes/Week2-3/W02.3.qmd">Trace and Determinant</a></td></tr>
 <tr class="week-end"><td>Th 09/17</td>
   <td>Abstract Vector Spaces</td>
-  <td><a href="notes/Week2-3/W02.4.qmd">Trace and determinant</a></td></tr>
+  <td><a href="notes/Week2-3/W02.3.qmd">Trace and Determinant (continued)</a></td></tr>
 <tr><td>Tu 09/22</td>
   <td>Eigenvalues and Eigenvectors</td>
   <td><a href="notes/Week4/W04.1.qmd">Eigenvalues and eigenvectors</a></td></tr>
