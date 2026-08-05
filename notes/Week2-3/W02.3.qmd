@@ -200,7 +200,7 @@ then $\det(A)=0$ if and only if $\det(J)=0$, which happens
 if and only if $J$ has a zero on the diagonal.  (Since $J$ is in row-reduced echelon form, every diagonal entry is either $0$ or a pivot, hence exactly $1$.)  So if $\det(A)$ is nonzero, then $J$ is the identity matrix, and one gets an inverse for $A$ from the inverses of the $E_{i}$.
 
 
-### A few properties of the determinant
+#### A few properties of the determinant
 
 1.  The formula we used to define the determinant is called the "cofactor expansion" on the first row.  One can use any row to get a similar expansion.
 
@@ -244,7 +244,7 @@ $\det(A)^{-1}A^{adj}$.
 
 **Remark:** An arbitrary permutation  $\sigma$ of $1,\ldots, n$ can be represented by a matrix $E(\sigma)$ that permutes the rows of a matrix $A$ according to this permutation.  The sign of the permutation is $\det(E(\sigma))$.
 
-## Determinant of a Linear Map
+#### Determinant of a Linear Map
 
 Let $f:V\to V$ be a linear map where $V$ is a finite dimensional vector space over $F$.  We define the determinant of $f$ to be the determinant of $[f]_{E}^{E}$ where $E$
 is any basis for $V$.

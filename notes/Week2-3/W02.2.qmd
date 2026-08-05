@@ -299,7 +299,7 @@ The existence of the map $\overline{f}$ is called *the universal mapping propert
 
 One can show that the subspaces of $V/H$ correspond exactly to the subspaces of $V$ containing $H$. 
 
-#### Complexes
+## Complexes
 
 **Definition:** A complex of vector spaces is a sequence of vector spaces
 $W^{i}$ connected by linear maps $d_{i}$ 
