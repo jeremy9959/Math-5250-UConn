@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 5250: Graduate Linear Algebra - Sums and Quotients</title>
+<title>Math 5250: Graduate Linear Algebra - Sums, Quotients, and Complexes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Weeks 2–3 — Abstract Vector Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.2.html">Direct sums and quotient spaces</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Weeks 2–3 — Abstract Vector Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.2.html">Direct sums, quotient spaces, and complexes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -195,24 +195,18 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Abstract vector spaces and subspaces</span></a>
+ <span class="menu-text">Abstract vector spaces and linear maps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Direct sums and quotient spaces</span></a>
+ <span class="menu-text">Direct sums, quotient spaces, and complexes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear transformations: general theory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Trace and determinant</span></a>
   </div>
 </li>
@@ -431,10 +425,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a>
+  <li><a href="#sums-and-quotients" id="toc-sums-and-quotients" class="nav-link active" data-scroll-target="#sums-and-quotients">Sums and Quotients</a>
   <ul class="collapse">
   <li><a href="#subspace-sums-and-internal-direct-sums" id="toc-subspace-sums-and-internal-direct-sums" class="nav-link" data-scroll-target="#subspace-sums-and-internal-direct-sums">Subspace sums and internal direct sums</a></li>
   <li><a href="#internal-direct-sum" id="toc-internal-direct-sum" class="nav-link" data-scroll-target="#internal-direct-sum">Internal direct sum</a></li>
+  <li><a href="#quotient-spaces" id="toc-quotient-spaces" class="nav-link" data-scroll-target="#quotient-spaces">Quotient Spaces</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -444,7 +439,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sums and Quotients</h1>
+<h1 class="title">Sums, Quotients, and Complexes</h1>
 </div>
 
 
@@ -459,8 +454,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
+<section id="sums-and-quotients" class="level2">
+<h2 class="anchored" data-anchor-id="sums-and-quotients">Sums and Quotients</h2>
 <p>Let <span class="math inline">V</span> and <span class="math inline">W</span> be vector spaces over a field <span class="math inline">\mathbf{F}</span>.</p>
 <p>The <em>direct sum</em> of <span class="math inline">V</span> and <span class="math inline">W</span> is the set of pairs <span class="math display">
 V\oplus W = \{(v,w) : v\in V, w\in W \}
@@ -485,14 +480,14 @@ a(v,w) = (av,aw).
 <p>The field <span class="math inline">\mathbf{F}</span> is a one-dimensional vector space over itself. The vector space <span class="math inline">\mathbf{F}^{n}</span> is just <span class="math inline">\oplus_{i=1}^{n}\mathbf{F}</span>.</p>
 <p>Note that <span class="math inline">V</span> and <span class="math inline">W</span> are subspaces of <span class="math inline">V\oplus W</span> by identifying <span class="math inline">V</span> with the pairs <span class="math inline">(v,0)</span> and <span class="math inline">W</span> with the pairs <span class="math inline">(0,w)</span>. The intersection of these two subspaces is <span class="math inline">0=(0,0)</span>.</p>
 <p><strong>Proposition:</strong> If <span class="math inline">V</span> and <span class="math inline">W</span> are finite dimensional of dimension <span class="math inline">n</span> and <span class="math inline">m</span> respectively, then <span class="math inline">V\oplus W</span> is finite dimensional of dimension <span class="math inline">n+m</span>.</p>
-<p>In fact if <span class="math inline">v_1,\ldots, v_n</span> is a basis for <span class="math inline">V</span>, and <span class="math inline">w_1,\ldots, w_m</span> is a basis for <span class="math inline">W</span>, then <span class="math inline">(v_1,0),\ldots, (v_n,0),(0,w_1),\ldots, (0,w_n)</span> is a basis for <span class="math inline">V\oplus W</span>.</p>
+<p>In fact if <span class="math inline">v_1,\ldots, v_n</span> is a basis for <span class="math inline">V</span>, and <span class="math inline">w_1,\ldots, w_m</span> is a basis for <span class="math inline">W</span>, then <span class="math inline">(v_1,0),\ldots, (v_n,0),(0,w_1),\ldots, (0,w_m)</span> is a basis for <span class="math inline">V\oplus W</span>.</p>
 <p>They span since <span class="math display">
 (v,w) = (\sum a_{i}v_{i}, \sum b_{i}w_{i}) = \sum a_{i}(v_{i},0) + \sum b_{i}(0,w_{i}).
 </span></p>
 <p>They are independent since if <span class="math display">
 (\sum a_{i}v_{i},\sum b_{i}w_{i})=(0,0)
 </span></p>
-<p>thus all the <span class="math inline">a_{i}</span> and <span class="math inline">b_{i}</span> are zero by independence of the <span class="math inline">v</span>’s and <span class="math inline">w</span>’s.</p>
+<p>then all the <span class="math inline">a_{i}</span> and <span class="math inline">b_{i}</span> are zero by independence of the <span class="math inline">v</span>’s and <span class="math inline">w</span>’s.</p>
 <section id="subspace-sums-and-internal-direct-sums" class="level3">
 <h3 class="anchored" data-anchor-id="subspace-sums-and-internal-direct-sums">Subspace sums and internal direct sums</h3>
 <p>Let <span class="math inline">V</span> be a vector space and let <span class="math inline">U</span> and <span class="math inline">W</span> be subspaces of <span class="math inline">V</span>. The <em>sum</em> of <span class="math inline">U</span> and <span class="math inline">W</span> is the set <span class="math display">
@@ -502,30 +497,31 @@ U+W = \{u+w : u\in U, w\in W\}
 <ul>
 <li>It is the smallest subspace of <span class="math inline">V</span> containing both <span class="math inline">W</span> and <span class="math inline">U</span>.</li>
 <li>If <span class="math inline">u_1,\ldots, u_n</span> span <span class="math inline">U</span> and <span class="math inline">w_1,\ldots, w_k</span> span <span class="math inline">W</span> then the union <span class="math inline">u_1,\ldots, u_n, w_1,\ldots, w_k</span> span <span class="math inline">U+W</span>.</li>
-<li>the dimension of <span class="math inline">U+W</span> is at most <span class="math inline">\mathrm{dim}(U)+\mathrm{dim}(V)</span>. It can certainly be smaller (suppose <span class="math inline">U=W</span> for example).</li>
+<li>the dimension of <span class="math inline">U+W</span> is at most <span class="math inline">\mathrm{dim}(U)+\mathrm{dim}(W)</span>. It can certainly be smaller (suppose <span class="math inline">U=W</span> for example).</li>
 </ul>
 <section id="algorithm-to-compute-a-basis-for-uw." class="level4">
 <h4 class="anchored" data-anchor-id="algorithm-to-compute-a-basis-for-uw.">Algorithm to compute a basis for <span class="math inline">U+W</span>.</h4>
 <ol type="1">
-<li><p>Choose a basis for <span class="math inline">V</span> and take spanning sets as above for <span class="math inline">U</span> and <span class="math inline">W</span>. Create a matrix <span class="math inline">A</span>whose columns are the <span class="math inline">u_i</span> and <span class="math inline">w_j</span> written in the chosen basis for <span class="math inline">V</span>.</p></li>
+<li><p>Choose a basis for <span class="math inline">V</span> and take spanning sets as above for <span class="math inline">U</span> and <span class="math inline">W</span>. Create a matrix <span class="math inline">A</span> whose columns are the <span class="math inline">u_i</span> and <span class="math inline">w_j</span> written in the chosen basis for <span class="math inline">V</span>.</p></li>
 <li><p>Put the matrix <span class="math inline">A</span> in rref yielding <span class="math inline">A'</span>.</p></li>
-<li><p>The columns of <span class="math inline">A</span> corresponding to the pivot columns of <span class="math inline">A'</span> are a basis for <span class="math inline">V+W</span>.</p></li>
-<li><p>The basis constructed in this way will be a subset of the union of the <span class="math inline">v_{i}</span> and <span class="math inline">w_{j}</span>.</p></li>
+<li><p>The columns of <span class="math inline">A</span> corresponding to the pivot columns of <span class="math inline">A'</span> are a basis for <span class="math inline">U+W</span>.</p></li>
+<li><p>The basis constructed in this way will be a subset of the union of the <span class="math inline">u_{i}</span> and <span class="math inline">w_{j}</span>.</p></li>
 </ol>
 </section>
 </section>
 <section id="internal-direct-sum" class="level3">
 <h3 class="anchored" data-anchor-id="internal-direct-sum">Internal direct sum</h3>
 <p>If <span class="math inline">U</span> and <span class="math inline">W</span> are subsets of <span class="math inline">V</span> such that every element of <span class="math inline">x\in U+W</span> has a <em>unique</em> representation <span class="math inline">x=u+w</span> with <span class="math inline">u\in U</span> and <span class="math inline">w\in W</span>, then <span class="math inline">U+W</span> is an (internal) direct sum and <span class="math inline">U+W</span> is isomorphic to <span class="math inline">U\oplus W</span>.</p>
-<p><strong>Proposition:</strong> <span class="math inline">U+W</span> is a direct sum if and only if and of the following hold:</p>
+<p><strong>Proposition:</strong> <span class="math inline">U+W</span> is a direct sum if and only if either of the following hold:</p>
 <ol type="a">
 <li><span class="math inline">U\cap W=0</span>.</li>
-<li>$(U)+(W)=(U+W).</li>
+<li><span class="math inline">\mathrm{dim}(U)+\mathrm{dim}(W)=\mathrm{dim}(U+W)</span>.</li>
 </ol>
 <p>Suppose that <span class="math inline">u+w=u'+w'</span> for <span class="math inline">u,u'\in U</span> and <span class="math inline">w,w'\in W</span>. Then <span class="math inline">(u-u') = (w'-w)</span>. The left side is in <span class="math inline">U</span>, and the right side is in <span class="math inline">W</span>, so both <span class="math inline">u-u'</span> and <span class="math inline">w'-w</span> are in <span class="math inline">U\cap W</span>. If <span class="math inline">U\cap W=0</span> this implies that <span class="math inline">u=u'</span> and <span class="math inline">w=w'</span> so the representation is unique. If not, then choose <span class="math inline">z\in U\cap W</span> with <span class="math inline">z\not=0</span> and we have <span class="math inline">u+w = (u+z) + (w-z)</span> so the representation is not unique.</p>
 <p>For the second, choose bases <span class="math inline">u_1,\ldots, u_n</span> of <span class="math inline">U</span> and <span class="math inline">w_1,\ldots, w_k</span> of <span class="math inline">W</span>. Together these span <span class="math inline">U+W</span>. On the other hand if there is a non trivial linear relation among them, we would have <span class="math display">
 \sum a_{i}u_{i} +\sum b_{j}w_{j}=0.
-</span> At least one <span class="math inline">a_{i}</span> and one <span class="math inline">b_{j}</span> must be nonzero (since the <span class="math inline">u</span>’s and <span class="math inline">w</span>’s are separately independent). This gives us a non-zero vector <span class="math display">
+</span> Since the <span class="math inline">u_i</span> and <span class="math inline">w_j</span> are independent, any such relation must involve a mix of both <span class="math inline">u_i</span> and <span class="math inline">w_j</span> vectors, and so represents an element of <span class="math inline">U\cap W</span>.</p>
+<p>So the formula above is just the rank plus nullity = columns equation for the matrix <span class="math inline">A</span>. At least one <span class="math inline">a_{i}</span> and one <span class="math inline">b_{j}</span> must be nonzero (since the <span class="math inline">u</span>’s and <span class="math inline">w</span>’s are separately independent). This gives us a non-zero vector <span class="math display">
 \sum a_{i}u_{i} = -\sum b_{j}w_{j}
 </span> in <span class="math inline">U\cap W</span>.</p>
 <p>Thus they are independent and (b) follows. Conversely, if we have the relation on dimensions, these <span class="math inline">u_i</span> and <span class="math inline">w_{j}</span> must be independent. A nonzero element of <span class="math inline">U\cap W</span> would give a non-trivial equation <span class="math display">
@@ -534,12 +530,113 @@ U+W = \{u+w : u\in U, w\in W\}
 <p>which would imply the <span class="math inline">u_i</span> and <span class="math inline">v_j</span> are dependent and thus the dimension of <span class="math inline">U+W</span> is smaller than <span class="math inline">n+k</span>.</p>
 <p>One can improve this result a bit to obtain this formula.</p>
 <p><strong>Proposition:</strong> Given subspaces <span class="math inline">U</span> and <span class="math inline">W</span> of <span class="math inline">V</span> we have <span class="math display">
-\mathrm{dim}(U+W) = \mathrm{dim}(U\oplus W)-\mathrm{dim}(U\cap W) = \mathrm{dim}(U)+\mathrm{dim}(W)-\mathrm{dim}(U\cap W)
+\begin{aligned}
+\mathrm{dim}(U+W) &amp;= \mathrm{dim}(U\oplus W)-\mathrm{dim}(U\cap W) \\
+&amp;= \mathrm{dim}(U)+\mathrm{dim}(W)-\mathrm{dim}(U\cap W)
+\end{aligned}
 </span></p>
-<p>This follows from our algorithm above. Make a matrix <span class="math inline">A</span> whose columns are the basis elements <span class="math inline">u_i</span> and <span class="math inline">w_j</span> for <span class="math inline">U</span> and <span class="math inline">W</span> respectively written in some basis for <span class="math inline">V</span>. The rank of <span class="math inline">A</span> is the dimension of <span class="math inline">U+V</span> and counts the pivot columns of <span class="math inline">A</span>. The non-pivot columns of <span class="math inline">A</span> correspond to the nullity of <span class="math inline">A</span> and give relations among the pivot columns. Since the <span class="math inline">u_i</span> and <span class="math inline">w_j</span> are independent, any such relation must involve a mix of both <span class="math inline">u_i</span> and <span class="math inline">w_j</span> vectors, and so represents an element of <span class="math inline">U\cap W</span>.</p>
-<p>So the formula above is just the rank plus nullity = columns equation for the matrix <span class="math inline">A</span>.</p>
+<p>This follows from our algorithm above. Make a matrix <span class="math inline">A</span> whose columns are the basis elements <span class="math inline">u_i</span> and <span class="math inline">w_j</span> for <span class="math inline">U</span> and <span class="math inline">W</span> respectively written in some basis for <span class="math inline">V</span>. The rank of <span class="math inline">A</span> is dimension of the span of the columns of <span class="math inline">A</span>, which is the dimension of <span class="math inline">U+W</span>. Let <span class="math inline">y^{(k)}</span> be a basis for the null space of <span class="math inline">A</span>. Each element of this basis gives a relation <span class="math display">
+\sum_{i=1}^{\mathrm{dim}(U)} y^{(k)}_{i}u_{i} + \sum_{j=1}^{\mathrm{dim}(W)}y^{(k)}_{\mathrm{dim}(U)+j}w_{j}=0.
+</span> We can read this relation as: <span class="math display">
+\sum_{i=1}^{\mathrm{dim}(U)} y^{(k)}_{i}u_{i} = - \sum_{j=1}^{\mathrm{dim}(W)}y^{(k)}_{\mathrm{dim}(U)+j}w_{j}.
+</span> Since the <span class="math inline">u_{i}</span> and <span class="math inline">w_{j}</span> are linearly independent, it must be the case that at least one of the <span class="math inline">y_{i}</span> on the left, and one on the right, are non-zero. Therefore each element <span class="math inline">y^{(k)}</span> of the null space of <span class="math inline">A</span> yields an <span class="math display">
+h_{k}=\sum_{i=1}^{\mathrm{dim}(U)} y^{(k)}_{i}u_{i}
+</span> that is a non-zero element that belongs to <span class="math inline">U\cap W</span>.</p>
+<p>We claim that the <span class="math inline">h_{k}</span> are a basis for <span class="math inline">U\cap W</span>. The spanning property comes because if <span class="math inline">h\in U\cap W</span>, then writing <span class="math inline">h=\sum a_{i}u_{i}=\sum b_{j}w_{j}</span> in terms of the <span class="math inline">u_{i}</span> and in terms of the <span class="math inline">w_{j}</span> gives a relation <span class="math display">
+\sum a_{i}u_{i}-\sum b_{j}w_{j}=0
+</span> which in turn produces an element of the null space of <span class="math inline">A</span>. Writing this in terms of the <span class="math inline">y^{(k)}</span> in turn yields a linear expression for <span class="math inline">h</span> in terms of the <span class="math inline">h_{k}</span>.</p>
+<p>To see the independence of the <span class="math inline">h_{k}</span>, suppose <span class="math display">
+\sum_{k} a_{k}h_{k} = \sum_{k}\sum_{i} a_{k}y^{(k)}_{i}u_{i} = 0.
+</span> The independence of the <span class="math inline">u_{i}</span> means that, for each <span class="math inline">i=1,\ldots,\mathrm{dim}(U)</span>, <span class="math inline">\sum_{k} a_{k}y^{(k)}_{i}=0</span>. A similar expression using the <span class="math inline">w_{j}</span> gives <span class="math display">
+\sum_{k} a_{k}y^{(k)}_{\mathrm{dim}(U)+j}=0
+</span> for all <span class="math inline">j=1,\ldots, \mathrm{dim}(W)</span>. Putting these together gives a relation among the <span class="math inline">y^{(k)}</span>, which are independent, so all <span class="math inline">a_{k}</span> must be zero.</p>
+<p>We’ve shown that the rank of <span class="math inline">A</span> is <span class="math inline">\mathrm{dim}(U+W)</span>, the number of columns of <span class="math inline">A</span> is <span class="math inline">\mathrm{dim}(U)+\mathrm{dim}(W)</span>, and the nullity of <span class="math inline">A</span> is <span class="math inline">\mathrm{dim}(U\cap W)</span>, so the desired formula is the known formula <span class="math display">
+\mathrm{rank}(A)+\mathrm{nullity}(A) = \mathrm{columns}(A)
+</span></p>
+<p><span class="math display">
+\begin{aligned}
+\mathrm{dim}(U+W) &amp;= \mathrm{dim}(U\oplus W)-\mathrm{dim}(U\cap W) \\
+&amp;= \mathrm{dim}(U)+\mathrm{dim}(W)-\mathrm{dim}(U\cap W)
+\end{aligned}
+</span></p>
+</section>
+<section id="quotient-spaces" class="level3">
+<h3 class="anchored" data-anchor-id="quotient-spaces">Quotient Spaces</h3>
+<p>An <em>equivalence relation</em> on a set <span class="math inline">X</span> is a relation <span class="math inline">x\sim y</span> between any two elements of <span class="math inline">X</span> with the properties that:</p>
+<ol type="1">
+<li><span class="math inline">x\sim x</span> for all <span class="math inline">x\in X</span>.</li>
+<li>If <span class="math inline">x\sim y</span>, then <span class="math inline">y\sim x</span> for all <span class="math inline">x,y\in X</span>.</li>
+<li>If <span class="math inline">x\sim y</span> and <span class="math inline">y\sim z</span> then <span class="math inline">x\sim z</span> for all <span class="math inline">x,y,z\in X</span>.</li>
+</ol>
+<p>An equivalence relation partitions <span class="math inline">X</span> into equivalence classes. An equivalence class <span class="math display">
+[x] =\{y\in X : y\sim x\}
+</span></p>
+<p>Every element of <span class="math inline">X</span> belongs to exactly one class. Put another way, given two elements <span class="math inline">x</span> and <span class="math inline">y</span> in <span class="math inline">X</span>, either <span class="math inline">[x]=[y]</span> or <span class="math inline">[x]\cap [y]=\emptyset</span>.</p>
+<p>To see this, clearly <span class="math inline">x\in [x]</span>. Suppose <span class="math inline">a\in [x]\cap [y]</span>. Then <span class="math inline">a\sim x</span> and <span class="math inline">a\sim y</span> so <span class="math inline">y\sim x</span>. Therefore <span class="math inline">y\in [x]</span>. If <span class="math inline">u\sim y</span>, then <span class="math inline">u\sim x</span> so <span class="math inline">u\in [x]</span>. Therefore <span class="math inline">[y]\subset [x]</span>. The same argument run “the other way” shows <span class="math inline">[x]\subset [y]</span>. So <span class="math inline">[x]\cap [y]\not=\emptyset</span> implies <span class="math inline">[x]=[y]</span>.</p>
+<section id="quotient-spaces-1" class="level4">
+<h4 class="anchored" data-anchor-id="quotient-spaces-1">Quotient spaces</h4>
+<p>Now suppose <span class="math inline">V</span> is a vector space over <span class="math inline">F</span> and <span class="math inline">W</span> is a subspace of <span class="math inline">V</span>. Define an equivalence relation on <span class="math inline">V</span> by setting <span class="math display">
+x\sim y \iff x-y\in W.
+</span></p>
+<p>The set of equivalence classes <span class="math inline">[x]</span> is called the <em>quotient space</em> <span class="math inline">V/W</span>.</p>
+<p>In fact <span class="math inline">V/W</span> is a vector space over <span class="math inline">F</span>. We define <span class="math display">
+[x]+[y] = [x+y]
+</span> and <span class="math display">
+a[x]=[ax]
+</span></p>
+<p>We have to verify that these operations are well-defined and that they satisfy all the vector space axioms.</p>
+<p>To see that addition is well-defined, suppose <span class="math inline">[x]=[a]</span> and <span class="math inline">[y]=[b]</span>. Then we claim <span class="math display">
+[x+y]=[a+b]
+</span> This is because <span class="math display">
+(a+b)-(x+y)=(a-x)+(b-y)\in W.
+</span></p>
+<p>Similarly if <span class="math inline">[x]=[y]</span> then <span class="math inline">x-y\in W</span> so <span class="math inline">ax-ay\in W</span> and therefore <span class="math inline">[ax]=[ay]</span>.</p>
+<p>Checking all the axioms is tedious but straightforward. For example, <span class="math display">
+\begin{aligned}
+a([x]+[y])&amp;=a([x+y])=[a(x+y)] \\
+&amp;=[ax+ay]=[ax]+[ay]=a[x]+a[y]
+\end{aligned}
+</span></p>
+<p><strong>Proposition:</strong> Suppose that <span class="math inline">V</span> is finite dimensional and <span class="math inline">W\subset V</span>. Then <span class="math inline">\mathrm{dim}(V/W)=\mathrm{dim}(V)-\mathrm{dim}(W)</span>.</p>
+<p><strong>Proof:</strong> The map <span class="math inline">f:V\to V/W</span> defined by <span class="math inline">f(v)=[v]</span> is an onto linear map with nullspace exactly <span class="math inline">W</span>. Linearity:</p>
+<ul>
+<li><span class="math inline">f(x+y)=[x+y]=[x]+[y]=f(x)+f(y)</span></li>
+<li><span class="math inline">f(ax) = [ax] = a[x] = af(x)</span></li>
+</ul>
+<p>The fact that the map is onto is because if <span class="math inline">[v]\in V/W</span> then <span class="math inline">f(v)=[v]</span>.</p>
+<p>Finally, the nullspace of <span class="math inline">f</span> is the set of <span class="math inline">v</span> such that <span class="math inline">f(v)=[v]=[0]</span>. But <span class="math inline">[v]=[0]</span> if and only if <span class="math inline">v\in W</span>.</p>
+<p>Thus the dimension relation follows from the rank/nullity theorem for the linear map <span class="math inline">f</span>.</p>
+<p><strong>Proposition:</strong> Let <span class="math inline">f:V\to W</span> be a linear map and suppose <span class="math inline">H\subset V</span> is contained in the kernel of <span class="math inline">f</span>. Then there is a unique linear map <span class="math inline">\overline{f}:V/H\to W</span> such that <span class="math inline">\overline{f}([v])=f(v)</span> for all <span class="math inline">v\in V</span>.</p>
+<p>Proof: The map <span class="math inline">\overline{f}</span> defined by <span class="math inline">\overline{f}([v])=f(v)</span> has the desired property and is well-defined because if <span class="math inline">[v]=[x]</span> then <span class="math inline">v-x\in H</span>. Since <span class="math inline">H</span> is contained in the kernel of <span class="math inline">f</span>, this means that <span class="math inline">f(v-x)=0</span> so <span class="math inline">f(v)=f(x)</span>.</p>
+<p>The existence of the map <span class="math inline">\overline{f}</span> is called <em>the universal mapping property of the quotient <span class="math inline">V/H</span></em>.</p>
+<p>One can show that the subspaces of <span class="math inline">V/H</span> correspond exactly to the subspaces of <span class="math inline">V</span> containing <span class="math inline">H</span>.</p>
+</section>
+<section id="complexes" class="level4">
+<h4 class="anchored" data-anchor-id="complexes">Complexes</h4>
+<p><strong>Definition:</strong> A complex of vector spaces is a sequence of vector spaces <span class="math inline">W^{i}</span> connected by linear maps <span class="math inline">d_{i}</span> <span class="math display">
+\cdots \to \cdots \to W^{i}\stackrel{\to}{d_{i}} W^{i+1} \stackrel{\to}{d_{i+1}}W^{i+2}\to\cdots
+</span></p>
+<p>with the property that <span class="math inline">d_{i+1}d_{i}=0</span> for all <span class="math inline">i</span>.</p>
+<p>The complex is bounded if all but finitely many <span class="math inline">W^{i}</span> are zero.</p>
+<p>Let <span class="math inline">Z^{i}\subset W^{i}</span> be the null space of <span class="math inline">d_{i}</span> and let <span class="math inline">B^{i}\subset W^{i}</span> be the image <span class="math inline">d_{i-1}(W_{i-1})\subset W^{i}</span>.</p>
+<p>The elements of <span class="math inline">Z^{i}</span> are called cocycles and those of <span class="math inline">B^{i}</span> are called coboundaries.</p>
+<p>The vector space <span class="math inline">Z^{i}/B_{i}</span> is the <span class="math inline">i^{th}</span> cohomology <span class="math inline">H^{i}(W^{\cdot})</span> of the complex.</p>
+<p>Suppose the complex is bounded and all <span class="math inline">W^{i}</span> are finite dimensional. The sum <span class="math display">
+\chi(W^{\cdot})=\sum_{-\infty}^{\infty} (-1)^{i}\mathrm{dim}(W^{i})
+</span></p>
+<p>is called the Euler characteristic of the complex.</p>
+<p><strong>Proposition:</strong> We have <span class="math display">
+\chi(W^{\cdot})=\sum_{-\infty}^{\infty} (-1)^{i}\mathrm{dim}H^{i}(W^{\cdot})
+</span></p>
+<p><strong>Proof:</strong> Notice that <span class="math inline">\mathrm{dim}(B^{i+1})=\mathrm{dim}(W^{i})-\mathrm{dim}(Z^{i})</span> since the image of <span class="math inline">d^{i}</span> is <span class="math inline">B^{i+1}</span> and its kernel is <span class="math inline">Z^{i}</span>. So: <span class="math display">
+\sum (-1)^{i}\mathrm{dim}(W^{i}) = \sum (-1)^{i}(\mathrm{dim}(B^{i+1})+\mathrm{dim}(Z^{i})).
+</span> Now <span class="math display">
+\sum (-1)^{i}(\mathrm{dim}(B^{i+1})+\mathrm{dim}(Z^{i}))=\sum (-1)^{i}(\mathrm{dim}(Z^{i})-\mathrm{dim}(B^{i}))
+</span></p>
+<p>which is the alternating sum of the dimensions of the <span class="math inline">H^{i}(W^{\cdot})</span>.</p>
 
 
+</section>
 </section>
 </section>
 

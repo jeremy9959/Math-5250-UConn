@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 5250: Graduate Linear Algebra - Weeks 2–3 — Linear Transformations: General Theory</title>
+<title>Math 5250: Graduate Linear Algebra - Trace and Determinant</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,6 +59,22 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -106,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Weeks 2–3 — Abstract Vector Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.3.html">Linear transformations: general theory</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Weeks 2–3 — Abstract Vector Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.3.html">Trace and determinant</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,24 +195,18 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Abstract vector spaces and subspaces</span></a>
+ <span class="menu-text">Abstract vector spaces and linear maps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Direct sums and quotient spaces</span></a>
+ <span class="menu-text">Direct sums, quotient spaces, and complexes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Linear transformations: general theory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Trace and determinant</span></a>
   </div>
 </li>
@@ -415,7 +425,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a></li>
+  <li><a href="#trace" id="toc-trace" class="nav-link active" data-scroll-target="#trace">Trace</a></li>
+  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">Determinant</a></li>
+  <li><a href="#a-few-properties-of-the-determinant" id="toc-a-few-properties-of-the-determinant" class="nav-link" data-scroll-target="#a-few-properties-of-the-determinant">A few properties of the determinant</a></li>
+  <li><a href="#determinant-of-a-linear-map" id="toc-determinant-of-a-linear-map" class="nav-link" data-scroll-target="#determinant-of-a-linear-map">Determinant of a Linear Map</a></li>
   </ul>
 </nav>
     </div>
@@ -424,7 +437,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Weeks 2–3 — Linear Transformations: General Theory</h1>
+<h1 class="title">Trace and Determinant</h1>
 </div>
 
 
@@ -439,9 +452,147 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
-<p>Notes on linear transformations between abstract vector spaces, their matrix representations with respect to chosen bases, and change-of-basis formulas.</p>
+<section id="trace" class="level3">
+<h3 class="anchored" data-anchor-id="trace">Trace</h3>
+<p>If <span class="math inline">A</span> is an <span class="math inline">n\times n</span> square matrix with entries in a field <span class="math inline">F</span>, then the <em>trace</em> <span class="math inline">\mathrm{trace}(A)</span> is the sum <span class="math inline">\sum_{i=1}^{n} a_{ii}</span> of the diagonal elements of <span class="math inline">A</span>.</p>
+<p><strong>Proposition:</strong> If <span class="math inline">A</span> and <span class="math inline">B</span> are <span class="math inline">n\times n</span> matrices over <span class="math inline">F</span>, then <span class="math inline">\mathrm{trace}(AB)=\mathrm{trace}(BA)</span>.</p>
+<p><strong>Proof:</strong> Let <span class="math inline">C=AB</span> and <span class="math inline">D=BA</span>. Then <span class="math display">
+c_{ij} = \sum_{k} a_{ik}b_{kj}.
+</span></p>
+<p>and</p>
+<p><span class="math display">
+d_{ij} = \sum_{k} b_{ik}a_{kj}
+</span></p>
+<p>Now <span class="math display">
+\mathrm{trace}(AB) = \sum_{i=1}^{n} c_{ii} = \sum_{i}\sum_{k} a_{ik}b_{ki}
+=\sum_{k}\sum_{i} b_{ki}a_{ik} =\sum_{k} d_{kk} = \mathrm{trace}(BA)
+</span></p>
+<p>Now let <span class="math inline">f:V\to V</span> be any linear map, where <span class="math inline">V</span> is a finite dimensional vector space. Choose a basis <span class="math inline">E</span> for <span class="math inline">V</span> and define the trace <span class="math inline">\mathrm{trace}(f)</span> to be the trace of the matrix <span class="math inline">[f]_{E}^{E}</span>.</p>
+<p>This is a well-defined invariant of <span class="math inline">f</span> because if we choose a different basis, say <span class="math inline">E'</span>, then <span class="math inline">[f]_{E'}^{E'} =[1]_{E'}^{E} [f]_{E}^{E}[1]_{E}^{E'}</span> Thus <span class="math display">
+\begin{aligned}
+\mathrm{trace}([f]_{E'}^{E'})&amp;=\mathrm{trace}([1]_{E'}^{E}[f]_{E}^{E}[1]_{E}^{E'})\\
+&amp;=\mathrm{trace}([f]_{E}^{E}[1]_{E}^{E'}[1]_{E'}^{E})\\
+&amp;=\mathrm{trace}([f]_{E}^{E})
+\end{aligned}
+</span></p>
+<p>since <span class="math inline">[1]_{E'}^{E}[1]_{E}^{E'}=[1]_{E}^{E}</span> is the identity matrix.</p>
+</section>
+<section id="determinant" class="level3">
+<h3 class="anchored" data-anchor-id="determinant">Determinant</h3>
+<p><strong>Proposition:</strong> There is a unique function (the <em>determinant</em>) from <span class="math inline">M_n(F)</span> to <span class="math inline">F</span> satisfying the following properties:</p>
+<ol type="1">
+<li><span class="math inline">\det</span> is multilinear as a function of the rows of <span class="math inline">A\in M_{n}(F)</span>. In other words, if we think of <span class="math inline">A</span> as made up of <span class="math inline">n</span> rows <span class="math inline">A_{1},\dots, A_{n}</span> then <span class="math display">
+\det(A) = \det(A_1,\ldots, A_n)
+</span></li>
+</ol>
+<p>is linear in each of its variables separately. For each <span class="math inline">1\le i\le n</span> this means: <span class="math display">
+\det(A_1,\ldots, A_{i}+B_{i},\ldots, A_n) =
+\det(A_1,\ldots, A_i,\ldots, A_n) + \det(A_1,\ldots, B_{i},\ldots, A_n)
+</span></p>
+<p>and <span class="math display">
+\det(A_1,\ldots, aA_{i},\ldots, A_n) = a\det(A_1,\ldots, A_{i},\ldots, A_{n}).
+</span></p>
+<ol start="2" type="1">
+<li>The determinant function is <em>alternating</em>. This means that <span class="math inline">\det</span> vanishes on any collection of rows <span class="math inline">A_1,\ldots, A_n</span> where two rows are repeated. One consequence of this is that swapping any two rows changes the sign of the determinant. For example, since <span class="math display">
+\det(A_1+A_2,A_1+A_2,\ldots, A_n) = 0
+</span> by linearity we get <span class="math display">
+\begin{aligned}
+\det(A_1,A_1+A_2,\ldots, A_n) &amp;+\det(A_2, A_1+A_2,\ldots, A_n) \\
+&amp;=\det(A_1,A_1,\ldots, A_n) + \det(A_1,A_2,\ldots, A_n) \\
+&amp;\quad+ \det(A_2,A_2,\ldots, A_n) + \det(A_2, A_1,\ldots, A_n) \\
+&amp;=0
+\end{aligned}
+</span></li>
+</ol>
+<p>This in turn means <span class="math display">
+\det(A_1,A_2,\ldots, A_n) = -\det(A_2,A_1,\ldots, A_n).
+</span></p>
+<ol start="3" type="1">
+<li>The determinant of the identity matrix is 1.</li>
+</ol>
+<p>Proving the existence of such a function is kind of a pain in the neck, but we can make some observations that will help make sense of the situation.</p>
+<p>Notice first that <em>if</em> the map exists, then the properties above tell us exactly how the elementary row operations affect it. In particular:</p>
+<ol type="a">
+<li><p>If <span class="math inline">A</span> is obtained from <span class="math inline">A'</span> by interchanging two rows, then <span class="math inline">\det(A)=-\det(A')</span>. This follows from the alternating property.</p></li>
+<li><p>If <span class="math inline">A</span> is obtained from <span class="math inline">A'</span> by multiplying a row by a scalar <span class="math inline">a</span>, then <span class="math inline">\det(A)=a\det(A')</span>.</p></li>
+<li><p>If <span class="math inline">A</span> is obtained from <span class="math inline">A'</span> by adding a multiple of one row to another, then <span class="math inline">\det(A)=\det(A')</span>. To see this note that <span class="math display">
+\det(A_1+aA_i,A_2,\ldots, A_n) = \det(A_1,\ldots, A_n)+a\det(A_i,A_2,\ldots, A_i,\ldots, A_n)
+</span></p></li>
+</ol>
+<p>and the second term in the sum on the right is zero by the alternating property.</p>
+<p>We know that we can reduce an <span class="math inline">n\times n</span> matrix <span class="math inline">A</span> to row-reduced echelon form using elementary row operations, and by tracking the effect of those operations on <span class="math inline">\det(A)</span> we see that it’s enough to know how to compute the determinant of a matrix <span class="math inline">A'</span> which has <span class="math inline">k</span> <span class="math inline">1</span>’s followed by <span class="math inline">n-k</span> <span class="math inline">0</span>’s on the diagonal. If <span class="math inline">k=n</span>, then this is the identity matrix so the determinant is <span class="math inline">1</span>. On the other hand, if the last row of <span class="math inline">A'</span> is zero, then <span class="math display">
+\det(A'_1,\ldots, A'_n) = \det(A'_1,\ldots, 0\cdot A'_n) = 0\cdot\det(A'_1,\ldots, A'_n) = 0
+</span></p>
+<p>In other words, assuming the determinant exists, we have an algorithm to compute it.</p>
+<p>To establish existence, notice first that for <span class="math inline">1\times 1</span> matrices <span class="math inline">A=(a)</span> the determinant is just <span class="math inline">a</span>. For <span class="math inline">2\times 2</span> matrices</p>
+<p><span class="math display">
+A = \left[\begin{matrix} a &amp; b \\ c &amp; d\end{matrix}\right]
+</span></p>
+<p>then the usual <span class="math inline">\det(A)=ad-bc</span> has the desired properties.</p>
+<p>We proceed inductively. Suppose <span class="math inline">A=(a_{ij})</span> is <span class="math inline">n\times n</span>. Let <span class="math inline">A_{i}</span> be the submatrix of <span class="math inline">A</span> obtained by deleting the first row and the <span class="math inline">i^{th}</span> column of <span class="math inline">A</span>. This is an <span class="math inline">(n-1)\times (n-1)</span> matrix so its determinant is known inductively. Define <span class="math display">
+\det(A) = \sum_{i=1}^{n} (-1)^{i+1}a_{1i}\det(A_{i}).
+</span></p>
+<p>This definition satisfies the linearity condition and takes the value <span class="math inline">1</span> on the <span class="math inline">n\times n</span> identity matrix. The tricky part is the alternating condition, and for that we only need to consider the case in which the first two rows of <span class="math inline">A</span> are the same.</p>
+<p>Now <span class="math display">
+\det(A_{i}) = \sum_{j=1,j\not=i}^{n} (\pm)a_{2j}\det(A_{ij})
+</span></p>
+<p>where <span class="math inline">A_{ij}</span> is the matrix <span class="math inline">A</span> with columns <span class="math inline">i</span> and <span class="math inline">j</span> deleted. Here we leave the sign unspecified – it’s the whole point, but we’ll figure it out shortly.</p>
+<p>If we expand <span class="math inline">\det(A)</span> in a double sum, the term <span class="math inline">\det(A_{ij})</span> appears twice: once with coefficient <span class="math inline">\pm a_{1i}a_{2j}</span> and once with coefficient <span class="math inline">\pm a_{1j}a_{2i}</span>. If we can show that these terms have opposite signs, then if the first two rows of <span class="math inline">A</span> are equal the sum will cancel out and yield zero as desired.</p>
+<p>The sign in front of <span class="math inline">a_{1i}</span> is <span class="math inline">(-1)^{i+1}</span>. The sign in front of <span class="math inline">a_{2j}</span> depends on whether <span class="math inline">j</span> is less than or greater than <span class="math inline">i</span>. If less, it’s <span class="math inline">(-1)^{j+1}</span>. If more, it’s <span class="math inline">(-1)^{j}</span>.<br>
+(This is because when expanding the subdeterminant <span class="math inline">\det(A_{i})</span>, skipping <span class="math inline">i</span> changes the parity of the term associated with the index <span class="math inline">j</span>.)</p>
+<p>So the combined sign is <span class="math display">
+\epsilon_{ij} = \begin{cases} (-1)^{i+j} &amp; j&lt;i \\
+                            (-1)^{i+j+1} &amp; j&gt;i \end{cases}                         
+</span></p>
+<p>The sign <span class="math inline">\epsilon_{ji}</span> in front of <span class="math inline">a_{1j}</span> is <span class="math inline">(-1)^{j+1}</span> and that in front of <span class="math inline">a_{2i}</span> is <span class="math inline">(-1)^{i+1}</span> if <span class="math inline">i&lt;j</span> and <span class="math inline">(-1)^{i}</span> if <span class="math inline">i&gt;j</span>. So <span class="math display">
+\epsilon_{ji} = \begin{cases} (-1)^{i+j} &amp; i&lt;j \\
+(-1)^{i+j+1} &amp; i&gt;j
+\end{cases}
+</span></p>
+<p>Comparing these shows that in fact the signs are opposite.</p>
+<p>Thus we have an inductive formula that yields the determinant.</p>
+<p>For computational purposes, row reduction is <em>much</em> more efficient.</p>
+<p><strong>Proposition:</strong> The determinant is multiplicative: <span class="math inline">\det(AB)=\det(A)\det(B)</span>.</p>
+<p><strong>Proof:</strong> Recall that each of the row operations can be carried out by multiplication by an appropriate <a href="../../notes/Week1/W01.2.html#def-elementary-matrix">elementary matrix</a>. The swapping matrices <span class="math inline">P_{ij}</span> have determinant <span class="math inline">-1</span> and the “add a multiple of a row” matrices <span class="math inline">R_{ji}(\lambda)</span> have determinant <span class="math inline">1</span> – you can see this directly from the properties of the determinant. The scaling matrix <span class="math inline">D_{i}(\lambda)</span> has determinant <span class="math inline">\lambda</span>. So, for each of these matrices <span class="math inline">E</span>, we have <span class="math inline">\det(EA)=\det(E)\det(A)</span>.</p>
+<p>By row reduction any matrix <span class="math inline">A</span> is a product of elementary matrices. If <span class="math inline">A=E_{1}\cdots E_{k}</span> and <span class="math inline">B=F_{1}\cdots F_{l}</span> where <span class="math inline">E_{i}</span> and <span class="math inline">F_{j}</span> are elementary matrices, then <span class="math display">
+\det(AB)=\det(E_{1}\cdots E_{k}F_{1}\cdots F_{l})=\det(A)\det(B).
+</span></p>
+<p><strong>Corollary:</strong> A matrix is invertible if and only if its determinant is nonzero.</p>
+<p><strong>Proof:</strong> If <span class="math inline">A</span> is invertible then we can find <span class="math inline">B</span> so that <span class="math inline">AB=I</span> and therefore <span class="math inline">\det(A)\det(B)=1</span> so <span class="math inline">\det(A)</span> is nonzero. Conversely, if we write <span class="math display">
+A=E_{1}\cdots E_{k}J
+</span></p>
+<p>where the <span class="math inline">E_{i}</span> are elementary matrices and <span class="math inline">J</span> is diagonal, then <span class="math inline">\det(A)=0</span> if and only if <span class="math inline">\det(J)=0</span>, which happens if and only if <span class="math inline">J</span> has a zero on the diagonal. (Since <span class="math inline">J</span> is in row-reduced echelon form, every diagonal entry is either <span class="math inline">0</span> or a pivot, hence exactly <span class="math inline">1</span>.) So if <span class="math inline">\det(A)</span> is nonzero, then <span class="math inline">J</span> is the identity matrix, and one gets an inverse for <span class="math inline">A</span> from the inverses of the <span class="math inline">E_{i}</span>.</p>
+</section>
+<section id="a-few-properties-of-the-determinant" class="level3">
+<h3 class="anchored" data-anchor-id="a-few-properties-of-the-determinant">A few properties of the determinant</h3>
+<ol type="1">
+<li><p>The formula we used to define the determinant is called the “cofactor expansion” on the first row. One can use any row to get a similar expansion.</p></li>
+<li><p>One can use columns instead of rows.</p></li>
+<li><p>Let <span class="math inline">B=A^{adj}</span> be the matrix where <span class="math display">
+b_{ij} = (-1)^{i+j}\det(A_{ji})
+</span></p></li>
+</ol>
+<p>where <span class="math inline">A_{ji}</span> is the matrix obtained from <span class="math inline">A</span> by deleting the <span class="math inline">j^{th}</span> row and the <span class="math inline">i^{th}</span> column. This matrix is called the (classical) adjoint of <span class="math inline">A</span>.</p>
+<p><strong>Proposition:</strong> <span class="math inline">AA^{adj} = A^{adj}A = \det(A)I</span>.</p>
+<p><strong>Proof:</strong> Let <span class="math inline">B=A^{adj}</span> and <span class="math inline">C=AB</span>. Then <span class="math display">
+c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj} = \sum_{k=1}^{n} (-1)^{k+j} a_{ik}\det(A_{jk}) = (-1)^{j+1}\sum_{k=1}^{n} (-1)^{k+1}a_{ik}\det(A_{jk}).
+</span></p>
+<p>If <span class="math inline">i</span> and <span class="math inline">j</span> are different, then row <span class="math inline">i</span> of <span class="math inline">A</span> is included in <span class="math inline">\det(A_{jk})</span> and so</p>
+<p><span class="math display">
+\sum_{k=1}^{n} (-1)^{k+1}a_{ik}\det(A_{jk})
+</span></p>
+<p>is the cofactor expansion of the determinant of the matrix obtained by replacing row <span class="math inline">j</span> of <span class="math inline">A</span> by a duplicate of row <span class="math inline">i</span> and expanding along row <span class="math inline">j</span>. This is zero since it’s the determinant of a matrix with a repeated row.</p>
+<p>On the other hand, if <span class="math inline">i</span> and <span class="math inline">j</span> are equal, this is <span class="math display">
+(-1)^{i+1}\sum_{k=1}^{n} (-1)^{k+1}a_{ik}\det(A_{ik})
+</span> which is <span class="math inline">\det(A)</span>.</p>
+<p><strong>Remark:</strong> We need to check the sign here: the cofactor expansion around row <span class="math inline">i</span> gets a sign <span class="math inline">(-1)^{i+1}</span>. This is because you need to cyclically permute the first <span class="math inline">i</span> rows to make the formula look right.</p>
+<p><strong>Remark:</strong> This gives us an “explicit” formula for the inverse of <span class="math inline">A</span> as <span class="math inline">\det(A)^{-1}A^{adj}</span>.</p>
+<p><strong>Remark:</strong> An arbitrary permutation <span class="math inline">\sigma</span> of <span class="math inline">1,\ldots, n</span> can be represented by a matrix <span class="math inline">E(\sigma)</span> that permutes the rows of a matrix <span class="math inline">A</span> according to this permutation. The sign of the permutation is <span class="math inline">\det(E(\sigma))</span>.</p>
+</section>
+<section id="determinant-of-a-linear-map" class="level2">
+<h2 class="anchored" data-anchor-id="determinant-of-a-linear-map">Determinant of a Linear Map</h2>
+<p>Let <span class="math inline">f:V\to V</span> be a linear map where <span class="math inline">V</span> is a finite dimensional vector space over <span class="math inline">F</span>. We define the determinant of <span class="math inline">f</span> to be the determinant of <span class="math inline">[f]_{E}^{E}</span> where <span class="math inline">E</span> is any basis for <span class="math inline">V</span>.</p>
+<p>Since choosing a different basis <span class="math inline">E'</span> changes the matrix <span class="math inline">A=[f]_{E}^{E}</span> by similarity to a matrix <span class="math inline">B=PAP^{-1}</span>, the determinant is independent of the choice of basis and is thus a well-defined invariant of <span class="math inline">f</span>.</p>
 
 
 </section>

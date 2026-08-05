@@ -195,24 +195,18 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Abstract vector spaces and subspaces</span></a>
+ <span class="menu-text">Abstract vector spaces and linear maps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Direct sums and quotient spaces</span></a>
+ <span class="menu-text">Direct sums, quotient spaces, and complexes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear transformations: general theory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Trace and determinant</span></a>
   </div>
 </li>
@@ -484,18 +478,18 @@ L(e_{i}) = \left[\begin{matrix}y_{1i}\\ \vdots \\ y_{mi}\end{matrix}\right].
 <p>The matrix <span class="math inline">[L]_{E}^{F}</span> depends on the bases <span class="math inline">E</span> and <span class="math inline">F</span>. Suppose we used different bases? For example, let <span class="math inline">E'</span> and <span class="math inline">F'</span> be different bases for <span class="math inline">\mathbf{R}^{n}</span> and <span class="math inline">\mathbf{R}^{m}</span>.<br>
 How is the matrix <span class="math inline">[L]_{E'}^{F'}</span> related to <span class="math inline">[L]_{E}^{F}</span>?</p>
 <p>We can write the elements of <span class="math inline">E</span> in terms of <span class="math inline">E'</span>: <span class="math display">
-e_{j} = \sum_{i=0}^{n} a_{ij}e'_{i}
+e_{j} = \sum_{i=1}^{n} a_{ij}e'_{i}
 </span></p>
 <p>The columns of the matrix <span class="math inline">A=(a_{ij})</span> give the coordinates for the basis elements <span class="math inline">e_{i}</span> in terms of the <span class="math inline">e'_{i}</span>. Consequently, if <span class="math inline">x=\sum b_{i}e_{i}</span>, then <span class="math inline">Ax</span> gives the coordinates of <span class="math inline">x</span> in the basis <span class="math inline">e'_{i}</span>: <span class="math display">
 A[x]_{E} = A\left[\begin{matrix} b_1 \\ \vdots \\ b_n\end{matrix}\right]=[x]_{E'}.
 </span></p>
-<p>Formally speaking, <span class="math inline">A=[I]_{E}^{E'}</span> is the matrix of the identity map where the “input” basis is <span class="math inline">E</span> and the output bases is <span class="math inline">E'</span>.</p>
-<p>We an make a similar construction with the bases <span class="math inline">F</span> and <span class="math inline">F'</span>.</p>
+<p>Formally speaking, <span class="math inline">A=[I]_{E}^{E'}</span> is the matrix of the identity map where the “input” basis is <span class="math inline">E</span> and the output basis is <span class="math inline">E'</span>.</p>
+<p>We can make a similar construction with the bases <span class="math inline">F</span> and <span class="math inline">F'</span>.</p>
 <p>Then <span class="math display">
-[L]_{E}^{F} = [I]_{F'}^{F}[L]_{E'}^{F'}[I]{E}^{E'}.
+[L]_{E}^{F} = [I]_{F'}^{F}[L]_{E'}^{F'}[I]_{E}^{E'}.
 </span></p>
 <p>It’s easy to see that <span class="math inline">[I]_{E}^{E'}[I]_{E'}^{E}=[I]_{E}^{E}</span>, and this last matrix is the “identity” matrix with ones on the diagonal and zeros elsewhere. So <span class="math display">
-[I]_{E}^{E'}=([I]_{E'}^(E^{-1})
+[I]_{E}^{E'}=([I]_{E'}^{E})^{-1}
 </span></p>
 </section>
 <section id="similarity" class="level4">
@@ -514,12 +508,11 @@ A = PBP^{-1}
 </section>
 <section id="isomorphisms" class="level4">
 <h4 class="anchored" data-anchor-id="isomorphisms">Isomorphisms</h4>
-<p>A linear map <span class="math inline">L:V\to W</span> is <em>injective</em> (or one-to-one) if and only if its nullity is zero. If the nullity is not zero, then there is a non-zero <span class="math inline">x</span> with <span class="math inline">L(x)=0</span>, so <span class="math inline">L</span> is not injective. On the other hand if <span class="math inline">L(x)=L(y)</span> but <span class="math inline">x\not y</span>, then <span class="math inline">L(x-y)=0</span> but <span class="math inline">x-y\not=0</span>, so the nullity of <span class="math inline">L</span> is greater than zero.</p>
+<p>A linear map <span class="math inline">L:V\to W</span> is <em>injective</em> (or one-to-one) if and only if its nullity is zero. If the nullity is not zero, then there is a non-zero <span class="math inline">x</span> with <span class="math inline">L(x)=0</span>, so <span class="math inline">L</span> is not injective. On the other hand if <span class="math inline">L(x)=L(y)</span> but <span class="math inline">x\neq y</span>, then <span class="math inline">L(x-y)=0</span> but <span class="math inline">x-y\not=0</span>, so the nullity of <span class="math inline">L</span> is greater than zero.</p>
 <p>A linear map <span class="math inline">L:V\to W</span> is <em>surjective</em> (or onto) if and only if its rank equals the dimension of <span class="math inline">W</span>. This is because the rank of <span class="math inline">L</span> is the dimension of its image. So the image of <span class="math inline">L</span> is a subspace of <span class="math inline">W</span> whose dimension is the rank of <span class="math inline">L</span>. This can only be all of <span class="math inline">W</span> if the rank of <span class="math inline">L</span> is the dimension of <span class="math inline">W</span>.</p>
 <p>An <em>isomorphism</em> between two vector spaces <span class="math inline">V</span> and <span class="math inline">W</span> is a linear map <span class="math inline">L:V\to W</span> with a linear inverse <span class="math inline">G:W\to V</span>. It’s enough for <span class="math inline">L</span> to be bijective, meaning both injective and surjective, which forces <span class="math inline">V</span> and <span class="math inline">W</span> to have the same dimension.</p>
 <p><strong>Proposition:</strong> A linear map <span class="math inline">L:\mathbf{R}^{n}\to\mathbf{R}^{n}</span> is invertible if and only if its nullity is zero.</p>
-<p>An <span class="math inline">n\times n</span> matrix <span class="math inline">A</span> is invertible if and only if it has rank <span class="math inline">n</span>. Alternatively, if it has nullity zero.</p>
-<p>)</p>
+<p>An <span class="math inline">n\times n</span> matrix <span class="math inline">A</span> is invertible if and only if it has rank <span class="math inline">n</span>, or, equivalently, if it has nullity zero.</p>
 
 
 </section>

@@ -195,24 +195,18 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Abstract vector spaces and subspaces</span></a>
+ <span class="menu-text">Abstract vector spaces and linear maps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Direct sums and quotient spaces</span></a>
+ <span class="menu-text">Direct sums, quotient spaces, and complexes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear transformations: general theory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Trace and determinant</span></a>
   </div>
 </li>
@@ -471,8 +465,8 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="operations">Operations</h3>
 <p>The set <span class="math inline">\mathbf{R}^{n}</span> allows for:</p>
 <p><strong>Addition of vectors.</strong> If</p>
-<p><span class="math display">x=(x_1,\ldots, x_n)\in R^{n} (or \mathbf{C}^{n})</span> and</p>
-<p><span class="math display">y=(y_1,\ldots, y_n)\in\mathbf{R}^{n} (or \mathbf{C}^{n})</span></p>
+<p><span class="math display">x=(x_1,\ldots, x_n)\in \mathbf{R}^{n}\ (\text{or } \mathbf{C}^{n})</span> and</p>
+<p><span class="math display">y=(y_1,\ldots, y_n)\in\mathbf{R}^{n}\ (\text{or } \mathbf{C}^{n})</span></p>
 <p>then <span class="math display">x+y=(x_1+y_1,\dots, x_n+y_n)</span> is in <span class="math inline">\mathbf{R}^{n}</span> (or <span class="math inline">\mathbf{C}^{n}</span>).</p>
 <p><strong>Multiplication of a vector by a scalar.</strong> If <span class="math display">a\in\mathbf{R}\ \mathrm{and}\  y=(y_1,\ldots, y_n)\in\mathbf{R}^{n}</span></p>
 <p>then <span class="math inline">ay=(ay_1,\ldots, ay_n)</span>. Similarly if <span class="math inline">a\in\mathbf{C}</span> and <span class="math inline">y\in\mathbf{C}^{n}</span>.</p>
@@ -499,7 +493,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Definition:</strong> A subspace <span class="math inline">W</span> of a vector space <span class="math inline">V</span> (for either <span class="math inline">\mathbf{R}</span> or <span class="math inline">\mathbf{C}</span>) is a subset of <span class="math inline">V</span> that is a vector space under the inherited operations from <span class="math inline">V</span>.</p>
 <p><strong>Example:</strong> Consider the set <span class="math inline">W</span> of vectors <span class="math inline">(x_1,x_2,0)</span> inside <span class="math inline">\mathbf{R}^{3}</span>. This is a copy of <span class="math inline">\mathbf{R}^{2}</span> sitting inside <span class="math inline">\mathbf{R}^{3}</span> so it’s a subspace.</p>
 <p><strong>Example:</strong> Let <span class="math inline">W</span> be the set of vectors in <span class="math inline">\mathbf{R}^{n}</span> that satisfy <span class="math inline">x_1+x_2+\cdots+x_n=0</span>. This is a subspace. Check: - If <span class="math inline">u=(u_1,\ldots, u_n)</span> and <span class="math inline">v=(v_1,\ldots, v_n)</span> are in <span class="math inline">W</span>, then <span class="math inline">u+v</span> is in <span class="math inline">W</span> because</p>
-<p><span class="math display">(u_1+v_1)+\cdots+(u_n+v_n)=(u_1+\cdots u_n)+(v_1+\cdots v_n)=0</span></p>
+<p><span class="math display">(u_1+v_1)+\cdots+(u_n+v_n)=(u_1+\cdots+u_n)+(v_1+\cdots+v_n)=0</span></p>
 <p>Similarly <span class="math inline">au_1+au_2+\cdots+au_n=a(u_1+\cdots u_n)=0</span> so <span class="math inline">au</span> is in <span class="math inline">W</span>.</p>
 <p>Finally <span class="math inline">e=(0,\ldots,0)</span> is in <span class="math inline">W</span>.</p>
 <p>The other axioms hold for elements of <span class="math inline">W</span> since all elements of <span class="math inline">W</span> are also elements of <span class="math inline">V</span>.</p>
@@ -513,7 +507,7 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="span-of-a-set-of-vectors">Span of a set of vectors</h4>
 <p><strong>Definition:</strong> Let <span class="math inline">V</span> be a vector space and let <span class="math inline">S=\{v_1,\ldots, v_k\}</span> be a set of vectors in <span class="math inline">V</span>. The <strong>span</strong> of <span class="math inline">S</span> is defined as either of the following equivalent things:</p>
 <ol type="1">
-<li><p>The set of all vectors <span class="math inline">\sum_{i=1}^{n} a_i v_i</span> as <span class="math inline">(a_1,\ldots, a_n)</span> runs over <span class="math inline">\mathbf{R}^{n}</span>.</p></li>
+<li><p>The set of all vectors <span class="math inline">\sum_{i=1}^{k} a_i v_i</span> as <span class="math inline">(a_1,\ldots, a_k)</span> runs over <span class="math inline">\mathbf{R}^{k}</span>.</p></li>
 <li><p>The intersection of all subspaces of <span class="math inline">V</span> that contain <span class="math inline">S</span>.</p></li>
 </ol>
 <p>The set <span class="math inline">H</span> in 1 is a subspace that contains <span class="math inline">S</span>. If <span class="math inline">W</span> is the intersection of all subspaces containing <span class="math inline">S</span>, then <span class="math inline">W\subset H</span> since <span class="math inline">H</span> is among the sets being intersected. On the other hand, since <span class="math inline">S</span> is contained in <span class="math inline">W</span>, and <span class="math inline">W</span> is a subspace, the elements in <span class="math inline">H</span> are also in <span class="math inline">W</span>. So <span class="math inline">W=H</span>.</p>
@@ -529,12 +523,13 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>a set <span class="math inline">S=\{v_1,\ldots, v_n\}</span> is linearly independent if the span of any proper subset of <span class="math inline">S</span> is a proper subspace of the span of <span class="math inline">S</span>.</li>
 </ul>
+<p>Let <span class="math inline">H=\mathrm{Span}(S)</span>.</p>
 <p>Suppose <span class="math display">
 \sum a_{i}v_{i}=0
 </span> and that <span class="math inline">a_{j}\not=0</span>. Then you can “solve” for <span class="math inline">v_{j}</span> in terms of the other vectors: <span class="math display">
 v_{j}=-\sum_{i\not=j} a_{i}/a_{j} v_{i}
-</span> so <span class="math inline">v_{j}</span> is in the span of the remaining <span class="math inline">v_{i}</span>. Thus the span of the set <span class="math inline">S\backslash\{v_{j}\}</span> is the same as the span of <span class="math inline">S</span>.</p>
-<p>Conversely, if there is a proper subset <span class="math inline">U</span> of <span class="math inline">S</span> whose span equals <span class="math inline">V</span>, choose <span class="math inline">v_{i}\not\in U</span>. Since <span class="math inline">v_{i}</span> is in the span of <span class="math inline">U</span>, you can write <span class="math display">
+</span> so <span class="math inline">v_{j}</span> is in the span of the remaining <span class="math inline">v_{i}</span>. Thus the span of the set <span class="math inline">S\backslash\{v_{j}\}</span> is the same as <span class="math inline">H</span>.</p>
+<p>Conversely, if there is a proper subset <span class="math inline">U</span> of <span class="math inline">S</span> whose span equals <span class="math inline">H</span>, choose <span class="math inline">v_{i}\not\in U</span>. Since <span class="math inline">v_{i}</span> is in the span of <span class="math inline">U</span>, you can write <span class="math display">
 v_{i} = \sum_{v_{j}\in U} b_{j}v_{j}
 </span> and therefore <span class="math display">
 -v_{i}+\sum b_{j}v_{j}=0
@@ -553,11 +548,16 @@ v_{j}=\sum_{\substack{i=1 \\ i \neq j}}^{n} a_{i}v_{i}
 <section id="dimension" class="level4">
 <h4 class="anchored" data-anchor-id="dimension">Dimension</h4>
 <p><strong>Theorem:</strong> Every vector space has a basis.</p>
-<p><strong>Proof:</strong> This requires Zorn’s Lemma. If <span class="math inline">S_{1}\subset S_{2}\subset\cdots</span> is an ascending sequence of linearly independent sets, their union is also linearly independent (because any linear relation would only involve finitely many vectors so would hold at some finite level of the chain). Therefore the linearly independent subsets of <span class="math inline">V</span> form a partially ordered set in which every ascending chain has a maximal element. It follows that there is a maximal linearly independent set <span class="math inline">B</span> in <span class="math inline">V</span>.</p>
+<p><strong>Proof:</strong> This requires Zorn’s Lemma. If <span class="math inline">S_{1}\subset S_{2}\subset\cdots</span> is an ascending sequence of linearly independent sets, their union is also linearly independent (because any linear relation would only involve finitely many vectors so would hold at some finite level of the chain). Therefore the linearly independent subsets of <span class="math inline">V</span> form a partially ordered set in which every chain has an upper bound (namely its union). By Zorn’s Lemma, it follows that there is a maximal linearly independent set <span class="math inline">B</span> in <span class="math inline">V</span>.</p>
 <p>Now choose any <span class="math inline">v\in V</span>. If <span class="math inline">v</span> is not in the span of <span class="math inline">B</span>, then <span class="math inline">B\cap \{v\}</span> would be linearly independent, contradicting maximality of <span class="math inline">B</span>.</p>
 <p>Hence <span class="math inline">B</span> spans <span class="math inline">V</span> and is therefore a basis.</p>
 <p><strong>Theorem:</strong> Any two bases of a vector space <span class="math inline">V</span> have the same cardinality.</p>
-<p><strong>Proof:</strong> Suppose that <span class="math inline">X</span> and <span class="math inline">Y</span> are bases of the same vector space <span class="math inline">V</span>. Each <span class="math inline">x\in X</span> is a <em>finite</em> linear combination of elements of <span class="math inline">Y</span>. This means there is a surjective finite-to-one map from <span class="math inline">Y</span> to <span class="math inline">X</span>. The surjectivity tells us that <span class="math inline">|Y|\ge |X|</span>. On the other hand, a theorem in cardinal arithmetic (Hessenberg’s Theorem) says that if <span class="math inline">X</span> is infinite and <span class="math inline">Y\to X</span> is finite-to-one then <span class="math inline">|Y|\le |X|</span>. Then The Cantor-Bernstein theorem says that <span class="math inline">X</span> and <span class="math inline">Y</span> have the same cardinality. ) We will establish the fact that any two finite bases of <span class="math inline">V</span> have the same number of elements a little later.</p>
+<p><strong>Proof:</strong> Suppose that <span class="math inline">X</span> and <span class="math inline">Y</span> are bases of the same vector space <span class="math inline">V</span>. If <span class="math inline">X</span> is finite, this is the “same number of elements” fact established later by the exchange argument, so assume <span class="math inline">X</span> is infinite.</p>
+<p>For each <span class="math inline">x\in X</span>, since <span class="math inline">Y</span> spans <span class="math inline">V</span>, <span class="math inline">x</span> is a <em>finite</em> linear combination of elements of <span class="math inline">Y</span>; let <span class="math inline">Y_{x}\subset Y</span> be the (finite) set of elements of <span class="math inline">Y</span> that appear with nonzero coefficient in that combination.</p>
+<p><strong>Claim:</strong> <span class="math inline">Y=\bigcup_{x\in X} Y_{x}</span>. If some <span class="math inline">y_{0}\in Y</span> belonged to no <span class="math inline">Y_{x}</span>, then, since <span class="math inline">X</span> spans <span class="math inline">V</span>, <span class="math inline">y_{0}</span> is a finite linear combination of elements of <span class="math inline">X</span>; substituting each of those <span class="math inline">x</span>’s by its expansion in terms of <span class="math inline">Y</span> writes <span class="math inline">y_{0}</span> as a combination of elements of <span class="math inline">Y\setminus\{y_{0}\}</span> (none of the terms involve <span class="math inline">y_{0}</span>, since <span class="math inline">y_{0}\notin Y_{x}</span> for any <span class="math inline">x</span> used). This contradicts the linear independence of <span class="math inline">Y</span>.</p>
+<p>A union of a family of finite sets <span class="math inline">Y_{x}</span> indexed by an infinite set <span class="math inline">X</span> has cardinality at most that of <span class="math inline">X</span> (see Hessenberg’s Theorem). Applying this to <span class="math inline">Y=\bigcup_{x\in X}Y_{x}</span> gives <span class="math inline">|Y|\le |X|</span>.</p>
+<p><span class="math inline">X</span> and <span class="math inline">Y</span> play symmetric roles (both are bases), so the same argument with <span class="math inline">X</span> and <span class="math inline">Y</span> exchanged gives <span class="math inline">|X|\le |Y|</span>. By the Cantor-Bernstein theorem, <span class="math inline">|X|=|Y|</span>.</p>
+<p>We will establish the fact that any two finite bases of <span class="math inline">V</span> have the same number of elements a little later.</p>
 <p><strong>Definition:</strong> The dimension of <span class="math inline">V</span> is the cardinality of any basis of <span class="math inline">V</span>.</p>
 <p>If <span class="math inline">V</span> has a finite basis, it is said to be finite-dimensional; otherwise it is infinite-dimensional.</p>
 

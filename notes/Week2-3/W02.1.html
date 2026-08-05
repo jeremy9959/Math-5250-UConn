@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Weeks 2–3 — Abstract Vector Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Abstract vector spaces and subspaces</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Weeks 2–3 — Abstract Vector Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Abstract vector spaces and linear maps</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -195,24 +195,18 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Abstract vector spaces and subspaces</span></a>
+ <span class="menu-text">Abstract vector spaces and linear maps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Direct sums and quotient spaces</span></a>
+ <span class="menu-text">Direct sums, quotient spaces, and complexes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear transformations: general theory</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Trace and determinant</span></a>
   </div>
 </li>
@@ -472,7 +466,7 @@ ul.task-list li input[type="checkbox"] {
 <li>is associative (<span class="math inline">(x+y)+z=x+(y+z)</span> for all <span class="math inline">x,y,z\in F</span>)</li>
 <li>is commutative (<span class="math inline">x+y=y+x</span> for all <span class="math inline">x,y\in F</span>)</li>
 <li>Has an identity element <span class="math inline">0</span> such that <span class="math inline">x+0=0+x=x</span> for all <span class="math inline">x\in F</span>.</li>
-<li>Has a inverse <span class="math inline">-x</span> for each <span class="math inline">x</span> so that <span class="math inline">x+(-x)=0</span>.</li>
+<li>Has an inverse <span class="math inline">-x</span> for each <span class="math inline">x</span> so that <span class="math inline">x+(-x)=0</span>.</li>
 </ol>
 <ol start="2" type="1">
 <li>Multiplication:</li>
@@ -505,12 +499,12 @@ x0=0.
 <li>the rational numbers <span class="math inline">\mathbf{Q}</span>.</li>
 <li>the two-element field <span class="math inline">\mathbf{F}_{2}</span> which consists of <span class="math inline">\{0,1\}</span> with operations <span class="math inline">0+0=1+1=0</span>, <span class="math inline">0+1=1+0=1</span>, and all products except <span class="math inline">1\cdot 1=1</span> equal to zero.</li>
 </ol>
-<p>If you’re familiar with modular arithmetic, it’s also true that <span class="math inline">\mathbf{F}_{p}</span>, the integers modulo <span class="math inline">p</span> where <span class="math inline">p</span> is prime, form a field.</p>
+<p>If you’re familiar with modular arithmetic, it’s also true that <span class="math inline">\mathbf{F}_{p}</span>, the set of integers modulo <span class="math inline">p</span> where <span class="math inline">p</span> is prime, forms a field.</p>
 <p>Other more complicated examples include:</p>
 <ol type="a">
 <li><p>the field of meromorphic functions on the complex plane (or on a general Riemann surface).</p></li>
 <li><p>the field of rational functions with complex coefficients in one variable <span class="math inline">\mathbf{C}(T)</span> or in more variables <span class="math inline">\mathbf{C}(T_1,\ldots, T_k)</span>. Here <span class="math inline">\mathbf{C}</span> can be replaced by any other field. In fact <span class="math inline">\mathbf{C}(T)</span> is the field of meromorphic functions on the Riemann sphere so is a special case of (a).</p></li>
-<li><p>The field of formal Laurent polynomials with coefficients in a field <span class="math inline">F,</span> usually written <span class="math inline">F((T)).</span></p></li>
+<li><p>The field of formal Laurent series with coefficients in a field <span class="math inline">F,</span> usually written <span class="math inline">F((T)).</span></p></li>
 </ol>
 </section>
 <section id="vector-spaces" class="level3">
@@ -565,10 +559,26 @@ L(ax) = aL(x)
 <li>A linear map <span class="math inline">L:V\to W</span> has a matrix representation <span class="math inline">[L]_{E}^{F}</span> for bases <span class="math inline">E</span> of <span class="math inline">V</span> and <span class="math inline">F</span> of <span class="math inline">W</span>.</li>
 <li>The change of basis rules are all the same.</li>
 </ol>
+<p>If <span class="math inline">f:V\to W</span> is any linear map, then the null space (or kernel) <span class="math inline">\mathrm{null}(f)</span> of <span class="math inline">f</span> is the set of vectors <span class="math inline">v\in V</span> such that <span class="math inline">f(v)=0</span>.</p>
+<p>The image <span class="math inline">\mathrm{image}(f)</span> of <span class="math inline">f</span> is the subspace <span class="math inline">\{f(v): v\in v\}\subset W</span>.</p>
+<p><strong>Proposition:</strong> If <span class="math inline">V</span> is finite dimensional then <span class="math display">
+\dim(\mathrm{null}(f))+\dim(\mathrm{image}(f))=\dim(V).
+</span></p>
+<p>The dimension of the nullspace is also called the nullity of <span class="math inline">f</span>, and the dimension of the image is called the rank of <span class="math inline">f</span>. This makes sense because, if you choose a basis for <span class="math inline">V</span> and <span class="math inline">W</span>, and find the matrix associated to <span class="math inline">f</span> in that basis, then these numbers are respectively the rank and nullity of that matrix.</p>
 <section id="isomorphisms" class="level4">
 <h4 class="anchored" data-anchor-id="isomorphisms">Isomorphisms</h4>
-<p>A linear map <span class="math inline">F:V\to W</span> for vector spaces <span class="math inline">V</span> and <span class="math inline">W</span> over <span class="math inline">F</span> is called an isomorphism if it is bijective. (In this case its inverse is also linear).</p>
-<p>If there is a bijective linear map <span class="math inline">F:V\to W</span>, then <span class="math inline">V</span> and <span class="math inline">W</span> are said to be <em>isomorphic</em>.</p>
+<p>A linear map <span class="math inline">L:V\to W</span> for vector spaces <span class="math inline">V</span> and <span class="math inline">W</span> over <span class="math inline">F</span> is called an isomorphism if it is bijective. (In this case its inverse is also linear).</p>
+<p>If there is a bijective linear map <span class="math inline">L:V\to W</span>, then <span class="math inline">V</span> and <span class="math inline">W</span> are said to be <em>isomorphic</em>.</p>
+<p>Now let <span class="math inline">V</span> be a finite dimensional vector space over a field <span class="math inline">F</span>. Choose a basis <span class="math inline">E=\{v_1,\ldots, v_n\}</span> for <span class="math inline">V</span>. Define a linear map <span class="math display">
+L: \mathbf{F}^{n}\to V
+</span> by <span class="math display">
+(a_1,\ldots, a_n) \mapsto \sum_{i}a_{i}v_{i}
+</span></p>
+<p>This is an isomorphism.</p>
+<p>The inverse map sends <span class="math inline">v</span> to the vector <span class="math display">
+[v]_{E} = \left[\begin{matrix} a_1 \\ \vdots \\ a_n\end{matrix}\right].
+</span></p>
+<p>So in this sense, every finite dimensional vector space over <span class="math inline">\mathbf{F}</span> is isomorphic to <span class="math inline">\mathbf{F}^{n}</span>, in many different ways corresponding to the choice of different bases.</p>
 
 
 </section>
