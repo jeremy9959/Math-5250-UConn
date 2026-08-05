@@ -34,6 +34,7 @@ website:
           - text: "Direct sums, quotient spaces, and complexes"
             href: notes/Week2-3/W02.2.qmd
       - section: "Week 3 - Trace and Determinant"
+        contents:
           - text: "Trace and determinant"
             href: notes/Week2-3/W02.3.qmd
       - section: "Week 4 — Eigenvalues and Eigenvectors"
