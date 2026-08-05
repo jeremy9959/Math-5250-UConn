@@ -427,8 +427,6 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#trace" id="toc-trace" class="nav-link active" data-scroll-target="#trace">Trace</a></li>
   <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">Determinant</a></li>
-  <li><a href="#a-few-properties-of-the-determinant" id="toc-a-few-properties-of-the-determinant" class="nav-link" data-scroll-target="#a-few-properties-of-the-determinant">A few properties of the determinant</a></li>
-  <li><a href="#determinant-of-a-linear-map" id="toc-determinant-of-a-linear-map" class="nav-link" data-scroll-target="#determinant-of-a-linear-map">Determinant of a Linear Map</a></li>
   </ul>
 </nav>
     </div>
@@ -467,6 +465,8 @@ d_{ij} = \sum_{k} b_{ik}a_{kj}
 \mathrm{trace}(AB) = \sum_{i=1}^{n} c_{ii} = \sum_{i}\sum_{k} a_{ik}b_{ki}
 =\sum_{k}\sum_{i} b_{ki}a_{ik} =\sum_{k} d_{kk} = \mathrm{trace}(BA)
 </span></p>
+<section id="trace-of-a-linear-map" class="level4">
+<h4 class="anchored" data-anchor-id="trace-of-a-linear-map">Trace of a linear map</h4>
 <p>Now let <span class="math inline">f:V\to V</span> be any linear map, where <span class="math inline">V</span> is a finite dimensional vector space. Choose a basis <span class="math inline">E</span> for <span class="math inline">V</span> and define the trace <span class="math inline">\mathrm{trace}(f)</span> to be the trace of the matrix <span class="math inline">[f]_{E}^{E}</span>.</p>
 <p>This is a well-defined invariant of <span class="math inline">f</span> because if we choose a different basis, say <span class="math inline">E'</span>, then <span class="math inline">[f]_{E'}^{E'} =[1]_{E'}^{E} [f]_{E}^{E}[1]_{E}^{E'}</span> Thus <span class="math display">
 \begin{aligned}
@@ -476,6 +476,7 @@ d_{ij} = \sum_{k} b_{ik}a_{kj}
 \end{aligned}
 </span></p>
 <p>since <span class="math inline">[1]_{E'}^{E}[1]_{E}^{E'}=[1]_{E}^{E}</span> is the identity matrix.</p>
+</section>
 </section>
 <section id="determinant" class="level3">
 <h3 class="anchored" data-anchor-id="determinant">Determinant</h3>
@@ -562,9 +563,8 @@ A = \left[\begin{matrix} a &amp; b \\ c &amp; d\end{matrix}\right]
 A=E_{1}\cdots E_{k}J
 </span></p>
 <p>where the <span class="math inline">E_{i}</span> are elementary matrices and <span class="math inline">J</span> is diagonal, then <span class="math inline">\det(A)=0</span> if and only if <span class="math inline">\det(J)=0</span>, which happens if and only if <span class="math inline">J</span> has a zero on the diagonal. (Since <span class="math inline">J</span> is in row-reduced echelon form, every diagonal entry is either <span class="math inline">0</span> or a pivot, hence exactly <span class="math inline">1</span>.) So if <span class="math inline">\det(A)</span> is nonzero, then <span class="math inline">J</span> is the identity matrix, and one gets an inverse for <span class="math inline">A</span> from the inverses of the <span class="math inline">E_{i}</span>.</p>
-</section>
-<section id="a-few-properties-of-the-determinant" class="level3">
-<h3 class="anchored" data-anchor-id="a-few-properties-of-the-determinant">A few properties of the determinant</h3>
+<section id="a-few-properties-of-the-determinant" class="level4">
+<h4 class="anchored" data-anchor-id="a-few-properties-of-the-determinant">A few properties of the determinant</h4>
 <ol type="1">
 <li><p>The formula we used to define the determinant is called the “cofactor expansion” on the first row. One can use any row to get a similar expansion.</p></li>
 <li><p>One can use columns instead of rows.</p></li>
@@ -589,12 +589,13 @@ c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj} = \sum_{k=1}^{n} (-1)^{k+j} a_{ik}\det(A_{j
 <p><strong>Remark:</strong> This gives us an “explicit” formula for the inverse of <span class="math inline">A</span> as <span class="math inline">\det(A)^{-1}A^{adj}</span>.</p>
 <p><strong>Remark:</strong> An arbitrary permutation <span class="math inline">\sigma</span> of <span class="math inline">1,\ldots, n</span> can be represented by a matrix <span class="math inline">E(\sigma)</span> that permutes the rows of a matrix <span class="math inline">A</span> according to this permutation. The sign of the permutation is <span class="math inline">\det(E(\sigma))</span>.</p>
 </section>
-<section id="determinant-of-a-linear-map" class="level2">
-<h2 class="anchored" data-anchor-id="determinant-of-a-linear-map">Determinant of a Linear Map</h2>
+<section id="determinant-of-a-linear-map" class="level4">
+<h4 class="anchored" data-anchor-id="determinant-of-a-linear-map">Determinant of a Linear Map</h4>
 <p>Let <span class="math inline">f:V\to V</span> be a linear map where <span class="math inline">V</span> is a finite dimensional vector space over <span class="math inline">F</span>. We define the determinant of <span class="math inline">f</span> to be the determinant of <span class="math inline">[f]_{E}^{E}</span> where <span class="math inline">E</span> is any basis for <span class="math inline">V</span>.</p>
 <p>Since choosing a different basis <span class="math inline">E'</span> changes the matrix <span class="math inline">A=[f]_{E}^{E}</span> by similarity to a matrix <span class="math inline">B=PAP^{-1}</span>, the determinant is independent of the choice of basis and is thus a well-defined invariant of <span class="math inline">f</span>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
