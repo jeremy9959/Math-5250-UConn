@@ -27,12 +27,13 @@ website:
             href: notes/Week1/W01.2.qmd
           - text: "Change of basis, kernel and range, isomorphisms"
             href: notes/Week1/W01.3.qmd
-      - section: "Weeks 2–3 — Abstract Vector Spaces"
+      - section: "Week 2 — Abstract Vector Spaces"
         contents:
           - text: "Abstract vector spaces and linear maps"
             href: notes/Week2-3/W02.1.qmd
           - text: "Direct sums, quotient spaces, and complexes"
             href: notes/Week2-3/W02.2.qmd
+      - section: "Week 3 - Trace and Determinant"
           - text: "Trace and determinant"
             href: notes/Week2-3/W02.3.qmd
       - section: "Week 4 — Eigenvalues and Eigenvectors"
