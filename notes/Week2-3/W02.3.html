@@ -583,7 +583,7 @@ A=E_{1}\cdots E_{k}J
 b_{ij} = (-1)^{i+j}\det(A_{ji})
 </span></p></li>
 </ol>
-<p>where <span class="math inline">A_{ji}</span> is the matrix obtained from <span class="math inline">A</span> by deleting the <span class="math inline">j^{th}</span> row and the <span class="math inline">i^{th}</span> column. This matrix is called the (classical) adjoint of <span class="math inline">A</span>.</p>
+<p>where <span class="math inline">A_{ji}</span> is the matrix obtained from <span class="math inline">A</span> by deleting the <span class="math inline">j^{th}</span> row and the <span class="math inline">i^{th}</span> column. This matrix is called the (classical) adjoint or the adjugant of <span class="math inline">A</span>.</p>
 <p><strong>Proposition:</strong> <span class="math inline">AA^{adj} = A^{adj}A = \det(A)I</span>.</p>
 <p><strong>Proof:</strong> Let <span class="math inline">B=A^{adj}</span> and <span class="math inline">C=AB</span>. Then <span class="math display">
 c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj} = \sum_{k=1}^{n} (-1)^{k+j} a_{ik}\det(A_{jk}) = (-1)^{j+1}\sum_{k=1}^{n} (-1)^{k+1}a_{ik}\det(A_{jk}).
@@ -596,9 +596,24 @@ c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj} = \sum_{k=1}^{n} (-1)^{k+j} a_{ik}\det(A_{j
 <p>On the other hand, if <span class="math inline">i</span> and <span class="math inline">j</span> are equal, this is <span class="math display">
 (-1)^{i+1}\sum_{k=1}^{n} (-1)^{k+1}a_{ik}\det(A_{ik})
 </span> which is <span class="math inline">\det(A)</span>.</p>
-<p><strong>Remark:</strong> We need to check the sign here: the cofactor expansion around row <span class="math inline">i</span> gets a sign <span class="math inline">(-1)^{i+1}</span>. This is because you need to cyclically permute the first <span class="math inline">i</span> rows to make the formula look right.</p>
+<p><strong>Remark:</strong> We need to check the sign here: the cofactor expansion around row <span class="math inline">i</span> gets a sign <span class="math inline">(-1)^{i+1}</span>. This is because the cofactor expansion around row <span class="math inline">i</span> satisfies the conditions characterizing the determinant except that it gives <span class="math inline">(-1)^{i+1}</span> for the identity matrix.</p>
 <p><strong>Remark:</strong> This gives us an “explicit” formula for the inverse of <span class="math inline">A</span> as <span class="math inline">\det(A)^{-1}A^{adj}</span>.</p>
-<p><strong>Remark:</strong> An arbitrary permutation <span class="math inline">\sigma</span> of <span class="math inline">1,\ldots, n</span> can be represented by a matrix <span class="math inline">E(\sigma)</span> that permutes the rows of a matrix <span class="math inline">A</span> according to this permutation. The sign of the permutation is <span class="math inline">\det(E(\sigma))</span>.</p>
+</section>
+<section id="expansion-of-the-determinant" class="level4">
+<h4 class="anchored" data-anchor-id="expansion-of-the-determinant">Expansion of the determinant</h4>
+<p>If <span class="math inline">A\in M_{n}(F)</span> and <span class="math inline">A_{i}=\sum a_{ij}e_{j}</span> is the <span class="math inline">i^{th}</span> row of <span class="math inline">A</span> written in terms of the standard row vectors <span class="math inline">e_{i}</span> having a <span class="math inline">1</span> in position <span class="math inline">i</span> and zeroes elsewhere, then in follows from the multilinearity of the determinant that we can write <span class="math display">
+\det(A)=\det(A_1,\ldots, A_n) = \sum a_{1i_{1}}a_{2i_{2}}\cdots a_{ni_{n}}\det(e_{i_{1}},e_{i_{2}},\ldots, e_{i_{n}})
+</span></p>
+<p>This is because any term with a repeated index will have zero determinant by the alternating property.</p>
+<p>The determinant <span class="math inline">\det(e_{i_{1}},\ldots, e_{i_{n}})</span> is <span class="math inline">\pm 1</span>.</p>
+<p>If the determinant <span class="math inline">\det(e_{i_{1}},\ldots, e_{i_{n}})</span> is <span class="math inline">+1</span>, we say that the permutation <span class="math inline">i_{1},\ldots, i_{n}</span> is even; otherwise we say it’s odd.</p>
+<p>Any permutation can be “sorted” into the <span class="math inline">1,\ldots, n</span> by a sequence of operations where you exchange two indices. For example, <span class="math display">
+(2,4,1,3)\to(1,4,2,3)\to (1,2,4,3)\to (1,2,3,4).
+</span></p>
+<p>Each such exchange reverses the sign of the permutation since it corresponds to an elementary row operation where you swap to rows.</p>
+<p>So a permutation is even if it can be sorted by an even number of exchanges, and odd if it requires an odd number.</p>
+<p>It’s not obvious from a combinatorial point of view that this is well-defined, but since we have an alternative formula via the determinant we can see that it is.</p>
+<p>This expansion is essentially useless since it involves <span class="math inline">n!</span> terms, each a product of <span class="math inline">n</span> terms.</p>
 </section>
 <section id="determinant-of-a-linear-map" class="level4">
 <h4 class="anchored" data-anchor-id="determinant-of-a-linear-map">Determinant of a Linear Map</h4>
