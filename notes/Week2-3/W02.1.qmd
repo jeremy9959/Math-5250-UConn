@@ -4,7 +4,7 @@ title: Abstract Vector Spaces and Subspaces
 \newcommand{\R}{\mathbf{R}}
 \newcommand{\F}{\mathbf{F}}
 \newcommand{\C}{\mathbf{C}}
-## Abstract Vector Spaces and Subspaces
+
 
 ### Fields
 

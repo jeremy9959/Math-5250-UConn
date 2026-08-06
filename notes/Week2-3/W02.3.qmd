@@ -281,6 +281,41 @@ It's not obvious from a combinatorial point of view  that this is well-defined, 
 
 This expansion is essentially useless since it involves $n!$ terms, each a product of $n$ terms.  
 
+#### Cramer's Rule
+
+Suppose that $A$ is an $n\times n$ matrix over $F$
+and $b\in F^{n}$.  We can look at the linear system of equations
+$$
+Ax = b. 
+$$
+If $\det(A)\not=0$, we can "solve" this system
+by multiplying both sides by the adjugant matrix:
+
+$$
+A^{adj}Ax=A^{adj}b
+$$
+
+So $x=\det(A)^{-1}A^{adj}b$.
+
+If we look more closely at $A^{adj}b$, we see
+that the $j^{th}$ entry of $A^{adj}b$ (corresponding to the value of $x_{j}$ in $x$) is
+$$
+(A^{adj}b)_{j} = \sum_{i=1}^{n} A^{adj}_{ji}b_{i}
+= (-1)^{j+1}\sum_{i=1}^{n}(-1)^{i+1}\det(A_{ij})b_{i}
+$$
+
+This expression is the cofactor expansion of the matrix $A_{j}(b)$ obtained from $A$ by replacing the $j^{th}$ column with $b$. 
+
+This yields the formula (called "Cramer's Rule")
+$$
+x_{j} = \frac{\det(A_{j}(b))}{\det(A)}
+$$
+
+Although not useful for calculation, it is worth observing that, as a consequence of Cramer's rule,  if $A$ has integer entries, $b$ has integer entries, and $\det(A)=\pm 1$, then the solution  $x$ to $Ax=b$
+also has integer entries.
+
+
+
 
 #### Determinant of a Linear Map
 

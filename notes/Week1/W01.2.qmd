@@ -105,7 +105,7 @@ The following three types of operations on matrices are called "elementary row o
 - Let $A_{j.}$ be the $j^{th}$ row of $A$ and let $\lambda$ be a scalar.  Given $i$ and $j$, replace $A_{j.}$ by $A_{j.}-\lambda A_{i.}$
 
 ::: {#def-elementary-matrix}
-## Elementary matrix
+#### Elementary matrix
 
 Associated with each such operation is a square matrix $E$ called an *elementary matrix*:
 

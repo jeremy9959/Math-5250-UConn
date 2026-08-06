@@ -343,3 +343,23 @@ $$
 $$
 
 which is the alternating sum of the dimensions of the $H^{i}(W^{\cdot})$.
+
+**Definition:** A complex is *exact* if its cohomology groups are zero.  In this case, the kernel of $d^{i}$ is exactly the image of $d^{i-1}.
+
+So the cohomology of a complex is a measure of how far it is from being exact. 
+
+A short exact sequence is a 5 term exact complex:
+$$
+0\to A\to B\to C \to 0.
+$$
+
+In this case, the map from $A\to B$ is injective (its kernel is zero) and the map from $B\to C$ is surjective.
+
+From the universal property of quotients, this means that $C$ is isomorphic to $A/B$.
+
+#### Homology
+
+One can also define a complex with the reverse indexing, so that $d_{i}:W_{i}\to W_{i-1}$.
+In this case the kernel $Z_{i}$ of $d_{i}$ is called the space of $i$-cycles, and the image of $d_{i+1}$ is called the space of $i$-boundaries.
+The quotient $Z_{i}/B_{i}$ is called the $i^{th}$
+homology group of the complex $H_{i}(W^{\cdot})$.
