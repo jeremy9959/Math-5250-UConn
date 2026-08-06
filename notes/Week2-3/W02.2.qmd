@@ -8,7 +8,7 @@ title: Sums, Quotients, and Complexes
 \newcommand{\nullity}{\mathrm{nullity}}
 \newcommand{\columns}{\mathrm{columns}}
 
-## Sums and Quotients
+### Sums and Quotients
 
 Let $V$ and $W$ be vector spaces over a field $\F$.  
 
@@ -71,7 +71,7 @@ $$
 then all the $a_{i}$ and $b_{i}$ are zero by independence of the $v$'s and $w$'s.
 
 
-### Subspace sums and internal direct sums
+#### Subspace sums and internal direct sums
 
 Let $V$ be a vector space and let $U$ and $W$ be subspaces of $V$.
 The *sum* of $U$ and $W$ is the set
@@ -87,7 +87,7 @@ the union $u_1,\ldots, u_n, w_1,\ldots, w_k$ span $U+W$.
 - the dimension of $U+W$ is at most $\mathrm{dim}(U)+\mathrm{dim}(W)$.
 It can certainly be smaller (suppose $U=W$ for example).
 
-#### Algorithm to compute a basis for $U+W$.
+##### Algorithm to compute a basis for $U+W$.
 
 1. Choose a basis for $V$ and take spanning sets as above for $U$ and $W$.
 Create a matrix $A$ whose columns are the $u_i$ and $w_j$ written in the chosen basis for $V$.
@@ -98,7 +98,7 @@ Create a matrix $A$ whose columns are the $u_i$ and $w_j$ written in the chosen 
 
 4.  The basis constructed in this way will be a subset of the union of the $u_{i}$ and $w_{j}$.
 
-### Internal direct sum
+#### Internal direct sum
 
 If $U$ and $W$ are subsets of $V$ such that every element of $x\in U+W$
 has a *unique* representation  $x=u+w$ with $u\in U$ and $w\in W$,
@@ -227,8 +227,6 @@ Therefore $[y]\subset [x]$.  The same argument
 run "the other way" shows $[x]\subset [y]$.
 So $[x]\cap [y]\not=\emptyset$ implies $[x]=[y]$.
 
-#### Quotient spaces
-
 Now suppose $V$ is a vector space over $F$ and $W$ is a subspace of $V$.  Define an equivalence relation on $V$ by setting
 $$
 x\sim y \iff x-y\in W.
@@ -299,7 +297,7 @@ The existence of the map $\overline{f}$ is called *the universal mapping propert
 
 One can show that the subspaces of $V/H$ correspond exactly to the subspaces of $V$ containing $H$. 
 
-## Complexes
+### Complexes
 
 **Definition:** A complex of vector spaces is a sequence of vector spaces
 $W^{i}$ connected by linear maps $d_{i}$ 

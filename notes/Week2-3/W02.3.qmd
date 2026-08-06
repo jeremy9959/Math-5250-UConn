@@ -213,7 +213,7 @@ b_{ij} = (-1)^{i+j}\det(A_{ji})
 $$
 
 where $A_{ji}$ is the matrix obtained from $A$ by deleting
-the $j^{th}$ row and the $i^{th}$ column.  This matrix is called the (classical) adjoint of $A$.
+the $j^{th}$ row and the $i^{th}$ column.  This matrix is called the (classical) adjoint or the adjugant of $A$.
 
 **Proposition:** $AA^{adj} = A^{adj}A = \det(A)I$.
 
@@ -238,12 +238,49 @@ $$
 which is $\det(A)$.
 
 **Remark:** We need to check the sign here: the cofactor expansion around row $i$
-gets a sign $(-1)^{i+1}$.  This is because you need to cyclically permute the first $i$ rows to make the formula look right.
+gets a sign $(-1)^{i+1}$.  This is because the cofactor expansion
+around row $i$ satisfies the conditions characterizing the determinant
+except that it gives $(-1)^{i+1}$ for the identity matrix.
 
 **Remark:** This gives us an "explicit" formula for the inverse of $A$ as
 $\det(A)^{-1}A^{adj}$. 
 
-**Remark:** An arbitrary permutation  $\sigma$ of $1,\ldots, n$ can be represented by a matrix $E(\sigma)$ that permutes the rows of a matrix $A$ according to this permutation.  The sign of the permutation is $\det(E(\sigma))$.
+
+
+
+#### Expansion of the determinant
+
+If $A\in M_{n}(F)$ and $A_{i}=\sum a_{ij}e_{j}$ is the
+$i^{th}$ row of $A$ written in terms of the standard row vectors
+$e_{i}$ having a $1$ in position $i$ and zeroes elsewhere,
+then in follows from the multilinearity of the determinant that
+we can write
+$$
+\det(A)=\det(A_1,\ldots, A_n) = \sum a_{1i_{1}}a_{2i_{2}}\cdots a_{ni_{n}}\det(e_{i_{1}},e_{i_{2}},\ldots, e_{i_{n}})
+$$
+
+
+This is because any term with a repeated index will have zero determinant by the alternating property.
+
+The determinant $\det(e_{i_{1}},\ldots, e_{i_{n}})$ is $\pm 1$.  
+
+If the determinant $\det(e_{i_{1}},\ldots, e_{i_{n}})$ is $+1$, we say that the permutation $i_{1},\ldots, i_{n}$ is even; otherwise we say it's odd.
+
+Any permutation can be "sorted" into the $1,\ldots, n$ by a sequence of operations where you exchange two indices.
+For example,
+$$
+(2,4,1,3)\to(1,4,2,3)\to (1,2,4,3)\to (1,2,3,4).
+$$
+
+Each such exchange reverses the sign of the permutation since
+it corresponds to an elementary row operation where you swap to rows.  
+
+So a permutation is even if it can be sorted by an even number of exchanges, and odd if it requires an odd number.
+
+It's not obvious from a combinatorial point of view  that this is well-defined, but since we have an alternative formula via the determinant we can see that it is.
+
+This expansion is essentially useless since it involves $n!$ terms, each a product of $n$ terms.  
+
 
 #### Determinant of a Linear Map
 
