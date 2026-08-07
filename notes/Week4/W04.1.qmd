@@ -2,6 +2,8 @@
 title: "Eigenvalues and Eigenvectors"
 ---
 
+\newcommand{\C}{\mathbf{C}}
+
 Let $V$ be a finite dimensional vector space over a field $F$ and let $L:V\to V$ be a linear map.
 
 As we've seen, if we choose a basis $E$ of $V$,  we can represent $L$ by a matrix $[L]_{E}^{E}$, which is useful for many computations.  However, the matrix depends on the choice of $E$.  It would be useful if we could find a basis in which the matrix $[L]_{E}^{E}$ has a particularly simple form.
@@ -40,27 +42,27 @@ $$
 for some scalar $\lambda$.  If $A$ were diagonalizable, vectors like this would make up the diagonal basis.  
 
 
-A nonzero vector with this property (for some $\lambda$ is called an *eigenvector* for $A$.  
+A nonzero vector with this property (for some $\lambda$) is called an *eigenvector* for $A$.
 The scalar $\lambda$ is called the associated eigenvalue.
 
 Similarly if $L$ is a linear map, a non-zero vector such that $Lx=\lambda x$ is an eigenvector for $L$ with eigenvalue $\lambda$. 
 
-$A$ (resp. L) is diagonalizable if and only if there is a basis for $F^{n}$ (resp. $V$) consisting of eigenvectors for $A$ (resp. $L$).  
+$A$ (resp. $L$) is diagonalizable if and only if there is a basis for $F^{n}$ (resp. $V$) consisting of eigenvectors for $A$ (resp. $L$).  
 
-The equation $Ax=\lambda x$ has a nonzero solution $x$ if and only if the matrix $A-xI$
+The equation $Ax=\lambda x$ has a nonzero solution $x$ if and only if the matrix $A-\lambda I$
 has a non-zero null space.  This happens if and only if this matrix has zero determinant.
 
 **Proposition:** $\lambda$ is an eigenvalue for $A$ if and only if $\det(A-\lambda I) = 0$.  If the determinant is zero,  any nonzero vector in the null space of $A-\lambda I$ is an eigenvector for $A$ with eigenvalue $\lambda$.
 
 Notice that this proposition can be stated entirely in terms of linear maps.
 
-If we treat $x$ as a variable, we obtain the "characteristic polynomial" $P_{A}(x)=\det(A-xI)$ of $A$ (or of a linear map $L$, where we use any matrix representation of $L$ to compute the polynomial and we call the result $P_{L}(x)$. 
+If we treat $x$ as a variable, we obtain the "characteristic polynomial" $P_{A}(x)=\det(A-xI)$ of $A$ (or of a linear map $L$, where we use any matrix representation of $L$ to compute the polynomial and we call the result $P_{L}(x)$).
 
 **Definition:** If $x$ is a variable, then $\det(A-xI)$ is a polynomial in $x$ of degree $n$.
 
 A scalar $\lambda$ is a root of $P_{A}(x)$ if and only if  $\lambda$ is an eigenvalue of $A$.
 
-**Proposition:** Let $F$ be an *algebraically closed field.*. Then every linear map/matrix over $F$ has an eigenvalue (and associated eigenvector).
+**Proposition:** Let $F$ be an *algebraically closed field*. Then every linear map/matrix over $F$ has an eigenvalue (and associated eigenvector).
 
 **Proposition:** The "Fundamental Theorem of Algebra." The complex numbers are algebraically closed.
 
@@ -69,13 +71,13 @@ A scalar $\lambda$ is a root of $P_{A}(x)$ if and only if  $\lambda$ is an eigen
 Notice that this is false for real matrices.  The
 characteristic polynomial of 
 $$
-A = left[\begin{matrix} 0 & 1 \\ -1 & 0 \end{matrix}\right]
+A = \left[\begin{matrix} 0 & 1 \\ -1 & 0 \end{matrix}\right]
 $$
 is $x^2+1$ which has no real roots.
 
 
 
-**Proposition:** Not every matrix is diagonalizabile.  
+**Proposition:** Not every matrix is diagonalizable.
 
 **Proof:** Look at
 $$
@@ -93,6 +95,43 @@ Therefore $\C^{2}$ cannot have a basis of eigenvectors for $A$, and so $A$ is no
 
 **Examples:** Linear Differential Equations
 
+**Proposition:** Suppose $L:V\to V$ is a linear map where $V$ is $n$-dimensional.  If $L$ has 
+$n$ distinct eigenvalues, then $L$ is diagonalizable.
+
+**Proof:** This follows from the following fact: eigenvectors associated to different eigenvalues are linearly independent.  To see this, suppose $v_1,\ldots, v_k$ are eigenvectors for $L$ with eigenvalues $\lambda_{1},\ldots,\lambda_{k}$, and that all the $\lambda_{i}$ are different.  Suppose
+
+$$
+\sum_{i=1}^{k} a_{i}v_{i}  = 0
+$$
+Then
+$$
+\sum_{i=1}^{k} a_{i}L(v_{i}) = \sum a_{i}\lambda_{i}v_{i} = 0.
+$$
+We can assume $k\ge 2$ and then $a_j\not=0$ for some $j\ge 2$.  Multiply the first equation by $\lambda_1$ to obtain:
+$$
+\begin{matrix}
+a_1\lambda_1 v_1 + \cdots + a_k\lambda_1 v_k &= 0 \\
+a_1\lambda_1 v_1 + \cdots + a_k\lambda_k v_k &= 0 \\
+\end{matrix}
+$$
+
+Subtracting yields
+$$
+\sum_{i=2}^{k} a_i(\lambda_1-\lambda_k)v_{k} = 0.
+$$
+
+Since $a_j\not=0$, and the $v_{i}$ are independent, this means $(\lambda_1-\lambda_j)=0$ which contradicts
+the assumption that all the $\lambda_i$ are distinct.
+
+For the diagonalizability result, if $L$ has $n$ distinct eigenvalues, then the associated eigenvectors are linearly independent and thus a basis for $V$.  In that basis, the matrix of $A=[L]$ is diagonal 
+with $a_{ii}=\lambda_i$.
+
+**Corollary:** If the characteristic polynomial $P(x)$ of $L$ has $n$ distinct roots, then $L$ is diagonalizable.
+
+The converse is false: the identity matrix has characteristic polynomial $(1-x)^n$ but is obviously diagonal.
+
+Understanding exact conditions for diagonalizability will occupy us for a time.
+
 ## The Cayley Hamilton Theorem
 
 Observe that if $P(x)$ is a polynomial with coefficients in the field $F$, and $A\in M_{n}(F)$
@@ -102,7 +141,7 @@ If $L$ is a linear map, then $P(L)$ makes sense with the understanding that $L^i
 
 Finally, given a basis $E$, $[P(L)]_{E}^{E} = P([L]_{E}^{E})$ so we can freely move back and forth between linear maps and matrices by choice of basis. 
 
-**Theorem: (Cayley-Hamilton)** Let $P(x)=\det(A-xI)$ be the characteristic polynomial of $A$.  Then $P(A)=0$.
+**Theorem:** (Cayley-Hamilton) Let $P(x)=\det(A-xI)$ be the characteristic polynomial of $A$.  Then $P(A)=0$.
 
 **Proof:** Let $X=A-xI$.  Then
 $$
@@ -132,7 +171,7 @@ since multiplication by $A$ acts on the terms of each degree.
 
 This gives the formula
 $$
-P_{A}(x)I = AB_{0}+x(AB{1}-B_{0}) + \cdots + x^{n}(B_{n-1}).
+P_{A}(x)I = AB_{0}+x(AB_{1}-B_{0}) + \cdots + x^{n}(-B_{n-1}).
 $$
 
 Substituting $x=A$ into this expression collapses to a telescoping sum that yields zero. 
