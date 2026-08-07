@@ -114,17 +114,29 @@ obtain an expression:
 $$
 X^{adj} = B_{0} + xB_{1}+\cdots+x^{n-1}B_{n-1}
 $$
-for $n\times n$ matrices $B_{0}$. 
+for $n\times n$ matrices $B_{i}$. 
 
-Now
+Notice that 
 $$
-(A-xI)(B_{0}+xB_{1}+\cdots + x^{n-1}B_{n-1})(
-= AB_{0} + (AxB_{1}-xB_{0}) + \cdots + Ax^{n-1}B_{n-1}-x^{n-1}B_{n-2}) -x^{n}B_{n-1})=P_{A}(x)I
+xIX^{adj} = xB_{0}+\cdots+x^{n}B_{n-1}.
 $$
 
-(Notice we're careful about the order here since $x$ is a matrix).
+This is because multiplying the matrix $X^{adj}$ by $x$ multiplies each entry by $x$, so it "shifts" the coefficients up by one degree. 
 
-Now substitute $x=A$ and the sum on the left telescopes to give zero. 
+Also 
+$$
+AX^{adj} = AB_{0}+\cdots + x^{n-1}AB_{n-1}
+$$
+
+since multiplication by $A$ acts on the terms of each degree.
+
+This gives the formula
+$$
+P_{A}(x)I = AB_{0}+x(AB{1}-B_{0}) + \cdots + x^{n}(B_{n-1}).
+$$
+
+Substituting $x=A$ into this expression collapses to a telescoping sum that yields zero. 
+
 
 
 
