@@ -8,7 +8,7 @@ title: Sums, Quotients, and Complexes
 \newcommand{\nullity}{\mathrm{nullity}}
 \newcommand{\columns}{\mathrm{columns}}
 
-## Sums and Quotients
+### Sums and Quotients
 
 Let $V$ and $W$ be vector spaces over a field $\F$.  
 
@@ -55,7 +55,7 @@ $V$ with the pairs $(v,0)$ and $W$ with the pairs $(0,w)$.  The intersection of 
 
 **Proposition:** If $V$ and $W$ are finite dimensional of dimension $n$ and $m$ respectively, then $V\oplus W$ is finite dimensional of dimension $n+m$.
 
-In fact if $v_1,\ldots, v_n$ is a basis for $V$, and $w_1,\ldots, w_m$ is a basis for $W$, then $(v_1,0),\ldots, (v_n,0),(0,w_1),\ldots, (0,w_n)$
+In fact if $v_1,\ldots, v_n$ is a basis for $V$, and $w_1,\ldots, w_m$ is a basis for $W$, then $(v_1,0),\ldots, (v_n,0),(0,w_1),\ldots, (0,w_m)$
 is a basis for $V\oplus W$.  
 
 They span since 
@@ -66,12 +66,12 @@ $$
 They are independent since if 
 $$
 (\sum a_{i}v_{i},\sum b_{i}w_{i})=(0,0)
-$$ 
+$$
 
-thus all the $a_{i}$ and $b_{i}$ are zero by independence of the $v$'s and $w$'s. 
+then all the $a_{i}$ and $b_{i}$ are zero by independence of the $v$'s and $w$'s.
 
 
-### Subspace sums and internal direct sums
+#### Subspace sums and internal direct sums
 
 Let $V$ be a vector space and let $U$ and $W$ be subspaces of $V$.
 The *sum* of $U$ and $W$ is the set
@@ -84,30 +84,30 @@ This is a subspace of $V$.
 - It is the smallest subspace of $V$ containing both $W$ and $U$. 
 - If $u_1,\ldots, u_n$ span $U$ and $w_1,\ldots, w_k$ span $W$ then
 the union $u_1,\ldots, u_n, w_1,\ldots, w_k$ span $U+W$. 
-- the dimension of $U+W$ is at most $\mathrm{dim}(U)+\mathrm{dim}(V)$.
+- the dimension of $U+W$ is at most $\mathrm{dim}(U)+\mathrm{dim}(W)$.
 It can certainly be smaller (suppose $U=W$ for example).
 
-#### Algorithm to compute a basis for $U+W$.
+##### Algorithm to compute a basis for $U+W$.
 
 1. Choose a basis for $V$ and take spanning sets as above for $U$ and $W$.
-Create a matrix $A$whose columns are the $u_i$ and $w_j$ written in the chosen basis for $V$. 
+Create a matrix $A$ whose columns are the $u_i$ and $w_j$ written in the chosen basis for $V$.
 
 2. Put the matrix $A$ in rref yielding $A'$. 
 
-3.  The columns of $A$ corresponding to the pivot columns of $A'$ are a basis for $V+W$.
+3.  The columns of $A$ corresponding to the pivot columns of $A'$ are a basis for $U+W$.
 
-4.  The basis constructed in this way will be a subset of the union of the $v_{i}$ and $w_{j}$. 
+4.  The basis constructed in this way will be a subset of the union of the $u_{i}$ and $w_{j}$.
 
-### Internal direct sum
+#### Internal direct sum
 
 If $U$ and $W$ are subsets of $V$ such that every element of $x\in U+W$
 has a *unique* representation  $x=u+w$ with $u\in U$ and $w\in W$,
 then $U+W$ is an (internal) direct sum and $U+W$ is isomorphic to $U\oplus W$. 
 
-**Proposition:** $U+W$ is a direct sum if and only if and of the following hold:
+**Proposition:** $U+W$ is a direct sum if and only if either of the following hold:
 
-a. $U\cap W=0$. 
-b. $\mathrm{dim}(U)+\mathrm{dim}(W)=\mathrm{dim}(U+W).
+a. $U\cap W=0$.
+b. $\mathrm{dim}(U)+\mathrm{dim}(W)=\mathrm{dim}(U+W)$.
 
 Suppose that $u+w=u'+w'$ for $u,u'\in U$ and $w,w'\in W$. Then
 $(u-u') = (w'-w)$.  The left side is in $U$, and the right side is in $W$,
@@ -119,7 +119,6 @@ For the second, choose  bases $u_1,\ldots, u_n$ of $U$ and $w_1,\ldots, w_k$ of 
 $$
 \sum a_{i}u_{i} +\sum b_{j}w_{j}=0.
 $$
-The non-pivot columns of $A$ correspond to the nullity of $A$ and give relations among the pivot columns. 
 Since the $u_i$ and $w_j$ are independent, any such relation must involve a mix of both $u_i$ and $w_j$ vectors, and so represents an element of $U\cap W$.  
 
 So the formula above is just the rank plus nullity = columns equation for the matrix $A$.
@@ -149,46 +148,46 @@ $$
 
 This follows from our algorithm above.  Make a matrix $A$ whose columns are the basis elements $u_i$ and $w_j$ for $U$ and $W$ respectively written
 in some basis for $V$.  The rank of $A$ is dimension of the span of the columns of $A$,
-which is the dimension of $U+V$.  Let $y^{(k)}$ be a basis for the null space of $A$.  Each element
+which is the dimension of $U+W$.  Let $y^{(k)}$ be a basis for the null space of $A$.  Each element
 of this basis gives
 a relation
 $$
-\sum_{i=1}^{\dim(U)} y^{(k)}_{i}u_{i} + \sum_{j=1}^{\dim(V)}y^{(k)}_{i+j}v_{j}=0.
+\sum_{i=1}^{\dim(U)} y^{(k)}_{i}u_{i} + \sum_{j=1}^{\dim(W)}y^{(k)}_{\dim(U)+j}w_{j}=0.
 $$
 We can read this relation as:
 $$
-\sum_{i=1}^{\dim(U)} y^{(k)}_{i}u_{i} = - \sum_{j=\dim(U)+1}^{\dim(V)}y^{(k)}_{j}v_{j}.
+\sum_{i=1}^{\dim(U)} y^{(k)}_{i}u_{i} = - \sum_{j=1}^{\dim(W)}y^{(k)}_{\dim(U)+j}w_{j}.
 $$
-Since the $u_{i}$ and $v_{j}$ are linearly independent, it must be the case that at least one of
+Since the $u_{i}$ and $w_{j}$ are linearly independent, it must be the case that at least one of
 the $y_{i}$ on the left, and one on the right, are non-zero.
 Therefore each element $y^{(k)}$ of the null space of $A$ yields an
 $$
 h_{k}=\sum_{i=1}^{\dim(U)} y^{(k)}_{i}u_{i}
 $$
-that is a non-zero element that belongs to $U\cap V$.  
+that is a non-zero element that belongs to $U\cap W$.
 
-We claim that the $h_{k}$ are a basis for $U\cap V$.  The spanning property comes because
-if $h\in U\cap V$, then writing $h=\sum a_{i}u_{i}=\sum b_{j}v_{j}$ in terms of the $u_{i}$ and in terms of the $v_{j}$ gives
-a relation 
+We claim that the $h_{k}$ are a basis for $U\cap W$.  The spanning property comes because
+if $h\in U\cap W$, then writing $h=\sum a_{i}u_{i}=\sum b_{j}w_{j}$ in terms of the $u_{i}$ and in terms of the $w_{j}$ gives
+a relation
 $$
-\sum a_{i}u_{i}-\sum b_{j}v_{j}=0
+\sum a_{i}u_{i}-\sum b_{j}w_{j}=0
 $$
 which in turn produces an element of the null space of $A$.  Writing this in terms of the $y^{(k)}$
-in turn yields a linear expression for $h$ in terms of the $h_{k}$. 
+in turn yields a linear expression for $h$ in terms of the $h_{k}$.
 
 To see the independence of the $h_{k}$, suppose
 $$
 \sum_{k} a_{k}h_{k} = \sum_{k}\sum_{i} a_{k}y^{(k)}_{i}u_{i} = 0.
 $$
-The independence of the $u_{i}$ means that, for each $i=1,\ldots,\dim(U)$,  $\sum_{k} a_{k}y^{(k)}_{i}=0$.  A similar expression using the $v_{j}$ gives
+The independence of the $u_{i}$ means that, for each $i=1,\ldots,\dim(U)$,  $\sum_{k} a_{k}y^{(k)}_{i}=0$.  A similar expression using the $w_{j}$ gives
 $$
-\sum_{k} b_{k}y^{(k)}_{j}=0
+\sum_{k} a_{k}y^{(k)}_{\dim(U)+j}=0
 $$
-for all $j=\dim(U)+1,\ldots, \dim(V)$.  Putting these together gives a relation among the $y^{(k)}$,
-which are independent, so all $a_{k}$ and $b_{k}$ must be zero.
+for all $j=1,\ldots, \dim(W)$.  Putting these together gives a relation among the $y^{(k)}$,
+which are independent, so all $a_{k}$ must be zero.
 
-We've shown that the rank of $A$ is $\dim(U+V)$, the number of columns of $A$ is $\dim(U)+\dim(V)$,
-and the nullity of $A$ is $\dim(U\cap V)$, so the desired formula is the known formula
+We've shown that the rank of $A$ is $\dim(U+W)$, the number of columns of $A$ is $\dim(U)+\dim(W)$,
+and the nullity of $A$ is $\dim(U\cap W)$, so the desired formula is the known formula
 $$
 \rank(A)+\nullity(A) = \columns(A)
 $$
@@ -228,8 +227,6 @@ Therefore $[y]\subset [x]$.  The same argument
 run "the other way" shows $[x]\subset [y]$.
 So $[x]\cap [y]\not=\emptyset$ implies $[x]=[y]$.
 
-#### Quotient spaces
-
 Now suppose $V$ is a vector space over $F$ and $W$ is a subspace of $V$.  Define an equivalence relation on $V$ by setting
 $$
 x\sim y \iff x-y\in W.
@@ -267,7 +264,7 @@ straightforward.  For example,
 $$
 \begin{aligned}
 a([x]+[y])&=a([x+y])=[a(x+y)] \\
-&=[ax+ay]=[ax]+[ay]=a[x]+b[y]
+&=[ax+ay]=[ax]+[ay]=a[x]+a[y]
 \end{aligned}
 $$
 
@@ -296,11 +293,11 @@ the desired property and
 is well-defined because if $[v]=[x]$ then $v-x\in H$.  Since $H$
 is contained in the kernel of $f$, this means that $f(v-x)=0$ so $f(v)=f(x)$.
 
-The existence of the map $\overline{f}$ is called *the universal mapping property of the quotient $V/H$.  
+The existence of the map $\overline{f}$ is called *the universal mapping property of the quotient $V/H$*.
 
 One can show that the subspaces of $V/H$ correspond exactly to the subspaces of $V$ containing $H$. 
 
-#### Complexes
+### Complexes
 
 **Definition:** A complex of vector spaces is a sequence of vector spaces
 $W^{i}$ connected by linear maps $d_{i}$ 
@@ -329,7 +326,7 @@ $$
 
 is called the Euler characteristic of the complex.
 
-**Proposition:**. We have
+**Proposition:** We have
 $$
 \chi(W^{\cdot})=\sum_{-\infty}^{\infty} (-1)^{i}\dim H^{i}(W^{\cdot})
 $$
@@ -346,3 +343,23 @@ $$
 $$
 
 which is the alternating sum of the dimensions of the $H^{i}(W^{\cdot})$.
+
+**Definition:** A complex is *exact* if its cohomology groups are zero.  In this case, the kernel of $d^{i}$ is exactly the image of $d^{i-1}.
+
+So the cohomology of a complex is a measure of how far it is from being exact. 
+
+A short exact sequence is a 5 term exact complex:
+$$
+0\to A\to B\to C \to 0.
+$$
+
+In this case, the map from $A\to B$ is injective (its kernel is zero) and the map from $B\to C$ is surjective.
+
+From the universal property of quotients, this means that $C$ is isomorphic to $A/B$.
+
+#### Homology
+
+One can also define a complex with the reverse indexing, so that $d_{i}:W_{i}\to W_{i-1}$.
+In this case the kernel $Z_{i}$ of $d_{i}$ is called the space of $i$-cycles, and the image of $d_{i+1}$ is called the space of $i$-boundaries.
+The quotient $Z_{i}/B_{i}$ is called the $i^{th}$
+homology group of the complex $H_{i}(W^{\cdot})$.

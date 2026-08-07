@@ -32,26 +32,27 @@ $$
 =\sum_{k}\sum_{i} b_{ki}a_{ik} =\sum_{k} d_{kk} = \trace(BA)
 $$
 
+#### Trace of a linear map
 
 Now let $f:V\to V$ be any linear map, where $V$ is a finite dimensional vector space.  Choose a basis $E$ for $V$ and define the trace $\trace(f)$
 to be the trace of the matrix $[f]_{E}^{E}$.  
 
-This is a well-defined invariant of $f$ because if we choose a different basis, say $F$, then $[f]_{F}^{F} =[1]_{F}^{E} [f]_{E}^{E}[1]_{E}^{F}$
-Thus 
+This is a well-defined invariant of $f$ because if we choose a different basis, say $E'$, then $[f]_{E'}^{E'} =[1]_{E'}^{E} [f]_{E}^{E}[1]_{E}^{E'}$
+Thus
 $$
 \begin{aligned}
-\trace([f]_{F}^{F})&=\trace([1]_{F}^{E}[f]_{E}^{E}[1]_{E}^{F})\\
-&=\trace([f]_{E}^{E}[1]_{E}^{F}[1]_{F}^{E})\\
+\trace([f]_{E'}^{E'})&=\trace([1]_{E'}^{E}[f]_{E}^{E}[1]_{E}^{E'})\\
+&=\trace([f]_{E}^{E}[1]_{E}^{E'}[1]_{E'}^{E})\\
 &=\trace([f]_{E}^{E})
 \end{aligned}
 $$
 
-since $[1]_{F}^{E}[1]_{E}^{F}=[1]_{E}^{E}$ is the identity matrix. 
+since $[1]_{E'}^{E}[1]_{E}^{E'}=[1]_{E}^{E}$ is the identity matrix.
 
 ### Determinant
 
 **Proposition:** There is a unique
-function (the *determinant*) from $M_n{F)$ to $F$ satisfying the following properties:
+function (the *determinant*) from $M_n(F)$ to $F$ satisfying the following properties:
 
 1.  $\det$ is multilinear as a function of the rows of $A\in M_{n}(F)$.  In other words,
 if we think of $A$ as made up of $n$ rows $A_{1},\dots, A_{n}$ then
@@ -71,7 +72,7 @@ $$
 \det(A_1,\ldots, aA_{i},\ldots, A_n) = a\det(A_1,\ldots, A_{i},\ldots, A_{n}).
 $$
 
-2. The determinant function is *alternating.*. This means that $\det$ vanishes on any collection of rows $A_1,\ldots, A_n$ where two rows are repeated.  One consequence of this is that swapping any two rows changes the sign of the determinant.
+2. The determinant function is *alternating*. This means that $\det$ vanishes on any collection of rows $A_1,\ldots, A_n$ where two rows are repeated.  One consequence of this is that swapping any two rows changes the sign of the determinant.
 For example, since 
 $$
 \det(A_1+A_2,A_1+A_2,\ldots, A_n) = 0
@@ -116,7 +117,7 @@ We know that we can reduce an $n\times n$ matrix $A$ to row-reduced echelon form
 using elementary row operations, and by tracking the effect of those operations on $\det(A)$ we see that it's enough to know how to compute the determinant of a matrix $A'$ which has $k$ $1$'s followed by $n-k$ $0$'s  on the diagonal.  If $k=n$,
 then this is the identity matrix so the determinant is $1$.  On the other hand, if the last row of $A'$ is zero, then
 $$
-\det(A'_1,\ldots, A'_n) = \det(A'_1,\ldots, 0\cdot A'_n) = 0\dot(A'_1,\ldots, A'_n) = 0
+\det(A'_1,\ldots, A'_n) = \det(A'_1,\ldots, 0\cdot A'_n) = 0\cdot\det(A'_1,\ldots, A'_n) = 0
 $$
 
 In other words, assuming the determinant exists, we have an algorithm to compute it.
@@ -131,7 +132,7 @@ $$
 then the usual $\det(A)=ad-bc$ has the desired properties. 
 
 We proceed inductively.  Suppose $A=(a_{ij})$ is $n\times n$.  Let $A_{i}$ be the submatrix of $A$ obtained by deleting the first row and the $i^{th}$ column of $A$.  This is an $(n-1)\times (n-1)$ matrix
-so it's determinant is known inductively.  
+so its determinant is known inductively.
 Define
 $$
 \det(A) = \sum_{i=1}^{n} (-1)^{i+1}a_{1i}\det(A_{i}).
@@ -153,7 +154,7 @@ If we can show that these terms have opposite signs, then if the first two rows
 of $A$ are equal the sum will cancel out and yield zero as desired.
 
 The sign in front of $a_{1i}$ is $(-1)^{i+1}$.  The sign in front of $a_{2j}$ depends on whether $j$ is less than or greater than $i$.  If less, it's $(-1)^{j+1}$. If more, it's $(-1)^{j}$.  
-(This is because in when expanding the subdeterminant $\det(A_{i})$, skipping $i$ changes the parity of the term associated with the index $j$.) 
+(This is because when expanding the subdeterminant $\det(A_{i})$, skipping $i$ changes the parity of the term associated with the index $j$.) 
 
 
 So the combined sign is
@@ -165,7 +166,7 @@ $$
 The sign $\epsilon_{ji}$ in front of $a_{1j}$ is $(-1)^{j+1}$ and that in front of $a_{2i}$
 is $(-1)^{i+1}$ if $i<j$ and $(-1)^{i}$ if $i>j$.  So
 $$
-\epsilon_{ji} = \begin{cases} $(-1)^{i+j} & i<j \\
+\epsilon_{ji} = \begin{cases} (-1)^{i+j} & i<j \\
 (-1)^{i+j+1} & i>j
 \end{cases}
 $$
@@ -179,7 +180,7 @@ For computational purposes, row reduction is *much* more efficient.
 **Proposition:** The determinant is multiplicative: $\det(AB)=\det(A)\det(B)$.
 
 **Proof:** Recall that each of the row operations can be carried out by multiplication by an appropriate [elementary matrix](../Week1/W01.2.qmd#def-elementary-matrix).
-The swapping matrices $P_{ij}$ has determinant $-1$ and the "add a multiple of a row" matrices $R_{ij}(\lambda)$ have determinant $1$ -- you can see this directly from the properties of the determinant.  The scaling matrix $D_{i}(\lambda)$ has determinant $\lambda$.  So, for each of these
+The swapping matrices $P_{ij}$ have determinant $-1$ and the "add a multiple of a row" matrices $R_{ji}(\lambda)$ have determinant $1$ -- you can see this directly from the properties of the determinant.  The scaling matrix $D_{i}(\lambda)$ has determinant $\lambda$.  So, for each of these
 matrices $E$, we have $\det(EA)=\det(E)\det(A)$. 
 
 By row reduction any matrix $A$ is a product of elementary matrices.  If $A=E_{1}\cdots E_{k}$ and $B=F_{1}\cdots F_{l}$
@@ -197,10 +198,10 @@ $$
 
 where the $E_{i}$ are elementary matrices and $J$ is diagonal,
 then $\det(A)=0$ if and only if $\det(J)=0$, which happens
-if and only if $J$ has a zero on the diagonal.  So if $\det(A)$ is nonzero, then  $J$ is the identity matrix, and one gets an inverse for $A$ from the inverses of the $E_{i}$. 
+if and only if $J$ has a zero on the diagonal.  (Since $J$ is in row-reduced echelon form, every diagonal entry is either $0$ or a pivot, hence exactly $1$.)  So if $\det(A)$ is nonzero, then $J$ is the identity matrix, and one gets an inverse for $A$ from the inverses of the $E_{i}$.
 
 
-### A few properties of the determinant
+#### A few properties of the determinant
 
 1.  The formula we used to define the determinant is called the "cofactor expansion" on the first row.  One can use any row to get a similar expansion.
 
@@ -212,7 +213,7 @@ b_{ij} = (-1)^{i+j}\det(A_{ji})
 $$
 
 where $A_{ji}$ is the matrix obtained from $A$ by deleting
-the $j^{th}$ row and the $i^{th}$ column.  This matrix is called the (classical) adjoint of $A$.
+the $j^{th}$ row and the $i^{th}$ column.  This matrix is called the (classical) adjoint or the adjugant of $A$.
 
 **Proposition:** $AA^{adj} = A^{adj}A = \det(A)I$.
 
@@ -237,20 +238,91 @@ $$
 which is $\det(A)$.
 
 **Remark:** We need to check the sign here: the cofactor expansion around row $i$
-gets a sign $(-1)^{i+1}$.  For this, look at the cofactor expansion for the identity matrix to
-see that the expansion along the $i^{th}$ row needs a $(-1)^{i+1}$. 
+gets a sign $(-1)^{i+1}$.  This is because the cofactor expansion
+around row $i$ satisfies the conditions characterizing the determinant
+except that it gives $(-1)^{i+1}$ for the identity matrix.
 
 **Remark:** This gives us an "explicit" formula for the inverse of $A$ as
 $\det(A)^{-1}A^{adj}$. 
 
-**Remark:** An arbitrary permutation  $\sigma$ of $1,\ldots, n$ can be represented by a matrix $E(\sigma)$ that permutes the rows of a matrix $A$ according to this permutation.  The sign of the permutation is $\det(E(\sigma))$.
 
-## Determinant of a Linear Map
+
+
+#### Expansion of the determinant
+
+If $A\in M_{n}(F)$ and $A_{i}=\sum a_{ij}e_{j}$ is the
+$i^{th}$ row of $A$ written in terms of the standard row vectors
+$e_{i}$ having a $1$ in position $i$ and zeroes elsewhere,
+then in follows from the multilinearity of the determinant that
+we can write
+$$
+\det(A)=\det(A_1,\ldots, A_n) = \sum a_{1i_{1}}a_{2i_{2}}\cdots a_{ni_{n}}\det(e_{i_{1}},e_{i_{2}},\ldots, e_{i_{n}})
+$$
+
+
+This is because any term with a repeated index will have zero determinant by the alternating property.
+
+The determinant $\det(e_{i_{1}},\ldots, e_{i_{n}})$ is $\pm 1$.  
+
+If the determinant $\det(e_{i_{1}},\ldots, e_{i_{n}})$ is $+1$, we say that the permutation $i_{1},\ldots, i_{n}$ is even; otherwise we say it's odd.
+
+Any permutation can be "sorted" into the $1,\ldots, n$ by a sequence of operations where you exchange two indices.
+For example,
+$$
+(2,4,1,3)\to(1,4,2,3)\to (1,2,4,3)\to (1,2,3,4).
+$$
+
+Each such exchange reverses the sign of the permutation since
+it corresponds to an elementary row operation where you swap to rows.  
+
+So a permutation is even if it can be sorted by an even number of exchanges, and odd if it requires an odd number.
+
+It's not obvious from a combinatorial point of view  that this is well-defined, but since we have an alternative formula via the determinant we can see that it is.
+
+This expansion is essentially useless since it involves $n!$ terms, each a product of $n$ terms.  
+
+#### Cramer's Rule
+
+Suppose that $A$ is an $n\times n$ matrix over $F$
+and $b\in F^{n}$.  We can look at the linear system of equations
+$$
+Ax = b. 
+$$
+If $\det(A)\not=0$, we can "solve" this system
+by multiplying both sides by the adjugant matrix:
+
+$$
+A^{adj}Ax=A^{adj}b
+$$
+
+So $x=\det(A)^{-1}A^{adj}b$.
+
+If we look more closely at $A^{adj}b$, we see
+that the $j^{th}$ entry of $A^{adj}b$ (corresponding to the value of $x_{j}$ in $x$) is
+$$
+(A^{adj}b)_{j} = \sum_{i=1}^{n} A^{adj}_{ji}b_{i}
+= (-1)^{j+1}\sum_{i=1}^{n}(-1)^{i+1}\det(A_{ij})b_{i}
+$$
+
+This expression is the cofactor expansion of the matrix $A_{j}(b)$ obtained from $A$ by replacing the $j^{th}$ column with $b$. 
+
+This yields the formula (called "Cramer's Rule")
+$$
+x_{j} = \frac{\det(A_{j}(b))}{\det(A)}
+$$
+
+Although not useful for calculation, it is worth observing that, as a consequence of Cramer's rule,  if $A$ has integer entries, $b$ has integer entries, and $\det(A)=\pm 1$, then the solution  $x$ to $Ax=b$
+also has integer entries.
+
+
+
+
+#### Determinant of a Linear Map
 
 Let $f:V\to V$ be a linear map where $V$ is a finite dimensional vector space over $F$.  We define the determinant of $f$ to be the determinant of $[f]_{E}^{E}$ where $E$
 is any basis for $V$.
 
-Since choosing a different basis $F$ changes the matrix $A=[f]_{E}^{E}$ by similarity to a matrix $B=PAP^{-1}$,
+Since choosing a different basis $E'$ changes the matrix $A=[f]_{E}^{E}$ by similarity to a matrix $B=PAP^{-1}$,
 the determinant is independent of the choice of basis and is thus a well-defined invariant of $f$.
 
 

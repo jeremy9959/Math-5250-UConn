@@ -23,9 +23,9 @@ The set $\R^{n}$ allows for:
 
 **Addition of vectors.**  If 
 
-$$x=(x_1,\ldots, x_n)\in R^{n} (or \C^{n})$$ and 
+$$x=(x_1,\ldots, x_n)\in \R^{n}\ (\text{or } \C^{n})$$ and
 
-$$y=(y_1,\ldots, y_n)\in\R^{n} (or \C^{n})$$
+$$y=(y_1,\ldots, y_n)\in\R^{n}\ (\text{or } \C^{n})$$
 
 then 
 $$x+y=(x_1+y_1,\dots, x_n+y_n)$$
@@ -74,7 +74,7 @@ copy of $\R^{2}$ sitting inside $\R^{3}$ so it's a subspace.
 - If $u=(u_1,\ldots, u_n)$ and $v=(v_1,\ldots, v_n)$ are in $W$, then 
 $u+v$ is in $W$ because 
 
-$$(u_1+v_1)+\cdots+(u_n+v_n)=(u_1+\cdots u_n)+(v_1+\cdots v_n)=0$$
+$$(u_1+v_1)+\cdots+(u_n+v_n)=(u_1+\cdots+u_n)+(v_1+\cdots+v_n)=0$$
 
 Similarly $au_1+au_2+\cdots+au_n=a(u_1+\cdots u_n)=0$ so $au$ is in $W$.
 
@@ -97,7 +97,7 @@ You can replace $\R$ by $\C$ in the above to obtain the same results for complex
 
 **Definition:** Let $V$ be a vector space and let $S=\{v_1,\ldots, v_k\}$ be a set of vectors in $V$.  The **span** of $S$ is defined as either of the following equivalent things:
 
-1.  The set of all vectors $\sum_{i=1}^{n} a_i v_i$ as $(a_1,\ldots, a_n)$ runs over $\R^{n}$. 
+1.  The set of all vectors $\sum_{i=1}^{k} a_i v_i$ as $(a_1,\ldots, a_k)$ runs over $\R^{k}$.
 
 2.  The intersection of all subspaces of $V$ that contain $S$.
 
@@ -119,7 +119,9 @@ Equivalently:
 
 - a set $S=\{v_1,\ldots, v_n\}$ is linearly independent if the span of any proper subset of $S$ is a proper subspace of the span of $S$.
 
-Suppose 
+Let $H=\mathrm{Span}(S)$.
+
+Suppose
 $$
 \sum a_{i}v_{i}=0
 $$
@@ -128,9 +130,9 @@ for $v_{j}$ in terms of the other vectors:
 $$
 v_{j}=-\sum_{i\not=j} a_{i}/a_{j} v_{i}
 $$
-so $v_{j}$ is in the span of the remaining $v_{i}$.  Thus the span of the set $S\backslash\{v_{j}\}$ is the same as the span of $S$.  
+so $v_{j}$ is in the span of the remaining $v_{i}$.  Thus the span of the set $S\backslash\{v_{j}\}$ is the same as $H$.
 
-Conversely, if there is a proper subset $U$ of $S$ whose span equals $V$, choose $v_{i}\not\in U$.  Since $v_{i}$ is in the span of $U$, you can write
+Conversely, if there is a proper subset $U$ of $S$ whose span equals $H$, choose $v_{i}\not\in U$.  Since $v_{i}$ is in the span of $U$, you can write
 $$
 v_{i} = \sum_{v_{j}\in U} b_{j}v_{j} 
 $$ 
@@ -156,7 +158,7 @@ A set $S$ of vectors in a vector space $V$ is called a *basis* of $V$ if $\mathr
 
 **Theorem:** Every vector space has a basis. 
 
-**Proof:** This requires Zorn's Lemma.  If $S_{1}\subset S_{2}\subset\cdots$ is an ascending sequence of linearly independent sets, their union is also linearly independent (because any linear relation would only involve finitely many vectors so would hold at some finite level of the chain). Therefore the linearly independent subsets of $V$ form a partially ordered set in which every ascending chain has a maximal element.  It follows that there is a maximal linearly independent set $B$ in $V$.  
+**Proof:** This requires Zorn's Lemma.  If $S_{1}\subset S_{2}\subset\cdots$ is an ascending sequence of linearly independent sets, their union is also linearly independent (because any linear relation would only involve finitely many vectors so would hold at some finite level of the chain). Therefore the linearly independent subsets of $V$ form a partially ordered set in which every chain has an upper bound (namely its union).  By Zorn's Lemma, it follows that there is a maximal linearly independent set $B$ in $V$.
 
 Now choose any $v\in V$.  If $v$ is not in the span of $B$, then $B\cap \{v\}$ would be linearly independent, contradicting maximality of $B$.
 
@@ -164,13 +166,16 @@ Hence $B$ spans $V$ and is therefore a basis.
 
 **Theorem:** Any two bases of a vector space $V$ have the same cardinality.  
 
-**Proof:** Suppose that $X$ and $Y$ are bases of the same vector space $V$.
-Each $x\in X$ is a *finite* linear combination of elements of $Y$.  This means
-there is a surjective finite-to-one map from $Y$ to $X$.  The surjectivity tells
-us that $|Y|\ge |X|$.  On the other hand, a theorem in cardinal arithmetic (Hessenberg's
-Theorem) says that if $X$ is infinite and $Y\to X$ is finite-to-one then $|Y|\le |X|$.
-Then The Cantor-Bernstein theorem says that $X$ and $Y$ have the same cardinality.
-)
+**Proof:** Suppose that $X$ and $Y$ are bases of the same vector space $V$.  If $X$ is finite, this is the "same number of elements" fact established later by the exchange argument, so assume $X$ is infinite.
+
+For each $x\in X$, since $Y$ spans $V$, $x$ is a *finite* linear combination of elements of $Y$; let $Y_{x}\subset Y$ be the (finite) set of elements of $Y$ that appear with nonzero coefficient in that combination.
+
+**Claim:** $Y=\bigcup_{x\in X} Y_{x}$.  If some $y_{0}\in Y$ belonged to no $Y_{x}$, then, since $X$ spans $V$, $y_{0}$ is a finite linear combination of elements of $X$; substituting each of those $x$'s by its expansion in terms of $Y$ writes $y_{0}$ as a combination of elements of $Y\setminus\{y_{0}\}$ (none of the terms involve $y_{0}$, since $y_{0}\notin Y_{x}$ for any $x$ used).  This contradicts the linear independence of $Y$.
+
+A union of a family of finite sets $Y_{x}$ indexed by an infinite set $X$ has cardinality at most that of $X$ (see Hessenberg's Theorem).  Applying this to $Y=\bigcup_{x\in X}Y_{x}$ gives $|Y|\le |X|$.
+
+$X$ and $Y$ play symmetric roles (both are bases), so the same argument with $X$ and $Y$ exchanged gives $|X|\le |Y|$.  By the Cantor-Bernstein theorem, $|X|=|Y|$.
+
 We will establish the fact that any two finite bases of $V$ have the same number of elements a little later.
 
 **Definition:** The dimension of $V$ is the cardinality of any basis of $V$.
