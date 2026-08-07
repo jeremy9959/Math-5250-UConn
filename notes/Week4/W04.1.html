@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 5250: Graduate Linear Algebra - Week 4 — Eigenvalues and Eigenvectors</title>
+<title>Math 5250: Graduate Linear Algebra - Eigenvalues and Eigenvectors</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,10 +55,27 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -106,10 +123,10 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Week 4 — Eigenvalues and Eigenvectors</a></li><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Eigenvalues and eigenvectors</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Eigenvalues and Eigenvectors</a></li><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Eigenvalues and eigenvectors</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -210,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Week 4 — Eigenvalues and Eigenvectors</span></a>
+ <span class="menu-text">Eigenvalues and Eigenvectors</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -420,7 +437,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a></li>
+  <li><a href="#the-characteristic-polynomial" id="toc-the-characteristic-polynomial" class="nav-link active" data-scroll-target="#the-characteristic-polynomial">The characteristic polynomial</a></li>
+  <li><a href="#the-cayley-hamilton-theorem" id="toc-the-cayley-hamilton-theorem" class="nav-link" data-scroll-target="#the-cayley-hamilton-theorem">The Cayley Hamilton Theorem</a></li>
   </ul>
 </nav>
     </div>
@@ -429,7 +447,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 4 — Eigenvalues and Eigenvectors</h1>
+<h1 class="title">Eigenvalues and Eigenvectors</h1>
 </div>
 
 
@@ -444,9 +462,94 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
-<p>Notes on eigenvalues and eigenvectors of linear operators, eigenspaces, and geometric vs.&nbsp;algebraic multiplicity.</p>
+<p>Let <span class="math inline">V</span> be a finite dimensional vector space over a field <span class="math inline">F</span> and let <span class="math inline">L:V\to V</span> be a linear map.</p>
+<p>As we’ve seen, if we choose a basis <span class="math inline">E</span> of <span class="math inline">V</span>, we can represent <span class="math inline">L</span> by a matrix <span class="math inline">[L]_{E}^{E}</span>, which is useful for many computations. However, the matrix depends on the choice of <span class="math inline">E</span>. It would be useful if we could find a basis in which the matrix <span class="math inline">[L]_{E}^{E}</span> has a particularly simple form.</p>
+<p>The simplest possible form would be if <span class="math inline">[L]_{E}^{E}</span> were diagonal. If we find such a basis <span class="math inline">E=\{e_1,\ldots, e_n\}</span>, then <span class="math display">
+Le_{i} = a_{i}e_{i}
+</span> for some scalars <span class="math inline">a_{i}</span> and <span class="math inline">i=1,\ldots, n</span>.</p>
+<p><strong>Definition:</strong> The map <span class="math inline">L</span> is diagonalizable if there exists a basis <span class="math inline">E</span> such that <span class="math inline">[L]_{E}^{E}</span> is a diagonal matrix.</p>
+<p>A matrix <span class="math inline">A\in M_{n}(F)</span> is diagonalizable if the linear map <span class="math inline">L_A:F^{n}\to F^{n}</span> is diagonalizable.</p>
+<p>Let <span class="math inline">E'</span> be the standard basis of <span class="math inline">F^{n}</span>. If <span class="math inline">A</span> is diagonalizable, there is a basis <span class="math inline">E</span> for <span class="math inline">F^{n}</span> such that <span class="math inline">[L_A]_{E}^{E}</span> is diagonal. Since <span class="math display">
+[L_A]_{E}^{E} = [1]_{E}^{E'} [L_{A}]_{E'}^{E'}[1]_{E'}^{E}
+</span> this means that <span class="math inline">A</span> is diagonalizable if there is an invertible matrix <span class="math inline">P</span> (corresponding to <span class="math inline">[1]_{E}^{E'}</span> above) such that <span class="math inline">PAP^{-1}</span> is diagonal.</p>
+<p>In other words, <span class="math inline">A</span> is diagonalizable if it is similar to a diagonal matrix.</p>
+<p>We will devote a considerable amount of time and effort to exploring the question of which matrices are diagonalizable.</p>
+<section id="the-characteristic-polynomial" class="level2">
+<h2 class="anchored" data-anchor-id="the-characteristic-polynomial">The characteristic polynomial</h2>
+<p>Our discussion of diagonalizability focuses our attention on vectors <span class="math inline">x</span> such that <span class="math display">
+Ax = \lambda x
+</span></p>
+<p>for some scalar <span class="math inline">\lambda</span>. If <span class="math inline">A</span> were diagonalizable, vectors like this would make up the diagonal basis.</p>
+<p>A nonzero vector with this property (for some <span class="math inline">\lambda</span>) is called an <em>eigenvector</em> for <span class="math inline">A</span>. The scalar <span class="math inline">\lambda</span> is called the associated eigenvalue.</p>
+<p>Similarly if <span class="math inline">L</span> is a linear map, a non-zero vector such that <span class="math inline">Lx=\lambda x</span> is an eigenvector for <span class="math inline">L</span> with eigenvalue <span class="math inline">\lambda</span>.</p>
+<p><span class="math inline">A</span> (resp. <span class="math inline">L</span>) is diagonalizable if and only if there is a basis for <span class="math inline">F^{n}</span> (resp. <span class="math inline">V</span>) consisting of eigenvectors for <span class="math inline">A</span> (resp. <span class="math inline">L</span>).</p>
+<p>The equation <span class="math inline">Ax=\lambda x</span> has a nonzero solution <span class="math inline">x</span> if and only if the matrix <span class="math inline">A-\lambda I</span> has a non-zero null space. This happens if and only if this matrix has zero determinant.</p>
+<p><strong>Proposition:</strong> <span class="math inline">\lambda</span> is an eigenvalue for <span class="math inline">A</span> if and only if <span class="math inline">\det(A-\lambda I) = 0</span>. If the determinant is zero, any nonzero vector in the null space of <span class="math inline">A-\lambda I</span> is an eigenvector for <span class="math inline">A</span> with eigenvalue <span class="math inline">\lambda</span>.</p>
+<p>Notice that this proposition can be stated entirely in terms of linear maps.</p>
+<p>If we treat <span class="math inline">x</span> as a variable, we obtain the “characteristic polynomial” <span class="math inline">P_{A}(x)=\det(A-xI)</span> of <span class="math inline">A</span> (or of a linear map <span class="math inline">L</span>, where we use any matrix representation of <span class="math inline">L</span> to compute the polynomial and we call the result <span class="math inline">P_{L}(x)</span>).</p>
+<p><strong>Definition:</strong> If <span class="math inline">x</span> is a variable, then <span class="math inline">\det(A-xI)</span> is a polynomial in <span class="math inline">x</span> of degree <span class="math inline">n</span>.</p>
+<p>A scalar <span class="math inline">\lambda</span> is a root of <span class="math inline">P_{A}(x)</span> if and only if <span class="math inline">\lambda</span> is an eigenvalue of <span class="math inline">A</span>.</p>
+<p><strong>Proposition:</strong> Let <span class="math inline">F</span> be an <em>algebraically closed field</em>. Then every linear map/matrix over <span class="math inline">F</span> has an eigenvalue (and associated eigenvector).</p>
+<p><strong>Proposition:</strong> The “Fundamental Theorem of Algebra.” The complex numbers are algebraically closed.</p>
+<p><strong>Corollary:</strong> Every complex square matrix has an eigenvector.</p>
+<p>Notice that this is false for real matrices. The characteristic polynomial of <span class="math display">
+A = \left[\begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right]
+</span> is <span class="math inline">x^2+1</span> which has no real roots.</p>
+<p><strong>Proposition:</strong> Not every matrix is diagonalizable.</p>
+<p><strong>Proof:</strong> Look at <span class="math display">
+A = \left[\begin{matrix} 1 &amp; 1 \\ 0 &amp; 1 \end{matrix}\right].
+</span></p>
+<p>The characteristic polynomial <span class="math inline">P_{A}(x)=1-2x+x^2=(x-1)^2</span> so the only eigenvalue of <span class="math inline">A</span> is <span class="math inline">1</span>.</p>
+<p>The equation <span class="math inline">Ax=x</span> has a one-dimensional solution space spanned by <span class="math display">
+\left[\begin{matrix} 1 \\ 0 \end{matrix}\right].
+</span></p>
+<p>Therefore <span class="math inline">\mathbf{C}^{2}</span> cannot have a basis of eigenvectors for <span class="math inline">A</span>, and so <span class="math inline">A</span> is not diagonalizable.</p>
+<p><strong>Examples:</strong> Linear Differential Equations</p>
+<p><strong>Proposition:</strong> Suppose <span class="math inline">L:V\to V</span> is a linear map where <span class="math inline">V</span> is <span class="math inline">n</span>-dimensional. If <span class="math inline">L</span> has <span class="math inline">n</span> distinct eigenvalues, then <span class="math inline">L</span> is diagonalizable.</p>
+<p><strong>Proof:</strong> This follows from the following fact: eigenvectors associated to different eigenvalues are linearly independent. To see this, suppose <span class="math inline">v_1,\ldots, v_k</span> are eigenvectors for <span class="math inline">L</span> with eigenvalues <span class="math inline">\lambda_{1},\ldots,\lambda_{k}</span>, and that all the <span class="math inline">\lambda_{i}</span> are different. Suppose</p>
+<p><span class="math display">
+\sum_{i=1}^{k} a_{i}v_{i}  = 0
+</span> Then <span class="math display">
+\sum_{i=1}^{k} a_{i}L(v_{i}) = \sum a_{i}\lambda_{i}v_{i} = 0.
+</span> We can assume <span class="math inline">k\ge 2</span> and then <span class="math inline">a_j\not=0</span> for some <span class="math inline">j\ge 2</span>. Multiply the first equation by <span class="math inline">\lambda_1</span> to obtain: <span class="math display">
+\begin{matrix}
+a_1\lambda_1 v_1 + \cdots + a_k\lambda_1 v_k &amp;= 0 \\
+a_1\lambda_1 v_1 + \cdots + a_k\lambda_k v_k &amp;= 0 \\
+\end{matrix}
+</span></p>
+<p>Subtracting yields <span class="math display">
+\sum_{i=2}^{k} a_i(\lambda_1-\lambda_k)v_{k} = 0.
+</span></p>
+<p>Since <span class="math inline">a_j\not=0</span>, and the <span class="math inline">v_{i}</span> are independent, this means <span class="math inline">(\lambda_1-\lambda_j)=0</span> which contradicts the assumption that all the <span class="math inline">\lambda_i</span> are distinct.</p>
+<p>For the diagonalizability result, if <span class="math inline">L</span> has <span class="math inline">n</span> distinct eigenvalues, then the associated eigenvectors are linearly independent and thus a basis for <span class="math inline">V</span>. In that basis, the matrix of <span class="math inline">A=[L]</span> is diagonal with <span class="math inline">a_{ii}=\lambda_i</span>.</p>
+<p><strong>Corollary:</strong> If the characteristic polynomial <span class="math inline">P(x)</span> of <span class="math inline">L</span> has <span class="math inline">n</span> distinct roots, then <span class="math inline">L</span> is diagonalizable.</p>
+<p>The converse is false: the identity matrix has characteristic polynomial <span class="math inline">(1-x)^n</span> but is obviously diagonal.</p>
+<p>Understanding exact conditions for diagonalizability will occupy us for a time.</p>
+</section>
+<section id="the-cayley-hamilton-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="the-cayley-hamilton-theorem">The Cayley Hamilton Theorem</h2>
+<p>Observe that if <span class="math inline">P(x)</span> is a polynomial with coefficients in the field <span class="math inline">F</span>, and <span class="math inline">A\in M_{n}(F)</span> is a matrix, then <span class="math inline">P(A)</span> makes sense as a matrix as well.</p>
+<p>If <span class="math inline">L</span> is a linear map, then <span class="math inline">P(L)</span> makes sense with the understanding that <span class="math inline">L^i</span> means the <span class="math inline">i</span>-fold composition <span class="math inline">L\circ \cdots \circ L</span>.</p>
+<p>Finally, given a basis <span class="math inline">E</span>, <span class="math inline">[P(L)]_{E}^{E} = P([L]_{E}^{E})</span> so we can freely move back and forth between linear maps and matrices by choice of basis.</p>
+<p><strong>Theorem:</strong> (Cayley-Hamilton) Let <span class="math inline">P(x)=\det(A-xI)</span> be the characteristic polynomial of <span class="math inline">A</span>. Then <span class="math inline">P(A)=0</span>.</p>
+<p><strong>Proof:</strong> Let <span class="math inline">X=A-xI</span>. Then <span class="math display">
+XX^{adj} = \det(X)I=P_{A}(x)I
+</span></p>
+<p>Since the entries of <span class="math inline">X^{adj}</span> are the determinants of <span class="math inline">(n-1)\times (n-1)</span> submatrices of <span class="math inline">X</span>, each entry is a polynomial of degree at most <span class="math inline">n-1</span>. We can “regroup” the terms to obtain an expression: <span class="math display">
+X^{adj} = B_{0} + xB_{1}+\cdots+x^{n-1}B_{n-1}
+</span> for <span class="math inline">n\times n</span> matrices <span class="math inline">B_{i}</span>.</p>
+<p>Notice that <span class="math display">
+xIX^{adj} = xB_{0}+\cdots+x^{n}B_{n-1}.
+</span></p>
+<p>This is because multiplying the matrix <span class="math inline">X^{adj}</span> by <span class="math inline">x</span> multiplies each entry by <span class="math inline">x</span>, so it “shifts” the coefficients up by one degree.</p>
+<p>Also <span class="math display">
+AX^{adj} = AB_{0}+\cdots + x^{n-1}AB_{n-1}
+</span></p>
+<p>since multiplication by <span class="math inline">A</span> acts on the terms of each degree.</p>
+<p>This gives the formula <span class="math display">
+P_{A}(x)I = AB_{0}+x(AB_{1}-B_{0}) + \cdots + x^{n}(-B_{n-1}).
+</span></p>
+<p>Substituting <span class="math inline">x=A</span> into this expression collapses to a telescoping sum that yields zero.</p>
 
 
 </section>
