@@ -44,7 +44,7 @@ title: Math 5250 Schedule
   <td>Eigenvalues and Eigenvectors</td>
   <td><a href="notes/Week4/W04.1.qmd">Eigenvalues and eigenvectors; Cayley-Hamilton</a></td></tr>
 <tr class="week-end"><td>Th 09/24</td>
-  <td>Eigenvalues and Eigenvectors</td>
+  <td>Jordan Form</td>
   <td><a href="notes/Week4/W04.2.qmd">Jordan Canonical Form</a></td></tr>
 <tr><td>Tu 09/29</td>
   <td>Inner Product Spaces</td>

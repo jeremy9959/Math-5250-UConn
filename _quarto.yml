@@ -37,13 +37,13 @@ website:
         contents:
           - text: "Trace and determinant"
             href: notes/Week2-3/W02.3.qmd
-      - section: "Eigenvalues and Eigenvectors"
+      - section: "Week 4 - Diagonalizability"
         contents:
           - text: "Eigenvalues and eigenvectors"
             href: notes/Week4/W04.1.qmd
-          - text: "Characteristic polynomials and Cayley-Hamilton theorem"
+          - text: "The Cayley-Hamilton theorem"
             href: notes/Week4/W04.2.qmd
-          - text: "Diagonalization"
+          - text: "Minimal polynomial, Cyclic Subspaces, Jordan Form"
             href: notes/Week4/W04.3.qmd
       - section: "Weeks 5–6 — Inner Product Spaces"
         contents:
