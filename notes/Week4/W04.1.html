@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Week 4 - Diagonalizability</a></li><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Eigenvalues and eigenvectors</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Week 4 - Diagonalizability</a></li><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Eigenvalues and eigenvectors; Cayley Hamilton</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -236,13 +236,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week4/W04.1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Eigenvalues and eigenvectors</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week4/W04.2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Cayley-Hamilton theorem</span></a>
+ <span class="menu-text">Eigenvalues and eigenvectors; Cayley Hamilton</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -438,7 +432,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#the-characteristic-polynomial" id="toc-the-characteristic-polynomial" class="nav-link active" data-scroll-target="#the-characteristic-polynomial">The characteristic polynomial</a></li>
-  <li><a href="#the-cayley-hamilton-theorem" id="toc-the-cayley-hamilton-theorem" class="nav-link" data-scroll-target="#the-cayley-hamilton-theorem">The Cayley Hamilton Theorem</a></li>
+  <li><a href="#the-cayley-hamilton-theorem" id="toc-the-cayley-hamilton-theorem" class="nav-link" data-scroll-target="#the-cayley-hamilton-theorem">The Cayley-Hamilton Theorem</a></li>
   </ul>
 </nav>
     </div>
@@ -527,7 +521,7 @@ a_1\lambda_1 v_1 + \cdots + a_k\lambda_k v_k &amp;= 0 \\
 <p>Understanding exact conditions for diagonalizability will occupy us for a time.</p>
 </section>
 <section id="the-cayley-hamilton-theorem" class="level2">
-<h2 class="anchored" data-anchor-id="the-cayley-hamilton-theorem">The Cayley Hamilton Theorem</h2>
+<h2 class="anchored" data-anchor-id="the-cayley-hamilton-theorem">The Cayley-Hamilton Theorem</h2>
 <p>Observe that if <span class="math inline">P(x)</span> is a polynomial with coefficients in the field <span class="math inline">F</span>, and <span class="math inline">A\in M_{n}(F)</span> is a matrix, then <span class="math inline">P(A)</span> makes sense as a matrix as well.</p>
 <p>If <span class="math inline">L</span> is a linear map, then <span class="math inline">P(L)</span> makes sense with the understanding that <span class="math inline">L^i</span> means the <span class="math inline">i</span>-fold composition <span class="math inline">L\circ \cdots \circ L</span>.</p>
 <p>Finally, given a basis <span class="math inline">E</span>, <span class="math inline">[P(L)]_{E}^{E} = P([L]_{E}^{E})</span> so we can freely move back and forth between linear maps and matrices by choice of basis.</p>
