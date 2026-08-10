@@ -1,7 +1,4 @@
 ---
-title: "Diagonalization"
+title: "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form"
 ---
 
-## Placeholder
-
-Notes on conditions for diagonalizability, diagonalization procedures, and applications.
