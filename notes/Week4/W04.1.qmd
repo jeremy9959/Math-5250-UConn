@@ -132,7 +132,7 @@ The converse is false: the identity matrix has characteristic polynomial $(1-x)^
 
 Understanding exact conditions for diagonalizability will occupy us for a time.
 
-## The Cayley Hamilton Theorem
+## The Cayley-Hamilton Theorem
 
 Observe that if $P(x)$ is a polynomial with coefficients in the field $F$, and $A\in M_{n}(F)$
 is a matrix, then $P(A)$ makes sense as a matrix as well.  
