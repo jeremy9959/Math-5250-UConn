@@ -363,3 +363,33 @@ One can also define a complex with the reverse indexing, so that $d_{i}:W_{i}\to
 In this case the kernel $Z_{i}$ of $d_{i}$ is called the space of $i$-cycles, and the image of $d_{i+1}$ is called the space of $i$-boundaries.
 The quotient $Z_{i}/B_{i}$ is called the $i^{th}$
 homology group of the complex $H_{i}(W^{\cdot})$.
+
+#### Maps of Complexes
+
+A linear map $f$ between complexes $\{W^{\cdot}\}$ and $\{V^{\cdot}\}$ is a family of linear maps
+$$
+f_{i}: W^{i}\to V^{i}
+$$
+with the property that $f_{i+1}\circ d_{i}=d_{i}\circ f_{i}$.
+
+If $f$ is such a linear map, then it carries cocycles to cocycles and coboundaries to coboundaries.
+For coboundaries, this is because if
+$$
+a_{i+1}=d_{i}(a_{i})
+$$
+then 
+$$
+f_{i+1}(a_{i+1}) = f_{i+1}d_{i}(a_{i})=d_{i+1}(f_{i}(a_{i}))
+$$
+For cocycles, this is because, if $d_{i}(a_{i})=0$, then $d_{i}(f_{i}(a_{i}))$ then 
+$$
+d_{i}(f_{i}(a_{i})=f_{i+1}(d_{i}(a_i)) = 0.
+$$
+
+Thus from $f$ we obtain a family of maps 
+$$
+\overline{f}:H^{i}(W^{\cdot})\to H^{i}(V^{\cdot}).
+$$
+
+This is called the *induced map on cohomology*.
+

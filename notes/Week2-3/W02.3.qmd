@@ -49,6 +49,77 @@ $$
 
 since $[1]_{E'}^{E}[1]_{E}^{E'}=[1]_{E}^{E}$ is the identity matrix.
 
+#### Trace, subspaces, and quotient spaces
+
+Let $V$ be a finite dimensional vector space and $L:V\to V$ a linear map.  Suppose that
+$W$ is a subspace of $V$ such that $L(W)\subset W$.  Such a $W$ is called an *invariant subspace*
+for $L$.
+
+In this situation, the map $L:V\to V$ gives rise to a well defined linear map $\overline{L}:V/W\to V/W$.
+This map is defined by $L([v])=[L(v)]$.  It is well defined since, if we choose a different representative 
+$[v]=[v+w]$, then $L([v+w]) = [L(v+w)] = [L(v)+L(w)] = [L(v)]$ since $L(w)\in W$.  
+
+**Proposition:** If $W\subset V$ is an $L$-invariant subspace, let $L_{W}$ be the restriction of $L$ to $W$ and let $\overline{L}$ be the induced map $V/W$.  Then 
+$$
+\trace(L) = \trace(L_{W})+\trace(\overline{L})
+$$
+
+We can state this in the language of complexes.  Suppose $X$:
+$$
+0\to A\to B\to C\to 0
+$$
+is a short exact sequence of vector spaces and $L=(L_1,L_2,L_3)$ is a linear map $W\to W$.
+In practice, this means we have a map $L_2:B\to B$ whose restriction to $A$ is $L_1$ and whose 
+induced quotient map is $L_3$. 
+
+Then the trace of $L$ satisfies:
+$$
+\trace(L) = \trace(L_1)-\trace(L_2)+\trace(L_3) = 0
+$$
+
+**Proof:** Choose a basis for the subspace $W$ and complete it to a basis $E$ for all of $V$.
+Then the matrix $[L]_{E}^{E}$ has an upper triangular block form
+$$
+[L]_{E}^{E} =
+\begin{pmatrix}
+L_1 & * \\
+0 & L_3
+\end{pmatrix}
+$$
+The upper left block is the matrix
+of $L$ restricted to $W$, and the lower right block is the matrix of the induced map in the basis
+$[e_{i}]$ for the $e_{i}\in E$ but not in $W$.  Looking at the diagonal elements gives the result.
+
+More generally, suppose that $X^{\cdot}$ is a bounded complex of finite dimensional vector spaces
+and $L$ is a linear map $X^{\cdot}\to X^{\cdot}$.  Using the same ideas as for the proof of the dimension
+result for complexes, we have that the cocycles
+$$
+Z^{i}\subset X^{i}
+$$
+are an invariant subspace.  Also, $d_{i}(X^{i}/Z^{i})=B^{i+1}$ so we have a short exact sequence
+$$
+0\to Z^{i}\to X^{i}\to B^{i+1}\to 0
+$$
+and therefore 
+$$
+\trace(L_{i}) = \trace(L_{Z^{i}}) + \trace(\overline{L}_{i})
+$$
+
+If we define 
+$$
+\trace(L|X^{\cdot}) = \sum (-1)^{i} \trace(L_{i}) 
+$$
+
+then, by the same telescoping sum argument that we used when looking at the alternating sum
+of dimensions,  we see that 
+$$
+\trace(L|X^{\cdot}) = \sum (-1)^{i} \trace(\overline{L}_{i})
+$$
+where the $\overline{L}_{i}$ are the induced linear maps on cohomology.
+
+Indeed, the dimension of a finite dimensional vector space (at least over a field of "characteristic zero"),
+is just the trace of the identity map, so the dimension result follows from this.
+
 ### Determinant
 
 **Proposition:** There is a unique
@@ -325,4 +396,45 @@ is any basis for $V$.
 Since choosing a different basis $E'$ changes the matrix $A=[f]_{E}^{E}$ by similarity to a matrix $B=PAP^{-1}$,
 the determinant is independent of the choice of basis and is thus a well-defined invariant of $f$.
 
+
+#### Determinants in complexes
+
+
+**Proposition:** 
+Suppose $X$:
+$$
+0\to A_1\to A_2\to A_3\to 0
+$$
+is a short exact sequence of finite dimensional vector spaces and $L:X\to X$ is a linear map.
+So $L=(L_1,L_2,L_3)$ where $L_i:A_i\to A_i$ and the diagram:
+$$
+\begin{array}{ccccccccc}
+0 & \to & A_1 & \to & A_2 & \to & A_3 & \to & 0 \\[4pt]
+  &     & \downarrow^{L_1} & & \downarrow^{L_2} & & \downarrow^{L_3} & & \\[4pt]
+0 & \to & A_1 & \to & A_2 & \to & A_3 & \to & 0
+\end{array}
+$$
+
+commutes. Then
+$$
+\det(L_2) = \det(L_1)\det(L_3).
+$$
+
+**Proof:** Choose a basis for $A_1$ and extend it to a basis $E$ for $A_2$.  As in the case with the trace,
+the matrix of $L$ in this basis is block upper triangular.  The upper left block is the matrix of $L_1$,
+and the lower right block is the matrix of $L_3$:
+$$
+[L]_{E}^{E} =
+\begin{pmatrix}
+[L_1] & * \
+0 & [L_3]
+\end{pmatrix}
+$$
+Using row operations, you can kill off the $\*$ entries, and eventually see that the determinant of this matrix is $\det([L_1])\det([L_3])$.
+
+More generally, using an alternating product, you can show that, given a bounded complex $X^{\cdot}$ of finite dimensional vector spaces, and a linear map $L:X^{\cdot}\to X^{\cdot}$, that 
+$$
+\sum (-1)^{i}\det(L^{i}:X^{i}\to X^{i}) = \sum (-1)^{i} \det(\overline{L}^{i}:H^{i}(X^{\cdot})\to H^{i}(X^{\cdot}))
+$$
+where the $\overline{L}_{i}$ are the induced map on cohomology.
 

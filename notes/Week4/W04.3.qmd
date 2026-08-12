@@ -1,4 +1,75 @@
 ---
 title: "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form"
 ---
+\newcommand{\deg}{\mathrm{deg}}
 
+A polynomial $f$ of degree $n$ over an algebraically closed field factors into a product of $n$ linear terms with distinct roots $\lambda_{i}$:
+$$
+f(x) = \prod (x-\lambda_{i})^{n_{i}}
+$$
+
+The numbers $n_{i}$ are called the multiplicity of the roots $\lambda_{i}$.
+
+If $f(x)=P_{A}(x)$ is the characteristic polynomial of a linear map/matrix over $F$ and all $n_{i}=1$, then we know that $A$ (resp. $L$) is diagonalizable.  If not, then the question is open: sometimes the matrix is diagonalizable, sometimes not.
+
+To understand the situation more fully, we need some theory of polynomials.
+
+We write $F[x]$ for the polynomials with coefficients in a field $F$. For now, we need not assume $F$ algebraically closed.
+
+A polynomial
+$$
+f(x) = a_0+a_1x+\cdots+a_nx^n
+$$
+has degree $\deg(f)=n$ if $a_n\not=0$ and is *monic* if $a_n=1$.
+
+**Proposition:** (The Division Algorithm) Let $f$ and $g$ be two polynomials in $F[X]$.  Then there exist unique monic polynomials $q(x)$ and $r(x)$, with $0\le \deg(r(x))<\deg(g(x))$, such that
+$$
+f(x) = q(x)g(x)+r(x).
+$$
+
+**Definition:** A polynomial $u(x)$ is a divisor of $f(x)$ if there is a polynomial $v(x)$ with $f(x)=u(x)v(x)$.  A polynomial $h(x)$ is a common divisor of $f(x)$ and $g(x)$ if it is a divisor of each.
+
+**Proposition:** (Euclid's Algorithm) Given nonzero polynomials $f(x)$ and $g(x)$, there is a unique nonzero monic polynomial $d(x)=(f(x),g(x))$ of minimal degree of the form $a(x)f(x)+b(x)g(x)$ where $a(x)$ and $b(x)$ are polynomials.  This polynomial $d(x)$ is the *greatest common divisor* of $f(x)$ and $g(x)$, meaning: 
+    
+1. $d(x)$ is a common divisor of $f(x)$ and $g(x)$, and 
+2. if $h(x)$ is a common divisor of $f(x)$ and $g(x)$, then $d(x)$ is a divisor of $h(x)$. 
+
+**Proposition:** The roots of $d(x)=(f(x),g(x))$
+are exactly the common roots of $f(x)$ and $g(x)$.  If $\lambda$ is a common root of multiplicity $a$ in $f$ and multiplicity $b$ in $g$ then the multiplicity of $\lambda$ in $d(x)$ is the smaller of $a$ and $b$. 
+
+**Corollary:** Two polynomials $f(x)$ and $g(x)$ over $F$ have no roots in common, if and only if there are polynomials $a(x)$ and $b(x)$ such that $a(x)f(x)+b(x)g(x)=1.$
+
+## Cyclic Subspaces
+
+Now given $L:V\to V$, suppose $\lambda$ is an eigenvalue of $L$.
+Define a subspace
+$$
+L[\lambda] = \{ v\in V: (L-\lambda)^{m}v=0 \text{ for some } m>0\}. 
+$$
+This is called the *generalized eigenspace* associated to $\lambda$.
+
+**Proposition:** The vector space $V$ is the (internal) direct sum
+
+$$
+V = \oplus_{\lambda} V[\lambda]
+$$
+
+over the roots of the characteristic polynomial of $L$. 
+
+**Proof:** We need to show that $V[\lambda]\cap V[\lambda']=0$ when $\lambda\not=\lambda'$, and that
+every $v\in V$ is a sum $\sum_{\lambda} v_{\lambda}$ with $v_{\lambda}\in V[\lambda]$. 
+
+Suppose $P(x)$ is the characteristic polynomial  $L:V\to V$ with eigenvalues $\lambda_1,\ldots, \lambda_k$ and multiplicities $n_1,\ldots, n_k$.  Since $f(x) = (x-\lambda_i)^{n_i}$ has no roots in common with $g(x) = (x-\lambda_{j})^{n_{j})$ when $i\not=j$,  we can find $a(x)$ and $b(x)$ so that
+$$
+a(x) f(x)+b(x) g(x) = 1. 
+$$
+
+Suppose $v\in V[\lambda_{i}]\cap V[\lambda_{j}]$. Then
+$$
+v = a(L)f(L)v+b(L)g(L)v=0
+$$
+since both $f(L)v=0$ and $g(L)v=0$.
+
+
+
+Suppose 
