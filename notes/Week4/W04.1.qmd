@@ -176,6 +176,20 @@ $$
 
 Substituting $x=A$ into this expression collapses to a telescoping sum that yields zero. 
 
+#### Cayley Hamilton and Invariant Subspaces
+
+**Proposition:** If $V$ is finite dimensional, $L:V\to V$ is linear, and $W\subset V$ is an $L$-invariant subspace then 
+$$
+P_{L}(x) = P_{L|W}(x)P_{\overline{L}}(x)
+$$
+where $P_{L|W}(x)$ is the characteristic polynomial of $L:W\to W$ and $P_{\overline{L}(x)$ is the characteristic polynomial of the induced linear map $\overline{L}:V/W\to V/W$.
+
+**Proof:** This follows from the multiplicative property of determinants.
+
+More generally, if $V$ is a complex and $L:V\to V$ is a linear map, then the characteristic polynomial of the complex can be computed from the cohomology:
+$$
+P_{L}(V)=\prod_{i} P_{L|V^{i}}(x)^{(-1)^{i}} = \prod_{i} P_{L|H^{i}(V)}(x)^{(-1)^{i}}
+$$
 
 
 
