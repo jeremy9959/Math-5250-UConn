@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -55,8 +55,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -126,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.1.html">Week 2 — Abstract Vector Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.2.html">Direct sums, quotient spaces, and complexes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -646,6 +645,23 @@ a([x]+[y])&amp;=a([x+y])=[a(x+y)] \\
 <section id="homology" class="level4">
 <h4 class="anchored" data-anchor-id="homology">Homology</h4>
 <p>One can also define a complex with the reverse indexing, so that <span class="math inline">d_{i}:W_{i}\to W_{i-1}</span>. In this case the kernel <span class="math inline">Z_{i}</span> of <span class="math inline">d_{i}</span> is called the space of <span class="math inline">i</span>-cycles, and the image of <span class="math inline">d_{i+1}</span> is called the space of <span class="math inline">i</span>-boundaries. The quotient <span class="math inline">Z_{i}/B_{i}</span> is called the <span class="math inline">i^{th}</span> homology group of the complex <span class="math inline">H_{i}(W^{\cdot})</span>.</p>
+</section>
+<section id="maps-of-complexes" class="level4">
+<h4 class="anchored" data-anchor-id="maps-of-complexes">Maps of Complexes</h4>
+<p>A linear map <span class="math inline">f</span> between complexes <span class="math inline">\{W^{\cdot}\}</span> and <span class="math inline">\{V^{\cdot}\}</span> is a family of linear maps <span class="math display">
+f_{i}: W^{i}\to V^{i}
+</span> with the property that <span class="math inline">f_{i+1}\circ d_{i}=d_{i}\circ f_{i}</span>.</p>
+<p>If <span class="math inline">f</span> is such a linear map, then it carries cocycles to cocycles and coboundaries to coboundaries. For coboundaries, this is because if <span class="math display">
+a_{i+1}=d_{i}(a_{i})
+</span> then <span class="math display">
+f_{i+1}(a_{i+1}) = f_{i+1}d_{i}(a_{i})=d_{i+1}(f_{i}(a_{i}))
+</span> For cocycles, this is because, if <span class="math inline">d_{i}(a_{i})=0</span>, then <span class="math inline">d_{i}(f_{i}(a_{i}))</span> then <span class="math display">
+d_{i}(f_{i}(a_{i})=f_{i+1}(d_{i}(a_i)) = 0.
+</span></p>
+<p>Thus from <span class="math inline">f</span> we obtain a family of maps <span class="math display">
+\overline{f}:H^{i}(W^{\cdot})\to H^{i}(V^{\cdot}).
+</span></p>
+<p>This is called the <em>induced map on cohomology</em>.</p>
 
 
 </section>
