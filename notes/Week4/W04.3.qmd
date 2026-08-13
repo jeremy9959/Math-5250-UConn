@@ -3,12 +3,13 @@ title: "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form"
 ---
 \newcommand{\deg}{\mathrm{deg}}
 
-A polynomial $f$ of degree $n$ over an algebraically closed field factors into a product of $n$ linear terms with distinct roots $\lambda_{i}$:
+A polynomial $f$ of degree $n$ over an algebraically closed field factors into a product of $n$ linear terms:
 $$
 f(x) = \prod (x-\lambda_{i})^{n_{i}}
 $$
 
-The numbers $n_{i}$ are called the multiplicity of the roots $\lambda_{i}$.
+Here the $\lambda_i$ are the roots of $f(x)$ and 
+the number $n_{i}$ is called the multiplicity of the root $\lambda_{i}$.
 
 If $f(x)=P_{A}(x)$ is the characteristic polynomial of a linear map/matrix over $F$ and all $n_{i}=1$, then we know that $A$ (resp. $L$) is diagonalizable.  If not, then the question is open: sometimes the matrix is diagonalizable, sometimes not.
 
@@ -22,7 +23,7 @@ f(x) = a_0+a_1x+\cdots+a_nx^n
 $$
 has degree $\deg(f)=n$ if $a_n\not=0$ and is *monic* if $a_n=1$.
 
-**Proposition:** (The Division Algorithm) Let $f$ and $g$ be two polynomials in $F[X]$.  Then there exist unique monic polynomials $q(x)$ and $r(x)$, with $0\le \deg(r(x))<\deg(g(x))$, such that
+**Proposition:** (The Division Algorithm) Let $f$ and $g$ be two polynomials in $F[X]$.  Then there exist unique  polynomials $q(x)$ and $r(x)$, with $0\le \deg(r(x))<\deg(g(x))$, such that
 $$
 f(x) = q(x)g(x)+r(x).
 $$
@@ -37,39 +38,71 @@ $$
 **Proposition:** The roots of $d(x)=(f(x),g(x))$
 are exactly the common roots of $f(x)$ and $g(x)$.  If $\lambda$ is a common root of multiplicity $a$ in $f$ and multiplicity $b$ in $g$ then the multiplicity of $\lambda$ in $d(x)$ is the smaller of $a$ and $b$. 
 
-**Corollary:** Two polynomials $f(x)$ and $g(x)$ over $F$ have no roots in common, if and only if there are polynomials $a(x)$ and $b(x)$ such that $a(x)f(x)+b(x)g(x)=1.$
+**Corollary:** Two polynomials $f(x)$ and $g(x)$ over $F$ have no roots in common in some algebraic closure of $F$, if and only if there are polynomials $a(x)$ and $b(x)$ such that $a(x)f(x)+b(x)g(x)=1.$
+
+A polynomial $f(x)$ is *irreducible* if it cannot be factored into 
+a product $f(x) = g(x)h(x)$ where $g(x)$ and $h(x)$ each have degree at least one. 
+
+Suppose that $f(x)$ is irreducible and $a(x)b(x)$ is a multiple of $f(x)$,
+so $a(x)b(x) = f(x) u(x)$ for some polynomial $u(x)$.
+
+From Euclid's algorithm, we can write
+$$
+t(x)a(x) +s(x)f(x) = d(x).
+$$
+
+Since $f(x)$ is irreducible and is a multiple of $d(x)$, $d(x)$ must either be $f(x)$ or have degree zero (so we might as well assume $d(x)=1$. )
+
+If $d(x)=f(x)$, then $a(x)$ is a multiple of $f(x)$. Otherwise,
+multiply through by $b(x)$ to obtain
+$$
+t(x)a(x)b(x) + s(x)f(x)b(x) = b(x).
+$$
+and so $b(x)$ is a multiple of $f(x)$.
+
+We've proven:
+
+**Proposition:** If $f(x)$ is irreducible and $a(x)b(x)$ is a multiple of $f(x)$, then either $a(x)$ is a multiple of $f(x)$ or $b(x)$ is.
+
+**Proposition:** A monic polynomial $f(x)$ is a product
+$$
+f(x) = \prod_{i} p_{i}(x)^{n_{i}}
+$$
+where the $p_{i}(x)$ are distinct monic irreducible polynomials and
+the set of $p_{i}$ and the $n_{i}$ are unique (up to order).
+
+**Proof:** Given $f(x)$, either $f(x)$ is irreducible or it factors 
+$f(x)=a(x)b(x)$.  By induction this gives a factorization into irreducibles.
+
+For uniqueness, suppose $p(x)$ is monic and occurs in one factorization of $f(x)$ into powers of irreducibles. Given another factorization
+$$
+f(x) = \prod_{i} q_{i}(x)^{m_{i}},
+$$
+since $f(x)$ is a multiple of $p(x)$, one of the $q_{i}$ must be a multiple of $p(x)$, which means some $q_{i}(x) = p(x)$.  Continuing inductively shows that the two factorizations are the same. 
+
+#### Decomposition
+
+Now let $L:V\to V$ be a linear map and factor $P_{L}(x)$ into a product of powers of distinct irreducibles:
+$$
+P_{L}(x) = p_{1}(x)^{n_{1}}\cdots p_{k}(x)^{n_{k}}.
+$$
+
+Then the greatest common divisor of $p_{1}(x)^{n_{1}}$ and $H(x) = p_{2}(x)^{n_{2}}\cdots p_{k}(x)^{n_{k}}$ must be one, so we can write
+$$
+a(x) p_1(x)^{n_{1}} + b(x) H(x) = 1.
+$$
+
+Let $V_{1}$ be the image of $p_{1}(x)^{n_{1}}(L)$ and let $V_{2}$
+be the image of $H(L)$.  Notice that $V_1+V_2=V$ since 
+$$
+v = a(L) p_{1}(L)^{n_1}v + b(L) H(L)v.
+$$
+On the other hand, $H(L)V_1=0$ and $p_1(L)^{n_{1}}V_2=0$ by Cayley Hamilton.
+So if $v\in V_1\cap V_2$, then
+$$
+v = a(L)p_{1}(L)^{n_1}v + b(L) H(L) v = 0.
+$$
+Thus $V$ is the (internal) direct sum of $V_1$ and $V_2$.
 
 ## Cyclic Subspaces
 
-Now given $L:V\to V$, suppose $\lambda$ is an eigenvalue of $L$.
-Define a subspace
-$$
-L[\lambda] = \{ v\in V: (L-\lambda)^{m}v=0 \text{ for some } m>0\}. 
-$$
-This is called the *generalized eigenspace* associated to $\lambda$.
-
-**Proposition:** The vector space $V$ is the (internal) direct sum
-
-$$
-V = \oplus_{\lambda} V[\lambda]
-$$
-
-over the roots of the characteristic polynomial of $L$. 
-
-**Proof:** We need to show that $V[\lambda]\cap V[\lambda']=0$ when $\lambda\not=\lambda'$, and that
-every $v\in V$ is a sum $\sum_{\lambda} v_{\lambda}$ with $v_{\lambda}\in V[\lambda]$. 
-
-Suppose $P(x)$ is the characteristic polynomial  $L:V\to V$ with eigenvalues $\lambda_1,\ldots, \lambda_k$ and multiplicities $n_1,\ldots, n_k$.  Since $f(x) = (x-\lambda_i)^{n_i}$ has no roots in common with $g(x) = (x-\lambda_{j})^{n_{j})$ when $i\not=j$,  we can find $a(x)$ and $b(x)$ so that
-$$
-a(x) f(x)+b(x) g(x) = 1. 
-$$
-
-Suppose $v\in V[\lambda_{i}]\cap V[\lambda_{j}]$. Then
-$$
-v = a(L)f(L)v+b(L)g(L)v=0
-$$
-since both $f(L)v=0$ and $g(L)v=0$.
-
-
-
-Suppose 

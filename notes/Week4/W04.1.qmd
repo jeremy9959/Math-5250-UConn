@@ -24,9 +24,9 @@ $L_A:F^{n}\to F^{n}$ is diagonalizable.
 Let $E'$ be the standard basis of $F^{n}$. If $A$ is diagonalizable, there is a basis 
 $E$ for $F^{n}$ such that $[L_A]_{E}^{E}$ is diagonal. Since
 $$
-[L_A]_{E}^{E} = [1]_{E}^{E'} [L_{A}]_{E'}^{E'}[1]_{E'}^{E}
+[L_A]_{E}^{E} = [1]_{E'}^{E} [L_{A}]_{E'}^{E'}[1]_{E}^{E'}
 $$
-this means that $A$ is diagonalizable if there is an invertible matrix $P$ (corresponding to $[1]_{E}^{E'}$ above) such that $PAP^{-1}$ is diagonal.
+this means that $A$ is diagonalizable if there is an invertible matrix $P$ (corresponding to $[1]_{E'}^{E}$ above) such that $PAP^{-1}$ is diagonal.
 
 In other words, $A$ is diagonalizable if it is similar to a diagonal matrix. 
 
@@ -58,13 +58,21 @@ Notice that this proposition can be stated entirely in terms of linear maps.
 
 If we treat $x$ as a variable, we obtain the "characteristic polynomial" $P_{A}(x)=\det(A-xI)$ of $A$ (or of a linear map $L$, where we use any matrix representation of $L$ to compute the polynomial and we call the result $P_{L}(x)$).
 
-**Definition:** If $x$ is a variable, then $\det(A-xI)$ is a polynomial in $x$ of degree $n$.
+**Proposition:** If $x$ is a variable, then $\det(A-xI)$ is a polynomial in $x$ of degree $n$.
+
+This follows from what we know about the computation of the determinant; only one term in the expansion of the determinant has degree $n$,
+namely the product of the diagonals.  All other terms contribute lower powers of $x$. 
 
 A scalar $\lambda$ is a root of $P_{A}(x)$ if and only if  $\lambda$ is an eigenvalue of $A$.
 
+**Definition:** A field $F$ is *algebraically closed* if every polynomial over $F$ has a root in $F$.
+
+
 **Proposition:** Let $F$ be an *algebraically closed field*. Then every linear map/matrix over $F$ has an eigenvalue (and associated eigenvector).
 
-**Proposition:** The "Fundamental Theorem of Algebra." The complex numbers are algebraically closed.
+**Proposition:**  The complex numbers are algebraically closed.
+
+This famous result is called "The Fundamental Theorem of Algebra."  Many mathematicians worked toward proving this theorem, including many famous 17th and 18th century names.  The first rigorous proof by modern standards was published by an amateur mathematician, Argand, in 1814. See the [Wikipedia Entry](https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra) for more information and various proofs. 
 
 **Corollary:** Every complex square matrix has an eigenvector.
 
@@ -79,35 +87,37 @@ is $x^2+1$ which has no real roots.
 
 **Proposition:** Not every matrix is diagonalizable.
 
-**Proof:** Look at
+**Proof:** Let $V=\C^{2}$ and consider at
 $$
-A = \left[\begin{matrix} 1 & 1 \\ 0 & 1 \end{matrix}\right].
+A = \left[\begin{matrix} 1 & 1 \\ 0 & 1 \end{matrix}\right]
 $$
 
-The characteristic polynomial $P_{A}(x)=1-2x+x^2=(x-1)^2$ so the only eigenvalue of $A$ is $1$.
+corresponding to the linear map $L:V\to V$ given by $L(x)=Ax$. 
 
-The equation $Ax=x$ has a one-dimensional solution space spanned by 
+The characteristic polynomial $P_{L}(x)=1-2x+x^2=(x-1)^2$ so the only eigenvalue of $L$ is $1$.
+
+The equation $L(x) = Ax=x$ has a one-dimensional solution space spanned by 
 $$
 \left[\begin{matrix} 1 \\ 0 \end{matrix}\right].
 $$
 
-Therefore $\C^{2}$ cannot have a basis of eigenvectors for $A$, and so $A$ is not diagonalizable.
+Therefore $L$ has only one eigenvector and $V$ has no basis of eigenvectors. 
 
-**Examples:** Linear Differential Equations
 
 **Proposition:** Suppose $L:V\to V$ is a linear map where $V$ is $n$-dimensional.  If $L$ has 
 $n$ distinct eigenvalues, then $L$ is diagonalizable.
 
-**Proof:** This follows from the following fact: eigenvectors associated to different eigenvalues are linearly independent.  To see this, suppose $v_1,\ldots, v_k$ are eigenvectors for $L$ with eigenvalues $\lambda_{1},\ldots,\lambda_{k}$, and that all the $\lambda_{i}$ are different.  Suppose
+**Proof:** This follows from the following fact: eigenvectors associated to different eigenvalues are linearly independent.  To see this, suppose $v_1,\ldots, v_k$ are eigenvectors for $L$, with eigenvalues $\lambda_{1},\ldots,\lambda_{k}$, such that all the $\lambda_{i}$ are different and the $v_{i}$ are dependent.  Choose such a set where $k$ is minimal.   Since eigenvectors are nonzero, $k>1$.
 
+Write
 $$
 \sum_{i=1}^{k} a_{i}v_{i}  = 0
 $$
-Then
+where (by minimality) all $a_{i}$ are nonzero. Applying $L$ yields
 $$
 \sum_{i=1}^{k} a_{i}L(v_{i}) = \sum a_{i}\lambda_{i}v_{i} = 0.
 $$
-We can assume $k\ge 2$ and then $a_j\not=0$ for some $j\ge 2$.  Multiply the first equation by $\lambda_1$ to obtain:
+Multiply the first equation by $\lambda_1$ to obtain:
 $$
 \begin{matrix}
 a_1\lambda_1 v_1 + \cdots + a_k\lambda_1 v_k &= 0 \\
@@ -117,16 +127,16 @@ $$
 
 Subtracting yields
 $$
-\sum_{i=2}^{k} a_i(\lambda_1-\lambda_k)v_{k} = 0.
+\sum_{i=2}^{k} a_i(\lambda_1-\lambda_i)v_{i} = 0.
 $$
 
-Since $a_j\not=0$, and the $v_{i}$ are independent, this means $(\lambda_1-\lambda_j)=0$ which contradicts
+Since $a_j\not=0$, and (again by minimality) the $v_{i}$ for $i\ge 2$ are independent, this means $(\lambda_1-\lambda_j)=0$ which contradicts
 the assumption that all the $\lambda_i$ are distinct.
 
 For the diagonalizability result, if $L$ has $n$ distinct eigenvalues, then the associated eigenvectors are linearly independent and thus a basis for $V$.  In that basis, the matrix of $A=[L]$ is diagonal 
 with $a_{ii}=\lambda_i$.
 
-**Corollary:** If the characteristic polynomial $P(x)$ of $L$ has $n$ distinct roots, then $L$ is diagonalizable.
+**Corollary:** If the characteristic polynomial $P_L(x)$ of $L$ has $n$ distinct roots, then $L$ is diagonalizable.
 
 The converse is false: the identity matrix has characteristic polynomial $(1-x)^n$ but is obviously diagonal.
 
@@ -176,17 +186,25 @@ $$
 
 Substituting $x=A$ into this expression collapses to a telescoping sum that yields zero. 
 
-#### Cayley Hamilton and Invariant Subspaces
+#### Cayley-Hamilton and Invariant Subspaces
 
 **Proposition:** If $V$ is finite dimensional, $L:V\to V$ is linear, and $W\subset V$ is an $L$-invariant subspace then 
 $$
 P_{L}(x) = P_{L|W}(x)P_{\overline{L}}(x)
 $$
-where $P_{L|W}(x)$ is the characteristic polynomial of $L:W\to W$ and $P_{\overline{L}(x)$ is the characteristic polynomial of the induced linear map $\overline{L}:V/W\to V/W$.
+where $P_{L|W}(x)$ is the characteristic polynomial of $L:W\to W$ and $P_{\overline{L}}(x)$ is the characteristic polynomial of the induced linear map $\overline{L}:V/W\to V/W$.
 
 **Proof:** This follows from the multiplicative property of determinants.
 
-More generally, if $V$ is a complex and $L:V\to V$ is a linear map, then the characteristic polynomial of the complex can be computed from the cohomology:
+
+**Definition:** 
+If  $V$ is a bounded complex of
+finite dimensional vector spaces, and $L:V\to V$ is a linear map, then the characteristic polynomial of the complex is defined as the alternating product of the characteristic polynomials on the terms:
+$$
+P_{L|V}(x) = \prod_{i} P_{L_{i}|V_{i}}(x)^{(-1)^{i}}
+$$
+
+An argument using the multiplicativity of the determinant shows that this characteristic polynomial can be computed from the cohomology of the complex:
 $$
 P_{L}(V)=\prod_{i} P_{L|V^{i}}(x)^{(-1)^{i}} = \prod_{i} P_{L|H^{i}(V)}(x)^{(-1)^{i}}
 $$
