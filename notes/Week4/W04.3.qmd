@@ -157,6 +157,15 @@ As we saw, it is a finite dimensional vector space over $F$ with a linear map $L
 has the property that there is an irreducible polynomial
 $p(x)$ and an integer $n$ such that $p(L)^n v=0$ for all $v\in V$.
 
-Our goal now is to show that such a vector space is a direct sum of cyclic
-$L$-spaces, each of which has characteristic polynomial $p(x)^k$, whose
-products combine to give $p(x)^n$.
+Our goal now is to establish the following proposition.
+
+**Proposition:** Suppose that $V$ is a finite dimensional vector space of dimension $n$ over $F$ and $L:V\to V$ is linear.  Suppose that $p(x)$ is a monic irreducible polynomial over $F$ and there is an integer $k$ such that 
+$p(L)^k V=0$.  Then we can find $L$-invariant subspaces $V_1,\ldots, V_r$ of $V$, each of which is cyclic and has (up to a constant multiple) characteristic polynomial  $p(x)^{k_{i}}$, so that
+$$
+V = V_1 \oplus \cdots \oplus V_r.
+$$
+
+As a consequence the characteristic polynomial of $L$ on $V$ is 
+$p(x)^{k_1+\cdots + k_r}$ (up to a constant multiple).
+
+
