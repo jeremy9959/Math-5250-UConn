@@ -89,20 +89,74 @@ $$
 
 Then the greatest common divisor of $p_{1}(x)^{n_{1}}$ and $H(x) = p_{2}(x)^{n_{2}}\cdots p_{k}(x)^{n_{k}}$ must be one, so we can write
 $$
-a(x) p_1(x)^{n_{1}} + b(x) H(x) = 1.
+a(x) H(x) + b(x) p_1(x)^{n_{1}}   = 1.
 $$
 
-Let $V_{1}$ be the image of $p_{1}(x)^{n_{1}}(L)$ and let $V_{2}$
-be the image of $H(L)$.  Notice that $V_1+V_2=V$ since 
+Let $V_{1}$
+be the image of $H(L)$ and let $W$ be the image of $p_{1}(L)^{n_{1}}$ in $V$.  Notice that $V_1+W=V$ since 
 $$
-v = a(L) p_{1}(L)^{n_1}v + b(L) H(L)v.
+v = a(L) H(L)v + b(L)p_1(L)^{n_{1}} v.
 $$
-On the other hand, $H(L)V_1=0$ and $p_1(L)^{n_{1}}V_2=0$ by Cayley Hamilton.
-So if $v\in V_1\cap V_2$, then
+
+On the other hand, $p_1(L)^{n_{1}}V_1=0$ and $H(L)V_2=0$ and  by Cayley-Hamilton.
+
+So if $v\in V_1\cap W$, then
+
 $$
 v = a(L)p_{1}(L)^{n_1}v + b(L) H(L) v = 0.
 $$
-Thus $V$ is the (internal) direct sum of $V_1$ and $V_2$.
+
+Thus $V$ is the (internal) direct sum of $V_1$ and $W$.
+
+Continuing inductively by looking at the factorization of $H$ acting on the space $W$, 
+we can eventually decompose $V$ into a direct sum
+
+$$
+V = V_1 \oplus V_2 \oplus \cdots \oplus V_k
+$$
+
+where $p_{i}(L)^{n_{i}}(L)V_i=0$.
 
 ## Cyclic Subspaces
 
+If $V$ is a finite dimensional vector space over $F$ of dimension $n$,
+and 
+$L:V\to V$ is a linear map, then $V$ is called a cyclic space for $L$
+if there is a $v\in V$ such that the set of vectors $L^{i}(v)$,
+for $i=0,\ldots, n-1$ span $V$.  A $v$ with this property is called a generator for $V$.
+
+
+If $V$ is cyclic for $L$, and $v$ is a generator for $V$, then
+we must have a relation:
+$$
+L^{n}v = -\sum_{i=0}^{n-1} a_{i}L^{i}v.
+$$
+This gives a polynomial
+$$
+q(x) = x^n+a_{n-1}x^{i-1}+\cdots+a_{0}
+$$
+such that $q(L)V=0$. 
+
+However, Cayley-Hamilton tells us that the characteristic polynomial
+$P_{L}(x)$ satisfies $P{L}(L)V=0$.
+
+Let $g(x)$ be the greatest common divisor of $q(x)$ and $P_{L}(x)$.
+From the fact that $g(x)=a(x)q(x)+b(x)P_{L}(x)$,  we see that $g(L)V=0$.
+
+If the degree $d$ of $g(x)$ is less then $n$, then the equation
+$$
+g(L)v=0
+$$
+yields a linear relation among $v, Lv, \cdots, L^{d}$, which contradicts
+our hypothesis that $v, Lv,\ldots, L^{n-1}v$ are independent.
+
+Therefore $d=n$ and so $q(x)=P_{L}(x)$ up to an irrelevant multiplicative constant.
+
+Now let's focus our attention on the subspace $V_1$ constructed above.
+As we saw, it is a finite dimensional vector space over $F$ with a linear map $L:V\to V$ that
+has the property that there is an irreducible polynomial
+$p(x)$ and an integer $n$ such that $p(L)^n v=0$ for all $v\in V$.
+
+Our goal now is to show that such a vector space is a direct sum of cyclic
+$L$-spaces, each of which has characteristic polynomial $p(x)^k$, whose
+products combine to give $p(x)^n$.
