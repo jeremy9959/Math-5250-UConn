@@ -168,4 +168,25 @@ $$
 As a consequence the characteristic polynomial of $L$ on $V$ is 
 $p(x)^{k_1+\cdots + k_r}$ (up to a constant multiple).
 
+**Proof:** The proof is inductive.  Let $d$ be the degree of $p(x)$. 
+To start, we know that any $v\in V$ satisfies $p(L)^k v=0$.  Find a nonzero $v_1$ such that $p(L)^{k_1}v_1=0$,
+$p(L)^{k_1-1}v_1\not=0$, and $k_1$ is as large as possible among all $v\not=0$.
 
+I claim that $v-1, Lv_1, \ldots, L^{dk_1-1}v_1$ are linearly independent.  To see this, suppose not.  If there were a relation among these, there would be a polynomial $q(x)$ of degree less than $dk_1$ such that $q(L)v_1=0$.  Then
+the gcd $h(x)$ of $q(x)$ and $p(x)^{k_1}$ would yield a polynomial of degree less than $dk_1$ such that $h(L)v_1=0$.  On the other hand since $p(x)$ is irreducible and $g(x)$ is a divisor of $p(x)^{k_1}$, we would have $g(x)$ is a power of $p(x)$ smaller than $k_1$, which contradicts our choice.
+
+Further, the span $V_1$ of $v_1, Lv_1, \ldots, L^{dk_1-1}v_1$ is an $L$-invariant subspace of $V$, since the equation $p(L)^{k_1}v_1=0$ gives an expression for $L^{dk_1}v_1$
+in terms of the lower powers $L^{r}v_1$.
+
+
+To continue, choose $v_2\in V$ independent of $V_1$, such that $p(L)^k_2v_2\in V_1$, $p(L)^{k_2-1}v_2\not\in V_1$, and $k_2$ is maximal among all possibilities.
+We know that $k_2\le k_1$.  
+
+Now suppose $w\in V_1\cap V_2$.  Then there are polynomials $a(x)$ and $b(x)$
+of degree less than or equal to $dk_2-1$ and $dk_1-1$ respectively such that
+
+$$
+a(L)v_2 = b(L)v_1
+$$
+
+Also, since $v_2$ is not in $V_1$, we know that $a(x)$ has degree at least one.
