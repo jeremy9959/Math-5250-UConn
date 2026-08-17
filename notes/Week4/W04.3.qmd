@@ -324,4 +324,12 @@ $$
 
 where $D$ is a diagonal matrix whose diagonal entries are the eigenvalues repeated according to their multiplicity, and $N$ is a nilpotent matrix - that is, $N^{k}=0$ for some $k$. 
 
+In a single Jordan Block or dimension $k$, the matrix has the form
+$$
+\lambda I + N
+$$
+
+where $N^{k}=0$ but $N^{k-1}\not=0$.  
+
 It's also worth observing that each Jordan Block has exactly one eigenvector, so the number of independent eigenvectors is equal to the number of Jordan Blocks.
+
