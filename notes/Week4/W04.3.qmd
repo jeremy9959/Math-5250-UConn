@@ -1,17 +1,17 @@
 ---
 title: "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form"
 ---
-\newcommand{\deg}{\mathrm{deg}}
+
 
 A polynomial $f$ of degree $n$ over an algebraically closed field factors into a product of $n$ linear terms:
 $$
-f(x) = \prod (x-\lambda_{i})^{n_{i}}
+f(x) = \prod_{i} (x-\lambda_{i})^{n_{i}}
 $$
 
 Here the $\lambda_i$ are the roots of $f(x)$ and 
 the number $n_{i}$ is called the multiplicity of the root $\lambda_{i}$.
 
-If $f(x)=P_{A}(x)$ is the characteristic polynomial of a linear map/matrix over $F$ and all $n_{i}=1$, then we know that $A$ (resp. $L$) is diagonalizable.  If not, then the question is open: sometimes the matrix is diagonalizable, sometimes not.
+If $f(x)=P_{A}(x)$ is the characteristic polynomial of a linear map/matrix over $F$ and all $n_{i}=1$, then we know that $L$ (resp. $A$) is diagonalizable.  If not, then the question is open: sometimes the matrix is diagonalizable, sometimes not.
 
 To understand the situation more fully, we need some theory of polynomials.
 
@@ -23,7 +23,7 @@ f(x) = a_0+a_1x+\cdots+a_nx^n
 $$
 has degree $\deg(f)=n$ if $a_n\not=0$ and is *monic* if $a_n=1$.
 
-**Proposition:** (The Division Algorithm) Let $f$ and $g$ be two polynomials in $F[X]$.  Then there exist unique  polynomials $q(x)$ and $r(x)$, with $0\le \deg(r(x))<\deg(g(x))$, such that
+**Proposition:** (The Division Algorithm) Let $f$ and $g$ be two polynomials in $F[x]$.  Then there exist unique  polynomials $q(x)$ and $r(x)$, with $0\le \deg(r(x))<\deg(g(x))$, such that
 $$
 f(x) = q(x)g(x)+r(x).
 $$
@@ -51,7 +51,7 @@ $$
 t(x)a(x) +s(x)f(x) = d(x).
 $$
 
-Since $f(x)$ is irreducible and is a multiple of $d(x)$, $d(x)$ must either be $f(x)$ or have degree zero (so we might as well assume $d(x)=1$. )
+Since $f(x)$ is irreducible and is a multiple of $d(x)$, $d(x)$ must either be $f(x)$ or have degree zero (so we might as well assume $d(x)=1$.)
 
 If $d(x)=f(x)$, then $a(x)$ is a multiple of $f(x)$. Otherwise,
 multiply through by $b(x)$ to obtain
@@ -98,12 +98,12 @@ $$
 v = a(L) H(L)v + b(L)p_1(L)^{n_{1}} v.
 $$
 
-On the other hand, $p_1(L)^{n_{1}}V_1=0$ and $H(L)V_2=0$ and  by Cayley-Hamilton.
+On the other hand, $p_1(L)^{n_{1}}V_1=0$ and $H(L)W=0$ and  by Cayley-Hamilton.
 
 So if $v\in V_1\cap W$, then
 
 $$
-v = a(L)p_{1}(L)^{n_1}v + b(L) H(L) v = 0.
+v = a(L)H(L)v + b(L) p_{1}(L)^{n_1} v = 0.
 $$
 
 Thus $V$ is the (internal) direct sum of $V_1$ and $W$.
@@ -126,7 +126,7 @@ Suppose $V$ is a finite dimensional vector space of dimension $n$ over a field $
 
 **Proposition:** The minimal polynomial $m_{L}(x)$ is a divisor of the characteristic polynomial $P_{L}(x)$.
 
-**Proof:** Divide $P_{L}(x)$ by $m_{L}(x)$ and let $r(x)$ be the remainder.  Since $r(x) = P_{L}(x)-q(x)m_{L}(x)$, we have $r(L)V=0$.  But the degree of $r(x)$ is less than that of $m(x)$, so the minimality of $m(x)$ means that $r(x)=0$. 
+**Proof:** Divide $P_{L}(x)$ by $m_{L}(x)$ and let $r(x)$ be the remainder.  Since $r(x) = P_{L}(x)-q(x)m_{L}(x)$, we have $r(L)V=0$.  But the degree of $r(x)$ is less than that of $m_L(x)$, so the minimality of $m_L(x)$ means that $r(x)=0$. 
 
 ## Cyclic Subspaces
 
@@ -144,7 +144,7 @@ L^{n}v = -\sum_{i=0}^{n-1} a_{i}L^{i}v.
 $$
 This gives a polynomial
 $$
-q(x) = x^n+a_{n-1}x^{i-1}+\cdots+a_{0}
+q(x) = x^n+a_{n-1}x^{n-1}+\cdots+a_{0}
 $$
 
 such that $q(L)V=0$. In this situation,
@@ -154,14 +154,14 @@ If $v$ is a generator for $V$, and $q(x)$ is the polynomial described above,
 we can write the matrix $A$ of the
 linear map $L$ in the basis $\{L^{i}v\}_{i=0}^{n-1}$.  Since
 $$
-L(L^{i}v)=L^{i+1}v\mathrm{\ for\ }i=0,\ldots, n-1
+L(L^{i}v)=L^{i+1}v\mathrm{\ for\ }i=0,\ldots, n-2
 $$
 and
 $$
 L(L^{n-1}v) = L^{n}v = -\sum_{i=0}^{n-1}a_{i}L^{i}v
 $$
 
-see see that
+we see that
 
 $$
 A=\begin{pmatrix}
@@ -204,16 +204,16 @@ of $V$ into cyclic subspaces where the minimal polynomial of $V_{i}$ is a power 
 
 This result is very powerful but let's observe two consequences right off the bat.
 
-First, the minimal polynomial of the right-hand side of this decomposition is the least common multiple of the $p_{i}(x)^{k_{i}}$.  
+First, we see from the decomposition that the the minimal polynomial $m_{L}(x)$ on $V$ is the least common multiple of the $p_{i}(x)^{k_{i}}$.  
 
-Second, the characteristic polynomial of $V$ is the product of the characteristic polynomials of the $V_{i}$, which is the produce of the $p_{i}(x)^{k_{i}}$. 
+Second, the characteristic polynomial of $V$ is the product of the characteristic polynomials of the $V_{i}$, which is the product of the $p_{i}(x)^{k_{i}}$. 
 
 Consequently, if $p(x)$ is an irreducible factor of $P_{L}(x)$, then $p(x)$ must occur among the $p_{i}(x)$.  Therefore every irreducible factor of the characteristic polynomial $P_{L}(x)$ is a factor of the minimal polynomial of $L$.  
 
 To prove the decomposition result, we start with our earlier decomposition of $V$ into a sum $V_{i}$
 where each $V_{i}$ is killed by $p_{i}(L)^{n_{i}}$,
 the $p_{i}(x)$ are distinct irreducibles, and 
-and
+
 $$
 P_{L}(x) =\prod_{i} p_{i}(x)^{n_{i}}
 $$
@@ -224,16 +224,16 @@ Now we will show that if $V$ is finite dimensional and
 there is an irreducible polynomial $p(x)$ of degree $d$  so that
 $p(L)^{n}V=0$, then $V$ can be further split into a direct sum of cyclic subspaces corresponding to $p(x)^{k_{i}}$ where $\sum k_{i} = n$.  
 
-To start, choose a vector $v_1\in V$ so that $p(L)^{k_{1}}v=0$, $p(L)^{k_1-1}v\not=0$,  and $k_1$ is maximal among all such choices.
+To start, choose a vector $v_1\in V$ so that $p(L)^{k_{1}}v_1=0$, $p(L)^{k_1-1}v_1\not=0$,  and $k_1$ is maximal among all such choices.
 The vector $v_1$ generates a cyclic subspace of $V$ with basis
 $$
 v_1, Lv_1, \cdots, L^{k_1d-1}v_{1}.
 $$
 
 These vectors are independent since a dependence relation would yield a polynomial $h(x)$ in $L$ of degree less than $dk_1$ such that $h(L)v_1=0$.
-Then the greatest common divisor $s(x)$ of $h(x)$ and $p(x)^{k_1}$ would also satsify $s(L)v_1=0$, and since $p(x)$ is irreducible and $s(x)$ is a divisor of $p(x)^{k_1}$ of degree less than or equal to $dk_1-1, we'd have $s(x)=p(x)^{k}$ with $k<k_1$ contradicting the choice of $k_1$.  
+Then the greatest common divisor $s(x)$ of $h(x)$ and $p(x)^{k_1}$ would also satsify $s(L)v_1=0$, and since $p(x)$ is irreducible and $s(x)$ is a divisor of $p(x)^{k_1}$ of degree less than or equal to $dk_1-1$, we'd have $s(x)=p(x)^{k}$ with $k<k_1$, contradicting the choice of $k_1$.  
 
-Let us let $V_1$ be the subspace of $V$ generated by $v_1$.  Our next goal is to construct a subspace of $W$ of $V$ such that $W$ is $L$-invariant and
+Let $V_1$ be the subspace of $V$ generated by $v_1$.  Our next goal is to construct a subspace  $W$ of $V$ such that $W$ is $L$-invariant and
 $V=V_1\oplus W$.
 
 Since $W$ is of smaller dimension than $V$ and satisfies the same hypotheses, we can continue inductively to completely decompose $V$.
@@ -253,7 +253,7 @@ $$
 w_1 = w_1'-a_1(L)v_1.
 $$
 
-Then $p(L)^{s_1}w_1=0$.  Now let $W_1$ be the cyclic subspace generated by $w_1$, so $W_1\oplus V_1=0$. 
+Then $p(L)^{s_1}w_1=0$.  Now let $W_1$ be the cyclic subspace generated by $w_1$, so $W_1\cap V_1=0$. 
 
 Now suppose we have constructed $W_j$ so that $V_1\cap W_j=0$. Choose $w_{j+1}'$ in $V$ but not in $V_1\oplus W_j$.  Repeat the same argument inductively to adjust $w_{j+1}'$, yielding $w_{j+1}$ such that if $s_{j+1}$ is the minimal power with $p(L)^{s_{j+1}}w_{j+1}'\in V_1$, then
 $$
