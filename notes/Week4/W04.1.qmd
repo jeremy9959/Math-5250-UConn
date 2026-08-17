@@ -49,23 +49,23 @@ Similarly if $L$ is a linear map, a non-zero vector such that $Lx=\lambda x$ is 
 
 $A$ (resp. $L$) is diagonalizable if and only if there is a basis for $F^{n}$ (resp. $V$) consisting of eigenvectors for $A$ (resp. $L$).  
 
-The equation $Ax=\lambda x$ has a nonzero solution $x$ if and only if the matrix $A-\lambda I$
+The equation $Ax=\lambda x$ has a nonzero solution $x$ if and only if the matrix $\lambda I - A$
 has a non-zero null space.  This happens if and only if this matrix has zero determinant.
 
-**Proposition:** $\lambda$ is an eigenvalue for $A$ if and only if $\det(A-\lambda I) = 0$.  If the determinant is zero,  any nonzero vector in the null space of $A-\lambda I$ is an eigenvector for $A$ with eigenvalue $\lambda$.
+**Proposition:** $\lambda$ is an eigenvalue for $A$ if and only if $\det(\lambda I - A) = 0$.  If the determinant is zero,  any nonzero vector in the null space of $\lambda I - A$ is an eigenvector for $A$ with eigenvalue $\lambda$.
 
 Notice that this proposition can be stated entirely in terms of linear maps.
 
-If we treat $x$ as a variable, we obtain the "characteristic polynomial" $P_{A}(x)=\det(A-xI)$ of $A$ (or of a linear map $L$, where we use any matrix representation of $L$ to compute the polynomial and we call the result $P_{L}(x)$).
+If we treat $x$ as a variable, we obtain the "characteristic polynomial" $P_{A}(x)=\det(xI-A)$ of $A$ (or of a linear map $L$, where we use any matrix representation of $L$ to compute the polynomial and we call the result $P_{L}(x)$).
 
-**Proposition:** If $x$ is a variable, then $\det(A-xI)$ is a polynomial in $x$ of degree $n$.
+**Proposition:** If $x$ is a variable, then $\det(xI-A)$ is a monic polynomial in $x$ of degree $n$.
 
 This follows from what we know about the computation of the determinant; only one term in the expansion of the determinant has degree $n$,
-namely the product of the diagonals.  All other terms contribute lower powers of $x$. 
+namely the product of the diagonals $\prod_i(x-a_{ii})$, which contributes the leading term $x^n$.  All other terms contribute lower powers of $x$.
 
 A scalar $\lambda$ is a root of $P_{A}(x)$ if and only if  $\lambda$ is an eigenvalue of $A$.
 
-**Definition:** A field $F$ is *algebraically closed* if every polynomial over $F$ has a root in $F$.
+**Definition:** A field $F$ is *algebraically closed* if every non-constant polynomial over $F$ has a root in $F$.
 
 
 **Proposition:** Let $F$ be an *algebraically closed field*. Then every linear map/matrix over $F$ has an eigenvalue (and associated eigenvector).
@@ -87,21 +87,21 @@ is $x^2+1$ which has no real roots.
 
 **Proposition:** Not every matrix is diagonalizable.
 
-**Proof:** Let $V=\C^{2}$ and consider at
+**Proof:** Let $V=\C^{2}$ and consider 
 $$
 A = \left[\begin{matrix} 1 & 1 \\ 0 & 1 \end{matrix}\right]
 $$
 
 corresponding to the linear map $L:V\to V$ given by $L(x)=Ax$. 
 
-The characteristic polynomial $P_{L}(x)=1-2x+x^2=(x-1)^2$ so the only eigenvalue of $L$ is $1$.
+The characteristic polynomial $P_{L}(x)=(x-1)^2=x^2-2x+1$ so the only eigenvalue of $L$ is $1$.
 
 The equation $L(x) = Ax=x$ has a one-dimensional solution space spanned by 
 $$
 \left[\begin{matrix} 1 \\ 0 \end{matrix}\right].
 $$
 
-Therefore $L$ has only one eigenvector and $V$ has no basis of eigenvectors. 
+Therefore $L$ has only a one-dimensional subspace of eigenvectors and $V$ has no basis of eigenvectors. 
 
 
 **Proposition:** Suppose $L:V\to V$ is a linear map where $V$ is $n$-dimensional.  If $L$ has 
@@ -138,7 +138,7 @@ with $a_{ii}=\lambda_i$.
 
 **Corollary:** If the characteristic polynomial $P_L(x)$ of $L$ has $n$ distinct roots, then $L$ is diagonalizable.
 
-The converse is false: the identity matrix has characteristic polynomial $(1-x)^n$ but is obviously diagonal.
+The converse is false: the identity matrix has characteristic polynomial $(x-1)^n$ but is obviously diagonal.
 
 Understanding exact conditions for diagonalizability will occupy us for a time.
 
@@ -151,9 +151,9 @@ If $L$ is a linear map, then $P(L)$ makes sense with the understanding that $L^i
 
 Finally, given a basis $E$, $[P(L)]_{E}^{E} = P([L]_{E}^{E})$ so we can freely move back and forth between linear maps and matrices by choice of basis. 
 
-**Theorem:** (Cayley-Hamilton) Let $P(x)=\det(A-xI)$ be the characteristic polynomial of $A$.  Then $P(A)=0$.
+**Theorem:** (Cayley-Hamilton) Let $P_A(x)=\det(xI-A)$ be the characteristic polynomial of $A$.  Then $P_A(A)=0$.
 
-**Proof:** Let $X=A-xI$.  Then
+**Proof:** Let $X=xI-A$.  Then
 $$
 XX^{adj} = \det(X)I=P_{A}(x)I
 $$
@@ -163,28 +163,28 @@ obtain an expression:
 $$
 X^{adj} = B_{0} + xB_{1}+\cdots+x^{n-1}B_{n-1}
 $$
-for $n\times n$ matrices $B_{i}$. 
+for $n\times n$ matrices $B_{i}$.
 
-Notice that 
+Notice that
 $$
 xIX^{adj} = xB_{0}+\cdots+x^{n}B_{n-1}.
 $$
 
-This is because multiplying the matrix $X^{adj}$ by $x$ multiplies each entry by $x$, so it "shifts" the coefficients up by one degree. 
+This is because multiplying the matrix $X^{adj}$ by $x$ multiplies each entry by $x$, so it "shifts" the coefficients up by one degree.
 
-Also 
+Also
 $$
 AX^{adj} = AB_{0}+\cdots + x^{n-1}AB_{n-1}
 $$
 
 since multiplication by $A$ acts on the terms of each degree.
 
-This gives the formula
+Since $XX^{adj} = xIX^{adj}-AX^{adj}$, this gives the formula
 $$
-P_{A}(x)I = AB_{0}+x(AB_{1}-B_{0}) + \cdots + x^{n}(-B_{n-1}).
+P_{A}(x)I = -AB_{0}+x(B_{0}-AB_{1}) + \cdots + x^{n-1}(B_{n-2}-AB_{n-1})+x^{n}B_{n-1}.
 $$
 
-Substituting $x=A$ into this expression collapses to a telescoping sum that yields zero. 
+Substituting $x=A$ into this expression collapses to a telescoping sum that yields zero.
 
 #### Cayley-Hamilton and Invariant Subspaces
 
@@ -197,16 +197,15 @@ where $P_{L|W}(x)$ is the characteristic polynomial of $L:W\to W$ and $P_{\overl
 **Proof:** This follows from the multiplicative property of determinants.
 
 
-**Definition:** 
-If  $V$ is a bounded complex of
-finite dimensional vector spaces, and $L:V\to V$ is a linear map, then the characteristic polynomial of the complex is defined as the alternating product of the characteristic polynomials on the terms:
+**Definition:** If  $V^{\cdot}$ is a bounded complex of
+finite dimensional vector spaces, and $L:V^{\cdot}\to V^{\cdot}$ is a linear map of complexes, then the characteristic polynomial of the complex is defined as the alternating product of the characteristic polynomials on the terms:
 $$
-P_{L|V}(x) = \prod_{i} P_{L_{i}|V_{i}}(x)^{(-1)^{i}}
+P_{L|V^{\cdot}}(x) = \prod_{i} P_{L|V^{i}}(x)^{(-1)^{i}}
 $$
 
 An argument using the multiplicativity of the determinant shows that this characteristic polynomial can be computed from the cohomology of the complex:
 $$
-P_{L}(V)=\prod_{i} P_{L|V^{i}}(x)^{(-1)^{i}} = \prod_{i} P_{L|H^{i}(V)}(x)^{(-1)^{i}}
+P_{L|V^{\cdot}}(x)=\prod_{i} P_{L|V^{i}}(x)^{(-1)^{i}} = \prod_{i} P_{\overline{L}|H^{i}(V^{\cdot})}(x)^{(-1)^{i}}
 $$
 
 
