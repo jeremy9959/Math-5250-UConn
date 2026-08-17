@@ -430,7 +430,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cyclic-subspaces" id="toc-cyclic-subspaces" class="nav-link active" data-scroll-target="#cyclic-subspaces">Cyclic Subspaces</a></li>
+  <li><a href="#decomposition" id="toc-decomposition" class="nav-link active" data-scroll-target="#decomposition">Decomposition</a></li>
+  <li><a href="#the-minimal-polynomial" id="toc-the-minimal-polynomial" class="nav-link" data-scroll-target="#the-minimal-polynomial">The Minimal Polynomial</a></li>
+  <li><a href="#cyclic-subspaces" id="toc-cyclic-subspaces" class="nav-link" data-scroll-target="#cyclic-subspaces">Cyclic Subspaces</a></li>
+  <li><a href="#decomposition-into-cyclic-subspaces" id="toc-decomposition-into-cyclic-subspaces" class="nav-link" data-scroll-target="#decomposition-into-cyclic-subspaces">Decomposition into Cyclic Subspaces</a></li>
+  <li><a href="#the-jordan-normal-form" id="toc-the-jordan-normal-form" class="nav-link" data-scroll-target="#the-jordan-normal-form">The Jordan Normal Form</a></li>
   </ul>
 </nav>
     </div>
@@ -455,16 +459,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>A polynomial <span class="math inline">f</span> of degree <span class="math inline">n</span> over an algebraically closed field factors into a product of <span class="math inline">n</span> linear terms: <span class="math display">
-f(x) = \prod (x-\lambda_{i})^{n_{i}}
+f(x) = \prod_{i} (x-\lambda_{i})^{n_{i}}
 </span></p>
 <p>Here the <span class="math inline">\lambda_i</span> are the roots of <span class="math inline">f(x)</span> and the number <span class="math inline">n_{i}</span> is called the multiplicity of the root <span class="math inline">\lambda_{i}</span>.</p>
-<p>If <span class="math inline">f(x)=P_{A}(x)</span> is the characteristic polynomial of a linear map/matrix over <span class="math inline">F</span> and all <span class="math inline">n_{i}=1</span>, then we know that <span class="math inline">A</span> (resp. <span class="math inline">L</span>) is diagonalizable. If not, then the question is open: sometimes the matrix is diagonalizable, sometimes not.</p>
+<p>If <span class="math inline">f(x)=P_{A}(x)</span> is the characteristic polynomial of a linear map/matrix over <span class="math inline">F</span> and all <span class="math inline">n_{i}=1</span>, then we know that <span class="math inline">L</span> (resp. <span class="math inline">A</span>) is diagonalizable. If not, then the question is open: sometimes the matrix is diagonalizable, sometimes not.</p>
 <p>To understand the situation more fully, we need some theory of polynomials.</p>
 <p>We write <span class="math inline">F[x]</span> for the polynomials with coefficients in a field <span class="math inline">F</span>. For now, we need not assume <span class="math inline">F</span> algebraically closed.</p>
 <p>A polynomial <span class="math display">
 f(x) = a_0+a_1x+\cdots+a_nx^n
-</span> has degree <span class="math inline">\mathrm{deg}(f)=n</span> if <span class="math inline">a_n\not=0</span> and is <em>monic</em> if <span class="math inline">a_n=1</span>.</p>
-<p><strong>Proposition:</strong> (The Division Algorithm) Let <span class="math inline">f</span> and <span class="math inline">g</span> be two polynomials in <span class="math inline">F[X]</span>. Then there exist unique polynomials <span class="math inline">q(x)</span> and <span class="math inline">r(x)</span>, with <span class="math inline">0\le \mathrm{deg}(r(x))&lt;\mathrm{deg}(g(x))</span>, such that <span class="math display">
+</span> has degree <span class="math inline">\deg(f)=n</span> if <span class="math inline">a_n\not=0</span> and is <em>monic</em> if <span class="math inline">a_n=1</span>.</p>
+<p><strong>Proposition:</strong> (The Division Algorithm) Let <span class="math inline">f</span> and <span class="math inline">g</span> be two polynomials in <span class="math inline">F[x]</span>. Then there exist unique polynomials <span class="math inline">q(x)</span> and <span class="math inline">r(x)</span>, with <span class="math inline">0\le \deg(r(x))&lt;\deg(g(x))</span>, such that <span class="math display">
 f(x) = q(x)g(x)+r(x).
 </span></p>
 <p><strong>Definition:</strong> A polynomial <span class="math inline">u(x)</span> is a divisor of <span class="math inline">f(x)</span> if there is a polynomial <span class="math inline">v(x)</span> with <span class="math inline">f(x)=u(x)v(x)</span>. A polynomial <span class="math inline">h(x)</span> is a common divisor of <span class="math inline">f(x)</span> and <span class="math inline">g(x)</span> if it is a divisor of each.</p>
@@ -480,7 +484,7 @@ f(x) = q(x)g(x)+r(x).
 <p>From Euclid’s algorithm, we can write <span class="math display">
 t(x)a(x) +s(x)f(x) = d(x).
 </span></p>
-<p>Since <span class="math inline">f(x)</span> is irreducible and is a multiple of <span class="math inline">d(x)</span>, <span class="math inline">d(x)</span> must either be <span class="math inline">f(x)</span> or have degree zero (so we might as well assume <span class="math inline">d(x)=1</span>. )</p>
+<p>Since <span class="math inline">f(x)</span> is irreducible and is a multiple of <span class="math inline">d(x)</span>, <span class="math inline">d(x)</span> must either be <span class="math inline">f(x)</span> or have degree zero (so we might as well assume <span class="math inline">d(x)=1</span>.)</p>
 <p>If <span class="math inline">d(x)=f(x)</span>, then <span class="math inline">a(x)</span> is a multiple of <span class="math inline">f(x)</span>. Otherwise, multiply through by <span class="math inline">b(x)</span> to obtain <span class="math display">
 t(x)a(x)b(x) + s(x)f(x)b(x) = b(x).
 </span> and so <span class="math inline">b(x)</span> is a multiple of <span class="math inline">f(x)</span>.</p>
@@ -493,22 +497,144 @@ f(x) = \prod_{i} p_{i}(x)^{n_{i}}
 <p>For uniqueness, suppose <span class="math inline">p(x)</span> is monic and occurs in one factorization of <span class="math inline">f(x)</span> into powers of irreducibles. Given another factorization <span class="math display">
 f(x) = \prod_{i} q_{i}(x)^{m_{i}},
 </span> since <span class="math inline">f(x)</span> is a multiple of <span class="math inline">p(x)</span>, one of the <span class="math inline">q_{i}</span> must be a multiple of <span class="math inline">p(x)</span>, which means some <span class="math inline">q_{i}(x) = p(x)</span>. Continuing inductively shows that the two factorizations are the same.</p>
-<section id="decomposition" class="level4">
-<h4 class="anchored" data-anchor-id="decomposition">Decomposition</h4>
+<section id="decomposition" class="level2">
+<h2 class="anchored" data-anchor-id="decomposition">Decomposition</h2>
 <p>Now let <span class="math inline">L:V\to V</span> be a linear map and factor <span class="math inline">P_{L}(x)</span> into a product of powers of distinct irreducibles: <span class="math display">
 P_{L}(x) = p_{1}(x)^{n_{1}}\cdots p_{k}(x)^{n_{k}}.
 </span></p>
 <p>Then the greatest common divisor of <span class="math inline">p_{1}(x)^{n_{1}}</span> and <span class="math inline">H(x) = p_{2}(x)^{n_{2}}\cdots p_{k}(x)^{n_{k}}</span> must be one, so we can write <span class="math display">
-a(x) p_1(x)^{n_{1}} + b(x) H(x) = 1.
+a(x) H(x) + b(x) p_1(x)^{n_{1}}   = 1.
 </span></p>
-<p>Let <span class="math inline">V_{1}</span> be the image of <span class="math inline">p_{1}(x)^{n_{1}}(L)</span> and let <span class="math inline">V_{2}</span> be the image of <span class="math inline">H(L)</span>. Notice that <span class="math inline">V_1+V_2=V</span> since <span class="math display">
-v = a(L) p_{1}(L)^{n_1}v + b(L) H(L)v.
-</span> On the other hand, <span class="math inline">H(L)V_1=0</span> and <span class="math inline">p_1(L)^{n_{1}}V_2=0</span> by Cayley Hamilton. So if <span class="math inline">v\in V_1\cap V_2</span>, then <span class="math display">
-v = a(L)p_{1}(L)^{n_1}v + b(L) H(L) v = 0.
-</span> Thus <span class="math inline">V</span> is the (internal) direct sum of <span class="math inline">V_1</span> and <span class="math inline">V_2</span>.</p>
+<p>Let <span class="math inline">V_{1}</span> be the image of <span class="math inline">H(L)</span> and let <span class="math inline">W</span> be the image of <span class="math inline">p_{1}(L)^{n_{1}}</span> in <span class="math inline">V</span>. Notice that <span class="math inline">V_1+W=V</span> since <span class="math display">
+v = a(L) H(L)v + b(L)p_1(L)^{n_{1}} v.
+</span></p>
+<p>On the other hand, <span class="math inline">p_1(L)^{n_{1}}V_1=0</span> and <span class="math inline">H(L)W=0</span> and by Cayley-Hamilton.</p>
+<p>So if <span class="math inline">v\in V_1\cap W</span>, then</p>
+<p><span class="math display">
+v = a(L)H(L)v + b(L) p_{1}(L)^{n_1} v = 0.
+</span></p>
+<p>Thus <span class="math inline">V</span> is the (internal) direct sum of <span class="math inline">V_1</span> and <span class="math inline">W</span>.</p>
+<p>Continuing inductively by looking at the factorization of <span class="math inline">H</span> acting on the space <span class="math inline">W</span>, we can eventually decompose <span class="math inline">V</span> into a direct sum</p>
+<p><span class="math display">
+V = V_1 \oplus V_2 \oplus \cdots \oplus V_k
+</span></p>
+<p>where <span class="math inline">p_{i}(L)^{n_{i}}V_i=0</span>.</p>
+</section>
+<section id="the-minimal-polynomial" class="level2">
+<h2 class="anchored" data-anchor-id="the-minimal-polynomial">The Minimal Polynomial</h2>
+<p>Suppose <span class="math inline">V</span> is a finite dimensional vector space of dimension <span class="math inline">n</span> over a field <span class="math inline">F</span> and <span class="math inline">L:V\to V</span> is a linear map. We know from Cayley-Hamilton that <span class="math inline">P_{L}(L)V=0</span>.</p>
+<p><strong>Definition:</strong> Let <span class="math inline">m_{L}(x)</span> be the monic polynomial of smallest degree such that <span class="math inline">m_L(L)V=0</span>. This polynomial is called the <em>minimal polynomial</em> of <span class="math inline">L</span>.</p>
+<p><strong>Proposition:</strong> The minimal polynomial <span class="math inline">m_{L}(x)</span> is a divisor of the characteristic polynomial <span class="math inline">P_{L}(x)</span>.</p>
+<p><strong>Proof:</strong> Divide <span class="math inline">P_{L}(x)</span> by <span class="math inline">m_{L}(x)</span> and let <span class="math inline">r(x)</span> be the remainder. Since <span class="math inline">r(x) = P_{L}(x)-q(x)m_{L}(x)</span>, we have <span class="math inline">r(L)V=0</span>. But the degree of <span class="math inline">r(x)</span> is less than that of <span class="math inline">m_L(x)</span>, so the minimality of <span class="math inline">m_L(x)</span> means that <span class="math inline">r(x)=0</span>.</p>
 </section>
 <section id="cyclic-subspaces" class="level2">
 <h2 class="anchored" data-anchor-id="cyclic-subspaces">Cyclic Subspaces</h2>
+<p>If <span class="math inline">V</span> is a finite dimensional vector space over <span class="math inline">F</span> of dimension <span class="math inline">n</span>, and <span class="math inline">L:V\to V</span> is a linear map, then <span class="math inline">V</span> is called a cyclic space for <span class="math inline">L</span> if there is a <span class="math inline">v\in V</span> such that the set of vectors <span class="math inline">L^{i}(v)</span>, for <span class="math inline">i=0,\ldots, n-1</span> span <span class="math inline">V</span>. A <span class="math inline">v</span> with this property is called a generator for <span class="math inline">V</span>.</p>
+<p>If <span class="math inline">V</span> is cyclic for <span class="math inline">L</span>, and <span class="math inline">v</span> is a generator for <span class="math inline">V</span>, then we must have a relation: <span class="math display">
+L^{n}v = -\sum_{i=0}^{n-1} a_{i}L^{i}v.
+</span> This gives a polynomial <span class="math display">
+q(x) = x^n+a_{n-1}x^{n-1}+\cdots+a_{0}
+</span></p>
+<p>such that <span class="math inline">q(L)V=0</span>. In this situation, <span class="math inline">q(x)</span> is the minimal polynomial for <span class="math inline">L</span> acting on <span class="math inline">V</span>.</p>
+<p>If <span class="math inline">v</span> is a generator for <span class="math inline">V</span>, and <span class="math inline">q(x)</span> is the polynomial described above, we can write the matrix <span class="math inline">A</span> of the linear map <span class="math inline">L</span> in the basis <span class="math inline">\{L^{i}v\}_{i=0}^{n-1}</span>. Since <span class="math display">
+L(L^{i}v)=L^{i+1}v\mathrm{\ for\ }i=0,\ldots, n-2
+</span> and <span class="math display">
+L(L^{n-1}v) = L^{n}v = -\sum_{i=0}^{n-1}a_{i}L^{i}v
+</span></p>
+<p>we see that</p>
+<p><span class="math display">
+A=\begin{pmatrix}
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; -a_{0} \\
+1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; -a_{1} \\
+0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 &amp; -a_{2} \\
+0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 &amp; -a_{3} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 &amp; -a_{n-1}
+\end{pmatrix}
+</span></p>
+<p><strong>Remark:</strong> A matrix of this shape for the polynomial <span class="math inline">q(x)</span> is called the companion matrix for <span class="math inline">q(x)</span>.</p>
+<p><strong>Proposition:</strong> The characteristic polynomial of <span class="math inline">A</span> is <span class="math inline">q(x)</span>.</p>
+<p><strong>Proof:</strong> If <span class="math inline">q(x)</span> is degree <span class="math inline">1</span>, this is easy to check by a computation. Inductively, if we strike out the first row and column of <span class="math inline">A</span>, we obtain the companion matrix <span class="math inline">A_1</span> of the polynomial <span class="math display">b(x) = x^{n-1}+a_{n-1}x^{n-2}+\cdots+a_{1}</span> so <span class="math inline">\det(A_1)=b(x)</span> by induction. Then the cofactor expansion of <span class="math inline">\det(A)</span> along the first row gives <span class="math display">
+x\det(A_1)+a_{0}=xb(x)+a_0=q(x).
+</span></p>
+<p><strong>Corollary:</strong> If <span class="math inline">V</span> is cyclic for <span class="math inline">L</span>, then the minimal polynomial and characteristic polynomials of <span class="math inline">L</span> coincide.</p>
+</section>
+<section id="decomposition-into-cyclic-subspaces" class="level2">
+<h2 class="anchored" data-anchor-id="decomposition-into-cyclic-subspaces">Decomposition into Cyclic Subspaces</h2>
+<p>Our goal now is to prove the following.</p>
+<p><strong>Theorem:</strong> Let <span class="math inline">L:V\to V</span> be a linear map, where <span class="math inline">V</span> is a vector space of dimension <span class="math inline">n</span> over <span class="math inline">F</span>. Then there is a decomposition <span class="math display">
+V = V_{1}\oplus V_{2}\oplus \cdots \oplus V_{k}
+</span></p>
+<p>of <span class="math inline">V</span> into cyclic subspaces where the minimal polynomial of <span class="math inline">V_{i}</span> is a power <span class="math inline">p(x)^{k_{i}}</span> of a monic irreducible polynomial over <span class="math inline">F</span>.</p>
+<p>In addition, the minimal polymomials <span class="math inline">p(x)^{k_{i}}</span> are unique up to order.</p>
+<p>This result is very powerful but let’s observe two consequences right off the bat.</p>
+<p>First, we see from the decomposition that the minimal polynomial <span class="math inline">m_{L}(x)</span> on <span class="math inline">V</span> is the least common multiple of the <span class="math inline">p_{i}(x)^{k_{i}}</span>.</p>
+<p>Second, the characteristic polynomial of <span class="math inline">V</span> is the product of the characteristic polynomials of the <span class="math inline">V_{i}</span>, which is the product of the <span class="math inline">p_{i}(x)^{k_{i}}</span>.</p>
+<p>Consequently, if <span class="math inline">p(x)</span> is an irreducible factor of <span class="math inline">P_{L}(x)</span>, then <span class="math inline">p(x)</span> must occur among the <span class="math inline">p_{i}(x)</span>. Therefore every irreducible factor of the characteristic polynomial <span class="math inline">P_{L}(x)</span> is a factor of the minimal polynomial of <span class="math inline">L</span>.</p>
+<p>To prove the decomposition result, we start with our earlier decomposition of <span class="math inline">V</span> into a sum <span class="math inline">V_{i}</span> where each <span class="math inline">V_{i}</span> is killed by <span class="math inline">p_{i}(L)^{n_{i}}</span>, the <span class="math inline">p_{i}(x)</span> are distinct irreducibles, and</p>
+<p><span class="math display">
+P_{L}(x) =\prod_{i} p_{i}(x)^{n_{i}}
+</span></p>
+<p>is the factorization of <span class="math inline">P_{L}(x)</span> into irreducible factors.</p>
+<p>Now we will show that if <span class="math inline">V</span> is finite dimensional and there is an irreducible polynomial <span class="math inline">p(x)</span> of degree <span class="math inline">d</span> so that <span class="math inline">p(L)^{n}V=0</span>, then <span class="math inline">V</span> can be further split into a direct sum of cyclic subspaces corresponding to <span class="math inline">p(x)^{k_{i}}</span> where <span class="math inline">\sum k_{i} = n</span>.</p>
+<p>To start, choose a vector <span class="math inline">v_1\in V</span> so that <span class="math inline">p(L)^{k_{1}}v_1=0</span>, <span class="math inline">p(L)^{k_1-1}v_1\not=0</span>, and <span class="math inline">k_1</span> is maximal among all such choices. The vector <span class="math inline">v_1</span> generates a cyclic subspace of <span class="math inline">V</span> with basis <span class="math display">
+v_1, Lv_1, \cdots, L^{k_1d-1}v_{1}.
+</span></p>
+<p>These vectors are independent since a dependence relation would yield a polynomial <span class="math inline">h(x)</span> in <span class="math inline">L</span> of degree less than <span class="math inline">dk_1</span> such that <span class="math inline">h(L)v_1=0</span>. Then the greatest common divisor <span class="math inline">s(x)</span> of <span class="math inline">h(x)</span> and <span class="math inline">p(x)^{k_1}</span> would also satisfy <span class="math inline">s(L)v_1=0</span>, and since <span class="math inline">p(x)</span> is irreducible and <span class="math inline">s(x)</span> is a divisor of <span class="math inline">p(x)^{k_1}</span> of degree less than or equal to <span class="math inline">dk_1-1</span>, we’d have <span class="math inline">s(x)=p(x)^{k}</span> with <span class="math inline">k&lt;k_1</span>, contradicting the choice of <span class="math inline">k_1</span>.</p>
+<p>Let <span class="math inline">V_1</span> be the subspace of <span class="math inline">V</span> generated by <span class="math inline">v_1</span>. Our next goal is to construct a subspace <span class="math inline">W</span> of <span class="math inline">V</span> such that <span class="math inline">W</span> is <span class="math inline">L</span>-invariant and <span class="math inline">V=V_1\oplus W</span>.</p>
+<p>Since <span class="math inline">W</span> is of smaller dimension than <span class="math inline">V</span> and satisfies the same hypotheses, we can continue inductively to completely decompose <span class="math inline">V</span>.</p>
+<p>The construction of <span class="math inline">W</span> is itself an inductive process. To start, choose <span class="math inline">w_1'\not\in V_1</span> so that <span class="math inline">p(L)^{s_{1}}w_1'\in V_1</span>, <span class="math inline">p(L)^{s_1-1}w_1'\not\in V_1</span> and <span class="math inline">s_1</span> is maximal with this property.</p>
+<p>Now we have <span class="math display">
+p(L)^{s_1}w_1' = a(L)v_1
+</span></p>
+<p>for some polynomial <span class="math inline">a(x)</span> of degree at most <span class="math inline">dk_1-1</span> since <span class="math inline">V_1</span> is cyclic. Since <span class="math inline">p(L)^{k_1-s_1}</span> kills the left side, it kills the right side as well. It follows that <span class="math inline">a(x)</span> is divisible by <span class="math inline">p(x)^{s_1}</span>, so <span class="math inline">a(x)=a_1(x)p(x)^{s_1}</span>. Let <span class="math display">
+w_1 = w_1'-a_1(L)v_1.
+</span></p>
+<p>Then <span class="math inline">p(L)^{s_1}w_1=0</span>. Now let <span class="math inline">W_1</span> be the cyclic subspace generated by <span class="math inline">w_1</span>, so <span class="math inline">W_1\cap V_1=0</span>.</p>
+<p>Now suppose we have constructed <span class="math inline">W_j</span> so that <span class="math inline">V_1\cap W_j=0</span>. Choose <span class="math inline">w_{j+1}'</span> in <span class="math inline">V</span> but not in <span class="math inline">V_1\oplus W_j</span>. Repeat the same argument inductively to adjust <span class="math inline">w_{j+1}'</span>, yielding <span class="math inline">w_{j+1}</span> such that if <span class="math inline">s_{j+1}</span> is the minimal power with <span class="math inline">p(L)^{s_{j+1}}w_{j+1}'\in V_1</span>, then <span class="math display">
+p(L)^{s_{j+1}}w_{j+1}=0.
+</span></p>
+<p>This constructs the “complementary subspace” <span class="math inline">W</span>.</p>
+<p>To finish the proof of existence, now split off a cyclic subspace of <span class="math inline">W</span> and continue.</p>
+<p>For now, we skip the proof of uniqueness.</p>
+</section>
+<section id="the-jordan-normal-form" class="level2">
+<h2 class="anchored" data-anchor-id="the-jordan-normal-form">The Jordan Normal Form</h2>
+<p>Now let’s take a look at what the cyclic decomposition theorem tells us in the case where the characteristic polynomial of <span class="math inline">L</span> factors into linear factors: <span class="math display">
+P_{L}(x) = \prod_{i} (x-\lambda_{i})^{n_{i}}.
+</span></p>
+<p>This <em>always</em> happens if the field <span class="math inline">F</span> is algebraically closed, but that’s not required.</p>
+<p>In this situation, the decomposition writes <span class="math inline">V</span> as a sum of cyclic subspaces <span class="math inline">V_{i}</span> with minimal polynomial <span class="math inline">(x-\lambda_{i})^{k_{i}}.</span></p>
+<p>Choose one of these cyclic subspaces <span class="math inline">V_{i}</span> and let <span class="math inline">v=v_{0}</span> be a generator. The vectors <span class="math display">
+v_{j} = (L-\lambda_i)^{j}v_0\mathrm{\ for\ }j=0,\ldots, k_{i}-1
+</span> are linearly independent and in fact give a basis for <span class="math inline">V_{i}</span>.</p>
+<p>Notice that <span class="math display">
+Lv_{j} = (L-\lambda_i)v_{j}+\lambda_i v_{j} = v_{j+1}+\lambda_i v_{j}\mathrm{\ for\ }j=0,\ldots, k_{i}-2
+</span> while <span class="math display">
+Lv_{k_i-1}=\lambda_i v_{k_{i}-1}.
+</span></p>
+<p>In the basis <span class="math inline">\{v_0,v_1,\ldots,v_{k_i-1}\}</span>, the matrix of <span class="math inline">L</span> restricted to <span class="math inline">V_i</span> is therefore <span class="math display">
+J_{k_i}(\lambda_i)=\begin{pmatrix}
+\lambda_i &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+1 &amp; \lambda_i &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; \lambda_i &amp; \cdots &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 &amp; \lambda_i
+\end{pmatrix}
+</span></p>
+<p><strong>Definition:</strong> The <span class="math inline">k\times k</span> matrix with <span class="math inline">\lambda</span> on the diagonal, <span class="math inline">1</span> on the subdiagonal, and <span class="math inline">0</span> elsewhere is called the <em>Jordan block</em> <span class="math inline">J_{k}(\lambda)</span>.</p>
+<p>Carrying this out for every <span class="math inline">i</span> and assembling the resulting bases of the <span class="math inline">V_i</span> into a single basis for <span class="math inline">V</span> gives:</p>
+<p><strong>Theorem:</strong> (Jordan Normal Form) If the characteristic polynomial of <span class="math inline">L</span> factors into linear factors, then there is a basis of <span class="math inline">V</span> in which the matrix of <span class="math inline">L</span> is block diagonal, with blocks <span class="math inline">J_{k_i}(\lambda_i)</span>, where the <span class="math inline">(x-\lambda_i)^{k_i}</span> are the minimal polynomials of the cyclic subspaces <span class="math inline">V_i</span> in the decomposition of <span class="math inline">V</span>.</p>
+<p>It’s worth pointing out that one way to read the Jordan Normal Form is that every matrix <span class="math inline">A</span> whose characteristic polynomial factors into linear factors is a sum <span class="math display">
+A = D + N
+</span></p>
+<p>where <span class="math inline">D</span> is a diagonal matrix whose diagonal entries are the eigenvalues repeated according to their multiplicity, and <span class="math inline">N</span> is a nilpotent matrix - that is, <span class="math inline">N^{k}=0</span> for some <span class="math inline">k</span>.</p>
+<p>In a single Jordan Block or dimension <span class="math inline">k</span>, the matrix has the form <span class="math display">
+\lambda I + N
+</span></p>
+<p>where <span class="math inline">N^{k}=0</span> but <span class="math inline">N^{k-1}\not=0</span>.</p>
+<p>It’s also worth observing that each Jordan Block has exactly one eigenvector, so the number of independent eigenvectors is equal to the number of Jordan Blocks.</p>
 
 
 </section>

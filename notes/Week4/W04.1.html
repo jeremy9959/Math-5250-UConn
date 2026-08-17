@@ -476,14 +476,14 @@ Ax = \lambda x
 <p>A nonzero vector with this property (for some <span class="math inline">\lambda</span>) is called an <em>eigenvector</em> for <span class="math inline">A</span>. The scalar <span class="math inline">\lambda</span> is called the associated eigenvalue.</p>
 <p>Similarly if <span class="math inline">L</span> is a linear map, a non-zero vector such that <span class="math inline">Lx=\lambda x</span> is an eigenvector for <span class="math inline">L</span> with eigenvalue <span class="math inline">\lambda</span>.</p>
 <p><span class="math inline">A</span> (resp. <span class="math inline">L</span>) is diagonalizable if and only if there is a basis for <span class="math inline">F^{n}</span> (resp. <span class="math inline">V</span>) consisting of eigenvectors for <span class="math inline">A</span> (resp. <span class="math inline">L</span>).</p>
-<p>The equation <span class="math inline">Ax=\lambda x</span> has a nonzero solution <span class="math inline">x</span> if and only if the matrix <span class="math inline">A-\lambda I</span> has a non-zero null space. This happens if and only if this matrix has zero determinant.</p>
-<p><strong>Proposition:</strong> <span class="math inline">\lambda</span> is an eigenvalue for <span class="math inline">A</span> if and only if <span class="math inline">\det(A-\lambda I) = 0</span>. If the determinant is zero, any nonzero vector in the null space of <span class="math inline">A-\lambda I</span> is an eigenvector for <span class="math inline">A</span> with eigenvalue <span class="math inline">\lambda</span>.</p>
+<p>The equation <span class="math inline">Ax=\lambda x</span> has a nonzero solution <span class="math inline">x</span> if and only if the matrix <span class="math inline">\lambda I - A</span> has a non-zero null space. This happens if and only if this matrix has zero determinant.</p>
+<p><strong>Proposition:</strong> <span class="math inline">\lambda</span> is an eigenvalue for <span class="math inline">A</span> if and only if <span class="math inline">\det(\lambda I - A) = 0</span>. If the determinant is zero, any nonzero vector in the null space of <span class="math inline">\lambda I - A</span> is an eigenvector for <span class="math inline">A</span> with eigenvalue <span class="math inline">\lambda</span>.</p>
 <p>Notice that this proposition can be stated entirely in terms of linear maps.</p>
-<p>If we treat <span class="math inline">x</span> as a variable, we obtain the “characteristic polynomial” <span class="math inline">P_{A}(x)=\det(A-xI)</span> of <span class="math inline">A</span> (or of a linear map <span class="math inline">L</span>, where we use any matrix representation of <span class="math inline">L</span> to compute the polynomial and we call the result <span class="math inline">P_{L}(x)</span>).</p>
-<p><strong>Proposition:</strong> If <span class="math inline">x</span> is a variable, then <span class="math inline">\det(A-xI)</span> is a polynomial in <span class="math inline">x</span> of degree <span class="math inline">n</span>.</p>
-<p>This follows from what we know about the computation of the determinant; only one term in the expansion of the determinant has degree <span class="math inline">n</span>, namely the product of the diagonals. All other terms contribute lower powers of <span class="math inline">x</span>.</p>
+<p>If we treat <span class="math inline">x</span> as a variable, we obtain the “characteristic polynomial” <span class="math inline">P_{A}(x)=\det(xI-A)</span> of <span class="math inline">A</span> (or of a linear map <span class="math inline">L</span>, where we use any matrix representation of <span class="math inline">L</span> to compute the polynomial and we call the result <span class="math inline">P_{L}(x)</span>).</p>
+<p><strong>Proposition:</strong> If <span class="math inline">x</span> is a variable, then <span class="math inline">\det(xI-A)</span> is a monic polynomial in <span class="math inline">x</span> of degree <span class="math inline">n</span>.</p>
+<p>This follows from what we know about the computation of the determinant; only one term in the expansion of the determinant has degree <span class="math inline">n</span>, namely the product of the diagonals <span class="math inline">\prod_i(x-a_{ii})</span>, which contributes the leading term <span class="math inline">x^n</span>. All other terms contribute lower powers of <span class="math inline">x</span>.</p>
 <p>A scalar <span class="math inline">\lambda</span> is a root of <span class="math inline">P_{A}(x)</span> if and only if <span class="math inline">\lambda</span> is an eigenvalue of <span class="math inline">A</span>.</p>
-<p><strong>Definition:</strong> A field <span class="math inline">F</span> is <em>algebraically closed</em> if every polynomial over <span class="math inline">F</span> has a root in <span class="math inline">F</span>.</p>
+<p><strong>Definition:</strong> A field <span class="math inline">F</span> is <em>algebraically closed</em> if every non-constant polynomial over <span class="math inline">F</span> has a root in <span class="math inline">F</span>.</p>
 <p><strong>Proposition:</strong> Let <span class="math inline">F</span> be an <em>algebraically closed field</em>. Then every linear map/matrix over <span class="math inline">F</span> has an eigenvalue (and associated eigenvector).</p>
 <p><strong>Proposition:</strong> The complex numbers are algebraically closed.</p>
 <p>This famous result is called “The Fundamental Theorem of Algebra.” Many mathematicians worked toward proving this theorem, including many famous 17th and 18th century names. The first rigorous proof by modern standards was published by an amateur mathematician, Argand, in 1814. See the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra">Wikipedia Entry</a> for more information and various proofs.</p>
@@ -492,15 +492,15 @@ Ax = \lambda x
 A = \left[\begin{matrix} 0 &amp; 1 \\ -1 &amp; 0 \end{matrix}\right]
 </span> is <span class="math inline">x^2+1</span> which has no real roots.</p>
 <p><strong>Proposition:</strong> Not every matrix is diagonalizable.</p>
-<p><strong>Proof:</strong> Let <span class="math inline">V=\mathbf{C}^{2}</span> and consider at <span class="math display">
+<p><strong>Proof:</strong> Let <span class="math inline">V=\mathbf{C}^{2}</span> and consider <span class="math display">
 A = \left[\begin{matrix} 1 &amp; 1 \\ 0 &amp; 1 \end{matrix}\right]
 </span></p>
 <p>corresponding to the linear map <span class="math inline">L:V\to V</span> given by <span class="math inline">L(x)=Ax</span>.</p>
-<p>The characteristic polynomial <span class="math inline">P_{L}(x)=1-2x+x^2=(x-1)^2</span> so the only eigenvalue of <span class="math inline">L</span> is <span class="math inline">1</span>.</p>
+<p>The characteristic polynomial <span class="math inline">P_{L}(x)=(x-1)^2=x^2-2x+1</span> so the only eigenvalue of <span class="math inline">L</span> is <span class="math inline">1</span>.</p>
 <p>The equation <span class="math inline">L(x) = Ax=x</span> has a one-dimensional solution space spanned by <span class="math display">
 \left[\begin{matrix} 1 \\ 0 \end{matrix}\right].
 </span></p>
-<p>Therefore <span class="math inline">L</span> has only one eigenvector and <span class="math inline">V</span> has no basis of eigenvectors.</p>
+<p>Therefore <span class="math inline">L</span> has only a one-dimensional subspace of eigenvectors and <span class="math inline">V</span> has no basis of eigenvectors.</p>
 <p><strong>Proposition:</strong> Suppose <span class="math inline">L:V\to V</span> is a linear map where <span class="math inline">V</span> is <span class="math inline">n</span>-dimensional. If <span class="math inline">L</span> has <span class="math inline">n</span> distinct eigenvalues, then <span class="math inline">L</span> is diagonalizable.</p>
 <p><strong>Proof:</strong> This follows from the following fact: eigenvectors associated to different eigenvalues are linearly independent. To see this, suppose <span class="math inline">v_1,\ldots, v_k</span> are eigenvectors for <span class="math inline">L</span>, with eigenvalues <span class="math inline">\lambda_{1},\ldots,\lambda_{k}</span>, such that all the <span class="math inline">\lambda_{i}</span> are different and the <span class="math inline">v_{i}</span> are dependent. Choose such a set where <span class="math inline">k</span> is minimal. Since eigenvectors are nonzero, <span class="math inline">k&gt;1</span>.</p>
 <p>Write <span class="math display">
@@ -519,7 +519,7 @@ a_1\lambda_1 v_1 + \cdots + a_k\lambda_k v_k &amp;= 0 \\
 <p>Since <span class="math inline">a_j\not=0</span>, and (again by minimality) the <span class="math inline">v_{i}</span> for <span class="math inline">i\ge 2</span> are independent, this means <span class="math inline">(\lambda_1-\lambda_j)=0</span> which contradicts the assumption that all the <span class="math inline">\lambda_i</span> are distinct.</p>
 <p>For the diagonalizability result, if <span class="math inline">L</span> has <span class="math inline">n</span> distinct eigenvalues, then the associated eigenvectors are linearly independent and thus a basis for <span class="math inline">V</span>. In that basis, the matrix of <span class="math inline">A=[L]</span> is diagonal with <span class="math inline">a_{ii}=\lambda_i</span>.</p>
 <p><strong>Corollary:</strong> If the characteristic polynomial <span class="math inline">P_L(x)</span> of <span class="math inline">L</span> has <span class="math inline">n</span> distinct roots, then <span class="math inline">L</span> is diagonalizable.</p>
-<p>The converse is false: the identity matrix has characteristic polynomial <span class="math inline">(1-x)^n</span> but is obviously diagonal.</p>
+<p>The converse is false: the identity matrix has characteristic polynomial <span class="math inline">(x-1)^n</span> but is obviously diagonal.</p>
 <p>Understanding exact conditions for diagonalizability will occupy us for a time.</p>
 </section>
 <section id="the-cayley-hamilton-theorem" class="level2">
@@ -527,8 +527,8 @@ a_1\lambda_1 v_1 + \cdots + a_k\lambda_k v_k &amp;= 0 \\
 <p>Observe that if <span class="math inline">P(x)</span> is a polynomial with coefficients in the field <span class="math inline">F</span>, and <span class="math inline">A\in M_{n}(F)</span> is a matrix, then <span class="math inline">P(A)</span> makes sense as a matrix as well.</p>
 <p>If <span class="math inline">L</span> is a linear map, then <span class="math inline">P(L)</span> makes sense with the understanding that <span class="math inline">L^i</span> means the <span class="math inline">i</span>-fold composition <span class="math inline">L\circ \cdots \circ L</span>.</p>
 <p>Finally, given a basis <span class="math inline">E</span>, <span class="math inline">[P(L)]_{E}^{E} = P([L]_{E}^{E})</span> so we can freely move back and forth between linear maps and matrices by choice of basis.</p>
-<p><strong>Theorem:</strong> (Cayley-Hamilton) Let <span class="math inline">P(x)=\det(A-xI)</span> be the characteristic polynomial of <span class="math inline">A</span>. Then <span class="math inline">P(A)=0</span>.</p>
-<p><strong>Proof:</strong> Let <span class="math inline">X=A-xI</span>. Then <span class="math display">
+<p><strong>Theorem:</strong> (Cayley-Hamilton) Let <span class="math inline">P_A(x)=\det(xI-A)</span> be the characteristic polynomial of <span class="math inline">A</span>. Then <span class="math inline">P_A(A)=0</span>.</p>
+<p><strong>Proof:</strong> Let <span class="math inline">X=xI-A</span>. Then <span class="math display">
 XX^{adj} = \det(X)I=P_{A}(x)I
 </span></p>
 <p>Since the entries of <span class="math inline">X^{adj}</span> are the determinants of <span class="math inline">(n-1)\times (n-1)</span> submatrices of <span class="math inline">X</span>, each entry is a polynomial of degree at most <span class="math inline">n-1</span>. We can “regroup” the terms to obtain an expression: <span class="math display">
@@ -542,8 +542,8 @@ xIX^{adj} = xB_{0}+\cdots+x^{n}B_{n-1}.
 AX^{adj} = AB_{0}+\cdots + x^{n-1}AB_{n-1}
 </span></p>
 <p>since multiplication by <span class="math inline">A</span> acts on the terms of each degree.</p>
-<p>This gives the formula <span class="math display">
-P_{A}(x)I = AB_{0}+x(AB_{1}-B_{0}) + \cdots + x^{n}(-B_{n-1}).
+<p>Since <span class="math inline">XX^{adj} = xIX^{adj}-AX^{adj}</span>, this gives the formula <span class="math display">
+P_{A}(x)I = -AB_{0}+x(B_{0}-AB_{1}) + \cdots + x^{n-1}(B_{n-2}-AB_{n-1})+x^{n}B_{n-1}.
 </span></p>
 <p>Substituting <span class="math inline">x=A</span> into this expression collapses to a telescoping sum that yields zero.</p>
 <section id="cayley-hamilton-and-invariant-subspaces" class="level4">
@@ -552,11 +552,11 @@ P_{A}(x)I = AB_{0}+x(AB_{1}-B_{0}) + \cdots + x^{n}(-B_{n-1}).
 P_{L}(x) = P_{L|W}(x)P_{\overline{L}}(x)
 </span> where <span class="math inline">P_{L|W}(x)</span> is the characteristic polynomial of <span class="math inline">L:W\to W</span> and <span class="math inline">P_{\overline{L}}(x)</span> is the characteristic polynomial of the induced linear map <span class="math inline">\overline{L}:V/W\to V/W</span>.</p>
 <p><strong>Proof:</strong> This follows from the multiplicative property of determinants.</p>
-<p><strong>Definition:</strong> If <span class="math inline">V</span> is a bounded complex of finite dimensional vector spaces, and <span class="math inline">L:V\to V</span> is a linear map, then the characteristic polynomial of the complex is defined as the alternating product of the characteristic polynomials on the terms: <span class="math display">
-P_{L|V}(x) = \prod_{i} P_{L_{i}|V_{i}}(x)^{(-1)^{i}}
+<p><strong>Definition:</strong> If <span class="math inline">V^{\cdot}</span> is a bounded complex of finite dimensional vector spaces, and <span class="math inline">L:V^{\cdot}\to V^{\cdot}</span> is a linear map of complexes, then the characteristic polynomial of the complex is defined as the alternating product of the characteristic polynomials on the terms: <span class="math display">
+P_{L|V^{\cdot}}(x) = \prod_{i} P_{L|V^{i}}(x)^{(-1)^{i}}
 </span></p>
 <p>An argument using the multiplicativity of the determinant shows that this characteristic polynomial can be computed from the cohomology of the complex: <span class="math display">
-P_{L}(V)=\prod_{i} P_{L|V^{i}}(x)^{(-1)^{i}} = \prod_{i} P_{L|H^{i}(V)}(x)^{(-1)^{i}}
+P_{L|V^{\cdot}}(x)=\prod_{i} P_{L|V^{i}}(x)^{(-1)^{i}} = \prod_{i} P_{\overline{L}|H^{i}(V^{\cdot})}(x)^{(-1)^{i}}
 </span></p>
 
 
