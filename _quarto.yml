@@ -55,8 +55,6 @@ website:
             href: notes/Week5-6/W05.4.qmd
       - section: "Weeks 7–8 — Matrix Decompositions"
         contents:
-          - text: "Jordan canonical form"
-            href: notes/Week7-8/W07.1.qmd
           - text: "Positive definite matrices"
             href: notes/Week7-8/W07.2.qmd
           - text: "QR, SVD, and polar decomposition"
