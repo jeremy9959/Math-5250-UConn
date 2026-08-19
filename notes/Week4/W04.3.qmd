@@ -108,7 +108,7 @@ $$
 
 Thus $V$ is the (internal) direct sum of $V_1$ and $W$.
 
-Continuing inductively by looking at the factorization of $H$ acting on the space $W$, 
+Continuing inductivBut ely by looking at the factorization of $H$ acting on the space $W$, 
 we can eventually decompose $V$ into a direct sum
 
 $$
@@ -200,9 +200,9 @@ $$
 V = V_{1}\oplus V_{2}\oplus \cdots \oplus V_{k}
 $$
 
-of $V$ into cyclic subspaces where the minimal polynomial of $V_{i}$ is a power $p(x)^{k_{i}}$ of a monic irreducible polynomial over $F$.
+of $V$ into cyclic subspaces where the minimal polynomial of $V_{i}$ is a power $p_i(x)^{k_{i}}$ of a monic irreducible polynomial over $F$.
 
-In addition, the minimal polymomials $p(x)^{k_{i}}$
+In addition, the minimal polymomials $p_i(x)^{k_{i}}$
 are unique up to order.
 
 This result is very powerful but let's observe two consequences right off the bat.
@@ -359,12 +359,12 @@ $$
 
 where $D$ is a diagonal matrix whose diagonal entries are the eigenvalues repeated according to their multiplicity, and $N$ is a nilpotent matrix - that is, $N^{k}=0$ for some $k$. 
 
-In a single Jordan Block or dimension $k$, the matrix has the form
+In a single Jordan Block of dimension $k$, the matrix has the form
 $$
 \lambda I + N
 $$
 
 where $N^{k}=0$ but $N^{k-1}\not=0$.  
 
-It's also worth observing that each Jordan Block has exactly one eigenvector, so the number of independent eigenvectors is equal to the number of Jordan Blocks.
+It's also worth observing that each Jordan Block has a one-dimensional space of  eigenvectors, so the number of independent eigenvectors is equal to the number of Jordan Blocks.
 
