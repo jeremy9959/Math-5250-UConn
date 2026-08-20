@@ -509,7 +509,7 @@ v = a(L) H(L)v + b(L)p_1(L)^{n_{1}} v.
 v = a(L)H(L)v + b(L) p_{1}(L)^{n_1} v = 0.
 </span></p>
 <p>Thus <span class="math inline">V</span> is the (internal) direct sum of <span class="math inline">V_1</span> and <span class="math inline">W</span>.</p>
-<p>Continuing inductively by looking at the factorization of <span class="math inline">H</span> acting on the space <span class="math inline">W</span>, we can eventually decompose <span class="math inline">V</span> into a direct sum</p>
+<p>Continuing inductivBut ely by looking at the factorization of <span class="math inline">H</span> acting on the space <span class="math inline">W</span>, we can eventually decompose <span class="math inline">V</span> into a direct sum</p>
 <p><span class="math display">
 V = V_1 \oplus V_2 \oplus \cdots \oplus V_k
 </span></p>
@@ -560,8 +560,8 @@ x\det(A_1)+a_{0}=xb(x)+a_0=q(x).
 <p><strong>Theorem:</strong> Let <span class="math inline">L:V\to V</span> be a linear map, where <span class="math inline">V</span> is a vector space of dimension <span class="math inline">n</span> over <span class="math inline">F</span>. Then there is a decomposition <span class="math display">
 V = V_{1}\oplus V_{2}\oplus \cdots \oplus V_{k}
 </span></p>
-<p>of <span class="math inline">V</span> into cyclic subspaces where the minimal polynomial of <span class="math inline">V_{i}</span> is a power <span class="math inline">p(x)^{k_{i}}</span> of a monic irreducible polynomial over <span class="math inline">F</span>.</p>
-<p>In addition, the minimal polymomials <span class="math inline">p(x)^{k_{i}}</span> are unique up to order.</p>
+<p>of <span class="math inline">V</span> into cyclic subspaces where the minimal polynomial of <span class="math inline">V_{i}</span> is a power <span class="math inline">p_i(x)^{k_{i}}</span> of a monic irreducible polynomial over <span class="math inline">F</span>.</p>
+<p>In addition, the minimal polymomials <span class="math inline">p_i(x)^{k_{i}}</span> are unique up to order.</p>
 <p>This result is very powerful but let’s observe two consequences right off the bat.</p>
 <p>First, we see from the decomposition that the minimal polynomial <span class="math inline">m_{L}(x)</span> on <span class="math inline">V</span> is the least common multiple of the <span class="math inline">p_{i}(x)^{k_{i}}</span>.</p>
 <p>Second, the characteristic polynomial of <span class="math inline">V</span> is the product of the characteristic polynomials of the <span class="math inline">V_{i}</span>, which is the product of the <span class="math inline">p_{i}(x)^{k_{i}}</span>.</p>
@@ -641,11 +641,11 @@ J_{k_i}(\lambda_i)=\begin{pmatrix}
 A = D + N
 </span></p>
 <p>where <span class="math inline">D</span> is a diagonal matrix whose diagonal entries are the eigenvalues repeated according to their multiplicity, and <span class="math inline">N</span> is a nilpotent matrix - that is, <span class="math inline">N^{k}=0</span> for some <span class="math inline">k</span>.</p>
-<p>In a single Jordan Block or dimension <span class="math inline">k</span>, the matrix has the form <span class="math display">
+<p>In a single Jordan Block of dimension <span class="math inline">k</span>, the matrix has the form <span class="math display">
 \lambda I + N
 </span></p>
 <p>where <span class="math inline">N^{k}=0</span> but <span class="math inline">N^{k-1}\not=0</span>.</p>
-<p>It’s also worth observing that each Jordan Block has exactly one eigenvector, so the number of independent eigenvectors is equal to the number of Jordan Blocks.</p>
+<p>It’s also worth observing that each Jordan Block has a one-dimensional space of eigenvectors, so the number of independent eigenvectors is equal to the number of Jordan Blocks.</p>
 
 
 </section>
