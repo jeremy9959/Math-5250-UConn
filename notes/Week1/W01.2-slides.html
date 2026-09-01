@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 5250: Graduate Linear Algebra - Weeks 5–6 — Complex Inner Product Spaces and Hermitian Operators</title>
+<title>Math 5250: Graduate Linear Algebra - Rank, Nullity, and Row Reduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,12 +58,30 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+</head><body class="nav-sidebar docked nav-fixed">\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
-</head>
 
-<body class="nav-sidebar docked nav-fixed">
+
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -106,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.1.html">Weeks 5–6 — Inner Product Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.4.html">Complex inner product spaces and Hermitian operators</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Rank, Nullity, and Row Reduction</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -232,13 +250,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Weeks 5–6 — Inner Product Spaces</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week5-6/W05.1.html" class="sidebar-item-text sidebar-link">
@@ -259,7 +277,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week5-6/W05.4.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../notes/Week5-6/W05.4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Complex inner product spaces and Hermitian operators</span></a>
   </div>
 </li>
@@ -431,7 +449,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a></li>
+  <li><a href="#matrices" id="toc-matrices" class="nav-link active" data-scroll-target="#matrices">Matrices</a></li>
+  <li><a href="#matrix-multiplication" id="toc-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-multiplication">Matrix Multiplication</a></li>
+  <li><a href="#linear-maps" id="toc-linear-maps" class="nav-link" data-scroll-target="#linear-maps">Linear Maps</a></li>
+  <li><a href="#key-subspaces-and-invariants-of-a-matrix" id="toc-key-subspaces-and-invariants-of-a-matrix" class="nav-link" data-scroll-target="#key-subspaces-and-invariants-of-a-matrix">Key Subspaces and Invariants of a Matrix</a></li>
+  <li><a href="#elementary-row-operations-and-elementary-matrices" id="toc-elementary-row-operations-and-elementary-matrices" class="nav-link" data-scroll-target="#elementary-row-operations-and-elementary-matrices">Elementary Row Operations and Elementary Matrices</a></li>
+  <li><a href="#row-reduced-echelon-form" id="toc-row-reduced-echelon-form" class="nav-link" data-scroll-target="#row-reduced-echelon-form">Row Reduced Echelon Form</a></li>
+  <li><a href="#rank-and-nullity-from-rref" id="toc-rank-and-nullity-from-rref" class="nav-link" data-scroll-target="#rank-and-nullity-from-rref">Rank and Nullity from RREF</a></li>
+  <li><a href="#the-ranknullity-corollary" id="toc-the-ranknullity-corollary" class="nav-link" data-scroll-target="#the-ranknullity-corollary">The Rank–Nullity Corollary</a></li>
+  <li><a href="#algorithm-testing-membership-in-the-range" id="toc-algorithm-testing-membership-in-the-range" class="nav-link" data-scroll-target="#algorithm-testing-membership-in-the-range">Algorithm: Testing Membership in the Range</a></li>
   </ul>
 </nav>
     </div>
@@ -440,7 +466,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Weeks 5–6 — Complex Inner Product Spaces and Hermitian Operators</h1>
+<h1 class="title">Rank, Nullity, and Row Reduction</h1>
+<p class="subtitle lead">Math 5250 — Week 1</p>
 </div>
 
 
@@ -455,9 +482,87 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
-<p>Notes on complex (unitary) inner product spaces, the adjoint operator (conjugate transpose), and the spectral theorem for Hermitian operators.</p>
+<section id="matrices" class="level2">
+<h2 class="anchored" data-anchor-id="matrices">Matrices</h2>
+<p>An <span class="math inline">n\times m</span> matrix over <span class="math inline">\R</span> is an array with <span class="math inline">n</span> rows and <span class="math inline">m</span> columns; the set of these is <span class="math inline">M_{n\times m}(\R)</span> (similarly <span class="math inline">M_{n\times m}(\C)</span> for complex arrays).</p>
+<ul>
+<li><span class="math inline">M_{n\times m}(\R)</span> is a vector space of dimension <span class="math inline">nm</span>, with addition and scalar multiplication entry by entry: <span class="math inline">(A+B)_{ij}=a_{ij}+b_{ij}</span> and <span class="math inline">(\lambda A)_{ij}=\lambda a_{ij}</span>.</li>
+<li>Elements of <span class="math inline">\R^n</span> may be viewed as <span class="math inline">n\times 1</span> column vectors or <span class="math inline">1\times n</span> row vectors; by convention we use <span class="math inline">n\times 1</span> column vectors.</li>
+</ul>
+</section>
+<section id="matrix-multiplication" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-multiplication">Matrix Multiplication</h2>
+<p>For <span class="math inline">A</span> an <span class="math inline">n\times m</span> matrix and <span class="math inline">B</span> an <span class="math inline">m\times k</span> matrix, the product <span class="math inline">C=AB</span> is <span class="math inline">n\times k</span> with entries <span class="math display">
+c_{ij}=\sum_{r=1}^m a_{ir}b_{rj}.
+</span></p>
+<ul>
+<li>Matrix multiplication is associative: <span class="math inline">(AB)C=A(BC)</span>.</li>
+<li>It distributes over addition: <span class="math inline">(A+B)C=AC+BC</span> and <span class="math inline">A(B+C)=AB+AC</span>.</li>
+<li>It is <strong>not</strong> commutative, even when both <span class="math inline">AB</span> and <span class="math inline">BA</span> are defined.</li>
+</ul>
+</section>
+<section id="linear-maps" class="level2">
+<h2 class="anchored" data-anchor-id="linear-maps">Linear Maps</h2>
+<p><strong>Definition.</strong> <span class="math inline">L:\R^m\to\R^n</span> is <strong>linear</strong> if <span class="math inline">L(x+y)=L(x)+L(y)</span> and <span class="math inline">L(ax)=aL(x)</span>.</p>
+<ul>
+<li>For an <span class="math inline">n\times m</span> matrix <span class="math inline">A</span>, <span class="math inline">L_A(x)=Ax</span> defines a linear map <span class="math inline">\R^m\to\R^n</span>.</li>
+<li>If <span class="math inline">A</span> is <span class="math inline">n\times m</span> and <span class="math inline">B</span> is <span class="math inline">k\times n</span>, then <span class="math inline">L_B\circ L_A=L_{BA}</span>.</li>
+<li>Everything above holds with <span class="math inline">\R</span> replaced by <span class="math inline">\C</span>.</li>
+</ul>
+</section>
+<section id="key-subspaces-and-invariants-of-a-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="key-subspaces-and-invariants-of-a-matrix">Key Subspaces and Invariants of a Matrix</h2>
+<p><strong>Definition.</strong> The <strong>column space</strong> of <span class="math inline">A\in M_{n\times m}(\R)</span> is the subspace of <span class="math inline">\R^n</span> spanned by the columns of <span class="math inline">A</span>; it equals the image of <span class="math inline">L_A</span>. The <strong>column rank</strong> is its dimension.</p>
+<p><strong>Definition.</strong> The <strong>nullspace</strong> (or <strong>kernel</strong>) of <span class="math inline">A</span> is <span class="math inline">\{x\in\R^m : Ax=0\}</span>, a subspace of <span class="math inline">\R^m</span>; the <strong>nullity</strong> is its dimension.</p>
+<p><strong>Definition.</strong> The <strong>row space</strong> of <span class="math inline">A</span> is the subspace of <span class="math inline">\R^m</span> spanned by the rows of <span class="math inline">A</span>; the <strong>row rank</strong> is its dimension.</p>
+</section>
+<section id="elementary-row-operations-and-elementary-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="elementary-row-operations-and-elementary-matrices">Elementary Row Operations and Elementary Matrices</h2>
+<p>Three <strong>elementary row operations</strong>:</p>
+<ul>
+<li>Swap two rows.</li>
+<li>Multiply a row by a nonzero scalar.</li>
+<li>Replace <span class="math inline">A_{j\cdot}</span> by <span class="math inline">A_{j\cdot}-\lambda A_{i\cdot}</span>.</li>
+</ul>
+<p>Each corresponds to an <strong>elementary matrix</strong> <span class="math inline">E</span>, with <span class="math inline">A'=EA</span>; elementary matrices are invertible.</p>
+<p><strong>Proposition.</strong> If <span class="math inline">A'</span> is obtained from <span class="math inline">A</span> by elementary row operations, then <span class="math inline">A'</span> and <span class="math inline">A</span> have the same row space, the same nullspace, and the same column rank.</p>
+</section>
+<section id="row-reduced-echelon-form" class="level2">
+<h2 class="anchored" data-anchor-id="row-reduced-echelon-form">Row Reduced Echelon Form</h2>
+<p><strong>Definition.</strong> <span class="math inline">A</span> is in <strong>row reduced echelon form</strong> if:</p>
+<ol type="a">
+<li>All-zero rows are at the bottom.</li>
+<li>The first nonzero entry (“pivot”) of each nonzero row is <span class="math inline">1</span>.</li>
+<li>Pivots move down and to the right.</li>
+<li>A pivot is the only nonzero entry in its column.</li>
+</ol>
+<p><strong>Proposition.</strong> Every matrix <span class="math inline">A</span> can be transformed into row reduced echelon form by a sequence of row operations.</p>
+</section>
+<section id="rank-and-nullity-from-rref" class="level2">
+<h2 class="anchored" data-anchor-id="rank-and-nullity-from-rref">Rank and Nullity from RREF</h2>
+<p>Suppose <span class="math inline">A</span> is <span class="math inline">n\times m</span>, in row reduced echelon form, with <span class="math inline">r</span> pivots.</p>
+<p><strong>Proposition.</strong></p>
+<ul>
+<li>The row rank and column rank both equal <span class="math inline">r</span>.</li>
+<li>The nullity equals <span class="math inline">m-r</span>: for each non-pivot column <span class="math inline">j</span>, a vector <span class="math inline">x^{(j)}\in\ker A</span> is obtained by putting <span class="math inline">1</span> in position <span class="math inline">j</span>, <span class="math inline">0</span> in the other non-pivot positions, and <span class="math inline">-A_{i,j}</span> in each pivot position <span class="math inline">p_i</span>. These <span class="math inline">m-r</span> vectors form a basis of <span class="math inline">\ker A</span>.</li>
+</ul>
+</section>
+<section id="the-ranknullity-corollary" class="level2">
+<h2 class="anchored" data-anchor-id="the-ranknullity-corollary">The Rank–Nullity Corollary</h2>
+<p><strong>Corollary.</strong> For any matrix <span class="math inline">A</span> with <span class="math inline">m</span> columns:</p>
+<ul>
+<li>The row rank and column rank of <span class="math inline">A</span> agree; this common value is the <strong>rank</strong> of <span class="math inline">A</span>.</li>
+<li><span class="math inline">\mathrm{rank}(A)+\mathrm{nullity}(A)=m</span>.</li>
+</ul>
+</section>
+<section id="algorithm-testing-membership-in-the-range" class="level2">
+<h2 class="anchored" data-anchor-id="algorithm-testing-membership-in-the-range">Algorithm: Testing Membership in the Range</h2>
+<p>To decide whether <span class="math inline">v</span> is in the range of <span class="math inline">A</span>:</p>
+<ul>
+<li>Form the augmented matrix <span class="math inline">A'=[A,v]</span>.</li>
+<li>Row reduce <span class="math inline">A'</span> to echelon form.</li>
+<li>If the last column contains a pivot, <span class="math inline">v</span> is <strong>not</strong> in the range; otherwise it <strong>is</strong>.</li>
+</ul>
 
 
 </section>
