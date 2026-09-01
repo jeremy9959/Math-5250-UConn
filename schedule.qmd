@@ -68,8 +68,8 @@ title: Math 5250 Schedule
   <td>Matrix Decompositions</td>
   <td><a href="notes/Week7-8/W07.3.qmd">Other canonical forms</a></td></tr>
 <tr class="week-end"><td>Th 10/22</td>
-  <td>Matrix Decompositions</td>
-  <td>Applications and examples</td></tr>
+  <td>Midterm</td>
+  <td>Midterm Exam</td></tr>
 <tr><td>Tu 10/27</td>
   <td>Norms</td>
   <td><a href="notes/Week9/W09.1.qmd">Vector space norms, equivalence of norms in finite dimensions</a></td></tr>

@@ -43,7 +43,15 @@ Lecture notes will be developed and posted here throughout the semester.
 
 #### Assessments
 
-| To be announced.
+| There will be in-class midterm (40%) and final (60%) exams.  The midterm is tentatively scheduled for 10/22/26.  The Final will be during the regular finals period. 
+
+#### AI Policies and Disclaimers
+
+The notes for this course were written by the instructor.  Claude Code was used for copyediting and for assistance
+building the course website.
+
+Students are free to use whatever devices they choose outside of class.  No devices of any kind will be permitted
+for the midterm and final exam.
 
 #### Disclaimer
 
