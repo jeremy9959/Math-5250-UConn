@@ -90,7 +90,7 @@ website:
           - text: "Tensor and exterior algebras"
             href: notes/Week13-14/W13.3.qmd
       - section: "In-class notes"
-	    contents:
+        contents:
 		  - text: "09012026"
 		    href: "notes/Week1/W01.1-slides.given.pdf"
 		  - text: "09012026 (cont'd)"
