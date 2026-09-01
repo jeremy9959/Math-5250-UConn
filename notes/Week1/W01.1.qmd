@@ -160,7 +160,7 @@ A set $S$ of vectors in a vector space $V$ is called a *basis* of $V$ if $\mathr
 
 **Proof:** This requires Zorn's Lemma.  If $S_{1}\subset S_{2}\subset\cdots$ is an ascending sequence of linearly independent sets, their union is also linearly independent (because any linear relation would only involve finitely many vectors so would hold at some finite level of the chain). Therefore the linearly independent subsets of $V$ form a partially ordered set in which every chain has an upper bound (namely its union).  By Zorn's Lemma, it follows that there is a maximal linearly independent set $B$ in $V$.
 
-Now choose any $v\in V$.  If $v$ is not in the span of $B$, then $B\cap \{v\}$ would be linearly independent, contradicting maximality of $B$.
+Now choose any $v\in V$.  If $v$ is not in the span of $B$, then $B\cup \{v\}$ would be linearly independent, contradicting maximality of $B$.
 
 Hence $B$ spans $V$ and is therefore a basis.
 
