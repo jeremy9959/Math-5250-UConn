@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 5250: Graduate Linear Algebra - Linear Maps, Change of Basis, Similarity</title>
+<title>Math 5250: Graduate Linear Algebra - Chapter 1 Suggested Problems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,7 +59,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-</head><body class="nav-sidebar docked nav-fixed">\newcommand{\R}{\mathbf{R}}
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -79,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
+</head>
 
-
-
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -124,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Linear Maps, Change of Basis, Similarity</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week1/W01.1.html">Week 1 — Review</a></li><li class="breadcrumb-item"><a href="../../notes/Week1/Problems.html">Suggested Problems</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -158,13 +157,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Week 1 — Review</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week1/W01.1.html" class="sidebar-item-text sidebar-link">
@@ -185,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/Problems.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/Week1/Problems.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Suggested Problems</span></a>
   </div>
 </li>
@@ -455,12 +454,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#coordinates-relative-to-a-basis" id="toc-coordinates-relative-to-a-basis" class="nav-link active" data-scroll-target="#coordinates-relative-to-a-basis">Coordinates Relative to a Basis</a></li>
-  <li><a href="#the-matrix-of-a-linear-map" id="toc-the-matrix-of-a-linear-map" class="nav-link" data-scroll-target="#the-matrix-of-a-linear-map">The Matrix of a Linear Map</a></li>
-  <li><a href="#change-of-basis" id="toc-change-of-basis" class="nav-link" data-scroll-target="#change-of-basis">Change of Basis</a></li>
-  <li><a href="#similarity-of-matrices" id="toc-similarity-of-matrices" class="nav-link" data-scroll-target="#similarity-of-matrices">Similarity of Matrices</a></li>
-  <li><a href="#injective-surjective-and-isomorphisms" id="toc-injective-surjective-and-isomorphisms" class="nav-link" data-scroll-target="#injective-surjective-and-isomorphisms">Injective, Surjective, and Isomorphisms</a></li>
-  <li><a href="#invertibility-criteria" id="toc-invertibility-criteria" class="nav-link" data-scroll-target="#invertibility-criteria">Invertibility Criteria</a></li>
+  <li><a href="#suggested-problems" id="toc-suggested-problems" class="nav-link active" data-scroll-target="#suggested-problems">Suggested Problems</a></li>
   </ul>
 </nav>
     </div>
@@ -469,8 +463,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Linear Maps, Change of Basis, Similarity</h1>
-<p class="subtitle lead">Math 5250 — Week 1</p>
+<h1 class="title">Chapter 1 Suggested Problems</h1>
 </div>
 
 
@@ -485,58 +478,37 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="coordinates-relative-to-a-basis" class="level2">
-<h2 class="anchored" data-anchor-id="coordinates-relative-to-a-basis">Coordinates Relative to a Basis</h2>
-<p>Let <span class="math inline">L:\R^n\to\R^m</span> be linear, with bases <span class="math inline">E=\{e_1,\ldots,e_n\}</span> of <span class="math inline">\R^n</span> and <span class="math inline">F=\{f_1,\ldots,f_m\}</span> of <span class="math inline">\R^m</span>.</p>
-<ul>
-<li>Writing <span class="math inline">x=\sum x_ie_i</span>, there are unique scalars <span class="math inline">y_1,\ldots,y_m</span> with <span class="math inline">L(x)=\sum y_if_i</span>.</li>
-<li>In coordinates, <span class="math inline">x=[x]_E</span> and <span class="math inline">L(x)=[L(x)]_F</span>.</li>
-<li><span class="math inline">L</span> is determined by its values <span class="math inline">L(e_i)</span> on the basis <span class="math inline">E</span>.</li>
-</ul>
-</section>
-<section id="the-matrix-of-a-linear-map" class="level2">
-<h2 class="anchored" data-anchor-id="the-matrix-of-a-linear-map">The Matrix of a Linear Map</h2>
-<p><strong>Definition.</strong> <span class="math inline">[L]_E^F</span> is the <span class="math inline">m\times n</span> matrix whose <span class="math inline">i</span>-th column is <span class="math inline">L(e_i)</span> expressed in the basis <span class="math inline">F</span>.</p>
-<p>By construction, <span class="math display">
-[L(x)]_F = [L]_E^F\,[x]_E.
-</span></p>
-</section>
-<section id="change-of-basis" class="level2">
-<h2 class="anchored" data-anchor-id="change-of-basis">Change of Basis</h2>
-<p>Let <span class="math inline">E'</span>, <span class="math inline">F'</span> be other bases of <span class="math inline">\R^n</span>, <span class="math inline">\R^m</span>, and write <span class="math inline">e_j=\sum_i a_{ij}e'_i</span>, giving a matrix <span class="math inline">A=(a_{ij})</span>.</p>
-<ul>
-<li><span class="math inline">A[x]_E = [x]_{E'}</span>, so <span class="math inline">A=[I]_E^{E'}</span>, the matrix of the identity map from basis <span class="math inline">E</span> to basis <span class="math inline">E'</span>.</li>
-<li><span class="math inline">[I]_E^{E'}=\left([I]_{E'}^{E}\right)^{-1}</span>.</li>
-<li>The matrices of <span class="math inline">L</span> in the two pairs of bases are related by <span class="math display">
-[L]_E^F = [I]_{F'}^F\,[L]_{E'}^{F'}\,[I]_E^{E'}.
-</span></li>
-</ul>
-</section>
-<section id="similarity-of-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="similarity-of-matrices">Similarity of Matrices</h2>
-<p>For <span class="math inline">L:\R^n\to\R^n</span> and bases <span class="math inline">E</span>, <span class="math inline">E'</span>, <span class="math display">
-[L]_E^E = P[L]_{E'}^{E'}P^{-1}, \qquad P=[I]_{E'}^E.
-</span></p>
-<p><strong>Definition.</strong> Square matrices <span class="math inline">A,B</span> are <strong>similar</strong> if <span class="math inline">A=PBP^{-1}</span> for some invertible <span class="math inline">P</span>.</p>
-<ul>
-<li>All matrices <span class="math inline">[L]_E^E</span> representing a single linear map <span class="math inline">L</span> (in different bases) are similar.</li>
-<li><strong>Proposition.</strong> Similar matrices have the same rank and the same nullity. Rank and nullity are therefore well-defined invariants of <span class="math inline">L</span>, independent of the basis.</li>
-</ul>
-</section>
-<section id="injective-surjective-and-isomorphisms" class="level2">
-<h2 class="anchored" data-anchor-id="injective-surjective-and-isomorphisms">Injective, Surjective, and Isomorphisms</h2>
-<ul>
-<li><span class="math inline">L:V\to W</span> is <strong>injective</strong> if and only if its nullity is <span class="math inline">0</span>.</li>
-<li><span class="math inline">L:V\to W</span> is <strong>surjective</strong> if and only if its rank equals <span class="math inline">\dim W</span>.</li>
-<li>An <strong>isomorphism</strong> <span class="math inline">L:V\to W</span> is a linear map with a linear inverse; equivalently, <span class="math inline">L</span> is bijective, which forces <span class="math inline">\dim V=\dim W</span>.</li>
-</ul>
-</section>
-<section id="invertibility-criteria" class="level2">
-<h2 class="anchored" data-anchor-id="invertibility-criteria">Invertibility Criteria</h2>
-<p><strong>Proposition.</strong> A linear map <span class="math inline">L:\R^n\to\R^n</span> is invertible if and only if its nullity is <span class="math inline">0</span>.</p>
-<ul>
-<li>An <span class="math inline">n\times n</span> matrix <span class="math inline">A</span> is invertible if and only if <span class="math inline">\mathrm{rank}(A)=n</span>, equivalently <span class="math inline">\mathrm{nullity}(A)=0</span>.</li>
-</ul>
+<section id="suggested-problems" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-problems">Suggested Problems</h2>
+<ol type="1">
+<li><p>Show that a vector space over <span class="math inline">\mathbf{C}</span> of dimension <span class="math inline">n</span> can be thought of as a vector space over <span class="math inline">\mathbf{R}</span> of dimension <span class="math inline">2n</span>.</p></li>
+<li><p>Let <span class="math inline">V</span> be the set of infinite sequences <span class="math inline">(a_1,a_2,\ldots)</span> where <span class="math inline">a_{i}\in\mathbf{R}</span> for all <span class="math inline">i</span> and all but finitely many of the <span class="math inline">a_{i}</span> are zero. Show that <span class="math inline">V</span> is a real vector space and that the set of vectors <span class="math inline">e_{i}</span> having a one in position <span class="math inline">i</span> and zeroes elsewhere (for all <span class="math inline">i=1,2,\ldots</span>) is a basis for <span class="math inline">V</span>.</p></li>
+<li><p>Look at the proof of the result that every vector space has a basis. We established this by using Zorn’s lemma to prove that there is a maximal linearly independent set, and that this set is a basis. You can instead consider spanning sets, which are partially ordered in the “opposite” direction. Use Zorn’s lemma to show that there is a minimal spanning set, and that this must be a basis.</p></li>
+<li><p>Study each of the following system of equations and describe their solutions.</p></li>
+</ol>
+<ol type="A">
+<li><p><span class="math display">
+\begin{aligned}
+x + y + z &amp;= 6\\
+2x - y + z &amp;= 3\\
+x + 2y - z &amp;= 2
+\end{aligned}
+</span></p></li>
+<li><p><span class="math display">
+\begin{aligned}
+x + y + z &amp;= 6\\
+x + 2y + z &amp;= 9\\
+5x + 8y + 5z &amp;= 39
+\end{aligned}
+</span></p></li>
+<li><p><span class="math display">
+\begin{aligned}
+x + y + z &amp;= 1\\
+x  + z &amp;= 3\\
+x - y + z &amp;= 0
+\end{aligned}
+</span></p></li>
+</ol>
 
 
 </section>
