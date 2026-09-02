@@ -12,7 +12,7 @@ and that the set of vectors $e_{i}$ having a one in position $i$ and zeroes else
 
 3. Look at the proof of the result that every vector space has a basis.  We established this by
 using Zorn's lemma to prove that there is a maximal linearly independent set, and that this set is a basis.  You can instead consider spanning sets, which are partially ordered in the "opposite" direction.  Can you use Zorn's lemma to show that there is a minimal spanning set, and that this must be a basis?
-More specifically, does a descending chain of spanning sets necessarily have a lower bound? 
+The argument would be that a descending chain of spanning sets has a lower bound, so there's a minimal spanning set, which must be a basis.  Does this work?
 
 4. Study each of the following system of equations and describe their solutions.
 A.
