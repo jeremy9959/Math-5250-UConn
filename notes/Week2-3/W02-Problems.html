@@ -555,19 +555,22 @@ U=\mathrm{Span}\{(1,0,1,0),(0,1,0,1)\}, \qquad W=\mathrm{Span}\{(1,1,0,0),(0,0,1
 <h2 class="anchored" data-anchor-id="suggested-problems-suggested-by-jt">Suggested Problems (suggested by JT)</h2>
 <ol type="1">
 <li><p>Let <span class="math inline">V</span> be the space of differentiable real-valued functions on <span class="math inline">[0,1]</span>. Let <span class="math inline">\partial</span> be the derivative operator <span class="math inline">\partial(f) = f'</span>. What is the null space of <span class="math inline">f</span>? How is this proved?</p></li>
-<li><p>Let <span class="math inline">G</span> be a finite graph (i.e.&nbsp;a finite set of vertices <span class="math inline">V</span>, and a finite set of edges <span class="math inline">E\subset V\times V</span> where we think of an edge <span class="math inline">(v_1,v_2)</span> as joining the vertices <span class="math inline">v_1</span> and <span class="math inline">v_2</span>. For example:</p></li>
+<li><p>Let <span class="math inline">G</span> be a finite graph (i.e.&nbsp;a finite set of vertices <span class="math inline">V</span>, and a finite set of edges <span class="math inline">E\subset V\times V</span> where we think of an edge <span class="math inline">(v_1,v_2)</span> as going from vertex <span class="math inline">v_1</span> to <span class="math inline">v_2</span>. We require that, whenever <span class="math inline">(v_1,v_2)</span> is an edge, so is <span class="math inline">(v_2,v_1)</span>.</p></li>
 </ol>
+<p>For example:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/graph-5v7e.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>A graph with 5 vertices and 7 edges.</figcaption>
 </figure>
 </div>
-<p>Now let <span class="math inline">V^{0}</span> be the space of real-valued functions <span class="math inline">f:V\to \R</span> and let <span class="math inline">V^{1}</span> be the space of real functions <span class="math inline">f:E\to \R</span>.</p>
+<p>Now let <span class="math inline">V^{0}</span> be the space of real-valued functions <span class="math inline">f:V\to \R</span> and let <span class="math inline">V^{1}</span> be the space of real functions <span class="math inline">f:E\to \R</span> where <span class="math inline">f((v_1,v_2))=-f((v_2,v_1))</span>.</p>
 <p>Now define <span class="math inline">d:V^{0}\to V^{1}</span> by <span class="math display">
 d(f)((v_1,v_2))=f(v_1)-f(v_2).
 </span></p>
-<p>and all other <span class="math inline">V^{j}</span> are the zero vector space with zero maps.</p>
+<p>and all other <span class="math inline">V^{j}</span> are the zero vector space with zero maps. This is well-defined since <span class="math display">
+d(f)((v_2,v_1))=f(v_2)-f(v_1)=-(f(v_1)-f(v_2))=-d(f)(v_1,v_2).
+</span></p>
 <ol type="a">
 <li>Describe a basis for <span class="math inline">V^{0}</span> and <span class="math inline">V^{1}</span>.</li>
 <li>Describe the matrix of <span class="math inline">d</span> in this basis.</li>
