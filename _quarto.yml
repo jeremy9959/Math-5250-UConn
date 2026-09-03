@@ -35,10 +35,14 @@ website:
             href: notes/Week2-3/W02.1.qmd
           - text: "Direct sums, quotient spaces, and complexes"
             href: notes/Week2-3/W02.2.qmd
+          - text: "Suggested Problems"
+            href: notes/Week2-3/W02-Problems.qmd
       - section: "Week 3 - Trace and Determinant"
         contents:
           - text: "Trace and determinant"
             href: notes/Week2-3/W02.3.qmd
+          - text: "Suggested Problems"
+            href: notes/Week2-3/W03-Problems.qmd
       - section: "Week 4 - Diagonalizability"
         contents:
           - text: "Eigenvalues and eigenvectors; Cayley Hamilton"

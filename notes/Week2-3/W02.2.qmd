@@ -302,7 +302,7 @@ One can show that the subspaces of $V/H$ correspond exactly to the subspaces of 
 **Definition:** A complex of vector spaces is a sequence of vector spaces
 $W^{i}$ connected by linear maps $d_{i}$ 
 $$
-\cdots \to \cdots \to W^{i}\stackrel{\to}{d_{i}} W^{i+1} \stackrel{\to}{d_{i+1}}W^{i+2}\to\cdots
+\cdots \to \cdots \to W^{i}\stackrel{d_{i}}{\to} W^{i+1} \stackrel{d_{i+1}}{\to}W^{i+2}\to\cdots
 $$
 
 with the property that $d_{i+1}d_{i}=0$ for all $i$. 
