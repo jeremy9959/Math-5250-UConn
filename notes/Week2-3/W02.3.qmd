@@ -430,7 +430,7 @@ $$
 0 & [L_3]
 \end{pmatrix}
 $$
-Using row operations, you can kill off the $\*$ entries, and eventually see that the determinant of this matrix is $\det([L_1])\det([L_3])$.
+Using row operations, you can kill off the $*$ entries, and eventually see that the determinant of this matrix is $\det([L_1])\det([L_3])$.
 
 More generally, using an alternating product, you can show that, given a bounded complex $X^{\cdot}$ of finite dimensional vector spaces, and a linear map $L:X^{\cdot}\to X^{\cdot}$, that 
 $$
