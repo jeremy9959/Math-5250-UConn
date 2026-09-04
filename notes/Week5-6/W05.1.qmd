@@ -1,9 +1,118 @@
 ---
-title: "Weeks 5–6 — Inner Product Spaces over R"
+title: "Inner Product Spaces over R"
 ---
 
 \newcommand{\R}{\mathbb{R}}
 
-## Placeholder
+## Inner Products
 
-Notes on real inner product spaces, orthogonality, orthogonal bases, and coordinate-free vs. coordinate descriptions.
+Suppose that $V$ is a real vector space.  An *inner product* (or "dot" product) on $V$ is a map
+$$
+F: V\times V\to \R
+$$
+that satisfies the following properties:
+
+a. (symmetry)  $F(u,v) = F(v,u)$ for all $u,v\in V$. 
+b. (linearity)  If $v\in V$ is fixed, then the function $u\mapsto F(u,v)$ is linear in $u$.
+In other words, $F(au_1+bu_2,v) = aF(u_1,v)+bF(u_2,v)$.  Since $F$ is also symmetric, we also have $F(u,av_1+bv_2)=aF(u,v_1)+bF(u,v_2)$.  So $F$ is *bilinear.*
+c. (positive definiteness)  For all nonzero $v\in V$, we have $F(v,v)>0$. 
+
+The classic example of such an inner product is the Euclidean "dot" product:
+$$
+F((a_1,\ldots, a_n),(b_1,\ldots, b_n))=\sum_{i=1}^{n} a_{i}b_{i}
+$$
+or
+$$
+F((a_1,\ldots, a_n),(b_1,\ldots, b_n))=(a_1,\ldots,a_n)\cdot (b_1,\ldots, b_n).
+$$
+
+We sometimes write $F(u,v) = \langle u,v\rangle$.
+
+A vector space $V$ over $\R$ together with an inner product is called a (real) inner product space. 
+
+Note that inner product spaces make sense even for infinite dimensional vector spaces, but we will focus on the finite dimensional case.
+
+### Geometry in an Inner Product Space
+
+Adding an inner product to a finite dimensional real vector space allows us to introduce geometry into our study of linear algebra.  First, an inner product space 
+allows us to measure the size of a vector
+$$
+\|v\| = \sqrt{\langle v,v\rangle}
+$$
+and a distance between vectors:
+$$
+d(u,v) = \sqrt{\langle u-v,u-v\rangle} = \|u-v\|.
+$$
+
+This distance measure satisfies the conditions for a "metric":
+
+a. $d(u,v)\ge 0$ and $d(u,v)=0$ if and only if $u=v$.
+b. $d(u,w)\le d(u,v)+d(v,w)$ (the triangle inequality)
+
+Of course, if $\langle u,v\rangle$ is the standard dot product, this distance
+is the usual distance given by the Pythagorean theorem:
+$$
+d((u_1,\ldots, u_n),(v_1,\ldots, v_n))=\sqrt{\sum_{i=1}^{n} (u_i-v_i)^2}
+$$
+and the points 
+$$
+\{v: \|v\|=r\}
+$$
+at constant distance $r$ from $0$ form a sphere.
+
+There are, however, many other inner products.  To construct them,
+first observe that if $E=\{e_1,\ldots, e_n\}$ is a basis for $V$,
+we can compute 
+$$
+\langle \sum a_{i}e_{i},\sum b_{i}e_{i}\rangle
+$$
+as long as we know all of the inner products
+$$
+\langle e_i, e_j \rangle. 
+$$
+
+In fact, if we let $X^{E}$ be the $n\times n$ matrix whose entries are
+$$
+X^{E}_{ij} = \langle e_{i},e_{j}\rangle ,
+$$
+
+then
+
+$$
+\langle \sum a_{i}e_{i},\sum b_{i}e_{i}\rangle = \left[\begin{matrix} a_1 &\ldots& a_n\end{matrix}\right]X^{E}\left[\begin{matrix} b_1 \\ \vdots \\ b_n\end{matrix}\right].
+$$
+
+Using the notation for coordinates in a basis we adopted earlier, we see that
+$$
+\langle a,b\rangle = [a]_{E}^{\top}  X^{E} [b]_{E}.
+$$
+
+Notice that if $X^{E}$ is constructed in this way from an inner product, then:
+
+a. $X^{E}$ is *symmetric* (since $\langle e_{i},e_{j}\rangle = \langle e_{j}, e_{i}\rangle$)
+b. The rank of $X^{E}$ is $n$.  Otherwise, if $[b]_{E}\not=0$ is in the null space of $X^{E}$,
+we'd have $\langle b,b\rangle = [b]_{E}^{\top}X^{E}[b]_{E}=0$ which isn't allowed.
+c.  $X^{E}$ is positive definite, meaning that $[a]_{E}^{\top}X^{E}[a]_{E}>0$ when $[a]_{E}\not=0$. 
+
+**Proposition:** If $X$ is any real symmetric $n\times n$ positive definite matrix, then 
+the function $F:\R^{n}\times\R^{n} \to \R$ defined by 
+$$
+F(a,b)  = a^{\top}Xb
+$$
+is an inner product.
+
+The symmetry follows from the fact that 
+$$
+F(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=F(a,b)
+$$
+
+Linearity follows from properties of matrix multiplication, and the definiteness follows from the
+positive definite property of the matrix. 
+
+**Proposition:** Suppose $F$ is an inner product on $V$. A choice of basis $E$ for $V$ gives
+an isomorphism between $V$ and $\R^{n}$.  Using this basis, we can construct the symmetric
+positive definite matrix $X^{E}$ whose $i,j$ entry is $F(e_{i},e_{j})$. Then
+$$
+F(a,b) = [a]_{E}^{\top}X^{E}[b]_{E}.
+$$
+In these coordinates, the balls $\{a: F(a,a)=r\}$ in $V$ are ellipsoids.
