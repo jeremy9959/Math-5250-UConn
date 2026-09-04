@@ -39,7 +39,15 @@ where $d_0(a)=(a,a,a)$, $d_1(x,y,z)=(x-y,y-z,z-x)$, and $d_2(x,y,z)=x+y+z$. Chec
 
 1.  Let $V$ be the space of differentiable real-valued functions on $[0,1]$.  Let $\partial$ be the derivative operator $\partial(f) = f'$.  What is the null space of $f$?  How is this proved?
 
-2.  Let $G$ be a finite graph (i.e. a finite set of vertices $V$, and a finite set of edges $E\subset V\times V$ where we think of an edge $(v_1,v_2)$ as going from  vertex $v_1$ to $v_2$.  We require that, whenever $(v_1,v_2)$ is an edge, so is $(v_2,v_1)$. 
+2.  Let $X$ be the set of $4\times 4$ real matrices, which we are going to think of as $4\times 4$ (discrete) images; the entry $X_{ij}$ is the B/W intensity of the image at that point. (Obviously in real life you would look at bigger matrices representing "real" images, but this is enough for the purpose of our example.)
+
+An important "smoothing" operation in image processing converts $X$ to a $2\times 2$ matrix $Y$ where $Y_{ij}$ is average value of the
+9 entries "surrounding" $X_{i+1,j+1}$.  So for example $Y_{11}$ is the average value of the $9$ entries of $X$ surrounding $X_{22}$.
+
+Show that this map from $4\times 4$ matrices to $2\times 2$ matrices is linear.  Can you choose reasonable bases for the domain and range, and describe the matrix of this smoothing map in those bases? 
+
+
+3.  Let $G$ be a finite graph (i.e. a finite set of vertices $V$, and a finite set of edges $E\subset V\times V$ where we think of an edge $(v_1,v_2)$ as going from  vertex $v_1$ to $v_2$.  We require that, whenever $(v_1,v_2)$ is an edge, so is $(v_2,v_1)$. 
 
 For example:
 
