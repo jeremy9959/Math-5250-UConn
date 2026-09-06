@@ -71,35 +71,35 @@ $$
 \langle e_i, e_j \rangle. 
 $$
 
-In fact, if we let $X^{E}$ be the $n\times n$ matrix whose entries are
+In fact, if we let $[F]^{E}$ be the $n\times n$ matrix whose entries are
 $$
-X^{E}_{ij} = \langle e_{i},e_{j}\rangle ,
+[F]^{E}_{ij} = \langle e_{i},e_{j}\rangle ,
 $$
 
 then
 
 $$
-\langle \sum a_{i}e_{i},\sum b_{i}e_{i}\rangle = \left[\begin{matrix} a_1 &\ldots& a_n\end{matrix}\right]X^{E}\left[\begin{matrix} b_1 \\ \vdots \\ b_n\end{matrix}\right].
+\langle \sum a_{i}e_{i},\sum b_{i}e_{i}\rangle = \left[\begin{matrix} a_1 &\ldots& a_n\end{matrix}\right][F]^{E}\left[\begin{matrix} b_1 \\ \vdots \\ b_n\end{matrix}\right].
 $$
 
 Using the notation for coordinates in a basis we adopted earlier, we see that
 $$
-\langle a,b\rangle = [a]_{E}^{\top}  X^{E} [b]_{E}.
+\langle a,b\rangle = [a]_{E}^{\top}  [F]^{E} [b]_{E}.
 $$
 
-Notice that if $X^{E}$ is constructed in this way from an inner product, then:
+Notice that if $X=[F]^{E}$ is constructed in this way from an inner product, then:
 
-a. $X^{E}$ is *symmetric* (since $\langle e_{i},e_{j}\rangle = \langle e_{j}, e_{i}\rangle$)
-b. The rank of $X^{E}$ is $n$.  Otherwise, if $[b]_{E}\not=0$ is in the null space of $X^{E}$,
-we'd have $\langle b,b\rangle = [b]_{E}^{\top}X^{E}[b]_{E}=0$ which isn't allowed.
-c.  $X^{E}$ is positive definite, meaning that $[a]_{E}^{\top}X^{E}[a]_{E}>0$ when $[a]_{E}\not=0$. 
+a. $X$ is *symmetric* (since $\langle e_{i},e_{j}\rangle = \langle e_{j}, e_{i}\rangle$)
+b. The rank of $X$ is $n$.  Otherwise, if $[b]_{E}\not=0$ is in the null space of $X$,
+we'd have $\langle b,b\rangle = [b]_{E}^{\top}X[b]_{E}=0$ which isn't allowed.
+c.  $X^{E}$ is positive definite, meaning that $[a]_{E}^{\top}X[a]_{E}>0$ when $[a]_{E}\not=0$. 
 
 **Proposition:** If $X$ is any real symmetric $n\times n$ positive definite matrix, then 
 the function $F:\R^{n}\times\R^{n} \to \R$ defined by 
 $$
 F(a,b)  = a^{\top}Xb
 $$
-is an inner product.
+is an inner product, and $X=[F]^{E}$ relative to the standard basis of $\R^{n}$. 
 
 The symmetry follows from the fact that 
 $$
@@ -111,8 +111,8 @@ positive definite property of the matrix.
 
 **Proposition:** Suppose $F$ is an inner product on $V$. A choice of basis $E$ for $V$ gives
 an isomorphism between $V$ and $\R^{n}$.  Using this basis, we can construct the symmetric
-positive definite matrix $X^{E}$ whose $i,j$ entry is $F(e_{i},e_{j})$. Then
+positive definite matrix $X=[F]^{E}$ whose $i,j$ entry is $F(e_{i},e_{j})$. Then
 $$
-F(a,b) = [a]_{E}^{\top}X^{E}[b]_{E}.
+F(a,b) = [a]_{E}^{\top}[F]^{E}[b]_{E}.
 $$
 In these coordinates, the balls $\{a: F(a,a)=r\}$ in $V$ are ellipsoids.
