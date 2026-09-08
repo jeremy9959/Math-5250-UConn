@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Trace and Determinant – Math 5250: Graduate Linear Algebra</title>
+<title>Week 2 and 3 Suggested Problems – Math 5250: Graduate Linear Algebra</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -70,7 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-</head><body class="nav-sidebar docked nav-fixed quarto-light">\newcommand{\trace}{\mathrm{trace}}
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -117,9 +116,9 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
+</head>
 
-
-
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -162,7 +161,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Trace and Determinant</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.3.html">Week 3 - Trace and Determinant</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/Problems.html">Suggested Problems</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -250,23 +249,17 @@ window.Quarto = {
  <span class="menu-text">Direct sums, quotient spaces, and complexes</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02-Problems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Suggested Problems</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Week 3 - Trace and Determinant</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link">
@@ -275,7 +268,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W03-Problems.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notes/Week2-3/Problems.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Suggested Problems</span></a>
   </div>
 </li>
@@ -493,18 +486,6 @@ window.Quarto = {
  <span class="menu-text">09012026 (cont’d)</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.2-slides.given.pdf" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09032026</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.3-slides.given.pdf" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09032026 (cont’d)</span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -517,29 +498,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#trace" id="toc-trace" class="nav-link active" data-scroll-target="#trace">Trace</a></li>
-  <li><a href="#trace-of-a-linear-map" id="toc-trace-of-a-linear-map" class="nav-link" data-scroll-target="#trace-of-a-linear-map">Trace of a Linear Map</a></li>
-  <li><a href="#trace-subspaces-and-quotient-spaces" id="toc-trace-subspaces-and-quotient-spaces" class="nav-link" data-scroll-target="#trace-subspaces-and-quotient-spaces">Trace, Subspaces, and Quotient Spaces</a></li>
-  <li><a href="#trace-and-short-exact-sequences" id="toc-trace-and-short-exact-sequences" class="nav-link" data-scroll-target="#trace-and-short-exact-sequences">Trace and Short Exact Sequences</a></li>
-  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">Determinant</a></li>
-  <li><a href="#effect-of-row-operations-on-the-determinant" id="toc-effect-of-row-operations-on-the-determinant" class="nav-link" data-scroll-target="#effect-of-row-operations-on-the-determinant">Effect of Row Operations on the Determinant</a></li>
-  <li><a href="#existence-of-the-determinant" id="toc-existence-of-the-determinant" class="nav-link" data-scroll-target="#existence-of-the-determinant">Existence of the Determinant</a></li>
-  <li><a href="#determinant-is-multiplicative" id="toc-determinant-is-multiplicative" class="nav-link" data-scroll-target="#determinant-is-multiplicative">Determinant is Multiplicative</a></li>
-  <li><a href="#permutations-and-the-determinant" id="toc-permutations-and-the-determinant" class="nav-link" data-scroll-target="#permutations-and-the-determinant">Permutations and the Determinant</a></li>
-  <li><a href="#the-adjugate-matrix" id="toc-the-adjugate-matrix" class="nav-link" data-scroll-target="#the-adjugate-matrix">The Adjugate Matrix</a></li>
-  <li><a href="#cramers-rule" id="toc-cramers-rule" class="nav-link" data-scroll-target="#cramers-rule">Cramer’s Rule</a></li>
-  <li><a href="#determinant-of-a-linear-map" id="toc-determinant-of-a-linear-map" class="nav-link" data-scroll-target="#determinant-of-a-linear-map">Determinant of a Linear Map</a></li>
-  <li><a href="#determinants-and-short-exact-sequences" id="toc-determinants-and-short-exact-sequences" class="nav-link" data-scroll-target="#determinants-and-short-exact-sequences">Determinants and Short Exact Sequences</a></li>
+  <li><a href="#suggested-problems" id="toc-suggested-problems" class="nav-link active" data-scroll-target="#suggested-problems">Suggested Problems</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.3.html">Week 3 - Trace and Determinant</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/Problems.html">Suggested Problems</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Trace and Determinant</h1>
-<p class="subtitle lead">Math 5250 — Week 2</p>
+<h1 class="title">Week 2 and 3 Suggested Problems</h1>
 </div>
 
 
@@ -556,104 +524,38 @@ window.Quarto = {
 </header>
 
 
-<section id="trace" class="level2">
-<h2 class="anchored" data-anchor-id="trace">Trace</h2>
-<p><strong>Definition.</strong> For an <span class="math inline">n\times n</span> matrix <span class="math inline">A</span> over a field <span class="math inline">F</span>, the <strong>trace</strong> is <span class="math display">
-\trace(A) = \sum_{i=1}^n a_{ii}.
-</span></p>
-<p><strong>Proposition.</strong> If <span class="math inline">A,B</span> are <span class="math inline">n\times n</span> matrices over <span class="math inline">F</span>, then <span class="math inline">\trace(AB)=\trace(BA)</span>.</p>
-</section>
-<section id="trace-of-a-linear-map" class="level2">
-<h2 class="anchored" data-anchor-id="trace-of-a-linear-map">Trace of a Linear Map</h2>
-<p>Let <span class="math inline">f:V\to V</span> be linear, <span class="math inline">V</span> finite dimensional.</p>
-<p><strong>Definition.</strong> Choosing a basis <span class="math inline">E</span> for <span class="math inline">V</span>, <span class="math inline">\trace(f) = \trace([f]_E^E)</span>.</p>
-<p>This is independent of the choice of basis: for a different basis <span class="math inline">E'</span>, <span class="math display">
-\trace([f]_{E'}^{E'}) = \trace([f]_E^E).
-</span></p>
-</section>
-<section id="trace-subspaces-and-quotient-spaces" class="level2">
-<h2 class="anchored" data-anchor-id="trace-subspaces-and-quotient-spaces">Trace, Subspaces, and Quotient Spaces</h2>
-<p>Let <span class="math inline">L:V\to V</span> be linear and <span class="math inline">W\subset V</span> an <strong>invariant subspace</strong> (<span class="math inline">L(W)\subset W</span>). Then <span class="math inline">L</span> induces a well-defined map <span class="math inline">\overline{L}:V/W\to V/W</span> by <span class="math inline">\overline{L}([v])=[L(v)]</span>.</p>
-<p><strong>Proposition.</strong> With <span class="math inline">L_W</span> the restriction of <span class="math inline">L</span> to <span class="math inline">W</span>, <span class="math display">
-\trace(L) = \trace(L_W) + \trace(\overline{L}).
-</span></p>
-</section>
-<section id="trace-and-short-exact-sequences" class="level2">
-<h2 class="anchored" data-anchor-id="trace-and-short-exact-sequences">Trace and Short Exact Sequences</h2>
-<p>If <span class="math inline">0\to A\to B\to C\to 0</span> is a short exact sequence and <span class="math inline">L=(L_1,L_2,L_3)</span> is a compatible linear map <span class="math inline">(A,B,C)\to(A,B,C)</span>, then <span class="math display">
-\trace(L_1)-\trace(L_2)+\trace(L_3) = 0.
-</span></p>
-<p>More generally, for a bounded complex <span class="math inline">X^\cdot</span> of finite dimensional spaces and a linear map <span class="math inline">L:X^\cdot\to X^\cdot</span>, <span class="math display">
-\trace(L|X^\cdot) := \sum_i (-1)^i \trace(L_i) = \sum_i (-1)^i \trace(\overline{L}_i),
-</span> where <span class="math inline">\overline{L}_i</span> are the induced maps on cohomology.</p>
-</section>
-<section id="determinant" class="level2">
-<h2 class="anchored" data-anchor-id="determinant">Determinant</h2>
-<p><strong>Proposition.</strong> There is a unique function <span class="math inline">\det:M_n(F)\to F</span> such that:</p>
+<section id="suggested-problems" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-problems">Suggested Problems</h2>
 <ol type="1">
-<li><span class="math inline">\det</span> is multilinear in the rows of <span class="math inline">A</span>.</li>
-<li><span class="math inline">\det</span> is alternating: it vanishes when two rows are repeated (so swapping two rows negates <span class="math inline">\det</span>).</li>
-<li><span class="math inline">\det(I)=1</span>.</li>
+<li><p>Let <span class="math inline">F</span> be a field. Show that if <span class="math inline">x,y\in F</span> and <span class="math inline">xy=0</span>, then <span class="math inline">x=0</span> or <span class="math inline">y=0</span>. (Hint: if <span class="math inline">x\not=0</span>, multiply both sides by <span class="math inline">x^{-1}</span>.) Where in this argument do you use the fact that <span class="math inline">F</span> is a field rather than, say, the ring of integers modulo <span class="math inline">6</span>? What goes wrong in <span class="math inline">\mathbf{Z}/6\mathbf{Z}</span>?</p></li>
+<li><p>Let <span class="math inline">V</span> be the space of differentiable real-valued functions on <span class="math inline">[0,1]</span>. Show directly (without appealing to the general axioms for <span class="math inline">\mathbf{R}^n</span>) that <span class="math inline">V</span> is a vector space over <span class="math inline">\mathbf{R}</span>, and explain why it is infinite dimensional.</p></li>
+<li><p>Let <span class="math inline">V</span> be the solution space of the differential equation <span class="math inline">f''-3f'+2f=0</span> over <span class="math inline">\mathbf{C}</span>. Using the fact that this space is 2-dimensional, find a basis for <span class="math inline">V</span>, and use it to write down an isomorphism <span class="math inline">\mathbf{C}^2\to V</span>.</p></li>
+<li><p>Let <span class="math inline">A</span> be the matrix <span class="math display">
+A = \begin{bmatrix} 1 &amp; 2 &amp; 1 &amp; 0 \\ 2 &amp; 4 &amp; 0 &amp; 1 \\ 1 &amp; 2 &amp; -1 &amp; 1 \end{bmatrix}
+</span> regarded as a linear map <span class="math inline">L:\mathbf{R}^4\to\mathbf{R}^3</span>. Find bases for <span class="math inline">\mathrm{null}(L)</span> and <span class="math inline">\mathrm{image}(L)</span>, and verify the rank-nullity formula <span class="math inline">\dim(\mathrm{null}(L))+\dim(\mathrm{image}(L))=\dim(\mathbf{R}^4)</span>.</p></li>
+<li><p>In <span class="math inline">\mathbf{R}^4</span>, let <span class="math display">
+U=\mathrm{Span}\{(1,0,1,0),(0,1,0,1)\}, \qquad W=\mathrm{Span}\{(1,1,0,0),(0,0,1,1)\}.
+</span> Find a basis for <span class="math inline">U+W</span> and a basis for <span class="math inline">U\cap W</span>, and check that <span class="math display">
+\dim(U+W)=\dim(U)+\dim(W)-\dim(U\cap W).
+</span> Is <span class="math inline">U+W</span> a direct sum?</p></li>
+<li><p>Let <span class="math inline">W=\{(x_1,x_2,x_3,x_4)\in\mathbf{R}^4 : x_1+x_2+x_3+x_4=0\}</span>. Describe the quotient space <span class="math inline">\mathbf{R}^4/W</span> explicitly, exhibit an isomorphism <span class="math inline">\mathbf{R}^4/W\to \mathbf{R}</span>, and verify the dimension formula <span class="math inline">\dim(\mathbf{R}^4/W)=\dim(\mathbf{R}^4)-\dim(W)</span>.</p></li>
+<li><p>Consider the complex of real vector spaces <span class="math display">
+0\to \mathbf{R} \xrightarrow{d_0} \mathbf{R}^3 \xrightarrow{d_1} \mathbf{R}^3 \xrightarrow{d_2} \mathbf{R} \to 0
+</span> where <span class="math inline">d_0(a)=(a,a,a)</span>, <span class="math inline">d_1(x,y,z)=(x-y,y-z,z-x)</span>, and <span class="math inline">d_2(x,y,z)=x+y+z</span>. Check that <span class="math inline">d_1d_0=0</span> and <span class="math inline">d_2d_1=0</span>, so this really is a complex. Compute <span class="math inline">H^0</span>, <span class="math inline">H^1</span>, <span class="math inline">H^2</span>, and <span class="math inline">H^3</span>, and verify that the Euler characteristic <span class="math inline">\chi=\sum(-1)^i\dim(W^i)</span> agrees with <span class="math inline">\sum(-1)^i\dim H^i</span>.</p></li>
+<li><p>Let <span class="math inline">L:\mathbf{R}^3\to\mathbf{R}^3</span> be the linear map with matrix <span class="math display">
+[L] = \begin{bmatrix} 2 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \\ 0 &amp; 0 &amp; 3 \end{bmatrix}
+</span> and let <span class="math inline">W=\mathrm{Span}\{e_1,e_2\}</span>, which is <span class="math inline">L</span>-invariant. Compute <span class="math inline">\mathrm{trace}(L)</span>, <span class="math inline">\mathrm{trace}(L_W)</span>, and <span class="math inline">\mathrm{trace}(\overline{L})</span> on <span class="math inline">\mathbf{R}^3/W</span>, and check that <span class="math inline">\mathrm{trace}(L)=\mathrm{trace}(L_W)+\mathrm{trace}(\overline{L})</span>.</p></li>
+<li><p>Using cofactor expansion, compute <span class="math inline">\det(A)</span> for <span class="math display">
+A = \begin{bmatrix} 1 &amp; 0 &amp; 2 \\ -1 &amp; 3 &amp; 1 \\ 2 &amp; 1 &amp; 0 \end{bmatrix},
+</span> then find the adjugate <span class="math inline">A^{\mathrm{adj}}</span> and verify that <span class="math inline">AA^{\mathrm{adj}}=\det(A)I</span>.</p></li>
+<li><p>Use Cramer’s rule to solve <span class="math display">
+\begin{aligned}
+x + y + z &amp;= 2\\
+2x - y + z &amp;= 3\\
+x + 3y - z &amp;= -1
+\end{aligned}
+</span> and check your answer by another method (e.g.&nbsp;row reduction).</p></li>
 </ol>
-</section>
-<section id="effect-of-row-operations-on-the-determinant" class="level2">
-<h2 class="anchored" data-anchor-id="effect-of-row-operations-on-the-determinant">Effect of Row Operations on the Determinant</h2>
-<p>Assuming <span class="math inline">\det</span> exists as above:</p>
-<ol type="a">
-<li>Swapping two rows of <span class="math inline">A</span>: <span class="math inline">\det(A)=-\det(A')</span>.</li>
-<li>Scaling a row by <span class="math inline">a</span>: <span class="math inline">\det(A)=a\det(A')</span>.</li>
-<li>Adding a multiple of one row to another: <span class="math inline">\det(A)=\det(A')</span>.</li>
-</ol>
-</section>
-<section id="existence-of-the-determinant" class="level2">
-<h2 class="anchored" data-anchor-id="existence-of-the-determinant">Existence of the Determinant</h2>
-<ul>
-<li><span class="math inline">1\times 1</span>: <span class="math inline">\det(a)=a</span>. <span class="math inline">2\times 2</span>: <span class="math inline">\det\left[\begin{smallmatrix}a&amp;b\\c&amp;d\end{smallmatrix}\right]=ad-bc</span>.</li>
-<li>Inductively, with <span class="math inline">A_i</span> the submatrix deleting row <span class="math inline">1</span> and column <span class="math inline">i</span>, <span class="math display">
-\det(A) = \sum_{i=1}^n (-1)^{i+1}a_{1i}\det(A_i).
-</span></li>
-</ul>
-<p>This is the cofactor expansion along the first row (or any row or column).</p>
-</section>
-<section id="determinant-is-multiplicative" class="level2">
-<h2 class="anchored" data-anchor-id="determinant-is-multiplicative">Determinant is Multiplicative</h2>
-<p><strong>Proposition.</strong> <span class="math inline">\det(AB)=\det(A)\det(B)</span>.</p>
-<p><strong>Corollary.</strong> A matrix is invertible if and only if its determinant is nonzero.</p>
-</section>
-<section id="permutations-and-the-determinant" class="level2">
-<h2 class="anchored" data-anchor-id="permutations-and-the-determinant">Permutations and the Determinant</h2>
-<p>For the standard row vectors <span class="math inline">e_i</span>, <span class="math inline">\det(e_{i_1},\ldots,e_{i_n})=\pm 1</span>; the permutation <span class="math inline">i_1,\ldots,i_n</span> is <strong>even</strong> if this is <span class="math inline">+1</span>, <strong>odd</strong> if <span class="math inline">-1</span> — equivalently, according to the parity of the number of exchanges needed to sort it.</p>
-<p><strong>Expansion.</strong> <span class="math display">
-\det(A) = \sum a_{1i_1}a_{2i_2}\cdots a_{ni_n}\det(e_{i_1},\ldots,e_{i_n}),
-</span> a sum of <span class="math inline">n!</span> terms (the Leibniz formula).</p>
-</section>
-<section id="the-adjugate-matrix" class="level2">
-<h2 class="anchored" data-anchor-id="the-adjugate-matrix">The Adjugate Matrix</h2>
-<p><strong>Definition.</strong> The <strong>adjugate</strong> <span class="math inline">A^{adj}</span> has entries <span class="math inline">b_{ij}=(-1)^{i+j}\det(A_{ji})</span>, where <span class="math inline">A_{ji}</span> deletes row <span class="math inline">j</span> and column <span class="math inline">i</span> of <span class="math inline">A</span>.</p>
-<p><strong>Proposition.</strong> <span class="math inline">AA^{adj} = A^{adj}A = \det(A)\,I</span>.</p>
-<p><strong>Remark.</strong> This gives an explicit formula for the inverse: <span class="math inline">A^{-1} = \det(A)^{-1}A^{adj}</span>.</p>
-</section>
-<section id="cramers-rule" class="level2">
-<h2 class="anchored" data-anchor-id="cramers-rule">Cramer’s Rule</h2>
-<p>For <span class="math inline">Ax=b</span> with <span class="math inline">\det(A)\ne 0</span>, <span class="math display">
-x_j = \frac{\det(A_j(b))}{\det(A)},
-</span> where <span class="math inline">A_j(b)</span> is <span class="math inline">A</span> with column <span class="math inline">j</span> replaced by <span class="math inline">b</span>.</p>
-<p><strong>Remark.</strong> If <span class="math inline">A,b</span> have integer entries and <span class="math inline">\det(A)=\pm 1</span>, then <span class="math inline">x</span> has integer entries.</p>
-</section>
-<section id="determinant-of-a-linear-map" class="level2">
-<h2 class="anchored" data-anchor-id="determinant-of-a-linear-map">Determinant of a Linear Map</h2>
-<p>Let <span class="math inline">f:V\to V</span> be linear, <span class="math inline">V</span> finite dimensional over <span class="math inline">F</span>.</p>
-<p><strong>Definition.</strong> <span class="math inline">\det(f) = \det([f]_E^E)</span> for any basis <span class="math inline">E</span>.</p>
-<p>This is well-defined: changing basis conjugates the matrix, which does not change the determinant.</p>
-</section>
-<section id="determinants-and-short-exact-sequences" class="level2">
-<h2 class="anchored" data-anchor-id="determinants-and-short-exact-sequences">Determinants and Short Exact Sequences</h2>
-<p><strong>Proposition.</strong> If <span class="math inline">0\to A_1\to A_2\to A_3\to 0</span> is a short exact sequence of finite dimensional spaces and <span class="math inline">L=(L_1,L_2,L_3)</span> is a compatible linear map, then <span class="math display">
-\det(L_2) = \det(L_1)\det(L_3).
-</span></p>
-<p>More generally, for a bounded complex <span class="math inline">X^\cdot</span> and <span class="math inline">L:X^\cdot\to X^\cdot</span>, <span class="math display">
-\sum_i (-1)^i \det(L^i:X^i\to X^i) = \sum_i (-1)^i \det(\overline{L}^i : H^i(X^\cdot)\to H^i(X^\cdot)).
-</span></p>
 
 
 </section>
@@ -732,7 +634,7 @@ x_j = \frac{\det(A_j(b))}{\det(A)},
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/jeremy9959\.github\.io\/Math-5250-UConn\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
