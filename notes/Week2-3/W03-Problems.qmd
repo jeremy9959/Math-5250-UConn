@@ -47,3 +47,5 @@ Then I claim that $\det(A)=\det(B)\det(C)$.
 
 Check these claims more carefully.  In particular, verify that the bases exist, that the matrices have the claimed form, and that the determinant of a "block triangular" matrix is in fact the product of the determinants of the blocks.
 
+
+

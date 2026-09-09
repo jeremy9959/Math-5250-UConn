@@ -210,6 +210,70 @@ Also, the span of $\{u_1,\ldots, u_{j},v_{j+1}\}$ is the same as the span of $\{
 If we then let $u_{j+1}=\frac{v_{j+1}}{\|v_{j+1}\|}$, we've constructed $U$ as desired and the result
 follows by induction.
 
+**Proposition:** Suppose $V$ is an $n$-dimensional inner product space with inner product $J$, and $u_1,\ldots, u_n$ is an
+orthonormal basis for $V$.  Then for any $v\in V$ we have
+$$
+v = \sum J(v,u_{i})u_{i}.
+$$
+
+**Proof:**  A calculation shows that $z=v-\sum J(v,u_{i})u_{i}$ is orthogonal to every $u_i$ for $i=1,\ldots n$, and then
+by linearity to every linear combination of the $u_{i}$.  Since the $u_{i}$ are a basis for $V$, this means $z\cdot h=0$
+for all $h\in V$, and in particular $z\cdot z=0$.  Then $z=0$ as claimed.
 
 
+### Projection
+
+Let $V$ be an $n$-dimensional inner product space with inner product $J$, and let $W\subset V$ be a subspace.  The *orthogonal complement*
+$W^{\perp}$ of $W$ is the set
+
+$$
+W^{\perp}=\{v\in V : J(v,w)=0\mathrm{\ for\ all\ } w\in W \}
+$$
+
+**Proposition:** Under the above hypotheses:
+a. $W^{\perp}$ is a subspace of $V$.
+b. The map $W\oplus W^{\perp}\to V$ defined by $(x,y)\mapsto x+y$ is an isomorphism.
+c. $(W^{\perp})^{\perp}=W$.
+
+**Proof:** $W^{\perp}$ is a subspace since $J(v,0)=0$ and if $J(v,w_1)=J(v,w_2)=0$ then $J(v,aw_1+w_2)=0$ by linearity.
+For part (b), choose an (ordered) basis $w_{1},\ldots, w_{m}$ for $W$ and extend it to a basis for $V$.  Apply Gram-Schmidt to this
+ordered basis to obtain orthonormal vectors  $u_1,\ldots, u_{n}$ where $u_1,\ldots, u_m$ are a basis for $W$. Then $u_{m+1},\ldots, u_{n}$
+all belong to $W^{\perp}$.  Given $v\in V$, then we can write
+$$
+v=\sum J(v,u_{i})u_{i}=\sum_{i=1}^{m} J(v,u_{i})u_{i} + \sum_{i=m+1}^{n} J(v,u_{i})u_{i}
+$$
+The first sum on the right belongs to $W$, and the second to $W^{\perp}$, so the map from $W\oplus W^{\perp}\to V$ is surjective.
+On the other hand, if $x\in W\cap W^{\perp}$, we'd have $J(x,x)=0$ so $x=0$.  Therefore the map is injective and thus an isomorphism.
+In particular
+$$
+\dim(W)+\dim(W^{\perp}) = n.
+$$
+
+
+For part (c), it's clear that $W\subset (W^{\perp})^{\perp}.$ On the other hand
+$$
+\dim(W^{\perp})+\dim((W^{\perp})^{\perp})=n
+$$
+so we must have $\dim((W^{\perp})^{\perp})=\dim(W)$ and therefore the two spaces are equal.
+
+**Proposition:** From the isomorphism $W\oplus W^{\perp}\to V$ we have an inverse map $V\to W\oplus W^{\perp}$ and then
+a map $P:V\to V$ with kernel $W^{\perp}$.  This map is called the *orthogonal projection* of $V$ onto $W$.  Similarly we
+have the projection $P^{\perp}:V\to V$ with kernel $W^{\perp}$.  Each of these linear maps is *idempotent* (meaning that
+$PP=P$ and $P^{\perp}P^{\perp}=P^{\perp}$) and their sum $P+P^{\perp}$ is the identity map.
+
+In the orthonormal basis $u_1,\ldots, u_{n}$ constructed above, if $I_{n\times n}$ is the identity matrix of size $n$,
+then the matrix of $P$ looks like
+$$
+\begin{pmatrix}
+I_{m\times m} & 0 \\
+0 & 0 \\
+\end{pmatrix}
+$$
+and  $P^{\perp}$ looks like:
+$$
+\begin{pmatrix}
+ 0 & 0 \\
+0 & I_{(n-m)\times (n-m)} \\
+\end{pmatrix}
+$$
 
