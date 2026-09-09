@@ -107,7 +107,6 @@ website:
             href: "notes/Week1/W01.3-slides.given.pdf"
           - text: "09082026"
             href: "notes/Week1/W01.3-slides.given.pdf"
-
 format:
   html:
     theme: flatly
