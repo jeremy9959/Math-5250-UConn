@@ -8,25 +8,25 @@ title: "Inner Product Spaces over R"
 
 Suppose that $V$ is a real vector space.  An *inner product* (or "dot" product) on $V$ is a map
 $$
-F: V\times V\to \R
+J: V\times V\to \R
 $$
 that satisfies the following properties:
 
-a. (symmetry)  $F(u,v) = F(v,u)$ for all $u,v\in V$. 
-b. (linearity)  If $v\in V$ is fixed, then the function $u\mapsto F(u,v)$ is linear in $u$.
-In other words, $F(au_1+bu_2,v) = aF(u_1,v)+bF(u_2,v)$.  Since $F$ is also symmetric, we also have $F(u,av_1+bv_2)=aF(u,v_1)+bF(u,v_2)$.  So $F$ is *bilinear.*
-c. (positive definiteness)  For all nonzero $v\in V$, we have $F(v,v)>0$. 
+a. (symmetry)  $J(u,v) = J(v,u)$ for all $u,v\in V$. 
+b. (linearity)  If $v\in V$ is fixed, then the function $u\mapsto J(u,v)$ is linear in $u$.
+In other words, $J(au_1+bu_2,v) = aJ(u_1,v)+bJ(u_2,v)$.  Since $J$ is also symmetric, we also have $J(u,av_1+bv_2)=aJ(u,v_1)+bJ(u,v_2)$.  So $J$ is *bilinear.*
+c. (positive definiteness)  For all nonzero $v\in V$, we have $J(v,v)>0$. 
 
 The classic example of such an inner product is the Euclidean "dot" product:
 $$
-F((a_1,\ldots, a_n),(b_1,\ldots, b_n))=\sum_{i=1}^{n} a_{i}b_{i}
+J((a_1,\ldots, a_n),(b_1,\ldots, b_n))=\sum_{i=1}^{n} a_{i}b_{i}
 $$
 or
 $$
-F((a_1,\ldots, a_n),(b_1,\ldots, b_n))=(a_1,\ldots,a_n)\cdot (b_1,\ldots, b_n).
+J((a_1,\ldots, a_n),(b_1,\ldots, b_n))=(a_1,\ldots,a_n)\cdot (b_1,\ldots, b_n).
 $$
 
-We sometimes write $F(u,v) = \langle u,v\rangle$.
+We sometimes write $J(u,v) = \langle u,v\rangle$.
 
 A vector space $V$ over $\R$ together with an inner product is called a (real) inner product space. 
 
@@ -71,48 +71,145 @@ $$
 \langle e_i, e_j \rangle. 
 $$
 
-In fact, if we let $[F]^{E}$ be the $n\times n$ matrix whose entries are
+In fact, if we let $[J]^{E}$ be the $n\times n$ matrix whose entries are
 $$
-[F]^{E}_{ij} = \langle e_{i},e_{j}\rangle ,
+[J]^{E}_{ij} = \langle e_{i},e_{j}\rangle ,
 $$
 
 then
 
 $$
-\langle \sum a_{i}e_{i},\sum b_{i}e_{i}\rangle = \left[\begin{matrix} a_1 &\ldots& a_n\end{matrix}\right][F]^{E}\left[\begin{matrix} b_1 \\ \vdots \\ b_n\end{matrix}\right].
+\langle \sum a_{i}e_{i},\sum b_{i}e_{i}\rangle = \left[\begin{matrix} a_1 &\ldots& a_n\end{matrix}\right][J]^{E}\left[\begin{matrix} b_1 \\ \vdots \\ b_n\end{matrix}\right].
 $$
 
 Using the notation for coordinates in a basis we adopted earlier, we see that
 $$
-\langle a,b\rangle = [a]_{E}^{\top}  [F]^{E} [b]_{E}.
+\langle a,b\rangle = [a]_{E}^{\top}  [J]^{E} [b]_{E}.
 $$
 
-Notice that if $X=[F]^{E}$ is constructed in this way from an inner product, then:
+Here, if $X$ is an $m\times n$ matrix, then $X^{\top}$, the "transpose" matrix, is the $n\times m$ matrix
+with entries
+$$
+X^{\top}_{ij} = X_{ji}.
+$$
+
+**Remark:** A computation shows that $(XY)^{\top}=Y^{\top}X^{\top}$.
+
+
+Notice that if $X=[J]^{E}$ is constructed in this way from an inner product, then:
 
 a. $X$ is *symmetric* (since $\langle e_{i},e_{j}\rangle = \langle e_{j}, e_{i}\rangle$)
 b. The rank of $X$ is $n$.  Otherwise, if $[b]_{E}\not=0$ is in the null space of $X$,
 we'd have $\langle b,b\rangle = [b]_{E}^{\top}X[b]_{E}=0$ which isn't allowed.
 c.  $X^{E}$ is positive definite, meaning that $[a]_{E}^{\top}X[a]_{E}>0$ when $[a]_{E}\not=0$. 
+d. If $T=\{t_1,\ldots, t_n\}$ is a different basis for $V$, and $[1]_{E}^{T}$ is the change of basis matrix
+so that
+$$
+[a]_{T}=[1]_{E}^{T}[a]_{E}
+$$
+then $[J]^{T}$ is related to $[J]^{E}$ by
+$$
+[J]^{E} = ([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}
+$$
+
+
+The last point follows from the computation:
+$$
+\begin{aligned}
+J(a,b) &= [a]_{T}^{\top}[J]^{T}[b]_{T} = \left([1]_{E}^{T}[a]_{E}\right)^{\top}[J]^{T}\left([1]_{E}^{T}[b]_{E}\right) \\
+&= [a]_{E}^{\top}([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}[b]_{E}
+\end{aligned}
+$$
+
 
 **Proposition:** If $X$ is any real symmetric $n\times n$ positive definite matrix, then 
-the function $F:\R^{n}\times\R^{n} \to \R$ defined by 
+the function $J:\R^{n}\times\R^{n} \to \R$ defined by 
 $$
-F(a,b)  = a^{\top}Xb
+J(a,b)  = a^{\top}Xb
 $$
-is an inner product, and $X=[F]^{E}$ relative to the standard basis of $\R^{n}$. 
+is an inner product, and $X=[J]^{E}$ relative to the standard basis of $\R^{n}$. 
 
 The symmetry follows from the fact that 
 $$
-F(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=F(a,b)
+J(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=J(a,b)
 $$
 
 Linearity follows from properties of matrix multiplication, and the definiteness follows from the
 positive definite property of the matrix. 
 
-**Proposition:** Suppose $F$ is an inner product on $V$. A choice of basis $E$ for $V$ gives
+**Proposition:** Suppose $J$ is an inner product on $V$. A choice of basis $E$ for $V$ gives
 an isomorphism between $V$ and $\R^{n}$.  Using this basis, we can construct the symmetric
-positive definite matrix $X=[F]^{E}$ whose $i,j$ entry is $F(e_{i},e_{j})$. Then
+positive definite matrix $X=[J]^{E}$ whose $i,j$ entry is $J(e_{i},e_{j})$. Then
 $$
-F(a,b) = [a]_{E}^{\top}[F]^{E}[b]_{E}.
+J(a,b) = [a]_{E}^{\top}[J]^{E}[b]_{E}.
 $$
-In these coordinates, the balls $\{a: F(a,a)=r\}$ in $V$ are ellipsoids.
+
+In these coordinates, the balls $\{a: J(a,a)=r\}$ in $V$ are ellipsoids.
+
+### Orthogonality
+
+Let $V$ be an $n$-dimensional inner product space and let $J:V\times V\to \R$ be the inner product.
+
+**Definition:** Two vectors $a$ and $b$ in $V$ are  *orthogonal* (relative to $J$) if $J(a,b)=0$.
+
+If $J$ is the standard Euclidean inner product on $\R^{n}$, then $a$ and $b$ are orthogonal if they are perpendicular.
+
+**Proposition:** (The Gram-Schmidt Process)  Let $V$ be an inner product space of dimension $n$ with inner product $J$, and let
+$E=\{e_1,\ldots, e_m\}$ be a linearly independent subset of $V$ spanning a subspace $W$.  Then there exist vectors
+$U=\{u_1,\ldots, u_m\}$ such that:
+
+1. The $u_{i}$ are an *orthonormal set*, meaning:
+    a. they are mutually orthogonal so   $u_{i}\cdot u_{j}=0$ if $i\not=j$. 
+    b. they have norm $1$, so $\|u_{i}\|=1$ for $i=1,\ldots, m$ 
+2. The span $W_{j}$ of $U_{j}=\{u_{1},\ldots, u_{j}\}$ equals the span of $E_{j}=\{e_{1},\ldots, e_{j}\}$ for $j=1,\dots, m$. 
+
+Notice that:
+
+1. the statement in part (2) means that the change of basis matrix from $U$ to $E$ is triangular:
+
+$$
+\begin{aligned}
+u_{1} &= a_{11}e_{1} \\
+u_{2} &= a_{12}e_{1} + a_{22}e_{2} \\
+\vdots &= \vdots \\
+u_{j} &= a_{1j}e_{1}+\cdots+a_{jj}e_{j} \\
+\end{aligned}
+$$
+
+2. If $E$ spans $V$, then the matrix $[J]^{U}$ of $J$ in the $U$ basis is the identity matrix.  Another way of saying this is
+that, in the $U$ basis, the inner product is just the standard dot product:
+$$
+J(a,b) = [a]_{U}\cdot [b]_{U} = \sum_{i=1}}^{n} a_{i}b_{i}
+$$
+where 
+$$
+a=\sum_{i=1}^{n} a_{i}u_{i}
+$$ 
+and similarly for $b$.
+
+**Proof of the Proposition:** We proceed by induction.  First, let 
+$$
+u_{1} = \frac{e_1}{\|e_{1}\|}.
+$$
+This clearly solves the problem when $W$ is one-dimensional.
+
+Now suppose we've constructed $u_1,\ldots, u_{j}$ so that the span of these vectors is $E_{j}$, they are mutually orthogonal of norm $1$, and the change of basis matrix is triangular.  Let
+$$
+v_{j+1} = e_{j+1}-\sum J(e_{j+1},u_{i})u_{i}.
+$$
+
+Now , for $k=1,\ldots, j$, we compute:
+$$
+J(v_{j+1}, u_{k})=J(e_{j+1},u_{k})-\sum J(e_{j+1},u_{i})J(u_{i},u_{k}). 
+$$
+
+Since $J(u_{i},u_{k})=0$ except when $i=k$,
+where it is $1$, this simplifies to zero.
+
+Also, the span of $\{u_1,\ldots, u_{j},v_{j+1}\}$ is the same as the span of $\{e_1,\ldots, e_{j+1}\}$.
+If we then let $u_{j+1}=\frac{v_{j+1}}{\|v_{j+1}\|}$, we've constructed $U$ as desired and the result
+follows by induction.
+
+
+
+
