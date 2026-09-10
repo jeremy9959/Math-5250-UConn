@@ -344,7 +344,7 @@ $$
 
 which is the alternating sum of the dimensions of the $H^{i}(W^{\cdot})$.
 
-**Definition:** A complex is *exact* if its cohomology groups are zero.  In this case, the kernel of $d^{i}$ is exactly the image of $d^{i-1}.
+**Definition:** A complex is *exact* if its cohomology groups are zero.  In this case, the kernel of $d^{i}$ is exactly the image of $d^{i-1}$.
 
 So the cohomology of a complex is a measure of how far it is from being exact. 
 
