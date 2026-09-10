@@ -370,6 +370,42 @@ $$
 The "closest point" in the column space of $X$ is the vector $XM=XD^{-1}X^{\top}Y$
 which is the projection of $Y$ into the column space of $X$.
 
+### Projection Operator in General
 
+The argument we made above for the least squares problem gives us a way to construct the
+projection operator $P_{W}$ when $W$ is a subspace of a real inner product space of dimension $n$.
+Choose a basis $E$ for $V$ and let $J$ be the matrix of the inner product in this basis.
+Let $X$ be the matrix whose columns are $[w_{i}_{E}]_{i=1}^{k}$ where
+the $w_1,\ldots, w_k$ form a basis for $W$.  So $W$ is the column space of $X$. 
 
+If $Y$ is an element of $V$, then as in the least squares problem we want to find $M$
+so that $Y-XM$ is orthogonal to $W$, and for this it's enought that $Y-XM$ is orthogonal
+to all of the columns of $X$.
 
+This means
+$$
+X^{\top}J(Y-XM)=0
+$$
+
+and as above we get the formula
+$$
+M = (X^{\top}JX)^{-1}X^{\top}JY
+$$
+
+and the projection of $Y$ into $W$ is
+$$
+XM=X(X^{\top}JX)^{-1}X^{\top}JY.
+$$
+
+Therefore the matrix of $[P_{W}]_{E}$ of $P_{W}$ is
+$$
+[P_{W}] = X(X^{\top}JX)^{-1}X^{\top}J.
+$$
+
+Notice that
+$$\begin{aligned}
+[P_{W}][P_{W}]&=X(X^{\top}JX)^{-1}X^{\top}JX(X^{\top}JX)^{-1}X^{\top}J \\
+&= X(X^{\top}JX)^{-1}X^{\top}J \\
+&= [P_{W}]
+\end{aligned}
+$$
