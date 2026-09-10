@@ -1,10 +1,10 @@
 ---
-title: "Inner Product Spaces over R"
+title: "Inner Product Spaces"
 ---
 
 \newcommand{\R}{\mathbb{R}}
 
-## Inner Products
+## Inner Products over $\R$.
 
 Suppose that $V$ is a real vector space.  An *inner product* (or "dot" product) on $V$ is a map
 $$
@@ -257,23 +257,70 @@ $$
 so we must have $\dim((W^{\perp})^{\perp})=\dim(W)$ and therefore the two spaces are equal.
 
 **Proposition:** From the isomorphism $W\oplus W^{\perp}\to V$ we have an inverse map $V\to W\oplus W^{\perp}$ and then
-a map $P:V\to V$ with kernel $W^{\perp}$.  This map is called the *orthogonal projection* of $V$ onto $W$.  Similarly we
-have the projection $P^{\perp}:V\to V$ with kernel $W^{\perp}$.  Each of these linear maps is *idempotent* (meaning that
-$PP=P$ and $P^{\perp}P^{\perp}=P^{\perp}$) and their sum $P+P^{\perp}$ is the identity map.
+a map $P_{W}:V\to V$ with image $W$ and kernel $W^{\perp}$.  This map is called the *orthogonal projection* of $V$ onto $W$.  Similarly we
+have the projection $P_{W^{\perp}}:V\to V$ with kernel $W^{\perp}$ and image $W$.  Each of these linear maps is *idempotent* (meaning that
+$P_W P_W=P_W$ and $P_{W^{\perp}P_{W^{\perp}=P_{W^{\perp}}$) and, in addition,  their sum $P_{W}+P_{W^{\perp}}$ is the identity map.
 
 In the orthonormal basis $u_1,\ldots, u_{n}$ constructed above, if $I_{n\times n}$ is the identity matrix of size $n$,
-then the matrix of $P$ looks like
+then the matrix of $P_{W}$ looks like
 $$
 \begin{pmatrix}
 I_{m\times m} & 0 \\
 0 & 0 \\
 \end{pmatrix}
 $$
-and  $P^{\perp}$ looks like:
+and  $P_{W^{\perp}}$ looks like:
 $$
 \begin{pmatrix}
  0 & 0 \\
 0 & I_{(n-m)\times (n-m)} \\
 \end{pmatrix}
 $$
+
+### Closest Points
+
+Let $W$ be a subspace of the $n$-dimensional inner product space $V$.  If $v\in V$, we can consider
+the "distance to $W$" as the minimum of $\|v-w\|$ as $w$ ranges over $W$.
+
+**Proposition:** The distance from $v$ to $W$ is $\|v-P_{W}(v)\|$ or $\|P_{W^{\perp}}(v)\|$.
+
+To prove this proposition, we first look at the case where $W$ is one-dimensional, and spanned by a vector 
+$w$. Then $W$ consists of multiples of $w$, and for fixed $v\not\in W$, we have
+$$
+\|v-aw\|^2=J(v-aw,v-aw)=J(v,v)-2aJ(v,w)+a^2J(w,w)
+$$
+The minimum of this occurs when $2aJ(w,w)=2J(v,w)$ or
+$$
+a=\frac{J(v,w)}{J(w,w)}.
+$$
+In other words, the closest vector is
+$$
+v_{0} = v-\frac{J(v,w)}{J(w,w)}w
+$$
+and the closest distance is
+$$
+\|v_{0}\|^2 = J(v,v)-2\frac{J(v,w)^2}{J(w,w)}+\frac{J(v,w)^2}{J(w,w)} = J(v,v)-\frac{J(v,w)^2}{J(w,w)}.
+$$
+
+Notice first that $J(v_0,w)=0$ so $v_{0}=P_{W^{\perp}}(v)$ so the proposition is proved when $\dim(W)=1$.
+However, we also obtain the fact that, since $\|v_{0}\|^2>0$, then
+$$
+J(v,v)-\frac{J(v,w)^{2}}{J(w, w)}>0. 
+$$
+
+This is the "Cauchy-Schwarz Inequality."
+
+**Proposition:** Let $v,w$ be vectors in a real inner product space $V$.  Then
+$$
+J(v,w)^2\le J(v,v)J(w,w)
+$$
+with equality if and only if $v$ is a multiple of $w$.  Taking square roots, this is the same
+as
+$$
+J(v,w)<\|v\|\|w\|. 
+$$
+
+
+
+### Application: Ordinary Least Squares
 
