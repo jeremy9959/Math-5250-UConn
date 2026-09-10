@@ -179,7 +179,7 @@ $$
 2. If $E$ spans $V$, then the matrix $[J]^{U}$ of $J$ in the $U$ basis is the identity matrix.  Another way of saying this is
 that, in the $U$ basis, the inner product is just the standard dot product:
 $$
-J(a,b) = [a]_{U}\cdot [b]_{U} = \sum_{i=1}}^{n} a_{i}b_{i}
+J(a,b) = [a]_{U}\cdot [b]_{U} = \sum_{i=1}^{n} a_{i}b_{i}
 $$
 where 
 $$
