@@ -2,3 +2,4 @@
 /_site/
 /ferpa
 **/*.quarto_ipynb
+/src

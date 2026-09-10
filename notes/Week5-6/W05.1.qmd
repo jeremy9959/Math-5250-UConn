@@ -317,10 +317,59 @@ $$
 with equality if and only if $v$ is a multiple of $w$.  Taking square roots, this is the same
 as
 $$
-J(v,w)<\|v\|\|w\|. 
+|J(v,w)|<\sqrt{J(v,v)J(w,w)}
 $$
 
 
 
 ### Application: Ordinary Least Squares
+
+The "least squares problem" assumes we have a set of measurements $(x_{i1},\ldots, x_{ik})_{i=1}^{N}$ and $(y_{i})_{i=1}^{N}$.  We have a model which leads us to suspect that the $y$ values are related to the $x$ values by a linear relation
+$$
+y=\sum_{j=1}^{k} m_{j}x_{j}+b 
+$$
+up to some random error, and we would like to infer the values of the $m_{i}$ and $b$ to obtain
+the "best" such linear relation.
+
+The least squares approach says that the best choice for the $m_{i}$ and $b$ are the values
+which minimize the squared error
+$$
+E(m,b)=\sum_{i=1}^{N} (y-\sum_{j=1}^{k} m_{j}x_{ij}-b)^2.
+$$
+
+We can use linear algebra to approach this problem.  Let $Y$ be the vector in $\mathbf{R}^{n}$ whose entries are the $y_{i}$ and let $X$ be the $N\times (k+1)$ matrix whose $i^{th}$ row is
+$(x_{i1},\ldots, x_{ik},1)$.  
+
+Notice then that
+$$
+E(m,b) = \|Y-XM\|^2
+$$
+
+where $M\in \R^{k+1}$ is the vector with entries $m_{1},\ldots, m_{k},b$.
+
+So our problem can be interpreted as finding $M$ so that $\|Y-XM\|^2$ is as small as possible.
+On the other hand, as $M$ varies, the vector $XM$ varies over the column space of $X$.
+So the value $E(m,b)$ is minimized at the point in the column space of $X$ that is closest to $Y$.
+
+From our work above, this happens when $Y-XM$ is orthonogal to the column space of $X$.  To check this it's sufficient that $Y-XM$ is orthogonal to all the columns of $X$.  In other words, when
+$$
+X^{\top}(Y-XM)=0.
+$$
+
+This gives the equation 
+$$
+X^{\top}Y-X^{\top}XM=0.
+$$
+
+The matrix $D=X^{\top}X$ is a square, $(k+1)\times (k+1)$ matrix.  If $X$ has rank $k+1$,
+then $D$ is invertible and we obtain the solution to the least squares problem:
+$$
+M = D^{-1}X^{\top}Y.
+$$
+
+The "closest point" in the column space of $X$ is the vector $XM=XD^{-1}X^{\top}Y$
+which is the projection of $Y$ into the column space of $X$.
+
+
+
 
