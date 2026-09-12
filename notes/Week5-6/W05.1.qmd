@@ -409,3 +409,53 @@ $$\begin{aligned}
 &= [P_{W}]
 \end{aligned}
 $$
+
+## Complex (Hermitian) Inner Products
+
+Now suppose $V$ is a finite dimensional complex vector space.  A *hermitian* product on $V$
+is a function $J:V\times V\to \C$ that:
+
+1. Is linear in the first variable and conjugate linear in the second: $J(au+bv,w)=aJ(u,w)+bJ(v,w)$ and
+$J(u,av+bw)=\overline{a}J(u,v)+\overline{b}J(u,w)$.
+2. Is conjugate symmetric: $J(u,v)=\overline{J(v,u)}$.  (Notice this means that $J(u,u)$ is a real number.)
+3. Is positive definite: $J(u,u)\ge 0$ with $J(u,u)=0$ only if $u=0$.
+
+The key ideas for inner products over $\R$ hold, suitably modified, for Hermitian inner products over $\C$.
+
+First, let $E=\{v_1,\ldots, v_n\}$ be a basis for $V$.  Define a matrix $[J]^{E}$ where
+$$
+[J]^{E}_{ij} = J(v_{i},v_{j}). 
+$$
+Then
+$$
+J(u,v) = [u]_{E}^{\top}[J]^{E}\overline{[v]_{E}}
+$$
+where $\overline{[v]_{E}}$ is the vector whose entries are the conjugates of the entries of $[v]_{E}$.
+
+This is because 
+$$
+J(\sum a_{i}v_{i}, \sum b_{j}v_{j})=\sum a_{i}\overline{b_{j}}J(v_{i},v_{j}).
+$$
+
+In addition, the matrix $[J]^{E}$ satisfies the "hermitian condition" -- its transpose is its conjugate: 
+$$
+([J]^{E})^{\top} = \overline([J]^{E})
+$$
+
+Notice that since $J(v,v)$ is a nonnegative real number we can define $\|v\|=\sqrt{J(v,v)}$ as in the real case.
+
+The Gram-Schmidt process works (suitably modified) in this setting.  If $\{v_{1},\ldots, v_{n}\}$ is
+a basis for a Hermitian inner product space $V$, we  construct inductively:
+$$
+u_{1} = \frac{v_{1}}{\|v_{1}\|}
+$$
+and,  assuming that $u_{1},\ldots, u_{k}$ are orthonormal,
+$$
+u_{k+1}' = v_{k+1}-\sum_{i=1}^{k} J(v_{k+1},u_{i})u_{i}
+$$
+and $u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}
+$$
+
+we obtain an orthonormal basis $u_{1},\ldots, u_{n}$ for $V$ where the span of $u_{1},\ldots, u_{j}$ is the
+same as the span of $v_{1},\ldots, v_{j}$.  
+
