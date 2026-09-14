@@ -60,6 +60,22 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -474,7 +490,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a></li>
+  <li><a href="#adjoints" id="toc-adjoints" class="nav-link active" data-scroll-target="#adjoints">Adjoints</a>
+  <ul class="collapse">
+  <li><a href="#orthogonal-and-unitary-diagonalizability" id="toc-orthogonal-and-unitary-diagonalizability" class="nav-link" data-scroll-target="#orthogonal-and-unitary-diagonalizability">Orthogonal and Unitary Diagonalizability</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -498,11 +517,66 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
-<p>Notes on the Gram-Schmidt orthogonalization process, orthogonal projections, and the orthogonal complement of a subspace.</p>
+<section id="adjoints" class="level2">
+<h2 class="anchored" data-anchor-id="adjoints">Adjoints</h2>
+<p>For more details and exercises related to this material, see Chapter 10 of Roman’s <em>Advanced Linear Algebra.</em></p>
+<p>Suppose <span class="math inline">V</span> and <span class="math inline">W</span> are finite dimensional inner product spaces (over <span class="math inline">\R</span> or <span class="math inline">\C</span>). We will use the bracket notation <span class="math inline">\langle,\rangle</span> for the inner products on both spaces. Let <span class="math inline">f:V\to W</span> be a linear map.</p>
+<p><strong>Proposition:</strong> There is a unique linear map <span class="math display">
+f^{*}:W\to V
+</span> such that <span class="math display">
+\langle f(v),w\rangle = \langle v,f^{*}(w)\rangle
+</span> for all <span class="math inline">v\in V</span> and <span class="math inline">w\in W</span>. The map <span class="math inline">f^{*}</span> is called the <em>adjoint</em> of <span class="math inline">f</span>.</p>
+<p><strong>Proof:</strong> Let <span class="math inline">v_1, \ldots, v_n</span> be an orthonormal basis for <span class="math inline">V</span> and let <span class="math inline">w_1,\ldots, w_m</span> be an orthonormal basis for <span class="math inline">W</span>. If <span class="math inline">f^{*}</span> exists, it must satisfy <span class="math display">
+\langle f(v_{i}),w_{j}\rangle = \langle v_{i},f^{*}(w_j)\rangle
+</span> for all <span class="math inline">1\le i\le n</span> and <span class="math inline">1\le j\le m</span>. So let’s define <span class="math display">
+f^{*}(w_{j})=\sum_{i=1}^{n} a_{i}v_{i}
+</span> where <span class="math display">
+a_{i} = \overline{\langle f(v_{i}),w_{j}\rangle}.
+</span> This extends to a linear map <span class="math inline">W\to V</span> by linearity and it’s clearly well-defined. In addition <span class="math display">\begin{aligned}
+\langle v_k,f^{*}(w_{j})\rangle &amp;=
+\sum_{i=1}^{n} \overline{a_{i}}\langle v_{k},v_{i}\rangle \\
+&amp;=\overline{a_{k}} \\
+&amp;=\langle(f(v_{k}),w_{j})\rangle
+</span> This shows that <span class="math inline">f^{*}</span> has the desired property (and also that <span class="math inline">f^{*}</span> is unique).</p>
+<p>It is possible to prove the linearity of the adjoint without appealing to bases in this way; see Roman if you are interested in this.</p>
+<p>One consequence of the computation in the proof is that if <span class="math inline">E</span> is an orthonormal basis for <span class="math inline">V</span> then <span class="math display">
+[f]_{E}^{*} = \overline{[f]_{E}}^{\transpose}
+</span>.</p>
+<p>To check this, we compute: <span class="math display">\begin{aligned}
+\langle f(u),v\rangle &amp;=
+([f]_{E}[u]_{E})^{\top}\overline{[v]_{E}} \\
+&amp;= [u]_{E}^{\top}[f]_{E}^{\top}\overline{[v]_{E}}\\
+&amp;= [u]_{E}^{\top}\overline{[f]_{E}^{\top}[v]_{E}} \\
+&amp;= \langle u,f^{*}(v)\rangle
+\end{aligned}
+</span></p>
+<p>The adjoint operation has the following properties.</p>
+<p>These all follow from the definition fairly easily. Let’s look at the third one. Assume <span class="math inline">V=W</span>. Then <span class="math display">
+\langle f(g(v)),w)\rangle = \langle(g(v),f^{*}(w))\rangle = \langle v,g^{*}f^{*}w\rangle
+</span> so <span class="math inline">(fg)^{*}=g^{*}f^{*}</span>.</p>
+<section id="adjoints-and-orthogonality" class="level4">
+<h4 class="anchored" data-anchor-id="adjoints-and-orthogonality">Adjoints and orthogonality</h4>
+<p>As before, let <span class="math inline">V</span> and <span class="math inline">W</span> be finite dimensional inner product spaces and let <span class="math inline">f:V\to W</span> be a linear map. Then we have the following properties (from <a href="https://link.springer.com/book/10.1007/978-0-387-72831-5">Roman, Advanced Linear Algebra</a>, Theorem 1.3, page 202. )</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/roman-theorem-10.3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Theorem 10.3, Roman <em>Advanced Linear Algebra</em>, p.&nbsp;202</figcaption>
+</figure>
+</div>
+<p>The proofs of these are applications of the definitions. Here are a few proofs.</p>
+<ol type="1">
+<li><p><span class="math inline">\mathrm{ker}(f^{*})=\mathrm{image}(f)^{\perp}</span>. Suppose <span class="math inline">w\in\mathrm{ker}(f^{*})</span>. Then <span class="math inline">\langle v,f^{*}w\rangle=0</span> for all <span class="math inline">v</span>. Thus <span class="math inline">\langle f(v),w \rangle</span> is zero for all <span class="math inline">v</span>, and therefore <span class="math inline">w</span> is in <span class="math inline">\mathrm{image}(f)^{\perp}</span>. Conversely, if <span class="math inline">w\in\mathrm{image}(f)^{\perp}</span>. Then <span class="math inline">\langle f(v),w\rangle=0</span> for all <span class="math inline">v</span>, and then <span class="math inline">\langle v,f^{*}w\rangle=0</span> for all <span class="math inline">v</span>. Since the inner product is definite, this means <span class="math inline">f^{*}w=0</span> or <span class="math inline">w\in\mathrm{ker}(f^{(*)})</span>.</p></li>
+<li><p><span class="math inline">f</span> is injective if and only if <span class="math inline">f^{*}</span> is surjective. If <span class="math inline">f</span> is injective, then <span class="math inline">\mathrm{ker}(f)=\mathrm{image}(f^{*})^{\perp}=0</span> so <span class="math inline">\mathrm{image}(f^{*})</span> must be all of <span class="math inline">V</span>.</p></li>
+<li><p><span class="math inline">\mathrm{ker}(f^{*}f)=\mathrm{ker}(f)</span>. Clearly <span class="math inline">\mathrm{ker}(f^{*}f)</span> contains <span class="math inline">\mathrm{ker}(f)</span>. On the other hand, if <span class="math inline">v\in \mathrm{ker}(f^{*}f)</span>, then <span class="math display">
+\langle f^{*}fv,v\rangle=\langle fv,fv \rangle = 0
+</span> so <span class="math inline">f(v)=0</span>.</p></li>
+</ol>
+</section>
+<section id="orthogonal-and-unitary-diagonalizability" class="level3">
+<h3 class="anchored" data-anchor-id="orthogonal-and-unitary-diagonalizability">Orthogonal and Unitary Diagonalizability</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
