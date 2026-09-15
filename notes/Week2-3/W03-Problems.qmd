@@ -47,5 +47,16 @@ Then I claim that $\det(A)=\det(B)\det(C)$.
 
 Check these claims more carefully.  In particular, verify that the bases exist, that the matrices have the claimed form, and that the determinant of a "block triangular" matrix is in fact the product of the determinants of the blocks.
 
+## Additional Problems
 
+The following problems are taken from S. Roman, *Advanced Linear Algebra* (3rd ed.), Exercises for Chapter 2, pp. 72–73 (numbered as in the text).
 
+1. Let $A\in\mathcal{M}_{m,n}$ have rank $k$. Prove that there are matrices $X\in\mathcal{M}_{m,k}$ and $Y\in\mathcal{M}_{k,n}$, both of rank $k$, for which $A=XY$. Prove that $A$ has rank $1$ if and only if it has the form $A=x^ty$ where $x$ and $y$ are row matrices.
+
+3. Let $\tau\in\mathcal{L}(V,W)$. Prove that $\tau$ is an isomorphism if and only if it carries a basis for $V$ to a basis for $W$.
+
+7. Let $\mathcal{T}$ be a subset of $\mathcal{L}(V)$. A subspace $S$ of $V$ is $\mathcal{T}$**-invariant** if $S$ is $\tau$-invariant for every $\tau\in\mathcal{T}$. Also, $V$ is $\mathcal{T}$**-irreducible** if the only $\mathcal{T}$-invariant subspaces of $V$ are $\{0\}$ and $V$. Prove the following form of *Schur's lemma*. Suppose that $\mathcal{T}_V\subseteq\mathcal{L}(V)$ and $\mathcal{T}_W\subseteq\mathcal{L}(W)$ and $V$ is $\mathcal{T}_V$-irreducible and $W$ is $\mathcal{T}_W$-irreducible. Let $\alpha\in\mathcal{L}(V,W)$ satisfy $\alpha\tau_V=\tau_W\alpha$, that is, for any $\mu\in\mathcal{T}_V$ there is a $\lambda\in\mathcal{T}_W$ such that $\alpha\mu=\lambda\alpha$. Prove that $\alpha=0$ or $\alpha$ is an isomorphism.
+
+13. Let $S$ be a subspace of $V$. Show that there is a $\tau\in\mathcal{L}(V)$ for which $\ker(\tau)=S$. Show also that there exists a $\sigma\in\mathcal{L}(V)$ for which $\mathrm{im}(\sigma)=S$.
+
+17. Let $A$ be an $m\times n$ matrix over $F$. What is the relationship between the linear transformation $\tau_A:F^n\to F^m$ and the system of equations $AX=B$? Use your knowledge of linear transformations to state and prove various results concerning the system $AX=B$, especially when $B=0$.
