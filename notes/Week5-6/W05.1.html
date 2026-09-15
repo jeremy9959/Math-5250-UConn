@@ -583,7 +583,7 @@ J((a_1,\ldots, a_n),(b_1,\ldots, b_n))=(a_1,\ldots,a_n)\cdot (b_1,\ldots, b_n).
 <p>Note that inner product spaces make sense even for infinite dimensional vector spaces, but we will focus on the finite dimensional case.</p>
 <section id="geometry-in-an-inner-product-space" class="level3">
 <h3 class="anchored" data-anchor-id="geometry-in-an-inner-product-space">Geometry in an Inner Product Space</h3>
-<p>Adding an inner product to a finite dimensional real vector space allows us to introduce geometry into our study of linear algebra. First, an inner product space allows us to measure the size of a vector <span class="math display">
+<p>Adding an inner product to a finite dimensional real vector space introduces geometry into our study of linear algebra. First, an inner product space allows us to measure the size of a vector <span class="math display">
 \|v\| = \sqrt{\langle v,v\rangle}
 </span> and a distance between vectors: <span class="math display">
 d(u,v) = \sqrt{\langle u-v,u-v\rangle} = \|u-v\|.
@@ -621,7 +621,7 @@ X^{\top}_{ij} = X_{ji}.
 <ol type="a">
 <li><span class="math inline">X</span> is <em>symmetric</em> (since <span class="math inline">\langle e_{i},e_{j}\rangle = \langle e_{j}, e_{i}\rangle</span>)</li>
 <li>The rank of <span class="math inline">X</span> is <span class="math inline">n</span>. Otherwise, if <span class="math inline">[b]_{E}\not=0</span> is in the null space of <span class="math inline">X</span>, we’d have <span class="math inline">\langle b,b\rangle = [b]_{E}^{\top}X[b]_{E}=0</span> which isn’t allowed.</li>
-<li><span class="math inline">X^{E}</span> is positive definite, meaning that <span class="math inline">[a]_{E}^{\top}X[a]_{E}&gt;0</span> when <span class="math inline">[a]_{E}\not=0</span>.</li>
+<li><span class="math inline">X</span> is positive definite, meaning that <span class="math inline">[a]_{E}^{\top}X[a]_{E}&gt;0</span> when <span class="math inline">[a]_{E}\not=0</span>.</li>
 <li>If <span class="math inline">T=\{t_1,\ldots, t_n\}</span> is a different basis for <span class="math inline">V</span>, and <span class="math inline">[1]_{E}^{T}</span> is the change of basis matrix so that <span class="math display">
 [a]_{T}=[1]_{E}^{T}[a]_{E}
 </span> then <span class="math inline">[J]^{T}</span> is related to <span class="math inline">[J]^{E}</span> by <span class="math display">
@@ -644,18 +644,18 @@ J(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=J(a,b)
 <p><strong>Proposition:</strong> Suppose <span class="math inline">J</span> is an inner product on <span class="math inline">V</span>. A choice of basis <span class="math inline">E</span> for <span class="math inline">V</span> gives an isomorphism between <span class="math inline">V</span> and <span class="math inline">\mathbb{R}^{n}</span>. Using this basis, we can construct the symmetric positive definite matrix <span class="math inline">X=[J]^{E}</span> whose <span class="math inline">i,j</span> entry is <span class="math inline">J(e_{i},e_{j})</span>. Then <span class="math display">
 J(a,b) = [a]_{E}^{\top}[J]^{E}[b]_{E}.
 </span></p>
-<p>In these coordinates, the balls <span class="math inline">\{a: J(a,a)=r\}</span> in <span class="math inline">V</span> are ellipsoids.</p>
+<p>In these coordinates, the surfaces <span class="math inline">\{a: J(a,a)=r\}</span> in <span class="math inline">V</span> are ellipsoids.</p>
 </section>
 <section id="orthogonality" class="level3">
 <h3 class="anchored" data-anchor-id="orthogonality">Orthogonality</h3>
 <p>Let <span class="math inline">V</span> be an <span class="math inline">n</span>-dimensional inner product space and let <span class="math inline">J:V\times V\to \mathbb{R}</span> be the inner product.</p>
 <p><strong>Definition:</strong> Two vectors <span class="math inline">a</span> and <span class="math inline">b</span> in <span class="math inline">V</span> are <em>orthogonal</em> (relative to <span class="math inline">J</span>) if <span class="math inline">J(a,b)=0</span>.</p>
-<p>If <span class="math inline">J</span> is the standard Euclidean inner product on <span class="math inline">\mathbb{R}^{n}</span>, then <span class="math inline">a</span> and <span class="math inline">b</span> are orthogonal if they are perpendicular.</p>
+<p>If <span class="math inline">J</span> is the standard Euclidean inner product on <span class="math inline">\mathbb{R}^{n}</span>, then to say that <span class="math inline">a</span> and <span class="math inline">b</span> are orthogonal is to say they are perpendicular.</p>
 <p><strong>Proposition:</strong> (The Gram-Schmidt Process) Let <span class="math inline">V</span> be an inner product space of dimension <span class="math inline">n</span> with inner product <span class="math inline">J</span>, and let <span class="math inline">E=\{e_1,\ldots, e_m\}</span> be a linearly independent subset of <span class="math inline">V</span> spanning a subspace <span class="math inline">W</span>. Then there exist vectors <span class="math inline">U=\{u_1,\ldots, u_m\}</span> such that:</p>
 <ol type="1">
 <li>The <span class="math inline">u_{i}</span> are an <em>orthonormal set</em>, meaning:
 <ol type="a">
-<li>they are mutually orthogonal so <span class="math inline">u_{i}\cdot u_{j}=0</span> if <span class="math inline">i\not=j</span>.</li>
+<li>they are mutually orthogonal so <span class="math inline">J(u_{i}, u_{j})=0</span> if <span class="math inline">i\not=j</span>.</li>
 <li>they have norm <span class="math inline">1</span>, so <span class="math inline">\|u_{i}\|=1</span> for <span class="math inline">i=1,\ldots, m</span></li>
 </ol></li>
 <li>The span <span class="math inline">W_{j}</span> of <span class="math inline">U_{j}=\{u_{1},\ldots, u_{j}\}</span> equals the span of <span class="math inline">E_{j}=\{e_{1},\ldots, e_{j}\}</span> for <span class="math inline">j=1,\dots, m</span>.</li>
@@ -685,7 +685,7 @@ u_{1} = \frac{e_1}{\|e_{1}\|}.
 <p>Now suppose we’ve constructed <span class="math inline">u_1,\ldots, u_{j}</span> so that the span of these vectors is <span class="math inline">E_{j}</span>, they are mutually orthogonal of norm <span class="math inline">1</span>, and the change of basis matrix is triangular. Let <span class="math display">
 v_{j+1} = e_{j+1}-\sum J(e_{j+1},u_{i})u_{i}.
 </span></p>
-<p>Now , for <span class="math inline">k=1,\ldots, j</span>, we compute: <span class="math display">
+<p>Now, for <span class="math inline">k=1,\ldots, j</span>, we compute: <span class="math display">
 J(v_{j+1}, u_{k})=J(e_{j+1},u_{k})-\sum J(e_{j+1},u_{i})J(u_{i},u_{k}).
 </span></p>
 <p>Since <span class="math inline">J(u_{i},u_{k})=0</span> except when <span class="math inline">i=k</span>, where it is <span class="math inline">1</span>, this simplifies to zero.</p>
@@ -693,7 +693,7 @@ J(v_{j+1}, u_{k})=J(e_{j+1},u_{k})-\sum J(e_{j+1},u_{i})J(u_{i},u_{k}).
 <p><strong>Proposition:</strong> Suppose <span class="math inline">V</span> is an <span class="math inline">n</span>-dimensional inner product space with inner product <span class="math inline">J</span>, and <span class="math inline">u_1,\ldots, u_n</span> is an orthonormal basis for <span class="math inline">V</span>. Then for any <span class="math inline">v\in V</span> we have <span class="math display">
 v = \sum J(v,u_{i})u_{i}.
 </span></p>
-<p><strong>Proof:</strong> A calculation shows that <span class="math inline">z=v-\sum J(v,u_{i})u_{i}</span> is orthogonal to every <span class="math inline">u_i</span> for <span class="math inline">i=1,\ldots n</span>, and then by linearity to every linear combination of the <span class="math inline">u_{i}</span>. Since the <span class="math inline">u_{i}</span> are a basis for <span class="math inline">V</span>, this means <span class="math inline">z\cdot h=0</span> for all <span class="math inline">h\in V</span>, and in particular <span class="math inline">z\cdot z=0</span>. Then <span class="math inline">z=0</span> as claimed.</p>
+<p><strong>Proof:</strong> A calculation shows that <span class="math inline">z=v-\sum J(v,u_{i})u_{i}</span> is orthogonal to every <span class="math inline">u_i</span> for <span class="math inline">i=1,\ldots, n</span>, and then by linearity to every linear combination of the <span class="math inline">u_{i}</span>. Since the <span class="math inline">u_{i}</span> are a basis for <span class="math inline">V</span>, this means <span class="math inline">J(z, h)=0</span> for all <span class="math inline">h\in V</span>, and in particular <span class="math inline">J(z,z)=0</span>. Then <span class="math inline">z=0</span> as claimed.</p>
 </section>
 <section id="projection" class="level3">
 <h3 class="anchored" data-anchor-id="projection">Projection</h3>
@@ -702,7 +702,7 @@ v = \sum J(v,u_{i})u_{i}.
 W^{\perp}=\{v\in V : J(v,w)=0\mathrm{\ for\ all\ } w\in W \}
 </span></p>
 <p><strong>Proposition:</strong> Under the above hypotheses: a. <span class="math inline">W^{\perp}</span> is a subspace of <span class="math inline">V</span>. b. The map <span class="math inline">W\oplus W^{\perp}\to V</span> defined by <span class="math inline">(x,y)\mapsto x+y</span> is an isomorphism. c.&nbsp;<span class="math inline">(W^{\perp})^{\perp}=W</span>.</p>
-<p><strong>Proof:</strong> <span class="math inline">W^{\perp}</span> is a subspace since <span class="math inline">J(v,0)=0</span> and if <span class="math inline">J(v,w_1)=J(v,w_2)=0</span> then <span class="math inline">J(v,aw_1+w_2)=0</span> by linearity. For part (b), choose an (ordered) basis <span class="math inline">w_{1},\ldots, w_{m}</span> for <span class="math inline">W</span> and extend it to a basis for <span class="math inline">V</span>. Apply Gram-Schmidt to this ordered basis to obtain orthonormal vectors <span class="math inline">u_1,\ldots, u_{n}</span> where <span class="math inline">u_1,\ldots, u_m</span> are a basis for <span class="math inline">W</span>. Then <span class="math inline">u_{m+1},\ldots, u_{n}</span> all belong to <span class="math inline">W^{\perp}</span>. Given <span class="math inline">v\in V</span>, then we can write <span class="math display">
+<p><strong>Proof:</strong> <span class="math inline">W^{\perp}</span> is a subspace since <span class="math inline">J(0,w)=0</span> and if <span class="math inline">J(w,v_1)=J(w,v_2)=0</span> for <span class="math inline">w\in W</span> then <span class="math inline">J(w,av_1+bv_2)=0</span> by linearity. For part (b), choose an (ordered) basis <span class="math inline">w_{1},\ldots, w_{m}</span> for <span class="math inline">W</span> and extend it to a basis for <span class="math inline">V</span>. Apply Gram-Schmidt to this ordered basis to obtain orthonormal vectors <span class="math inline">u_1,\ldots, u_{n}</span> where <span class="math inline">u_1,\ldots, u_m</span> are a basis for <span class="math inline">W</span>. Then <span class="math inline">u_{m+1},\ldots, u_{n}</span> all belong to <span class="math inline">W^{\perp}</span>. Given <span class="math inline">v\in V</span>, then we can write <span class="math display">
 v=\sum J(v,u_{i})u_{i}=\sum_{i=1}^{m} J(v,u_{i})u_{i} + \sum_{i=m+1}^{n} J(v,u_{i})u_{i}
 </span> The first sum on the right belongs to <span class="math inline">W</span>, and the second to <span class="math inline">W^{\perp}</span>, so the map from <span class="math inline">W\oplus W^{\perp}\to V</span> is surjective. On the other hand, if <span class="math inline">x\in W\cap W^{\perp}</span>, we’d have <span class="math inline">J(x,x)=0</span> so <span class="math inline">x=0</span>. Therefore the map is injective and thus an isomorphism. In particular <span class="math display">
 \dim(W)+\dim(W^{\perp}) = n.
@@ -710,7 +710,7 @@ v=\sum J(v,u_{i})u_{i}=\sum_{i=1}^{m} J(v,u_{i})u_{i} + \sum_{i=m+1}^{n} J(v,u_{
 <p>For part (c), it’s clear that <span class="math inline">W\subset (W^{\perp})^{\perp}.</span> On the other hand <span class="math display">
 \dim(W^{\perp})+\dim((W^{\perp})^{\perp})=n
 </span> so we must have <span class="math inline">\dim((W^{\perp})^{\perp})=\dim(W)</span> and therefore the two spaces are equal.</p>
-<p><strong>Proposition:</strong> From the isomorphism <span class="math inline">W\oplus W^{\perp}\to V</span> we have an inverse map <span class="math inline">V\to W\oplus W^{\perp}</span> and then a map <span class="math inline">P_{W}:V\to V</span> with image <span class="math inline">W</span> and kernel <span class="math inline">W^{\perp}</span>. This map is called the <em>orthogonal projection</em> of <span class="math inline">V</span> onto <span class="math inline">W</span>. Similarly we have the projection <span class="math inline">P_{W^{\perp}}:V\to V</span> with kernel <span class="math inline">W^{\perp}</span> and image <span class="math inline">W</span>. Each of these linear maps is <em>idempotent</em> (meaning that <span class="math inline">P_W P_W=P_W</span> and <span class="math inline">P_{W^{\perp}P_{W^{\perp}=P_{W^{\perp}}</span>) and, in addition, their sum <span class="math inline">P_{W}+P_{W^{\perp}}</span> is the identity map.</p>
+<p><strong>Proposition:</strong> From the isomorphism <span class="math inline">W\oplus W^{\perp}\to V</span> we have an inverse map <span class="math inline">V\to W\oplus W^{\perp}</span> and then a map <span class="math inline">P_{W}:V\to V</span> with image <span class="math inline">W</span> and kernel <span class="math inline">W^{\perp}</span>. This map is called the <em>orthogonal projection</em> of <span class="math inline">V</span> onto <span class="math inline">W</span>. Similarly we have the projection <span class="math inline">P_{W^{\perp}}:V\to V</span> with kernel <span class="math inline">W</span> and image <span class="math inline">W^{\perp}</span>. Each of these linear maps is <em>idempotent</em> (meaning that <span class="math inline">P_W P_W=P_W</span> and <span class="math inline">P_{W^{\perp}}P_{W^{\perp}}=P_{W^{\perp}}</span>) and, in addition, their sum <span class="math inline">P_{W}+P_{W^{\perp}}</span> is the identity map.</p>
 <p>In the orthonormal basis <span class="math inline">u_1,\ldots, u_{n}</span> constructed above, if <span class="math inline">I_{n\times n}</span> is the identity matrix of size <span class="math inline">n</span>, then the matrix of <span class="math inline">P_{W}</span> looks like <span class="math display">
 \begin{pmatrix}
 I_{m\times m} &amp; 0 \\
@@ -731,7 +731,7 @@ I_{m\times m} &amp; 0 \\
 \|v-aw\|^2=J(v-aw,v-aw)=J(v,v)-2aJ(v,w)+a^2J(w,w)
 </span> The minimum of this occurs when <span class="math inline">2aJ(w,w)=2J(v,w)</span> or <span class="math display">
 a=\frac{J(v,w)}{J(w,w)}.
-</span> In other words, the closest vector is <span class="math display">
+</span> In other words, the vector from <span class="math inline">v</span> to the closest point in <span class="math inline">W</span> is <span class="math display">
 v_{0} = v-\frac{J(v,w)}{J(w,w)}w
 </span> and the closest distance is <span class="math display">
 \|v_{0}\|^2 = J(v,v)-2\frac{J(v,w)^2}{J(w,w)}+\frac{J(v,w)^2}{J(w,w)} = J(v,v)-\frac{J(v,w)^2}{J(w,w)}.
@@ -743,24 +743,24 @@ J(v,v)-\frac{J(v,w)^{2}}{J(w, w)}&gt;0.
 <p><strong>Proposition:</strong> Let <span class="math inline">v,w</span> be vectors in a real inner product space <span class="math inline">V</span>. Then <span class="math display">
 J(v,w)^2\le J(v,v)J(w,w)
 </span> with equality if and only if <span class="math inline">v</span> is a multiple of <span class="math inline">w</span>. Taking square roots, this is the same as <span class="math display">
-|J(v,w)|&lt;\sqrt{J(v,v)J(w,w)}
-</span></p>
+|J(v,w)|\le\sqrt{J(v,v)J(w,w)}
+</span> with equality if and only if <span class="math inline">v</span> is a multiple of <span class="math inline">w</span>.</p>
 </section>
 <section id="application-ordinary-least-squares" class="level3">
 <h3 class="anchored" data-anchor-id="application-ordinary-least-squares">Application: Ordinary Least Squares</h3>
 <p>The “least squares problem” assumes we have a set of measurements <span class="math inline">(x_{i1},\ldots, x_{ik})_{i=1}^{N}</span> and <span class="math inline">(y_{i})_{i=1}^{N}</span>. We have a model which leads us to suspect that the <span class="math inline">y</span> values are related to the <span class="math inline">x</span> values by a linear relation <span class="math display">
 y=\sum_{j=1}^{k} m_{j}x_{j}+b
-</span> up to some random error, and we would like to infer the values of the <span class="math inline">m_{i}</span> and <span class="math inline">b</span> to obtain the “best” such linear relation.</p>
-<p>The least squares approach says that the best choice for the <span class="math inline">m_{i}</span> and <span class="math inline">b</span> are the values which minimize the squared error <span class="math display">
-E(m,b)=\sum_{i=1}^{N} (y-\sum_{j=1}^{k} m_{j}x_{ij}-b)^2.
+</span> up to some random error, and we would like to infer the values of the <span class="math inline">m_{j}</span> and <span class="math inline">b</span> to obtain the “best” such linear relation.</p>
+<p>The least squares approach says that the best choice for the <span class="math inline">m_{j}</span> and <span class="math inline">b</span> is the values which minimize the squared error <span class="math display">
+E(m,b)=\sum_{i=1}^{N} (y_i-\sum_{j=1}^{k} m_{j}x_{ij}-b)^2.
 </span></p>
-<p>We can use linear algebra to approach this problem. Let <span class="math inline">Y</span> be the vector in <span class="math inline">\mathbf{R}^{n}</span> whose entries are the <span class="math inline">y_{i}</span> and let <span class="math inline">X</span> be the <span class="math inline">N\times (k+1)</span> matrix whose <span class="math inline">i^{th}</span> row is <span class="math inline">(x_{i1},\ldots, x_{ik},1)</span>.</p>
+<p>We can use linear algebra to approach this problem. Let <span class="math inline">Y</span> be the vector in <span class="math inline">\mathbf{R}^{N}</span> whose entries are the <span class="math inline">y_{i}</span> and let <span class="math inline">X</span> be the <span class="math inline">N\times (k+1)</span> matrix whose <span class="math inline">i^{th}</span> row is <span class="math inline">(x_{i1},\ldots, x_{ik},1)</span>.</p>
 <p>Notice then that <span class="math display">
 E(m,b) = \|Y-XM\|^2
 </span></p>
 <p>where <span class="math inline">M\in \mathbb{R}^{k+1}</span> is the vector with entries <span class="math inline">m_{1},\ldots, m_{k},b</span>.</p>
 <p>So our problem can be interpreted as finding <span class="math inline">M</span> so that <span class="math inline">\|Y-XM\|^2</span> is as small as possible. On the other hand, as <span class="math inline">M</span> varies, the vector <span class="math inline">XM</span> varies over the column space of <span class="math inline">X</span>. So the value <span class="math inline">E(m,b)</span> is minimized at the point in the column space of <span class="math inline">X</span> that is closest to <span class="math inline">Y</span>.</p>
-<p>From our work above, this happens when <span class="math inline">Y-XM</span> is orthonogal to the column space of <span class="math inline">X</span>. To check this it’s sufficient that <span class="math inline">Y-XM</span> is orthogonal to all the columns of <span class="math inline">X</span>. In other words, when <span class="math display">
+<p>From our work above, this happens when <span class="math inline">Y-XM</span> is orthogonal to the column space of <span class="math inline">X</span>. To check this it’s sufficient that <span class="math inline">Y-XM</span> is orthogonal to all the columns of <span class="math inline">X</span>. In other words, when <span class="math display">
 X^{\top}(Y-XM)=0.
 </span></p>
 <p>This gives the equation <span class="math display">
@@ -773,8 +773,8 @@ M = D^{-1}X^{\top}Y.
 </section>
 <section id="projection-operator-in-general" class="level3">
 <h3 class="anchored" data-anchor-id="projection-operator-in-general">Projection Operator in General</h3>
-<p>The argument we made above for the least squares problem gives us a way to construct the projection operator <span class="math inline">P_{W}</span> when <span class="math inline">W</span> is a subspace of a real inner product space of dimension <span class="math inline">n</span>. Choose a basis <span class="math inline">E</span> for <span class="math inline">V</span> and let <span class="math inline">J</span> be the matrix of the inner product in this basis. Let <span class="math inline">X</span> be the matrix whose columns are <span class="math inline">[w_{i}_{E}]_{i=1}^{k}</span> where the <span class="math inline">w_1,\ldots, w_k</span> form a basis for <span class="math inline">W</span>. So <span class="math inline">W</span> is the column space of <span class="math inline">X</span>.</p>
-<p>If <span class="math inline">Y</span> is an element of <span class="math inline">V</span>, then as in the least squares problem we want to find <span class="math inline">M</span> so that <span class="math inline">Y-XM</span> is orthogonal to <span class="math inline">W</span>, and for this it’s enought that <span class="math inline">Y-XM</span> is orthogonal to all of the columns of <span class="math inline">X</span>.</p>
+<p>The argument we made above for the least squares problem gives us a way to construct the projection operator <span class="math inline">P_{W}</span> when <span class="math inline">W</span> is a subspace of a real inner product space of dimension <span class="math inline">n</span>. Choose a basis <span class="math inline">E</span> for <span class="math inline">V</span> and , to simplify the notation, let’s write <span class="math inline">J</span> (instead of <span class="math inline">[J]^{E}</span>) for the matrix of the inner product in this basis. Let <span class="math inline">X</span> be the matrix whose columns are <span class="math inline">([w_{i}]_{E})_{i=1}^{k}</span> where the <span class="math inline">w_1,\ldots, w_k</span> form a basis for <span class="math inline">W</span>. So <span class="math inline">W</span> is the column space of <span class="math inline">X</span>.</p>
+<p>If <span class="math inline">Y</span> is an element of <span class="math inline">V</span>, then as in the least squares problem we want to find <span class="math inline">M</span> so that <span class="math inline">Y-XM</span> is orthogonal to <span class="math inline">W</span>, and for this it’s enough that <span class="math inline">Y-XM</span> is orthogonal to all of the columns of <span class="math inline">X</span>.</p>
 <p>This means <span class="math display">
 X^{\top}J(Y-XM)=0
 </span></p>
@@ -784,8 +784,8 @@ M = (X^{\top}JX)^{-1}X^{\top}JY
 <p>and the projection of <span class="math inline">Y</span> into <span class="math inline">W</span> is <span class="math display">
 XM=X(X^{\top}JX)^{-1}X^{\top}JY.
 </span></p>
-<p>Therefore the matrix of <span class="math inline">[P_{W}]_{E}</span> of <span class="math inline">P_{W}</span> is <span class="math display">
-[P_{W}] = X(X^{\top}JX)^{-1}X^{\top}J.
+<p>Therefore the matrix <span class="math inline">[P_{W}]_{E}</span> of <span class="math inline">P_{W}</span> is <span class="math display">
+[P_{W}]_{E} = X(X^{\top}JX)^{-1}X^{\top}J.
 </span></p>
 <p>Notice that <span class="math display">\begin{aligned}
 [P_{W}][P_{W}]&amp;=X(X^{\top}JX)^{-1}X^{\top}JX(X^{\top}JX)^{-1}X^{\top}J \\
@@ -813,14 +813,16 @@ J(u,v) = [u]_{E}^{\top}[J]^{E}\overline{[v]_{E}}
 J(\sum a_{i}v_{i}, \sum b_{j}v_{j})=\sum a_{i}\overline{b_{j}}J(v_{i},v_{j}).
 </span></p>
 <p>In addition, the matrix <span class="math inline">[J]^{E}</span> satisfies the “hermitian condition” – its transpose is its conjugate: <span class="math display">
-([J]^{E})^{\top} = \overline([J]^{E})
+([J]^{E})^{\top} = \overline{[J]^{E}}
 </span></p>
 <p>Notice that since <span class="math inline">J(v,v)</span> is a nonnegative real number we can define <span class="math inline">\|v\|=\sqrt{J(v,v)}</span> as in the real case.</p>
 <p>The Gram-Schmidt process works (suitably modified) in this setting. If <span class="math inline">\{v_{1},\ldots, v_{n}\}</span> is a basis for a Hermitian inner product space <span class="math inline">V</span>, we construct inductively: <span class="math display">
 u_{1} = \frac{v_{1}}{\|v_{1}\|}
 </span> and, assuming that <span class="math inline">u_{1},\ldots, u_{k}</span> are orthonormal, <span class="math display">
 u_{k+1}' = v_{k+1}-\sum_{i=1}^{k} J(v_{k+1},u_{i})u_{i}
-</span> and <span class="math inline">u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}</span>$</p>
+</span> and <span class="math display">
+u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}
+</span></p>
 <p>we obtain an orthonormal basis <span class="math inline">u_{1},\ldots, u_{n}</span> for <span class="math inline">V</span> where the span of <span class="math inline">u_{1},\ldots, u_{j}</span> is the same as the span of <span class="math inline">v_{1},\ldots, v_{j}</span>.</p>
 
 
