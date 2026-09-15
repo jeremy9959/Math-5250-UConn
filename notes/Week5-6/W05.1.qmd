@@ -34,7 +34,7 @@ Note that inner product spaces make sense even for infinite dimensional vector s
 
 ### Geometry in an Inner Product Space
 
-Adding an inner product to a finite dimensional real vector space allows us to introduce geometry into our study of linear algebra.  First, an inner product space 
+Adding an inner product to a finite dimensional real vector space introduces geometry into our study of linear algebra.  First, an inner product space 
 allows us to measure the size of a vector
 $$
 \|v\| = \sqrt{\langle v,v\rangle}
@@ -101,7 +101,7 @@ Notice that if $X=[J]^{E}$ is constructed in this way from an inner product, the
 a. $X$ is *symmetric* (since $\langle e_{i},e_{j}\rangle = \langle e_{j}, e_{i}\rangle$)
 b. The rank of $X$ is $n$.  Otherwise, if $[b]_{E}\not=0$ is in the null space of $X$,
 we'd have $\langle b,b\rangle = [b]_{E}^{\top}X[b]_{E}=0$ which isn't allowed.
-c.  $X^{E}$ is positive definite, meaning that $[a]_{E}^{\top}X[a]_{E}>0$ when $[a]_{E}\not=0$. 
+c.  $X$ is positive definite, meaning that $[a]_{E}^{\top}X[a]_{E}>0$ when $[a]_{E}\not=0$. 
 d. If $T=\{t_1,\ldots, t_n\}$ is a different basis for $V$, and $[1]_{E}^{T}$ is the change of basis matrix
 so that
 $$
@@ -144,7 +144,7 @@ $$
 J(a,b) = [a]_{E}^{\top}[J]^{E}[b]_{E}.
 $$
 
-In these coordinates, the balls $\{a: J(a,a)=r\}$ in $V$ are ellipsoids.
+In these coordinates, the surfaces $\{a: J(a,a)=r\}$ in $V$ are ellipsoids.
 
 ### Orthogonality
 
@@ -152,14 +152,14 @@ Let $V$ be an $n$-dimensional inner product space and let $J:V\times V\to \R$ be
 
 **Definition:** Two vectors $a$ and $b$ in $V$ are  *orthogonal* (relative to $J$) if $J(a,b)=0$.
 
-If $J$ is the standard Euclidean inner product on $\R^{n}$, then $a$ and $b$ are orthogonal if they are perpendicular.
+If $J$ is the standard Euclidean inner product on $\R^{n}$, then to say that $a$ and $b$ are orthogonal is to say they are perpendicular.
 
 **Proposition:** (The Gram-Schmidt Process)  Let $V$ be an inner product space of dimension $n$ with inner product $J$, and let
 $E=\{e_1,\ldots, e_m\}$ be a linearly independent subset of $V$ spanning a subspace $W$.  Then there exist vectors
 $U=\{u_1,\ldots, u_m\}$ such that:
 
 1. The $u_{i}$ are an *orthonormal set*, meaning:
-    a. they are mutually orthogonal so   $u_{i}\cdot u_{j}=0$ if $i\not=j$. 
+    a. they are mutually orthogonal so   $J(u_{i}, u_{j})=0$ if $i\not=j$. 
     b. they have norm $1$, so $\|u_{i}\|=1$ for $i=1,\ldots, m$ 
 2. The span $W_{j}$ of $U_{j}=\{u_{1},\ldots, u_{j}\}$ equals the span of $E_{j}=\{e_{1},\ldots, e_{j}\}$ for $j=1,\dots, m$. 
 
@@ -198,7 +198,7 @@ $$
 v_{j+1} = e_{j+1}-\sum J(e_{j+1},u_{i})u_{i}.
 $$
 
-Now , for $k=1,\ldots, j$, we compute:
+Now, for $k=1,\ldots, j$, we compute:
 $$
 J(v_{j+1}, u_{k})=J(e_{j+1},u_{k})-\sum J(e_{j+1},u_{i})J(u_{i},u_{k}). 
 $$
@@ -216,9 +216,9 @@ $$
 v = \sum J(v,u_{i})u_{i}.
 $$
 
-**Proof:**  A calculation shows that $z=v-\sum J(v,u_{i})u_{i}$ is orthogonal to every $u_i$ for $i=1,\ldots n$, and then
-by linearity to every linear combination of the $u_{i}$.  Since the $u_{i}$ are a basis for $V$, this means $z\cdot h=0$
-for all $h\in V$, and in particular $z\cdot z=0$.  Then $z=0$ as claimed.
+**Proof:**  A calculation shows that $z=v-\sum J(v,u_{i})u_{i}$ is orthogonal to every $u_i$ for $i=1,\ldots, n$, and then
+by linearity to every linear combination of the $u_{i}$.  Since the $u_{i}$ are a basis for $V$, this means $J(z, h)=0$
+for all $h\in V$, and in particular $J(z,z)=0$.  Then $z=0$ as claimed.
 
 
 ### Projection
@@ -235,7 +235,7 @@ a. $W^{\perp}$ is a subspace of $V$.
 b. The map $W\oplus W^{\perp}\to V$ defined by $(x,y)\mapsto x+y$ is an isomorphism.
 c. $(W^{\perp})^{\perp}=W$.
 
-**Proof:** $W^{\perp}$ is a subspace since $J(v,0)=0$ and if $J(v,w_1)=J(v,w_2)=0$ then $J(v,aw_1+w_2)=0$ by linearity.
+**Proof:** $W^{\perp}$ is a subspace since $J(0,w)=0$ and if $J(w,v_1)=J(w,v_2)=0$ for $w\in W$ then $J(w,av_1+bv_2)=0$ by linearity.
 For part (b), choose an (ordered) basis $w_{1},\ldots, w_{m}$ for $W$ and extend it to a basis for $V$.  Apply Gram-Schmidt to this
 ordered basis to obtain orthonormal vectors  $u_1,\ldots, u_{n}$ where $u_1,\ldots, u_m$ are a basis for $W$. Then $u_{m+1},\ldots, u_{n}$
 all belong to $W^{\perp}$.  Given $v\in V$, then we can write
@@ -258,8 +258,8 @@ so we must have $\dim((W^{\perp})^{\perp})=\dim(W)$ and therefore the two spaces
 
 **Proposition:** From the isomorphism $W\oplus W^{\perp}\to V$ we have an inverse map $V\to W\oplus W^{\perp}$ and then
 a map $P_{W}:V\to V$ with image $W$ and kernel $W^{\perp}$.  This map is called the *orthogonal projection* of $V$ onto $W$.  Similarly we
-have the projection $P_{W^{\perp}}:V\to V$ with kernel $W^{\perp}$ and image $W$.  Each of these linear maps is *idempotent* (meaning that
-$P_W P_W=P_W$ and $P_{W^{\perp}P_{W^{\perp}=P_{W^{\perp}}$) and, in addition,  their sum $P_{W}+P_{W^{\perp}}$ is the identity map.
+have the projection $P_{W^{\perp}}:V\to V$ with kernel $W$ and image $W^{\perp}$.  Each of these linear maps is *idempotent* (meaning that
+$P_W P_W=P_W$ and $P_{W^{\perp}}P_{W^{\perp}}=P_{W^{\perp}}$) and, in addition,  their sum $P_{W}+P_{W^{\perp}}$ is the identity map.
 
 In the orthonormal basis $u_1,\ldots, u_{n}$ constructed above, if $I_{n\times n}$ is the identity matrix of size $n$,
 then the matrix of $P_{W}$ looks like
@@ -293,7 +293,8 @@ The minimum of this occurs when $2aJ(w,w)=2J(v,w)$ or
 $$
 a=\frac{J(v,w)}{J(w,w)}.
 $$
-In other words, the closest vector is
+In other words, the vector from $v$ to the closest point in $W$
+is
 $$
 v_{0} = v-\frac{J(v,w)}{J(w,w)}w
 $$
@@ -317,9 +318,9 @@ $$
 with equality if and only if $v$ is a multiple of $w$.  Taking square roots, this is the same
 as
 $$
-|J(v,w)|<\sqrt{J(v,v)J(w,w)}
+|J(v,w)|\le\sqrt{J(v,v)J(w,w)}
 $$
-
+with equality if and only if $v$ is a multiple of $w$. 
 
 
 ### Application: Ordinary Least Squares
@@ -328,16 +329,16 @@ The "least squares problem" assumes we have a set of measurements $(x_{i1},\ldot
 $$
 y=\sum_{j=1}^{k} m_{j}x_{j}+b 
 $$
-up to some random error, and we would like to infer the values of the $m_{i}$ and $b$ to obtain
+up to some random error, and we would like to infer the values of the $m_{j}$ and $b$ to obtain
 the "best" such linear relation.
 
-The least squares approach says that the best choice for the $m_{i}$ and $b$ are the values
+The least squares approach says that the best choice for the $m_{j}$ and $b$ is the values
 which minimize the squared error
 $$
-E(m,b)=\sum_{i=1}^{N} (y-\sum_{j=1}^{k} m_{j}x_{ij}-b)^2.
+E(m,b)=\sum_{i=1}^{N} (y_i-\sum_{j=1}^{k} m_{j}x_{ij}-b)^2.
 $$
 
-We can use linear algebra to approach this problem.  Let $Y$ be the vector in $\mathbf{R}^{n}$ whose entries are the $y_{i}$ and let $X$ be the $N\times (k+1)$ matrix whose $i^{th}$ row is
+We can use linear algebra to approach this problem.  Let $Y$ be the vector in $\mathbf{R}^{N}$ whose entries are the $y_{i}$ and let $X$ be the $N\times (k+1)$ matrix whose $i^{th}$ row is
 $(x_{i1},\ldots, x_{ik},1)$.  
 
 Notice then that
@@ -351,7 +352,7 @@ So our problem can be interpreted as finding $M$ so that $\|Y-XM\|^2$ is as smal
 On the other hand, as $M$ varies, the vector $XM$ varies over the column space of $X$.
 So the value $E(m,b)$ is minimized at the point in the column space of $X$ that is closest to $Y$.
 
-From our work above, this happens when $Y-XM$ is orthonogal to the column space of $X$.  To check this it's sufficient that $Y-XM$ is orthogonal to all the columns of $X$.  In other words, when
+From our work above, this happens when $Y-XM$ is orthogonal to the column space of $X$.  To check this it's sufficient that $Y-XM$ is orthogonal to all the columns of $X$.  In other words, when
 $$
 X^{\top}(Y-XM)=0.
 $$
@@ -374,12 +375,13 @@ which is the projection of $Y$ into the column space of $X$.
 
 The argument we made above for the least squares problem gives us a way to construct the
 projection operator $P_{W}$ when $W$ is a subspace of a real inner product space of dimension $n$.
-Choose a basis $E$ for $V$ and let $J$ be the matrix of the inner product in this basis.
-Let $X$ be the matrix whose columns are $[w_{i}_{E}]_{i=1}^{k}$ where
+Choose a basis $E$ for $V$ and , to simplify the notation, 
+let's write $J$ (instead of $[J]^{E}$) for the matrix of the inner product in this basis.
+Let $X$ be the matrix whose columns are $([w_{i}]_{E})_{i=1}^{k}$ where
 the $w_1,\ldots, w_k$ form a basis for $W$.  So $W$ is the column space of $X$. 
 
 If $Y$ is an element of $V$, then as in the least squares problem we want to find $M$
-so that $Y-XM$ is orthogonal to $W$, and for this it's enought that $Y-XM$ is orthogonal
+so that $Y-XM$ is orthogonal to $W$, and for this it's enough that $Y-XM$ is orthogonal
 to all of the columns of $X$.
 
 This means
@@ -397,9 +399,9 @@ $$
 XM=X(X^{\top}JX)^{-1}X^{\top}JY.
 $$
 
-Therefore the matrix of $[P_{W}]_{E}$ of $P_{W}$ is
+Therefore the matrix $[P_{W}]_{E}$ of $P_{W}$ is
 $$
-[P_{W}] = X(X^{\top}JX)^{-1}X^{\top}J.
+[P_{W}]_{E} = X(X^{\top}JX)^{-1}X^{\top}J.
 $$
 
 Notice that
@@ -439,7 +441,7 @@ $$
 
 In addition, the matrix $[J]^{E}$ satisfies the "hermitian condition" -- its transpose is its conjugate: 
 $$
-([J]^{E})^{\top} = \overline([J]^{E})
+([J]^{E})^{\top} = \overline{[J]^{E}}
 $$
 
 Notice that since $J(v,v)$ is a nonnegative real number we can define $\|v\|=\sqrt{J(v,v)}$ as in the real case.
@@ -453,7 +455,9 @@ and,  assuming that $u_{1},\ldots, u_{k}$ are orthonormal,
 $$
 u_{k+1}' = v_{k+1}-\sum_{i=1}^{k} J(v_{k+1},u_{i})u_{i}
 $$
-and $u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}
+and
+$$
+u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}
 $$
 
 we obtain an orthonormal basis $u_{1},\ldots, u_{n}$ for $V$ where the span of $u_{1},\ldots, u_{j}$ is the
