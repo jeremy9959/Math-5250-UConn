@@ -3,7 +3,7 @@ title: "Inner Product Spaces"
 ---
 
 \newcommand{\R}{\mathbb{R}}
-
+\newcommand{\C}{\mathbb{C}}
 ## Inner Products over $\R$.
 
 Suppose that $V$ is a real vector space.  An *inner product* (or "dot" product) on $V$ is a map
