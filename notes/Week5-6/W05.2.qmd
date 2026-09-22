@@ -166,6 +166,8 @@ so if $\mu$ and $\lambda$ are different then $\langle v,w\rangle=0$.
 
 ### Special normal operators
 
+#### Self-adjoint operators
+
 There are two particularly important subclasses of normal operators for our purposes.
 
 **Definition:** A linear map $f$ is *self-adjoint* if $f^{*}=f$.  Notice that a self adjoint map is obviously normal.
@@ -192,21 +194,35 @@ of $f$ has only real roots.
 Since self-adjoint matrices are normal, if we put this together with our results on normal matrices, we see that
 the minimal polynomial of a self-adjoint linear map $f$ factors into square free linear factors over the real numbers
 (regardless of whether we're in the complex or real case).  Therefore we know that $f$ is diagonalizable. And since we know
-that distinct eigengspaces are orthogonal, we have shown the following.
+that distinct eigengspaces are orthogonal, and we can find an orthonormal basis for each eigenspace, we have shown the following.
 
 **Proposition:** Self adjoint operators are unitarily diagonalizable (over $\R$ and $\C$).
 
+#### Unitary (or Orthogonal) operators
 
-
-If we look for a moment at matrices, suppose $f$ is unitarily diagonalziable and $E=\{u_1,\ldots, u_n}$ is the corresponding
-orthonormal basis.  Let $P$ be the matrix whose columns are the $u_{i}$, and let $\Lambda$ be the diagonal matrix
-whose entries are the corresponding eigenvalues $\lambda_{i}$.  Then the equations $f(u_{i})=\lambda_{i}u_{i}$ can be put together to 
-obtain the matrix equation
+A linear map $f:V\to V$ is unitary (or, in the real case "orthogonal") if $f$
+is invertible and $f^{*}=f^{-1}$.  Notice that this means that
 $$
-[f]_{E}P = \Lambda P.
+\langle f(v),f(w)\rangle = \langle v,f^{*}f(w)\rangle = \langle v,f^{-1}f(w)\rangle = \langle v,w\rangle
 $$
 
-Therefore $P^{-1}[f]_{E}P=\Lambda$.
+for all $v,w\in V$.  So A unitary/orthogonal matrix preserves the inner product
+and also the norm $\|v\|^2 = \langle v, v\rangle$. 
+
+If $u_1,\ldots, u_n$ is an orthonormal basis, then so is
+$$
+f(u_1),\ldots, f(u_n)
+$$
+
+and one can show, conversely, that if $f$ carries orthonormal bases to orthonormal bases it is unitary.
+
+Notice also that the eigenvalues of a unitary matrix have complex absolute value one.  This is because if $v$ is an eigenvector of $f$ with eigenvalue $\lambda$ then
+$$
+\langle f(v),f(v)\rangle = \lambda\overline{\lambda}\rangle v,v\rangle
+$$
+so $\lambda\overline{\lambda}=1$.
+
+
 
 **Definition:** A matrix $P$ is called *unitary*
 Since the columns of $P$ are orthonormal, we have $P^{\top}\overline{P}=I$ so $P^{-1}=\overline{P}^{\top}$.
