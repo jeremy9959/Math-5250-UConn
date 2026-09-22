@@ -45,11 +45,12 @@ The idea is that one can choose a basis for $W$, extend it to a basis for $V$, a
 
 Then I claim that $\det(A)=\det(B)\det(C)$.
 
-Check these claims more carefully.  In particular, verify that the bases exist, that the matrices have the claimed form, and that the determinant of a "block triangular" matrix is in fact the product of the determinants of the blocks.
+Check these claims more carefully.  In particular, verify that the bases exist, that the matrices have the claimed form, and that the determinant of a "block triangular" matrix is in fact the product of the determinants of the blocks.  In particular, the determinant of an upper triangular matrix is the product of the diagonal entries. 
 
 ## Additional Problems
 
-The following problems are taken from S. Roman, *Advanced Linear Algebra* (3rd ed.), Exercises for Chapter 2, pp. 72–73 (numbered as in the text).
+The following problems are taken from S. Roman, *Advanced Linear Algebra* (3rd ed.), Exercises for Chapter 2, pp. 72–73 (numbered as in the text).  Note that $\mathcal{L}(V,W)$ is the space of
+linear maps from $V$ to $W$.  
 
 1. Let $A\in\mathcal{M}_{m,n}$ have rank $k$. Prove that there are matrices $X\in\mathcal{M}_{m,k}$ and $Y\in\mathcal{M}_{k,n}$, both of rank $k$, for which $A=XY$. Prove that $A$ has rank $1$ if and only if it has the form $A=x^ty$ where $x$ and $y$ are row matrices.
 
