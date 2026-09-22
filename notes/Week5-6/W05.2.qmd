@@ -4,7 +4,8 @@ title: "Adjoints and The Spectral Theorem"
 
 \newcommand{\image}{\mathrm{image}}
 \newcommand{\ker}{\mathrm{ker}}
-\newcommand{\C}{\mathbb{\C}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\R}{\mathbb{R}}
 
 ## Adjoints
 
@@ -35,13 +36,16 @@ where
 $$
 a_{i} = \overline{\langle f(v_{i}),w_{j}\rangle}.
 $$
+
 This extends to a linear map $W\to V$ by linearity and it's clearly well-defined.  In addition
 $$\begin{aligned}
 \langle v_k,f^{*}(w_{j})\rangle &= 
 \sum_{i=1}^{n} \overline{a_{i}}\langle v_{k},v_{i}\rangle \\
 &=\overline{a_{k}} \\
 &=\langle(f(v_{k}),w_{j})\rangle
+\end{aligned}
 $$
+
 This shows that $f^{*}$ has the desired property (and also that $f^{*}$ is unique).
 
 It is possible to prove the linearity of the adjoint without appealing to bases in this way; see Roman if you are interested in this. 
@@ -49,19 +53,20 @@ It is possible to prove the linearity of the adjoint without appealing to bases 
 One consequence of the computation in the proof is
 that if $E$ is an orthonormal basis for $V$ then
 $$
-[f]_{E}^{*} = \overline{[f]_{E}}^{\transpose}
+[f]_{E}^{*} = \overline{[f]_{E}}^{\top}
 $$.
 
 To check this, we compute:
-$$\begin{aligned}
+
+$$
+\begin{aligned}
 \langle f(u),v\rangle &=
  ([f]_{E}[u]_{E})^{\top}\overline{[v]_{E}} \\
  &= [u]_{E}^{\top}[f]_{E}^{\top}\overline{[v]_{E}}\\
  &= [u]_{E}^{\top}\overline{[f]_{E}^{\top}[v]_{E}} \\
  &= \langle u,f^{*}(v)\rangle 
  \end{aligned}
- $$
-
+$$
 
 The adjoint operation has the following properties.
 
@@ -77,6 +82,7 @@ Then
 $$
 \langle f(g(v)),w)\rangle = \langle(g(v),f^{*}(w))\rangle = \langle v,g^{*}f^{*}w\rangle
 $$
+
 so $(fg)^{*}=g^{*}f^{*}$.
 
 #### Adjoints and orthogonality
