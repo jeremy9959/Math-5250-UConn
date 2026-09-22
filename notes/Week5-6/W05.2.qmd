@@ -4,6 +4,7 @@ title: "Adjoints and The Spectral Theorem"
 
 \newcommand{\image}{\mathrm{image}}
 \newcommand{\ker}{\mathrm{ker}}
+\newcommand{\C}{\mathbb{\C}}
 
 ## Adjoints
 
@@ -115,11 +116,6 @@ $$
 where the $\lambda_j$ are distinct, each $E(\lambda_j)$ is an eigenspace for $f$ with eigenvalue $\lambda_j$,
 and $E(\lambda_i)\perp E(\lambda_j)$ when $j\not i$.
 
-
-
-
-
-
 We would like to characterize unitarily diagonalizable matrices.  Notice that if $f$ is unitarily diagonalizable and
 $E=\{u_1,\ldots, u_n\}$ is an orthonormal basis in which $[f]_{E}$ is diagonal, and $\lambda_j$ is the eigenvalue for $u_{j}$,
 then the matrix $[f^{*}]_{E}$ of the adjoint $f^{*}$ is also diagonal with diagonal entries $\overline{\lambda_{j}}$.
@@ -129,7 +125,7 @@ As a result, $[f]_{E}$ and $[f^{*}]_{E}$ commute with one another, and therefore
 
 
 We will ultimately establish that, for complex vector spaces,  the normal property characterizes unitarily diagonalizable maps.
-Over the real numbers the situation is somewhat more complicated. See Roman, Theorem 10.14, page 220.
+Over the real numbers the characterization of normal matrices is somewhat more complicated. See Roman, Theorem 10.19, page 247.
 
 **Proposition:**  Over $\C$, $f$ is normal if and only if it is unitarily  diagonalizable. 
 
@@ -164,9 +160,24 @@ $$
 $$
 so if $\mu$ and $\lambda$ are different then $\langle v,w\rangle=0$.
 
-### Special normal operators
+Now we can show that, over the complex numbers, $f$ is normal if and only if is 
+unitarily diagonalizable.
 
-There are two particularly important subclasses of normal operators for our purposes.
+First, if $f$ is unitarily diagonalisable, there is an orthonormal basis of $V$ in which
+$f$ is diagonal.  In this basis, $[f^{*}]=\overline{[f]}$ so clearly $f$ and $f^{*}$ commute.
+Conversely, by the results above, the minimal polynomial of a normal matrix is square free
+and factors over $\C$ into linear factors.  Therefore $f$ is diagonalizable.  In any fixed eigenspace we can choose an orthonormal basis, and since distinct eigenspaces are orthogonal
+these combine to give an orthonormal basis of eigenvectors for $f$. 
+
+**Remark:** Over $\R$, the minimal polynomial of a normal operator is square free,
+but it may not factor into linear factors -- it factors into a combination of 
+linear and degree two irreducible factors.  From this factorization, $V$ decomposes
+into a sum of eigenspaces (corresponding to the real eigenvalues) and subspaces whose
+minimal polynomial is of degree $2$.  One can say more about the factors corresponding
+to the degree two factors and from this obtain the full result. 
+
+### Self Adjoint Operators and Orthogonal Diagonalizability 
+
 
 **Definition:** A linear map $f$ is *self-adjoint* if $f^{*}=f$.  Notice that a self adjoint map is obviously normal.
 
@@ -176,14 +187,24 @@ The class of self-adjoint operators is:
 
 - closed under addition, multiplication by *real* numbers, inverses, and *real* polynomials.
 
-In addition, if $f$ is self-adjoint, then all of its eigenvalues are real. We could argue that, if $u$ is an eigenvector with
+We also remark that  if $[f]$ is the matrix of a linear map with respect to an orthonormal basis $E$, then $f$ is self-adjoint 
+if and only if $[f]$ is Hermitian, meaning that $[f]^{\top}=\overline{f}$. In particular
+over a real vector space $[f]$ is symmetric. This is because
+$$
+[f]_{ij} = \langle f(u_{i}),u_{j}\rangle = \langle u_{i},f(u_{j})\rangle = \overline{\langle f(u_{j}),u_{i}\rangle} = \overline{[f]_{ji}}
+$$
+
+
+**Proposition:**  if $f$ is self-adjoint, then all of its eigenvalues are real. 
+
+**Proof:** We could argue that, if $u$ is an eigenvector with
 eigenvalue $\lambda$, then
 $$
 \langle f(u),u\rangle = \lambda \langle u,u\rangle = \langle u, f(u)\rangle = \overline{\lambda}\langle u, u\rangle
 $$
 so $\lambda=\overline{\lambda}$.
 Strictly speaking, however, if $V$ is a real vector space, then we don't know *a priori* that $u$ is in $V$; it might have
-complex entries.  We can work around this by choosing a basis $E$ for $V$ and looking at the matrix $[f]_{E}$.
+complex entries.  We can work around this by choosing an orthonormal basis $E$ for $V$ and looking at the matrix $[f]_{E}$.
 Since $f$ is self-adjoint, the matrix $X=[f]_{E}$ is symmetric and we can think of it as a Hermitian matrix that happens
 to have real entries.  The argument above shows that a Hermitian matrix has real eigenvalues, so its characteristic polynomial
 has only real roots.  But the characteristic polynomial of $X$ only depends on the entries of $X$, so the characteristic polynomial
@@ -194,11 +215,40 @@ the minimal polynomial of a self-adjoint linear map $f$ factors into square free
 (regardless of whether we're in the complex or real case).  Therefore we know that $f$ is diagonalizable. And since we know
 that distinct eigengspaces are orthogonal, we have shown the following.
 
-**Proposition:** Self adjoint operators are unitarily diagonalizable (over $\R$ and $\C$).
+**Proposition:** Self adjoint operators are unitarily diagonalizable over $\R$ (and conversely). 
+Over $\C$, self-adjoint operators are unitarily diagonalizable with real eigenvalues (and conversely).  
+
+### Unitary (and Orthogonal) Maps and Matrices
+
+**Definition:** A linear map is unitary (or orthogonal in the real case) if it is invertible
+and $f^{*}=f^{-1}$.  
+
+To simplify the language we will typically say "unitary" for "unitary/orthogonal".
+
+If $f$ is unitary, so is $f^{-1}$ and $af$ provided $\|a\|=1$.  The composition $fg$ of unitary
+maps is unitary since $(fg)^{*}=g^{*}f^{*}=g^{-1}f^{-1}=(fg)^{-1}$. 
+
+If $u_1,\ldots, u_n$ is an orthonormal basis  and so is $f(u_1),\ldots, f(u_n)$ then $f$ is unitary.  In this situation $f$ is invertible and 
+$$
+\langle f^{*}f(u_{i}),u_j\rangle = \langle f(u_{i},f(u_{j})\rangle = \delta_{ij}
+$$
+which. means $f^{*}f(u_{i})=u_{i}$.  Since the $u_{i}$ are a basis this means $f^{*}f=I$ so $f$
+is unitary. 
+
+If $f$ is unitary, it is an "isometry" meaning that $\|f(u)\|=\|u\|$
+for all vectors $u$. 
+Conversely, if $f$ is an invertible isometry, then
+$$
+\langle f(u), f(v)\rangle = \langle u,v\rangle
+$$
+for all $v$.  This follows because
+$$
+\|u+v\|^2-\|u-v\|^2 = 4\langle u, v\rangle
+$$
 
 
 
-If we look for a moment at matrices, suppose $f$ is unitarily diagonalziable and $E=\{u_1,\ldots, u_n}$ is the corresponding
+If we look for a moment at matrices, suppose $f$ is unitarily diagonalizable and $E=\{u_1,\ldots, u_n}$ is the corresponding
 orthonormal basis.  Let $P$ be the matrix whose columns are the $u_{i}$, and let $\Lambda$ be the diagonal matrix
 whose entries are the corresponding eigenvalues $\lambda_{i}$.  Then the equations $f(u_{i})=\lambda_{i}u_{i}$ can be put together to 
 obtain the matrix equation
