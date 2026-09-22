@@ -69,7 +69,7 @@ The adjoint operation has the following properties.
 \item $(f+g)^{*}=f^{*}+g^{*}$ and $(af)^{*}=\overline{a}f^{*}$.
 \item $f^{**}=f$.
 \item If $V=W$, then $(fg)^{*}=g^{*}f^{*}$.
-\item If $f$ is invertible then $(f^{-1})^{*}=(f^{*})^{-1}.
+\item If $f$ is invertible then $(f^{-1})^{*}=(f^{*})^{-1}$.
 \end{enumerate}
 
 These all follow from the definition fairly easily.  Let's look at the third one.  Assume $V=W$.
@@ -110,7 +110,7 @@ of eigenvectors for $f$.
 
 Equivalently, $f$ is diagonalizable if $V$ can be written as a direct sum
 $$
-V = E(\lambda_1)\oplus E(\lambda_2)\oplus\center\oplus E(\lambda_k)
+V = E(\lambda_1)\oplus E(\lambda_2)\oplus\cdots\oplus E(\lambda_k)
 $$
 
 where the $\lambda_j$ are distinct, each $E(\lambda_j)$ is an eigenspace for $f$ with eigenvalue $\lambda_j$,
@@ -248,7 +248,7 @@ $$
 
 
 
-If we look for a moment at matrices, suppose $f$ is unitarily diagonalizable and $E=\{u_1,\ldots, u_n}$ is the corresponding
+If we look for a moment at matrices, suppose $f$ is unitarily diagonalizable and $E=\{u_1,\ldots, u_n\}$ is the corresponding
 orthonormal basis.  Let $P$ be the matrix whose columns are the $u_{i}$, and let $\Lambda$ be the diagonal matrix
 whose entries are the corresponding eigenvalues $\lambda_{i}$.  Then the equations $f(u_{i})=\lambda_{i}u_{i}$ can be put together to 
 obtain the matrix equation
