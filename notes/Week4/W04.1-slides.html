@@ -484,6 +484,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">09172026-09192026</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/Week4/W04.1-slides.given.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09222026</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -502,6 +508,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#the-characteristic-polynomial-cont.-1" id="toc-the-characteristic-polynomial-cont.-1" class="nav-link" data-scroll-target="#the-characteristic-polynomial-cont.-1">The characteristic polynomial (cont.)</a></li>
   <li><a href="#the-characteristic-polynomial-cont.-2" id="toc-the-characteristic-polynomial-cont.-2" class="nav-link" data-scroll-target="#the-characteristic-polynomial-cont.-2">The characteristic polynomial (cont.)</a></li>
   <li><a href="#the-cayley-hamilton-theorem" id="toc-the-cayley-hamilton-theorem" class="nav-link" data-scroll-target="#the-cayley-hamilton-theorem">The Cayley-Hamilton Theorem</a></li>
+  <li><a href="#proof-of-cayley-hamilton" id="toc-proof-of-cayley-hamilton" class="nav-link" data-scroll-target="#proof-of-cayley-hamilton">Proof of Cayley-Hamilton</a></li>
+  <li><a href="#proof-of-cayley-hamilton-cont." id="toc-proof-of-cayley-hamilton-cont." class="nav-link" data-scroll-target="#proof-of-cayley-hamilton-cont.">Proof of Cayley-Hamilton (cont.)</a></li>
   <li><a href="#cayley-hamilton-and-invariant-subspaces" id="toc-cayley-hamilton-and-invariant-subspaces" class="nav-link" data-scroll-target="#cayley-hamilton-and-invariant-subspaces">Cayley-Hamilton and Invariant Subspaces</a></li>
   </ul>
 </nav>
@@ -568,6 +576,25 @@ A = \left[\begin{matrix} 1 &amp; 1 \\ 0 &amp; 1 \end{matrix}\right].
 <h2 class="anchored" data-anchor-id="the-cayley-hamilton-theorem">The Cayley-Hamilton Theorem</h2>
 <p>For a polynomial <span class="math inline">P(x)\in F[x]</span>, <span class="math inline">P(A)</span> (resp. <span class="math inline">P(L)</span>) makes sense as a matrix (resp. linear map), and <span class="math inline">[P(L)]_E^E = P([L]_E^E)</span> for any basis <span class="math inline">E</span>.</p>
 <p><strong>Theorem (Cayley-Hamilton).</strong> Let <span class="math inline">P_A(x)=\det(xI-A)</span> be the characteristic polynomial of <span class="math inline">A</span>. Then <span class="math inline">P_A(A)=0</span>.</p>
+</section>
+<section id="proof-of-cayley-hamilton" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-cayley-hamilton">Proof of Cayley-Hamilton</h2>
+<p>Let <span class="math inline">X=xI-A</span>. Then <span class="math display">
+XX^{adj} = \det(X)I = P_{A}(x)I.
+</span></p>
+<p>Each entry of <span class="math inline">X^{adj}</span> is a determinant of an <span class="math inline">(n-1)\times(n-1)</span> submatrix of <span class="math inline">X</span>, hence a polynomial in <span class="math inline">x</span> of degree at most <span class="math inline">n-1</span>, so <span class="math display">
+X^{adj} = B_{0} + xB_{1}+\cdots+x^{n-1}B_{n-1}
+</span> for <span class="math inline">n\times n</span> matrices <span class="math inline">B_{i}</span>.</p>
+</section>
+<section id="proof-of-cayley-hamilton-cont." class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-cayley-hamilton-cont.">Proof of Cayley-Hamilton (cont.)</h2>
+<p>Then <span class="math display">
+xIX^{adj} = xB_{0}+\cdots+x^{n}B_{n-1}, \qquad AX^{adj} = AB_{0}+\cdots+x^{n-1}AB_{n-1}.
+</span></p>
+<p>Since <span class="math inline">XX^{adj} = xIX^{adj}-AX^{adj}</span>, <span class="math display">
+P_{A}(x)I = -AB_{0}+x(B_{0}-AB_{1}) + \cdots + x^{n-1}(B_{n-2}-AB_{n-1})+x^{n}B_{n-1}.
+</span></p>
+<p>Substituting <span class="math inline">x=A</span> collapses the right side to a telescoping sum that vanishes.</p>
 </section>
 <section id="cayley-hamilton-and-invariant-subspaces" class="level2">
 <h2 class="anchored" data-anchor-id="cayley-hamilton-and-invariant-subspaces">Cayley-Hamilton and Invariant Subspaces</h2>

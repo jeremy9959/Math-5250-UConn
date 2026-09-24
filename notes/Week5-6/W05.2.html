@@ -483,6 +483,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">09172026-09192026</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/Week4/W04.1-slides.given.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09222026</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -499,6 +505,9 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#orthogonal-and-unitary-diagonalizability" id="toc-orthogonal-and-unitary-diagonalizability" class="nav-link" data-scroll-target="#orthogonal-and-unitary-diagonalizability">Orthogonal and Unitary Diagonalizability</a></li>
   <li><a href="#self-adjoint-operators-and-orthogonal-diagonalizability" id="toc-self-adjoint-operators-and-orthogonal-diagonalizability" class="nav-link" data-scroll-target="#self-adjoint-operators-and-orthogonal-diagonalizability">Self Adjoint Operators and Orthogonal Diagonalizability</a></li>
+  </ul></li>
+  <li><a href="#there-are-two-particularly-important-subclasses-of-normal-operators-for-our-purposes." id="toc-there-are-two-particularly-important-subclasses-of-normal-operators-for-our-purposes." class="nav-link" data-scroll-target="#there-are-two-particularly-important-subclasses-of-normal-operators-for-our-purposes.">There are two particularly important subclasses of normal operators for our purposes.</a>
+  <ul class="collapse">
   <li><a href="#unitary-and-orthogonal-maps-and-matrices" id="toc-unitary-and-orthogonal-maps-and-matrices" class="nav-link" data-scroll-target="#unitary-and-orthogonal-maps-and-matrices">Unitary (and Orthogonal) Maps and Matrices</a></li>
   </ul></li>
   </ul>
@@ -624,6 +633,26 @@ g^{k}(v) = (f^{*})^{k}f^{k}(v)=0
 </section>
 <section id="self-adjoint-operators-and-orthogonal-diagonalizability" class="level3">
 <h3 class="anchored" data-anchor-id="self-adjoint-operators-and-orthogonal-diagonalizability">Self Adjoint Operators and Orthogonal Diagonalizability</h3>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD #### Self-adjoint operators</p>
+</section>
+</section>
+<section id="there-are-two-particularly-important-subclasses-of-normal-operators-for-our-purposes." class="level1">
+<h1>There are two particularly important subclasses of normal operators for our purposes.</h1>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>refs/remotes/origin/main</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p><strong>Definition:</strong> A linear map <span class="math inline">f</span> is <em>self-adjoint</em> if <span class="math inline">f^{*}=f</span>. Notice that a self adjoint map is obviously normal.</p>
 <p>When working with real vector spaces, self-adjoint operators are a more natural class than normal operators.</p>
 <p>The class of self-adjoint operators is:</p>
@@ -637,9 +666,8 @@ g^{k}(v) = (f^{*})^{k}f^{k}(v)=0
 <p><strong>Proof:</strong> We could argue that, if <span class="math inline">u</span> is an eigenvector with eigenvalue <span class="math inline">\lambda</span>, then <span class="math display">
 \langle f(u),u\rangle = \lambda \langle u,u\rangle = \langle u, f(u)\rangle = \overline{\lambda}\langle u, u\rangle
 </span> so <span class="math inline">\lambda=\overline{\lambda}</span>. Strictly speaking, however, if <span class="math inline">V</span> is a real vector space, then we don’t know <em>a priori</em> that <span class="math inline">u</span> is in <span class="math inline">V</span>; it might have complex entries. We can work around this by choosing an orthonormal basis <span class="math inline">E</span> for <span class="math inline">V</span> and looking at the matrix <span class="math inline">[f]_{E}</span>. Since <span class="math inline">f</span> is self-adjoint, the matrix <span class="math inline">X=[f]_{E}</span> is symmetric and we can think of it as a Hermitian matrix that happens to have real entries. The argument above shows that a Hermitian matrix has real eigenvalues, so its characteristic polynomial has only real roots. But the characteristic polynomial of <span class="math inline">X</span> only depends on the entries of <span class="math inline">X</span>, so the characteristic polynomial of <span class="math inline">f</span> has only real roots.</p>
-<p>Since self-adjoint matrices are normal, if we put this together with our results on normal matrices, we see that the minimal polynomial of a self-adjoint linear map <span class="math inline">f</span> factors into square free linear factors over the real numbers (regardless of whether we’re in the complex or real case). Therefore we know that <span class="math inline">f</span> is diagonalizable. And since we know that distinct eigengspaces are orthogonal, we have shown the following.</p>
+<p>Since self-adjoint matrices are normal, if we put this together with our results on normal matrices, we see that the minimal polynomial of a self-adjoint linear map <span class="math inline">f</span> factors into square free linear factors over the real numbers (regardless of whether we’re in the complex or real case). Therefore we know that <span class="math inline">f</span> is diagonalizable. And since we know that distinct eigengspaces are orthogonal, and we can find an orthonormal basis for each eigenspace, we have shown the following.</p>
 <p><strong>Proposition:</strong> Self adjoint operators are unitarily diagonalizable over <span class="math inline">\mathbb{R}</span> (and conversely). Over <span class="math inline">\mathbf{C}</span>, self-adjoint operators are unitarily diagonalizable with real eigenvalues (and conversely).</p>
-</section>
 <section id="unitary-and-orthogonal-maps-and-matrices" class="level3">
 <h3 class="anchored" data-anchor-id="unitary-and-orthogonal-maps-and-matrices">Unitary (and Orthogonal) Maps and Matrices</h3>
 <p><strong>Definition:</strong> A linear map is unitary (or orthogonal in the real case) if it is invertible and <span class="math inline">f^{*}=f^{-1}</span>.</p>
@@ -653,13 +681,24 @@ g^{k}(v) = (f^{*})^{k}f^{k}(v)=0
 </span> for all <span class="math inline">v</span>. This follows because <span class="math display">
 \|u+v\|^2-\|u-v\|^2 = 4\langle u, v\rangle
 </span></p>
-<p>If we look for a moment at matrices, suppose <span class="math inline">f</span> is unitarily diagonalizable and <span class="math inline">E=\{u_1,\ldots, u_n\}</span> is the corresponding orthonormal basis. Let <span class="math inline">P</span> be the matrix whose columns are the <span class="math inline">u_{i}</span>, and let <span class="math inline">\Lambda</span> be the diagonal matrix whose entries are the corresponding eigenvalues <span class="math inline">\lambda_{i}</span>. Then the equations <span class="math inline">f(u_{i})=\lambda_{i}u_{i}</span> can be put together to obtain the matrix equation <span class="math display">
-[f]_{E}P = \Lambda P.
+<section id="unitary-or-orthogonal-operators" class="level4">
+<h4 class="anchored" data-anchor-id="unitary-or-orthogonal-operators">Unitary (or Orthogonal) operators</h4>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD A linear map <span class="math inline">f:V\to V</span> is unitary (or, in the real case “orthogonal”) if <span class="math inline">f</span> is invertible and <span class="math inline">f^{*}=f^{-1}</span>. Notice that this means that =======</p>
+<p>If we look for a moment at matrices, suppose <span class="math inline">f</span> is unitarily diagonalizable and <span class="math inline">E=\{u_1,\ldots, u_n\}</span> is the corresponding orthonormal basis. Let <span class="math inline">P</span> be the matrix whose columns are the <span class="math inline">u_{i}</span>, and let <span class="math inline">\Lambda</span> be the diagonal matrix whose entries are the corresponding eigenvalues <span class="math inline">\lambda_{i}</span>. Then the equations <span class="math inline">f(u_{i})=\lambda_{i}u_{i}</span> can be put together to obtain the matrix equation &gt;&gt;&gt;&gt;&gt;&gt;&gt; refs/remotes/origin/main <span class="math display">
+\langle f(v),f(w)\rangle = \langle v,f^{*}f(w)\rangle = \langle v,f^{-1}f(w)\rangle = \langle v,w\rangle
 </span></p>
-<p>Therefore <span class="math inline">P^{-1}[f]_{E}P=\Lambda</span>.</p>
+<p>for all <span class="math inline">v,w\in V</span>. So A unitary/orthogonal matrix preserves the inner product and also the norm <span class="math inline">\|v\|^2 = \langle v, v\rangle</span>.</p>
+<p>If <span class="math inline">u_1,\ldots, u_n</span> is an orthonormal basis, then so is <span class="math display">
+f(u_1),\ldots, f(u_n)
+</span></p>
+<p>and one can show, conversely, that if <span class="math inline">f</span> carries orthonormal bases to orthonormal bases it is unitary.</p>
+<p>Notice also that the eigenvalues of a unitary matrix have complex absolute value one. This is because if <span class="math inline">v</span> is an eigenvector of <span class="math inline">f</span> with eigenvalue <span class="math inline">\lambda</span> then <span class="math display">
+\langle f(v),f(v)\rangle = \lambda\overline{\lambda}\rangle v,v\rangle
+</span> so <span class="math inline">\lambda\overline{\lambda}=1</span>.</p>
 <p><strong>Definition:</strong> A matrix <span class="math inline">P</span> is called <em>unitary</em> Since the columns of <span class="math inline">P</span> are orthonormal, we have <span class="math inline">P^{\top}\overline{P}=I</span> so <span class="math inline">P^{-1}=\overline{P}^{\top}</span>.</p>
 
 
+</section>
 </section>
 </section>
 
