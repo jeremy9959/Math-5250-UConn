@@ -1015,6 +1015,181 @@
     "text": "The Jordan Normal Form\nNow let’s take a look at what the cyclic decomposition theorem tells us in the case where the characteristic polynomial of L factors into linear factors: \nP_{L}(x) = \\prod_{i} (x-\\lambda_{i})^{n_{i}}.\n\nThis always happens if the field F is algebraically closed, but that’s not required.\nIn this situation, the decomposition writes V as a sum of cyclic subspaces V_{i} with minimal polynomial (x-\\lambda_{i})^{k_{i}}.\nChoose one of these cyclic subspaces V_{i} and let v=v_{0} be a generator. The vectors \nv_{j} = (L-\\lambda_i)^{j}v_0\\mathrm{\\ for\\ }j=0,\\ldots, k_{i}-1\n are linearly independent and in fact give a basis for V_{i}.\nNotice that \nLv_{j} = (L-\\lambda_i)v_{j}+\\lambda_i v_{j} = v_{j+1}+\\lambda_i v_{j}\\mathrm{\\ for\\ }j=0,\\ldots, k_{i}-2\n while \nLv_{k_i-1}=\\lambda_i v_{k_{i}-1}.\n\nIn the basis \\{v_0,v_1,\\ldots,v_{k_i-1}\\}, the matrix of L restricted to V_i is therefore \nJ_{k_i}(\\lambda_i)=\\begin{pmatrix}\n\\lambda_i & 0 & 0 & \\cdots & 0 & 0 \\\\\n1 & \\lambda_i & 0 & \\cdots & 0 & 0 \\\\\n0 & 1 & \\lambda_i & \\cdots & 0 & 0 \\\\\n0 & 0 & 1 & \\cdots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & \\cdots & 1 & \\lambda_i\n\\end{pmatrix}\n\nDefinition: The k\\times k matrix with \\lambda on the diagonal, 1 on the subdiagonal, and 0 elsewhere is called the Jordan block J_{k}(\\lambda).\nCarrying this out for every i and assembling the resulting bases of the V_i into a single basis for V gives:\nTheorem: (Jordan Normal Form) If the characteristic polynomial of L factors into linear factors, then there is a basis of V in which the matrix of L is block diagonal, with blocks J_{k_i}(\\lambda_i), where the (x-\\lambda_i)^{k_i} are the minimal polynomials of the cyclic subspaces V_i in the decomposition of V.\nIt’s worth pointing out that one way to read the Jordan Normal Form is that every matrix A whose characteristic polynomial factors into linear factors is a sum \nA = D + N\n\nwhere D is a diagonal matrix whose diagonal entries are the eigenvalues repeated according to their multiplicity, and N is a nilpotent matrix - that is, N^{k}=0 for some k.\nIn a single Jordan Block of dimension k, the matrix has the form \n\\lambda I + N\n\nwhere N^{k}=0 but N^{k-1}\\not=0.\nIt’s also worth observing that each Jordan Block has a one-dimensional space of eigenvectors, so the number of independent eigenvectors is equal to the number of Jordan Blocks."
   },
   {
+    "objectID": "notes/Week4/W04.3-slides.html",
+    "href": "notes/Week4/W04.3-slides.html",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "",
+    "text": "If f(x)=P_A(x) factors over an algebraically closed field as \nf(x)=\\prod_i(x-\\lambda_i)^{n_i}\n and all n_i=1, then A is diagonalizable.\nIf some n_i&gt;1, the answer is open: sometimes A is diagonalizable, sometimes not.\nTo understand the general case, we need some theory of polynomials."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#motivation",
+    "href": "notes/Week4/W04.3-slides.html#motivation",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "",
+    "text": "If f(x)=P_A(x) factors over an algebraically closed field as \nf(x)=\\prod_i(x-\\lambda_i)^{n_i}\n and all n_i=1, then A is diagonalizable.\nIf some n_i&gt;1, the answer is open: sometimes A is diagonalizable, sometimes not.\nTo understand the general case, we need some theory of polynomials."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#polynomials-over-fx",
+    "href": "notes/Week4/W04.3-slides.html#polynomials-over-fx",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Polynomials over F[x]",
+    "text": "Polynomials over F[x]\nF[x]: polynomials with coefficients in a field F (not assumed algebraically closed).\n\nf(x)=a_0+a_1x+\\cdots+a_nx^n\n has degree \\deg(f)=n if a_n\\neq0, and is monic if a_n=1.\nProposition. (The Division Algorithm) Let f,g\\in F[x]. There exist unique polynomials q(x),r(x), with 0\\le\\deg(r(x))&lt;\\deg(g(x)), such that \nf(x)=q(x)g(x)+r(x)."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#greatest-common-divisors",
+    "href": "notes/Week4/W04.3-slides.html#greatest-common-divisors",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Greatest Common Divisors",
+    "text": "Greatest Common Divisors\nDefinition. u(x) is a divisor of f(x) if f(x)=u(x)v(x) for some v(x). h(x) is a common divisor of f(x) and g(x) if it divides both.\nProposition. (Euclid’s Algorithm) Given nonzero f(x),g(x)\\in F[x], there is a unique nonzero monic polynomial d(x)=(f(x),g(x)) of minimal degree of the form a(x)f(x)+b(x)g(x). This is the greatest common divisor:\n\nd(x) is a common divisor of f(x) and g(x);\nevery common divisor h(x) of f(x),g(x) divides d(x)."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#roots-of-the-gcd",
+    "href": "notes/Week4/W04.3-slides.html#roots-of-the-gcd",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Roots of the GCD",
+    "text": "Roots of the GCD\nProposition. The roots of d(x)=(f(x),g(x)) are exactly the common roots of f(x) and g(x). If \\lambda has multiplicity a in f and b in g, its multiplicity in d is the smaller of a and b.\nCorollary. f(x) and g(x) have no common root in any algebraic closure of F if and only if there are polynomials a(x),b(x) with \na(x)f(x)+b(x)g(x)=1."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#irreducible-polynomials",
+    "href": "notes/Week4/W04.3-slides.html#irreducible-polynomials",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Irreducible Polynomials",
+    "text": "Irreducible Polynomials\nDefinition. f(x) is irreducible if it cannot be factored as f(x)=g(x)h(x) with \\deg(g),\\deg(h)\\ge1.\nProposition. If f(x) is irreducible and a(x)b(x) is a multiple of f(x), then either a(x) is a multiple of f(x) or b(x) is."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#unique-factorization",
+    "href": "notes/Week4/W04.3-slides.html#unique-factorization",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Unique Factorization",
+    "text": "Unique Factorization\nProposition. A monic polynomial f(x) factors as \nf(x)=\\prod_i p_i(x)^{n_i}\n where the p_i(x) are distinct monic irreducible polynomials, and the set of p_i and the n_i are unique up to order."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#the-primary-decomposition",
+    "href": "notes/Week4/W04.3-slides.html#the-primary-decomposition",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "The Primary Decomposition",
+    "text": "The Primary Decomposition\nLet L:V\\to V and factor the characteristic polynomial into distinct irreducibles: \nP_L(x)=p_1(x)^{n_1}\\cdots p_k(x)^{n_k}.\n\nTheorem. V decomposes as an internal direct sum \nV=V_1\\oplus V_2\\oplus\\cdots\\oplus V_k,\n where p_i(L)^{n_i}V_i=0 for each i."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#the-minimal-polynomial",
+    "href": "notes/Week4/W04.3-slides.html#the-minimal-polynomial",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "The Minimal Polynomial",
+    "text": "The Minimal Polynomial\nSuppose \\dim V=n and L:V\\to V is linear. Cayley–Hamilton gives P_L(L)V=0.\nDefinition. The minimal polynomial m_L(x) is the monic polynomial of smallest degree such that m_L(L)V=0.\nProposition. The minimal polynomial m_L(x) is a divisor of the characteristic polynomial P_L(x)."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#cyclic-subspaces",
+    "href": "notes/Week4/W04.3-slides.html#cyclic-subspaces",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Cyclic Subspaces",
+    "text": "Cyclic Subspaces\nDefinition. Let \\dim V=n. V is cyclic for L if there is a v\\in V such that v,Lv,\\ldots,L^{n-1}v span V. Such a v is called a generator for V.\nIf v generates V, there is a relation \nL^nv=-\\sum_{i=0}^{n-1}a_iL^iv,\n giving a polynomial q(x)=x^n+a_{n-1}x^{n-1}+\\cdots+a_0 with q(L)V=0. This q(x) is the minimal polynomial of L acting on V."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#the-companion-matrix",
+    "href": "notes/Week4/W04.3-slides.html#the-companion-matrix",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "The Companion Matrix",
+    "text": "The Companion Matrix\nIn the basis \\{L^iv\\}_{i=0}^{n-1}, the matrix of L is \nA=\\begin{pmatrix}\n0&0&0&\\cdots&0&-a_0\\\\\n1&0&0&\\cdots&0&-a_1\\\\\n0&1&0&\\cdots&0&-a_2\\\\\n0&0&1&\\cdots&0&-a_3\\\\\n\\vdots&\\vdots&\\vdots&\\ddots&\\vdots&\\vdots\\\\\n0&0&0&\\cdots&1&-a_{n-1}\n\\end{pmatrix}\n\nRemark. A matrix of this shape for q(x) is called the companion matrix of q(x)."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#the-companion-matrix-cont.",
+    "href": "notes/Week4/W04.3-slides.html#the-companion-matrix-cont.",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "The Companion Matrix (cont.)",
+    "text": "The Companion Matrix (cont.)\nProposition. The characteristic polynomial of the companion matrix A is q(x).\nCorollary. If V is cyclic for L, then the minimal polynomial and characteristic polynomial of L coincide."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#decomposition-into-cyclic-subspaces",
+    "href": "notes/Week4/W04.3-slides.html#decomposition-into-cyclic-subspaces",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Decomposition into Cyclic Subspaces",
+    "text": "Decomposition into Cyclic Subspaces\nTheorem. Let L:V\\to V, where \\dim V=n. Then there is a decomposition \nV=V_1\\oplus V_2\\oplus\\cdots\\oplus V_k\n into cyclic subspaces, where the minimal polynomial on V_i is a power p_i(x)^{k_i} of a monic irreducible polynomial over F. The polynomials p_i(x)^{k_i} are unique up to order."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#two-consequences",
+    "href": "notes/Week4/W04.3-slides.html#two-consequences",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Two Consequences",
+    "text": "Two Consequences\n\nThe minimal polynomial m_L(x) is the least common multiple of the p_i(x)^{k_i}.\nThe characteristic polynomial P_L(x) is the product of the p_i(x)^{k_i}.\nHence every irreducible factor of P_L(x) is a factor of m_L(x)."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#proof-setup",
+    "href": "notes/Week4/W04.3-slides.html#proof-setup",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Proof: Setup",
+    "text": "Proof: Setup\nStart with the primary decomposition V=\\bigoplus_i V_i, where p_i(L)^{n_i}V_i=0, the p_i(x) are distinct irreducibles, and P_L(x)=\\prod_i p_i(x)^{n_i}.\nIt suffices to show: if p(x) is irreducible of degree d and p(L)^nV=0, then V splits as a direct sum of cyclic subspaces with minimal polynomials p(x)^{k_i}, \\sum k_i=n."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#proof-choosing-a-generator",
+    "href": "notes/Week4/W04.3-slides.html#proof-choosing-a-generator",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Proof: Choosing a Generator",
+    "text": "Proof: Choosing a Generator\nChoose v_1\\in V so that p(L)^{k_1}v_1=0, p(L)^{k_1-1}v_1\\neq0, with k_1 maximal among all such choices. Then p(L)^{k_1}V=0.\nv_1 generates a cyclic subspace with basis \nv_1,Lv_1,\\ldots,L^{k_1d-1}v_1.\n\nThese are independent: a dependence relation would give h(L)v_1=0 for some h(x) of degree &lt;dk_1. The gcd s(x) of h(x) and p(x)^{k_1} also satisfies s(L)v_1=0; since p(x) is irreducible, s(x)=p(x)^k with k&lt;k_1, contradicting the maximality of k_1."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#proof-constructing-the-complement",
+    "href": "notes/Week4/W04.3-slides.html#proof-constructing-the-complement",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Proof: Constructing the Complement",
+    "text": "Proof: Constructing the Complement\nLet V_1 be generated by v_1. Goal: find an L-invariant W with V=V_1\\oplus W; since W has smaller dimension and satisfies the same hypotheses, induction on \\dim V then finishes the decomposition.\nConstruct W inductively: start with W_0=(0), and build L-invariant subspaces W_j with V_1\\cap W_j=0, so that for j large enough, V_j:=V_1\\oplus W_j=V."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#proof-extending-w_j",
+    "href": "notes/Week4/W04.3-slides.html#proof-extending-w_j",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Proof: Extending W_j",
+    "text": "Proof: Extending W_j\nSuppose W_j is L-invariant with V_1\\cap W_j=0. Choose w\\in V, w\\notin V_j.\nSince p(L)^{k_1}w=0\\in V_j, and by Euclid’s algorithm, the set of k(x) with k(L)w\\in V_j is exactly the multiples of some p(x)^f, with 1\\le f\\le k_1.\nWrite \np(L)^fw=c(L)v_1+w_j,\\qquad w_j\\in W_j."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#proof-extending-w_j-cont.",
+    "href": "notes/Week4/W04.3-slides.html#proof-extending-w_j-cont.",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Proof: Extending W_j (cont.)",
+    "text": "Proof: Extending W_j (cont.)\nApplying p(L)^{k_1-f} to both sides gives \n0=p(L)^{k_1-f}c(L)v_1+p(L)^{k_1-f}w_j.\n Since V_1\\cap W_j=0, this forces p(L)^{k_1-f}c(L)v_1=0, so c(x) is divisible by p(x)^f: write c(x)=\\delta(x)p(x)^f.\nSet w'=w-\\delta(L)v_1, let W' be the cyclic subspace generated by w', and set W_{j+1}=W_j+W'."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#proof-v_1cap-w_j10",
+    "href": "notes/Week4/W04.3-slides.html#proof-v_1cap-w_j10",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Proof: V_1\\cap W_{j+1}=0",
+    "text": "Proof: V_1\\cap W_{j+1}=0\nSuppose x=a(L)v_1=w_j+b(L)w'\\in V_1\\cap W_{j+1}. Since \nb(L)w=a(L)v_1-w_j+b(L)\\delta(L)v_1\\in V_j,\n we must have b(x)=p(x)^f\\beta(x) for some \\beta(x). Then \nb(L)w-b(L)\\delta(L)v_1=\\beta(L)\\big(p(L)^fw-c(L)v_1\\big)=\\beta(L)w_j,\n so x=w_j+\\beta(L)w_j\\in V_1\\cap W_j=0. Hence V_1\\cap W_{j+1}=0."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#proof-conclusion",
+    "href": "notes/Week4/W04.3-slides.html#proof-conclusion",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Proof: Conclusion",
+    "text": "Proof: Conclusion\nRepeating this extension a finite number of times (since \\dim V&lt;\\infty) produces an L-invariant W with V=V_1\\oplus W.\nSplitting off a cyclic subspace of W and continuing inductively completes the existence proof. (Uniqueness is omitted.)"
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#the-jordan-normal-form",
+    "href": "notes/Week4/W04.3-slides.html#the-jordan-normal-form",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "The Jordan Normal Form",
+    "text": "The Jordan Normal Form\nSuppose P_L(x)=\\prod_i(x-\\lambda_i)^{n_i} factors into linear factors — always true if F is algebraically closed, but not required.\nThe cyclic decomposition writes V=\\bigoplus_i V_i, each V_i cyclic with minimal polynomial (x-\\lambda_i)^{k_i}."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#a-basis-for-a-cyclic-block",
+    "href": "notes/Week4/W04.3-slides.html#a-basis-for-a-cyclic-block",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "A Basis for a Cyclic Block",
+    "text": "A Basis for a Cyclic Block\nLet v_0 generate V_i. The vectors \nv_j=(L-\\lambda_i)^jv_0,\\qquad j=0,\\ldots,k_i-1\n form a basis for V_i, and \nLv_j=v_{j+1}+\\lambda_iv_j\\ (j=0,\\ldots,k_i-2),\\qquad Lv_{k_i-1}=\\lambda_iv_{k_i-1}.\n\nIn this basis, L|_{V_i} has matrix \nJ_{k_i}(\\lambda_i)=\\begin{pmatrix}\n\\lambda_i&0&0&\\cdots&0&0\\\\\n1&\\lambda_i&0&\\cdots&0&0\\\\\n0&1&\\lambda_i&\\cdots&0&0\\\\\n0&0&1&\\cdots&0&0\\\\\n\\vdots&\\vdots&\\vdots&\\ddots&\\vdots&\\vdots\\\\\n0&0&0&\\cdots&1&\\lambda_i\n\\end{pmatrix}"
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#jordan-blocks",
+    "href": "notes/Week4/W04.3-slides.html#jordan-blocks",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Jordan Blocks",
+    "text": "Jordan Blocks\nDefinition. The k\\times k matrix with \\lambda on the diagonal, 1 on the subdiagonal, and 0 elsewhere is the Jordan block J_k(\\lambda).\nTheorem. (Jordan Normal Form) If the characteristic polynomial of L factors into linear factors, then there is a basis of V in which the matrix of L is block diagonal, with blocks J_{k_i}(\\lambda_i), where (x-\\lambda_i)^{k_i} are the minimal polynomials of the cyclic subspaces V_i."
+  },
+  {
+    "objectID": "notes/Week4/W04.3-slides.html#consequences-of-jordan-form",
+    "href": "notes/Week4/W04.3-slides.html#consequences-of-jordan-form",
+    "title": "The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form",
+    "section": "Consequences of Jordan Form",
+    "text": "Consequences of Jordan Form\nEvery matrix A whose characteristic polynomial factors into linear factors is a sum \nA=D+N\n where D is diagonal (eigenvalues repeated by multiplicity) and N is nilpotent (N^k=0 for some k).\nIn a single Jordan block of size k: \\lambda I+N with N^k=0 but N^{k-1}\\neq0.\nEach Jordan block has a one-dimensional space of eigenvectors, so the number of independent eigenvectors equals the number of Jordan blocks."
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Math 5250 Schedule",

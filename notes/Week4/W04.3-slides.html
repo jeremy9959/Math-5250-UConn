@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 5250: Graduate Linear Algebra - Weeks 10–11 — Duality and Inner Products</title>
+<title>Math 5250: Graduate Linear Algebra - The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,6 +59,22 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -106,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week10-11/W10.1.html">Weeks 10–11 — Dual Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week10-11/W10.2.html">Duality and inner products</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -331,13 +347,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">Weeks 10–11 — Dual Spaces</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week10-11/W10.1.html" class="sidebar-item-text sidebar-link">
@@ -346,7 +362,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week10-11/W10.2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../notes/Week10-11/W10.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Duality and inner products</span></a>
   </div>
 </li>
@@ -485,7 +501,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#polynomials-over-fx" id="toc-polynomials-over-fx" class="nav-link" data-scroll-target="#polynomials-over-fx">Polynomials over <span class="math inline">F[x]</span></a></li>
+  <li><a href="#greatest-common-divisors" id="toc-greatest-common-divisors" class="nav-link" data-scroll-target="#greatest-common-divisors">Greatest Common Divisors</a></li>
+  <li><a href="#roots-of-the-gcd" id="toc-roots-of-the-gcd" class="nav-link" data-scroll-target="#roots-of-the-gcd">Roots of the GCD</a></li>
+  <li><a href="#irreducible-polynomials" id="toc-irreducible-polynomials" class="nav-link" data-scroll-target="#irreducible-polynomials">Irreducible Polynomials</a></li>
+  <li><a href="#unique-factorization" id="toc-unique-factorization" class="nav-link" data-scroll-target="#unique-factorization">Unique Factorization</a></li>
+  <li><a href="#the-primary-decomposition" id="toc-the-primary-decomposition" class="nav-link" data-scroll-target="#the-primary-decomposition">The Primary Decomposition</a></li>
+  <li><a href="#the-minimal-polynomial" id="toc-the-minimal-polynomial" class="nav-link" data-scroll-target="#the-minimal-polynomial">The Minimal Polynomial</a></li>
+  <li><a href="#cyclic-subspaces" id="toc-cyclic-subspaces" class="nav-link" data-scroll-target="#cyclic-subspaces">Cyclic Subspaces</a></li>
+  <li><a href="#the-companion-matrix" id="toc-the-companion-matrix" class="nav-link" data-scroll-target="#the-companion-matrix">The Companion Matrix</a></li>
+  <li><a href="#the-companion-matrix-cont." id="toc-the-companion-matrix-cont." class="nav-link" data-scroll-target="#the-companion-matrix-cont.">The Companion Matrix (cont.)</a></li>
+  <li><a href="#decomposition-into-cyclic-subspaces" id="toc-decomposition-into-cyclic-subspaces" class="nav-link" data-scroll-target="#decomposition-into-cyclic-subspaces">Decomposition into Cyclic Subspaces</a></li>
+  <li><a href="#two-consequences" id="toc-two-consequences" class="nav-link" data-scroll-target="#two-consequences">Two Consequences</a></li>
+  <li><a href="#proof-setup" id="toc-proof-setup" class="nav-link" data-scroll-target="#proof-setup">Proof: Setup</a></li>
+  <li><a href="#proof-choosing-a-generator" id="toc-proof-choosing-a-generator" class="nav-link" data-scroll-target="#proof-choosing-a-generator">Proof: Choosing a Generator</a></li>
+  <li><a href="#proof-constructing-the-complement" id="toc-proof-constructing-the-complement" class="nav-link" data-scroll-target="#proof-constructing-the-complement">Proof: Constructing the Complement</a></li>
+  <li><a href="#proof-extending-w_j" id="toc-proof-extending-w_j" class="nav-link" data-scroll-target="#proof-extending-w_j">Proof: Extending <span class="math inline">W_j</span></a></li>
+  <li><a href="#proof-extending-w_j-cont." id="toc-proof-extending-w_j-cont." class="nav-link" data-scroll-target="#proof-extending-w_j-cont.">Proof: Extending <span class="math inline">W_j</span> (cont.)</a></li>
+  <li><a href="#proof-v_1cap-w_j10" id="toc-proof-v_1cap-w_j10" class="nav-link" data-scroll-target="#proof-v_1cap-w_j10">Proof: <span class="math inline">V_1\cap W_{j+1}=0</span></a></li>
+  <li><a href="#proof-conclusion" id="toc-proof-conclusion" class="nav-link" data-scroll-target="#proof-conclusion">Proof: Conclusion</a></li>
+  <li><a href="#the-jordan-normal-form" id="toc-the-jordan-normal-form" class="nav-link" data-scroll-target="#the-jordan-normal-form">The Jordan Normal Form</a></li>
+  <li><a href="#a-basis-for-a-cyclic-block" id="toc-a-basis-for-a-cyclic-block" class="nav-link" data-scroll-target="#a-basis-for-a-cyclic-block">A Basis for a Cyclic Block</a></li>
+  <li><a href="#jordan-blocks" id="toc-jordan-blocks" class="nav-link" data-scroll-target="#jordan-blocks">Jordan Blocks</a></li>
+  <li><a href="#consequences-of-jordan-form" id="toc-consequences-of-jordan-form" class="nav-link" data-scroll-target="#consequences-of-jordan-form">Consequences of Jordan Form</a></li>
   </ul>
 </nav>
     </div>
@@ -494,7 +533,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Weeks 10–11 — Duality and Inner Products</h1>
+<h1 class="title">The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form</h1>
+<p class="subtitle lead">Math 5250 — Week 4</p>
 </div>
 
 
@@ -509,9 +549,187 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
-<p>Notes on the relationship between duality and inner products, including the Riesz representation theorem.</p>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<p>If <span class="math inline">f(x)=P_A(x)</span> factors over an algebraically closed field as <span class="math display">
+f(x)=\prod_i(x-\lambda_i)^{n_i}
+</span> and all <span class="math inline">n_i=1</span>, then <span class="math inline">A</span> is diagonalizable.</p>
+<p>If some <span class="math inline">n_i&gt;1</span>, the answer is open: sometimes <span class="math inline">A</span> is diagonalizable, sometimes not.</p>
+<p>To understand the general case, we need some theory of polynomials.</p>
+</section>
+<section id="polynomials-over-fx" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials-over-fx">Polynomials over <span class="math inline">F[x]</span></h2>
+<p><span class="math inline">F[x]</span>: polynomials with coefficients in a field <span class="math inline">F</span> (not assumed algebraically closed).</p>
+<p><span class="math display">
+f(x)=a_0+a_1x+\cdots+a_nx^n
+</span> has degree <span class="math inline">\deg(f)=n</span> if <span class="math inline">a_n\neq0</span>, and is <em>monic</em> if <span class="math inline">a_n=1</span>.</p>
+<p><strong>Proposition.</strong> (The Division Algorithm) Let <span class="math inline">f,g\in F[x]</span>. There exist unique polynomials <span class="math inline">q(x),r(x)</span>, with <span class="math inline">0\le\deg(r(x))&lt;\deg(g(x))</span>, such that <span class="math display">
+f(x)=q(x)g(x)+r(x).
+</span></p>
+</section>
+<section id="greatest-common-divisors" class="level2">
+<h2 class="anchored" data-anchor-id="greatest-common-divisors">Greatest Common Divisors</h2>
+<p><strong>Definition.</strong> <span class="math inline">u(x)</span> is a <em>divisor</em> of <span class="math inline">f(x)</span> if <span class="math inline">f(x)=u(x)v(x)</span> for some <span class="math inline">v(x)</span>. <span class="math inline">h(x)</span> is a <em>common divisor</em> of <span class="math inline">f(x)</span> and <span class="math inline">g(x)</span> if it divides both.</p>
+<p><strong>Proposition.</strong> (Euclid’s Algorithm) Given nonzero <span class="math inline">f(x),g(x)\in F[x]</span>, there is a unique nonzero monic polynomial <span class="math inline">d(x)=(f(x),g(x))</span> of minimal degree of the form <span class="math inline">a(x)f(x)+b(x)g(x)</span>. This is the <em>greatest common divisor</em>:</p>
+<ol type="1">
+<li><span class="math inline">d(x)</span> is a common divisor of <span class="math inline">f(x)</span> and <span class="math inline">g(x)</span>;</li>
+<li>every common divisor <span class="math inline">h(x)</span> of <span class="math inline">f(x),g(x)</span> divides <span class="math inline">d(x)</span>.</li>
+</ol>
+</section>
+<section id="roots-of-the-gcd" class="level2">
+<h2 class="anchored" data-anchor-id="roots-of-the-gcd">Roots of the GCD</h2>
+<p><strong>Proposition.</strong> The roots of <span class="math inline">d(x)=(f(x),g(x))</span> are exactly the common roots of <span class="math inline">f(x)</span> and <span class="math inline">g(x)</span>. If <span class="math inline">\lambda</span> has multiplicity <span class="math inline">a</span> in <span class="math inline">f</span> and <span class="math inline">b</span> in <span class="math inline">g</span>, its multiplicity in <span class="math inline">d</span> is the smaller of <span class="math inline">a</span> and <span class="math inline">b</span>.</p>
+<p><strong>Corollary.</strong> <span class="math inline">f(x)</span> and <span class="math inline">g(x)</span> have no common root in any algebraic closure of <span class="math inline">F</span> if and only if there are polynomials <span class="math inline">a(x),b(x)</span> with <span class="math display">
+a(x)f(x)+b(x)g(x)=1.
+</span></p>
+</section>
+<section id="irreducible-polynomials" class="level2">
+<h2 class="anchored" data-anchor-id="irreducible-polynomials">Irreducible Polynomials</h2>
+<p><strong>Definition.</strong> <span class="math inline">f(x)</span> is <em>irreducible</em> if it cannot be factored as <span class="math inline">f(x)=g(x)h(x)</span> with <span class="math inline">\deg(g),\deg(h)\ge1</span>.</p>
+<p><strong>Proposition.</strong> If <span class="math inline">f(x)</span> is irreducible and <span class="math inline">a(x)b(x)</span> is a multiple of <span class="math inline">f(x)</span>, then either <span class="math inline">a(x)</span> is a multiple of <span class="math inline">f(x)</span> or <span class="math inline">b(x)</span> is.</p>
+</section>
+<section id="unique-factorization" class="level2">
+<h2 class="anchored" data-anchor-id="unique-factorization">Unique Factorization</h2>
+<p><strong>Proposition.</strong> A monic polynomial <span class="math inline">f(x)</span> factors as <span class="math display">
+f(x)=\prod_i p_i(x)^{n_i}
+</span> where the <span class="math inline">p_i(x)</span> are distinct monic irreducible polynomials, and the set of <span class="math inline">p_i</span> and the <span class="math inline">n_i</span> are unique up to order.</p>
+</section>
+<section id="the-primary-decomposition" class="level2">
+<h2 class="anchored" data-anchor-id="the-primary-decomposition">The Primary Decomposition</h2>
+<p>Let <span class="math inline">L:V\to V</span> and factor the characteristic polynomial into distinct irreducibles: <span class="math display">
+P_L(x)=p_1(x)^{n_1}\cdots p_k(x)^{n_k}.
+</span></p>
+<p><strong>Theorem.</strong> <span class="math inline">V</span> decomposes as an internal direct sum <span class="math display">
+V=V_1\oplus V_2\oplus\cdots\oplus V_k,
+</span> where <span class="math inline">p_i(L)^{n_i}V_i=0</span> for each <span class="math inline">i</span>.</p>
+</section>
+<section id="the-minimal-polynomial" class="level2">
+<h2 class="anchored" data-anchor-id="the-minimal-polynomial">The Minimal Polynomial</h2>
+<p>Suppose <span class="math inline">\dim V=n</span> and <span class="math inline">L:V\to V</span> is linear. Cayley–Hamilton gives <span class="math inline">P_L(L)V=0</span>.</p>
+<p><strong>Definition.</strong> The <em>minimal polynomial</em> <span class="math inline">m_L(x)</span> is the monic polynomial of smallest degree such that <span class="math inline">m_L(L)V=0</span>.</p>
+<p><strong>Proposition.</strong> The minimal polynomial <span class="math inline">m_L(x)</span> is a divisor of the characteristic polynomial <span class="math inline">P_L(x)</span>.</p>
+</section>
+<section id="cyclic-subspaces" class="level2">
+<h2 class="anchored" data-anchor-id="cyclic-subspaces">Cyclic Subspaces</h2>
+<p><strong>Definition.</strong> Let <span class="math inline">\dim V=n</span>. <span class="math inline">V</span> is <em>cyclic</em> for <span class="math inline">L</span> if there is a <span class="math inline">v\in V</span> such that <span class="math inline">v,Lv,\ldots,L^{n-1}v</span> span <span class="math inline">V</span>. Such a <span class="math inline">v</span> is called a <em>generator</em> for <span class="math inline">V</span>.</p>
+<p>If <span class="math inline">v</span> generates <span class="math inline">V</span>, there is a relation <span class="math display">
+L^nv=-\sum_{i=0}^{n-1}a_iL^iv,
+</span> giving a polynomial <span class="math inline">q(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_0</span> with <span class="math inline">q(L)V=0</span>. This <span class="math inline">q(x)</span> is the minimal polynomial of <span class="math inline">L</span> acting on <span class="math inline">V</span>.</p>
+</section>
+<section id="the-companion-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="the-companion-matrix">The Companion Matrix</h2>
+<p>In the basis <span class="math inline">\{L^iv\}_{i=0}^{n-1}</span>, the matrix of <span class="math inline">L</span> is <span class="math display">
+A=\begin{pmatrix}
+0&amp;0&amp;0&amp;\cdots&amp;0&amp;-a_0\\
+1&amp;0&amp;0&amp;\cdots&amp;0&amp;-a_1\\
+0&amp;1&amp;0&amp;\cdots&amp;0&amp;-a_2\\
+0&amp;0&amp;1&amp;\cdots&amp;0&amp;-a_3\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots\\
+0&amp;0&amp;0&amp;\cdots&amp;1&amp;-a_{n-1}
+\end{pmatrix}
+</span></p>
+<p><strong>Remark.</strong> A matrix of this shape for <span class="math inline">q(x)</span> is called the <em>companion matrix</em> of <span class="math inline">q(x)</span>.</p>
+</section>
+<section id="the-companion-matrix-cont." class="level2">
+<h2 class="anchored" data-anchor-id="the-companion-matrix-cont.">The Companion Matrix (cont.)</h2>
+<p><strong>Proposition.</strong> The characteristic polynomial of the companion matrix <span class="math inline">A</span> is <span class="math inline">q(x)</span>.</p>
+<p><strong>Corollary.</strong> If <span class="math inline">V</span> is cyclic for <span class="math inline">L</span>, then the minimal polynomial and characteristic polynomial of <span class="math inline">L</span> coincide.</p>
+</section>
+<section id="decomposition-into-cyclic-subspaces" class="level2">
+<h2 class="anchored" data-anchor-id="decomposition-into-cyclic-subspaces">Decomposition into Cyclic Subspaces</h2>
+<p><strong>Theorem.</strong> Let <span class="math inline">L:V\to V</span>, where <span class="math inline">\dim V=n</span>. Then there is a decomposition <span class="math display">
+V=V_1\oplus V_2\oplus\cdots\oplus V_k
+</span> into cyclic subspaces, where the minimal polynomial on <span class="math inline">V_i</span> is a power <span class="math inline">p_i(x)^{k_i}</span> of a monic irreducible polynomial over <span class="math inline">F</span>. The polynomials <span class="math inline">p_i(x)^{k_i}</span> are unique up to order.</p>
+</section>
+<section id="two-consequences" class="level2">
+<h2 class="anchored" data-anchor-id="two-consequences">Two Consequences</h2>
+<ul>
+<li>The minimal polynomial <span class="math inline">m_L(x)</span> is the least common multiple of the <span class="math inline">p_i(x)^{k_i}</span>.</li>
+<li>The characteristic polynomial <span class="math inline">P_L(x)</span> is the product of the <span class="math inline">p_i(x)^{k_i}</span>.</li>
+<li>Hence every irreducible factor of <span class="math inline">P_L(x)</span> is a factor of <span class="math inline">m_L(x)</span>.</li>
+</ul>
+</section>
+<section id="proof-setup" class="level2">
+<h2 class="anchored" data-anchor-id="proof-setup">Proof: Setup</h2>
+<p>Start with the primary decomposition <span class="math inline">V=\bigoplus_i V_i</span>, where <span class="math inline">p_i(L)^{n_i}V_i=0</span>, the <span class="math inline">p_i(x)</span> are distinct irreducibles, and <span class="math inline">P_L(x)=\prod_i p_i(x)^{n_i}</span>.</p>
+<p>It suffices to show: if <span class="math inline">p(x)</span> is irreducible of degree <span class="math inline">d</span> and <span class="math inline">p(L)^nV=0</span>, then <span class="math inline">V</span> splits as a direct sum of cyclic subspaces with minimal polynomials <span class="math inline">p(x)^{k_i}</span>, <span class="math inline">\sum k_i=n</span>.</p>
+</section>
+<section id="proof-choosing-a-generator" class="level2">
+<h2 class="anchored" data-anchor-id="proof-choosing-a-generator">Proof: Choosing a Generator</h2>
+<p>Choose <span class="math inline">v_1\in V</span> so that <span class="math inline">p(L)^{k_1}v_1=0</span>, <span class="math inline">p(L)^{k_1-1}v_1\neq0</span>, with <span class="math inline">k_1</span> maximal among all such choices. Then <span class="math inline">p(L)^{k_1}V=0</span>.</p>
+<p><span class="math inline">v_1</span> generates a cyclic subspace with basis <span class="math display">
+v_1,Lv_1,\ldots,L^{k_1d-1}v_1.
+</span></p>
+<p>These are independent: a dependence relation would give <span class="math inline">h(L)v_1=0</span> for some <span class="math inline">h(x)</span> of degree <span class="math inline">&lt;dk_1</span>. The gcd <span class="math inline">s(x)</span> of <span class="math inline">h(x)</span> and <span class="math inline">p(x)^{k_1}</span> also satisfies <span class="math inline">s(L)v_1=0</span>; since <span class="math inline">p(x)</span> is irreducible, <span class="math inline">s(x)=p(x)^k</span> with <span class="math inline">k&lt;k_1</span>, contradicting the maximality of <span class="math inline">k_1</span>.</p>
+</section>
+<section id="proof-constructing-the-complement" class="level2">
+<h2 class="anchored" data-anchor-id="proof-constructing-the-complement">Proof: Constructing the Complement</h2>
+<p>Let <span class="math inline">V_1</span> be generated by <span class="math inline">v_1</span>. Goal: find an <span class="math inline">L</span>-invariant <span class="math inline">W</span> with <span class="math inline">V=V_1\oplus W</span>; since <span class="math inline">W</span> has smaller dimension and satisfies the same hypotheses, induction on <span class="math inline">\dim V</span> then finishes the decomposition.</p>
+<p>Construct <span class="math inline">W</span> inductively: start with <span class="math inline">W_0=(0)</span>, and build <span class="math inline">L</span>-invariant subspaces <span class="math inline">W_j</span> with <span class="math inline">V_1\cap W_j=0</span>, so that for <span class="math inline">j</span> large enough, <span class="math inline">V_j:=V_1\oplus W_j=V</span>.</p>
+</section>
+<section id="proof-extending-w_j" class="level2">
+<h2 class="anchored" data-anchor-id="proof-extending-w_j">Proof: Extending <span class="math inline">W_j</span></h2>
+<p>Suppose <span class="math inline">W_j</span> is <span class="math inline">L</span>-invariant with <span class="math inline">V_1\cap W_j=0</span>. Choose <span class="math inline">w\in V</span>, <span class="math inline">w\notin V_j</span>.</p>
+<p>Since <span class="math inline">p(L)^{k_1}w=0\in V_j</span>, and by Euclid’s algorithm, the set of <span class="math inline">k(x)</span> with <span class="math inline">k(L)w\in V_j</span> is exactly the multiples of some <span class="math inline">p(x)^f</span>, with <span class="math inline">1\le f\le k_1</span>.</p>
+<p>Write <span class="math display">
+p(L)^fw=c(L)v_1+w_j,\qquad w_j\in W_j.
+</span></p>
+</section>
+<section id="proof-extending-w_j-cont." class="level2">
+<h2 class="anchored" data-anchor-id="proof-extending-w_j-cont.">Proof: Extending <span class="math inline">W_j</span> (cont.)</h2>
+<p>Applying <span class="math inline">p(L)^{k_1-f}</span> to both sides gives <span class="math display">
+0=p(L)^{k_1-f}c(L)v_1+p(L)^{k_1-f}w_j.
+</span> Since <span class="math inline">V_1\cap W_j=0</span>, this forces <span class="math inline">p(L)^{k_1-f}c(L)v_1=0</span>, so <span class="math inline">c(x)</span> is divisible by <span class="math inline">p(x)^f</span>: write <span class="math inline">c(x)=\delta(x)p(x)^f</span>.</p>
+<p>Set <span class="math inline">w'=w-\delta(L)v_1</span>, let <span class="math inline">W'</span> be the cyclic subspace generated by <span class="math inline">w'</span>, and set <span class="math inline">W_{j+1}=W_j+W'</span>.</p>
+</section>
+<section id="proof-v_1cap-w_j10" class="level2">
+<h2 class="anchored" data-anchor-id="proof-v_1cap-w_j10">Proof: <span class="math inline">V_1\cap W_{j+1}=0</span></h2>
+<p>Suppose <span class="math inline">x=a(L)v_1=w_j+b(L)w'\in V_1\cap W_{j+1}</span>. Since <span class="math display">
+b(L)w=a(L)v_1-w_j+b(L)\delta(L)v_1\in V_j,
+</span> we must have <span class="math inline">b(x)=p(x)^f\beta(x)</span> for some <span class="math inline">\beta(x)</span>. Then <span class="math display">
+b(L)w-b(L)\delta(L)v_1=\beta(L)\big(p(L)^fw-c(L)v_1\big)=\beta(L)w_j,
+</span> so <span class="math inline">x=w_j+\beta(L)w_j\in V_1\cap W_j=0</span>. Hence <span class="math inline">V_1\cap W_{j+1}=0</span>.</p>
+</section>
+<section id="proof-conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="proof-conclusion">Proof: Conclusion</h2>
+<p>Repeating this extension a finite number of times (since <span class="math inline">\dim V&lt;\infty</span>) produces an <span class="math inline">L</span>-invariant <span class="math inline">W</span> with <span class="math inline">V=V_1\oplus W</span>.</p>
+<p>Splitting off a cyclic subspace of <span class="math inline">W</span> and continuing inductively completes the existence proof. (Uniqueness is omitted.)</p>
+</section>
+<section id="the-jordan-normal-form" class="level2">
+<h2 class="anchored" data-anchor-id="the-jordan-normal-form">The Jordan Normal Form</h2>
+<p>Suppose <span class="math inline">P_L(x)=\prod_i(x-\lambda_i)^{n_i}</span> factors into linear factors — always true if <span class="math inline">F</span> is algebraically closed, but not required.</p>
+<p>The cyclic decomposition writes <span class="math inline">V=\bigoplus_i V_i</span>, each <span class="math inline">V_i</span> cyclic with minimal polynomial <span class="math inline">(x-\lambda_i)^{k_i}</span>.</p>
+</section>
+<section id="a-basis-for-a-cyclic-block" class="level2">
+<h2 class="anchored" data-anchor-id="a-basis-for-a-cyclic-block">A Basis for a Cyclic Block</h2>
+<p>Let <span class="math inline">v_0</span> generate <span class="math inline">V_i</span>. The vectors <span class="math display">
+v_j=(L-\lambda_i)^jv_0,\qquad j=0,\ldots,k_i-1
+</span> form a basis for <span class="math inline">V_i</span>, and <span class="math display">
+Lv_j=v_{j+1}+\lambda_iv_j\ (j=0,\ldots,k_i-2),\qquad Lv_{k_i-1}=\lambda_iv_{k_i-1}.
+</span></p>
+<p>In this basis, <span class="math inline">L|_{V_i}</span> has matrix <span class="math display">
+J_{k_i}(\lambda_i)=\begin{pmatrix}
+\lambda_i&amp;0&amp;0&amp;\cdots&amp;0&amp;0\\
+1&amp;\lambda_i&amp;0&amp;\cdots&amp;0&amp;0\\
+0&amp;1&amp;\lambda_i&amp;\cdots&amp;0&amp;0\\
+0&amp;0&amp;1&amp;\cdots&amp;0&amp;0\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots\\
+0&amp;0&amp;0&amp;\cdots&amp;1&amp;\lambda_i
+\end{pmatrix}
+</span></p>
+</section>
+<section id="jordan-blocks" class="level2">
+<h2 class="anchored" data-anchor-id="jordan-blocks">Jordan Blocks</h2>
+<p><strong>Definition.</strong> The <span class="math inline">k\times k</span> matrix with <span class="math inline">\lambda</span> on the diagonal, <span class="math inline">1</span> on the subdiagonal, and <span class="math inline">0</span> elsewhere is the <em>Jordan block</em> <span class="math inline">J_k(\lambda)</span>.</p>
+<p><strong>Theorem.</strong> (Jordan Normal Form) If the characteristic polynomial of <span class="math inline">L</span> factors into linear factors, then there is a basis of <span class="math inline">V</span> in which the matrix of <span class="math inline">L</span> is block diagonal, with blocks <span class="math inline">J_{k_i}(\lambda_i)</span>, where <span class="math inline">(x-\lambda_i)^{k_i}</span> are the minimal polynomials of the cyclic subspaces <span class="math inline">V_i</span>.</p>
+</section>
+<section id="consequences-of-jordan-form" class="level2">
+<h2 class="anchored" data-anchor-id="consequences-of-jordan-form">Consequences of Jordan Form</h2>
+<p>Every matrix <span class="math inline">A</span> whose characteristic polynomial factors into linear factors is a sum <span class="math display">
+A=D+N
+</span> where <span class="math inline">D</span> is diagonal (eigenvalues repeated by multiplicity) and <span class="math inline">N</span> is nilpotent (<span class="math inline">N^k=0</span> for some <span class="math inline">k</span>).</p>
+<p>In a single Jordan block of size <span class="math inline">k</span>: <span class="math inline">\lambda I+N</span> with <span class="math inline">N^k=0</span> but <span class="math inline">N^{k-1}\neq0</span>.</p>
+<p>Each Jordan block has a one-dimensional space of eigenvectors, so the number of independent eigenvectors equals the number of Jordan blocks.</p>
 
 
 </section>
