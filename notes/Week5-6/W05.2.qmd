@@ -3,7 +3,6 @@ title: "Adjoints and The Spectral Theorem"
 ---
 
 \newcommand{\image}{\mathrm{image}}
-\newcommand{\ker}{\mathrm{ker}}
 \newcommand{\C}{\mathbf{C}}
 \newcommand{\R}{\mathbb{R}}
 
@@ -11,7 +10,7 @@ title: "Adjoints and The Spectral Theorem"
 
 For more details and exercises related to this material, see Chapter 10 of Roman's *Advanced Linear Algebra.*
 
-Suppose $V$ and $W$ are finite dimensional inner product spaces (over $\R$ or $\C$).  We will use the bracket notation $\langle,\rangle$ for the inner products on both spaces.  Let $f:V\to W$ be a linear map.
+Suppose $V$ and $W$ are finite dimensional inner product spaces (over $\R$ or $\C$).  We will use the bracket notation $\langle\cdot,\cdot\rangle$ for the inner products on both spaces.  Let $f:V\to W$ be a linear map.
 
 **Proposition:** There is a unique linear map
 $$
@@ -42,7 +41,7 @@ $$\begin{aligned}
 \langle v_k,f^{*}(w_{j})\rangle &= 
 \sum_{i=1}^{n} \overline{a_{i}}\langle v_{k},v_{i}\rangle \\
 &=\overline{a_{k}} \\
-&=\langle(f(v_{k}),w_{j})\rangle
+&=\langle f(v_{k}),w_{j}\rangle
 \end{aligned}
 $$
 
@@ -63,44 +62,43 @@ $$
 \langle f(u),v\rangle &=
  ([f]_{E}[u]_{E})^{\top}\overline{[v]_{E}} \\
  &= [u]_{E}^{\top}[f]_{E}^{\top}\overline{[v]_{E}}\\
- &= [u]_{E}^{\top}\overline{[f]_{E}^{\top}[v]_{E}} \\
+ &= [u]_{E}^{\top}\overline{\overline{[f]_{E}}^{\top}[v]_{E}} \\
  &= \langle u,f^{*}(v)\rangle 
  \end{aligned}
 $$
 
 The adjoint operation has the following properties.
 
-\begin{enumerate}
-\item $(f+g)^{*}=f^{*}+g^{*}$ and $(af)^{*}=\overline{a}f^{*}$.
-\item $f^{**}=f$.
-\item If $V=W$, then $(fg)^{*}=g^{*}f^{*}$.
-\item If $f$ is invertible then $(f^{-1})^{*}=(f^{*})^{-1}$.
-\end{enumerate}
+- $(f+g)^{*}=f^{*}+g^{*}$ and $(af)^{*}=\overline{a}f^{*}$.
+- $f^{**}=f$.
+- If $V=W$, then $(fg)^{*}=g^{*}f^{*}$.
+- If $f$ is invertible then $(f^{-1})^{*}=(f^{*})^{-1}$.
+
 
 These all follow from the definition fairly easily.  Let's look at the third one.  Assume $V=W$.
 Then
 $$
-\langle f(g(v)),w)\rangle = \langle(g(v),f^{*}(w))\rangle = \langle v,g^{*}f^{*}w\rangle
+\langle f(g(v)),w)\rangle = \langle g(v),f^{*}(w) \rangle = \langle v,g^{*}f^{*}w\rangle
 $$
 
 so $(fg)^{*}=g^{*}f^{*}$.
 
 #### Adjoints and orthogonality
 
-As before, let $V$ and $W$ be finite dimensional inner product spaces and let $f:V\to W$ be a linear map.  Then we have the following properties (from [Roman, Advanced Linear Algebra](https://link.springer.com/book/10.1007/978-0-387-72831-5), Theorem 1.3, page 202. )
+As before, let $V$ and $W$ be finite dimensional inner product spaces and let $f:V\to W$ be a linear map.  Then we have the following properties (from [Roman, Advanced Linear Algebra](https://link.springer.com/book/10.1007/978-0-387-72831-5), Theorem 10.3, page 202. )
 
 ![Theorem 10.3, Roman *Advanced Linear Algebra*, p. 202](images/roman-theorem-10.3.png)
 
 
 The proofs of these are applications of the definitions.  Here are a few proofs.
 
-1.  $\ker(f^{*})=\image(f)^{\perp}$.  Suppose $w\in\ker(f^{*})$.  Then $\langle v,f^{*}w\rangle=0$ for all $v$.  Thus $\langle f(v),w \rangle$ is zero for all $v$, and therefore $w$ is in $\image(f)^{\perp}$.  Conversely, if $w\in\image(f)^{\perp}$.  Then $\langle f(v),w\rangle=0$ for all $v$, and then $\langle v,f^{*}w\rangle=0$ for all $v$.  Since the inner product is definite, this means $f^{*}w=0$ or $w\in\ker(f^{(*)})$.
+**1.** $\ker(f^{*})=\image(f)^{\perp}$.  Suppose $w\in\ker(f^{*})$.  Then $\langle v,f^{*}w\rangle=0$ for all $v$.  Thus $\langle f(v),w \rangle$ is zero for all $v$, and therefore $w$ is in $\image(f)^{\perp}$.  Conversely, if $w\in\image(f)^{\perp}$, then $\langle f(v),w\rangle=0$ for all $v$, and then $\langle v,f^{*}w\rangle=0$ for all $v$.  Since the inner product is definite, this means $f^{*}w=0$, i.e. $w\in\ker(f^{*})$.
 
-3. $f$ is injective if and only if $f^{*}$ is surjective.  If $f$ is injective, then 
+**3.** $f$ is injective if and only if $f^{*}$ is surjective.  If $f$ is injective, then
 $\ker(f)=\image(f^{*})^{\perp}=0$ so $\image(f^{*})$
 must be all of $V$.
 
-5.  $\ker(f^{*}f)=\ker(f)$.  Clearly $\ker(f^{*}f)$ contains $\ker(f)$.  On the other hand, if $v\in \ker(f^{*}f)$,
+**5.** $\ker(f^{*}f)=\ker(f)$.  Clearly $\ker(f^{*}f)$ contains $\ker(f)$.  On the other hand, if $v\in \ker(f^{*}f)$,
 then
 $$
 \langle f^{*}fv,v\rangle=\langle fv,fv \rangle = 0
@@ -120,7 +118,7 @@ V = E(\lambda_1)\oplus E(\lambda_2)\oplus\cdots\oplus E(\lambda_k)
 $$
 
 where the $\lambda_j$ are distinct, each $E(\lambda_j)$ is an eigenspace for $f$ with eigenvalue $\lambda_j$,
-and $E(\lambda_i)\perp E(\lambda_j)$ when $j\not i$.
+and $E(\lambda_i)\perp E(\lambda_j)$ when $j\ne i$.
 
 We would like to characterize unitarily diagonalizable matrices.  Notice that if $f$ is unitarily diagonalizable and
 $E=\{u_1,\ldots, u_n\}$ is an orthonormal basis in which $[f]_{E}$ is diagonal, and $\lambda_j$ is the eigenvalue for $u_{j}$,
@@ -135,16 +133,17 @@ Over the real numbers the characterization of normal matrices is somewhat more c
 
 **Proposition:**  Over $\C$, $f$ is normal if and only if it is unitarily  diagonalizable. 
 
-We will work our way up to this result.  First, notice that:
+We will work our way up to this result.  First, note that:
 
-- a linear combination of normal operators is normal
 - the inverse of a normal operator is normal
 - if $f$ is normal, so is $f^2$ (since $(f^2)^{*}f^2=f^{*}f^{*}ff=fff^{*}f^{*}$) and therefore so is any polynomial
 $P(f)$ in $f$. 
 
-It is not the case in general that a product of normal operators is normal.
+It is not the case in general that a sum or product of normal operators is normal.  But one can check that
+a  polynomial in a normal operator is normal. 
 
 In addition, if $f$ is normal:
+
 
 - If $f(v)=0$ then $f^{*}(v)=0$.  Because 
 $$\langle f(v),f(v)\rangle=\langle v,f^{*}f(v)\rangle = \langle f^{*}(v),f^{*}(v)\rangle$$
@@ -159,17 +158,17 @@ g^{k}(v) = (f^{*})^{k}f^{k}(v)=0
 $$
 so $g(v)=0$ so $f^{*}f(v)=0$ and finally $\langle f(v), f(v)\rangle=0$ so $f(v)=0$. 
 - The minimal polynomial of $f$ acting on $V$ is square free.
-- If $v$ is an eigenvalue for $f$ with eigenvalue $\lambda$, then $v$ is an eigenvalue for $f^{*}$ with eigenvalue $\overline{\lambda}$.
+- If $v$ is an eigenvector for $f$ with eigenvalue $\lambda$, then $v$ is an eigenvector for $f^{*}$ with eigenvalue $\overline{\lambda}$.
 - Eigenvectors $v$ and $w$ with distinct eigenvalues $\lambda$ and $\mu$ are orthogonal.  Because 
 $$
 \langle f(v),w\rangle = \lambda \langle v,w\rangle = \langle v,f^{*}(w)\rangle=\mu\langle v,w \rangle
 $$
 so if $\mu$ and $\lambda$ are different then $\langle v,w\rangle=0$.
 
-Now we can show that, over the complex numbers, $f$ is normal if and only if is 
+Now we can show that, over the complex numbers, $f$ is normal if and only if it is
 unitarily diagonalizable.
 
-First, if $f$ is unitarily diagonalisable, there is an orthonormal basis of $V$ in which
+First, if $f$ is unitarily diagonalizable, there is an orthonormal basis of $V$ in which
 $f$ is diagonal.  In this basis, $[f^{*}]=\overline{[f]}$ so clearly $f$ and $f^{*}$ commute.
 Conversely, by the results above, the minimal polynomial of a normal matrix is square free
 and factors over $\C$ into linear factors.  Therefore $f$ is diagonalizable.  In any fixed eigenspace we can choose an orthonormal basis, and since distinct eigenspaces are orthogonal
@@ -180,18 +179,15 @@ but it may not factor into linear factors -- it factors into a combination of
 linear and degree two irreducible factors.  From this factorization, $V$ decomposes
 into a sum of eigenspaces (corresponding to the real eigenvalues) and subspaces whose
 minimal polynomial is of degree $2$.  One can say more about the factors corresponding
-to the degree two factors and from this obtain the full result. 
+to the degree two factors and from this obtain the full result.  See Roman, Theorem 10.14, page 216.
 
 ### Self Adjoint Operators and Orthogonal Diagonalizability 
 
-<<<<<<< HEAD
 #### Self-adjoint operators
 
 There are two particularly important subclasses of normal operators for our purposes.
-=======
->>>>>>> refs/remotes/origin/main
 
-**Definition:** A linear map $f$ is *self-adjoint* if $f^{*}=f$.  Notice that a self adjoint map is obviously normal.
+**Definition:** A linear map $f$ is *self-adjoint* if $f^{*}=f$.  Notice that a self-adjoint map is obviously normal.
 
 When working with real vector spaces, self-adjoint operators are a more natural class than normal operators.
 
@@ -200,7 +196,7 @@ The class of self-adjoint operators is:
 - closed under addition, multiplication by *real* numbers, inverses, and *real* polynomials.
 
 We also remark that  if $[f]$ is the matrix of a linear map with respect to an orthonormal basis $E$, then $f$ is self-adjoint 
-if and only if $[f]$ is Hermitian, meaning that $[f]^{\top}=\overline{f}$. In particular
+if and only if $[f]$ is Hermitian, meaning that $[f]^{\top}=\overline{[f]}$. In particular
 over a real vector space $[f]$ is symmetric. This is because
 $$
 [f]_{ij} = \langle f(u_{i}),u_{j}\rangle = \langle u_{i},f(u_{j})\rangle = \overline{\langle f(u_{j}),u_{i}\rangle} = \overline{[f]_{ji}}
@@ -214,6 +210,7 @@ eigenvalue $\lambda$, then
 $$
 \langle f(u),u\rangle = \lambda \langle u,u\rangle = \langle u, f(u)\rangle = \overline{\lambda}\langle u, u\rangle
 $$
+
 so $\lambda=\overline{\lambda}$.
 Strictly speaking, however, if $V$ is a real vector space, then we don't know *a priori* that $u$ is in $V$; it might have
 complex entries.  We can work around this by choosing an orthonormal basis $E$ for $V$ and looking at the matrix $[f]_{E}$.
@@ -225,73 +222,66 @@ of $f$ has only real roots.
 Since self-adjoint matrices are normal, if we put this together with our results on normal matrices, we see that
 the minimal polynomial of a self-adjoint linear map $f$ factors into square free linear factors over the real numbers
 (regardless of whether we're in the complex or real case).  Therefore we know that $f$ is diagonalizable. And since we know
-that distinct eigengspaces are orthogonal, and we can find an orthonormal basis for each eigenspace, we have shown the following.
+that distinct eigenspaces are orthogonal, and we can find an orthonormal basis for each eigenspace, we have shown the following.
 
-**Proposition:** Self adjoint operators are unitarily diagonalizable over $\R$ (and conversely). 
+**Proposition:** Self-adjoint operators are unitarily diagonalizable over $\R$ (and conversely). 
 Over $\C$, self-adjoint operators are unitarily diagonalizable with real eigenvalues (and conversely).  
 
-### Unitary (and Orthogonal) Maps and Matrices
 
-**Definition:** A linear map is unitary (or orthogonal in the real case) if it is invertible
-and $f^{*}=f^{-1}$.  
 
-To simplify the language we will typically say "unitary" for "unitary/orthogonal".
+### Unitary (or Orthogonal) operators
 
-If $f$ is unitary, so is $f^{-1}$ and $af$ provided $\|a\|=1$.  The composition $fg$ of unitary
-maps is unitary since $(fg)^{*}=g^{*}f^{*}=g^{-1}f^{-1}=(fg)^{-1}$. 
-
-If $u_1,\ldots, u_n$ is an orthonormal basis  and so is $f(u_1),\ldots, f(u_n)$ then $f$ is unitary.  In this situation $f$ is invertible and 
-$$
-\langle f^{*}f(u_{i}),u_j\rangle = \langle f(u_{i},f(u_{j})\rangle = \delta_{ij}
-$$
-which. means $f^{*}f(u_{i})=u_{i}$.  Since the $u_{i}$ are a basis this means $f^{*}f=I$ so $f$
-is unitary. 
-
-If $f$ is unitary, it is an "isometry" meaning that $\|f(u)\|=\|u\|$
-for all vectors $u$. 
-Conversely, if $f$ is an invertible isometry, then
-$$
-\langle f(u), f(v)\rangle = \langle u,v\rangle
-$$
-for all $v$.  This follows because
-$$
-\|u+v\|^2-\|u-v\|^2 = 4\langle u, v\rangle
-$$
-
-#### Unitary (or Orthogonal) operators
-
-<<<<<<< HEAD
 A linear map $f:V\to V$ is unitary (or, in the real case "orthogonal") if $f$
 is invertible and $f^{*}=f^{-1}$.  Notice that this means that
-=======
-
-If we look for a moment at matrices, suppose $f$ is unitarily diagonalizable and $E=\{u_1,\ldots, u_n\}$ is the corresponding
-orthonormal basis.  Let $P$ be the matrix whose columns are the $u_{i}$, and let $\Lambda$ be the diagonal matrix
-whose entries are the corresponding eigenvalues $\lambda_{i}$.  Then the equations $f(u_{i})=\lambda_{i}u_{i}$ can be put together to 
-obtain the matrix equation
->>>>>>> refs/remotes/origin/main
 $$
 \langle f(v),f(w)\rangle = \langle v,f^{*}f(w)\rangle = \langle v,f^{-1}f(w)\rangle = \langle v,w\rangle
 $$
 
-for all $v,w\in V$.  So A unitary/orthogonal matrix preserves the inner product
+for all $v,w\in V$.  So a unitary/orthogonal matrix preserves the inner product
 and also the norm $\|v\|^2 = \langle v, v\rangle$. 
 
-If $u_1,\ldots, u_n$ is an orthonormal basis, then so is
+
+**Proposition:** Let $f$ be a unitary linear map.  Then:
+- If $u_1,\ldots, u_n$ is an orthonormal basis, then so is
 $$
 f(u_1),\ldots, f(u_n)
 $$
+and, conversely,  if $f$ carries one orthonormal basis to another it is unitary.
 
-and one can show, conversely, that if $f$ carries orthonormal bases to orthonormal bases it is unitary.
+It's clear from the definition that if $u_1,\ldots, u_n$ is orthonormal, so is $f(u_1),\ldots, f(u_n)$.
+Conversely suppose that $f$ is any linear map and $u_1,\ldots, u_n$ is orthonormal.  Suppose that
+$f(u_1),\ldots, f(u_n)$ is orthonormal.  Write $v=\sum a_{i}u_{i}$ and $w=\sum b_{i}u_{i}$ for two vectors $v$ and
+$w$. Then
+$$
+\langle f(v),f(w)\rangle = \langle \sum a_{i}f(u_{i}),\sum b_{i}f(u_{i}) = \sum_{i,j} a_{i}\overline{b_{j}}\delta_{ij}=\langle v,w\rangle
+$$ 
+so $f$ is unitary.
 
-Notice also that the eigenvalues of a unitary matrix have complex absolute value one.  This is because if $v$ is an eigenvector of $f$ with eigenvalue $\lambda$ then
+- The eigenvalues of a unitary matrix have complex absolute value one.  This is because if $v$ is an eigenvector of $f$ with eigenvalue $\lambda$ then
+
 $$
-\langle f(v),f(v)\rangle = \lambda\overline{\lambda}\rangle v,v\rangle
+\langle f(v),f(v)\rangle = \lambda\overline{\lambda}\langle v,v\rangle
 $$
+
 so $\lambda\overline{\lambda}=1$.
 
+- Suppose that $f$ is an invertible isometry, meaning that it is an invertible linear map and $\langle f(v),f(w)\rangle = \langle v,w\rangle$ for all pairs of vectors $v,w$.  Then
+$f$ is unitary.
 
+This is because
+$$
+\langle f(v), f(w)\rangle = \langle v, f^{*}f(w)\rangle = \langle v,w\rangle
+$$.
+This means $f^{*}f(w)=w$ (since for any $w$, $\langle v, f^{*}f(w)-w\rangle=0$ for all $v$ so the right side is zero.)
+But $f^{*}f(w)=w$ means $f^{*}=f^{-1}$ so $f$ is unitary.
 
-**Definition:** A matrix $P$ is called *unitary*
-Since the columns of $P$ are orthonormal, we have $P^{\top}\overline{P}=I$ so $P^{-1}=\overline{P}^{\top}$.
+- Over the reals, $f$ is orthogonal if and only if $\|f(v)\|^2=\|v\|^2$ for all $v$.  This is because over the reals we have
+the "parallelogram law":
 
+$$
+\langle v,w\rangle = \frac{1}{4}(\|v+w\|^2-\|v-w\|^2)
+$$
+
+**Proposition:** A matrix $A$ is unitary if and only $A^{\top}A=I$.  This is equivalent to saying that the rows
+(and columns) of $A$ form an orthonormal set.  A unitary matrix has determinant of complex absolute value 1; over the reals,
+an orthogonal matrix has determinant $\pm 1$.
