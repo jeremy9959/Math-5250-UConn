@@ -189,6 +189,8 @@ $$
 
 **Corollary:** If $V$ is cyclic for $L$, then the minimal polynomial and characteristic polynomials of $L$ coincide.
 
+
+
 ## Decomposition into Cyclic Subspaces
 
 
@@ -367,4 +369,71 @@ $$
 where $N^{k}=0$ but $N^{k-1}\not=0$.  
 
 It's also worth observing that each Jordan Block has a one-dimensional space of  eigenvectors, so the number of independent eigenvectors is equal to the number of Jordan Blocks.
+
+## Matrix Exponentials and Linear Systems
+
+Let $A$ be a real or complex matrix and define
+$$
+\mathrm{exp}(A) = I + A + A^2/2! + A^3/3! +\cdots
+$$
+
+We can make sense of this using the Jordan normal form.  We know that there is an invertible matrix $P$ so that $B=PAP^{-1}$ and $B$ is a matrix in Jordan form.  
+$$
+P\mathrm{exp}(A)P^{-1} = I + B + B^2/2! + B^3/3! + \cdots
+$$
+
+we can define $\exp(A)$ if we can make sense of $\exp(B)$.  Since the exponential respects the block structure of $B$, It suffices to work out
+the powers of a block
+
+$$
+B=\begin{pmatrix}
+\lambda & 1       &        &        &         \\
+        & \lambda & 1      &        &         \\
+        &         & \ddots & \ddots &         \\
+        &         &        & \lambda & 1      \\
+        &         &        &         & \lambda
+\end{pmatrix}=\lambda I + N
+$$
+
+The nilpotent matrix $N$ commutes with $\lambda I$ so 
+
+$$
+(\lambda I +N)^k = \sum_{j=0}^{k} \binom{k}{j} \lambda^{j}N^{k-j}
+$$
+
+and the powers $N^{k-j}$ are obtained from $N$ by shifting the off-diagonal ones "up and to the right".
+
+It follows that 
+$$
+e^{B} = e^{\lambda}(I + \sum_{j=1}^{n-1} N^{j}/j!).
+$$
+
+
+Now suppose we have a first order linear system of differential equations of the form
+
+$$
+\begin{pmatrix} \dot{x}_1 \\ \dot{x}_2 \\ \vdots \\ \dot{x}_n \end{pmatrix} = A
+\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+$$
+
+where the $x_{i}$ are functions of $t$ and $\dot{x}_i=dx_{i}/dt$. 
+The solution is 
+
+$$
+\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} = exp(tA)\begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}
+$$
+where the vector of $a_{i}$ give the initial conditions (that is the values of $x_{i}$ when $t=0$. 
+)
+If $A$ is diagonal then the system breaks up into one-dimensional subspaces
+with solutions $x_{i}=a_{i}e^{\lambda_{i} t}$.
+
+If $A$ is a jordan block with eigenvalue $\lambda$, then the solutions have the form
+$$\begin{aligned}
+x_{n} &= a_{n}e^{\lambda t} \\
+x_{n-1} & = e^{\lambda t}(a_{n-1}+ ta_{n}) \\
+x_{n-2} & = e^{\lambda t}(a_{n-2} + ta_{n-1} + t^2/2! a_{n})
+\vdots & \vdots \\
+\end{aligned}
+$$
+
 
