@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Linear Maps, Change of Basis, Similarity – Math 5250: Graduate Linear Algebra</title>
+<title>projection – Math 5250: Graduate Linear Algebra</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,26 +23,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f154b77148a324d550c6206182bf458c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f154b77148a324d550c6206182bf458c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,63 +105,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-</head><body class="nav-sidebar docked nav-fixed quarto-light">\newcommand{\R}{\mathbf{R}}
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
 
 
+<link rel="stylesheet" href="../styles.css">
+</head>
 
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math 5250: Graduate Linear Algebra</span>
     </a>
   </div>
@@ -137,11 +128,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" aria-current="page"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../schedule.html"> 
+    <a class="nav-link" href="../schedule.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
 </ul>
@@ -162,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Linear Maps, Change of Basis, Similarity</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -184,13 +175,13 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Math 5250: Graduate Linear Algebra</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Math 5250 Schedule</span></a>
   </div>
 </li>
@@ -205,25 +196,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/W01.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vector space structure of R^n</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.2.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/W01.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linear transformations and matrices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.3.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/W01.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Change of basis, kernel and range, isomorphisms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/Problems.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/Problems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Suggested Problems</span></a>
   </div>
 </li>
@@ -240,19 +231,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week2-3/W02.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Abstract vector spaces and linear maps</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.2.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week2-3/W02.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Direct sums, quotient spaces, and complexes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02-Problems.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week2-3/W02-Problems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Suggested Problems</span></a>
   </div>
 </li>
@@ -269,13 +260,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Trace and determinant</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W03-Problems.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week2-3/W03-Problems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Suggested Problems</span></a>
   </div>
 </li>
@@ -292,13 +283,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week4/W04.1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week4/W04.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Eigenvalues and eigenvectors; Cayley Hamilton</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week4/W04.3.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week4/W04.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Minimal polynomial, Cyclic Subspaces, Jordan Form</span></a>
   </div>
 </li>
@@ -315,25 +306,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week5-6/W05.1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week5-6/W05.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Inner product spaces over R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week5-6/W05.2.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week5-6/W05.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Gram-Schmidt process and orthogonal projections</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week5-6/W05.3.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week5-6/W05.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Spectral theorem for self-adjoint operators (real case)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week5-6/W05.4.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week5-6/W05.4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Complex inner product spaces and Hermitian operators</span></a>
   </div>
 </li>
@@ -350,13 +341,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week7-8/W07.2.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week7-8/W07.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Positive definite matrices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week7-8/W07.3.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week7-8/W07.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">QR, SVD, and polar decomposition</span></a>
   </div>
 </li>
@@ -373,13 +364,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week9/W09.1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week9/W09.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vector space norms and equivalence of norms</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week9/W09.2.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week9/W09.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Matrix and operator norms</span></a>
   </div>
 </li>
@@ -396,19 +387,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week10-11/W10.1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week10-11/W10.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linear functionals and the dual space</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week10-11/W10.2.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week10-11/W10.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Duality and inner products</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week10-11/W10.3.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week10-11/W10.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dual bases, linear maps, and double duality</span></a>
   </div>
 </li>
@@ -425,19 +416,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week12/W12.1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week12/W12.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bilinear forms and matrix representations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week12/W12.2.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week12/W12.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quadratic forms and diagonalization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week12/W12.3.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week12/W12.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Signature and definiteness</span></a>
   </div>
 </li>
@@ -454,19 +445,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week13-14/W13.1.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week13-14/W13.1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tensor products of vector spaces</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week13-14/W13.2.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week13-14/W13.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exterior powers of vector spaces</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week13-14/W13.3.html" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week13-14/W13.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tensor and exterior algebras</span></a>
   </div>
 </li>
@@ -483,49 +474,49 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.1-slides.given.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/W01.1-slides.given.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09012026</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.2-slides.given.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/W01.2-slides.given.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09012026 (cont’d)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.2-slides.given.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/W01.2-slides.given.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09032026</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.3-slides.given.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/W01.3-slides.given.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09032026 (cont’d)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week1/W01.3-slides.given.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week1/W01.3-slides.given.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09082026</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.2-slides.given.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week2-3/W02.2-slides.given.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09102026-09152026</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.3-slides.given.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week2-3/W02.3-slides.given.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09172026-09192026</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week4/W04.1-slides.given.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../notes/Week4/W04.1-slides.given.pdf" class="sidebar-item-text sidebar-link">
  <span class="menu-text">09222026</span></a>
   </div>
 </li>
@@ -536,98 +527,90 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#coordinates-relative-to-a-basis" id="toc-coordinates-relative-to-a-basis" class="nav-link active" data-scroll-target="#coordinates-relative-to-a-basis">Coordinates Relative to a Basis</a></li>
-  <li><a href="#the-matrix-of-a-linear-map" id="toc-the-matrix-of-a-linear-map" class="nav-link" data-scroll-target="#the-matrix-of-a-linear-map">The Matrix of a Linear Map</a></li>
-  <li><a href="#change-of-basis" id="toc-change-of-basis" class="nav-link" data-scroll-target="#change-of-basis">Change of Basis</a></li>
-  <li><a href="#similarity-of-matrices" id="toc-similarity-of-matrices" class="nav-link" data-scroll-target="#similarity-of-matrices">Similarity of Matrices</a></li>
-  <li><a href="#injective-surjective-and-isomorphisms" id="toc-injective-surjective-and-isomorphisms" class="nav-link" data-scroll-target="#injective-surjective-and-isomorphisms">Injective, Surjective, and Isomorphisms</a></li>
-  <li><a href="#invertibility-criteria" id="toc-invertibility-criteria" class="nav-link" data-scroll-target="#invertibility-criteria">Invertibility Criteria</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Linear Maps, Change of Basis, Similarity</h1>
-<p class="subtitle lead">Math 5250 — Week 1</p>
+
+
+
+<div id="589f375b" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9acfdf2d" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.random.normal(size<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">3</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> np.array([[<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="4e90aa94" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>np.linalg.eig(J)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>EigResult(eigenvalues=array([-3.79583152,  4.        ,  5.79583152,  4.        ,  4.        ,
+        4.        ,  4.        ,  4.        ]), eigenvectors=array([[-3.61944911e-01, -9.25820100e-01, -1.08871597e-01,
+         8.80439639e-02,  2.34916649e-01, -3.38398766e-02,
+        -1.20918629e-02, -1.33102033e-02],
+       [-2.88047170e-01, -1.18817984e-16,  9.57616222e-01,
+        -6.73398333e-17, -2.91984665e-16, -2.80410026e-16,
+         3.40585053e-16, -5.00171520e-16],
+       [-3.61944911e-01,  1.54303350e-01, -1.08871597e-01,
+        -9.71118875e-02, -1.66467277e-01,  7.37357694e-01,
+        -2.34281795e-01,  5.26466443e-01],
+       [-3.61944911e-01,  1.54303350e-01, -1.08871597e-01,
+         1.74116951e-01,  7.53822555e-01, -5.47803840e-02,
+        -8.20270902e-02,  2.88258254e-01],
+       [-3.61944911e-01,  1.54303350e-01, -1.08871597e-01,
+        -5.27495363e-01,  6.45889600e-03, -2.31571149e-01,
+        -5.17623760e-01, -1.90293771e-01],
+       [-3.61944911e-01,  1.54303350e-01, -1.08871597e-01,
+        -5.27495363e-01,  6.45889600e-03,  3.37405952e-01,
+         8.18488802e-01,  8.47269997e-02],
+       [-3.61944911e-01,  1.54303350e-01, -1.08871597e-01,
+         4.44970849e-01, -4.17594860e-01, -3.77286118e-01,
+         1.37678529e-02, -7.68679545e-01],
+       [-3.61944911e-01,  1.54303350e-01, -1.08871597e-01,
+         4.44970849e-01, -4.17594860e-01, -3.77286118e-01,
+         1.37678529e-02,  7.28318221e-02]]))</code></pre>
+</div>
+</div>
+<div id="77ec0166" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> X <span class="op">@</span> np.linalg.inv(X.T <span class="op">@</span> J <span class="op">@</span> X) <span class="op">@</span> X.T <span class="op">@</span> J</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="ddbe9eae" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>np.linalg.matrix_rank(H)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>3</code></pre>
+</div>
+</div>
+<div id="2c8e7f4a" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>H<span class="op">@</span>H</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>array([[ 0.85339947, -0.07235498,  0.15863863,  0.3058599 , -0.15790116,
+        -0.00650127,  0.08784717, -0.07622946],
+       [-0.44794668,  0.09287792,  0.05931927, -0.2735651 , -0.08486451,
+        -0.0389303 , -0.14219247,  0.14524216],
+       [-0.36948614,  0.16041917,  0.27440945, -0.41081925, -0.34613731,
+        -0.08914663, -0.27152044,  0.28617334],
+       [ 0.09360426, -0.02303826, -0.09495012,  0.18301644,  0.21674456,
+        -0.06033496,  0.10685596, -0.09097136],
+       [-0.58413264,  0.04603681, -0.24424401,  0.00276873,  0.44407223,
+        -0.11624488,  0.06853004, -0.04741279],
+       [-0.80276019, -0.25508931, -0.35728077, -0.64433823, -0.48627231,
+         0.87059293, -0.12816017, -0.0844611 ],
+       [-0.36909307, -0.07066391, -0.20033591, -0.13782864,  0.03782127,
+         0.2111585 ,  0.01161281, -0.06479661],
+       [-0.75629858,  0.13735916,  0.13422899, -0.55878484, -0.30125044,
+         0.03172869, -0.28792549,  0.27001875]])</code></pre>
+</div>
+</div>
+<div id="da10cd61" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">max</span>(H<span class="op">@</span>H<span class="op">-</span>H)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>2.7755575615628914e-16</code></pre>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="coordinates-relative-to-a-basis" class="level2">
-<h2 class="anchored" data-anchor-id="coordinates-relative-to-a-basis">Coordinates Relative to a Basis</h2>
-<p>Let <span class="math inline">L:\R^n\to\R^m</span> be linear, with bases <span class="math inline">E=\{e_1,\ldots,e_n\}</span> of <span class="math inline">\R^n</span> and <span class="math inline">F=\{f_1,\ldots,f_m\}</span> of <span class="math inline">\R^m</span>.</p>
-<ul>
-<li>Writing <span class="math inline">x=\sum x_ie_i</span>, there are unique scalars <span class="math inline">y_1,\ldots,y_m</span> with <span class="math inline">L(x)=\sum y_if_i</span>.</li>
-<li>In coordinates, <span class="math inline">x=[x]_E</span> and <span class="math inline">L(x)=[L(x)]_F</span>.</li>
-<li><span class="math inline">L</span> is determined by its values <span class="math inline">L(e_i)</span> on the basis <span class="math inline">E</span>.</li>
-</ul>
-</section>
-<section id="the-matrix-of-a-linear-map" class="level2">
-<h2 class="anchored" data-anchor-id="the-matrix-of-a-linear-map">The Matrix of a Linear Map</h2>
-<p><strong>Definition.</strong> <span class="math inline">[L]_E^F</span> is the <span class="math inline">m\times n</span> matrix whose <span class="math inline">i</span>-th column is <span class="math inline">L(e_i)</span> expressed in the basis <span class="math inline">F</span>.</p>
-<p>By construction, <span class="math display">
-[L(x)]_F = [L]_E^F\,[x]_E.
-</span></p>
-</section>
-<section id="change-of-basis" class="level2">
-<h2 class="anchored" data-anchor-id="change-of-basis">Change of Basis</h2>
-<p>Let <span class="math inline">E'</span>, <span class="math inline">F'</span> be other bases of <span class="math inline">\R^n</span>, <span class="math inline">\R^m</span>, and write <span class="math inline">e_j=\sum_i a_{ij}e'_i</span>, giving a matrix <span class="math inline">A=(a_{ij})</span>.</p>
-<ul>
-<li><span class="math inline">A[x]_E = [x]_{E'}</span>, so <span class="math inline">A=[I]_E^{E'}</span>, the matrix of the identity map from basis <span class="math inline">E</span> to basis <span class="math inline">E'</span>.</li>
-<li><span class="math inline">[I]_E^{E'}=\left([I]_{E'}^{E}\right)^{-1}</span>.</li>
-<li>The matrices of <span class="math inline">L</span> in the two pairs of bases are related by <span class="math display">
-[L]_E^F = [I]_{F'}^F\,[L]_{E'}^{F'}\,[I]_E^{E'}.
-</span></li>
-</ul>
-</section>
-<section id="similarity-of-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="similarity-of-matrices">Similarity of Matrices</h2>
-<p>For <span class="math inline">L:\R^n\to\R^n</span> and bases <span class="math inline">E</span>, <span class="math inline">E'</span>, <span class="math display">
-[L]_E^E = P[L]_{E'}^{E'}P^{-1}, \qquad P=[I]_{E'}^E.
-</span></p>
-<p><strong>Definition.</strong> Square matrices <span class="math inline">A,B</span> are <strong>similar</strong> if <span class="math inline">A=PBP^{-1}</span> for some invertible <span class="math inline">P</span>.</p>
-<ul>
-<li>All matrices <span class="math inline">[L]_E^E</span> representing a single linear map <span class="math inline">L</span> (in different bases) are similar.</li>
-<li><strong>Proposition.</strong> Similar matrices have the same rank and the same nullity. Rank and nullity are therefore well-defined invariants of <span class="math inline">L</span>, independent of the basis.</li>
-</ul>
-</section>
-<section id="injective-surjective-and-isomorphisms" class="level2">
-<h2 class="anchored" data-anchor-id="injective-surjective-and-isomorphisms">Injective, Surjective, and Isomorphisms</h2>
-<ul>
-<li><span class="math inline">L:V\to W</span> is <strong>injective</strong> if and only if its nullity is <span class="math inline">0</span>.</li>
-<li><span class="math inline">L:V\to W</span> is <strong>surjective</strong> if and only if its rank equals <span class="math inline">\dim W</span>.</li>
-<li>An <strong>isomorphism</strong> <span class="math inline">L:V\to W</span> is a linear map with a linear inverse; equivalently, <span class="math inline">L</span> is bijective, which forces <span class="math inline">\dim V=\dim W</span>.</li>
-</ul>
-</section>
-<section id="invertibility-criteria" class="level2">
-<h2 class="anchored" data-anchor-id="invertibility-criteria">Invertibility Criteria</h2>
-<p><strong>Proposition.</strong> A linear map <span class="math inline">L:\R^n\to\R^n</span> is invertible if and only if its nullity is <span class="math inline">0</span>.</p>
-<ul>
-<li>An <span class="math inline">n\times n</span> matrix <span class="math inline">A</span> is invertible if and only if <span class="math inline">\mathrm{rank}(A)=n</span>, equivalently <span class="math inline">\mathrm{nullity}(A)=0</span>.</li>
-</ul>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
