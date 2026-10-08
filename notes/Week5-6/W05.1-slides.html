@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Trace and Determinant – Math 5250: Graduate Linear Algebra</title>
+<title>Inner Product Spaces – Math 5250: Graduate Linear Algebra</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -161,7 +161,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.3.html">Week 3 - Trace and Determinant</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.3.html">Trace and determinant</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Inner Product Spaces</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -259,16 +259,16 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Week 3 - Trace and Determinant</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../notes/Week2-3/W02.3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Trace and determinant</span></a>
   </div>
 </li>
@@ -528,17 +528,58 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#trace" id="toc-trace" class="nav-link active" data-scroll-target="#trace">Trace</a></li>
-  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">Determinant</a></li>
+  <li><a href="#inner-products-over-mathbbr" id="toc-inner-products-over-mathbbr" class="nav-link active" data-scroll-target="#inner-products-over-mathbbr">Inner Products over <span class="math inline">\mathbb{R}</span></a>
+  <ul class="collapse">
+  <li><a href="#inner-products" id="toc-inner-products" class="nav-link" data-scroll-target="#inner-products">Inner Products</a></li>
+  <li><a href="#example-the-dot-product" id="toc-example-the-dot-product" class="nav-link" data-scroll-target="#example-the-dot-product">Example: The Dot Product</a></li>
+  <li><a href="#geometry-in-an-inner-product-space" id="toc-geometry-in-an-inner-product-space" class="nav-link" data-scroll-target="#geometry-in-an-inner-product-space">Geometry in an Inner Product Space</a></li>
+  <li><a href="#the-matrix-of-an-inner-product" id="toc-the-matrix-of-an-inner-product" class="nav-link" data-scroll-target="#the-matrix-of-an-inner-product">The Matrix of an Inner Product</a></li>
+  <li><a href="#properties-of-je" id="toc-properties-of-je" class="nav-link" data-scroll-target="#properties-of-je">Properties of <span class="math inline">[J]^E</span></a></li>
+  <li><a href="#inner-products-from-matrices" id="toc-inner-products-from-matrices" class="nav-link" data-scroll-target="#inner-products-from-matrices">Inner Products from Matrices</a></li>
+  </ul></li>
+  <li><a href="#orthogonality" id="toc-orthogonality" class="nav-link" data-scroll-target="#orthogonality">Orthogonality</a>
+  <ul class="collapse">
+  <li><a href="#orthogonality-1" id="toc-orthogonality-1" class="nav-link" data-scroll-target="#orthogonality-1">Orthogonality</a></li>
+  <li><a href="#the-gram-schmidt-process" id="toc-the-gram-schmidt-process" class="nav-link" data-scroll-target="#the-gram-schmidt-process">The Gram-Schmidt Process</a></li>
+  <li><a href="#consequences-of-gram-schmidt" id="toc-consequences-of-gram-schmidt" class="nav-link" data-scroll-target="#consequences-of-gram-schmidt">Consequences of Gram-Schmidt</a></li>
+  <li><a href="#proof-of-gram-schmidt" id="toc-proof-of-gram-schmidt" class="nav-link" data-scroll-target="#proof-of-gram-schmidt">Proof of Gram-Schmidt</a></li>
+  <li><a href="#proof-of-gram-schmidt-continued" id="toc-proof-of-gram-schmidt-continued" class="nav-link" data-scroll-target="#proof-of-gram-schmidt-continued">Proof of Gram-Schmidt (continued)</a></li>
+  <li><a href="#expansion-in-an-orthonormal-basis" id="toc-expansion-in-an-orthonormal-basis" class="nav-link" data-scroll-target="#expansion-in-an-orthonormal-basis">Expansion in an Orthonormal Basis</a></li>
+  </ul></li>
+  <li><a href="#projection" id="toc-projection" class="nav-link" data-scroll-target="#projection">Projection</a>
+  <ul class="collapse">
+  <li><a href="#orthogonal-complements" id="toc-orthogonal-complements" class="nav-link" data-scroll-target="#orthogonal-complements">Orthogonal Complements</a></li>
+  <li><a href="#orthogonal-projection" id="toc-orthogonal-projection" class="nav-link" data-scroll-target="#orthogonal-projection">Orthogonal Projection</a></li>
+  </ul></li>
+  <li><a href="#closest-points" id="toc-closest-points" class="nav-link" data-scroll-target="#closest-points">Closest Points</a>
+  <ul class="collapse">
+  <li><a href="#distance-to-a-subspace" id="toc-distance-to-a-subspace" class="nav-link" data-scroll-target="#distance-to-a-subspace">Distance to a Subspace</a></li>
+  <li><a href="#the-one-dimensional-case" id="toc-the-one-dimensional-case" class="nav-link" data-scroll-target="#the-one-dimensional-case">The One-Dimensional Case</a></li>
+  <li><a href="#the-cauchy-schwarz-inequality" id="toc-the-cauchy-schwarz-inequality" class="nav-link" data-scroll-target="#the-cauchy-schwarz-inequality">The Cauchy-Schwarz Inequality</a></li>
+  </ul></li>
+  <li><a href="#application-ordinary-least-squares" id="toc-application-ordinary-least-squares" class="nav-link" data-scroll-target="#application-ordinary-least-squares">Application: Ordinary Least Squares</a>
+  <ul class="collapse">
+  <li><a href="#the-least-squares-problem" id="toc-the-least-squares-problem" class="nav-link" data-scroll-target="#the-least-squares-problem">The Least Squares Problem</a></li>
+  <li><a href="#least-squares-as-projection" id="toc-least-squares-as-projection" class="nav-link" data-scroll-target="#least-squares-as-projection">Least Squares as Projection</a></li>
+  <li><a href="#the-normal-equations" id="toc-the-normal-equations" class="nav-link" data-scroll-target="#the-normal-equations">The Normal Equations</a></li>
+  <li><a href="#projection-operator-in-general" id="toc-projection-operator-in-general" class="nav-link" data-scroll-target="#projection-operator-in-general">Projection Operator in General</a></li>
+  </ul></li>
+  <li><a href="#complex-hermitian-inner-products" id="toc-complex-hermitian-inner-products" class="nav-link" data-scroll-target="#complex-hermitian-inner-products">Complex (Hermitian) Inner Products</a>
+  <ul class="collapse">
+  <li><a href="#hermitian-inner-products" id="toc-hermitian-inner-products" class="nav-link" data-scroll-target="#hermitian-inner-products">Hermitian Inner Products</a></li>
+  <li><a href="#the-matrix-of-a-hermitian-inner-product" id="toc-the-matrix-of-a-hermitian-inner-product" class="nav-link" data-scroll-target="#the-matrix-of-a-hermitian-inner-product">The Matrix of a Hermitian Inner Product</a></li>
+  <li><a href="#gram-schmidt-for-hermitian-inner-products" id="toc-gram-schmidt-for-hermitian-inner-products" class="nav-link" data-scroll-target="#gram-schmidt-for-hermitian-inner-products">Gram-Schmidt for Hermitian Inner Products</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.3.html">Week 3 - Trace and Determinant</a></li><li class="breadcrumb-item"><a href="../../notes/Week2-3/W02.3.html">Trace and determinant</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Trace and Determinant</h1>
+<h1 class="title">Inner Product Spaces</h1>
+<p class="subtitle lead">Math 5250 — Week 5</p>
 </div>
 
 
@@ -555,243 +596,263 @@ window.Quarto = {
 </header>
 
 
-<section id="trace" class="level3">
-<h3 class="anchored" data-anchor-id="trace">Trace</h3>
-<p>If <span class="math inline">A</span> is an <span class="math inline">n\times n</span> square matrix with entries in a field <span class="math inline">F</span>, then the <em>trace</em> <span class="math inline">\mathrm{trace}(A)</span> is the sum <span class="math inline">\sum_{i=1}^{n} a_{ii}</span> of the diagonal elements of <span class="math inline">A</span>.</p>
-<p><strong>Proposition:</strong> If <span class="math inline">A</span> and <span class="math inline">B</span> are <span class="math inline">n\times n</span> matrices over <span class="math inline">F</span>, then <span class="math inline">\mathrm{trace}(AB)=\mathrm{trace}(BA)</span>.</p>
-<p><strong>Proof:</strong> Let <span class="math inline">C=AB</span> and <span class="math inline">D=BA</span>. Then <span class="math display">
-c_{ij} = \sum_{k} a_{ik}b_{kj}.
-</span></p>
-<p>and</p>
-<p><span class="math display">
-d_{ij} = \sum_{k} b_{ik}a_{kj}
-</span></p>
-<p>Now <span class="math display">
-\mathrm{trace}(AB) = \sum_{i=1}^{n} c_{ii} = \sum_{i}\sum_{k} a_{ik}b_{ki}
-=\sum_{k}\sum_{i} b_{ki}a_{ik} =\sum_{k} d_{kk} = \mathrm{trace}(BA)
-</span></p>
-<section id="trace-of-a-linear-map" class="level4">
-<h4 class="anchored" data-anchor-id="trace-of-a-linear-map">Trace of a linear map</h4>
-<p>Now let <span class="math inline">f:V\to V</span> be any linear map, where <span class="math inline">V</span> is a finite dimensional vector space. Choose a basis <span class="math inline">E</span> for <span class="math inline">V</span> and define the trace <span class="math inline">\mathrm{trace}(f)</span> to be the trace of the matrix <span class="math inline">[f]_{E}^{E}</span>.</p>
-<p>This is a well-defined invariant of <span class="math inline">f</span> because if we choose a different basis, say <span class="math inline">E'</span>, then <span class="math inline">[f]_{E'}^{E'} =[1]_{E'}^{E} [f]_{E}^{E}[1]_{E}^{E'}</span> Thus <span class="math display">
-\begin{aligned}
-\mathrm{trace}([f]_{E'}^{E'})&amp;=\mathrm{trace}([1]_{E'}^{E}[f]_{E}^{E}[1]_{E}^{E'})\\
-&amp;=\mathrm{trace}([f]_{E}^{E}[1]_{E}^{E'}[1]_{E'}^{E})\\
-&amp;=\mathrm{trace}([f]_{E}^{E})
-\end{aligned}
-</span></p>
-<p>since <span class="math inline">[1]_{E'}^{E}[1]_{E}^{E'}=[1]_{E}^{E}</span> is the identity matrix.</p>
-</section>
-<section id="trace-subspaces-and-quotient-spaces" class="level4">
-<h4 class="anchored" data-anchor-id="trace-subspaces-and-quotient-spaces">Trace, subspaces, and quotient spaces</h4>
-<p>Let <span class="math inline">V</span> be a finite dimensional vector space and <span class="math inline">L:V\to V</span> a linear map. Suppose that <span class="math inline">W</span> is a subspace of <span class="math inline">V</span> such that <span class="math inline">L(W)\subset W</span>. Such a <span class="math inline">W</span> is called an <em>invariant subspace</em> for <span class="math inline">L</span>.</p>
-<p>In this situation, the map <span class="math inline">L:V\to V</span> gives rise to a well defined linear map <span class="math inline">\overline{L}:V/W\to V/W</span>. This map is defined by <span class="math inline">L([v])=[L(v)]</span>. It is well defined since, if we choose a different representative <span class="math inline">[v]=[v+w]</span>, then <span class="math inline">L([v+w]) = [L(v+w)] = [L(v)+L(w)] = [L(v)]</span> since <span class="math inline">L(w)\in W</span>.</p>
-<p><strong>Proposition:</strong> If <span class="math inline">W\subset V</span> is an <span class="math inline">L</span>-invariant subspace, let <span class="math inline">L_{W}</span> be the restriction of <span class="math inline">L</span> to <span class="math inline">W</span> and let <span class="math inline">\overline{L}</span> be the induced map <span class="math inline">V/W</span>. Then <span class="math display">
-\mathrm{trace}(L) = \mathrm{trace}(L_{W})+\mathrm{trace}(\overline{L})
-</span></p>
-<p>We can state this in the language of complexes. Suppose <span class="math inline">X</span>: <span class="math display">
-0\to A\to B\to C\to 0
-</span> is a short exact sequence of vector spaces and <span class="math inline">L=(L_1,L_2,L_3)</span> is a linear map <span class="math inline">W\to W</span>. In practice, this means we have a map <span class="math inline">L_2:B\to B</span> whose restriction to <span class="math inline">A</span> is <span class="math inline">L_1</span> and whose induced quotient map is <span class="math inline">L_3</span>.</p>
-<p>Then the trace of <span class="math inline">L</span> satisfies: <span class="math display">
-\mathrm{trace}(L) = \mathrm{trace}(L_1)-\mathrm{trace}(L_2)+\mathrm{trace}(L_3) = 0
-</span></p>
-<p><strong>Proof:</strong> Choose a basis for the subspace <span class="math inline">W</span> and complete it to a basis <span class="math inline">E</span> for all of <span class="math inline">V</span>. Then the matrix <span class="math inline">[L]_{E}^{E}</span> has an upper triangular block form <span class="math display">
-[L]_{E}^{E} =
-\begin{pmatrix}
-L_1 &amp; * \\
-0 &amp; L_3
-\end{pmatrix}
-</span> The upper left block is the matrix of <span class="math inline">L</span> restricted to <span class="math inline">W</span>, and the lower right block is the matrix of the induced map in the basis <span class="math inline">[e_{i}]</span> for the <span class="math inline">e_{i}\in E</span> but not in <span class="math inline">W</span>. Looking at the diagonal elements gives the result.</p>
-<p>More generally, suppose that <span class="math inline">X^{\cdot}</span> is a bounded complex of finite dimensional vector spaces and <span class="math inline">L</span> is a linear map <span class="math inline">X^{\cdot}\to X^{\cdot}</span>. Using the same ideas as for the proof of the dimension result for complexes, we have that the cocycles <span class="math display">
-Z^{i}\subset X^{i}
-</span> are an invariant subspace. Also, <span class="math inline">d_{i}(X^{i}/Z^{i})=B^{i+1}</span> so we have a short exact sequence <span class="math display">
-0\to Z^{i}\to X^{i}\to B^{i+1}\to 0
-</span> and therefore <span class="math display">
-\mathrm{trace}(L_{i}) = \mathrm{trace}(L_{Z^{i}}) + \mathrm{trace}(\overline{L}_{i})
-</span></p>
-<p>If we define <span class="math display">
-\mathrm{trace}(L|X^{\cdot}) = \sum (-1)^{i} \mathrm{trace}(L_{i})
-</span></p>
-<p>then, by the same telescoping sum argument that we used when looking at the alternating sum of dimensions, we see that <span class="math display">
-\mathrm{trace}(L|X^{\cdot}) = \sum (-1)^{i} \mathrm{trace}(\overline{L}_{i})
-</span> where the <span class="math inline">\overline{L}_{i}</span> are the induced linear maps on cohomology.</p>
-<p>Indeed, the dimension of a finite dimensional vector space (at least over a field of “characteristic zero”), is just the trace of the identity map, so the dimension result follows from this.</p>
-</section>
-</section>
-<section id="determinant" class="level3">
-<h3 class="anchored" data-anchor-id="determinant">Determinant</h3>
-<p><strong>Proposition:</strong> There is a unique function (the <em>determinant</em>) from <span class="math inline">M_n(F)</span> to <span class="math inline">F</span> satisfying the following properties:</p>
-<ol type="1">
-<li><span class="math inline">\det</span> is multilinear as a function of the rows of <span class="math inline">A\in M_{n}(F)</span>. In other words, if we think of <span class="math inline">A</span> as made up of <span class="math inline">n</span> rows <span class="math inline">A_{1},\dots, A_{n}</span> then <span class="math display">
-\det(A) = \det(A_1,\ldots, A_n)
-</span></li>
-</ol>
-<p>is linear in each of its variables separately. For each <span class="math inline">1\le i\le n</span> this means: <span class="math display">
-\det(A_1,\ldots, A_{i}+B_{i},\ldots, A_n) =
-\det(A_1,\ldots, A_i,\ldots, A_n) + \det(A_1,\ldots, B_{i},\ldots, A_n)
-</span></p>
-<p>and <span class="math display">
-\det(A_1,\ldots, aA_{i},\ldots, A_n) = a\det(A_1,\ldots, A_{i},\ldots, A_{n}).
-</span></p>
-<ol start="2" type="1">
-<li>The determinant function is <em>alternating</em>. This means that <span class="math inline">\det</span> vanishes on any collection of rows <span class="math inline">A_1,\ldots, A_n</span> where two rows are repeated. One consequence of this is that swapping any two rows changes the sign of the determinant. For example, since <span class="math display">
-\det(A_1+A_2,A_1+A_2,\ldots, A_n) = 0
-</span> by linearity we get <span class="math display">
-\begin{aligned}
-\det(A_1,A_1+A_2,\ldots, A_n) &amp;+\det(A_2, A_1+A_2,\ldots, A_n) \\
-&amp;=\det(A_1,A_1,\ldots, A_n) + \det(A_1,A_2,\ldots, A_n) \\
-&amp;\quad+ \det(A_2,A_2,\ldots, A_n) + \det(A_2, A_1,\ldots, A_n) \\
-&amp;=0
-\end{aligned}
-</span></li>
-</ol>
-<p>This in turn means <span class="math display">
-\det(A_1,A_2,\ldots, A_n) = -\det(A_2,A_1,\ldots, A_n).
-</span></p>
-<ol start="3" type="1">
-<li>The determinant of the identity matrix is 1.</li>
-</ol>
-<p>Proving the existence of such a function is kind of a pain in the neck, but we can make some observations that will help make sense of the situation.</p>
-<p>Notice first that <em>if</em> the map exists, then the properties above tell us exactly how the elementary row operations affect it. In particular:</p>
+<section id="inner-products-over-mathbbr" class="level1">
+<h1>Inner Products over <span class="math inline">\mathbb{R}</span></h1>
+<section id="inner-products" class="level2">
+<h2 class="anchored" data-anchor-id="inner-products">Inner Products</h2>
+<p><strong>Definition.</strong> Let <span class="math inline">V</span> be a real vector space. An <em>inner product</em> on <span class="math inline">V</span> is a map <span class="math inline">J:V\times V\to\mathbb{R}</span> such that:</p>
 <ol type="a">
-<li><p>If <span class="math inline">A</span> is obtained from <span class="math inline">A'</span> by interchanging two rows, then <span class="math inline">\det(A)=-\det(A')</span>. This follows from the alternating property.</p></li>
-<li><p>If <span class="math inline">A</span> is obtained from <span class="math inline">A'</span> by multiplying a row by a scalar <span class="math inline">a</span>, then <span class="math inline">\det(A)=a\det(A')</span>.</p></li>
-<li><p>If <span class="math inline">A</span> is obtained from <span class="math inline">A'</span> by adding a multiple of one row to another, then <span class="math inline">\det(A)=\det(A')</span>. To see this note that <span class="math display">
-\det(A_1+aA_i,A_2,\ldots, A_n) = \det(A_1,\ldots, A_n)+a\det(A_i,A_2,\ldots, A_i,\ldots, A_n)
-</span></p></li>
+<li>(symmetry) <span class="math inline">J(u,v)=J(v,u)</span> for all <span class="math inline">u,v\in V</span>;</li>
+<li>(linearity) <span class="math inline">J(au_1+bu_2,v)=aJ(u_1,v)+bJ(u_2,v)</span>. By symmetry, <span class="math inline">J</span> is also linear in the second variable, so <span class="math inline">J</span> is <em>bilinear</em>;</li>
+<li>(positive definiteness) <span class="math inline">J(v,v)&gt;0</span> for all nonzero <span class="math inline">v\in V</span>.</li>
 </ol>
-<p>and the second term in the sum on the right is zero by the alternating property.</p>
-<p>We know that we can reduce an <span class="math inline">n\times n</span> matrix <span class="math inline">A</span> to row-reduced echelon form using elementary row operations, and by tracking the effect of those operations on <span class="math inline">\det(A)</span> we see that it’s enough to know how to compute the determinant of a matrix <span class="math inline">A'</span> which has <span class="math inline">k</span> <span class="math inline">1</span>’s followed by <span class="math inline">n-k</span> <span class="math inline">0</span>’s on the diagonal. If <span class="math inline">k=n</span>, then this is the identity matrix so the determinant is <span class="math inline">1</span>. On the other hand, if the last row of <span class="math inline">A'</span> is zero, then <span class="math display">
-\det(A'_1,\ldots, A'_n) = \det(A'_1,\ldots, 0\cdot A'_n) = 0\cdot\det(A'_1,\ldots, A'_n) = 0
+<p>We often write <span class="math inline">J(u,v)=\langle u,v\rangle</span>.</p>
+<p>A real vector space together with an inner product is a (real) <em>inner product space</em>.</p>
+</section>
+<section id="example-the-dot-product" class="level2">
+<h2 class="anchored" data-anchor-id="example-the-dot-product">Example: The Dot Product</h2>
+<p><strong>Example.</strong> The Euclidean dot product on <span class="math inline">\mathbb{R}^n</span>: <span class="math display">
+J((a_1,\ldots,a_n),(b_1,\ldots,b_n))=\sum_{i=1}^{n}a_ib_i=(a_1,\ldots,a_n)\cdot(b_1,\ldots,b_n).
 </span></p>
-<p>In other words, assuming the determinant exists, we have an algorithm to compute it.</p>
-<p>To establish existence, notice first that for <span class="math inline">1\times 1</span> matrices <span class="math inline">A=(a)</span> the determinant is just <span class="math inline">a</span>. For <span class="math inline">2\times 2</span> matrices</p>
-<p><span class="math display">
-A = \left[\begin{matrix} a &amp; b \\ c &amp; d\end{matrix}\right]
+<p>Inner product spaces make sense in infinite dimensions too, but we focus on the finite-dimensional case.</p>
+</section>
+<section id="geometry-in-an-inner-product-space" class="level2">
+<h2 class="anchored" data-anchor-id="geometry-in-an-inner-product-space">Geometry in an Inner Product Space</h2>
+<p>An inner product lets us measure the size of a vector and the distance between vectors: <span class="math display">
+\|v\|=\sqrt{\langle v,v\rangle},\qquad d(u,v)=\sqrt{\langle u-v,u-v\rangle}=\|u-v\|.
 </span></p>
-<p>then the usual <span class="math inline">\det(A)=ad-bc</span> has the desired properties.</p>
-<p>We proceed inductively. Suppose <span class="math inline">A=(a_{ij})</span> is <span class="math inline">n\times n</span>. Let <span class="math inline">A_{i}</span> be the submatrix of <span class="math inline">A</span> obtained by deleting the first row and the <span class="math inline">i^{th}</span> column of <span class="math inline">A</span>. This is an <span class="math inline">(n-1)\times (n-1)</span> matrix so its determinant is known inductively. Define <span class="math display">
-\det(A) = \sum_{i=1}^{n} (-1)^{i+1}a_{1i}\det(A_{i}).
+<p>This distance is a <em>metric</em>:</p>
+<ol type="a">
+<li><span class="math inline">d(u,v)\ge0</span>, and <span class="math inline">d(u,v)=0</span> if and only if <span class="math inline">u=v</span>;</li>
+<li><span class="math inline">d(u,w)\le d(u,v)+d(v,w)</span> (the triangle inequality).</li>
+</ol>
+<p><strong>Example.</strong> For the standard dot product, this is the Pythagorean distance <span class="math display">
+d(u,v)=\sqrt{\sum_{i=1}^{n}(u_i-v_i)^2},
+</span> and <span class="math inline">\{v:\|v\|=r\}</span> is a sphere of radius <span class="math inline">r</span>.</p>
+</section>
+<section id="the-matrix-of-an-inner-product" class="level2">
+<h2 class="anchored" data-anchor-id="the-matrix-of-an-inner-product">The Matrix of an Inner Product</h2>
+<p>Let <span class="math inline">E=\{e_1,\ldots,e_n\}</span> be a basis for <span class="math inline">V</span>. Define the <span class="math inline">n\times n</span> matrix <span class="math inline">[J]^E</span> by <span class="math display">
+[J]^E_{ij}=\langle e_i,e_j\rangle.
+</span> Then <span class="math display">
+\Big\langle \sum a_ie_i,\sum b_ie_i\Big\rangle=\begin{bmatrix}a_1&amp;\cdots&amp;a_n\end{bmatrix}[J]^E\begin{bmatrix}b_1\\\vdots\\b_n\end{bmatrix},
+</span> that is, <span class="math display">
+\langle a,b\rangle=[a]_E^\top[J]^E[b]_E.
 </span></p>
-<p>This definition satisfies the linearity condition and takes the value <span class="math inline">1</span> on the <span class="math inline">n\times n</span> identity matrix. The tricky part is the alternating condition, and for that we only need to consider the case in which the first two rows of <span class="math inline">A</span> are the same.</p>
-<p>Now <span class="math display">
-\det(A_{i}) = \sum_{j=1,j\not=i}^{n} (\pm)a_{2j}\det(A_{ij})
-</span></p>
-<p>where <span class="math inline">A_{ij}</span> is the matrix <span class="math inline">A</span> with columns <span class="math inline">i</span> and <span class="math inline">j</span> deleted. Here we leave the sign unspecified – it’s the whole point, but we’ll figure it out shortly.</p>
-<p>If we expand <span class="math inline">\det(A)</span> in a double sum, the term <span class="math inline">\det(A_{ij})</span> appears twice: once with coefficient <span class="math inline">\pm a_{1i}a_{2j}</span> and once with coefficient <span class="math inline">\pm a_{1j}a_{2i}</span>. If we can show that these terms have opposite signs, then if the first two rows of <span class="math inline">A</span> are equal the sum will cancel out and yield zero as desired.</p>
-<p>The sign in front of <span class="math inline">a_{1i}</span> is <span class="math inline">(-1)^{i+1}</span>. The sign in front of <span class="math inline">a_{2j}</span> depends on whether <span class="math inline">j</span> is less than or greater than <span class="math inline">i</span>. If less, it’s <span class="math inline">(-1)^{j+1}</span>. If more, it’s <span class="math inline">(-1)^{j}</span>.<br>
-(This is because when expanding the subdeterminant <span class="math inline">\det(A_{i})</span>, skipping <span class="math inline">i</span> changes the parity of the term associated with the index <span class="math inline">j</span>.)</p>
-<p>So the combined sign is <span class="math display">
-\epsilon_{ij} = \begin{cases} (-1)^{i+j} &amp; j&lt;i \\
-                            (-1)^{i+j+1} &amp; j&gt;i \end{cases}                         
-</span></p>
-<p>The sign <span class="math inline">\epsilon_{ji}</span> in front of <span class="math inline">a_{1j}</span> is <span class="math inline">(-1)^{j+1}</span> and that in front of <span class="math inline">a_{2i}</span> is <span class="math inline">(-1)^{i+1}</span> if <span class="math inline">i&lt;j</span> and <span class="math inline">(-1)^{i}</span> if <span class="math inline">i&gt;j</span>. So <span class="math display">
-\epsilon_{ji} = \begin{cases} (-1)^{i+j} &amp; i&lt;j \\
-(-1)^{i+j+1} &amp; i&gt;j
-\end{cases}
-</span></p>
-<p>Comparing these shows that in fact the signs are opposite.</p>
-<p>Thus we have an inductive formula that yields the determinant.</p>
-<p>For computational purposes, row reduction is <em>much</em> more efficient.</p>
-<p><strong>Proposition:</strong> The determinant is multiplicative: <span class="math inline">\det(AB)=\det(A)\det(B)</span>.</p>
-<p><strong>Proof:</strong> Recall that each of the row operations can be carried out by multiplication by an appropriate <a href="../../notes/Week1/W01.2.html#def-elementary-matrix">elementary matrix</a>. The swapping matrices <span class="math inline">P_{ij}</span> have determinant <span class="math inline">-1</span> and the “add a multiple of a row” matrices <span class="math inline">R_{ji}(\lambda)</span> have determinant <span class="math inline">1</span> – you can see this directly from the properties of the determinant. The scaling matrix <span class="math inline">D_{i}(\lambda)</span> has determinant <span class="math inline">\lambda</span>. So, for each of these matrices <span class="math inline">E</span>, we have <span class="math inline">\det(EA)=\det(E)\det(A)</span>.</p>
-<p>By row reduction any matrix <span class="math inline">A</span> is a product of elementary matrices. If <span class="math inline">A=E_{1}\cdots E_{k}</span> and <span class="math inline">B=F_{1}\cdots F_{l}</span> where <span class="math inline">E_{i}</span> and <span class="math inline">F_{j}</span> are elementary matrices, then <span class="math display">
-\det(AB)=\det(E_{1}\cdots E_{k}F_{1}\cdots F_{l})=\det(A)\det(B).
-</span></p>
-<p><strong>Corollary:</strong> A matrix is invertible if and only if its determinant is nonzero.</p>
-<p><strong>Proof:</strong> If <span class="math inline">A</span> is invertible then we can find <span class="math inline">B</span> so that <span class="math inline">AB=I</span> and therefore <span class="math inline">\det(A)\det(B)=1</span> so <span class="math inline">\det(A)</span> is nonzero. Conversely, if we write <span class="math display">
-A=E_{1}\cdots E_{k}J
-</span></p>
-<p>where the <span class="math inline">E_{i}</span> are elementary matrices and <span class="math inline">J</span> is diagonal, then <span class="math inline">\det(A)=0</span> if and only if <span class="math inline">\det(J)=0</span>, which happens if and only if <span class="math inline">J</span> has a zero on the diagonal. (Since <span class="math inline">J</span> is in row-reduced echelon form, every diagonal entry is either <span class="math inline">0</span> or a pivot, hence exactly <span class="math inline">1</span>.) So if <span class="math inline">\det(A)</span> is nonzero, then <span class="math inline">J</span> is the identity matrix, and one gets an inverse for <span class="math inline">A</span> from the inverses of the <span class="math inline">E_{i}</span>.</p>
-<section id="a-few-properties-of-the-determinant" class="level4">
-<h4 class="anchored" data-anchor-id="a-few-properties-of-the-determinant">A few properties of the determinant</h4>
+<p><strong>Definition.</strong> If <span class="math inline">X</span> is <span class="math inline">m\times n</span>, its <em>transpose</em> <span class="math inline">X^\top</span> is the <span class="math inline">n\times m</span> matrix with <span class="math inline">X^\top_{ij}=X_{ji}</span>.</p>
+<p><strong>Remark.</strong> <span class="math inline">(XY)^\top=Y^\top X^\top</span>.</p>
+</section>
+<section id="properties-of-je" class="level2">
+<h2 class="anchored" data-anchor-id="properties-of-je">Properties of <span class="math inline">[J]^E</span></h2>
+<p>If <span class="math inline">X=[J]^E</span> comes from an inner product, then:</p>
+<ol type="a">
+<li><span class="math inline">X</span> is <em>symmetric</em>;</li>
+<li><span class="math inline">X</span> has rank <span class="math inline">n</span>;</li>
+<li><span class="math inline">X</span> is <em>positive definite</em>: <span class="math inline">[a]_E^\top X[a]_E&gt;0</span> when <span class="math inline">[a]_E\neq0</span>;</li>
+<li>if <span class="math inline">T</span> is another basis and <span class="math inline">[a]_T=[1]_E^T[a]_E</span>, then <span class="math display">
+[J]^E=\big([1]_E^T\big)^\top[J]^T[1]_E^T.
+</span></li>
+</ol>
+</section>
+<section id="inner-products-from-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="inner-products-from-matrices">Inner Products from Matrices</h2>
+<p><strong>Proposition.</strong> If <span class="math inline">X</span> is a real symmetric positive definite <span class="math inline">n\times n</span> matrix, then <span class="math display">
+J(a,b)=a^\top Xb
+</span> is an inner product on <span class="math inline">\mathbb{R}^n</span>, and <span class="math inline">X=[J]^E</span> for the standard basis <span class="math inline">E</span>.</p>
+<p><strong>Proposition.</strong> If <span class="math inline">J</span> is an inner product on <span class="math inline">V</span> and <span class="math inline">E</span> is a basis, then <span class="math inline">X=[J]^E</span> is symmetric and positive definite, and <span class="math display">
+J(a,b)=[a]_E^\top[J]^E[b]_E.
+</span> In these coordinates, the surfaces <span class="math inline">\{a:J(a,a)=r\}</span> are ellipsoids.</p>
+</section>
+</section>
+<section id="orthogonality" class="level1">
+<h1>Orthogonality</h1>
+<section id="orthogonality-1" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonality-1">Orthogonality</h2>
+<p>Let <span class="math inline">V</span> be an <span class="math inline">n</span>-dimensional inner product space with inner product <span class="math inline">J</span>.</p>
+<p><strong>Definition.</strong> Vectors <span class="math inline">a,b\in V</span> are <em>orthogonal</em> (relative to <span class="math inline">J</span>) if <span class="math inline">J(a,b)=0</span>.</p>
+<p><strong>Example.</strong> For the standard Euclidean inner product on <span class="math inline">\mathbb{R}^n</span>, orthogonal means perpendicular.</p>
+</section>
+<section id="the-gram-schmidt-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-gram-schmidt-process">The Gram-Schmidt Process</h2>
+<p><strong>Proposition.</strong> (Gram-Schmidt) Let <span class="math inline">E=\{e_1,\ldots,e_m\}</span> be a linearly independent subset of <span class="math inline">V</span> spanning <span class="math inline">W</span>. Then there are vectors <span class="math inline">U=\{u_1,\ldots,u_m\}</span> such that:</p>
 <ol type="1">
-<li><p>The formula we used to define the determinant is called the “cofactor expansion” on the first row. One can use any row to get a similar expansion.</p></li>
-<li><p>One can use columns instead of rows.</p></li>
-<li><p>Let <span class="math inline">B=A^{adj}</span> be the matrix where <span class="math display">
-b_{ij} = (-1)^{i+j}\det(A_{ji})
-</span></p></li>
+<li><span class="math inline">U</span> is an <em>orthonormal set</em>:
+<ol type="a">
+<li><span class="math inline">J(u_i,u_j)=0</span> if <span class="math inline">i\neq j</span>;</li>
+<li><span class="math inline">\|u_i\|=1</span> for <span class="math inline">i=1,\ldots,m</span>;</li>
+</ol></li>
+<li>for <span class="math inline">j=1,\ldots,m</span>, the span <span class="math inline">W_j</span> of <span class="math inline">U_j=\{u_1,\ldots,u_j\}</span> equals the span of <span class="math inline">E_j=\{e_1,\ldots,e_j\}</span>.</li>
 </ol>
-<p>where <span class="math inline">A_{ji}</span> is the matrix obtained from <span class="math inline">A</span> by deleting the <span class="math inline">j^{th}</span> row and the <span class="math inline">i^{th}</span> column. This matrix is called the (classical) adjoint or the adjugant of <span class="math inline">A</span>.</p>
-<p><strong>Proposition:</strong> <span class="math inline">AA^{adj} = A^{adj}A = \det(A)I</span>.</p>
-<p><strong>Proof:</strong> Let <span class="math inline">B=A^{adj}</span> and <span class="math inline">C=AB</span>. Then <span class="math display">
-c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj} = \sum_{k=1}^{n} (-1)^{k+j} a_{ik}\det(A_{jk}) = (-1)^{j+1}\sum_{k=1}^{n} (-1)^{k+1}a_{ik}\det(A_{jk}).
-</span></p>
-<p>If <span class="math inline">i</span> and <span class="math inline">j</span> are different, then row <span class="math inline">i</span> of <span class="math inline">A</span> is included in <span class="math inline">\det(A_{jk})</span> and so</p>
-<p><span class="math display">
-\sum_{k=1}^{n} (-1)^{k+1}a_{ik}\det(A_{jk})
-</span></p>
-<p>is the cofactor expansion of the determinant of the matrix obtained by replacing row <span class="math inline">j</span> of <span class="math inline">A</span> by a duplicate of row <span class="math inline">i</span> and expanding along row <span class="math inline">j</span>. This is zero since it’s the determinant of a matrix with a repeated row.</p>
-<p>On the other hand, if <span class="math inline">i</span> and <span class="math inline">j</span> are equal, this is <span class="math display">
-(-1)^{i+1}\sum_{k=1}^{n} (-1)^{k+1}a_{ik}\det(A_{ik})
-</span> which is <span class="math inline">\det(A)</span>.</p>
-<p><strong>Remark:</strong> We need to check the sign here: the cofactor expansion around row <span class="math inline">i</span> gets a sign <span class="math inline">(-1)^{i+1}</span>. This is because the cofactor expansion around row <span class="math inline">i</span> satisfies the conditions characterizing the determinant except that it gives <span class="math inline">(-1)^{i+1}</span> for the identity matrix.</p>
-<p><strong>Remark:</strong> This gives us an “explicit” formula for the inverse of <span class="math inline">A</span> as <span class="math inline">\det(A)^{-1}A^{adj}</span>.</p>
 </section>
-<section id="expansion-of-the-determinant" class="level4">
-<h4 class="anchored" data-anchor-id="expansion-of-the-determinant">Expansion of the determinant</h4>
-<p>If <span class="math inline">A\in M_{n}(F)</span> and <span class="math inline">A_{i}=\sum a_{ij}e_{j}</span> is the <span class="math inline">i^{th}</span> row of <span class="math inline">A</span> written in terms of the standard row vectors <span class="math inline">e_{i}</span> having a <span class="math inline">1</span> in position <span class="math inline">i</span> and zeroes elsewhere, then in follows from the multilinearity of the determinant that we can write <span class="math display">
-\det(A)=\det(A_1,\ldots, A_n) = \sum a_{1i_{1}}a_{2i_{2}}\cdots a_{ni_{n}}\det(e_{i_{1}},e_{i_{2}},\ldots, e_{i_{n}})
+<section id="consequences-of-gram-schmidt" class="level2">
+<h2 class="anchored" data-anchor-id="consequences-of-gram-schmidt">Consequences of Gram-Schmidt</h2>
+<p>Part (2) says the change of basis is triangular: <span class="math display">
+\begin{aligned}
+u_1&amp;=a_{11}e_1\\
+u_2&amp;=a_{12}e_1+a_{22}e_2\\
+&amp;\;\;\vdots\\
+u_j&amp;=a_{1j}e_1+\cdots+a_{jj}e_j
+\end{aligned}
 </span></p>
-<p>This is because any term with a repeated index will have zero determinant by the alternating property.</p>
-<p>The determinant <span class="math inline">\det(e_{i_{1}},\ldots, e_{i_{n}})</span> is <span class="math inline">\pm 1</span>.</p>
-<p>If the determinant <span class="math inline">\det(e_{i_{1}},\ldots, e_{i_{n}})</span> is <span class="math inline">+1</span>, we say that the permutation <span class="math inline">i_{1},\ldots, i_{n}</span> is even; otherwise we say it’s odd.</p>
-<p>Any permutation can be “sorted” into the <span class="math inline">1,\ldots, n</span> by a sequence of operations where you exchange two indices. For example, <span class="math display">
-(2,4,1,3)\to(1,4,2,3)\to (1,2,4,3)\to (1,2,3,4).
+<p>If <span class="math inline">E</span> spans <span class="math inline">V</span>, then <span class="math inline">[J]^U</span> is the identity matrix: in the <span class="math inline">U</span> basis, <span class="math inline">J</span> is the standard dot product, <span class="math display">
+J(a,b)=[a]_U\cdot[b]_U=\sum_{i=1}^n a_ib_i,\qquad a=\sum a_iu_i,\ b=\sum b_iu_i.
 </span></p>
-<p>Each such exchange reverses the sign of the permutation since it corresponds to an elementary row operation where you swap to rows.</p>
-<p>So a permutation is even if it can be sorted by an even number of exchanges, and odd if it requires an odd number.</p>
-<p>It’s not obvious from a combinatorial point of view that this is well-defined, but since we have an alternative formula via the determinant we can see that it is.</p>
-<p>This expansion is essentially useless since it involves <span class="math inline">n!</span> terms, each a product of <span class="math inline">n</span> terms.</p>
 </section>
-<section id="cramers-rule" class="level4">
-<h4 class="anchored" data-anchor-id="cramers-rule">Cramer’s Rule</h4>
-<p>Suppose that <span class="math inline">A</span> is an <span class="math inline">n\times n</span> matrix over <span class="math inline">F</span> and <span class="math inline">b\in F^{n}</span>. We can look at the linear system of equations <span class="math display">
-Ax = b.
-</span> If <span class="math inline">\det(A)\not=0</span>, we can “solve” this system by multiplying both sides by the adjugant matrix:</p>
-<p><span class="math display">
-A^{adj}Ax=A^{adj}b
+<section id="proof-of-gram-schmidt" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-gram-schmidt">Proof of Gram-Schmidt</h2>
+<p>We proceed by induction. Let <span class="math display">
+u_1=\frac{e_1}{\|e_1\|}.
+</span> This handles the case where <span class="math inline">W</span> is one-dimensional.</p>
+<p>Suppose <span class="math inline">u_1,\ldots,u_j</span> are orthonormal, their span equals the span of <span class="math inline">E_j</span>, and the change of basis is triangular. Let <span class="math display">
+v_{j+1}=e_{j+1}-\sum_{i=1}^{j}J(e_{j+1},u_i)u_i.
 </span></p>
-<p>So <span class="math inline">x=\det(A)^{-1}A^{adj}b</span>.</p>
-<p>If we look more closely at <span class="math inline">A^{adj}b</span>, we see that the <span class="math inline">j^{th}</span> entry of <span class="math inline">A^{adj}b</span> (corresponding to the value of <span class="math inline">x_{j}</span> in <span class="math inline">x</span>) is <span class="math display">
-(A^{adj}b)_{j} = \sum_{i=1}^{n} A^{adj}_{ji}b_{i}
-= (-1)^{j+1}\sum_{i=1}^{n}(-1)^{i+1}\det(A_{ij})b_{i}
-</span></p>
-<p>This expression is the cofactor expansion of the matrix <span class="math inline">A_{j}(b)</span> obtained from <span class="math inline">A</span> by replacing the <span class="math inline">j^{th}</span> column with <span class="math inline">b</span>.</p>
-<p>This yields the formula (called “Cramer’s Rule”) <span class="math display">
-x_{j} = \frac{\det(A_{j}(b))}{\det(A)}
-</span></p>
-<p>Although not useful for calculation, it is worth observing that, as a consequence of Cramer’s rule, if <span class="math inline">A</span> has integer entries, <span class="math inline">b</span> has integer entries, and <span class="math inline">\det(A)=\pm 1</span>, then the solution <span class="math inline">x</span> to <span class="math inline">Ax=b</span> also has integer entries.</p>
 </section>
-<section id="determinant-of-a-linear-map" class="level4">
-<h4 class="anchored" data-anchor-id="determinant-of-a-linear-map">Determinant of a Linear Map</h4>
-<p>Let <span class="math inline">f:V\to V</span> be a linear map where <span class="math inline">V</span> is a finite dimensional vector space over <span class="math inline">F</span>. We define the determinant of <span class="math inline">f</span> to be the determinant of <span class="math inline">[f]_{E}^{E}</span> where <span class="math inline">E</span> is any basis for <span class="math inline">V</span>.</p>
-<p>Since choosing a different basis <span class="math inline">E'</span> changes the matrix <span class="math inline">A=[f]_{E}^{E}</span> by similarity to a matrix <span class="math inline">B=PAP^{-1}</span>, the determinant is independent of the choice of basis and is thus a well-defined invariant of <span class="math inline">f</span>.</p>
+<section id="proof-of-gram-schmidt-continued" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-gram-schmidt-continued">Proof of Gram-Schmidt (continued)</h2>
+<p>For <span class="math inline">k=1,\ldots,j</span>: <span class="math display">
+J(v_{j+1},u_k)=J(e_{j+1},u_k)-\sum_{i=1}^{j}J(e_{j+1},u_i)J(u_i,u_k).
+</span> Since <span class="math inline">J(u_i,u_k)=0</span> unless <span class="math inline">i=k</span>, where it is <span class="math inline">1</span>, this is zero.</p>
+<p>Also, the span of <span class="math inline">\{u_1,\ldots,u_j,v_{j+1}\}</span> equals the span of <span class="math inline">\{e_1,\ldots,e_{j+1}\}</span>.</p>
+<p>Let <span class="math display">
+u_{j+1}=\frac{v_{j+1}}{\|v_{j+1}\|}.
+</span> This constructs <span class="math inline">U</span> as desired, and the result follows by induction. <span class="math inline">\square</span></p>
 </section>
-<section id="determinants-in-complexes" class="level4">
-<h4 class="anchored" data-anchor-id="determinants-in-complexes">Determinants in complexes</h4>
-<p><strong>Proposition:</strong> Suppose <span class="math inline">X</span>: <span class="math display">
-0\to A_1\to A_2\to A_3\to 0
-</span> is a short exact sequence of finite dimensional vector spaces and <span class="math inline">L:X\to X</span> is a linear map. So <span class="math inline">L=(L_1,L_2,L_3)</span> where <span class="math inline">L_i:A_i\to A_i</span> and the diagram: <span class="math display">
-\begin{array}{ccccccccc}
-0 &amp; \to &amp; A_1 &amp; \to &amp; A_2 &amp; \to &amp; A_3 &amp; \to &amp; 0 \\[4pt]
-  &amp;     &amp; \downarrow^{L_1} &amp; &amp; \downarrow^{L_2} &amp; &amp; \downarrow^{L_3} &amp; &amp; \\[4pt]
-0 &amp; \to &amp; A_1 &amp; \to &amp; A_2 &amp; \to &amp; A_3 &amp; \to &amp; 0
-\end{array}
+<section id="expansion-in-an-orthonormal-basis" class="level2">
+<h2 class="anchored" data-anchor-id="expansion-in-an-orthonormal-basis">Expansion in an Orthonormal Basis</h2>
+<p><strong>Proposition.</strong> If <span class="math inline">u_1,\ldots,u_n</span> is an orthonormal basis for <span class="math inline">V</span>, then for every <span class="math inline">v\in V</span>, <span class="math display">
+v=\sum_{i=1}^n J(v,u_i)u_i.
 </span></p>
-<p>commutes. Then <span class="math display">
-\det(L_2) = \det(L_1)\det(L_3).
+</section>
+</section>
+<section id="projection" class="level1">
+<h1>Projection</h1>
+<section id="orthogonal-complements" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonal-complements">Orthogonal Complements</h2>
+<p>Let <span class="math inline">W\subset V</span> be a subspace.</p>
+<p><strong>Definition.</strong> The <em>orthogonal complement</em> of <span class="math inline">W</span> is <span class="math display">
+W^\perp=\{v\in V: J(v,w)=0\text{ for all }w\in W\}.
 </span></p>
-<p><strong>Proof:</strong> Choose a basis for <span class="math inline">A_1</span> and extend it to a basis <span class="math inline">E</span> for <span class="math inline">A_2</span>. As in the case with the trace, the matrix of <span class="math inline">L</span> in this basis is block upper triangular. The upper left block is the matrix of <span class="math inline">L_1</span>, and the lower right block is the matrix of <span class="math inline">L_3</span>: <span class="math display">
-[L]_{E}^{E} =
-\begin{pmatrix}
-[L_1] &amp; * \
-0 &amp; [L_3]
-\end{pmatrix}
-</span> Using row operations, you can kill off the <span class="math inline">*</span> entries, and eventually see that the determinant of this matrix is <span class="math inline">\det([L_1])\det([L_3])</span>.</p>
-<p>More generally, using an alternating product, you can show that, given a bounded complex <span class="math inline">X^{\cdot}</span> of finite dimensional vector spaces, and a linear map <span class="math inline">L:X^{\cdot}\to X^{\cdot}</span>, that <span class="math display">
-\prod \det(L^{i}:X^{i}\to X^{i})^{(-1)^{i}} = \prod \det(\overline{L}^{i}:H^{i}(X^{\cdot})\to H^{i}(X^{\cdot}))^{(-1)^{i}}
-</span> where the <span class="math inline">\overline{L}_{i}</span> are the induced map on cohomology.</p>
+<p><strong>Proposition.</strong></p>
+<ol type="a">
+<li><span class="math inline">W^\perp</span> is a subspace of <span class="math inline">V</span>.</li>
+<li>The map <span class="math inline">W\oplus W^\perp\to V</span>, <span class="math inline">(x,y)\mapsto x+y</span>, is an isomorphism. In particular, <span class="math inline">\dim W+\dim W^\perp=n</span>.</li>
+<li><span class="math inline">(W^\perp)^\perp=W</span>.</li>
+</ol>
+</section>
+<section id="orthogonal-projection" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonal-projection">Orthogonal Projection</h2>
+<p><strong>Proposition.</strong> Inverting <span class="math inline">W\oplus W^\perp\to V</span> gives a map <span class="math inline">P_W:V\to V</span> with image <span class="math inline">W</span> and kernel <span class="math inline">W^\perp</span>, the <em>orthogonal projection</em> onto <span class="math inline">W</span>. Similarly, <span class="math inline">P_{W^\perp}</span> has image <span class="math inline">W^\perp</span> and kernel <span class="math inline">W</span>. Moreover:</p>
+<ul>
+<li><span class="math inline">P_WP_W=P_W</span> and <span class="math inline">P_{W^\perp}P_{W^\perp}=P_{W^\perp}</span> (they are <em>idempotent</em>);</li>
+<li><span class="math inline">P_W+P_{W^\perp}</span> is the identity.</li>
+</ul>
+<p>In an orthonormal basis <span class="math inline">u_1,\ldots,u_n</span> with <span class="math inline">u_1,\ldots,u_m</span> spanning <span class="math inline">W</span>: <span class="math display">
+[P_W]=\begin{pmatrix}I_{m\times m}&amp;0\\0&amp;0\end{pmatrix},\qquad
+[P_{W^\perp}]=\begin{pmatrix}0&amp;0\\0&amp;I_{(n-m)\times(n-m)}\end{pmatrix}.
+</span></p>
+</section>
+</section>
+<section id="closest-points" class="level1">
+<h1>Closest Points</h1>
+<section id="distance-to-a-subspace" class="level2">
+<h2 class="anchored" data-anchor-id="distance-to-a-subspace">Distance to a Subspace</h2>
+<p>The <em>distance</em> from <span class="math inline">v\in V</span> to <span class="math inline">W</span> is the minimum of <span class="math inline">\|v-w\|</span> as <span class="math inline">w</span> ranges over <span class="math inline">W</span>.</p>
+<p><strong>Proposition.</strong> The distance from <span class="math inline">v</span> to <span class="math inline">W</span> is <span class="math display">
+\|v-P_W(v)\|=\|P_{W^\perp}(v)\|.
+</span></p>
+</section>
+<section id="the-one-dimensional-case" class="level2">
+<h2 class="anchored" data-anchor-id="the-one-dimensional-case">The One-Dimensional Case</h2>
+<p>If <span class="math inline">W</span> is spanned by <span class="math inline">w</span> and <span class="math inline">v\notin W</span>, then <span class="math display">
+\|v-aw\|^2=J(v,v)-2aJ(v,w)+a^2J(w,w)
+</span> is minimized at <span class="math inline">a=\dfrac{J(v,w)}{J(w,w)}</span>. The vector from the closest point to <span class="math inline">v</span> is <span class="math display">
+v_0=v-\frac{J(v,w)}{J(w,w)}w=P_{W^\perp}(v),
+</span> and <span class="math display">
+\|v_0\|^2=J(v,v)-\frac{J(v,w)^2}{J(w,w)}&gt;0.
+</span></p>
+</section>
+<section id="the-cauchy-schwarz-inequality" class="level2">
+<h2 class="anchored" data-anchor-id="the-cauchy-schwarz-inequality">The Cauchy-Schwarz Inequality</h2>
+<p><strong>Proposition.</strong> (Cauchy-Schwarz) For <span class="math inline">v,w</span> in a real inner product space, <span class="math display">
+J(v,w)^2\le J(v,v)J(w,w),
+</span> or equivalently <span class="math display">
+|J(v,w)|\le\sqrt{J(v,v)J(w,w)},
+</span> with equality if and only if <span class="math inline">v</span> is a multiple of <span class="math inline">w</span>.</p>
+</section>
+</section>
+<section id="application-ordinary-least-squares" class="level1">
+<h1>Application: Ordinary Least Squares</h1>
+<section id="the-least-squares-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-least-squares-problem">The Least Squares Problem</h2>
+<p>Given measurements <span class="math inline">(x_{i1},\ldots,x_{ik})_{i=1}^N</span> and <span class="math inline">(y_i)_{i=1}^N</span>, we suspect a linear relation <span class="math display">
+y=\sum_{j=1}^k m_jx_j+b
+</span> up to random error.</p>
+<p>The <em>least squares</em> choice of <span class="math inline">m_j</span> and <span class="math inline">b</span> minimizes <span class="math display">
+E(m,b)=\sum_{i=1}^N\Big(y_i-\sum_{j=1}^k m_jx_{ij}-b\Big)^2.
+</span></p>
+</section>
+<section id="least-squares-as-projection" class="level2">
+<h2 class="anchored" data-anchor-id="least-squares-as-projection">Least Squares as Projection</h2>
+<p>Let <span class="math inline">Y\in\mathbb{R}^N</span> have entries <span class="math inline">y_i</span>, let <span class="math inline">X</span> be the <span class="math inline">N\times(k+1)</span> matrix with <span class="math inline">i^{th}</span> row <span class="math inline">(x_{i1},\ldots,x_{ik},1)</span>, and let <span class="math inline">M=(m_1,\ldots,m_k,b)\in\mathbb{R}^{k+1}</span>. Then <span class="math display">
+E(m,b)=\|Y-XM\|^2.
+</span></p>
+<p>As <span class="math inline">M</span> varies, <span class="math inline">XM</span> ranges over the column space of <span class="math inline">X</span>, so <span class="math inline">E</span> is minimized when <span class="math inline">Y-XM</span> is orthogonal to every column of <span class="math inline">X</span>: <span class="math display">
+X^\top(Y-XM)=0.
+</span></p>
+</section>
+<section id="the-normal-equations" class="level2">
+<h2 class="anchored" data-anchor-id="the-normal-equations">The Normal Equations</h2>
+<p>Let <span class="math inline">D=X^\top X</span>, a <span class="math inline">(k+1)\times(k+1)</span> matrix. If <span class="math inline">X</span> has rank <span class="math inline">k+1</span>, then <span class="math inline">D</span> is invertible and <span class="math display">
+M=D^{-1}X^\top Y.
+</span></p>
+<p>The closest point in the column space of <span class="math inline">X</span> is <span class="math display">
+XM=XD^{-1}X^\top Y,
+</span> the projection of <span class="math inline">Y</span> onto the column space of <span class="math inline">X</span>.</p>
+</section>
+<section id="projection-operator-in-general" class="level2">
+<h2 class="anchored" data-anchor-id="projection-operator-in-general">Projection Operator in General</h2>
+<p>Choose a basis <span class="math inline">E</span> for <span class="math inline">V</span> and write <span class="math inline">J</span> for <span class="math inline">[J]^E</span>. Let <span class="math inline">X</span> be the matrix with columns <span class="math inline">[w_1]_E,\ldots,[w_k]_E</span>, where <span class="math inline">w_1,\ldots,w_k</span> is a basis for <span class="math inline">W</span>.</p>
+<p>For <span class="math inline">Y\in V</span>, we want <span class="math inline">Y-XM</span> orthogonal to the columns of <span class="math inline">X</span>: <span class="math display">
+X^\top J(Y-XM)=0\quad\Longrightarrow\quad M=(X^\top JX)^{-1}X^\top JY.
+</span></p>
+<p>So the matrix of <span class="math inline">P_W</span> is <span class="math display">
+[P_W]_E=X(X^\top JX)^{-1}X^\top J,
+</span> and one checks directly that <span class="math inline">[P_W][P_W]=[P_W]</span>.</p>
+</section>
+</section>
+<section id="complex-hermitian-inner-products" class="level1">
+<h1>Complex (Hermitian) Inner Products</h1>
+<section id="hermitian-inner-products" class="level2">
+<h2 class="anchored" data-anchor-id="hermitian-inner-products">Hermitian Inner Products</h2>
+<p><strong>Definition.</strong> Let <span class="math inline">V</span> be a finite-dimensional complex vector space. A <em>Hermitian</em> inner product on <span class="math inline">V</span> is a function <span class="math inline">J:V\times V\to\mathbb{C}</span> that:</p>
+<ol type="1">
+<li>is linear in the first variable and conjugate linear in the second: <span class="math display">
+J(au+bv,w)=aJ(u,w)+bJ(v,w),\qquad J(u,av+bw)=\overline{a}J(u,v)+\overline{b}J(u,w);
+</span></li>
+<li>is conjugate symmetric: <span class="math inline">J(u,v)=\overline{J(v,u)}</span> (so <span class="math inline">J(u,u)</span> is real);</li>
+<li>is positive definite: <span class="math inline">J(u,u)\ge0</span>, with <span class="math inline">J(u,u)=0</span> only if <span class="math inline">u=0</span>.</li>
+</ol>
+<p>As in the real case, <span class="math inline">\|v\|=\sqrt{J(v,v)}</span>.</p>
+</section>
+<section id="the-matrix-of-a-hermitian-inner-product" class="level2">
+<h2 class="anchored" data-anchor-id="the-matrix-of-a-hermitian-inner-product">The Matrix of a Hermitian Inner Product</h2>
+<p>Let <span class="math inline">E=\{v_1,\ldots,v_n\}</span> be a basis and set <span class="math inline">[J]^E_{ij}=J(v_i,v_j)</span>. Since <span class="math display">
+J\Big(\sum a_iv_i,\sum b_jv_j\Big)=\sum a_i\overline{b_j}J(v_i,v_j),
+</span> we have <span class="math display">
+J(u,v)=[u]_E^\top[J]^E\,\overline{[v]_E}.
+</span></p>
+<p>The matrix <span class="math inline">[J]^E</span> is <em>Hermitian</em>: its transpose is its conjugate, <span class="math display">
+([J]^E)^\top=\overline{[J]^E}.
+</span></p>
+</section>
+<section id="gram-schmidt-for-hermitian-inner-products" class="level2">
+<h2 class="anchored" data-anchor-id="gram-schmidt-for-hermitian-inner-products">Gram-Schmidt for Hermitian Inner Products</h2>
+<p>If <span class="math inline">\{v_1,\ldots,v_n\}</span> is a basis for a Hermitian inner product space, let <span class="math display">
+u_1=\frac{v_1}{\|v_1\|},
+</span> and, assuming <span class="math inline">u_1,\ldots,u_k</span> are orthonormal, <span class="math display">
+u_{k+1}'=v_{k+1}-\sum_{i=1}^k J(v_{k+1},u_i)u_i,\qquad u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}.
+</span></p>
+<p>This gives an orthonormal basis <span class="math inline">u_1,\ldots,u_n</span> for <span class="math inline">V</span> in which the span of <span class="math inline">u_1,\ldots,u_j</span> equals the span of <span class="math inline">v_1,\ldots,v_j</span>.</p>
 
 
 </section>

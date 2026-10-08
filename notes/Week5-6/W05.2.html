@@ -161,7 +161,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.1.html">Weeks 5–6 — Inner Product Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.2.html">Gram-Schmidt process and orthogonal projections</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.1.html">Weeks 5–6 — Inner Product Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.2.html">Adjoints and the Spectral Theorem</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -315,25 +315,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week5-6/W05.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Inner product spaces over R</span></a>
+ <span class="menu-text">Inner product spaces over R and C; Orthogonality</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week5-6/W05.2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Gram-Schmidt process and orthogonal projections</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week5-6/W05.3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spectral theorem for self-adjoint operators (real case)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../notes/Week5-6/W05.4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Complex inner product spaces and Hermitian operators</span></a>
+ <span class="menu-text">Adjoints and the Spectral Theorem</span></a>
   </div>
 </li>
       </ul>
@@ -545,6 +533,8 @@ window.Quarto = {
   <li><a href="#orthogonal-and-unitary-diagonalizability" id="toc-orthogonal-and-unitary-diagonalizability" class="nav-link" data-scroll-target="#orthogonal-and-unitary-diagonalizability">Orthogonal and Unitary Diagonalizability</a></li>
   <li><a href="#self-adjoint-operators-and-orthogonal-diagonalizability" id="toc-self-adjoint-operators-and-orthogonal-diagonalizability" class="nav-link" data-scroll-target="#self-adjoint-operators-and-orthogonal-diagonalizability">Self Adjoint Operators and Orthogonal Diagonalizability</a></li>
   <li><a href="#unitary-or-orthogonal-operators" id="toc-unitary-or-orthogonal-operators" class="nav-link" data-scroll-target="#unitary-or-orthogonal-operators">Unitary (or Orthogonal) operators</a></li>
+  <li><a href="#orthogonal-projection" id="toc-orthogonal-projection" class="nav-link" data-scroll-target="#orthogonal-projection">Orthogonal Projection</a></li>
+  <li><a href="#positivity" id="toc-positivity" class="nav-link" data-scroll-target="#positivity">Positivity</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -552,7 +542,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.1.html">Weeks 5–6 — Inner Product Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.2.html">Gram-Schmidt process and orthogonal projections</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.1.html">Weeks 5–6 — Inner Product Spaces</a></li><li class="breadcrumb-item"><a href="../../notes/Week5-6/W05.2.html">Adjoints and the Spectral Theorem</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Adjoints and The Spectral Theorem</h1>
 </div>
@@ -653,7 +643,7 @@ V = E(\lambda_1)\oplus E(\lambda_2)\oplus\cdots\oplus E(\lambda_k)
 <li>the inverse of a normal operator is normal</li>
 <li>if <span class="math inline">f</span> is normal, so is <span class="math inline">f^2</span> (since <span class="math inline">(f^2)^{*}f^2=f^{*}f^{*}ff=fff^{*}f^{*}</span>) and therefore so is any polynomial <span class="math inline">P(f)</span> in <span class="math inline">f</span>.</li>
 </ul>
-<p>It is not the case in general that a sum or product of normal operators is normal. But one can check that a polynomial in a normal operator is normal.</p>
+<p>It is not the case in general that a sum or product of two normal operators is normal.</p>
 <p>In addition, if <span class="math inline">f</span> is normal:</p>
 <ul>
 <li>If <span class="math inline">f(v)=0</span> then <span class="math inline">f^{*}(v)=0</span>. Because <span class="math display">\langle f(v),f(v)\rangle=\langle v,f^{*}f(v)\rangle = \langle f^{*}(v),f^{*}(v)\rangle</span></li>
@@ -726,7 +716,37 @@ f(u_1),\ldots, f(u_n)
 <p><span class="math display">
 \langle v,w\rangle = \frac{1}{4}(\|v+w\|^2-\|v-w\|^2)
 </span></p>
-<p><strong>Proposition:</strong> A matrix <span class="math inline">A</span> is unitary if and only <span class="math inline">A^{\top}A=I</span>. This is equivalent to saying that the rows (and columns) of <span class="math inline">A</span> form an orthonormal set. A unitary matrix has determinant of complex absolute value 1; over the reals, an orthogonal matrix has determinant <span class="math inline">\pm 1</span>.</p>
+<p><strong>Proposition:</strong> A matrix <span class="math inline">A</span> is unitary if and only <span class="math inline">A^{\top}A=I</span>. For unitary matrices: - the rows (and columns) of <span class="math inline">A</span> form an orthonormal set.<br>
+- the eigenvalues of a unitary (or orthogonal) matrix have complex absolute value 1. - the determinant of <span class="math inline">A</span> is of complex absolute value 1; over the reals, an orthogonal matrix has determinant <span class="math inline">\pm 1</span>.</p>
+</section>
+<section id="orthogonal-projection" class="level3">
+<h3 class="anchored" data-anchor-id="orthogonal-projection">Orthogonal Projection</h3>
+<p>A linear map <span class="math inline">L:V\to V</span> is called a projection map if <span class="math inline">L^2=L</span>. This implies that:</p>
+<ul>
+<li><span class="math inline">L:\mathrm{image}(L)\to\mathrm{image}(L)</span> is the identity map.</li>
+<li>If <span class="math inline">v\in V</span>, then <span class="math inline">L(v-LV)=0</span> so <span class="math inline">v-Lv\in \ker(L)</span> and every vector <span class="math inline">v=(v-Lv)+Lv\in \ker(L)+\mathrm{image}(L)</span>.</li>
+<li>If <span class="math inline">v\in \ker(L)\cap \mathrm{image}(L)</span>, then <span class="math inline">v=Lx</span> so <span class="math inline">Lv=Lx=0</span> so <span class="math inline">v=0</span>. In other words the <span class="math inline">V=\ker(L)\oplus\mathrm{image}(L)</span>.</li>
+</ul>
+<p>A projection is <em>orthogonal</em> if it is self-adjoint. This is equivalent to saying that <span class="math inline">\ker(L)</span> and <span class="math inline">\mathrm{image}(L)</span> are orthogonal. If <span class="math inline">L</span> is a self-adjoint projection, <span class="math inline">x=Lu\in \mathrm{image}(L)</span> and <span class="math inline">y\in\ker(L)</span> then</p>
+<p><span class="math display">
+\langle x, y\rangle = \langle Lu,y\rangle = \langle L^2u,y\rangle = \langle Lx, Ly\rangle  =0.
+</span></p>
+<p>Conversely, if <span class="math inline">\ker(L)</span> and <span class="math inline">\mathrm{image}(L)</span> are orthogonal write <span class="math inline">v=u+w</span> and <span class="math inline">v'=u'+w'</span> where <span class="math inline">u,u'\in\ker(L)</span> and <span class="math inline">w,w'=La,La'\in \mathrm{image}(L)</span>. Then <span class="math display">
+\langle Lv,v'\rangle = \langle Lw, u'+w'\rangle =\langle Lw, w'\rangle = \langle w, w'\rangle = \langle w, Lw'\rangle = \langle v, Lv'\rangle
+</span></p>
+<p>If <span class="math inline">L</span> is normal over <span class="math inline">\mathbf{C}</span>, and <span class="math inline">V=E(\lambda_1)\oplus\cdots\oplus E(\lambda_{k})</span> is the orthogonal decomposition of <span class="math inline">V</span> into <span class="math inline">L</span>-eigenspaces, we can construct an orthogonal set of projection maps <span class="math inline">p_{i}</span> onto <span class="math inline">E(\lambda_{i})</span>. Then <span class="math display">
+L = \sum \lambda_{i}p_{i}
+</span> is called the <em>spectral resolution</em> of <span class="math inline">L</span>.</p>
+<p>If <span class="math inline">L</span> is self-adjoint over <span class="math inline">\mathbb{R}</span> it has a similar resolution with real eigenvalues.</p>
+<p><strong>Proposition:</strong> The projection operators <span class="math inline">p_{i}</span> are polynomials in <span class="math inline">L</span>. In fact, let <span class="math inline">f_{i}(x)</span> be the polynomial such that <span class="math inline">f_{i}(\lambda_{i})=1</span> and <span class="math inline">f_{i}(\lambda_{j})=0</span> for <span class="math inline">j\not= i</span>. Then <span class="math inline">f_{i}(L)=p_{i}</span>.</p>
+</section>
+<section id="positivity" class="level3">
+<h3 class="anchored" data-anchor-id="positivity">Positivity</h3>
+<p>A self-adjoint linear map <span class="math inline">L:V\to V</span> is called <em>positive</em> if the function <span class="math display">
+Q_{L}(v) = \langle Lv, v\rangle \ge 0
+</span> for all <span class="math inline">v</span>, and positive definite if the inequality is strict unless <span class="math inline">v=0</span>.</p>
+<p><strong>Remark:</strong> <span class="math inline">Q_{L}(v)</span> is real because <span class="math inline">\overline{\langle Lv, v\rangle} = \langle v, Lv\rangle = \langle Lv, v\rangle</span>.</p>
+<p><strong>Proposition:</strong> <span class="math inline">L</span> is positive if all its eigenvalues are non-negative; and positive definite if they are all strictly positive.</p>
 
 
 </section>
