@@ -139,11 +139,9 @@ We will work our way up to this result.  First, note that:
 - if $f$ is normal, so is $f^2$ (since $(f^2)^{*}f^2=f^{*}f^{*}ff=fff^{*}f^{*}$) and therefore so is any polynomial
 $P(f)$ in $f$. 
 
-It is not the case in general that a sum or product of normal operators is normal.  But one can check that
-a  polynomial in a normal operator is normal. 
+It is not the case in general that a sum or product of two normal operators is normal.  
 
 In addition, if $f$ is normal:
-
 
 - If $f(v)=0$ then $f^{*}(v)=0$.  Because 
 $$\langle f(v),f(v)\rangle=\langle v,f^{*}f(v)\rangle = \langle f^{*}(v),f^{*}(v)\rangle$$
@@ -282,6 +280,53 @@ $$
 \langle v,w\rangle = \frac{1}{4}(\|v+w\|^2-\|v-w\|^2)
 $$
 
-**Proposition:** A matrix $A$ is unitary if and only $A^{\top}A=I$.  This is equivalent to saying that the rows
-(and columns) of $A$ form an orthonormal set.  A unitary matrix has determinant of complex absolute value 1; over the reals,
+**Proposition:** A matrix $A$ is unitary if and only $A^{\top}A=I$.  For unitary matrices:
+- the rows (and columns) of $A$ form an orthonormal set.  
+- the eigenvalues of a unitary (or orthogonal) matrix have complex absolute value 1. 
+- the determinant of $A$ is of complex absolute value 1; over the reals,
 an orthogonal matrix has determinant $\pm 1$.
+
+### Orthogonal Projection
+
+A linear map $L:V\to V$ is called a projection map if $L^2=L$.  This implies that:
+
+- $L:\image(L)\to\image(L)$ is the identity map.
+- If $v\in V$, then $L(v-LV)=0$ so $v-Lv\in \ker(L)$ and every vector $v=(v-Lv)+Lv\in \ker(L)+\image(L)$.
+- If $v\in \ker(L)\cap \image(L)$, then $v=Lx$ so $Lv=Lx=0$ so $v=0$.  In other words the $V=\ker(L)\oplus\image(L)$. 
+
+A projection is *orthogonal* if it is self-adjoint.  This is equivalent to saying that $\ker(L)$ and $\image(L)$ are orthogonal.
+If $L$ is a self-adjoint projection, $x=Lu\in \image(L)$ and $y\in\ker(L)$ then
+
+$$
+\langle x, y\rangle = \langle Lu,y\rangle = \langle L^2u,y\rangle = \langle Lx, Ly\rangle  =0. 
+$$
+
+Conversely, if $\ker(L)$ and $\image(L)$ are orthogonal write $v=u+w$ and $v'=u'+w'$ where $u,u'\in\ker(L)$ and $w,w'=La,La'\in \image(L)$.
+Then 
+$$
+\langle Lv,v'\rangle = \langle Lw, u'+w'\rangle =\langle Lw, w'\rangle = \langle w, w'\rangle = \langle w, Lw'\rangle = \langle v, Lv'\rangle
+$$
+
+If $L$ is normal over $\C$, and $V=E(\lambda_1)\oplus\cdots\oplus E(\lambda_{k})$ is the orthogonal decomposition of $V$ into $L$-eigenspaces,
+we can construct an orthogonal set of projection maps $p_{i}$ onto $E(\lambda_{i})$.  Then
+$$
+L = \sum \lambda_{i}p_{i}
+$$
+is called the *spectral resolution* of $L$. 
+
+If $L$ is self-adjoint over $\R$ it has a similar resolution with real eigenvalues.
+
+**Proposition:** The projection operators $p_{i}$ are polynomials in $L$.  In fact, let $f_{i}(x)$ be the polynomial such that
+$f_{i}(\lambda_{i})=1$ and $f_{i}(\lambda_{j})=0$ for $j\not= i$. Then $f_{i}(L)=p_{i}$.
+
+### Positivity
+
+A self-adjoint linear map $L:V\to V$ is called *positive* if the function
+$$
+Q_{L}(v) = \langle Lv, v\rangle \ge 0
+$$
+for all $v$, and positive definite if the inequality is strict unless $v=0$.
+
+**Remark:** $Q_{L}(v)$ is real because $\overline{\langle Lv, v\rangle} = \langle v, Lv\rangle = \langle Lv, v\rangle$.
+
+**Proposition:** $L$ is positive if all its eigenvalues are non-negative; and positive definite if they are all strictly positive.
