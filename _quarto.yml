@@ -109,6 +109,12 @@ website:
             href: "notes/Week2-3/W02.3-slides.given.pdf"
           - text: "09222026"
             href: "notes/Week4/W04.1-slides.given.pdf"
+          - text: "09292026"
+            href: "notes/Week4/W04.3-exponential-slides.given.pdf"
+          - text: "10062026"
+            href: "notes/Week4/W04.3-slides.pdf"
+          - text: "10132026"
+            href: "notes/Week5-6/W05.1-slides.given.pdf"
 format:
   html:
     theme: flatly
