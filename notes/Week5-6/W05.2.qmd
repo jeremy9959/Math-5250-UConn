@@ -316,8 +316,17 @@ is called the *spectral resolution* of $L$.
 
 If $L$ is self-adjoint over $\R$ it has a similar resolution with real eigenvalues.
 
-**Proposition:** The projection operators $p_{i}$ are polynomials in $L$.  In fact, let $f_{i}(x)$ be the polynomial such that
-$f_{i}(\lambda_{i})=1$ and $f_{i}(\lambda_{j})=0$ for $j\not= i$. Then $f_{i}(L)=p_{i}$.
+
+**Proposition:** The projection operators in the spectral resolution of a self-adjoint linear map $L$ (over $\mathbf{R}$)
+or normal map $L$ (over $\mathbf{C}$) are polynomials in the original matrix.  In particular they commute with the linear map $L$. 
+
+In fact one can construct these operators $p_{i}$ directly from the eigenvalues of $L$.  Suppose $\lambda_{1},cdots, \lambda_{r}$ are the eigenvalues.  Construct polynomials $f_{1},\ldots,f_{r}$ where $f_{i}$ takes the value $1$ at $\lambda_{i}$ and zero at the other $\lambda_{j}$.  You can do this by setting
+$$
+f_{i}(x) = \frac{\prod_{j\not=i}(x-\lambda_{j})}{(\prod_{j\not=i}(\lambda_{i}-\lambda_{j}))}.
+$$
+The $f_{i}(L)$ is an operator whose eigenvalues are $1$ and $0$ and the $1$-eigevalues correspond to the
+eigenvalues $\lambda_{i}$.  
+
 
 ### Positivity
 

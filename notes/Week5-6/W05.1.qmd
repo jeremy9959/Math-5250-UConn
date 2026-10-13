@@ -4,7 +4,7 @@ title: "Inner Product Spaces"
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
-## Inner Products over $\R$.
+## Inner Products over $\R$
 
 Suppose that $V$ is a real vector space.  An *inner product* (or "dot" product) on $V$ is a map
 $$
@@ -14,7 +14,7 @@ that satisfies the following properties:
 
 a. (symmetry)  $J(u,v) = J(v,u)$ for all $u,v\in V$. 
 b. (linearity)  If $v\in V$ is fixed, then the function $u\mapsto J(u,v)$ is linear in $u$.
-In other words, $J(au_1+bu_2,v) = aJ(u_1,v)+bJ(u_2,v)$.  Since $J$ is also symmetric, we also have $J(u,av_1+bv_2)=aJ(u,v_1)+bJ(u,v_2)$.  So $J$ is *bilinear.*
+In other words, $J(au_1+bu_2,v) = aJ(u_1,v)+bJ(u_2,v)$.  Since $J$ is symmetric, we also have $J(u,av_1+bv_2)=aJ(u,v_1)+bJ(u,v_2)$.  So $J$ is *bilinear.*
 c. (positive definiteness)  For all nonzero $v\in V$, we have $J(v,v)>0$. 
 
 The classic example of such an inner product is the Euclidean "dot" product:
@@ -47,7 +47,8 @@ $$
 This distance measure satisfies the conditions for a "metric":
 
 a. $d(u,v)\ge 0$ and $d(u,v)=0$ if and only if $u=v$.
-b. $d(u,w)\le d(u,v)+d(v,w)$ (the triangle inequality)
+b. $d(u,v)=d(v,u)$.
+c. $d(u,w)\le d(u,v)+d(v,w)$ (the triangle inequality).
 
 Of course, if $\langle u,v\rangle$ is the standard dot product, this distance
 is the usual distance given by the Pythagorean theorem:
@@ -109,7 +110,7 @@ $$
 $$
 then $[J]^{T}$ is related to $[J]^{E}$ by
 $$
-[J]^{E} = ([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}
+[J]^{E} = ([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}.
 $$
 
 
@@ -117,7 +118,7 @@ The last point follows from the computation:
 $$
 \begin{aligned}
 J(a,b) &= [a]_{T}^{\top}[J]^{T}[b]_{T} = \left([1]_{E}^{T}[a]_{E}\right)^{\top}[J]^{T}\left([1]_{E}^{T}[b]_{E}\right) \\
-&= [a]_{E}^{\top}([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}[b]_{E}
+&= [a]_{E}^{\top}([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}[b]_{E}.
 \end{aligned}
 $$
 
@@ -131,7 +132,7 @@ is an inner product, and $X=[J]^{E}$ relative to the standard basis of $\R^{n}$.
 
 The symmetry follows from the fact that 
 $$
-J(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=J(a,b)
+J(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=J(a,b).
 $$
 
 Linearity follows from properties of matrix multiplication, and the definiteness follows from the
@@ -171,7 +172,7 @@ $$
 \begin{aligned}
 u_{1} &= a_{11}e_{1} \\
 u_{2} &= a_{12}e_{1} + a_{22}e_{2} \\
-\vdots &= \vdots \\
+&\;\;\vdots \\
 u_{j} &= a_{1j}e_{1}+\cdots+a_{jj}e_{j} \\
 \end{aligned}
 $$
@@ -193,20 +194,21 @@ u_{1} = \frac{e_1}{\|e_{1}\|}.
 $$
 This clearly solves the problem when $W$ is one-dimensional.
 
-Now suppose we've constructed $u_1,\ldots, u_{j}$ so that the span of these vectors is $E_{j}$, they are mutually orthogonal of norm $1$, and the change of basis matrix is triangular.  Let
+Now suppose we've constructed $u_1,\ldots, u_{j}$ so that the span of these vectors is the span of $E_{j}$, they are mutually orthogonal of norm $1$, and the change of basis matrix is triangular.  Let
 $$
-v_{j+1} = e_{j+1}-\sum J(e_{j+1},u_{i})u_{i}.
+v_{j+1} = e_{j+1}-\sum_{i=1}^{j} J(e_{j+1},u_{i})u_{i}.
 $$
 
 Now, for $k=1,\ldots, j$, we compute:
 $$
-J(v_{j+1}, u_{k})=J(e_{j+1},u_{k})-\sum J(e_{j+1},u_{i})J(u_{i},u_{k}). 
+J(v_{j+1}, u_{k})=J(e_{j+1},u_{k})-\sum_{i=1}^{j} J(e_{j+1},u_{i})J(u_{i},u_{k}).  
 $$
 
 Since $J(u_{i},u_{k})=0$ except when $i=k$,
 where it is $1$, this simplifies to zero.
 
 Also, the span of $\{u_1,\ldots, u_{j},v_{j+1}\}$ is the same as the span of $\{e_1,\ldots, e_{j+1}\}$.
+In particular $v_{j+1}\not=0$, since $e_{j+1}$ is not in the span of $E_{j}$.
 If we then let $u_{j+1}=\frac{v_{j+1}}{\|v_{j+1}\|}$, we've constructed $U$ as desired and the result
 follows by induction.
 
@@ -231,6 +233,7 @@ W^{\perp}=\{v\in V : J(v,w)=0\mathrm{\ for\ all\ } w\in W \}
 $$
 
 **Proposition:** Under the above hypotheses:
+
 a. $W^{\perp}$ is a subspace of $V$.
 b. The map $W\oplus W^{\perp}\to V$ defined by $(x,y)\mapsto x+y$ is an isomorphism.
 c. $(W^{\perp})^{\perp}=W$.
@@ -238,11 +241,11 @@ c. $(W^{\perp})^{\perp}=W$.
 **Proof:** $W^{\perp}$ is a subspace since $J(0,w)=0$ and if $J(w,v_1)=J(w,v_2)=0$ for $w\in W$ then $J(w,av_1+bv_2)=0$ by linearity.
 For part (b), choose an (ordered) basis $w_{1},\ldots, w_{m}$ for $W$ and extend it to a basis for $V$.  Apply Gram-Schmidt to this
 ordered basis to obtain orthonormal vectors  $u_1,\ldots, u_{n}$ where $u_1,\ldots, u_m$ are a basis for $W$. Then $u_{m+1},\ldots, u_{n}$
-all belong to $W^{\perp}$.  Given $v\in V$, then we can write
+all belong to $W^{\perp}$.  Given $v\in V$, we can write
 $$
 v=\sum J(v,u_{i})u_{i}=\sum_{i=1}^{m} J(v,u_{i})u_{i} + \sum_{i=m+1}^{n} J(v,u_{i})u_{i}
 $$
-The first sum on the right belongs to $W$, and the second to $W^{\perp}$, so the map from $W\oplus W^{\perp}\to V$ is surjective.
+The first sum on the right belongs to $W$, and the second to $W^{\perp}$, so the map $W\oplus W^{\perp}\to V$ is surjective.
 On the other hand, if $x\in W\cap W^{\perp}$, we'd have $J(x,x)=0$ so $x=0$.  Therefore the map is injective and thus an isomorphism.
 In particular
 $$
@@ -282,7 +285,7 @@ $$
 Let $W$ be a subspace of the $n$-dimensional inner product space $V$.  If $v\in V$, we can consider
 the "distance to $W$" as the minimum of $\|v-w\|$ as $w$ ranges over $W$.
 
-**Proposition:** The distance from $v$ to $W$ is $\|v-P_{W}(v)\|$ or $\|P_{W^{\perp}}(v)\|$.
+**Proposition:** The distance from $v$ to $W$ is $\|v-P_{W}(v)\|$, or equivalently $\|P_{W^{\perp}}(v)\|$.
 
 To prove this proposition, we first look at the case where $W$ is one-dimensional, and spanned by a vector 
 $w$. Then $W$ consists of multiples of $w$, and for fixed $v\not\in W$, we have
@@ -293,17 +296,17 @@ The minimum of this occurs when $2aJ(w,w)=2J(v,w)$ or
 $$
 a=\frac{J(v,w)}{J(w,w)}.
 $$
-In other words, the vector from $v$ to the closest point in $W$
+In other words, the vector from the closest point in $W$ to $v$
 is
 $$
 v_{0} = v-\frac{J(v,w)}{J(w,w)}w
 $$
-and the closest distance is
+and the square of the distance from $v$ to $W$ is
 $$
 \|v_{0}\|^2 = J(v,v)-2\frac{J(v,w)^2}{J(w,w)}+\frac{J(v,w)^2}{J(w,w)} = J(v,v)-\frac{J(v,w)^2}{J(w,w)}.
 $$
 
-Notice first that $J(v_0,w)=0$ so $v_{0}=P_{W^{\perp}}(v)$ so the proposition is proved when $\dim(W)=1$.
+Notice first that $J(v_0,w)=0$ and $v-v_{0}\in W$, so $v_{0}=P_{W^{\perp}}(v)$ so the proposition is proved when $\dim(W)=1$.
 However, we also obtain the fact that, since $\|v_{0}\|^2>0$, then
 $$
 J(v,v)-\frac{J(v,w)^{2}}{J(w, w)}>0. 
@@ -315,24 +318,24 @@ This is the "Cauchy-Schwarz Inequality."
 $$
 J(v,w)^2\le J(v,v)J(w,w)
 $$
-with equality if and only if $v$ is a multiple of $w$.  Taking square roots, this is the same
+with equality if and only if $v$ and $w$ are linearly dependent.  Taking square roots, this is the same
 as
 $$
 |J(v,w)|\le\sqrt{J(v,v)J(w,w)}
 $$
-with equality if and only if $v$ is a multiple of $w$. 
+with equality if and only if $v$ and $w$ are linearly dependent. 
 
 For the general case of finding the closest point, we can generalize the calculus argument above,
-or instead use the decomposition $V=W^{\top}\oplus W$.  If we write
+or instead use the decomposition $V=W\oplus W^{\perp}$.  Write
 $$
-v = w_{0}^{\top}+w_{0}
+v = w_{0}+z
 $$
-then 
+with $w_{0}\in W$ and $z\in W^{\perp}$.  If $w\in W$, then $w_{0}-w\in W$ is orthogonal to $z$, so
 $$
-\langle v-w,v-w\rangle = \langle w_{0}^{\top},w_{0}^{\top}\rangle + \langle w_{0}-w,w_{0}-w\rangle
+\langle v-w,v-w\rangle = \langle z,z\rangle + \langle w_{0}-w,w_{0}-w\rangle,
 $$
-which is clearly minimized when $w=w_{0}$.  So $w_{0}$ is the closest point and $\|w_{0}^{\top}\|$ is the distance
-to the closest point.
+which is clearly minimized when $w=w_{0}$.  So $w_{0}=P_{W}(v)$ is the closest point and $\|z\|=\|P_{W^{\perp}}(v)\|$ is the distance
+from $v$ to $W$.
 
 ### Application: Ordinary Least Squares
 
@@ -343,13 +346,13 @@ $$
 up to some random error, and we would like to infer the values of the $m_{j}$ and $b$ to obtain
 the "best" such linear relation.
 
-The least squares approach says that the best choice for the $m_{j}$ and $b$ is the values
-which minimize the squared error
+The least squares approach says that the best choices for the $m_{j}$ and $b$ are the values
+that minimize the squared error
 $$
 E(m,b)=\sum_{i=1}^{N} (y_i-\sum_{j=1}^{k} m_{j}x_{ij}-b)^2.
 $$
 
-We can use linear algebra to approach this problem.  Let $Y$ be the vector in $\mathbf{R}^{N}$ whose entries are the $y_{i}$ and let $X$ be the $N\times (k+1)$ matrix whose $i^{th}$ row is
+We can use linear algebra to approach this problem.  Let $Y$ be the vector in $\R^{N}$ whose entries are the $y_{i}$ and let $X$ be the $N\times (k+1)$ matrix whose $i^{th}$ row is
 $(x_{i1},\ldots, x_{ik},1)$.  
 
 Notice then that
@@ -361,7 +364,7 @@ where $M\in \R^{k+1}$ is the vector with entries $m_{1},\ldots, m_{k},b$.
 
 So our problem can be interpreted as finding $M$ so that $\|Y-XM\|^2$ is as small as possible.
 On the other hand, as $M$ varies, the vector $XM$ varies over the column space of $X$.
-So the value $E(m,b)$ is minimized at the point in the column space of $X$ that is closest to $Y$.
+So the value $E(m,b)$ is minimized when $XM$ is the point in the column space of $X$ that is closest to $Y$.
 
 From our work above, this happens when $Y-XM$ is orthogonal to the column space of $X$.  To check this it's sufficient that $Y-XM$ is orthogonal to all the columns of $X$.  In other words, when
 $$
@@ -385,8 +388,8 @@ which is the projection of $Y$ into the column space of $X$.
 ### Projection Operator in General
 
 The argument we made above for the least squares problem gives us a way to construct the
-projection operator $P_{W}$ when $W$ is a subspace of a real inner product space of dimension $n$.
-Choose a basis $E$ for $V$ and , to simplify the notation, 
+projection operator $P_{W}$ when $W$ is a subspace of a real inner product space $V$ of dimension $n$.
+Choose a basis $E$ for $V$ and, to simplify the notation, 
 let's write $J$ (instead of $[J]^{E}$) for the matrix of the inner product in this basis.
 Let $X$ be the matrix whose columns are $([w_{i}]_{E})_{i=1}^{k}$ where
 the $w_1,\ldots, w_k$ form a basis for $W$.  So $W$ is the column space of $X$. 
@@ -400,7 +403,8 @@ $$
 X^{\top}J(Y-XM)=0
 $$
 
-and as above we get the formula
+and as above we get the formula (the matrix $X^{\top}JX$ is invertible because it is the matrix of
+the inner product restricted to $W$ in the basis $w_1,\ldots,w_k$, and hence is positive definite)
 $$
 M = (X^{\top}JX)^{-1}X^{\top}JY
 $$
@@ -425,7 +429,7 @@ $$
 
 ## Complex (Hermitian) Inner Products
 
-Now suppose $V$ is a finite dimensional complex vector space.  A *hermitian* product on $V$
+Now suppose $V$ is a finite dimensional complex vector space.  A *Hermitian* inner product on $V$
 is a function $J:V\times V\to \C$ that:
 
 1. Is linear in the first variable and conjugate linear in the second: $J(au+bv,w)=aJ(u,w)+bJ(v,w)$ and
@@ -450,27 +454,26 @@ $$
 J(\sum a_{i}v_{i}, \sum b_{j}v_{j})=\sum a_{i}\overline{b_{j}}J(v_{i},v_{j}).
 $$
 
-In addition, the matrix $[J]^{E}$ satisfies the "hermitian condition" -- its transpose is its conjugate: 
+In addition, the matrix $[J]^{E}$ satisfies the "Hermitian condition" -- its transpose is its conjugate: 
 $$
 ([J]^{E})^{\top} = \overline{[J]^{E}}
 $$
 
 Notice that since $J(v,v)$ is a nonnegative real number we can define $\|v\|=\sqrt{J(v,v)}$ as in the real case.
 
-The Gram-Schmidt process works (suitably modified) in this setting.  If $\{v_{1},\ldots, v_{n}\}$ is
-a basis for a Hermitian inner product space $V$, we  construct inductively:
+The Gram-Schmidt process works (suitably modified) in this setting.  Let $\{v_{1},\ldots, v_{n}\}$ be
+a basis for a Hermitian inner product space $V$.  We construct vectors $u_{1},\ldots,u_{n}$ inductively.  First let
 $$
-u_{1} = \frac{v_{1}}{\|v_{1}\|}
+u_{1} = \frac{v_{1}}{\|v_{1}\|}.
 $$
-and,  assuming that $u_{1},\ldots, u_{k}$ are orthonormal,
+Then, assuming that $u_{1},\ldots, u_{k}$ are orthonormal, let
 $$
 u_{k+1}' = v_{k+1}-\sum_{i=1}^{k} J(v_{k+1},u_{i})u_{i}
 $$
 and
 $$
-u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}
+u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}.
 $$
 
-we obtain an orthonormal basis $u_{1},\ldots, u_{n}$ for $V$ where the span of $u_{1},\ldots, u_{j}$ is the
-same as the span of $v_{1},\ldots, v_{j}$.  
-
+This gives an orthonormal basis $u_{1},\ldots, u_{n}$ for $V$ such that, for each $j$, the span of $u_{1},\ldots, u_{j}$ is the
+same as the span of $v_{1},\ldots, v_{j}$.
