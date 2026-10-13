@@ -763,6 +763,11 @@ J(v,w)^2\le J(v,v)J(w,w)
 </span> with equality if and only if <span class="math inline">v</span> is a multiple of <span class="math inline">w</span>. Taking square roots, this is the same as <span class="math display">
 |J(v,w)|\le\sqrt{J(v,v)J(w,w)}
 </span> with equality if and only if <span class="math inline">v</span> is a multiple of <span class="math inline">w</span>.</p>
+<p>For the general case of finding the closest point, we can generalize the calculus argument above, or instead use the decomposition <span class="math inline">V=W^{\top}\oplus W</span>. If we write <span class="math display">
+v = w_{0}^{\top}+w_{0}
+</span> then <span class="math display">
+\langle v-w,v-w\rangle = \langle w_{0}^{\top},w_{0}^{\top}\rangle + \langle w_{0}-w,w_{0}-w\rangle
+</span> which is clearly minimized when <span class="math inline">w=w_{0}</span>. So <span class="math inline">w_{0}</span> is the closest point and <span class="math inline">\|w_{0}^{\top}\|</span> is the distance to the closest point.</p>
 </section>
 <section id="application-ordinary-least-squares" class="level3">
 <h3 class="anchored" data-anchor-id="application-ordinary-least-squares">Application: Ordinary Least Squares</h3>
