@@ -322,6 +322,17 @@ $$
 $$
 with equality if and only if $v$ is a multiple of $w$. 
 
+For the general case of finding the closest point, we can generalize the calculus argument above,
+or instead use the decomposition $V=W^{\top}\oplus W$.  If we write
+$$
+v = w_{0}^{\top}+w_{0}
+$$
+then 
+$$
+\langle v-w,v-w\rangle = \langle w_{0}^{\top},w_{0}^{\top}\rangle + \langle w_{0}-w,w_{0}-w\rangle
+$$
+which is clearly minimized when $w=w_{0}$.  So $w_{0}$ is the closest point and $\|w_{0}^{\top}\|$ is the distance
+to the closest point.
 
 ### Application: Ordinary Least Squares
 
