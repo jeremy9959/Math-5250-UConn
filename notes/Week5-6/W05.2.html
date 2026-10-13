@@ -756,7 +756,10 @@ f(u_1),\ldots, f(u_n)
 L = \sum \lambda_{i}p_{i}
 </span> is called the <em>spectral resolution</em> of <span class="math inline">L</span>.</p>
 <p>If <span class="math inline">L</span> is self-adjoint over <span class="math inline">\mathbb{R}</span> it has a similar resolution with real eigenvalues.</p>
-<p><strong>Proposition:</strong> The projection operators <span class="math inline">p_{i}</span> are polynomials in <span class="math inline">L</span>. In fact, let <span class="math inline">f_{i}(x)</span> be the polynomial such that <span class="math inline">f_{i}(\lambda_{i})=1</span> and <span class="math inline">f_{i}(\lambda_{j})=0</span> for <span class="math inline">j\not= i</span>. Then <span class="math inline">f_{i}(L)=p_{i}</span>.</p>
+<p><strong>Proposition:</strong> The projection operators in the spectral resolution of a self-adjoint linear map <span class="math inline">L</span> (over <span class="math inline">\mathbf{R}</span>) or normal map <span class="math inline">L</span> (over <span class="math inline">\mathbf{C}</span>) are polynomials in the original matrix. In particular they commute with the linear map <span class="math inline">L</span>.</p>
+<p>In fact one can construct these operators <span class="math inline">p_{i}</span> directly from the eigenvalues of <span class="math inline">L</span>. Suppose <span class="math inline">\lambda_{1},cdots, \lambda_{r}</span> are the eigenvalues. Construct polynomials <span class="math inline">f_{1},\ldots,f_{r}</span> where <span class="math inline">f_{i}</span> takes the value <span class="math inline">1</span> at <span class="math inline">\lambda_{i}</span> and zero at the other <span class="math inline">\lambda_{j}</span>. You can do this by setting <span class="math display">
+f_{i}(x) = \frac{\prod_{j\not=i}(x-\lambda_{j})}{(\prod_{j\not=i}(\lambda_{i}-\lambda_{j}))}.
+</span> The <span class="math inline">f_{i}(L)</span> is an operator whose eigenvalues are <span class="math inline">1</span> and <span class="math inline">0</span> and the <span class="math inline">1</span>-eigevalues correspond to the eigenvalues <span class="math inline">\lambda_{i}</span>.</p>
 </section>
 <section id="positivity" class="level3">
 <h3 class="anchored" data-anchor-id="positivity">Positivity</h3>

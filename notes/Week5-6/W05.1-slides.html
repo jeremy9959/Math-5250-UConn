@@ -642,6 +642,7 @@ J((a_1,\ldots,a_n),(b_1,\ldots,b_n))=\sum_{i=1}^{n}a_ib_i=(a_1,\ldots,a_n)\cdot(
 <p>This distance is a <em>metric</em>:</p>
 <ol type="a">
 <li><span class="math inline">d(u,v)\ge0</span>, and <span class="math inline">d(u,v)=0</span> if and only if <span class="math inline">u=v</span>;</li>
+<li><span class="math inline">d(u,v)=d(v,u)</span>;</li>
 <li><span class="math inline">d(u,w)\le d(u,v)+d(v,w)</span> (the triangle inequality).</li>
 </ol>
 <p><strong>Example.</strong> For the standard dot product, this is the Pythagorean distance <span class="math display">
@@ -795,7 +796,7 @@ v_0=v-\frac{J(v,w)}{J(w,w)}w=P_{W^\perp}(v),
 J(v,w)^2\le J(v,v)J(w,w),
 </span> or equivalently <span class="math display">
 |J(v,w)|\le\sqrt{J(v,v)J(w,w)},
-</span> with equality if and only if <span class="math inline">v</span> is a multiple of <span class="math inline">w</span>.</p>
+</span> with equality if and only if <span class="math inline">v</span> and <span class="math inline">w</span> are linearly dependent.</p>
 </section>
 </section>
 <section id="application-ordinary-least-squares" class="level1">

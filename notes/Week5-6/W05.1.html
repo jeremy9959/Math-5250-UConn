@@ -546,7 +546,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#inner-products-over-mathbbr." id="toc-inner-products-over-mathbbr." class="nav-link active" data-scroll-target="#inner-products-over-mathbbr.">Inner Products over <span class="math inline">\mathbb{R}</span>.</a>
+  <li><a href="#inner-products-over-mathbbr" id="toc-inner-products-over-mathbbr" class="nav-link active" data-scroll-target="#inner-products-over-mathbbr">Inner Products over <span class="math inline">\mathbb{R}</span></a>
   <ul class="collapse">
   <li><a href="#geometry-in-an-inner-product-space" id="toc-geometry-in-an-inner-product-space" class="nav-link" data-scroll-target="#geometry-in-an-inner-product-space">Geometry in an Inner Product Space</a></li>
   <li><a href="#orthogonality" id="toc-orthogonality" class="nav-link" data-scroll-target="#orthogonality">Orthogonality</a></li>
@@ -581,14 +581,14 @@ window.Quarto = {
 </header>
 
 
-<section id="inner-products-over-mathbbr." class="level2">
-<h2 class="anchored" data-anchor-id="inner-products-over-mathbbr.">Inner Products over <span class="math inline">\mathbb{R}</span>.</h2>
+<section id="inner-products-over-mathbbr" class="level2">
+<h2 class="anchored" data-anchor-id="inner-products-over-mathbbr">Inner Products over <span class="math inline">\mathbb{R}</span></h2>
 <p>Suppose that <span class="math inline">V</span> is a real vector space. An <em>inner product</em> (or “dot” product) on <span class="math inline">V</span> is a map <span class="math display">
 J: V\times V\to \mathbb{R}
 </span> that satisfies the following properties:</p>
 <ol type="a">
 <li>(symmetry) <span class="math inline">J(u,v) = J(v,u)</span> for all <span class="math inline">u,v\in V</span>.</li>
-<li>(linearity) If <span class="math inline">v\in V</span> is fixed, then the function <span class="math inline">u\mapsto J(u,v)</span> is linear in <span class="math inline">u</span>. In other words, <span class="math inline">J(au_1+bu_2,v) = aJ(u_1,v)+bJ(u_2,v)</span>. Since <span class="math inline">J</span> is also symmetric, we also have <span class="math inline">J(u,av_1+bv_2)=aJ(u,v_1)+bJ(u,v_2)</span>. So <span class="math inline">J</span> is <em>bilinear.</em></li>
+<li>(linearity) If <span class="math inline">v\in V</span> is fixed, then the function <span class="math inline">u\mapsto J(u,v)</span> is linear in <span class="math inline">u</span>. In other words, <span class="math inline">J(au_1+bu_2,v) = aJ(u_1,v)+bJ(u_2,v)</span>. Since <span class="math inline">J</span> is symmetric, we also have <span class="math inline">J(u,av_1+bv_2)=aJ(u,v_1)+bJ(u,v_2)</span>. So <span class="math inline">J</span> is <em>bilinear.</em></li>
 <li>(positive definiteness) For all nonzero <span class="math inline">v\in V</span>, we have <span class="math inline">J(v,v)&gt;0</span>.</li>
 </ol>
 <p>The classic example of such an inner product is the Euclidean “dot” product: <span class="math display">
@@ -609,7 +609,8 @@ d(u,v) = \sqrt{\langle u-v,u-v\rangle} = \|u-v\|.
 <p>This distance measure satisfies the conditions for a “metric”:</p>
 <ol type="a">
 <li><span class="math inline">d(u,v)\ge 0</span> and <span class="math inline">d(u,v)=0</span> if and only if <span class="math inline">u=v</span>.</li>
-<li><span class="math inline">d(u,w)\le d(u,v)+d(v,w)</span> (the triangle inequality)</li>
+<li><span class="math inline">d(u,v)=d(v,u)</span>.</li>
+<li><span class="math inline">d(u,w)\le d(u,v)+d(v,w)</span> (the triangle inequality).</li>
 </ol>
 <p>Of course, if <span class="math inline">\langle u,v\rangle</span> is the standard dot product, this distance is the usual distance given by the Pythagorean theorem: <span class="math display">
 d((u_1,\ldots, u_n),(v_1,\ldots, v_n))=\sqrt{\sum_{i=1}^{n} (u_i-v_i)^2}
@@ -643,20 +644,20 @@ X^{\top}_{ij} = X_{ji}.
 <li>If <span class="math inline">T=\{t_1,\ldots, t_n\}</span> is a different basis for <span class="math inline">V</span>, and <span class="math inline">[1]_{E}^{T}</span> is the change of basis matrix so that <span class="math display">
 [a]_{T}=[1]_{E}^{T}[a]_{E}
 </span> then <span class="math inline">[J]^{T}</span> is related to <span class="math inline">[J]^{E}</span> by <span class="math display">
-[J]^{E} = ([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}
+[J]^{E} = ([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}.
 </span></li>
 </ol>
 <p>The last point follows from the computation: <span class="math display">
 \begin{aligned}
 J(a,b) &amp;= [a]_{T}^{\top}[J]^{T}[b]_{T} = \left([1]_{E}^{T}[a]_{E}\right)^{\top}[J]^{T}\left([1]_{E}^{T}[b]_{E}\right) \\
-&amp;= [a]_{E}^{\top}([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}[b]_{E}
+&amp;= [a]_{E}^{\top}([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}[b]_{E}.
 \end{aligned}
 </span></p>
 <p><strong>Proposition:</strong> If <span class="math inline">X</span> is any real symmetric <span class="math inline">n\times n</span> positive definite matrix, then the function <span class="math inline">J:\mathbb{R}^{n}\times\mathbb{R}^{n} \to \mathbb{R}</span> defined by <span class="math display">
 J(a,b)  = a^{\top}Xb
 </span> is an inner product, and <span class="math inline">X=[J]^{E}</span> relative to the standard basis of <span class="math inline">\mathbb{R}^{n}</span>.</p>
 <p>The symmetry follows from the fact that <span class="math display">
-J(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=J(a,b)
+J(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=J(a,b).
 </span></p>
 <p>Linearity follows from properties of matrix multiplication, and the definiteness follows from the positive definite property of the matrix.</p>
 <p><strong>Proposition:</strong> Suppose <span class="math inline">J</span> is an inner product on <span class="math inline">V</span>. A choice of basis <span class="math inline">E</span> for <span class="math inline">V</span> gives an isomorphism between <span class="math inline">V</span> and <span class="math inline">\mathbb{R}^{n}</span>. Using this basis, we can construct the symmetric positive definite matrix <span class="math inline">X=[J]^{E}</span> whose <span class="math inline">i,j</span> entry is <span class="math inline">J(e_{i},e_{j})</span>. Then <span class="math display">
@@ -686,7 +687,7 @@ J(a,b) = [a]_{E}^{\top}[J]^{E}[b]_{E}.
 \begin{aligned}
 u_{1} &amp;= a_{11}e_{1} \\
 u_{2} &amp;= a_{12}e_{1} + a_{22}e_{2} \\
-\vdots &amp;= \vdots \\
+&amp;\;\;\vdots \\
 u_{j} &amp;= a_{1j}e_{1}+\cdots+a_{jj}e_{j} \\
 \end{aligned}
 </span></p>
@@ -700,14 +701,14 @@ a=\sum_{i=1}^{n} a_{i}u_{i}
 <p><strong>Proof of the Proposition:</strong> We proceed by induction. First, let <span class="math display">
 u_{1} = \frac{e_1}{\|e_{1}\|}.
 </span> This clearly solves the problem when <span class="math inline">W</span> is one-dimensional.</p>
-<p>Now suppose we’ve constructed <span class="math inline">u_1,\ldots, u_{j}</span> so that the span of these vectors is <span class="math inline">E_{j}</span>, they are mutually orthogonal of norm <span class="math inline">1</span>, and the change of basis matrix is triangular. Let <span class="math display">
-v_{j+1} = e_{j+1}-\sum J(e_{j+1},u_{i})u_{i}.
+<p>Now suppose we’ve constructed <span class="math inline">u_1,\ldots, u_{j}</span> so that the span of these vectors is the span of <span class="math inline">E_{j}</span>, they are mutually orthogonal of norm <span class="math inline">1</span>, and the change of basis matrix is triangular. Let <span class="math display">
+v_{j+1} = e_{j+1}-\sum_{i=1}^{j} J(e_{j+1},u_{i})u_{i}.
 </span></p>
 <p>Now, for <span class="math inline">k=1,\ldots, j</span>, we compute: <span class="math display">
-J(v_{j+1}, u_{k})=J(e_{j+1},u_{k})-\sum J(e_{j+1},u_{i})J(u_{i},u_{k}).
+J(v_{j+1}, u_{k})=J(e_{j+1},u_{k})-\sum_{i=1}^{j} J(e_{j+1},u_{i})J(u_{i},u_{k}).  
 </span></p>
 <p>Since <span class="math inline">J(u_{i},u_{k})=0</span> except when <span class="math inline">i=k</span>, where it is <span class="math inline">1</span>, this simplifies to zero.</p>
-<p>Also, the span of <span class="math inline">\{u_1,\ldots, u_{j},v_{j+1}\}</span> is the same as the span of <span class="math inline">\{e_1,\ldots, e_{j+1}\}</span>. If we then let <span class="math inline">u_{j+1}=\frac{v_{j+1}}{\|v_{j+1}\|}</span>, we’ve constructed <span class="math inline">U</span> as desired and the result follows by induction.</p>
+<p>Also, the span of <span class="math inline">\{u_1,\ldots, u_{j},v_{j+1}\}</span> is the same as the span of <span class="math inline">\{e_1,\ldots, e_{j+1}\}</span>. In particular <span class="math inline">v_{j+1}\not=0</span>, since <span class="math inline">e_{j+1}</span> is not in the span of <span class="math inline">E_{j}</span>. If we then let <span class="math inline">u_{j+1}=\frac{v_{j+1}}{\|v_{j+1}\|}</span>, we’ve constructed <span class="math inline">U</span> as desired and the result follows by induction.</p>
 <p><strong>Proposition:</strong> Suppose <span class="math inline">V</span> is an <span class="math inline">n</span>-dimensional inner product space with inner product <span class="math inline">J</span>, and <span class="math inline">u_1,\ldots, u_n</span> is an orthonormal basis for <span class="math inline">V</span>. Then for any <span class="math inline">v\in V</span> we have <span class="math display">
 v = \sum J(v,u_{i})u_{i}.
 </span></p>
@@ -719,10 +720,15 @@ v = \sum J(v,u_{i})u_{i}.
 <p><span class="math display">
 W^{\perp}=\{v\in V : J(v,w)=0\mathrm{\ for\ all\ } w\in W \}
 </span></p>
-<p><strong>Proposition:</strong> Under the above hypotheses: a. <span class="math inline">W^{\perp}</span> is a subspace of <span class="math inline">V</span>. b. The map <span class="math inline">W\oplus W^{\perp}\to V</span> defined by <span class="math inline">(x,y)\mapsto x+y</span> is an isomorphism. c.&nbsp;<span class="math inline">(W^{\perp})^{\perp}=W</span>.</p>
-<p><strong>Proof:</strong> <span class="math inline">W^{\perp}</span> is a subspace since <span class="math inline">J(0,w)=0</span> and if <span class="math inline">J(w,v_1)=J(w,v_2)=0</span> for <span class="math inline">w\in W</span> then <span class="math inline">J(w,av_1+bv_2)=0</span> by linearity. For part (b), choose an (ordered) basis <span class="math inline">w_{1},\ldots, w_{m}</span> for <span class="math inline">W</span> and extend it to a basis for <span class="math inline">V</span>. Apply Gram-Schmidt to this ordered basis to obtain orthonormal vectors <span class="math inline">u_1,\ldots, u_{n}</span> where <span class="math inline">u_1,\ldots, u_m</span> are a basis for <span class="math inline">W</span>. Then <span class="math inline">u_{m+1},\ldots, u_{n}</span> all belong to <span class="math inline">W^{\perp}</span>. Given <span class="math inline">v\in V</span>, then we can write <span class="math display">
+<p><strong>Proposition:</strong> Under the above hypotheses:</p>
+<ol type="a">
+<li><span class="math inline">W^{\perp}</span> is a subspace of <span class="math inline">V</span>.</li>
+<li>The map <span class="math inline">W\oplus W^{\perp}\to V</span> defined by <span class="math inline">(x,y)\mapsto x+y</span> is an isomorphism.</li>
+<li><span class="math inline">(W^{\perp})^{\perp}=W</span>.</li>
+</ol>
+<p><strong>Proof:</strong> <span class="math inline">W^{\perp}</span> is a subspace since <span class="math inline">J(0,w)=0</span> and if <span class="math inline">J(w,v_1)=J(w,v_2)=0</span> for <span class="math inline">w\in W</span> then <span class="math inline">J(w,av_1+bv_2)=0</span> by linearity. For part (b), choose an (ordered) basis <span class="math inline">w_{1},\ldots, w_{m}</span> for <span class="math inline">W</span> and extend it to a basis for <span class="math inline">V</span>. Apply Gram-Schmidt to this ordered basis to obtain orthonormal vectors <span class="math inline">u_1,\ldots, u_{n}</span> where <span class="math inline">u_1,\ldots, u_m</span> are a basis for <span class="math inline">W</span>. Then <span class="math inline">u_{m+1},\ldots, u_{n}</span> all belong to <span class="math inline">W^{\perp}</span>. Given <span class="math inline">v\in V</span>, we can write <span class="math display">
 v=\sum J(v,u_{i})u_{i}=\sum_{i=1}^{m} J(v,u_{i})u_{i} + \sum_{i=m+1}^{n} J(v,u_{i})u_{i}
-</span> The first sum on the right belongs to <span class="math inline">W</span>, and the second to <span class="math inline">W^{\perp}</span>, so the map from <span class="math inline">W\oplus W^{\perp}\to V</span> is surjective. On the other hand, if <span class="math inline">x\in W\cap W^{\perp}</span>, we’d have <span class="math inline">J(x,x)=0</span> so <span class="math inline">x=0</span>. Therefore the map is injective and thus an isomorphism. In particular <span class="math display">
+</span> The first sum on the right belongs to <span class="math inline">W</span>, and the second to <span class="math inline">W^{\perp}</span>, so the map <span class="math inline">W\oplus W^{\perp}\to V</span> is surjective. On the other hand, if <span class="math inline">x\in W\cap W^{\perp}</span>, we’d have <span class="math inline">J(x,x)=0</span> so <span class="math inline">x=0</span>. Therefore the map is injective and thus an isomorphism. In particular <span class="math display">
 \dim(W)+\dim(W^{\perp}) = n.
 </span></p>
 <p>For part (c), it’s clear that <span class="math inline">W\subset (W^{\perp})^{\perp}.</span> On the other hand <span class="math display">
@@ -744,45 +750,45 @@ I_{m\times m} &amp; 0 \\
 <section id="closest-points" class="level3">
 <h3 class="anchored" data-anchor-id="closest-points">Closest Points</h3>
 <p>Let <span class="math inline">W</span> be a subspace of the <span class="math inline">n</span>-dimensional inner product space <span class="math inline">V</span>. If <span class="math inline">v\in V</span>, we can consider the “distance to <span class="math inline">W</span>” as the minimum of <span class="math inline">\|v-w\|</span> as <span class="math inline">w</span> ranges over <span class="math inline">W</span>.</p>
-<p><strong>Proposition:</strong> The distance from <span class="math inline">v</span> to <span class="math inline">W</span> is <span class="math inline">\|v-P_{W}(v)\|</span> or <span class="math inline">\|P_{W^{\perp}}(v)\|</span>.</p>
+<p><strong>Proposition:</strong> The distance from <span class="math inline">v</span> to <span class="math inline">W</span> is <span class="math inline">\|v-P_{W}(v)\|</span>, or equivalently <span class="math inline">\|P_{W^{\perp}}(v)\|</span>.</p>
 <p>To prove this proposition, we first look at the case where <span class="math inline">W</span> is one-dimensional, and spanned by a vector <span class="math inline">w</span>. Then <span class="math inline">W</span> consists of multiples of <span class="math inline">w</span>, and for fixed <span class="math inline">v\not\in W</span>, we have <span class="math display">
 \|v-aw\|^2=J(v-aw,v-aw)=J(v,v)-2aJ(v,w)+a^2J(w,w)
 </span> The minimum of this occurs when <span class="math inline">2aJ(w,w)=2J(v,w)</span> or <span class="math display">
 a=\frac{J(v,w)}{J(w,w)}.
-</span> In other words, the vector from <span class="math inline">v</span> to the closest point in <span class="math inline">W</span> is <span class="math display">
+</span> In other words, the vector from the closest point in <span class="math inline">W</span> to <span class="math inline">v</span> is <span class="math display">
 v_{0} = v-\frac{J(v,w)}{J(w,w)}w
-</span> and the closest distance is <span class="math display">
+</span> and the square of the distance from <span class="math inline">v</span> to <span class="math inline">W</span> is <span class="math display">
 \|v_{0}\|^2 = J(v,v)-2\frac{J(v,w)^2}{J(w,w)}+\frac{J(v,w)^2}{J(w,w)} = J(v,v)-\frac{J(v,w)^2}{J(w,w)}.
 </span></p>
-<p>Notice first that <span class="math inline">J(v_0,w)=0</span> so <span class="math inline">v_{0}=P_{W^{\perp}}(v)</span> so the proposition is proved when <span class="math inline">\dim(W)=1</span>. However, we also obtain the fact that, since <span class="math inline">\|v_{0}\|^2&gt;0</span>, then <span class="math display">
+<p>Notice first that <span class="math inline">J(v_0,w)=0</span> and <span class="math inline">v-v_{0}\in W</span>, so <span class="math inline">v_{0}=P_{W^{\perp}}(v)</span> so the proposition is proved when <span class="math inline">\dim(W)=1</span>. However, we also obtain the fact that, since <span class="math inline">\|v_{0}\|^2&gt;0</span>, then <span class="math display">
 J(v,v)-\frac{J(v,w)^{2}}{J(w, w)}&gt;0.
 </span></p>
 <p>This is the “Cauchy-Schwarz Inequality.”</p>
 <p><strong>Proposition:</strong> Let <span class="math inline">v,w</span> be vectors in a real inner product space <span class="math inline">V</span>. Then <span class="math display">
 J(v,w)^2\le J(v,v)J(w,w)
-</span> with equality if and only if <span class="math inline">v</span> is a multiple of <span class="math inline">w</span>. Taking square roots, this is the same as <span class="math display">
+</span> with equality if and only if <span class="math inline">v</span> and <span class="math inline">w</span> are linearly dependent. Taking square roots, this is the same as <span class="math display">
 |J(v,w)|\le\sqrt{J(v,v)J(w,w)}
-</span> with equality if and only if <span class="math inline">v</span> is a multiple of <span class="math inline">w</span>.</p>
-<p>For the general case of finding the closest point, we can generalize the calculus argument above, or instead use the decomposition <span class="math inline">V=W^{\top}\oplus W</span>. If we write <span class="math display">
-v = w_{0}^{\top}+w_{0}
-</span> then <span class="math display">
-\langle v-w,v-w\rangle = \langle w_{0}^{\top},w_{0}^{\top}\rangle + \langle w_{0}-w,w_{0}-w\rangle
-</span> which is clearly minimized when <span class="math inline">w=w_{0}</span>. So <span class="math inline">w_{0}</span> is the closest point and <span class="math inline">\|w_{0}^{\top}\|</span> is the distance to the closest point.</p>
+</span> with equality if and only if <span class="math inline">v</span> and <span class="math inline">w</span> are linearly dependent.</p>
+<p>For the general case of finding the closest point, we can generalize the calculus argument above, or instead use the decomposition <span class="math inline">V=W\oplus W^{\perp}</span>. Write <span class="math display">
+v = w_{0}+z
+</span> with <span class="math inline">w_{0}\in W</span> and <span class="math inline">z\in W^{\perp}</span>. If <span class="math inline">w\in W</span>, then <span class="math inline">w_{0}-w\in W</span> is orthogonal to <span class="math inline">z</span>, so <span class="math display">
+\langle v-w,v-w\rangle = \langle z,z\rangle + \langle w_{0}-w,w_{0}-w\rangle,
+</span> which is clearly minimized when <span class="math inline">w=w_{0}</span>. So <span class="math inline">w_{0}=P_{W}(v)</span> is the closest point and <span class="math inline">\|z\|=\|P_{W^{\perp}}(v)\|</span> is the distance from <span class="math inline">v</span> to <span class="math inline">W</span>.</p>
 </section>
 <section id="application-ordinary-least-squares" class="level3">
 <h3 class="anchored" data-anchor-id="application-ordinary-least-squares">Application: Ordinary Least Squares</h3>
 <p>The “least squares problem” assumes we have a set of measurements <span class="math inline">(x_{i1},\ldots, x_{ik})_{i=1}^{N}</span> and <span class="math inline">(y_{i})_{i=1}^{N}</span>. We have a model which leads us to suspect that the <span class="math inline">y</span> values are related to the <span class="math inline">x</span> values by a linear relation <span class="math display">
 y=\sum_{j=1}^{k} m_{j}x_{j}+b
 </span> up to some random error, and we would like to infer the values of the <span class="math inline">m_{j}</span> and <span class="math inline">b</span> to obtain the “best” such linear relation.</p>
-<p>The least squares approach says that the best choice for the <span class="math inline">m_{j}</span> and <span class="math inline">b</span> is the values which minimize the squared error <span class="math display">
+<p>The least squares approach says that the best choices for the <span class="math inline">m_{j}</span> and <span class="math inline">b</span> are the values that minimize the squared error <span class="math display">
 E(m,b)=\sum_{i=1}^{N} (y_i-\sum_{j=1}^{k} m_{j}x_{ij}-b)^2.
 </span></p>
-<p>We can use linear algebra to approach this problem. Let <span class="math inline">Y</span> be the vector in <span class="math inline">\mathbf{R}^{N}</span> whose entries are the <span class="math inline">y_{i}</span> and let <span class="math inline">X</span> be the <span class="math inline">N\times (k+1)</span> matrix whose <span class="math inline">i^{th}</span> row is <span class="math inline">(x_{i1},\ldots, x_{ik},1)</span>.</p>
+<p>We can use linear algebra to approach this problem. Let <span class="math inline">Y</span> be the vector in <span class="math inline">\mathbb{R}^{N}</span> whose entries are the <span class="math inline">y_{i}</span> and let <span class="math inline">X</span> be the <span class="math inline">N\times (k+1)</span> matrix whose <span class="math inline">i^{th}</span> row is <span class="math inline">(x_{i1},\ldots, x_{ik},1)</span>.</p>
 <p>Notice then that <span class="math display">
 E(m,b) = \|Y-XM\|^2
 </span></p>
 <p>where <span class="math inline">M\in \mathbb{R}^{k+1}</span> is the vector with entries <span class="math inline">m_{1},\ldots, m_{k},b</span>.</p>
-<p>So our problem can be interpreted as finding <span class="math inline">M</span> so that <span class="math inline">\|Y-XM\|^2</span> is as small as possible. On the other hand, as <span class="math inline">M</span> varies, the vector <span class="math inline">XM</span> varies over the column space of <span class="math inline">X</span>. So the value <span class="math inline">E(m,b)</span> is minimized at the point in the column space of <span class="math inline">X</span> that is closest to <span class="math inline">Y</span>.</p>
+<p>So our problem can be interpreted as finding <span class="math inline">M</span> so that <span class="math inline">\|Y-XM\|^2</span> is as small as possible. On the other hand, as <span class="math inline">M</span> varies, the vector <span class="math inline">XM</span> varies over the column space of <span class="math inline">X</span>. So the value <span class="math inline">E(m,b)</span> is minimized when <span class="math inline">XM</span> is the point in the column space of <span class="math inline">X</span> that is closest to <span class="math inline">Y</span>.</p>
 <p>From our work above, this happens when <span class="math inline">Y-XM</span> is orthogonal to the column space of <span class="math inline">X</span>. To check this it’s sufficient that <span class="math inline">Y-XM</span> is orthogonal to all the columns of <span class="math inline">X</span>. In other words, when <span class="math display">
 X^{\top}(Y-XM)=0.
 </span></p>
@@ -796,12 +802,12 @@ M = D^{-1}X^{\top}Y.
 </section>
 <section id="projection-operator-in-general" class="level3">
 <h3 class="anchored" data-anchor-id="projection-operator-in-general">Projection Operator in General</h3>
-<p>The argument we made above for the least squares problem gives us a way to construct the projection operator <span class="math inline">P_{W}</span> when <span class="math inline">W</span> is a subspace of a real inner product space of dimension <span class="math inline">n</span>. Choose a basis <span class="math inline">E</span> for <span class="math inline">V</span> and , to simplify the notation, let’s write <span class="math inline">J</span> (instead of <span class="math inline">[J]^{E}</span>) for the matrix of the inner product in this basis. Let <span class="math inline">X</span> be the matrix whose columns are <span class="math inline">([w_{i}]_{E})_{i=1}^{k}</span> where the <span class="math inline">w_1,\ldots, w_k</span> form a basis for <span class="math inline">W</span>. So <span class="math inline">W</span> is the column space of <span class="math inline">X</span>.</p>
+<p>The argument we made above for the least squares problem gives us a way to construct the projection operator <span class="math inline">P_{W}</span> when <span class="math inline">W</span> is a subspace of a real inner product space <span class="math inline">V</span> of dimension <span class="math inline">n</span>. Choose a basis <span class="math inline">E</span> for <span class="math inline">V</span> and, to simplify the notation, let’s write <span class="math inline">J</span> (instead of <span class="math inline">[J]^{E}</span>) for the matrix of the inner product in this basis. Let <span class="math inline">X</span> be the matrix whose columns are <span class="math inline">([w_{i}]_{E})_{i=1}^{k}</span> where the <span class="math inline">w_1,\ldots, w_k</span> form a basis for <span class="math inline">W</span>. So <span class="math inline">W</span> is the column space of <span class="math inline">X</span>.</p>
 <p>If <span class="math inline">Y</span> is an element of <span class="math inline">V</span>, then as in the least squares problem we want to find <span class="math inline">M</span> so that <span class="math inline">Y-XM</span> is orthogonal to <span class="math inline">W</span>, and for this it’s enough that <span class="math inline">Y-XM</span> is orthogonal to all of the columns of <span class="math inline">X</span>.</p>
 <p>This means <span class="math display">
 X^{\top}J(Y-XM)=0
 </span></p>
-<p>and as above we get the formula <span class="math display">
+<p>and as above we get the formula (the matrix <span class="math inline">X^{\top}JX</span> is invertible because it is the matrix of the inner product restricted to <span class="math inline">W</span> in the basis <span class="math inline">w_1,\ldots,w_k</span>, and hence is positive definite) <span class="math display">
 M = (X^{\top}JX)^{-1}X^{\top}JY
 </span></p>
 <p>and the projection of <span class="math inline">Y</span> into <span class="math inline">W</span> is <span class="math display">
@@ -820,7 +826,7 @@ XM=X(X^{\top}JX)^{-1}X^{\top}JY.
 </section>
 <section id="complex-hermitian-inner-products" class="level2">
 <h2 class="anchored" data-anchor-id="complex-hermitian-inner-products">Complex (Hermitian) Inner Products</h2>
-<p>Now suppose <span class="math inline">V</span> is a finite dimensional complex vector space. A <em>hermitian</em> product on <span class="math inline">V</span> is a function <span class="math inline">J:V\times V\to \mathbb{C}</span> that:</p>
+<p>Now suppose <span class="math inline">V</span> is a finite dimensional complex vector space. A <em>Hermitian</em> inner product on <span class="math inline">V</span> is a function <span class="math inline">J:V\times V\to \mathbb{C}</span> that:</p>
 <ol type="1">
 <li>Is linear in the first variable and conjugate linear in the second: <span class="math inline">J(au+bv,w)=aJ(u,w)+bJ(v,w)</span> and <span class="math inline">J(u,av+bw)=\overline{a}J(u,v)+\overline{b}J(u,w)</span>.</li>
 <li>Is conjugate symmetric: <span class="math inline">J(u,v)=\overline{J(v,u)}</span>. (Notice this means that <span class="math inline">J(u,u)</span> is a real number.)</li>
@@ -835,18 +841,18 @@ J(u,v) = [u]_{E}^{\top}[J]^{E}\overline{[v]_{E}}
 <p>This is because <span class="math display">
 J(\sum a_{i}v_{i}, \sum b_{j}v_{j})=\sum a_{i}\overline{b_{j}}J(v_{i},v_{j}).
 </span></p>
-<p>In addition, the matrix <span class="math inline">[J]^{E}</span> satisfies the “hermitian condition” – its transpose is its conjugate: <span class="math display">
+<p>In addition, the matrix <span class="math inline">[J]^{E}</span> satisfies the “Hermitian condition” – its transpose is its conjugate: <span class="math display">
 ([J]^{E})^{\top} = \overline{[J]^{E}}
 </span></p>
 <p>Notice that since <span class="math inline">J(v,v)</span> is a nonnegative real number we can define <span class="math inline">\|v\|=\sqrt{J(v,v)}</span> as in the real case.</p>
-<p>The Gram-Schmidt process works (suitably modified) in this setting. If <span class="math inline">\{v_{1},\ldots, v_{n}\}</span> is a basis for a Hermitian inner product space <span class="math inline">V</span>, we construct inductively: <span class="math display">
-u_{1} = \frac{v_{1}}{\|v_{1}\|}
-</span> and, assuming that <span class="math inline">u_{1},\ldots, u_{k}</span> are orthonormal, <span class="math display">
+<p>The Gram-Schmidt process works (suitably modified) in this setting. Let <span class="math inline">\{v_{1},\ldots, v_{n}\}</span> be a basis for a Hermitian inner product space <span class="math inline">V</span>. We construct vectors <span class="math inline">u_{1},\ldots,u_{n}</span> inductively. First let <span class="math display">
+u_{1} = \frac{v_{1}}{\|v_{1}\|}.
+</span> Then, assuming that <span class="math inline">u_{1},\ldots, u_{k}</span> are orthonormal, let <span class="math display">
 u_{k+1}' = v_{k+1}-\sum_{i=1}^{k} J(v_{k+1},u_{i})u_{i}
 </span> and <span class="math display">
-u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}
+u_{k+1}=\frac{u_{k+1}'}{\|u_{k+1}'\|}.
 </span></p>
-<p>we obtain an orthonormal basis <span class="math inline">u_{1},\ldots, u_{n}</span> for <span class="math inline">V</span> where the span of <span class="math inline">u_{1},\ldots, u_{j}</span> is the same as the span of <span class="math inline">v_{1},\ldots, v_{j}</span>.</p>
+<p>This gives an orthonormal basis <span class="math inline">u_{1},\ldots, u_{n}</span> for <span class="math inline">V</span> such that, for each <span class="math inline">j</span>, the span of <span class="math inline">u_{1},\ldots, u_{j}</span> is the same as the span of <span class="math inline">v_{1},\ldots, v_{j}</span>.</p>
 
 
 </section>
