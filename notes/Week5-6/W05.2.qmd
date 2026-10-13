@@ -52,7 +52,7 @@ It is possible to prove the linearity of the adjoint without appealing to bases 
 One consequence of the computation in the proof is
 that if $E$ is an orthonormal basis for $V$ then
 $$
-[f]_{E}^{*} = \overline{[f]_{E}}^{\top}
+[f^{*}]_{E} = \overline{[f]_{E}}^{\top}
 $$.
 
 To check this, we compute:
@@ -78,7 +78,7 @@ The adjoint operation has the following properties.
 These all follow from the definition fairly easily.  Let's look at the third one.  Assume $V=W$.
 Then
 $$
-\langle f(g(v)),w)\rangle = \langle g(v),f^{*}(w) \rangle = \langle v,g^{*}f^{*}w\rangle
+\langle f(g(v)),w\rangle = \langle g(v),f^{*}(w) \rangle = \langle v,g^{*}f^{*}w\rangle
 $$
 
 so $(fg)^{*}=g^{*}f^{*}$.
@@ -155,11 +155,11 @@ $$
 g^{k}(v) = (f^{*})^{k}f^{k}(v)=0
 $$
 so $g(v)=0$ so $f^{*}f(v)=0$ and finally $\langle f(v), f(v)\rangle=0$ so $f(v)=0$. 
-- The minimal polynomial of $f$ acting on $V$ is square free.
-- If $v$ is an eigenvector for $f$ with eigenvalue $\lambda$, then $v$ is an eigenvector for $f^{*}$ with eigenvalue $\overline{\lambda}$.
+- The minimal polynomial of $f$ acting on $V$ is square free.  This follows from the previous property applied to the normal map $f-\lambda$: if $(f-\lambda)^{k}v=0$ then $(f-\lambda)v=0$.
+- If $v$ is an eigenvector for $f$ with eigenvalue $\lambda$, then $v$ is an eigenvector for $f^{*}$ with eigenvalue $\overline{\lambda}$.  Apply the first property to the normal map $f-\lambda$, whose adjoint is $f^{*}-\overline{\lambda}$.
 - Eigenvectors $v$ and $w$ with distinct eigenvalues $\lambda$ and $\mu$ are orthogonal.  Because 
 $$
-\langle f(v),w\rangle = \lambda \langle v,w\rangle = \langle v,f^{*}(w)\rangle=\mu\langle v,w \rangle
+\langle f(v),w\rangle = \lambda \langle v,w\rangle = \langle v,f^{*}(w)\rangle = \langle v,\overline{\mu}w\rangle=\mu\langle v,w \rangle
 $$
 so if $\mu$ and $\lambda$ are different then $\langle v,w\rangle=0$.
 
@@ -251,7 +251,7 @@ Conversely suppose that $f$ is any linear map and $u_1,\ldots, u_n$ is orthonorm
 $f(u_1),\ldots, f(u_n)$ is orthonormal.  Write $v=\sum a_{i}u_{i}$ and $w=\sum b_{i}u_{i}$ for two vectors $v$ and
 $w$. Then
 $$
-\langle f(v),f(w)\rangle = \langle \sum a_{i}f(u_{i}),\sum b_{i}f(u_{i}) = \sum_{i,j} a_{i}\overline{b_{j}}\delta_{ij}=\langle v,w\rangle
+\langle f(v),f(w)\rangle = \langle \sum a_{i}f(u_{i}),\sum b_{j}f(u_{j})\rangle = \sum_{i,j} a_{i}\overline{b_{j}}\delta_{ij}=\langle v,w\rangle
 $$ 
 so $f$ is unitary.
 
@@ -274,13 +274,13 @@ This means $f^{*}f(w)=w$ (since for any $w$, $\langle v, f^{*}f(w)-w\rangle=0$ f
 But $f^{*}f(w)=w$ means $f^{*}=f^{-1}$ so $f$ is unitary.
 
 - Over the reals, $f$ is orthogonal if and only if $\|f(v)\|^2=\|v\|^2$ for all $v$.  This is because over the reals we have
-the "parallelogram law":
+the "polarization identity":
 
 $$
 \langle v,w\rangle = \frac{1}{4}(\|v+w\|^2-\|v-w\|^2)
 $$
 
-**Proposition:** A matrix $A$ is unitary if and only $A^{\top}A=I$.  For unitary matrices:
+**Proposition:** A matrix $A$ is unitary if and only if $\overline{A}^{\top}A=I$ (over the reals, $A^{\top}A=I$).  For unitary matrices:
 - the rows (and columns) of $A$ form an orthonormal set.  
 - the eigenvalues of a unitary (or orthogonal) matrix have complex absolute value 1. 
 - the determinant of $A$ is of complex absolute value 1; over the reals,
@@ -291,7 +291,7 @@ an orthogonal matrix has determinant $\pm 1$.
 A linear map $L:V\to V$ is called a projection map if $L^2=L$.  This implies that:
 
 - $L:\image(L)\to\image(L)$ is the identity map.
-- If $v\in V$, then $L(v-LV)=0$ so $v-Lv\in \ker(L)$ and every vector $v=(v-Lv)+Lv\in \ker(L)+\image(L)$.
+- If $v\in V$, then $L(v-Lv)=0$ so $v-Lv\in \ker(L)$ and every vector $v=(v-Lv)+Lv\in \ker(L)+\image(L)$.
 - If $v\in \ker(L)\cap \image(L)$, then $v=Lx$ so $Lv=Lx=0$ so $v=0$.  In other words the $V=\ker(L)\oplus\image(L)$. 
 
 A projection is *orthogonal* if it is self-adjoint.  This is equivalent to saying that $\ker(L)$ and $\image(L)$ are orthogonal.
@@ -329,4 +329,4 @@ for all $v$, and positive definite if the inequality is strict unless $v=0$.
 
 **Remark:** $Q_{L}(v)$ is real because $\overline{\langle Lv, v\rangle} = \langle v, Lv\rangle = \langle Lv, v\rangle$.
 
-**Proposition:** $L$ is positive if all its eigenvalues are non-negative; and positive definite if they are all strictly positive.
+**Proposition:** $L$ is positive if and only if all its eigenvalues are non-negative, and positive definite if and only if they are all strictly positive.
