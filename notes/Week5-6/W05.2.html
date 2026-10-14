@@ -507,15 +507,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#adjoints" id="toc-adjoints" class="nav-link active" data-scroll-target="#adjoints">Adjoints</a>
-  <ul class="collapse">
+  <li><a href="#adjoints" id="toc-adjoints" class="nav-link active" data-scroll-target="#adjoints">Adjoints</a></li>
   <li><a href="#adjoints-and-orthogonality" id="toc-adjoints-and-orthogonality" class="nav-link" data-scroll-target="#adjoints-and-orthogonality">Adjoints and orthogonality</a></li>
   <li><a href="#orthogonal-and-unitary-diagonalizability" id="toc-orthogonal-and-unitary-diagonalizability" class="nav-link" data-scroll-target="#orthogonal-and-unitary-diagonalizability">Orthogonal and Unitary Diagonalizability</a></li>
-  <li><a href="#self-adjoint-operators-and-orthogonal-diagonalizability" id="toc-self-adjoint-operators-and-orthogonal-diagonalizability" class="nav-link" data-scroll-target="#self-adjoint-operators-and-orthogonal-diagonalizability">Self-Adjoint Operators and Orthogonal Diagonalizability</a></li>
+  <li><a href="#self-adjoint-operators-and-orthogonal-diagonalizability" id="toc-self-adjoint-operators-and-orthogonal-diagonalizability" class="nav-link" data-scroll-target="#self-adjoint-operators-and-orthogonal-diagonalizability">Self-Adjoint Operators and Orthogonal Diagonalizability</a>
+  <ul class="collapse">
+  <li><a href="#self-adjoint-operators" id="toc-self-adjoint-operators" class="nav-link" data-scroll-target="#self-adjoint-operators">Self-adjoint operators</a></li>
   <li><a href="#unitary-or-orthogonal-operators" id="toc-unitary-or-orthogonal-operators" class="nav-link" data-scroll-target="#unitary-or-orthogonal-operators">Unitary (or Orthogonal) Operators</a></li>
-  <li><a href="#orthogonal-projection" id="toc-orthogonal-projection" class="nav-link" data-scroll-target="#orthogonal-projection">Orthogonal Projection</a></li>
-  <li><a href="#positivity" id="toc-positivity" class="nav-link" data-scroll-target="#positivity">Positivity</a></li>
   </ul></li>
+  <li><a href="#orthogonal-projection-and-spectral-resolution" id="toc-orthogonal-projection-and-spectral-resolution" class="nav-link" data-scroll-target="#orthogonal-projection-and-spectral-resolution">Orthogonal Projection and Spectral Resolution</a></li>
+  <li><a href="#positivity" id="toc-positivity" class="nav-link" data-scroll-target="#positivity">Positivity</a></li>
   </ul>
 </nav>
     </div>
@@ -588,8 +589,9 @@ a_{ij} = \overline{\langle f(v_{i}),w_{j}\rangle}.
 \langle f(g(v)),w\rangle = \langle g(v),f^{*}(w) \rangle = \langle v,g^{*}f^{*}w\rangle
 </span></p>
 <p>so <span class="math inline">(fg)^{*}=g^{*}f^{*}</span>.</p>
-<section id="adjoints-and-orthogonality" class="level3">
-<h3 class="anchored" data-anchor-id="adjoints-and-orthogonality">Adjoints and orthogonality</h3>
+</section>
+<section id="adjoints-and-orthogonality" class="level2">
+<h2 class="anchored" data-anchor-id="adjoints-and-orthogonality">Adjoints and orthogonality</h2>
 <p>As before, let <span class="math inline">V</span> and <span class="math inline">W</span> be finite dimensional inner product spaces and let <span class="math inline">f:V\to W</span> be a linear map. Then we have the following properties (from <a href="https://link.springer.com/book/10.1007/978-0-387-72831-5">Roman, Advanced Linear Algebra</a>, Theorem 10.3, page 202). Roman writes <span class="math inline">\tau</span> for our <span class="math inline">f</span> and <span class="math inline">\mathrm{im}</span> for <span class="math inline">\mathrm{image}</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -604,8 +606,8 @@ a_{ij} = \overline{\langle f(v_{i}),w_{j}\rangle}.
 \langle f^{*}fv,v\rangle=\langle fv,fv \rangle = 0
 </span> so <span class="math inline">f(v)=0</span>.</p>
 </section>
-<section id="orthogonal-and-unitary-diagonalizability" class="level3">
-<h3 class="anchored" data-anchor-id="orthogonal-and-unitary-diagonalizability">Orthogonal and Unitary Diagonalizability</h3>
+<section id="orthogonal-and-unitary-diagonalizability" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonal-and-unitary-diagonalizability">Orthogonal and Unitary Diagonalizability</h2>
 <p>In this section, we will return to the question of diagonalizability in the setting of inner product spaces.</p>
 <p><strong>Definition:</strong> Let <span class="math inline">V</span> be a (real or complex) inner product space of dimension <span class="math inline">n</span>. A linear map <span class="math inline">f:V\to V</span> is <em>unitarily diagonalizable</em> (or <em>orthogonally diagonalizable</em> in the real case) if there is an orthonormal basis for <span class="math inline">V</span> consisting of eigenvectors for <span class="math inline">f</span>.</p>
 <p>Equivalently, <span class="math inline">f</span> is unitarily diagonalizable if <span class="math inline">V</span> can be written as a direct sum <span class="math display">
@@ -640,10 +642,10 @@ g^{k}(v) = (f^{*})^{k}f^{k}(v)=0
 <p>First, if <span class="math inline">f</span> is unitarily diagonalizable, there is an orthonormal basis of <span class="math inline">V</span> in which <span class="math inline">f</span> is diagonal. In this basis, <span class="math inline">[f^{*}]=\overline{[f]}</span> so clearly <span class="math inline">f</span> and <span class="math inline">f^{*}</span> commute. Conversely, by the results above, the minimal polynomial of a normal matrix is square free and factors over <span class="math inline">\mathbb{C}</span> into linear factors. Therefore <span class="math inline">f</span> is diagonalizable. In any fixed eigenspace we can choose an orthonormal basis, and since distinct eigenspaces are orthogonal these combine to give an orthonormal basis of eigenvectors for <span class="math inline">f</span>.</p>
 <p><strong>Remark:</strong> Over <span class="math inline">\mathbb{R}</span>, the minimal polynomial of a normal operator is square free (for an irreducible real quadratic <span class="math inline">q</span>, apply the argument above to the normal operator <span class="math inline">q(f)</span>), but it may not factor into linear factors – it factors into a combination of linear and degree two irreducible factors. From this factorization, <span class="math inline">V</span> decomposes into a direct sum of eigenspaces (corresponding to the real eigenvalues) and subspaces whose minimal polynomial is of degree <span class="math inline">2</span>. One can say more about the factors corresponding to the degree two factors and from this obtain the full result. See Roman, Theorem 10.14, page 216.</p>
 </section>
-<section id="self-adjoint-operators-and-orthogonal-diagonalizability" class="level3">
-<h3 class="anchored" data-anchor-id="self-adjoint-operators-and-orthogonal-diagonalizability">Self-Adjoint Operators and Orthogonal Diagonalizability</h3>
-<section id="self-adjoint-operators" class="level4">
-<h4 class="anchored" data-anchor-id="self-adjoint-operators">Self-adjoint operators</h4>
+<section id="self-adjoint-operators-and-orthogonal-diagonalizability" class="level2">
+<h2 class="anchored" data-anchor-id="self-adjoint-operators-and-orthogonal-diagonalizability">Self-Adjoint Operators and Orthogonal Diagonalizability</h2>
+<section id="self-adjoint-operators" class="level3">
+<h3 class="anchored" data-anchor-id="self-adjoint-operators">Self-adjoint operators</h3>
 <p>There are two particularly important subclasses of normal operators for our purposes.</p>
 <p><strong>Definition:</strong> A linear map <span class="math inline">f</span> is <em>self-adjoint</em> if <span class="math inline">f^{*}=f</span>. Notice that a self-adjoint map is obviously normal.</p>
 <p>When working with real vector spaces, self-adjoint operators are a more natural class than normal operators.</p>
@@ -661,7 +663,6 @@ g^{k}(v) = (f^{*})^{k}f^{k}(v)=0
 <p>so <span class="math inline">\lambda=\overline{\lambda}</span>. Strictly speaking, however, if <span class="math inline">V</span> is a real vector space, then we don’t know <em>a priori</em> that <span class="math inline">u</span> is in <span class="math inline">V</span>; it might have complex entries. We can work around this by choosing an orthonormal basis <span class="math inline">E</span> for <span class="math inline">V</span> and looking at the matrix <span class="math inline">[f]_{E}</span>. Since <span class="math inline">f</span> is self-adjoint, the matrix <span class="math inline">X=[f]_{E}</span> is symmetric and we can think of it as a Hermitian matrix that happens to have real entries. The argument above shows that a Hermitian matrix has real eigenvalues, so its characteristic polynomial has only real roots. But the characteristic polynomial of <span class="math inline">X</span> only depends on the entries of <span class="math inline">X</span>, so the characteristic polynomial of <span class="math inline">f</span> has only real roots.</p>
 <p>Since self-adjoint matrices are normal, if we put this together with our results on normal matrices, we see that the minimal polynomial of a self-adjoint linear map <span class="math inline">f</span> is square free and splits into linear factors over the real numbers (regardless of whether we’re in the complex or real case). Therefore we know that <span class="math inline">f</span> is diagonalizable. And since we know that distinct eigenspaces are orthogonal, and we can find an orthonormal basis for each eigenspace, we have shown the following.</p>
 <p><strong>Proposition:</strong> Self-adjoint operators are orthogonally diagonalizable over <span class="math inline">\mathbb{R}</span> (and conversely). Over <span class="math inline">\mathbb{C}</span>, self-adjoint operators are unitarily diagonalizable with real eigenvalues (and conversely).</p>
-</section>
 </section>
 <section id="unitary-or-orthogonal-operators" class="level3">
 <h3 class="anchored" data-anchor-id="unitary-or-orthogonal-operators">Unitary (or Orthogonal) Operators</h3>
@@ -705,8 +706,9 @@ f(u_1),\ldots, f(u_n)
 <li>the determinant of <span class="math inline">A</span> is of complex absolute value 1; over the reals, an orthogonal matrix has determinant <span class="math inline">\pm 1</span>.</li>
 </ul>
 </section>
-<section id="orthogonal-projection" class="level3">
-<h3 class="anchored" data-anchor-id="orthogonal-projection">Orthogonal Projection</h3>
+</section>
+<section id="orthogonal-projection-and-spectral-resolution" class="level2">
+<h2 class="anchored" data-anchor-id="orthogonal-projection-and-spectral-resolution">Orthogonal Projection and Spectral Resolution</h2>
 <p>A linear map <span class="math inline">L:V\to V</span> is called a projection map if <span class="math inline">L^2=L</span>. This implies that:</p>
 <ul>
 <li>the restriction of <span class="math inline">L</span> to <span class="math inline">\mathrm{image}(L)</span> is the identity.</li>
@@ -729,8 +731,8 @@ L = \sum \lambda_{i}p_{i}
 f_{i}(x) = \frac{\prod_{j\not=i}(x-\lambda_{j})}{\prod_{j\not=i}(\lambda_{i}-\lambda_{j})}.
 </span> Then <span class="math inline">f_{i}(L)</span> is an operator whose eigenvalues are <span class="math inline">1</span> and <span class="math inline">0</span> and the <span class="math inline">1</span>-eigenvalues correspond to the eigenvalues <span class="math inline">\lambda_{i}</span>. Since <span class="math inline">L</span> is diagonalizable, <span class="math inline">f_i(L)</span> acts on <span class="math inline">E(\lambda_j)</span> as multiplication by <span class="math inline">f_i(\lambda_j)</span>, so <span class="math inline">f_i(L)=p_i</span>.</p>
 </section>
-<section id="positivity" class="level3">
-<h3 class="anchored" data-anchor-id="positivity">Positivity</h3>
+<section id="positivity" class="level2">
+<h2 class="anchored" data-anchor-id="positivity">Positivity</h2>
 <p>A self-adjoint linear map <span class="math inline">L:V\to V</span> is called <em>positive</em> if <span class="math display">
 Q_{L}(v) = \langle Lv, v\rangle \ge 0
 </span> for all <span class="math inline">v</span>, and <em>positive definite</em> if the inequality is strict unless <span class="math inline">v=0</span>.</p>
@@ -738,7 +740,6 @@ Q_{L}(v) = \langle Lv, v\rangle \ge 0
 <p><strong>Proposition:</strong> <span class="math inline">L</span> is positive if and only if all its eigenvalues are non-negative, and positive definite if and only if they are all strictly positive.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
