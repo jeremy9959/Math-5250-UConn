@@ -30,11 +30,11 @@ We sometimes write $J(u,v) = \langle u,v\rangle$.
 
 A vector space $V$ over $\R$ together with an inner product is called a (real) inner product space. 
 
-Note that inner product spaces make sense even for infinite dimensional vector spaces, but we will focus on the finite dimensional case.
+Note that inner product spaces make sense even for infinite-dimensional vector spaces, but we will focus on the finite-dimensional case.
 
 ### Geometry in an Inner Product Space
 
-Adding an inner product to a finite dimensional real vector space introduces geometry into our study of linear algebra.  First, an inner product space 
+Adding an inner product to a finite-dimensional real vector space introduces geometry into our study of linear algebra.  First, an inner product space 
 allows us to measure the size of a vector
 $$
 \|v\| = \sqrt{\langle v,v\rangle}
@@ -103,22 +103,22 @@ a. $X$ is *symmetric* (since $\langle e_{i},e_{j}\rangle = \langle e_{j}, e_{i}\
 b. The rank of $X$ is $n$.  Otherwise, if $[b]_{E}\not=0$ is in the null space of $X$,
 we'd have $\langle b,b\rangle = [b]_{E}^{\top}X[b]_{E}=0$ which isn't allowed.
 c.  $X$ is positive definite, meaning that $[a]_{E}^{\top}X[a]_{E}>0$ when $[a]_{E}\not=0$. 
-d. If $T=\{t_1,\ldots, t_n\}$ is a different basis for $V$, and $[1]_{E}^{T}$ is the change of basis matrix
+d. If $T=\{t_1,\ldots, t_n\}$ is a different basis for $V$, and $[I]_{E}^{T}$ is the change of basis matrix
 so that
 $$
-[a]_{T}=[1]_{E}^{T}[a]_{E}
+[a]_{T}=[I]_{E}^{T}[a]_{E}
 $$
 then $[J]^{T}$ is related to $[J]^{E}$ by
 $$
-[J]^{E} = ([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}.
+[J]^{E} = ([I]_{E}^{T})^{\top}[J]^{T}[I]_{E}^{T}.
 $$
 
 
 The last point follows from the computation:
 $$
 \begin{aligned}
-J(a,b) &= [a]_{T}^{\top}[J]^{T}[b]_{T} = \left([1]_{E}^{T}[a]_{E}\right)^{\top}[J]^{T}\left([1]_{E}^{T}[b]_{E}\right) \\
-&= [a]_{E}^{\top}([1]_{E}^{T})^{\top}[J]^{T}[1]_{E}^{T}[b]_{E}.
+J(a,b) &= [a]_{T}^{\top}[J]^{T}[b]_{T} = \left([I]_{E}^{T}[a]_{E}\right)^{\top}[J]^{T}\left([I]_{E}^{T}[b]_{E}\right) \\
+&= [a]_{E}^{\top}([I]_{E}^{T})^{\top}[J]^{T}[I]_{E}^{T}[b]_{E}.
 \end{aligned}
 $$
 
@@ -135,7 +135,7 @@ $$
 J(b,a)=b^{\top}Xa = (b^{\top}Xa)^{\top} = a^{\top}X^{\top}b = a^{\top}Xb=J(a,b).
 $$
 
-Linearity follows from properties of matrix multiplication, and the definiteness follows from the
+Linearity follows from properties of matrix multiplication, and the positive definiteness follows from the
 positive definite property of the matrix. 
 
 **Proposition:** Suppose $J$ is an inner product on $V$. A choice of basis $E$ for $V$ gives
@@ -145,7 +145,7 @@ $$
 J(a,b) = [a]_{E}^{\top}[J]^{E}[b]_{E}.
 $$
 
-In these coordinates, the surfaces $\{a: J(a,a)=r\}$ in $V$ are ellipsoids.
+For $r>0$, the set $\{a: J(a,a)=r\}$ is, in these coordinates, an ellipsoid.
 
 ### Orthogonality
 
@@ -155,25 +155,25 @@ Let $V$ be an $n$-dimensional inner product space and let $J:V\times V\to \R$ be
 
 If $J$ is the standard Euclidean inner product on $\R^{n}$, then to say that $a$ and $b$ are orthogonal is to say they are perpendicular.
 
-**Proposition:** (The Gram-Schmidt Process)  Let $V$ be an inner product space of dimension $n$ with inner product $J$, and let
+**Proposition:** (The Gram--Schmidt Process)  Let $V$ be an inner product space of dimension $n$ with inner product $J$, and let
 $E=\{e_1,\ldots, e_m\}$ be a linearly independent subset of $V$ spanning a subspace $W$.  Then there exist vectors
 $U=\{u_1,\ldots, u_m\}$ such that:
 
 1. The $u_{i}$ are an *orthonormal set*, meaning:
     a. they are mutually orthogonal so   $J(u_{i}, u_{j})=0$ if $i\not=j$. 
-    b. they have norm $1$, so $\|u_{i}\|=1$ for $i=1,\ldots, m$ 
+    b. they have norm $1$, so $\|u_{i}\|=1$ for $i=1,\ldots, m$.
 2. The span $W_{j}$ of $U_{j}=\{u_{1},\ldots, u_{j}\}$ equals the span of $E_{j}=\{e_{1},\ldots, e_{j}\}$ for $j=1,\dots, m$. 
 
 Notice that:
 
-1. the statement in part (2) means that the change of basis matrix from $U$ to $E$ is triangular:
+1. the statement in part (2) means that the change of basis matrix from $U$ to $E$ is upper triangular:
 
 $$
 \begin{aligned}
 u_{1} &= a_{11}e_{1} \\
 u_{2} &= a_{12}e_{1} + a_{22}e_{2} \\
 &\;\;\vdots \\
-u_{j} &= a_{1j}e_{1}+\cdots+a_{jj}e_{j} \\
+u_{j} &= a_{1j}e_{1}+\cdots+a_{jj}e_{j}
 \end{aligned}
 $$
 
@@ -192,7 +192,7 @@ and similarly for $b$.
 $$
 u_{1} = \frac{e_1}{\|e_{1}\|}.
 $$
-This clearly solves the problem when $W$ is one-dimensional.
+This establishes the case $j=1$.
 
 Now suppose we've constructed $u_1,\ldots, u_{j}$ so that the span of these vectors is the span of $E_{j}$, they are mutually orthogonal of norm $1$, and the change of basis matrix is triangular.  Let
 $$
@@ -208,17 +208,17 @@ Since $J(u_{i},u_{k})=0$ except when $i=k$,
 where it is $1$, this simplifies to zero.
 
 Also, the span of $\{u_1,\ldots, u_{j},v_{j+1}\}$ is the same as the span of $\{e_1,\ldots, e_{j+1}\}$.
-In particular $v_{j+1}\not=0$, since $e_{j+1}$ is not in the span of $E_{j}$.
+Moreover, $v_{j+1}\not=0$, since otherwise $e_{j+1}$ would lie in the span of $u_1,\ldots,u_j$, which is the span of $E_{j}$.
 If we then let $u_{j+1}=\frac{v_{j+1}}{\|v_{j+1}\|}$, we've constructed $U$ as desired and the result
 follows by induction.
 
 **Proposition:** Suppose $V$ is an $n$-dimensional inner product space with inner product $J$, and $u_1,\ldots, u_n$ is an
 orthonormal basis for $V$.  Then for any $v\in V$ we have
 $$
-v = \sum J(v,u_{i})u_{i}.
+v = \sum_{i=1}^{n} J(v,u_{i})u_{i}.
 $$
 
-**Proof:**  A calculation shows that $z=v-\sum J(v,u_{i})u_{i}$ is orthogonal to every $u_i$ for $i=1,\ldots, n$, and then
+**Proof:**  A calculation shows that $z=v-\sum_{i=1}^{n} J(v,u_{i})u_{i}$ is orthogonal to every $u_i$ for $i=1,\ldots, n$, and then
 by linearity to every linear combination of the $u_{i}$.  Since the $u_{i}$ are a basis for $V$, this means $J(z, h)=0$
 for all $h\in V$, and in particular $J(z,z)=0$.  Then $z=0$ as claimed.
 
@@ -229,7 +229,7 @@ Let $V$ be an $n$-dimensional inner product space with inner product $J$, and le
 $W^{\perp}$ of $W$ is the set
 
 $$
-W^{\perp}=\{v\in V : J(v,w)=0\mathrm{\ for\ all\ } w\in W \}
+W^{\perp}=\{v\in V : J(v,w)=0\text{ for all } w\in W \}
 $$
 
 **Proposition:** Under the above hypotheses:
@@ -238,12 +238,12 @@ a. $W^{\perp}$ is a subspace of $V$.
 b. The map $W\oplus W^{\perp}\to V$ defined by $(x,y)\mapsto x+y$ is an isomorphism.
 c. $(W^{\perp})^{\perp}=W$.
 
-**Proof:** $W^{\perp}$ is a subspace since $J(0,w)=0$ and if $J(w,v_1)=J(w,v_2)=0$ for $w\in W$ then $J(w,av_1+bv_2)=0$ by linearity.
-For part (b), choose an (ordered) basis $w_{1},\ldots, w_{m}$ for $W$ and extend it to a basis for $V$.  Apply Gram-Schmidt to this
+**Proof:** $W^{\perp}$ is a subspace since $J(0,w)=0$, and if $J(w,v_1)=J(w,v_2)=0$ for all $w\in W$, then $J(w,av_1+bv_2)=0$ by linearity.
+For part (b), choose an (ordered) basis $w_{1},\ldots, w_{m}$ for $W$ and extend it to a basis for $V$.  Apply Gram--Schmidt to this
 ordered basis to obtain orthonormal vectors  $u_1,\ldots, u_{n}$ where $u_1,\ldots, u_m$ are a basis for $W$. Then $u_{m+1},\ldots, u_{n}$
 all belong to $W^{\perp}$.  Given $v\in V$, we can write
 $$
-v=\sum J(v,u_{i})u_{i}=\sum_{i=1}^{m} J(v,u_{i})u_{i} + \sum_{i=m+1}^{n} J(v,u_{i})u_{i}
+v=\sum_{i=1}^{n} J(v,u_{i})u_{i}=\sum_{i=1}^{m} J(v,u_{i})u_{i} + \sum_{i=m+1}^{n} J(v,u_{i})u_{i}.
 $$
 The first sum on the right belongs to $W$, and the second to $W^{\perp}$, so the map $W\oplus W^{\perp}\to V$ is surjective.
 On the other hand, if $x\in W\cap W^{\perp}$, we'd have $J(x,x)=0$ so $x=0$.  Therefore the map is injective and thus an isomorphism.
@@ -253,7 +253,7 @@ $$
 $$
 
 
-For part (c), it's clear that $W\subset (W^{\perp})^{\perp}.$ On the other hand
+For part (c), it's clear that $W\subset (W^{\perp})^{\perp}$. On the other hand
 $$
 \dim(W^{\perp})+\dim((W^{\perp})^{\perp})=n
 $$
@@ -306,13 +306,14 @@ $$
 \|v_{0}\|^2 = J(v,v)-2\frac{J(v,w)^2}{J(w,w)}+\frac{J(v,w)^2}{J(w,w)} = J(v,v)-\frac{J(v,w)^2}{J(w,w)}.
 $$
 
-Notice first that $J(v_0,w)=0$ and $v-v_{0}\in W$, so $v_{0}=P_{W^{\perp}}(v)$ so the proposition is proved when $\dim(W)=1$.
-However, we also obtain the fact that, since $\|v_{0}\|^2>0$, then
+Since $J(v_0,w)=0$ and $v-v_{0}\in W$, we have $v_{0}=P_{W^{\perp}}(v)$, which proves the proposition when $\dim(W)=1$.
+Moreover, since $\|v_{0}\|^2>0$, we obtain
 $$
 J(v,v)-\frac{J(v,w)^{2}}{J(w, w)}>0. 
 $$
+If instead $v\in W$, say $v=aw$, then both sides of the inequality below are equal, and if $w=0$ both sides are zero.
 
-This is the "Cauchy-Schwarz Inequality."
+This is the "Cauchy--Schwarz Inequality."
 
 **Proposition:** Let $v,w$ be vectors in a real inner product space $V$.  Then
 $$
@@ -349,24 +350,24 @@ the "best" such linear relation.
 The least squares approach says that the best choices for the $m_{j}$ and $b$ are the values
 that minimize the squared error
 $$
-E(m,b)=\sum_{i=1}^{N} (y_i-\sum_{j=1}^{k} m_{j}x_{ij}-b)^2.
+S(m,b)=\sum_{i=1}^{N} \left(y_i-\sum_{j=1}^{k} m_{j}x_{ij}-b\right)^2.
 $$
 
-We can use linear algebra to approach this problem.  Let $Y$ be the vector in $\R^{N}$ whose entries are the $y_{i}$ and let $X$ be the $N\times (k+1)$ matrix whose $i^{th}$ row is
+We can use linear algebra to approach this problem.  Let $Y$ be the vector in $\R^{N}$ whose entries are the $y_{i}$ and let $X$ be the $N\times (k+1)$ matrix whose $i$-th row is
 $(x_{i1},\ldots, x_{ik},1)$.  
 
 Notice then that
 $$
-E(m,b) = \|Y-XM\|^2
+S(m,b) = \|Y-XM\|^2
 $$
 
 where $M\in \R^{k+1}$ is the vector with entries $m_{1},\ldots, m_{k},b$.
 
 So our problem can be interpreted as finding $M$ so that $\|Y-XM\|^2$ is as small as possible.
 On the other hand, as $M$ varies, the vector $XM$ varies over the column space of $X$.
-So the value $E(m,b)$ is minimized when $XM$ is the point in the column space of $X$ that is closest to $Y$.
+So the value $S(m,b)$ is minimized when $XM$ is the point in the column space of $X$ that is closest to $Y$.
 
-From our work above, this happens when $Y-XM$ is orthogonal to the column space of $X$.  To check this it's sufficient that $Y-XM$ is orthogonal to all the columns of $X$.  In other words, when
+From our work above, this happens when $Y-XM$ is orthogonal to the column space of $X$.  For this it suffices that $Y-XM$ is orthogonal to all the columns of $X$.  In other words, when
 $$
 X^{\top}(Y-XM)=0.
 $$
@@ -383,7 +384,7 @@ M = D^{-1}X^{\top}Y.
 $$
 
 The "closest point" in the column space of $X$ is the vector $XM=XD^{-1}X^{\top}Y$
-which is the projection of $Y$ into the column space of $X$.
+which is the projection of $Y$ onto the column space of $X$.
 
 ### Projection Operator in General
 
@@ -394,7 +395,7 @@ let's write $J$ (instead of $[J]^{E}$) for the matrix of the inner product in th
 Let $X$ be the matrix whose columns are $([w_{i}]_{E})_{i=1}^{k}$ where
 the $w_1,\ldots, w_k$ form a basis for $W$.  So $W$ is the column space of $X$. 
 
-If $Y$ is an element of $V$, then as in the least squares problem we want to find $M$
+If $y\in V$ and $Y=[y]_{E}$ is its coordinate vector, then as in the least squares problem we want to find $M$
 so that $Y-XM$ is orthogonal to $W$, and for this it's enough that $Y-XM$ is orthogonal
 to all of the columns of $X$.
 
@@ -409,27 +410,27 @@ $$
 M = (X^{\top}JX)^{-1}X^{\top}JY
 $$
 
-and the projection of $Y$ into $W$ is
+and the projection of $Y$ onto $W$ is
 $$
 XM=X(X^{\top}JX)^{-1}X^{\top}JY.
 $$
 
-Therefore the matrix $[P_{W}]_{E}$ of $P_{W}$ is
+Therefore the matrix $[P_{W}]_{E}^{E}$ of $P_{W}$ is
 $$
-[P_{W}]_{E} = X(X^{\top}JX)^{-1}X^{\top}J.
+[P_{W}]_{E}^{E} = X(X^{\top}JX)^{-1}X^{\top}J.
 $$
 
 Notice that
 $$\begin{aligned}
-[P_{W}][P_{W}]&=X(X^{\top}JX)^{-1}X^{\top}JX(X^{\top}JX)^{-1}X^{\top}J \\
+[P_{W}]_{E}^{E}[P_{W}]_{E}^{E}&=X(X^{\top}JX)^{-1}X^{\top}JX(X^{\top}JX)^{-1}X^{\top}J \\
 &= X(X^{\top}JX)^{-1}X^{\top}J \\
-&= [P_{W}]
+&= [P_{W}]_{E}^{E}
 \end{aligned}
 $$
 
 ## Complex (Hermitian) Inner Products
 
-Now suppose $V$ is a finite dimensional complex vector space.  A *Hermitian* inner product on $V$
+Now suppose $V$ is a finite-dimensional complex vector space.  A *Hermitian* inner product on $V$
 is a function $J:V\times V\to \C$ that:
 
 1. Is linear in the first variable and conjugate linear in the second: $J(au+bv,w)=aJ(u,w)+bJ(v,w)$ and
@@ -439,9 +440,9 @@ $J(u,av+bw)=\overline{a}J(u,v)+\overline{b}J(u,w)$.
 
 The key ideas for inner products over $\R$ hold, suitably modified, for Hermitian inner products over $\C$.
 
-First, let $E=\{v_1,\ldots, v_n\}$ be a basis for $V$.  Define a matrix $[J]^{E}$ where
+First, let $E=\{e_1,\ldots, e_n\}$ be a basis for $V$.  Define a matrix $[J]^{E}$ where
 $$
-[J]^{E}_{ij} = J(v_{i},v_{j}). 
+[J]^{E}_{ij} = J(e_{i},e_{j}). 
 $$
 Then
 $$
@@ -451,17 +452,17 @@ where $\overline{[v]_{E}}$ is the vector whose entries are the conjugates of the
 
 This is because 
 $$
-J(\sum a_{i}v_{i}, \sum b_{j}v_{j})=\sum a_{i}\overline{b_{j}}J(v_{i},v_{j}).
+J(\sum a_{i}e_{i}, \sum b_{j}e_{j})=\sum a_{i}\overline{b_{j}}J(e_{i},e_{j}).
 $$
 
-In addition, the matrix $[J]^{E}$ satisfies the "Hermitian condition" -- its transpose is its conjugate: 
+In addition, the matrix $[J]^{E}$ satisfies the "Hermitian condition": its transpose is its conjugate: 
 $$
 ([J]^{E})^{\top} = \overline{[J]^{E}}
 $$
 
 Notice that since $J(v,v)$ is a nonnegative real number we can define $\|v\|=\sqrt{J(v,v)}$ as in the real case.
 
-The Gram-Schmidt process works (suitably modified) in this setting.  Let $\{v_{1},\ldots, v_{n}\}$ be
+The Gram--Schmidt process works (suitably modified) in this setting.  Let $\{v_{1},\ldots, v_{n}\}$ be
 a basis for a Hermitian inner product space $V$.  We construct vectors $u_{1},\ldots,u_{n}$ inductively.  First let
 $$
 u_{1} = \frac{v_{1}}{\|v_{1}\|}.
