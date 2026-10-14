@@ -84,7 +84,7 @@ $$
 
 so $(fg)^{*}=g^{*}f^{*}$.
 
-### Adjoints and orthogonality
+## Adjoints and orthogonality
 
 As before, let $V$ and $W$ be finite dimensional inner product spaces and let $f:V\to W$ be a linear map.  Then we have the following properties (from [Roman, Advanced Linear Algebra](https://link.springer.com/book/10.1007/978-0-387-72831-5), Theorem 10.3, page 202).  Roman writes $\tau$ for our $f$ and $\mathrm{im}$ for $\image$.
 
@@ -106,7 +106,7 @@ $$
 $$
 so $f(v)=0$. 
 
-### Orthogonal and Unitary Diagonalizability
+## Orthogonal and Unitary Diagonalizability
 
 In this section, we will return to the question of diagonalizability in the setting of inner product spaces.
 
@@ -181,9 +181,9 @@ into a direct sum of eigenspaces (corresponding to the real eigenvalues) and sub
 minimal polynomial is of degree $2$.  One can say more about the factors corresponding
 to the degree two factors and from this obtain the full result.  See Roman, Theorem 10.14, page 216.
 
-### Self-Adjoint Operators and Orthogonal Diagonalizability 
+## Self-Adjoint Operators and Orthogonal Diagonalizability 
 
-#### Self-adjoint operators
+### Self-adjoint operators
 
 There are two particularly important subclasses of normal operators for our purposes.
 
@@ -290,7 +290,7 @@ $$
 - the determinant of $A$ is of complex absolute value 1; over the reals,
 an orthogonal matrix has determinant $\pm 1$.
 
-### Orthogonal Projection
+## Orthogonal Projection and Spectral Resolution
 
 A linear map $L:V\to V$ is called a projection map if $L^2=L$.  This implies that:
 
@@ -332,7 +332,7 @@ Then $f_{i}(L)$ is an operator whose eigenvalues are $1$ and $0$ and the $1$-eig
 eigenvalues $\lambda_{i}$.  Since $L$ is diagonalizable, $f_i(L)$ acts on $E(\lambda_j)$ as multiplication by $f_i(\lambda_j)$, so $f_i(L)=p_i$.
 
 
-### Positivity
+## Positivity
 
 A self-adjoint linear map $L:V\to V$ is called *positive* if
 $$
