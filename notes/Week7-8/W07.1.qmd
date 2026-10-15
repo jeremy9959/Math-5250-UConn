@@ -1,7 +1,47 @@
 ---
-title: "Weeks 7–8 — Jordan Canonical Form"
+title: "Matrix Decompositions"
 ---
 
-## Placeholder
+We will discuss some consequences of our discussion of unitary matrices, orthogonal matrices, and the spectral theorem that occur in applications.
 
-Notes on the Jordan canonical form of a linear operator, Jordan blocks, and generalized eigenvectors.
+## The Polar Decomposition
+
+The polar decomposition is, in some sense, a generalization of the "polar form" of a complex number, where $z\not=0$ has a unique representation $z=re^{i\theta}$.
+
+Suppose that $L$ is a positive self-adjoint linear operator on an $n$-dimensional (real or complex) vector space $V$. 
+
+Under these hypotheses, $L$ is unitarily diagonalizable with positive real eigenvalues $\lambda_{i}$ and has a spectral resolution
+
+$$
+L = \sum_{i=1}^{k} \lambda_{i}p_{i}.
+$$
+
+**Definition:** The square root $B=\sqrt{L}$ of $L$ is the operator
+$$
+B = \sum_{i=1}^{k}\sqrt{\lambda_{i}}p_{i}
+$$
+
+(taking the positive square roots).  
+
+Using the properties of the $p_{i}$ one checks immediately
+ that $B^{2}=L$. 
+
+Also, the squareroot $B$ is a *positive*, *self-adjoint* operator in its own right. 
+
+Now suppose $U$ is any linear operator $U:V\to V$.  Then $U^{*}U:V\to V$ is self adjoint and positive since
+$$
+\langle U^{*}Uv,v\rangle = \langle Uv, Uv\rangle = \|Uv\|^2\ge 0
+$$
+
+**Proposition:** $L$ is positive if and only if $L=U^{*}U$ for some operator $U$.
+
+For example, the matrix $D=X^{\top}X$ that came up in the equations for least squares regression is positive.
+
+Now suppose that $L$ is any linear operator $L:V\to V$ where $V$ is a complex vector space. 
+We will establish the following proposition.
+
+**Proposition (The Polar Decomposition):** Let $L:V\to V$ be a linear operator on a complex vector space.  Then there exist a positive operator $P$ and a unitary operator $U$ such that $L=PU$.
+Here $P$ is unique and, if $L$ is invertible, $U$ is unique. 
+
+Alternatively, there is a positive operator $P'$ and a unitary operator $U'$ such that $L=U'P'$ where $P'$ is unique and $U'$ is unique if $L$ is invertible. 
+
