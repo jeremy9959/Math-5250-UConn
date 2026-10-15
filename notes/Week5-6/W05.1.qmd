@@ -155,7 +155,7 @@ Let $V$ be an $n$-dimensional inner product space and let $J:V\times V\to \R$ be
 
 If $J$ is the standard Euclidean inner product on $\R^{n}$, then to say that $a$ and $b$ are orthogonal is to say they are perpendicular.
 
-**Proposition:** (The Gram--Schmidt Process)  Let $V$ be an inner product space of dimension $n$ with inner product $J$, and let
+[]{#gram-schmidt}**Proposition:** (The Gram--Schmidt Process)  Let $V$ be an inner product space of dimension $n$ with inner product $J$, and let
 $E=\{e_1,\ldots, e_m\}$ be a linearly independent subset of $V$ spanning a subspace $W$.  Then there exist vectors
 $U=\{u_1,\ldots, u_m\}$ such that:
 

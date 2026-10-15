@@ -1,47 +1,109 @@
 ---
 title: "Matrix Decompositions"
 ---
+\newcommand{\image}{\mathrm{image}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
 
 We will discuss some consequences of our discussion of unitary matrices, orthogonal matrices, and the spectral theorem that occur in applications.
+
+## The QR decomposition
+
+Let $X$ be an $n\times k$ matrix with real or complex entries.  The $QR$ decomposition says that (assuming the columns of $X$ are linearly independent) we can find an $n\times n$ orthogonal (or unitary) matrix $Q$ and an $n\times k$ upper  triangular matrix $R$ such  that
+$$
+X = QR.
+$$
+
+This is  just a version of the Gram--Schmidt algorithm.  Gram--Schmidt applied to the columns $x_1,\ldots, x_k$ of $X$ yields an orthonormal sequence of vectors
+$u_1,\ldots, u_k$ where (setting $U$ to the matrix with columns equal to the $u_{i}$):
+$$
+U = XS
+$$
+
+where $S$ is $k\times k$ and upper triangular.  (See the [Gram--Schmidt process](../Week5-6/W05.1.qmd#gram-schmidt)). Then 
+$X=US^{-1}$. Extend $U$ by adding orthonormal columns to make it an orthogonal $n\times n$ matrix $Q$ and add zero rows to
+$S^{-1}$ so that it becomes an upper triangular $n\times k$ matrix.  
+
+
 
 ## The Polar Decomposition
 
 The polar decomposition is, in some sense, a generalization of the "polar form" of a complex number, where $z\not=0$ has a unique representation $z=re^{i\theta}$.
 
-Suppose that $L$ is a positive self-adjoint linear operator on an $n$-dimensional (real or complex) vector space $V$. 
+Recall that a self-adjoint linear operator $L$ on an inner product space $V$ is *positive* if $\langle Lv,v\rangle\ge 0$ for all $v\in V$.
 
-Under these hypotheses, $L$ is unitarily diagonalizable with positive real eigenvalues $\lambda_{i}$ and has a spectral resolution
+Suppose that $L$ is a positive self-adjoint linear operator on an $n$-dimensional (real or complex) inner product space $V$.
+
+Under these hypotheses, $L$ is unitarily (or orthogonally) diagonalizable with distinct nonnegative real eigenvalues $\lambda_{i}$ and has a spectral resolution
 
 $$
-L = \sum_{i=1}^{k} \lambda_{i}p_{i}.
+L = \sum_{i=1}^{k} \lambda_{i}p_{i}
 $$
+
+where $p_{i}$ is the orthogonal projection onto the $\lambda_{i}$-eigenspace of $L$.
 
 **Definition:** The square root $B=\sqrt{L}$ of $L$ is the operator
 $$
 B = \sum_{i=1}^{k}\sqrt{\lambda_{i}}p_{i}
 $$
 
-(taking the positive square roots).  
+(taking the nonnegative square roots).
 
 Using the properties of the $p_{i}$ one checks immediately
- that $B^{2}=L$. 
+that $B^{2}=L$. It is straightforward to see that $B$ is positive, self-adjoint, and is the unique positive operator whose square is $L$. 
 
-Also, the squareroot $B$ is a *positive*, *self-adjoint* operator in its own right. 
+Also, the square root $B$ is a *positive*, *self-adjoint* operator in its own right.
 
-Now suppose $U$ is any linear operator $U:V\to V$.  Then $U^{*}U:V\to V$ is self adjoint and positive since
+
+Now suppose $A$ is any linear operator $A:V\to V$.  Then $A^{*}A:V\to V$ is self-adjoint and positive since
 $$
-\langle U^{*}Uv,v\rangle = \langle Uv, Uv\rangle = \|Uv\|^2\ge 0
+\langle A^{*}Av,v\rangle = \langle Av, Av\rangle = \|Av\|^2\ge 0.
 $$
 
-**Proposition:** $L$ is positive if and only if $L=U^{*}U$ for some operator $U$.
+**Proposition:** $L$ is positive if and only if $L=A^{*}A$ for some operator $A$.
 
 For example, the matrix $D=X^{\top}X$ that came up in the equations for least squares regression is positive.
 
-Now suppose that $L$ is any linear operator $L:V\to V$ where $V$ is a complex vector space. 
+Now suppose that $L$ is any linear operator $L:V\to V$ where $V$ is a real or complex inner product space. 
 We will establish the following proposition.
 
-**Proposition (The Polar Decomposition):** Let $L:V\to V$ be a linear operator on a complex vector space.  Then there exist a positive operator $P$ and a unitary operator $U$ such that $L=PU$.
+**Proposition (The Polar Decomposition):** Let $L:V\to V$ be a linear operator on a real or complex inner product  space.  Then there exist a positive operator $P$ and a unitary (or orthogonal) operator $U$ such that $L=UP$.
 Here $P$ is unique and, if $L$ is invertible, $U$ is unique. 
 
-Alternatively, there is a positive operator $P'$ and a unitary operator $U'$ such that $L=U'P'$ where $P'$ is unique and $U'$ is unique if $L$ is invertible. 
+Alternatively, there is a positive operator $P'$ and a unitary (or orthogonal) operator $U'$ such that $L=P'U'$ where $P'$ is unique and $U'$ is unique if $L$ is invertible. 
+
+To construct $U$ and $P$ from $L$, notice first that if $P$ and $U$ exist, then because
+$L^{*}L=P^{*}U^{*}UP=P^2$ we must have $P=\sqrt{L^{*}L}$ by the uniqueness of positive square roots.  From the equation
+$$
+L(v)=UP(v)
+$$
+
+we see that if $w\in\image(P)$, so $w=Pv$, then we can define $U(w)=L(v)$.
+
+This is well-defined.  To see this, observe that 
+$$
+\|P(v)\|^2=\langle P(v),P(v)\rangle = \langle P^2(v),v\rangle = \langle L^{*}L(v),v\rangle = \|L(v)\|^2.
+$$
+
+Thus if $w=Pv_1=Pv_2$, then $P(v_1-v_2)=0$, so $L(v_1-v_2)=0$ by the norm identity we just proved. 
+
+Even more, if $w=Pv$ then $\|Uw\|^2=\|UPv\|^2=\|L(v)\|^2=\|P(v)\|^2=\|w\|^2$
+so $U$ is an isometry on the image of $P$.  
+
+From the construction above, we see that $U$ is an isometry from the image  of $P$ to the image of $L$. Therefore these
+two spaces have the same dimension. 
+Choose an orthonormal basis for $\image(P)$, say $u_1,\ldots, u_h$.  The value of $U$ is determined on these $u_{i}$ and
+$U(u_1),\ldots, U(u_{h})$ is a basis for $\image(L)$.  Extend the basis $\{u_{i}\}$ of $\image(P)$ to an orthonormal basis of
+$V$ by adding $u_{h+1},\ldots, u_{n}$. Then choose an orthonormal basis $w_{h+1},\ldots, w_{n}$ for $\image(L)^{\perp}$.
+We can define $U$ on all of $V$ by the definition above on $\image(P)$ and then $U(u_{j})=w_{j}$ for $j=h+1,\ldots, n$.
+This gives us an isometry (equivalently a unitary/orthogonal operator) on all of $V$ that satisfies $L=UP$.
+
+In the special case where $L$ is invertible, $P$ must also be invertible and then $U$ is determined so $P$ and $U$ are unique in this case.
+
+**Proposition:** Over the complex numbers, a unitary operator $U$ has the form $\exp(iJ)$ where $J$ is a self-adjoint operator.
+
+**Proof:** $U$ is unitarily diagonalizable  and its eigenvalues are all complex numbers of absolute value 1, hence of the 
+form $\exp(i\theta)$ where $\theta$ is real.  So let $J$ be the operator that acts by $\theta$ on the eigenspace where $U$
+acts by $\exp(i\theta)$.  Then $U=\exp(iJ)$ and since $J$ is unitarily diagonalizable with real eigenvalues it is self-adjoint.
+
 
