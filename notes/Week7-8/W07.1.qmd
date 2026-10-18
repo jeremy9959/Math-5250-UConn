@@ -5,36 +5,94 @@ title: "Matrix Decompositions"
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 
-We will discuss some consequences of our discussion of unitary matrices, orthogonal matrices, and the spectral theorem that occur in applications.
+We discuss some consequences of the spectral theorem and of our study of unitary and orthogonal matrices that are important in applications.
 
 ## The QR decomposition
 
-Let $X$ be an $n\times k$ matrix with real or complex entries.  The $QR$ decomposition says that (assuming the columns of $X$ are linearly independent) we can find an $n\times n$ orthogonal (or unitary) matrix $Q$ and an $n\times k$ upper  triangular matrix $R$ such  that
+Let $X$ be an $n\times k$ matrix with real or complex entries.  The $QR$ decomposition says that (assuming the columns of $X$ are linearly independent) we can find an $n\times n$ orthogonal (or unitary) matrix $Q$ and an $n\times k$ upper triangular matrix $R$ such that
 $$
 X = QR.
 $$
 
-This is  just a version of the Gram--Schmidt algorithm.  Gram--Schmidt applied to the columns $x_1,\ldots, x_k$ of $X$ yields an orthonormal sequence of vectors
+This is just a version of the Gram--Schmidt algorithm.  Gram--Schmidt applied to the columns $x_1,\ldots, x_k$ of $X$ yields an orthonormal sequence of vectors
 $u_1,\ldots, u_k$ where (setting $U$ to the matrix with columns equal to the $u_{i}$):
 $$
 U = XS
 $$
 
 where $S$ is $k\times k$ and upper triangular.  (See the [Gram--Schmidt process](../Week5-6/W05.1.qmd#gram-schmidt)). Then 
-$X=US^{-1}$. Extend $U$ by adding orthonormal columns to make it an orthogonal $n\times n$ matrix $Q$ and add zero rows to
-$S^{-1}$ so that it becomes an upper triangular $n\times k$ matrix.  
+$X=US^{-1}$. Extend $U$ by adding orthonormal columns to make it an orthogonal/unitary $n\times n$ matrix $Q$ and add zero rows to
+$S^{-1}$ so that it becomes an upper triangular $n\times k$ matrix; this extended matrix is the matrix $R$. This gives us $X=QR$ as claimed. 
+
+### Application to Least Squares
+
+Recall our discussion of the least squares problem.  We are given an $N\times k$ matrix $X$.  Each row represents a set of measurements, or features, of a piece of sample data, and the $N$ rows together represent a full set of measurements.  We also have, for each sample, a dependent, target variable whose values
+form an $N\times 1$ vector $Y$. We believe there are "weights" $m_{j}$ such that
+$$
+y_{i} = \sum_{j=1}^{k} m_{j}x_{ij}+b + \epsilon_i
+$$
+where $\epsilon_i$ is a random error.  
+
+We let $M$ be the $(k+1)\times 1$ vector whose entries are the $m_{j}$ and set $m_{k+1}=b$.  We also let $X'$
+be the matrix obtained from $X$ by adding a column of $1$'s.  Then (thinking of $\epsilon$ as a random vector) the equation above becomes
+$$
+Y = X'M + \epsilon
+$$
+
+We showed that the "best" choice for the $m_{j}$ and $b$, in the sense that it minimizes the squared error
+$$
+S(M) = \|Y-X'M\|^2
+$$
+
+is given by solving the "normal equations"
+$$
+(X')^{\top}Y = (X')^{\top}X'M
+$$
+
+Use Gram--Schmidt, as in the QR decomposition, to write $X'=US^{-1}=UK$ where $U$ has orthonormal columns and $K$ is a $(k+1)\times (k+1)$ upper triangular matrix. Then:
+$$
+(X')^{\top} = K^{\top}U^{\top}
+$$
+and
+$$
+(X')^{\top}X' = K^{\top}U^{\top}UK
+$$
+
+Since $U$ has orthonormal columns, $U^{\top}U$ is the
+$(k+1)\times (k+1)$ identity matrix.  Also (assuming the columns of $X'$ were linearly independent) the matrix $K$ is invertible so the "normal equations" 
+become
+
+$$
+U^{\top}Y = KM
+$$
+
+Since $K$ is upper triangular, you can solve this system by "back substitution".
+
+### The QR decomposition and finding eigenvalues
+
+The QR decomposition is the basis for a standard numerical algorithm for the computation of the eigenvalues and eigenvectors of a matrix.  While it can be applied to general matrices (with some caveats) we will consider symmetric matrices for simplicity. 
+
+**Algorithm:** Let $A=A_0$ be an $n\times n$ real symmetric matrix.  Define 
+a sequence of matrices:
+
+- Let $A_{k} = Q_{k} R_{k}$ be the $QR$ decomposition of $A_{k}$.
+- Let $A_{k+1}=R_{k}Q_{k}$.  
+
+Notice that $A_{k+1}=Q_{k}^{-1}A_{k}Q_{k}$ so all matrices $A_{j}$ are orthogonally equivalent and have the same eigenvalues.
+
+In fact the sequence $A_{j}$ converges to a diagonal matrix whose entries are the eigenvalues of $A$. 
 
 
 
 ## The Polar Decomposition
 
-The polar decomposition is, in some sense, a generalization of the "polar form" of a complex number, where $z\not=0$ has a unique representation $z=re^{i\theta}$.
+The polar decomposition is, in some sense, a generalization of the "polar form" of a complex number, where $z\not=0$ can be written $z=re^{i\theta}$ with $r>0$ and $\theta$ determined up to a multiple of $2\pi$. 
 
 Recall that a self-adjoint linear operator $L$ on an inner product space $V$ is *positive* if $\langle Lv,v\rangle\ge 0$ for all $v\in V$.
 
 Suppose that $L$ is a positive self-adjoint linear operator on an $n$-dimensional (real or complex) inner product space $V$.
 
-Under these hypotheses, $L$ is unitarily (or orthogonally) diagonalizable with distinct nonnegative real eigenvalues $\lambda_{i}$ and has a spectral resolution
+Under these hypotheses, $L$ is unitarily (or orthogonally) diagonalizable with nonnegative real eigenvalues $\{\lambda_{i}\}_{i=1}^{k}$ and has a spectral resolution
 
 $$
 L = \sum_{i=1}^{k} \lambda_{i}p_{i}
@@ -50,9 +108,7 @@ $$
 (taking the nonnegative square roots).
 
 Using the properties of the $p_{i}$ one checks immediately
-that $B^{2}=L$. It is straightforward to see that $B$ is positive, self-adjoint, and is the unique positive operator whose square is $L$. 
-
-Also, the square root $B$ is a *positive*, *self-adjoint* operator in its own right.
+that $B^{2}=L$. The map $B$ is positive, self-adjoint, and is the unique positive operator whose square is $L$. 
 
 
 Now suppose $A$ is any linear operator $A:V\to V$.  Then $A^{*}A:V\to V$ is self-adjoint and positive since
@@ -60,14 +116,17 @@ $$
 \langle A^{*}Av,v\rangle = \langle Av, Av\rangle = \|Av\|^2\ge 0.
 $$
 
+Conversely if $L$ is positive and $A=\sqrt{L}$ then 
+$L=A^{*}A$. 
+
 **Proposition:** $L$ is positive if and only if $L=A^{*}A$ for some operator $A$.
 
 For example, the matrix $D=X^{\top}X$ that came up in the equations for least squares regression is positive.
 
-Now suppose that $L$ is any linear operator $L:V\to V$ where $V$ is a real or complex inner product space. 
+Now suppose that $L$ is any linear operator $L:V\to V$ where $V$ is a real or complex (finite-dimensional) inner product space. 
 We will establish the following proposition.
 
-**Proposition (The Polar Decomposition):** Let $L:V\to V$ be a linear operator on a real or complex inner product  space.  Then there exist a positive operator $P$ and a unitary (or orthogonal) operator $U$ such that $L=UP$.
+**Proposition (The Polar Decomposition):** Let $L:V\to V$ be a linear operator on a real or complex inner product space.  Then there exist a positive operator $P$ and a unitary (or orthogonal) operator $U$ such that $L=UP$.
 Here $P$ is unique and, if $L$ is invertible, $U$ is unique. 
 
 Alternatively, there is a positive operator $P'$ and a unitary (or orthogonal) operator $U'$ such that $L=P'U'$ where $P'$ is unique and $U'$ is unique if $L$ is invertible. 
@@ -78,7 +137,7 @@ $$
 L(v)=UP(v)
 $$
 
-we see that if $w\in\image(P)$, so $w=Pv$, then we can define $U(w)=L(v)$.
+we see that if $w\in\image(P)$, say $w=Pv$, then we can define a map $U$ by setting $U(w)=L(v)$.  
 
 This is well-defined.  To see this, observe that 
 $$
@@ -87,10 +146,14 @@ $$
 
 Thus if $w=Pv_1=Pv_2$, then $P(v_1-v_2)=0$, so $L(v_1-v_2)=0$ by the norm identity we just proved. 
 
-Even more, if $w=Pv$ then $\|Uw\|^2=\|UPv\|^2=\|L(v)\|^2=\|P(v)\|^2=\|w\|^2$
+Note further that 
+if $w,w'\in\image(P)$, so $w=Pv$ and $w'=Pv'$, 
+then $U(aw+w')=aL(v)+L(v')=aU(w)+U(w')$ so $U$ is linear. 
+
+Now, if $w=Pv$ then $\|Uw\|^2=\|UPv\|^2=\|L(v)\|^2=\|P(v)\|^2=\|w\|^2$
 so $U$ is an isometry on the image of $P$.  
 
-From the construction above, we see that $U$ is an isometry from the image  of $P$ to the image of $L$. Therefore these
+From the construction above, we see that $U$ is an isometry from the image of $P$ onto the image of $L$. Therefore these
 two spaces have the same dimension. 
 Choose an orthonormal basis for $\image(P)$, say $u_1,\ldots, u_h$.  The value of $U$ is determined on these $u_{i}$ and
 $U(u_1),\ldots, U(u_{h})$ is a basis for $\image(L)$.  Extend the basis $\{u_{i}\}$ of $\image(P)$ to an orthonormal basis of
@@ -98,12 +161,14 @@ $V$ by adding $u_{h+1},\ldots, u_{n}$. Then choose an orthonormal basis $w_{h+1}
 We can define $U$ on all of $V$ by the definition above on $\image(P)$ and then $U(u_{j})=w_{j}$ for $j=h+1,\ldots, n$.
 This gives us an isometry (equivalently a unitary/orthogonal operator) on all of $V$ that satisfies $L=UP$.
 
-In the special case where $L$ is invertible, $P$ must also be invertible and then $U$ is determined so $P$ and $U$ are unique in this case.
+In the special case where $L$ is invertible, $P$ must also be invertible and then $U$ is determined ($U=LP^{-1}$) so $P$ and $U$ are unique in this case.
+
+A similar construction handles the decomposition $L=P'U'$. 
 
 **Proposition:** Over the complex numbers, a unitary operator $U$ has the form $\exp(iJ)$ where $J$ is a self-adjoint operator.
 
-**Proof:** $U$ is unitarily diagonalizable  and its eigenvalues are all complex numbers of absolute value 1, hence of the 
-form $\exp(i\theta)$ where $\theta$ is real.  So let $J$ be the operator that acts by $\theta$ on the eigenspace where $U$
+**Proof:** $U$ is unitarily diagonalizable and its eigenvalues are all complex numbers of absolute value 1, hence of the 
+form $\exp(i\theta)$ for real $\theta$.  So let $J$ be the operator that acts by $\theta$ on the eigenspace where $U$
 acts by $\exp(i\theta)$.  Then $U=\exp(iJ)$ and since $J$ is unitarily diagonalizable with real eigenvalues it is self-adjoint.
 
 
