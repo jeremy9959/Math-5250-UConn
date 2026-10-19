@@ -1,5 +1,6 @@
 ---
 title: "Matrix Decompositions"
+notebook-links: false
 ---
 \newcommand{\image}{\mathrm{image}}
 \newcommand{\R}{\mathbb{R}}
