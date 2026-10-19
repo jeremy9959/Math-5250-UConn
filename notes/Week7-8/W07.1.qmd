@@ -99,7 +99,25 @@ a sequence of matrices:
 
 Notice that $A_{k+1}=Q_{k}^{-1}A_{k}Q_{k}$ so all matrices $A_{j}$ are orthogonally equivalent and have the same eigenvalues.
 
-In fact the sequence $A_{j}$ converges to a diagonal matrix whose entries are the eigenvalues of $A$. The sequence $Q_{k}$ converges to a matrix whose columns are the eigenvectors of $A$. 
+In addition if we put 
+$$
+\overline{Q}_{k}=Q_{0}Q_{1}\cdots Q_{k-1}
+$$
+and
+$$
+overline{R}_{k} = R_{k-1}R_{k-2}\cdots R_{0}
+$$
+then
+$$A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k}
+$$
+and
+$$
+A^{k} = \overline{Q}_{k}\overline{R}_{k}.
+$$
+
+We can compute $\overline{Q}_{k}$ directly by applying Gram--Schmidt to the columns of $A^{k}$. 
+
+The sequence $A_{j}$ converges to a diagonal matrix whose entries are the eigenvalues of $A$. The sequence $Q_{k}$ converges to a matrix whose columns are the eigenvectors of $A$. 
 
 Let
 $$
@@ -117,7 +135,51 @@ The second graph shows the decay in the off-diagonal entry in the matrix $A_{k}$
 
 {{< embed QR-algorithm-animation.ipynb#qr-animation >}}
 
+We will not pursue a full exploration of the convergence of the QR algorithm, but we will sketch why it works in
+the simple case of a positive symmetric matrix with distinct eigenvalues. 
 
+**Proposition:** Let $A$ be a positive real symmetric $n\times n$ matrix, with eigenvalues $\lambda_{1}>\lambda_{2}>\cdots>\lambda_{n}$. Then the sequence $A_{k}$ of matrices introducede above converges to a diagonal matrix $\Lambda$ with entries $\{\lambda_{j}\}$.  The rate of convergence is of order $\rho^{k}$ where $\rho=\max_{j}\frac{\lambda_{j+1}{\lambda_{j}}$.
+
+To see where this comes from, remember that $A$ is orthogonally similar to a diagonal matrix, so there is 
+an orthogonal matrix $V$ such that $A=V\Lambda V^{\top}$=V\Lambda V^{-1}$.
+Then $A^{k}=V\Lambda^{k}V^{-1}$.  Write $V^{-1}=LU$ using the LU decomposition.  Then
+$$
+A^{k} = V\Lambda^{k}LU=V(\Lambda^{k}L\Lambda^{-k})\Lambda^{k}U
+$$
+
+The sequence of matrices $\Lambda^{k}L\Lambda^{-k}$ 
+converges to the identity, because entries below the diagonal are multiplied by ratios $\lambda_{j}/\lambda_{i}$ with $j>i$.  In other words, 
+$$
+\Lambda^{k}L\Lambda^{-k}=I+E_{k}
+$$
+where $E_{k}$ is a matrix whose entries are $O(\rho^{k})$. 
+
+If we look at the $QR$ decomposition of 
+$$
+I+E_{k}=\tilde{Q}_{k}\tilde{R}_{k}
+$$
+we can see that the two matrices on the right converge to the identity.  This is because the $QR$ decomposition varies continuously (Gram--Schmidt is continuous in its inputs), and the $QR$ decomposition of $I$ is $Q=I$ and $R=I$. 
+
+Now write
+$$
+A^{k} = V\tilde{Q}_{k}\tilde{R}_{k}\Lambda^{k}U
+$$
+The first term is orthogonal, and the second upper triangular.
+So this is a $QR$ decomposition of $A^{k}$. 
+
+The only ambiguity in the Gram--Schmidt process comes from "reversing the direction" of the unit vectors in each column.  As a result, if $A^{k}=\overline{Q}_{k}\overline{R}_{k}$ and also $A^{k}=QR$ for some other $Q$ and $R$, then $Q=\overline{Q}_{k}D$ where $D$ is a diagonal matrix with entries $\pm 1$. In our case this means that
+$$
+V\tilde{Q}_{k}D_{k} = \overline{Q}_{k}
+$$
+
+Now 
+$$\begin{align}
+A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k} &= D_{k}\tilde{Q}_{k}^{\top}(V^{\top}AV)\tilde{Q}_{k}D_{k}\\
+&= D_{k}\tilde{Q}_{k}\Lambda\tilde{Q}_{k}D_{k}.
+\end{align}
+$$
+
+Since the $\tilde{Q}_{k}\to 1$, in the limit the $D_{k}$ cancel and we see that $A_{k}\to \Lambda$.
 
 
 ## The Polar Decomposition
