@@ -98,22 +98,22 @@ $\lambda_{1}>\lambda_{2}>\cdots>\lambda_{n}$.   We know that there exists an ort
 
 Choose a vector $v=v_{0}$ at random and consider the following iteration:
 
-- Set $v_{k+1}=Av_{k}/\|Av_{k}\|
+- Set $v_{k+1}=Av_{k}/\|Av_{k}\|$
 
 Then the sequence $v_{k}$ converges to the eigenvector $u_{1}$ corresponding to
-the largest eigenvector $u_{1}.
+the largest eigenvalue $\lambda_{1}$.
 
 To see why this works, write
 $$
 v_{0} = \sum_{i=1}^{n} a_{i} u_{i}
 $$
-where $\sum |a_{i}|^2 =1$ and $\langle v_{k},u_{1}\rangle = a_{1}$. 
+where $\sum |a_{i}|^2 =1$ and $\langle v_{0},u_{1}\rangle = a_{1}$.  We assume $a_{1}\not=0$, which holds with probability one for a randomly chosen $v_{0}$.
 
 Now $v_{k}$ is a unit vector that points in the direction of $A^{k}v_{0}$.
 But
 $$\begin{aligned}
 A^{k}v_{0} &= \sum_{i=1}^{n} a_{i}\lambda_{i}^{k}u_{i} \\
-&= \lambda_{1}^{k} \sum_{i=1}^{n} a_{i}(\lambda_{i}^{k}/lambda_{1}^{k}) u_{i}
+&= \lambda_{1}^{k} \sum_{i=1}^{n} a_{i}(\lambda_{i}^{k}/\lambda_{1}^{k}) u_{i}
 \end{aligned}
 $$
 Since $\lambda_{1}>\lambda_{i}$ for $i>1$, we see that 
@@ -121,7 +121,7 @@ $$
 A^{k}v_{0} = \lambda_{1}^{k}(a_{1}u_{1}+e)
 $$
 where $e\to 0$ at least as fast as $(\lambda_{2}/\lambda_{1})^k$.  The normalized
-vector $v_{k}$ therefore gradually aligns with $u_{i}$ as $k\to\infty$. 
+vector $v_{k}$ therefore gradually aligns with $u_{1}$ as $k\to\infty$. 
 
  ### The full algorithm
 
@@ -146,7 +146,7 @@ $$
 $$
 and
 $$
-overline{R}_{k} = R_{k-1}R_{k-2}\cdots R_{0}
+\overline{R}_{k} =R_{k-1}R_{k-2}\cdots R_{0}
 $$
 then
 $$A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k}
@@ -158,7 +158,7 @@ $$
 
 We can compute $\overline{Q}_{k}$ directly by applying Gram--Schmidt to the columns of $A^{k}$. 
 
-The sequence $A_{j}$ converges to a diagonal matrix whose entries are the eigenvalues of $A$. The sequence $Q_{k}$ converges to a matrix whose columns are the eigenvectors of $A$. 
+The sequence $A_{j}$ converges to a diagonal matrix whose entries are the eigenvalues of $A$. The sequence $\overline{Q}_{k}$ converges to a matrix whose columns are the eigenvectors of $A$. 
 
 Let
 $$
@@ -170,26 +170,26 @@ $$
 
 The algorithm above generates a sequence of (symmetric) matrices $A_{k}$, all similar to $A$ which converge to a diagonal matrix, thereby revealing the eigenvalues of $A$.
 
-The animation below plots the level curves $u^{\top}A_{k}u=1$ where $u=\begin{pmatrix} x \\ y \\end{pmatrix}$.  These are ellipses, each obtained from the previous one by a rotation by an orthogonal matrix. Ultimately the major and minor axes lie along the $x$ and $y$ axes, which is what happens when $A_{k}$ approaches its limiting diagonal form.
+The animation below plots the level curves $u^{\top}A_{k}u=1$ where $u=\begin{pmatrix} x \\ y \end{pmatrix}$.  These are ellipses, each obtained from the previous one by a rotation by an orthogonal matrix. Ultimately the major and minor axes lie along the $x$ and $y$ axes, which is what happens when $A_{k}$ approaches its limiting diagonal form.
 
 The second graph shows the decay in the off-diagonal entry in the matrix $A_{k}$. It decays linearly with $\log(\lambda_{2}/\lambda_{1})$ where $\lambda_{1}>\lambda_{2}$ are the eigenvalues of $A$.
 
 {{< embed QR-algorithm-animation.ipynb#qr-animation >}}
 
 We will not pursue a full exploration of the convergence of the QR algorithm, but we will sketch why it works in
-the simple case of a positive symmetric matrix with distinct eigenvalues. 
+the simple case of a positive definite symmetric matrix with distinct eigenvalues.
 
-**Proposition:** Let $A$ be a positive real symmetric $n\times n$ matrix, with eigenvalues $\lambda_{1}>\lambda_{2}>\cdots>\lambda_{n}$. Then the sequence $A_{k}$ of matrices introducede above converges to a diagonal matrix $\Lambda$ with entries $\{\lambda_{j}\}$.  The rate of convergence is of order $\rho^{k}$ where $\rho=\max_{j}\frac{\lambda_{j+1}{\lambda_{j}}$.
+**Proposition:** Let $A$ be a positive definite real symmetric $n\times n$ matrix, with eigenvalues $\lambda_{1}>\lambda_{2}>\cdots>\lambda_{n}>0$. Then the sequence $A_{k}$ of matrices introduced above converges to a diagonal matrix $\Lambda$ with entries $\{\lambda_{j}\}$.  The rate of convergence is of order $\rho^{k}$ where $\rho=\max_{j}\frac{\lambda_{j+1}}{\lambda_{j}}$.
 
 To see where this comes from, remember that $A$ is orthogonally similar to a diagonal matrix, so there is 
-an orthogonal matrix $V$ such that $A=V\Lambda V^{\top}$=V\Lambda V^{-1}$.
-Then $A^{k}=V\Lambda^{k}V^{-1}$.  Write $V^{-1}=LU$ using the LU decomposition.  Then
+an orthogonal matrix $V$ such that $A=V\Lambda V^{\top}=V\Lambda V^{-1}$.
+Then $A^{k}=V\Lambda^{k}V^{-1}$.  Write $V^{-1}=LU$ using the LU decomposition, where $L$ is lower triangular with ones on the diagonal.  (We assume, as is true generically, that no row permutation is needed.)  Then
 $$
 A^{k} = V\Lambda^{k}LU=V(\Lambda^{k}L\Lambda^{-k})\Lambda^{k}U
 $$
 
 The sequence of matrices $\Lambda^{k}L\Lambda^{-k}$ 
-converges to the identity, because entries below the diagonal are multiplied by ratios $\lambda_{j}/\lambda_{i}$ with $j>i$.  In other words, 
+converges to the identity, because its $(i,j)$ entry is $\ell_{ij}(\lambda_{i}/\lambda_{j})^{k}$, and for entries below the diagonal ($i>j$) the ratio $\lambda_{i}/\lambda_{j}$ is less than $1$.  In other words, 
 $$
 \Lambda^{k}L\Lambda^{-k}=I+E_{k}
 $$
@@ -214,13 +214,13 @@ V\tilde{Q}_{k}D_{k} = \overline{Q}_{k}
 $$
 
 Now 
-$$\begin{align}
+$$\begin{aligned}
 A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k} &= D_{k}\tilde{Q}_{k}^{\top}(V^{\top}AV)\tilde{Q}_{k}D_{k}\\
-&= D_{k}\tilde{Q}_{k}\Lambda\tilde{Q}_{k}D_{k}.
-\end{align}
+&= D_{k}\tilde{Q}_{k}^{\top}\Lambda\tilde{Q}_{k}D_{k}.
+\end{aligned}
 $$
 
-Since the $\tilde{Q}_{k}\to 1$, in the limit the $D_{k}$ cancel and we see that $A_{k}\to \Lambda$.
+Since $\tilde{Q}_{k}\to I$ and $D_{k}\Lambda D_{k}=\Lambda$, we see that $A_{k}\to \Lambda$.
 
 
 
