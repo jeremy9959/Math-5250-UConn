@@ -587,7 +587,16 @@ U^{\top}Y = KM
 <li>Let <span class="math inline">A_{k+1}=R_{k}Q_{k}</span>.</li>
 </ul>
 <p>Notice that <span class="math inline">A_{k+1}=Q_{k}^{-1}A_{k}Q_{k}</span> so all matrices <span class="math inline">A_{j}</span> are orthogonally equivalent and have the same eigenvalues.</p>
-<p>In fact the sequence <span class="math inline">A_{j}</span> converges to a diagonal matrix whose entries are the eigenvalues of <span class="math inline">A</span>. The sequence <span class="math inline">Q_{k}</span> converges to a matrix whose columns are the eigenvectors of <span class="math inline">A</span>.</p>
+<p>In addition if we put <span class="math display">
+\overline{Q}_{k}=Q_{0}Q_{1}\cdots Q_{k-1}
+</span> and <span class="math display">
+overline{R}_{k} = R_{k-1}R_{k-2}\cdots R_{0}
+</span> then <span class="math display">A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k}
+</span> and <span class="math display">
+A^{k} = \overline{Q}_{k}\overline{R}_{k}.
+</span></p>
+<p>We can compute <span class="math inline">\overline{Q}_{k}</span> directly by applying Gram–Schmidt to the columns of <span class="math inline">A^{k}</span>.</p>
+<p>The sequence <span class="math inline">A_{j}</span> converges to a diagonal matrix whose entries are the eigenvalues of <span class="math inline">A</span>. The sequence <span class="math inline">Q_{k}</span> converges to a matrix whose columns are the eigenvectors of <span class="math inline">A</span>.</p>
 <p>Let <span class="math display">
 A= \begin{pmatrix}
 2.1948 &amp;  0.5638 \\
@@ -81358,6 +81367,29 @@ JAiCIAiC3hEJkCAIgiAIekckQIIgCIIg6J3/B0z2Sji9bIqgAAAAAElFTkSuQmCC\
 </div>
 </div>
 </div>
+<p>We will not pursue a full exploration of the convergence of the QR algorithm, but we will sketch why it works in the simple case of a positive symmetric matrix with distinct eigenvalues.</p>
+<p><strong>Proposition:</strong> Let <span class="math inline">A</span> be a positive real symmetric <span class="math inline">n\times n</span> matrix, with eigenvalues <span class="math inline">\lambda_{1}&gt;\lambda_{2}&gt;\cdots&gt;\lambda_{n}</span>. Then the sequence <span class="math inline">A_{k}</span> of matrices introducede above converges to a diagonal matrix <span class="math inline">\Lambda</span> with entries <span class="math inline">\{\lambda_{j}\}</span>. The rate of convergence is of order <span class="math inline">\rho^{k}</span> where <span class="math inline">\rho=\max_{j}\frac{\lambda_{j+1}{\lambda_{j}}</span>.</p>
+<p>To see where this comes from, remember that <span class="math inline">A</span> is orthogonally similar to a diagonal matrix, so there is an orthogonal matrix <span class="math inline">V</span> such that <span class="math inline">A=V\Lambda V^{\top}</span>=VV^{-1}$. Then <span class="math inline">A^{k}=V\Lambda^{k}V^{-1}</span>. Write <span class="math inline">V^{-1}=LU</span> using the LU decomposition. Then <span class="math display">
+A^{k} = V\Lambda^{k}LU=V(\Lambda^{k}L\Lambda^{-k})\Lambda^{k}U
+</span></p>
+<p>The sequence of matrices <span class="math inline">\Lambda^{k}L\Lambda^{-k}</span> converges to the identity, because entries below the diagonal are multiplied by ratios <span class="math inline">\lambda_{j}/\lambda_{i}</span> with <span class="math inline">j&gt;i</span>. In other words, <span class="math display">
+\Lambda^{k}L\Lambda^{-k}=I+E_{k}
+</span> where <span class="math inline">E_{k}</span> is a matrix whose entries are <span class="math inline">O(\rho^{k})</span>.</p>
+<p>If we look at the <span class="math inline">QR</span> decomposition of <span class="math display">
+I+E_{k}=\tilde{Q}_{k}\tilde{R}_{k}
+</span> we can see that the two matrices on the right converge to the identity. This is because the <span class="math inline">QR</span> decomposition varies continuously (Gram–Schmidt is continuous in its inputs), and the <span class="math inline">QR</span> decomposition of <span class="math inline">I</span> is <span class="math inline">Q=I</span> and <span class="math inline">R=I</span>.</p>
+<p>Now write <span class="math display">
+A^{k} = V\tilde{Q}_{k}\tilde{R}_{k}\Lambda^{k}U
+</span> The first term is orthogonal, and the second upper triangular. So this is a <span class="math inline">QR</span> decomposition of <span class="math inline">A^{k}</span>.</p>
+<p>The only ambiguity in the Gram–Schmidt process comes from “reversing the direction” of the unit vectors in each column. As a result, if <span class="math inline">A^{k}=\overline{Q}_{k}\overline{R}_{k}</span> and also <span class="math inline">A^{k}=QR</span> for some other <span class="math inline">Q</span> and <span class="math inline">R</span>, then <span class="math inline">Q=\overline{Q}_{k}D</span> where <span class="math inline">D</span> is a diagonal matrix with entries <span class="math inline">\pm 1</span>. In our case this means that <span class="math display">
+V\tilde{Q}_{k}D_{k} = \overline{Q}_{k}
+</span></p>
+<p>Now <span class="math display">\begin{align}
+A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k} &amp;= D_{k}\tilde{Q}_{k}^{\top}(V^{\top}AV)\tilde{Q}_{k}D_{k}\\
+&amp;= D_{k}\tilde{Q}_{k}\Lambda\tilde{Q}_{k}D_{k}.
+\end{align}
+</span></p>
+<p>Since the <span class="math inline">\tilde{Q}_{k}\to 1</span>, in the limit the <span class="math inline">D_{k}</span> cancel and we see that <span class="math inline">A_{k}\to \Lambda</span>.</p>
 </section>
 </section>
 <section id="the-polar-decomposition" class="level2">
