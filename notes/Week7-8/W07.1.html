@@ -580,7 +580,27 @@ U^{\top}Y = KM
 </section>
 <section id="the-qr-decomposition-and-finding-eigenvalues" class="level3">
 <h3 class="anchored" data-anchor-id="the-qr-decomposition-and-finding-eigenvalues">The QR decomposition and finding eigenvalues</h3>
-<p>The QR decomposition is the basis for a standard numerical algorithm for the computation of the eigenvalues and eigenvectors of a matrix. While it can be applied to general matrices (with some caveats) we will consider symmetric matrices for simplicity.</p>
+<p>The QR decomposition is the basis for a standard numerical algorithm for the computation of the eigenvalues and eigenvectors of a matrix. While it can be applied to general matrices (with some caveats) we will consider positive real symmetric matrices for simplicity.</p>
+<section id="motivation" class="level4">
+<h4 class="anchored" data-anchor-id="motivation">Motivation</h4>
+<p>Suppose <span class="math inline">A</span> is a positive real <span class="math inline">n\times n</span> symmetric matrix with eigenvalues <span class="math inline">\lambda_{1}&gt;\lambda_{2}&gt;\cdots&gt;\lambda_{n}</span>. We know that there exists an orthonormal basis <span class="math inline">u_1,\ldots, u_{n}</span> of corresponding eigenvectors for <span class="math inline">A</span>.</p>
+<p>Choose a vector <span class="math inline">v=v_{0}</span> at random and consider the following iteration:</p>
+<ul>
+<li>Set $v_{k+1}=Av_{k}/|Av_{k}|</li>
+</ul>
+<p>Then the sequence <span class="math inline">v_{k}</span> converges to the eigenvector <span class="math inline">u_{1}</span> corresponding to the largest eigenvector $u_{1}.</p>
+<p>To see why this works, write <span class="math display">
+v_{0} = \sum_{i=1}^{n} a_{i} u_{i}
+</span> where <span class="math inline">\sum |a_{i}|^2 =1</span> and <span class="math inline">\langle v_{k},u_{1}\rangle = a_{1}</span>.</p>
+<p>Now <span class="math inline">v_{k}</span> is a unit vector that points in the direction of <span class="math inline">A^{k}v_{0}</span>. But <span class="math display">\begin{aligned}
+A^{k}v_{0} &amp;= \sum_{i=1}^{n} a_{i}\lambda_{i}^{k}u_{i} \\
+&amp;= \lambda_{1}^{k} \sum_{i=1}^{n} a_{i}(\lambda_{i}^{k}/lambda_{1}^{k}) u_{i}
+\end{aligned}
+</span> Since <span class="math inline">\lambda_{1}&gt;\lambda_{i}</span> for <span class="math inline">i&gt;1</span>, we see that <span class="math display">
+A^{k}v_{0} = \lambda_{1}^{k}(a_{1}u_{1}+e)
+</span> where <span class="math inline">e\to 0</span> at least as fast as <span class="math inline">(\lambda_{2}/\lambda_{1})^k</span>. The normalized vector <span class="math inline">v_{k}</span> therefore gradually aligns with <span class="math inline">u_{i}</span> as <span class="math inline">k\to\infty</span>.</p>
+<p>### The full algorithm</p>
+<p>Conceptually, the full QR algorithm uses the same idea we just discussed, but at each stage we don’t just normalize <span class="math inline">Av_{k}</span>, but we successively apply Gram–Schmidt to <span class="math inline">A^{k}</span>, so each column converges to the corresponding element <span class="math inline">u_{i}</span> of an orthonormal basis.</p>
 <p><strong>Algorithm:</strong> Let <span class="math inline">A=A_0</span> be an <span class="math inline">n\times n</span> real symmetric matrix. Define a sequence of matrices:</p>
 <ul>
 <li>Let <span class="math inline">A_{k} = Q_{k} R_{k}</span> be the <span class="math inline">QR</span> decomposition of <span class="math inline">A_{k}</span>.</li>
@@ -81390,6 +81410,7 @@ A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k} &amp;= D_{k}\tilde{Q}_{k}^{\top
 \end{align}
 </span></p>
 <p>Since the <span class="math inline">\tilde{Q}_{k}\to 1</span>, in the limit the <span class="math inline">D_{k}</span> cancel and we see that <span class="math inline">A_{k}\to \Lambda</span>.</p>
+</section>
 </section>
 </section>
 <section id="the-polar-decomposition" class="level2">
