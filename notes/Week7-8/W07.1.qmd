@@ -89,7 +89,48 @@ Since $K$ is upper triangular, you can solve this system by "back substitution".
 
 ### The QR decomposition and finding eigenvalues
 
-The QR decomposition is the basis for a standard numerical algorithm for the computation of the eigenvalues and eigenvectors of a matrix.  While it can be applied to general matrices (with some caveats) we will consider symmetric matrices for simplicity. 
+The QR decomposition is the basis for a standard numerical algorithm for the computation of the eigenvalues and eigenvectors of a matrix.  While it can be applied to general matrices (with some caveats) we will consider positive real symmetric matrices for simplicity. 
+
+#### Motivation
+
+Suppose $A$ is a positive real $n\times n$ symmetric matrix with eigenvalues
+$\lambda_{1}>\lambda_{2}>\cdots>\lambda_{n}$.   We know that there exists an orthonormal basis $u_1,\ldots, u_{n}$ of corresponding eigenvectors for $A$.
+
+Choose a vector $v=v_{0}$ at random and consider the following iteration:
+
+- Set $v_{k+1}=Av_{k}/\|Av_{k}\|
+
+Then the sequence $v_{k}$ converges to the eigenvector $u_{1}$ corresponding to
+the largest eigenvector $u_{1}.
+
+To see why this works, write
+$$
+v_{0} = \sum_{i=1}^{n} a_{i} u_{i}
+$$
+where $\sum |a_{i}|^2 =1$ and $\langle v_{k},u_{1}\rangle = a_{1}$. 
+
+Now $v_{k}$ is a unit vector that points in the direction of $A^{k}v_{0}$.
+But
+$$\begin{aligned}
+A^{k}v_{0} &= \sum_{i=1}^{n} a_{i}\lambda_{i}^{k}u_{i} \\
+&= \lambda_{1}^{k} \sum_{i=1}^{n} a_{i}(\lambda_{i}^{k}/lambda_{1}^{k}) u_{i}
+\end{aligned}
+$$
+Since $\lambda_{1}>\lambda_{i}$ for $i>1$, we see that 
+$$
+A^{k}v_{0} = \lambda_{1}^{k}(a_{1}u_{1}+e)
+$$
+where $e\to 0$ at least as fast as $(\lambda_{2}/\lambda_{1})^k$.  The normalized
+vector $v_{k}$ therefore gradually aligns with $u_{i}$ as $k\to\infty$. 
+
+ ### The full algorithm
+
+Conceptually, the full QR algorithm uses the same idea we just discussed, but
+ at each stage we don't just normalize $Av_{k}$, but we successively apply Gram--Schmidt
+ to $A^{k}$, so each column converges to the corresponding element $u_{i}$ of an orthonormal basis. 
+
+
+
 
 **Algorithm:** Let $A=A_0$ be an $n\times n$ real symmetric matrix.  Define 
 a sequence of matrices:
@@ -180,6 +221,7 @@ A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k} &= D_{k}\tilde{Q}_{k}^{\top}(V^
 $$
 
 Since the $\tilde{Q}_{k}\to 1$, in the limit the $D_{k}$ cancel and we see that $A_{k}\to \Lambda$.
+
 
 
 ## The Polar Decomposition
