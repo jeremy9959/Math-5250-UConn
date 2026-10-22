@@ -434,7 +434,7 @@ Using row operations, you can kill off the $*$ entries, and eventually see that 
 
 More generally, using an alternating product, you can show that, given a bounded complex $X^{\cdot}$ of finite dimensional vector spaces, and a linear map $L:X^{\cdot}\to X^{\cdot}$, that 
 $$
-\sum (-1)^{i}\det(L^{i}:X^{i}\to X^{i}) = \sum (-1)^{i} \det(\overline{L}^{i}:H^{i}(X^{\cdot})\to H^{i}(X^{\cdot}))
+\prod \det(L^{i}:X^{i}\to X^{i})^{(-1)^{i}} = \prod \det(\overline{L}^{i}:H^{i}(X^{\cdot})\to H^{i}(X^{\cdot}))^{(-1)^{i}}
 $$
 where the $\overline{L}_{i}$ are the induced map on cohomology.
 

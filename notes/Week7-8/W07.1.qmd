@@ -1,7 +1,314 @@
 ---
-title: "Weeks 7–8 — Jordan Canonical Form"
+title: "Matrix Decompositions"
+notebook-links: false
 ---
+\newcommand{\image}{\mathrm{image}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
 
-## Placeholder
+We discuss some consequences of the spectral theorem and of our study of unitary and orthogonal matrices that are important in applications.
 
-Notes on the Jordan canonical form of a linear operator, Jordan blocks, and generalized eigenvectors.
+
+## The LU decomposition
+
+This decomposition actually has nothing to do with the spectral theorem; it's just a restatement of Gaussian elimination, but it will be useful to have for reference at this point.
+
+**Proposition:** Let $A$ be an $n\times m$ matrix (over any field).  Then there exist an $n\times n$ permutation matrix $P$, an $n\times n$ matrix $L$, and an $n\times m$ matrix $U$, where $L$ is lower triangular and $U$ is upper triangular ($u_{ij}=0$ when $i>j$), such that $PA=LU$.
+
+The proof is just Gaussian elimination. 
+Start with $A$ and apply row operations to it so that it becomes upper triangular.  Generically, each diagonal entry in turn can serve as a pivot, and the row operations correspond to left multiplication of $A$ by a sequence $E_1,\ldots,E_k$ of elementary matrices that are lower triangular with ones on the diagonal. 
+So
+$$
+E_{k}E_{k-1}\cdots E_{1}A = U
+$$
+and then $L=(E_{k}E_{k-1}\cdots E_{1})^{-1}$. 
+
+In the general case one may need to permute the rows of $A$ so that a nonzero pivot is available at each step.  Then one collects those permutations into a permutation matrix $P$ and replaces $A$ by $PA$.  If $A$ is singular (or not square), $U$ may have zeros on its diagonal.  We won't treat any of these special cases in detail here. 
+
+## The QR decomposition
+
+Let $X$ be an $n\times k$ matrix with real or complex entries.  The $QR$ decomposition says that (assuming the columns of $X$ are linearly independent) we can find an $n\times n$ orthogonal (or unitary) matrix $Q$ and an $n\times k$ upper triangular matrix $R$ such that
+$$
+X = QR.
+$$
+
+This is just a version of the Gram--Schmidt algorithm.  Gram--Schmidt applied to the columns $x_1,\ldots, x_k$ of $X$ yields an orthonormal sequence of vectors
+$u_1,\ldots, u_k$ where (setting $U$ to the matrix with columns equal to the $u_{i}$):
+$$
+U = XS
+$$
+
+where $S$ is $k\times k$ and upper triangular.  (See the [Gram--Schmidt process](../Week5-6/W05.1.qmd#gram-schmidt)). Then 
+$X=US^{-1}$. Extend $U$ by adding orthonormal columns to make it an orthogonal/unitary $n\times n$ matrix $Q$ and add zero rows to
+$S^{-1}$ so that it becomes an upper triangular $n\times k$ matrix; this extended matrix is the matrix $R$. This gives us $X=QR$ as claimed.
+
+
+### Application to Least Squares
+
+Recall our discussion of the least squares problem.  We are given an $N\times k$ matrix $X$.  Each row represents a set of measurements, or features, of a piece of sample data, and the $N$ rows together represent a full set of measurements.  We also have, for each sample, a dependent, target variable whose values
+form an $N\times 1$ vector $Y$. We believe there are "weights" $m_{j}$ such that
+$$
+y_{i} = \sum_{j=1}^{k} m_{j}x_{ij}+b + \epsilon_i
+$$
+where $\epsilon_i$ is a random error.  
+
+We let $M$ be the $(k+1)\times 1$ vector whose entries are the $m_{j}$ and set $m_{k+1}=b$.  We also let $X'$
+be the matrix obtained from $X$ by adding a column of $1$'s.  Then (thinking of $\epsilon$ as a random vector) the equation above becomes
+$$
+Y = X'M + \epsilon
+$$
+
+We showed that the "best" choice for the $m_{j}$ and $b$, in the sense that it minimizes the squared error
+$$
+S(M) = \|Y-X'M\|^2
+$$
+
+is given by solving the "normal equations"
+$$
+(X')^{\top}Y = (X')^{\top}X'M
+$$
+
+Use Gram--Schmidt, as in the QR decomposition, to write $X'=US^{-1}=UK$ where $U$ has orthonormal columns and $K$ is a $(k+1)\times (k+1)$ upper triangular matrix. Then:
+$$
+(X')^{\top} = K^{\top}U^{\top}
+$$
+and
+$$
+(X')^{\top}X' = K^{\top}U^{\top}UK
+$$
+
+Since $U$ has orthonormal columns, $U^{\top}U$ is the
+$(k+1)\times (k+1)$ identity matrix.  Also (assuming the columns of $X'$ were linearly independent) the matrix $K$ is invertible so the "normal equations" 
+become
+
+$$
+U^{\top}Y = KM
+$$
+
+Since $K$ is upper triangular, you can solve this system by "back substitution".
+
+### The QR decomposition and finding eigenvalues
+
+The QR decomposition is the basis for a standard numerical algorithm for the computation of the eigenvalues and eigenvectors of a matrix.  While it can be applied to general matrices (with some caveats) we will consider positive real symmetric matrices for simplicity. 
+
+#### Motivation
+
+Suppose $A$ is a positive real $n\times n$ symmetric matrix with eigenvalues
+$\lambda_{1}>\lambda_{2}>\cdots>\lambda_{n}$.   We know that there exists an orthonormal basis $u_1,\ldots, u_{n}$ of corresponding eigenvectors for $A$.
+
+Choose a vector $v=v_{0}$ at random and consider the following iteration:
+
+- Set $v_{k+1}=Av_{k}/\|Av_{k}\|$
+
+Then the sequence $v_{k}$ converges to the eigenvector $u_{1}$ corresponding to
+the largest eigenvalue $\lambda_{1}$.
+
+To see why this works, write
+$$
+v_{0} = \sum_{i=1}^{n} a_{i} u_{i}
+$$
+where $\sum |a_{i}|^2 =1$ and $\langle v_{0},u_{1}\rangle = a_{1}$.  We assume $a_{1}\not=0$, which holds with probability one for a randomly chosen $v_{0}$.
+
+Now $v_{k}$ is a unit vector that points in the direction of $A^{k}v_{0}$.
+But
+$$\begin{aligned}
+A^{k}v_{0} &= \sum_{i=1}^{n} a_{i}\lambda_{i}^{k}u_{i} \\
+&= \lambda_{1}^{k} \sum_{i=1}^{n} a_{i}(\lambda_{i}^{k}/\lambda_{1}^{k}) u_{i}
+\end{aligned}
+$$
+Since $\lambda_{1}>\lambda_{i}$ for $i>1$, we see that 
+$$
+A^{k}v_{0} = \lambda_{1}^{k}(a_{1}u_{1}+e)
+$$
+where $e\to 0$ at least as fast as $(\lambda_{2}/\lambda_{1})^k$.  The normalized
+vector $v_{k}$ therefore gradually aligns with $u_{1}$ as $k\to\infty$. 
+
+ ### The full algorithm
+
+Conceptually, the full QR algorithm uses the same idea we just discussed, but
+ at each stage we don't just normalize $Av_{k}$, but we successively apply Gram--Schmidt
+ to $A^{k}$, so each column converges to the corresponding element $u_{i}$ of an orthonormal basis. 
+
+
+
+
+**Algorithm:** Let $A=A_0$ be an $n\times n$ real symmetric matrix.  Define 
+a sequence of matrices:
+
+- Let $A_{k} = Q_{k} R_{k}$ be the $QR$ decomposition of $A_{k}$.
+- Let $A_{k+1}=R_{k}Q_{k}$.  
+
+Notice that $A_{k+1}=Q_{k}^{-1}A_{k}Q_{k}$ so all matrices $A_{j}$ are orthogonally equivalent and have the same eigenvalues.
+
+In addition if we put 
+$$
+\overline{Q}_{k}=Q_{0}Q_{1}\cdots Q_{k-1}
+$$
+and
+$$
+\overline{R}_{k} =R_{k-1}R_{k-2}\cdots R_{0}
+$$
+then
+$$A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k}
+$$
+and
+$$
+A^{k} = \overline{Q}_{k}\overline{R}_{k}.
+$$
+
+We can compute $\overline{Q}_{k}$ directly by applying Gram--Schmidt to the columns of $A^{k}$. 
+
+The sequence $A_{j}$ converges to a diagonal matrix whose entries are the eigenvalues of $A$. The sequence $\overline{Q}_{k}$ converges to a matrix whose columns are the eigenvectors of $A$. 
+
+Let
+$$
+A= \begin{pmatrix}
+2.1948 &  0.5638 \\
+0.5638 &  2.6052 \\
+\end{pmatrix}
+$$
+
+The algorithm above generates a sequence of (symmetric) matrices $A_{k}$, all similar to $A$ which converge to a diagonal matrix, thereby revealing the eigenvalues of $A$.
+
+The animation below plots the level curves $u^{\top}A_{k}u=1$ where $u=\begin{pmatrix} x \\ y \end{pmatrix}$.  These are ellipses, each obtained from the previous one by a rotation by an orthogonal matrix. Ultimately the major and minor axes lie along the $x$ and $y$ axes, which is what happens when $A_{k}$ approaches its limiting diagonal form.
+
+The second graph shows the decay in the off-diagonal entry in the matrix $A_{k}$. It decays linearly with $\log(\lambda_{2}/\lambda_{1})$ where $\lambda_{1}>\lambda_{2}$ are the eigenvalues of $A$.
+
+{{< embed QR-algorithm-animation.ipynb#qr-animation >}}
+
+We will not pursue a full exploration of the convergence of the QR algorithm, but we will sketch why it works in
+the simple case of a positive definite symmetric matrix with distinct eigenvalues.
+
+**Proposition:** Let $A$ be a positive definite real symmetric $n\times n$ matrix, with eigenvalues $\lambda_{1}>\lambda_{2}>\cdots>\lambda_{n}>0$. Then the sequence $A_{k}$ of matrices introduced above converges to a diagonal matrix $\Lambda$ with entries $\{\lambda_{j}\}$.  The rate of convergence is of order $\rho^{k}$ where $\rho=\max_{j}\frac{\lambda_{j+1}}{\lambda_{j}}$.
+
+To see where this comes from, remember that $A$ is orthogonally similar to a diagonal matrix, so there is 
+an orthogonal matrix $V$ such that $A=V\Lambda V^{\top}=V\Lambda V^{-1}$.
+Then $A^{k}=V\Lambda^{k}V^{-1}$.  Write $V^{-1}=LU$ using the LU decomposition, where $L$ is lower triangular with ones on the diagonal.  (We assume, as is true generically, that no row permutation is needed.)  Then
+$$
+A^{k} = V\Lambda^{k}LU=V(\Lambda^{k}L\Lambda^{-k})\Lambda^{k}U
+$$
+
+The sequence of matrices $\Lambda^{k}L\Lambda^{-k}$ 
+converges to the identity, because its $(i,j)$ entry is $\ell_{ij}(\lambda_{i}/\lambda_{j})^{k}$, and for entries below the diagonal ($i>j$) the ratio $\lambda_{i}/\lambda_{j}$ is less than $1$.  In other words, 
+$$
+\Lambda^{k}L\Lambda^{-k}=I+E_{k}
+$$
+where $E_{k}$ is a matrix whose entries are $O(\rho^{k})$. 
+
+If we look at the $QR$ decomposition of 
+$$
+I+E_{k}=\tilde{Q}_{k}\tilde{R}_{k}
+$$
+we can see that the two matrices on the right converge to the identity.  This is because the $QR$ decomposition varies continuously (Gram--Schmidt is continuous in its inputs), and the $QR$ decomposition of $I$ is $Q=I$ and $R=I$. 
+
+Now write
+$$
+A^{k} = V\tilde{Q}_{k}\tilde{R}_{k}\Lambda^{k}U
+$$
+The first term is orthogonal, and the second upper triangular.
+So this is a $QR$ decomposition of $A^{k}$. 
+
+The only ambiguity in the Gram--Schmidt process comes from "reversing the direction" of the unit vectors in each column.  As a result, if $A^{k}=\overline{Q}_{k}\overline{R}_{k}$ and also $A^{k}=QR$ for some other $Q$ and $R$, then $Q=\overline{Q}_{k}D$ where $D$ is a diagonal matrix with entries $\pm 1$. In our case this means that
+$$
+V\tilde{Q}_{k}D_{k} = \overline{Q}_{k}
+$$
+
+Now 
+$$\begin{aligned}
+A_{k} = \overline{Q}_{k}^{\top}A\overline{Q}_{k} &= D_{k}\tilde{Q}_{k}^{\top}(V^{\top}AV)\tilde{Q}_{k}D_{k}\\
+&= D_{k}\tilde{Q}_{k}^{\top}\Lambda\tilde{Q}_{k}D_{k}.
+\end{aligned}
+$$
+
+Since $\tilde{Q}_{k}\to I$ and $D_{k}\Lambda D_{k}=\Lambda$, we see that $A_{k}\to \Lambda$.
+
+
+
+## The Polar Decomposition
+
+The polar decomposition is, in some sense, a generalization of the "polar form" of a complex number, where $z\not=0$ can be written $z=re^{i\theta}$ with $r>0$ and $\theta$ determined up to a multiple of $2\pi$. 
+
+Recall that a self-adjoint linear operator $L$ on an inner product space $V$ is *positive* if $\langle Lv,v\rangle\ge 0$ for all $v\in V$.
+
+Suppose that $L$ is a positive self-adjoint linear operator on an $n$-dimensional (real or complex) inner product space $V$.
+
+Under these hypotheses, $L$ is unitarily (or orthogonally) diagonalizable with nonnegative real eigenvalues $\{\lambda_{i}\}_{i=1}^{k}$ and has a spectral resolution
+
+$$
+L = \sum_{i=1}^{k} \lambda_{i}p_{i}
+$$
+
+where $p_{i}$ is the orthogonal projection onto the $\lambda_{i}$-eigenspace of $L$.
+
+**Definition:** The square root $B=\sqrt{L}$ of $L$ is the operator
+$$
+B = \sum_{i=1}^{k}\sqrt{\lambda_{i}}p_{i}
+$$
+
+(taking the nonnegative square roots).
+
+Using the properties of the $p_{i}$ one checks immediately
+that $B^{2}=L$. The map $B$ is positive, self-adjoint, and is the unique positive operator whose square is $L$. 
+
+
+Now suppose $A$ is any linear operator $A:V\to V$.  Then $A^{*}A:V\to V$ is self-adjoint and positive since
+$$
+\langle A^{*}Av,v\rangle = \langle Av, Av\rangle = \|Av\|^2\ge 0.
+$$
+
+Conversely if $L$ is positive and $A=\sqrt{L}$ then 
+$L=A^{*}A$. 
+
+**Proposition:** $L$ is positive if and only if $L=A^{*}A$ for some operator $A$.
+
+For example, the matrix $D=X^{\top}X$ that came up in the equations for least squares regression is positive.
+
+Now suppose that $L$ is any linear operator $L:V\to V$ where $V$ is a real or complex (finite-dimensional) inner product space. 
+We will establish the following proposition.
+
+**Proposition (The Polar Decomposition):** Let $L:V\to V$ be a linear operator on a real or complex inner product space.  Then there exist a positive operator $P$ and a unitary (or orthogonal) operator $U$ such that $L=UP$.
+Here $P$ is unique and, if $L$ is invertible, $U$ is unique. 
+
+Alternatively, there is a positive operator $P'$ and a unitary (or orthogonal) operator $U'$ such that $L=P'U'$ where $P'$ is unique and $U'$ is unique if $L$ is invertible. 
+
+To construct $U$ and $P$ from $L$, notice first that if $P$ and $U$ exist, then because
+$L^{*}L=P^{*}U^{*}UP=P^2$ we must have $P=\sqrt{L^{*}L}$ by the uniqueness of positive square roots.  From the equation
+$$
+L(v)=UP(v)
+$$
+
+we see that if $w\in\image(P)$, say $w=Pv$, then we can define a map $U$ by setting $U(w)=L(v)$.  
+
+This is well-defined.  To see this, observe that 
+$$
+\|P(v)\|^2=\langle P(v),P(v)\rangle = \langle P^2(v),v\rangle = \langle L^{*}L(v),v\rangle = \|L(v)\|^2.
+$$
+
+Thus if $w=Pv_1=Pv_2$, then $P(v_1-v_2)=0$, so $L(v_1-v_2)=0$ by the norm identity we just proved. 
+
+Note further that 
+if $w,w'\in\image(P)$, so $w=Pv$ and $w'=Pv'$, 
+then $U(aw+w')=aL(v)+L(v')=aU(w)+U(w')$ so $U$ is linear. 
+
+Now, if $w=Pv$ then $\|Uw\|^2=\|UPv\|^2=\|L(v)\|^2=\|P(v)\|^2=\|w\|^2$
+so $U$ is an isometry on the image of $P$.  
+
+From the construction above, we see that $U$ is an isometry from the image of $P$ onto the image of $L$. Therefore these
+two spaces have the same dimension. 
+Choose an orthonormal basis for $\image(P)$, say $u_1,\ldots, u_h$.  The value of $U$ is determined on these $u_{i}$ and
+$U(u_1),\ldots, U(u_{h})$ is a basis for $\image(L)$.  Extend the basis $\{u_{i}\}$ of $\image(P)$ to an orthonormal basis of
+$V$ by adding $u_{h+1},\ldots, u_{n}$. Then choose an orthonormal basis $w_{h+1},\ldots, w_{n}$ for $\image(L)^{\perp}$.
+We can define $U$ on all of $V$ by the definition above on $\image(P)$ and then $U(u_{j})=w_{j}$ for $j=h+1,\ldots, n$.
+This gives us an isometry (equivalently a unitary/orthogonal operator) on all of $V$ that satisfies $L=UP$.
+
+In the special case where $L$ is invertible, $P$ must also be invertible and then $U$ is determined ($U=LP^{-1}$) so $P$ and $U$ are unique in this case.
+
+A similar construction handles the decomposition $L=P'U'$. 
+
+**Proposition:** Over the complex numbers, a unitary operator $U$ has the form $\exp(iJ)$ where $J$ is a self-adjoint operator.
+
+**Proof:** $U$ is unitarily diagonalizable and its eigenvalues are all complex numbers of absolute value 1, hence of the 
+form $\exp(i\theta)$ for real $\theta$.  So let $J$ be the operator that acts by $\theta$ on the eigenspace where $U$
+acts by $\exp(i\theta)$.  Then $U=\exp(iJ)$ and since $J$ is unitarily diagonalizable with real eigenvalues it is self-adjoint.
+
+

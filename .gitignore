@@ -3,3 +3,18 @@
 /ferpa
 **/*.quarto_ipynb
 /src
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+claude/
