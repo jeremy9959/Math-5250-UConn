@@ -1,7 +1,92 @@
 ---
-title: "Weeks 7–8 — Positive Definite Matrices"
+title: "The Legendre Equation"
 ---
 
-## Placeholder
+## The Legendre Equation
 
-Notes on positive definite and positive semidefinite matrices, their characterizations, and connections to inner products and decompositions.
+In these notes we will show how ideas from the spectral theorem apply in the setting of differential equations.
+We will not focus on analytic details here, but rather try to illustrate the algebraic structure.
+
+### The Laplace Equation
+
+We begin by considering the two dimensional Laplace equation
+$$
+\nabla^2 f(x,y) = (\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2})f(x,y) = 0
+$$
+
+This equation arises in many settings in mathematics and physics.  For example, the potential energy from an inverse square
+force in a region of 2 dimensional space free of sources (such as electric charge, or gravitational mass), satisfies this equation.
+The real part of a holomorphic function of a complex variable satisfies this equation as well.  More generally the solutions are called
+harmonic functions.
+
+### Separation of variables
+
+
+We will attack this equation by expressing it in polar coordinates.  In polar coordinates, the Laplace equation becomes
+
+$$
+\nabla^2 f = \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial f}{\partial r}\right)+\frac{1}{r^2}\frac{\partial^2 f}{\partial \theta^2}
+$$
+
+If we set $f(r,\theta) = R(r)\Theta(\theta)$, the we get the equation
+$$
+\frac{1}{r}(rR')'\Theta + \frac{1}{r^2}R\Theta'' = 0.
+$$
+
+We can rearrange this to get
+$$
+\frac{r(rR')'}{R} = -\frac{\Theta''}{\Theta}
+$$
+
+The left side is a function of $r$, and the right side is a function of $\theta$.  So for them to be identically equal for all $r$,$\theta$, the must both be equal to a constant $\lambda$.  In other words,
+$$
+\Theta''=-\lambda\Theta.
+$$
+and
+$$
+r^2R'' + rR'-\lambda R=0.
+$$
+
+### Eigenvalue point of view
+
+Let's look at the equation $\Theta''=-\lambda\Theta$.  By definition, $\Theta$ is a periodic function with period $2\pi$. The space of 
+complex valued periodic functions of a real variable with period $2\pi$ is a kind of inner product space; the inner product is
+$$
+\langle f, g\rangle = \int_{0}^{2\pi} f\overline{g} d\theta
+$$
+(The catch is that this is an infinite dimensional space, so our theory doesn't apply directly, but let's not worry about that for now).
+
+Using integration by parts, you can show that 
+$$
+\langle -\frac{d^2f}{d\theta^2},g\rangle = \langle f, -\frac{d^2g}{d\theta^2}
+$$
+
+so the second derivative operator is self-adjoint. In addition, 
+$$
+\langle -\frac{d^2f}{d\theta^2},f\rangle = \int_{0}^{2\pi} |\frac{df}{d\theta}|^2d\theta\ge 0
+$$
+so this is a positive operator as well.
+
+The spectral theorem (or at least, its infinite dimensional version) tells us that there is an orthonormal basis of eigenvectors
+for the second derivative operator.  We know that the solutions to 
+$$
+\frac{d^2f}{d\theta^2} = -\lambda f 
+$$
+
+are $f=A\exp(\sqrt{-\lambda}\theta)$.  If $\lambda<0$, then $\sqrt{-\lambda}$ is real and positive and the function $f$ isn't periodic, so that can't happen.  If $\lambda=0$, then $f=a+b\theta$; since it's periodic, $b=0$ so $f$ is constant.  If $\lambda>0$,
+then $\sqrt{-\lambda}=\pm i\sqrt{\lambda}$.  the corresponding exponential is only periodic if $\sqrt{\lambda}$ is an integer, meaning
+$\lambda = n^2$ for $n=1,2, \ldots $. 
+
+The $R$ equation has solutions $r^{n}$ and $r^{-n}$ if $n\ge 1$; if $n=0$ the solutions are of the form $a+b\log(r)$.
+
+In the special case where the solutions are required to be defined at $r=0$, then the general solution is
+
+$$
+w = a_{0}+\sum_{n\ge 1}r^{n}(c_{n}\cos(n\theta) + d_{n}\sin(n\theta)).
+$$
+
+For complex valued functions you have 
+
+$$
+f(r\exp(i\theta) = \sum_{n=0}^{\infty} a_{n}z^{n}+\sum_{n=0}^{\infty} b_{n}\overline{z}^{n}
+$$.
