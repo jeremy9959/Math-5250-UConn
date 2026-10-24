@@ -2,6 +2,7 @@
 title: "The Legendre Equation"
 ---
 
+
 ## The Legendre Equation
 
 In these notes we will show how ideas from the spectral theorem apply in the setting of differential equations.
@@ -88,5 +89,44 @@ $$
 For complex valued functions you have 
 
 $$
-f(r\exp(i\theta) = \sum_{n=0}^{\infty} a_{n}z^{n}+\sum_{n=0}^{\infty} b_{n}\overline{z}^{n}
-$$.
+f(r\exp{i\theta}) =f(z) = \sum_{n=0}^{\infty} a_{n}z^{n}+\sum_{n=0}^{\infty} b_{n}\overline{z}^{n}.
+$$
+
+### The Legendre Equation
+
+Now we look at the three dimensional Poisson equation:
+
+$$
+\Delta f = (\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2})f(x,y,z)=0. 
+$$
+
+We will study solutions to this equation which are invariant under rotations around the $z$-axis.   In other words, if we write $f$ in spherical coordinates $r,\theta,\phi$ , then $f$ is independent of $\theta$.
+
+Under this assumption,  we use the separation of variables trick to look for solutions of the form
+$f(r,\phi)=R(r)Phi(\phi).$
+
+In spherical coordinates, assuming the derivatives with respect to $\theta$ are zero, the Laplacian becomes:
+
+$$
+\Delta f = \frac{1}{r^2}\frac{\partial}{\partial r}\!\left( r^2 \frac{\partial f}{\partial r} \right) + \frac{1}{r^2}\,\Delta_{S^2} f
+$$
+
+where (assuming $f$ is independent of $\theta$):
+
+$$
+\Delta_{S^2} f = \frac{1}{\sin\phi}\frac{\partial}{\partial \phi}\!\left( \sin\phi \, \frac{\partial f}{\partial \phi} \right).
+$$
+
+If we substitute our factorization $f(r,\phi)=R(r)\Phi(\phi)$ into this version of the Laplace equation, and make the further subsitution $z=\cos(\phi)$, the Laplace equation splits into two ODEs:
+
+$$
+\begin{aligned}
+r^2R'' + 2rR' - \lambda R &=0 \\
+(1-z^2)P''-2zP' +\lambda P &=0 \\
+\end{aligned}
+$$
+
+where the $\lambda$ arises as in the discussion of the two dimensional case from the fact that if a function of $r$ alone must equal a function of  $z$ alone for all $r$ and $z$, then both must be equal to the same constant. 
+
+As in the two-dimensional case, the boundary conditions impose constraints on the constants $\lambda$. 
+
