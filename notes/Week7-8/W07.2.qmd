@@ -92,7 +92,7 @@ $$
 f(r\exp{i\theta}) =f(z) = \sum_{n=0}^{\infty} a_{n}z^{n}+\sum_{n=0}^{\infty} b_{n}\overline{z}^{n}.
 $$
 
-### The Legendre Equation
+### The 3d case
 
 Now we look at the three dimensional Poisson equation:
 
@@ -128,5 +128,74 @@ $$
 
 where the $\lambda$ arises as in the discussion of the two dimensional case from the fact that if a function of $r$ alone must equal a function of  $z$ alone for all $r$ and $z$, then both must be equal to the same constant. 
 
-As in the two-dimensional case, the boundary conditions impose constraints on the constants $\lambda$. 
+As in the two-dimensional case, the boundary conditions impose constraints on the constants $\lambda$.  Specifically,
+our solution has to be defined at the poles $\phi=\pm \pi$,
+meaning the points where $z=\cos\phi=\pm 1$.
 
+To see how this condition fixes the possible values for $\lambda$,
+propose a power series solution
+$$
+P(z) = \sum_{i=0}^{\infty} a_{i}z^{i}
+$$
+around zero.  From the differential equation, one obtains a two-term recurrence relation for the $a_{i}$. In fact, one obtains two separate recurrence relations, one for the even and one for the odd terms in $P(z)$:
+$$
+a_{i+2} = \frac{i(i+1)-\lambda}{(i+1)(i+2)}a_{i}.
+$$
+For general $\lambda$, we see that 
+$$
+a_{i+2}/a_{i} \sim \frac{i(i+1)}{(i+1)(i+2)}
+$$
+so the ratios $a_{i+2}/a_{i}$ approach $i$ as $i\to\infty$. In other words, for general $\lambda$,
+the solutions to the differential equation blow up at $z=\pm 1$.  
+
+However, if there is a value $i$ for which $\lambda=i(i+1)$, then $a_{i+2}=0$ and so the "power series" solution becomes a polynomial which is defined at $z=\pm 1$.  Let the solution with $\lambda=n(n+1)$ be called  $P_{n}(z)$.
+
+If $\lambda=k(k+1)$ for some positive integer $k$,
+then solving the first equation
+$$
+r^2R'' + 2rR' - \lambda R =0
+$$
+by recurrence yields the condition:
+$$
+(n(n-1)+2n-k(k+1))a_n=(n(n+1)+k(k+1))a_{n}=0
+$$
+so either $a_{n}=0$ or $n=k$.  (One can also have $n=-k$ for $k>1$ but we only consider solutions that extend to the origin.) 
+In other words the solutions are $R_{n}(r)=Ar^{n}$.
+
+When the dust settles, we obtain solutions
+$$
+f_{n}(r,\phi) = Ar^{n}P_{n}(\cos(\phi)).
+$$
+
+### The Legendre Polynomials
+
+The polynomials $P_{n}(z)$ corresponding to $\lambda=n(n+1)$ are called the Legendre polynomials. The differential equation defining them is the "eigenvalue"
+equation
+$$
+LP_{n}(z) = ((1-z^2)\frac{d^2}{dz^2} -2z \frac{d}{dz})P_{n}(z) = -n(n+1)P_{n}(z).
+$$
+
+The "Legendre operator" $L$ is self adjoint with respect to the inner product:
+$$
+\langle f,g\rangle = \int_{0}^{1}fg\,dx
+$$
+on the space of twice differentiable functions on $[0,1]$. 
+
+One proves this by integration by parts, which is made easier by the hint:
+$$
+LP =\frac{d}{dz}((1-z^2)\frac{d}{dz}P)
+$$
+
+### The finite dimensional version
+
+Let $V_{N}$ be the $N+1$ dimensional space of polynomials of degree at most $N$.  The operator $L$
+preserves this space; in fact, the powers $z^{k}$ form a basis for $V_{N}$ and
+$$
+L(z^{k})=-k(k+1)z^{k}+k(k-1)z^{k-2}.
+$$
+The matrix of $L$ is upper triangular, with diagonal entries $-k(k+1)$, so $L$ is diagonalizable; and since it is self-adjoint with respect to the restriction of the inner product above to $V_{N}$ it has an orthonormal basis of eigenvectors.  This gives another construction of the Legendre polynomials: apply Gram--Schmidt to the polynomials $z^{k}$ and normalize  the resulting polynomials to have $P_{n}(1)$ instead of $\|P_{n}\|^2=1$.
+
+
+![The Legendre polynomials $P_0,\ldots,P_4$ on $[-1,1]$.](images/legendre-P0-P4.png){width=80%}
+
+![The Legendre polynomials $P_0(\cos\phi),\ldots,P_4(\cos\phi)$ on $[0,\pi]$.](images/legendre-P0-P4-phi.png){width=80%}
