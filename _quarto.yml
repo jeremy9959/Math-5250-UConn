@@ -4,6 +4,7 @@ project:
     - "*.qmd"
     - "*.md"
     - "!notes/Week7-8/QR-algorithm-animation.ipynb"
+    - "!claude/"
 
 website:
   title: "Math 5250: Graduate Linear Algebra"
