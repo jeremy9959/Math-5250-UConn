@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form – Math 5250: Graduate Linear Algebra</title>
+<title>Math 5250: Graduate Linear Algebra - The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,29 +30,22 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f154b77148a324d550c6206182bf458c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -64,14 +54,12 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -86,84 +74,57 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Math 5250: Graduate Linear Algebra</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../schedule.html"> 
-<span class="menu-text">Schedule</span></a>
+    <a class="nav-link" href="../../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Week 4 - Diagonalizability</a></li><li class="breadcrumb-item"><a href="../../notes/Week4/W04.3.html">Minimal polynomial, Cyclic Subspaces, Jordan Form</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Week 4 - Diagonalizability</a></li><li class="breadcrumb-item"><a href="../../notes/Week4/W04.3.html">Minimal polynomial, Cyclic Subspaces, Jordan Form</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -173,7 +134,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -195,9 +156,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Week 1 — Review</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -230,9 +191,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Week 2 — Abstract Vector Spaces</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -259,9 +220,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Week 3 - Trace and Determinant</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -282,9 +243,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Week 4 - Diagonalizability</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -305,9 +266,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Weeks 5–6 — Inner Product Spaces</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -328,9 +289,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Weeks 7–8 — Matrix Decompositions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -341,13 +302,19 @@ window.Quarto = {
  <span class="menu-text">QR and polar decompositions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/Week7-8/W07.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Legendre equation and Legendre polynomials</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">Week 9 — Norms</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -368,9 +335,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">Weeks 10–11 — Dual Spaces</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -397,9 +364,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
  <span class="menu-text">Week 12 — Bilinear Forms</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -426,9 +393,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
  <span class="menu-text">Weeks 13–14 — Multilinear Algebra</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -455,9 +422,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
  <span class="menu-text">In-class notes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -471,7 +438,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week1/W01.2-slides.given.pdf" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09012026 (cont’d)</span></a>
+ <span class="menu-text">09032026</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -483,7 +450,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week1/W01.3-slides.given.pdf" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09032026 (cont’d)</span></a>
+ <span class="menu-text">09082026</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -533,7 +500,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -541,8 +508,8 @@ window.Quarto = {
    
   <ul>
   <li><a href="#decomposition" id="toc-decomposition" class="nav-link active" data-scroll-target="#decomposition">Decomposition</a></li>
-  <li><a href="#the-minimal-polynomial" id="toc-the-minimal-polynomial" class="nav-link" data-scroll-target="#the-minimal-polynomial">The Minimal Polynomial</a></li>
   <li><a href="#cyclic-subspaces" id="toc-cyclic-subspaces" class="nav-link" data-scroll-target="#cyclic-subspaces">Cyclic Subspaces</a></li>
+  <li><a href="#the-minimal-polynomial" id="toc-the-minimal-polynomial" class="nav-link" data-scroll-target="#the-minimal-polynomial">The Minimal Polynomial</a></li>
   <li><a href="#decomposition-into-cyclic-subspaces" id="toc-decomposition-into-cyclic-subspaces" class="nav-link" data-scroll-target="#decomposition-into-cyclic-subspaces">Decomposition into Cyclic Subspaces</a></li>
   <li><a href="#the-jordan-normal-form" id="toc-the-jordan-normal-form" class="nav-link" data-scroll-target="#the-jordan-normal-form">The Jordan Normal Form</a></li>
   <li><a href="#matrix-exponentials-and-linear-systems" id="toc-matrix-exponentials-and-linear-systems" class="nav-link" data-scroll-target="#matrix-exponentials-and-linear-systems">Matrix Exponentials and Linear Systems</a></li>
@@ -552,7 +519,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week4/W04.1.html">Week 4 - Diagonalizability</a></li><li class="breadcrumb-item"><a href="../../notes/Week4/W04.3.html">Minimal polynomial, Cyclic Subspaces, Jordan Form</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">The Minimal Polynomial, Cyclic Subspaces, and Jordan Normal Form</h1>
 </div>
@@ -567,9 +534,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <p>A polynomial <span class="math inline">f</span> of degree <span class="math inline">n</span> over an algebraically closed field factors into a product of <span class="math inline">n</span> linear terms: <span class="math display">
 f(x) = \prod_{i} (x-\lambda_{i})^{n_{i}}
@@ -627,18 +592,11 @@ v = a(L) H(L)v + b(L)p_1(L)^{n_{1}} v.
 v = a(L)H(L)v + b(L) p_{1}(L)^{n_1} v = 0.
 </span></p>
 <p>Thus <span class="math inline">V</span> is the (internal) direct sum of <span class="math inline">V_1</span> and <span class="math inline">W</span>.</p>
-<p>Continuing inductivBut ely by looking at the factorization of <span class="math inline">H</span> acting on the space <span class="math inline">W</span>, we can eventually decompose <span class="math inline">V</span> into a direct sum</p>
+<p>Continuing inductively by looking at the factorization of <span class="math inline">H</span> acting on the space <span class="math inline">W</span>, we can eventually decompose <span class="math inline">V</span> into a direct sum</p>
 <p><span class="math display">
 V = V_1 \oplus V_2 \oplus \cdots \oplus V_k
 </span></p>
 <p>where <span class="math inline">p_{i}(L)^{n_{i}}V_i=0</span>.</p>
-</section>
-<section id="the-minimal-polynomial" class="level2">
-<h2 class="anchored" data-anchor-id="the-minimal-polynomial">The Minimal Polynomial</h2>
-<p>Suppose <span class="math inline">V</span> is a finite dimensional vector space of dimension <span class="math inline">n</span> over a field <span class="math inline">F</span> and <span class="math inline">L:V\to V</span> is a linear map. We know from Cayley-Hamilton that <span class="math inline">P_{L}(L)V=0</span>.</p>
-<p><strong>Definition:</strong> Let <span class="math inline">m_{L}(x)</span> be the monic polynomial of smallest degree such that <span class="math inline">m_L(L)V=0</span>. This polynomial is called the <em>minimal polynomial</em> of <span class="math inline">L</span>.</p>
-<p><strong>Proposition:</strong> The minimal polynomial <span class="math inline">m_{L}(x)</span> is a divisor of the characteristic polynomial <span class="math inline">P_{L}(x)</span>.</p>
-<p><strong>Proof:</strong> Divide <span class="math inline">P_{L}(x)</span> by <span class="math inline">m_{L}(x)</span> and let <span class="math inline">r(x)</span> be the remainder. Since <span class="math inline">r(x) = P_{L}(x)-q(x)m_{L}(x)</span>, we have <span class="math inline">r(L)V=0</span>. But the degree of <span class="math inline">r(x)</span> is less than that of <span class="math inline">m_L(x)</span>, so the minimality of <span class="math inline">m_L(x)</span> means that <span class="math inline">r(x)=0</span>.</p>
 </section>
 <section id="cyclic-subspaces" class="level2">
 <h2 class="anchored" data-anchor-id="cyclic-subspaces">Cyclic Subspaces</h2>
@@ -670,20 +628,51 @@ A=\begin{pmatrix}
 <p><strong>Proof:</strong> If <span class="math inline">q(x)</span> is degree <span class="math inline">1</span>, this is easy to check by a computation. Inductively, if we strike out the first row and column of <span class="math inline">A</span>, we obtain the companion matrix <span class="math inline">A_1</span> of the polynomial <span class="math display">b(x) = x^{n-1}+a_{n-1}x^{n-2}+\cdots+a_{1}</span> so <span class="math inline">\det(A_1)=b(x)</span> by induction. Then the cofactor expansion of <span class="math inline">\det(A)</span> along the first row gives <span class="math display">
 x\det(A_1)+a_{0}=xb(x)+a_0=q(x).
 </span></p>
-<p><strong>Corollary:</strong> If <span class="math inline">V</span> is cyclic for <span class="math inline">L</span>, then the minimal polynomial and characteristic polynomials of <span class="math inline">L</span> coincide.</p>
+</section>
+<section id="the-minimal-polynomial" class="level2">
+<h2 class="anchored" data-anchor-id="the-minimal-polynomial">The Minimal Polynomial</h2>
+<p>Suppose <span class="math inline">V</span> is a finite dimensional vector space of dimension <span class="math inline">n</span> over a field <span class="math inline">F</span> and <span class="math inline">L:V\to V</span> is a linear map. We know from Cayley-Hamilton that <span class="math inline">P_{L}(L)V=0</span>.</p>
+<p><strong>Definition:</strong> Let <span class="math inline">m_{L}(x)</span> be the monic polynomial of smallest degree such that <span class="math inline">m_L(L)V=0</span>. This polynomial is called the <em>minimal polynomial</em> of <span class="math inline">L</span>.</p>
+<p><strong>Proposition:</strong> The minimal polynomial <span class="math inline">m_{L}(x)</span> is a divisor of the characteristic polynomial <span class="math inline">P_{L}(x)</span>.</p>
+<p><strong>Proof:</strong> Divide <span class="math inline">P_{L}(x)</span> by <span class="math inline">m_{L}(x)</span> and let <span class="math inline">r(x)</span> be the remainder. Since <span class="math inline">r(x) = P_{L}(x)-q(x)m_{L}(x)</span>, we have <span class="math inline">r(L)V=0</span>. But the degree of <span class="math inline">r(x)</span> is less than that of <span class="math inline">m_L(x)</span>, so the minimality of <span class="math inline">m_L(x)</span> means that <span class="math inline">r(x)=0</span>.</p>
+<p><strong>Proposition:</strong> If <span class="math inline">V</span> is cyclic for <span class="math inline">L</span>, then the minimal polynomial and characteristic polynomials of <span class="math inline">L</span> coincide.</p>
+<p><strong>Proposition:</strong> Let <span class="math inline">q(x)</span> be an irreducible factor of the characteristic polynomial of <span class="math inline">L</span> acting on <span class="math inline">V</span>. Then <span class="math inline">q(x)</span> is a factor of the minimal polynomial of <span class="math inline">L</span>.</p>
+<p><strong>Proof:</strong> It suffices to show that <span class="math inline">q(L)</span> is not injective on <span class="math inline">V</span>. This is because, if <span class="math inline">v\ne 0</span> is in the kernel of <span class="math inline">q(L)</span>, then the set <span class="math inline">v, Lv, \ldots, L^{e-1}v</span>, where <span class="math inline">e</span> is the degree of <span class="math inline">q</span>, is linearly independent so spans an <span class="math inline">e</span>-dimensional subspace <span class="math inline">W</span> of <span class="math inline">V</span> for which <span class="math inline">q(L)W=0</span>. If <span class="math inline">m(x)</span> is the minimal polynomial for <span class="math inline">L</span> on all of <span class="math inline">V</span>, then <span class="math inline">m(L)W=0</span>. But if <span class="math inline">q(x)</span> does not divide <span class="math inline">m(x)</span>, then we can solve <span class="math inline">1=a(x)q(x)+b(x)m(x)</span> and therefore <span class="math inline">(a(L)q(L)+b(L)m(L))v=0=v</span>, which isn’t true. So we see that if <span class="math inline">q(L)</span> is not injective then <span class="math inline">q(x)</span> divides <span class="math inline">m(x)</span>.</p>
+<p>So now assume <span class="math inline">q(L)</span> is injective. Choose <span class="math inline">v\not=0</span> in <span class="math inline">V</span> and let <span class="math inline">W</span> be the cyclic subspace of <span class="math inline">V</span> generated by <span class="math inline">v</span> and let <span class="math inline">f(x)</span> be the characteristic polynomial for <span class="math inline">L</span> acting on <span class="math inline">W</span>. Since <span class="math inline">W</span> is <span class="math inline">L</span>-invariant, it is <span class="math inline">q(L)</span> invariant; and <span class="math inline">q(L)</span> is injective and thus bijective on <span class="math inline">W</span>. If <span class="math inline">q(x)</span> were a divisor of <span class="math inline">f(x)</span>, we could write <span class="math inline">f(x)=q(x)h(x)</span> where <span class="math inline">\deg(h)&lt;\deg(f)</span>. Then <span class="math inline">h(L)v\ne 0</span> and <span class="math inline">q(L)h(L)v=0</span> so <span class="math inline">a(L)</span> has a kernel on <span class="math inline">W</span>, which isn’t true. Therefore <span class="math inline">q(x)</span> does not divide <span class="math inline">f(x)</span>.</p>
+<p>Now consider the smaller dimensional vector space <span class="math inline">V/W</span>. The map induced by <span class="math inline">q(L)</span> on <span class="math inline">V/W</span> is again injective and hence bijective. The characteristic polynomial of (the map induced by ) <span class="math inline">L</span> on <span class="math inline">V/W</span> is <span class="math inline">P_{L}/f</span>. Thus we can repeat the above argument to find a strictly increasing sequence of invariant subspaces <span class="math display">
+\cdots \supset W_{2}\supset W_{1}\supset W
+</span></p>
+<p>where the quotients <span class="math inline">W_{i}/W_{i-1}</span> are cyclic and minimal/characteristic polynomial <span class="math inline">f_{i}</span> of <span class="math inline">L</span> on <span class="math inline">W_{i+1}/W_{i}</span> does not have <span class="math inline">q(x)</span> as a factor. Continuing this way we eventually reach a point where <span class="math inline">W_{i}=V</span> and the product of the <span class="math inline">f_{i}</span> is the characteristic polynomial of <span class="math inline">L</span> on <span class="math inline">V</span>, and since <span class="math inline">q(x)</span> is irreducible and is not a factor of any of the <span class="math inline">f_{i}</span>, <span class="math inline">q(x)</span> not a factor of the product.</p>
+<p>Now let’s go back to our decomposition of <span class="math inline">V</span> into subspaces <span class="math display">
+V = V_{1}\oplus V_{2}\oplus \cdots \oplus V_{k}
+</span> obtained from the factorization of <span class="math inline">P_{L}(x)</span> into a product <span class="math inline">p_{i}(x)^{n_{i}}</span> of irreducibles. We showed that <span class="math inline">p_{i}(L)^{n_{i}}V_{i}=0</span> and <span class="math inline">p_{j}(L)</span> is invertible on <span class="math inline">V_{i}</span> if <span class="math inline">i\not=j</span>.</p>
+<p><strong>Proposition:</strong> The spaces <span class="math inline">V_{i}</span> are non-zero, the minimal polynomial of <span class="math inline">L</span> on <span class="math inline">V_{i}</span> is a power of <span class="math inline">p_{i}(x)</span>, and the characteristic polynomial of <span class="math inline">L</span> on <span class="math inline">V_{i}</span> is <span class="math inline">p_{i}(x)^{n_{i}}</span>. The dimension of <span class="math inline">V_{i}</span> is <span class="math inline">n_{i}\deg(p_{i})</span>.</p>
+<p><strong>Proof:</strong> In the proof that every irreducible factor of <span class="math inline">P_{L}(x)</span> is a factor of <span class="math inline">m_{L}(x)</span>, we proved that if <span class="math inline">q(x)</span> is an irreducible factor of <span class="math inline">P_{L}(x)</span> then it is not injective. This implies in particular that the spaces <span class="math inline">V_{i}</span> are not zero. Furthermore, if <span class="math inline">h(L)V_{i}=0</span>, then, since <span class="math inline">p_{i}^{n_{i}}(L)V_{i}=0</span>, it follows that the gcd of <span class="math inline">h(x)</span> and <span class="math inline">p_{i}^{n_{i}}</span> also kills <span class="math inline">V_{i}</span>. In particular the minimal polynomial and therefore the characteristic polynomials of <span class="math inline">V_{i}</span> are both powers of <span class="math inline">p_{i}</span>.</p>
+<p>On the other hand, the characteristic polynomial of <span class="math inline">L</span> on <span class="math inline">V</span> is the product of the characteristic polynomials of <span class="math inline">L</span> on <span class="math inline">V_{i}</span>. Since each <span class="math inline">V_{i}</span> contributes only a power of <span class="math inline">p_{i}(x)</span>, we must have the characteristic polynomial of <span class="math inline">V_{i}</span> equal to <span class="math inline">p_{i}^{n_{i}}</span>.</p>
+<p><strong>Remark:</strong> One can obtain an alternate proof of Cayley-Hamilton using these ideas.</p>
+<ol type="1">
+<li>First, find <em>some</em> polynomial <span class="math inline">P(x)</span> so that <span class="math inline">P(L)V=0</span>.</li>
+<li>Then there is a minimal degree polynomial <span class="math inline">m(x)</span> so that <span class="math inline">m(L)V=0</span>.</li>
+<li>Decompose <span class="math inline">V</span> using the irreducible factors of <span class="math inline">m(x)</span>, so that <span class="math inline">V</span> is the direct sum of <span class="math inline">V_{i}</span> and <span class="math inline">V_{i}</span> is killed by <span class="math inline">p_{i}^{r_{i}}</span> where <span class="math inline">p_{i}</span> is irreducible.</li>
+<li>For each i, build a sequence of subspaces <span class="math inline">0=W_{0}\subset W_1\subset W_2\subset \cdots \subset W_{r}= V_{i}</span> where <span class="math inline">W_{i+1}/W_{i}</span> is cyclic with minimal (and characteristic) polynomial <span class="math inline">p_{i}</span>. It follows that the characteristic polynomial of <span class="math inline">V_{i}</span> is the product of <span class="math inline">r</span> copies of <span class="math inline">p_{i}</span> and is therefore <span class="math inline">p_{i}^{r}</span>.</li>
+<li>Now <span class="math inline">p_{i}(L)W_{i}\subset W_{i-1}</span> so <span class="math inline">p_{i}^{r}(L)V=0</span>. This is Cayley-Hamilton for the factor <span class="math inline">V_{i}</span>.</li>
+<li>Multiply over the direct sum to obtain Cayley-Hamilton for <span class="math inline">V</span>.</li>
+</ol>
 </section>
 <section id="decomposition-into-cyclic-subspaces" class="level2">
 <h2 class="anchored" data-anchor-id="decomposition-into-cyclic-subspaces">Decomposition into Cyclic Subspaces</h2>
+<p>Our work above shows that, if <span class="math inline">V</span> is a vector space and <span class="math inline">L:V\to V</span> is a linear map, then there is a sequence of subspaces <span class="math display">
+0\subset W_{1}\subset W_{2}\subset \cdots \subset W_{s}=V
+</span> with the property that <span class="math inline">W_{i+1}/W_{i}</span> is (nonzero) and cyclic, with irreducible minimal polynomial.</p>
 <p>Our goal now is to prove the following.</p>
 <p><strong>Theorem:</strong> Let <span class="math inline">L:V\to V</span> be a linear map, where <span class="math inline">V</span> is a vector space of dimension <span class="math inline">n</span> over <span class="math inline">F</span>. Then there is a decomposition <span class="math display">
 V = V_{1}\oplus V_{2}\oplus \cdots \oplus V_{k}
 </span></p>
 <p>of <span class="math inline">V</span> into cyclic subspaces where the minimal polynomial of <span class="math inline">V_{i}</span> is a power <span class="math inline">p_i(x)^{k_{i}}</span> of a monic irreducible polynomial over <span class="math inline">F</span>.</p>
 <p>In addition, the minimal polymomials <span class="math inline">p_i(x)^{k_{i}}</span> are unique up to order.</p>
-<p>This result is very powerful but let’s observe two consequences right off the bat.</p>
-<p>First, we see from the decomposition that the minimal polynomial <span class="math inline">m_{L}(x)</span> on <span class="math inline">V</span> is the least common multiple of the <span class="math inline">p_{i}(x)^{k_{i}}</span>.</p>
-<p>Second, the characteristic polynomial of <span class="math inline">V</span> is the product of the characteristic polynomials of the <span class="math inline">V_{i}</span>, which is the product of the <span class="math inline">p_{i}(x)^{k_{i}}</span>.</p>
-<p>Consequently, if <span class="math inline">p(x)</span> is an irreducible factor of <span class="math inline">P_{L}(x)</span>, then <span class="math inline">p(x)</span> must occur among the <span class="math inline">p_{i}(x)</span>. Therefore every irreducible factor of the characteristic polynomial <span class="math inline">P_{L}(x)</span> is a factor of the minimal polynomial of <span class="math inline">L</span>.</p>
+<p>This result is very powerful.</p>
+<p>Notice that the minimal polynomial <span class="math inline">m_{L}(x)</span> on <span class="math inline">V</span> is the least common multiple of the <span class="math inline">p_{i}(x)^{k_{i}}</span>.</p>
+<p>The characteristic polynomial of <span class="math inline">V</span> is the product of the characteristic polynomials of the <span class="math inline">V_{i}</span>, which is the product of the <span class="math inline">p_{i}(x)^{k_{i}}</span>.</p>
 <p>To prove the decomposition result, we start with our earlier decomposition of <span class="math inline">V</span> into a sum <span class="math inline">V_{i}</span> where each <span class="math inline">V_{i}</span> is killed by <span class="math inline">p_{i}(L)^{n_{i}}</span>, the <span class="math inline">p_{i}(x)</span> are distinct irreducibles, and</p>
 <p><span class="math display">
 P_{L}(x) =\prod_{i} p_{i}(x)^{n_{i}}
@@ -814,58 +803,43 @@ x_{n-2} &amp; = e^{\lambda t}(a_{n-2} + ta_{n-1} + t^2/2! a_{n})
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -873,348 +847,195 @@ x_{n-2} &amp; = e^{\lambda t}(a_{n-2} + ta_{n-1} + t^2/2! a_{n})
       }
       return codeEl.innerText;
     }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/jeremy9959\.github\.io\/Math-5250-UConn\/");
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
       }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
-      }
-    }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
-          }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
     };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
         });
       }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
     }
-  });
-  </script>
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
-
 
 
 
