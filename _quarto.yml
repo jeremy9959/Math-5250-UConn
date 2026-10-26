@@ -63,6 +63,8 @@ website:
         contents:
           - text: "QR and polar decompositions"
             href: notes/Week7-8/W07.1.qmd
+          - text: "The Legendre equation and Legendre polynomials"
+            href: notes/Week7-8/W07.2.qmd
       - section: "Week 9 — Norms"
         contents:
           - text: "Vector space norms and equivalence of norms"
