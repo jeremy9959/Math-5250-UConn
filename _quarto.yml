@@ -62,10 +62,12 @@ website:
             href: notes/Week5-6/W05.2.qmd
       - section: "Weeks 7–8 — Matrix Decompositions"
         contents:
-          - text: "QR and polar decompositions"
+          - text: "LU, QR, and Polar Decompositions"
             href: notes/Week7-8/W07.1.qmd
           - text: "The Legendre equation and Legendre polynomials"
             href: notes/Week7-8/W07.2.qmd
+          - text: "The Singular Value Decomposition"
+            href: notes/Week7-8/W07.3.qmd
       - section: "Week 9 — Norms"
         contents:
           - text: "Vector space norms and equivalence of norms"

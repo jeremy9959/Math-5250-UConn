@@ -1,7 +1,46 @@
 ---
-title: "Weeks 7–8 — QR, SVD, and Polar Decomposition"
+title: "The Singular Value Decomposition"
 ---
 
-## Placeholder
+The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices.
+Let $X$ be a real $n\times m$ matrix and let $D=X^{\top}X$.  $D$ is apositive symmetric $m\times m$ matrix and so we can apply
+the spectral theorem to find an orthogonal matrix $P$ such that $P^{\top}DP=\Lambda$ where $\Lambda$ is diagonal.
+Put another way:
+$$
+DP = P\Lambda
+$$
 
-Notes on QR decomposition, singular value decomposition (SVD), and polar decomposition, including their relationships to orthogonality from weeks 5–6.
+which expresses the fact that the columns of $P$ are orthonormal eigenvectors for $D$.
+
+Let's set $A=XP$.  Then $A^{\top}A=P^{\top}X^{\top}XP=\Lambda$.   This means that the columns of $A$ are orthogonal but not necessarily orthonormal. 
+
+From a geometric point of view, the entries of each row of $A$ are the coordinates of the corresponding row of $X$ in the orthonormal basis given by the columns of $P$. 
+
+If $D$ is positive definite, so all the $\lambda_{i}>0$, then we can normalize the columns of $A$ by setting $A_{1}=A\Lambda^{-1/2}$.  This happens if and only if $X$ has rank $m\le n$. 
+In this case $A_{1}^{\top}A_{1}=\Lambda^{-1/2}\Lambda\Lambda^{-1/2}=I$.
+So $A_{1}$ has orthonormal columns. 
+
+If $D$ has zero eigenvalues, then the matrix $A$ will have zero columns corresponding to the zero eigenvalues. So let's order the eigenvalues in descending order of size and suppose $\lambda_{r+1},\ldots, \lambda_{m}$ are all zero.  In this case, the rank of $X$ is $r$. Drop columns $r+1,\ldots, m$ from $A$, yielding $A_{r}$, and "shrink" $\Lambda$ so that it is $r\times r$
+with the nonzero eigenvalues on the diagonal, yielding $\Lambda_{r}$.  Let $A_{1}=A_{r}\Lambda_{r}^{-1/2}$ as before. This $A_{1}$ is $n\times r$ and has orthonormal
+columns. 
+
+Complete the columns of $A_{1}$ to obtain an orthogonal $n\times n$ matrix $U$ by adding orthonormal columns $u_{r+1},\ldots, u_{n}$.
+Let $\sigma_{i}=\sqrt{\lambda_{i}}$ for $i=1,\ldots,m$ and let $\Sigma$ be the $n\times m$ "diagonal" matrix constructed from these "singular values."
+
+The key point now is that, in the product $U\Sigma$, the first $r$ columns are multiplied by the nonzero $\sqrt{\lambda_{i}}$, so 
+the first $r$ columns of $U\Sigma$ give the matrix $A_{1}\Lambda_{r}^{1/2}$, which agrees with the first $r$ columns of $A=XP$. 
+The remaining columns of $U\Sigma$ are zero, which agrees with the remaining columns of $A=XP$.  
+
+Therefore:
+$$
+XP = U\Sigma
+$$
+
+or $X=U\Sigma P^{\top}$ where $U$ is orthogonal, $\Sigma$ is $n\times m$ "diagonal", and $P$ is orthogonal. This is called the *singular value decomposition* of $X$.  The diagonal entries of $\Sigma$ are called the singular values and are uniquely determined. 
+
+The "reduced" form of this decomposition keeps only the first $r$ columns of $U$, leaving an $n\times r$ matrix $U_{r}$; the first $r$ diagonal entries of $\Sigma$, leaving an $r\times r$ diagonal matrix $\Sigma_{r}$; and the first $r$ columns of $P$, yielding an $m\times r$ matrix $P_{r}$.   Then
+$$
+X = U_{r}\Sigma_{r}P_{r}^{\top}.
+$$
+
+
