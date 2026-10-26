@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 5250: Graduate Linear Algebra - Weeks 7–8 — QR, SVD, and Polar Decomposition</title>
+<title>Math 5250: Graduate Linear Algebra - The Singular Value Decomposition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,6 +59,22 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -106,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Weeks 7–8 — QR, SVD, and Polar Decomposition</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/Week7-8/W07.1.html">Weeks 7–8 — Matrix Decompositions</a></li><li class="breadcrumb-item"><a href="../../notes/Week7-8/W07.3.html">The Singular Value Decomposition</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -273,23 +289,29 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Weeks 7–8 — Matrix Decompositions</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week7-8/W07.1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">QR and polar decompositions</span></a>
+ <span class="menu-text">LU, QR, and Polar Decompositions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../notes/Week7-8/W07.2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Legendre equation and Legendre polynomials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/Week7-8/W07.3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">The Singular Value Decomposition</span></a>
   </div>
 </li>
       </ul>
@@ -487,20 +509,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#placeholder" id="toc-placeholder" class="nav-link active" data-scroll-target="#placeholder">Placeholder</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Weeks 7–8 — QR, SVD, and Polar Decomposition</h1>
+<h1 class="title">The Singular Value Decomposition</h1>
 </div>
 
 
@@ -515,12 +531,25 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="placeholder" class="level2">
-<h2 class="anchored" data-anchor-id="placeholder">Placeholder</h2>
-<p>Notes on QR decomposition, singular value decomposition (SVD), and polar decomposition, including their relationships to orthogonality from weeks 5–6.</p>
+<p>The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices. Let <span class="math inline">X</span> be a real <span class="math inline">n\times m</span> matrix and let <span class="math inline">D=X^{\top}X</span>. <span class="math inline">D</span> is apositive symmetric <span class="math inline">m\times m</span> matrix and so we can apply the spectral theorem to find an orthogonal matrix <span class="math inline">P</span> such that <span class="math inline">P^{\top}DP=\Lambda</span> where <span class="math inline">\Lambda</span> is diagonal. Put another way: <span class="math display">
+DP = P\Lambda
+</span></p>
+<p>which expresses the fact that the columns of <span class="math inline">P</span> are orthonormal eigenvectors for <span class="math inline">D</span>.</p>
+<p>Let’s set <span class="math inline">A=XP</span>. Then <span class="math inline">A^{\top}A=P^{\top}X^{\top}XP=\Lambda</span>. This means that the columns of <span class="math inline">A</span> are orthogonal but not necessarily orthonormal.</p>
+<p>From a geometric point of view, the entries of each row of <span class="math inline">A</span> are the coordinates of the corresponding row of <span class="math inline">X</span> in the orthonormal basis given by the columns of <span class="math inline">P</span>.</p>
+<p>If <span class="math inline">D</span> is positive definite, so all the <span class="math inline">\lambda_{i}&gt;0</span>, then we can normalize the columns of <span class="math inline">A</span> by setting <span class="math inline">A_{1}=A\Lambda^{-1/2}</span>. This happens if and only if <span class="math inline">X</span> has rank <span class="math inline">m\le n</span>. In this case <span class="math inline">A_{1}^{\top}A_{1}=\Lambda^{-1/2}\Lambda\Lambda^{-1/2}=I</span>. So <span class="math inline">A_{1}</span> has orthonormal columns.</p>
+<p>If <span class="math inline">D</span> has zero eigenvalues, then the matrix <span class="math inline">A</span> will have zero columns corresponding to the zero eigenvalues. So let’s order the eigenvalues in descending order of size and suppose <span class="math inline">\lambda_{r+1},\ldots, \lambda_{m}</span> are all zero. In this case, the rank of <span class="math inline">X</span> is <span class="math inline">r</span>. Drop columns <span class="math inline">r+1,\ldots, m</span> from <span class="math inline">A</span>, yielding <span class="math inline">A_{r}</span>, and “shrink” <span class="math inline">\Lambda</span> so that it is <span class="math inline">r\times r</span> with the nonzero eigenvalues on the diagonal, yielding <span class="math inline">\Lambda_{r}</span>. Let <span class="math inline">A_{1}=A_{r}\Lambda_{r}^{-1/2}</span> as before. This <span class="math inline">A_{1}</span> is <span class="math inline">n\times r</span> and has orthonormal columns.</p>
+<p>Complete the columns of <span class="math inline">A_{1}</span> to obtain an orthogonal <span class="math inline">n\times n</span> matrix <span class="math inline">U</span> by adding orthonormal columns <span class="math inline">u_{r+1},\ldots, u_{n}</span>. Let <span class="math inline">\sigma_{i}=\sqrt{\lambda_{i}}</span> for <span class="math inline">i=1,\ldots,m</span> and let <span class="math inline">\Sigma</span> be the <span class="math inline">n\times m</span> “diagonal” matrix constructed from these “singular values.”</p>
+<p>The key point now is that, in the product <span class="math inline">U\Sigma</span>, the first <span class="math inline">r</span> columns are multiplied by the nonzero <span class="math inline">\sqrt{\lambda_{i}}</span>, so the first <span class="math inline">r</span> columns of <span class="math inline">U\Sigma</span> give the matrix <span class="math inline">A_{1}\Lambda_{r}^{1/2}</span>, which agrees with the first <span class="math inline">r</span> columns of <span class="math inline">A=XP</span>. The remaining columns of <span class="math inline">U\Sigma</span> are zero, which agrees with the remaining columns of <span class="math inline">A=XP</span>.</p>
+<p>Therefore: <span class="math display">
+XP = U\Sigma
+</span></p>
+<p>or <span class="math inline">X=U\Sigma P^{\top}</span> where <span class="math inline">U</span> is orthogonal, <span class="math inline">\Sigma</span> is <span class="math inline">n\times m</span> “diagonal”, and <span class="math inline">P</span> is orthogonal. This is called the <em>singular value decomposition</em> of <span class="math inline">X</span>. The diagonal entries of <span class="math inline">\Sigma</span> are called the singular values and are uniquely determined.</p>
+<p>The “reduced” form of this decomposition keeps only the first <span class="math inline">r</span> columns of <span class="math inline">U</span>, leaving an <span class="math inline">n\times r</span> matrix <span class="math inline">U_{r}</span>; the first <span class="math inline">r</span> diagonal entries of <span class="math inline">\Sigma</span>, leaving an <span class="math inline">r\times r</span> diagonal matrix <span class="math inline">\Sigma_{r}</span>; and the first <span class="math inline">r</span> columns of <span class="math inline">P</span>, yielding an <span class="math inline">m\times r</span> matrix <span class="math inline">P_{r}</span>. Then <span class="math display">
+X = U_{r}\Sigma_{r}P_{r}^{\top}.
+</span></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
