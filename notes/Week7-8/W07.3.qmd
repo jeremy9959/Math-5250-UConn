@@ -36,11 +36,57 @@ $$
 XP = U\Sigma
 $$
 
-or $X=U\Sigma P^{\top}$ where $U$ is orthogonal, $\Sigma$ is $n\times m$ "diagonal", and $P$ is orthogonal. This is called the *singular value decomposition* of $X$.  The diagonal entries of $\Sigma$ are called the singular values and are uniquely determined. 
+or $X=U\Sigma V^{\top}$ where $U$ is orthogonal, $\Sigma$ is $n\times m$ "diagonal", and $V=P$ is $m\times m$ orthogonal. This is called the *singular value decomposition* of $X$.  The diagonal entries of $\Sigma$ are called the singular values and are uniquely determined. 
 
-The "reduced" form of this decomposition keeps only the first $r$ columns of $U$, leaving an $n\times r$ matrix $U_{r}$; the first $r$ diagonal entries of $\Sigma$, leaving an $r\times r$ diagonal matrix $\Sigma_{r}$; and the first $r$ columns of $P$, yielding an $m\times r$ matrix $P_{r}$.   Then
+The "reduced" form of this decomposition keeps only the first $r$ columns of $U$, leaving an $n\times r$ matrix $U_{r}$; the first $r$ diagonal entries of $\Sigma$, leaving an $r\times r$ diagonal matrix $\Sigma_{r}$; and the first $r$ columns of $P$, yielding an $m\times r$ matrix $V_{r}$.   Then
 $$
-X = U_{r}\Sigma_{r}P_{r}^{\top}.
+X = U_{r}\Sigma_{r}V_{r}^{\top}.
 $$
 
+
+## Low Rank Approximations
+
+Our goal is to apply the SVD to study the problem of approximating a linear map $L:A\to B$ by a map of lower rank.  As we will see later,
+such approximations have important applications in data science and other applied fields.  To make this notion precise, we will need
+to clarify how we measure the distance between linear maps.  Before diving into that question, though, let's indicate how the SVD plays a role. 
+
+One way to interpret the singular value decomposition is that allows one to write a linear transformation $L:A\to B$ where $A$ is $m$-dimensional and $B$ is $n$-dimensional as a sum of rank
+one maps.  This follows from the fact that, if we choose bases and let $X$ be the matrix of $L$, then the reduced SVD tells us that
+$$
+X = \sum_{i=1}^{r} \sigma_{i}u_{i}v_{i}^{\top}.
+$$
+
+Here the $u_{i}$ and $v{i}$ are the columns of $U$ and $V$ respectively and the $\sigma_{i}$ are the singular values. 
+Each $u_{i}v_{i}^{\top}$ is an $(n\times 1) \times (1\times m)$ matrix product, yielding an $n\times m$ matrix. It is rank one
+since its range is spanned by $u_{i}$. 
+
+The terms are linearly independent since we know $X$ has rank $r$. 
+
+Now consider the matrices obtained by truncating this sum:
+$$
+X_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{\top}
+$$
+
+Here $X_{k}$ has rank $k$.  Our goal is to show that, in a precise sense, $X_{k}$ is the "best" rank $k$ approximation to the original matrix $X$ (and the corresponding linear map is the best rank $k$ approximation to the original linear map). 
+
+## Norms on Vectors, Matrices and Linear Maps
+
+Our discussion in this section follows Conrad's expository note [Computing the Norm of a Matrix](https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf)
+
+### Vector space norms
+
+### The operator norm
+
+### The Frobenius norm
+
+
+
+We are interested in norms on matrices and linear maps that enable us to measure "distance" between maps and therefore characterize the idea of "best approximation."  We will consider two different matrix norms, the *operator norm* and the *frobenius norm.*  The operator norm is invariant under change of basis and is therefore a norm on linear maps, while the frobenius norm is only invariant under unitary
+change of basis.
+
+### The operator norm
+
+Let $L$ be a linear map $L:V\to W$ where $V$ is $n$-dimensional and $W$ is $m$-dimensional.  Define
+$$
+\|L\| = \sup_{v\in } \|Av\|
 
