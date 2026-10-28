@@ -1,6 +1,8 @@
 ---
 title: "The Singular Value Decomposition"
 ---
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
 
 The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices.
 Let $X$ be a real $n\times m$ matrix and let $D=X^{\top}X$.  $D$ is apositive symmetric $m\times m$ matrix and so we can apply
@@ -73,9 +75,154 @@ Here $X_{k}$ has rank $k$.  Our goal is to show that, in a precise sense, $X_{k}
 
 Our discussion in this section follows Conrad's expository note [Computing the Norm of a Matrix](https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf)
 
-### Vector space norms
+### Vector Space Norms
 
-### The operator norm
+Let $V$ be a (real or complex) vector space.  A norm on $V$
+is a function $\|\cdot\|\to \mathbf{R}$ such that:
+
+- $\|v\|\ge 0$ for all $v\in V$, with equality if and only if $v=0$. 
+- $\|v+w\|\le \|v\|+\|w\|$ for all $v,w\in V$.
+- $\|cv\|=|c|\|v\|$ for $c\in\R$ and $v\in V$.
+
+If the first condition is relaxed to just $\|v\|\ge 0$ for all $v\in V$, then $\|\cdot\|$ is called a seminorm.
+
+The second condition (the triangle inequality) means that the function $d(v,w)=\|v-w\|$
+is a *metric* on $V$ in the sense of topology.
+
+There are two key examples of such norms.
+
+1. The "sup" norm relative to a basis.   Choose a basis $e_{1},\ldots, e_{n}$ for $V$.  Then define
+$$
+\|\sum_{i=1}^{n} a_{i}e_{i}\| = \sup\{|a_1|,\ldots, |a_{n}|\}.
+$$
+
+2. The "Euclidean" norm or $\ell^{2}$ norm defined by an inner product $\langle \cdot,\cdot\rangle$:
+
+$$
+\|v\| = \sqrt{\langle v,v\rangle}.
+$$
+
+The fact that satisfies the triangle inequality is a consequence of the Cauchy-Schwartz inequality
+
+$$
+|\langle v,w\rangle|\le \sqrt{\langle v,v\rangle \langle w,w\rangle}.
+$$
+
+(see the [Cauchy--Schwarz inequality](../Week5-6/W05.1.qmd#cauchy-schwarz)).
+
+In particular
+$$\begin{aligned}
+\|v-w\|^2&=\langle v-w, v-w\rangle \\
+ &= \langle v,v\rangle -2\langle v,w\rangle +\langle w,w\rangle \\
+&\le \|v\|^2+2|\langle v,w\rangle| +\|w\|^2 \\
+&\le (\|v\|+\|w\|)^2
+\end{aligned}
+$$
+
+If the inner product is the "standard one" then the $\ell^{2}$ norm gives the standard Euclidean distance in the standard coordinates. 
+
+**Definition:** Two norms $\|\cdot\|_1$ and $\|\cdot\|_{2}$ on a vector space are *equivalent* if they are each bounded by a constant multiple of the other.  In other words, the two norms are equivalent if there are constants $A$ and $B$ such that
+$$
+A\|v\|_{1}\le \|v\|_{2}\le B\|v\|_{1}
+$$
+for all $v\in V$. 
+
+**Remark:** The metric topologies on $V$ coming from equivalent norms are the same, so, for example, if a series converges with respect to one norm, it converges with respect to every equivalent norm.  In a finite dimensional space, the "unit ball" $\|v\|_{\mathrm{sup}}\le 1$ is compact since it is topologically the product of closed intervals; hence the unit ball is compact under any norm equivalent to the sup norm. 
+
+**Proposition:** The sup norm and the $\ell^{2}$ norm for the standard inner product are equivalent.
+
+This is because if $v=\sum_{i=1}^{n} a_{i}e_{i}$,
+then
+$$
+\sup_{i} \{|a_{i}|\} \le \sqrt{\sum_{i} |a_{i}|^2}\le 
+\sqrt{n}\sup_{i} \{|a_{i}|\}.
+$$
+
+### Minkowski's Theorem
+
+In fact, a theorem of Minkowski states that *all* norms on a finite dimensional vector space over $\R$ or $\C$ are equivalent.  This result is a consequence of the fact that $\R$ and $\C$ are locally compact fields, and the proof involves the application of the Heine-Borel theorem that any bounded sequence in these fields has a convergent subsequence.  The proof (of a more general result on valued fields) is given in Conrad's
+[Equivalence of Norms](https://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf).
+
+
+
+Furthermore, a finite dimensional vector space is complete with respect to the metric topology coming from one (or any) norm. 
+
+It is worth noting that Minkowski's theorem
+is very definitely *false* for infinite dimensional vector spaces. For example, consider the space 
+$C([0,1])$ of continuous functions on the interval $[0,1]$.  Define two norms on this space.  The first
+is the "sup norm":
+$$
+\|f\| = \sup_{0\le x\le 1} |f(x)|
+$$
+and the second is the $L^{1}$ norm:
+$$
+\|f\| = \int_{0}^{1} |f(x)|dx.
+$$
+
+Notice that we can find a continuous function whose sup-norm is arbitrarily large, while its $L^{1}$ norm remains one, by looking at a function with a big "spike" but total area 1 as shown here.
+
+![$\|f\|_{\mathrm{sup}}=a$ and $\|f\|_{L^{1}}=1$.](images/spike-function.png){width=70%}
+
+### Norms on Matrices
+
+Now we consider norms on matrices and linear maps. 
+Notice that if $V$ and $W$ are $n$ and $m$ dimensional vector spaces respectively over a field $F$, then the choice of a basis for $V$ and $W$ allows us to identify the space of linear maps from $V$ to $W$ with $M_{n\times m}(F)$.  This in turn is an $n\times m$ dimensional vector space over $F$.
+
+When $F$ is $\R$ or $\C$, one choice for a norm
+on a matrix $A=(a_{ij})$ is the sup norm: 
+$$
+\|A\|_{\mathrm{sup}} = \sup_{1\le i\le n, 1\le j\le m} \{|a_{ij}|\}
+$$
+
+A second choice is the $\ell^{2}$ norm, also called the *Frobenius norm*:
+$$
+\|A\|_{F} = \sqrt{\sum_{i,j} |a_{ij}|^2}.
+$$
+
+Observe for later that 
+$$
+\|A\|_{F}^2 = \mathrm{tr}(AA^{\top}) = \mathrm{tr}(A^{\top}A).
+$$
+
+Both of these norms are defined on matrices, not
+linear maps; they depend on the choice of bases for $V$ and $W$.  
+
+**Proposition:** Let $A$ by an $n\times m$ matrix over $\R$ or $\C$.  
+Then there is a constant $C$ such that
+the linear map $v\mapsto Av$ from $F^{m}$ to $F^{n}$ satisfies
+$$
+\|Av\|\le C\|v\|
+$$
+where $\|v\|$ is the Euclidean norm.
+
+**Proof:** Following Conrad, we see that if $v=(c_1,\ldots, c_{m})$, then
+$$\begin{aligned}
+\|Av\| &\le \sqrt{m}\|Av\|_{\mathrm{sup}} \\
+&\le \sqrt{m}\sup_{1\le i\le n} |\sum_{i=1}^{m} a_{ij}c_{j}|\\
+&\le \sqrt{m}\sup_{1\le i\le n}\sum_{j=1}^{n}
+ |a_{ij}|\|v\|_{\mathrm{sup}} \\
+ &\le n\sqrt{m}\sup |a_{ij}|\|v\|_{\mathrm{sup}} \\
+ &\le (n\sqrt{m}\sup_{i,j}|a_{ij}|)\|v\|
+ \end{aligned}
+ $$
+ so we can use
+ $$
+ C = n\sqrt{n}\sup_{ij}|a_{ij}|
+ $$
+
+
+
+### The Operator Norm
+
+The operator norm gives a basis-independent way to define a norm on linear maps from $V$ to $W$, given
+norms on $V$ and $W$. 
+Let $L:V\to W$ be such a linear map.  Define
+$$
+\|L\|_{\mathrm{op}} = \inf_{v\in V} \frac{\|L(v)\|}{\|v\|}.
+$$
+
+
+
 
 ### The Frobenius norm
 
@@ -89,4 +236,5 @@ change of basis.
 Let $L$ be a linear map $L:V\to W$ where $V$ is $n$-dimensional and $W$ is $m$-dimensional.  Define
 $$
 \|L\| = \sup_{v\in } \|Av\|
+$$
 

@@ -18,3 +18,5 @@
 *.bbl
 *.blg
 claude/
+notes/Week7-8/matrixnorm.pdf
+.DS_Store

@@ -315,7 +315,7 @@ If instead $v\in W$, say $v=aw$, then both sides of the inequality below are equ
 
 This is the "Cauchy--Schwarz Inequality."
 
-**Proposition:** Let $v,w$ be vectors in a real inner product space $V$.  Then
+[]{#cauchy-schwarz}**Proposition:** Let $v,w$ be vectors in a real inner product space $V$.  Then
 $$
 J(v,w)^2\le J(v,v)J(w,w)
 $$
