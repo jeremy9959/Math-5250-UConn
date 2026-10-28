@@ -509,7 +509,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#low-rank-approximations" id="toc-low-rank-approximations" class="nav-link active" data-scroll-target="#low-rank-approximations">Low Rank Approximations</a></li>
+  <li><a href="#norms-on-vectors-matrices-and-linear-maps" id="toc-norms-on-vectors-matrices-and-linear-maps" class="nav-link" data-scroll-target="#norms-on-vectors-matrices-and-linear-maps">Norms on Vectors, Matrices and Linear Maps</a>
+  <ul class="collapse">
+  <li><a href="#vector-space-norms" id="toc-vector-space-norms" class="nav-link" data-scroll-target="#vector-space-norms">Vector Space Norms</a></li>
+  <li><a href="#minkowskis-theorem" id="toc-minkowskis-theorem" class="nav-link" data-scroll-target="#minkowskis-theorem">Minkowski’s Theorem</a></li>
+  <li><a href="#norms-on-matrices" id="toc-norms-on-matrices" class="nav-link" data-scroll-target="#norms-on-matrices">Norms on Matrices</a></li>
+  <li><a href="#the-operator-norm" id="toc-the-operator-norm" class="nav-link" data-scroll-target="#the-operator-norm">The Operator Norm</a></li>
+  <li><a href="#the-frobenius-norm" id="toc-the-frobenius-norm" class="nav-link" data-scroll-target="#the-frobenius-norm">The Frobenius norm</a></li>
+  <li><a href="#the-operator-norm-1" id="toc-the-operator-norm-1" class="nav-link" data-scroll-target="#the-operator-norm-1">The operator norm</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -544,12 +559,134 @@ DP = P\Lambda
 <p>Therefore: <span class="math display">
 XP = U\Sigma
 </span></p>
-<p>or <span class="math inline">X=U\Sigma P^{\top}</span> where <span class="math inline">U</span> is orthogonal, <span class="math inline">\Sigma</span> is <span class="math inline">n\times m</span> “diagonal”, and <span class="math inline">P</span> is orthogonal. This is called the <em>singular value decomposition</em> of <span class="math inline">X</span>. The diagonal entries of <span class="math inline">\Sigma</span> are called the singular values and are uniquely determined.</p>
-<p>The “reduced” form of this decomposition keeps only the first <span class="math inline">r</span> columns of <span class="math inline">U</span>, leaving an <span class="math inline">n\times r</span> matrix <span class="math inline">U_{r}</span>; the first <span class="math inline">r</span> diagonal entries of <span class="math inline">\Sigma</span>, leaving an <span class="math inline">r\times r</span> diagonal matrix <span class="math inline">\Sigma_{r}</span>; and the first <span class="math inline">r</span> columns of <span class="math inline">P</span>, yielding an <span class="math inline">m\times r</span> matrix <span class="math inline">P_{r}</span>. Then <span class="math display">
-X = U_{r}\Sigma_{r}P_{r}^{\top}.
+<p>or <span class="math inline">X=U\Sigma V^{\top}</span> where <span class="math inline">U</span> is orthogonal, <span class="math inline">\Sigma</span> is <span class="math inline">n\times m</span> “diagonal”, and <span class="math inline">V=P</span> is <span class="math inline">m\times m</span> orthogonal. This is called the <em>singular value decomposition</em> of <span class="math inline">X</span>. The diagonal entries of <span class="math inline">\Sigma</span> are called the singular values and are uniquely determined.</p>
+<p>The “reduced” form of this decomposition keeps only the first <span class="math inline">r</span> columns of <span class="math inline">U</span>, leaving an <span class="math inline">n\times r</span> matrix <span class="math inline">U_{r}</span>; the first <span class="math inline">r</span> diagonal entries of <span class="math inline">\Sigma</span>, leaving an <span class="math inline">r\times r</span> diagonal matrix <span class="math inline">\Sigma_{r}</span>; and the first <span class="math inline">r</span> columns of <span class="math inline">P</span>, yielding an <span class="math inline">m\times r</span> matrix <span class="math inline">V_{r}</span>. Then <span class="math display">
+X = U_{r}\Sigma_{r}V_{r}^{\top}.
+</span></p>
+<section id="low-rank-approximations" class="level2">
+<h2 class="anchored" data-anchor-id="low-rank-approximations">Low Rank Approximations</h2>
+<p>Our goal is to apply the SVD to study the problem of approximating a linear map <span class="math inline">L:A\to B</span> by a map of lower rank. As we will see later, such approximations have important applications in data science and other applied fields. To make this notion precise, we will need to clarify how we measure the distance between linear maps. Before diving into that question, though, let’s indicate how the SVD plays a role.</p>
+<p>One way to interpret the singular value decomposition is that allows one to write a linear transformation <span class="math inline">L:A\to B</span> where <span class="math inline">A</span> is <span class="math inline">m</span>-dimensional and <span class="math inline">B</span> is <span class="math inline">n</span>-dimensional as a sum of rank one maps. This follows from the fact that, if we choose bases and let <span class="math inline">X</span> be the matrix of <span class="math inline">L</span>, then the reduced SVD tells us that <span class="math display">
+X = \sum_{i=1}^{r} \sigma_{i}u_{i}v_{i}^{\top}.
+</span></p>
+<p>Here the <span class="math inline">u_{i}</span> and <span class="math inline">v{i}</span> are the columns of <span class="math inline">U</span> and <span class="math inline">V</span> respectively and the <span class="math inline">\sigma_{i}</span> are the singular values. Each <span class="math inline">u_{i}v_{i}^{\top}</span> is an <span class="math inline">(n\times 1) \times (1\times m)</span> matrix product, yielding an <span class="math inline">n\times m</span> matrix. It is rank one since its range is spanned by <span class="math inline">u_{i}</span>.</p>
+<p>The terms are linearly independent since we know <span class="math inline">X</span> has rank <span class="math inline">r</span>.</p>
+<p>Now consider the matrices obtained by truncating this sum: <span class="math display">
+X_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{\top}
+</span></p>
+<p>Here <span class="math inline">X_{k}</span> has rank <span class="math inline">k</span>. Our goal is to show that, in a precise sense, <span class="math inline">X_{k}</span> is the “best” rank <span class="math inline">k</span> approximation to the original matrix <span class="math inline">X</span> (and the corresponding linear map is the best rank <span class="math inline">k</span> approximation to the original linear map).</p>
+</section>
+<section id="norms-on-vectors-matrices-and-linear-maps" class="level2">
+<h2 class="anchored" data-anchor-id="norms-on-vectors-matrices-and-linear-maps">Norms on Vectors, Matrices and Linear Maps</h2>
+<p>Our discussion in this section follows Conrad’s expository note <a href="https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf">Computing the Norm of a Matrix</a></p>
+<section id="vector-space-norms" class="level3">
+<h3 class="anchored" data-anchor-id="vector-space-norms">Vector Space Norms</h3>
+<p>Let <span class="math inline">V</span> be a (real or complex) vector space. A norm on <span class="math inline">V</span> is a function <span class="math inline">\|\cdot\|\to \mathbf{R}</span> such that:</p>
+<ul>
+<li><span class="math inline">\|v\|\ge 0</span> for all <span class="math inline">v\in V</span>, with equality if and only if <span class="math inline">v=0</span>.</li>
+<li><span class="math inline">\|v+w\|\le \|v\|+\|w\|</span> for all <span class="math inline">v,w\in V</span>.</li>
+<li><span class="math inline">\|cv\|=|c|\|v\|</span> for <span class="math inline">c\in\mathbf{R}</span> and <span class="math inline">v\in V</span>.</li>
+</ul>
+<p>If the first condition is relaxed to just <span class="math inline">\|v\|\ge 0</span> for all <span class="math inline">v\in V</span>, then <span class="math inline">\|\cdot\|</span> is called a seminorm.</p>
+<p>The second condition (the triangle inequality) means that the function <span class="math inline">d(v,w)=\|v-w\|</span> is a <em>metric</em> on <span class="math inline">V</span> in the sense of topology.</p>
+<p>There are two key examples of such norms.</p>
+<ol type="1">
+<li><p>The “sup” norm relative to a basis. Choose a basis <span class="math inline">e_{1},\ldots, e_{n}</span> for <span class="math inline">V</span>. Then define <span class="math display">
+\|\sum_{i=1}^{n} a_{i}e_{i}\| = \sup\{|a_1|,\ldots, |a_{n}|\}.
+</span></p></li>
+<li><p>The “Euclidean” norm or <span class="math inline">\ell^{2}</span> norm defined by an inner product <span class="math inline">\langle \cdot,\cdot\rangle</span>:</p></li>
+</ol>
+<p><span class="math display">
+\|v\| = \sqrt{\langle v,v\rangle}.
+</span></p>
+<p>The fact that satisfies the triangle inequality is a consequence of the Cauchy-Schwartz inequality</p>
+<p><span class="math display">
+|\langle v,w\rangle|\le \sqrt{\langle v,v\rangle \langle w,w\rangle}.
+</span></p>
+<p>(see the <a href="../../notes/Week5-6/W05.1.html#cauchy-schwarz">Cauchy–Schwarz inequality</a>).</p>
+<p>In particular <span class="math display">\begin{aligned}
+\|v-w\|^2&amp;=\langle v-w, v-w\rangle \\
+&amp;= \langle v,v\rangle -2\langle v,w\rangle +\langle w,w\rangle \\
+&amp;\le \|v\|^2+2|\langle v,w\rangle| +\|w\|^2 \\
+&amp;\le (\|v\|+\|w\|)^2
+\end{aligned}
+</span></p>
+<p>If the inner product is the “standard one” then the <span class="math inline">\ell^{2}</span> norm gives the standard Euclidean distance in the standard coordinates.</p>
+<p><strong>Definition:</strong> Two norms <span class="math inline">\|\cdot\|_1</span> and <span class="math inline">\|\cdot\|_{2}</span> on a vector space are <em>equivalent</em> if they are each bounded by a constant multiple of the other. In other words, the two norms are equivalent if there are constants <span class="math inline">A</span> and <span class="math inline">B</span> such that <span class="math display">
+A\|v\|_{1}\le \|v\|_{2}\le B\|v\|_{1}
+</span> for all <span class="math inline">v\in V</span>.</p>
+<p><strong>Remark:</strong> The metric topologies on <span class="math inline">V</span> coming from equivalent norms are the same, so, for example, if a series converges with respect to one norm, it converges with respect to every equivalent norm. In a finite dimensional space, the “unit ball” <span class="math inline">\|v\|_{\mathrm{sup}}\le 1</span> is compact since it is topologically the product of closed intervals; hence the unit ball is compact under any norm equivalent to the sup norm.</p>
+<p><strong>Proposition:</strong> The sup norm and the <span class="math inline">\ell^{2}</span> norm for the standard inner product are equivalent.</p>
+<p>This is because if <span class="math inline">v=\sum_{i=1}^{n} a_{i}e_{i}</span>, then <span class="math display">
+\sup_{i} \{|a_{i}|\} \le \sqrt{\sum_{i} |a_{i}|^2}\le
+\sqrt{n}\sup_{i} \{|a_{i}|\}.
+</span></p>
+</section>
+<section id="minkowskis-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="minkowskis-theorem">Minkowski’s Theorem</h3>
+<p>In fact, a theorem of Minkowski states that <em>all</em> norms on a finite dimensional vector space over <span class="math inline">\mathbf{R}</span> or <span class="math inline">\mathbf{C}</span> are equivalent. This result is a consequence of the fact that <span class="math inline">\mathbf{R}</span> and <span class="math inline">\mathbf{C}</span> are locally compact fields, and the proof involves the application of the Heine-Borel theorem that any bounded sequence in these fields has a convergent subsequence. The proof (of a more general result on valued fields) is given in Conrad’s <a href="https://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf">Equivalence of Norms</a>.</p>
+<p>Furthermore, a finite dimensional vector space is complete with respect to the metric topology coming from one (or any) norm.</p>
+<p>It is worth noting that Minkowski’s theorem is very definitely <em>false</em> for infinite dimensional vector spaces. For example, consider the space <span class="math inline">C([0,1])</span> of continuous functions on the interval <span class="math inline">[0,1]</span>. Define two norms on this space. The first is the “sup norm”: <span class="math display">
+\|f\| = \sup_{0\le x\le 1} |f(x)|
+</span> and the second is the <span class="math inline">L^{1}</span> norm: <span class="math display">
+\|f\| = \int_{0}^{1} |f(x)|dx.
+</span></p>
+<p>Notice that we can find a continuous function whose sup-norm is arbitrarily large, while its <span class="math inline">L^{1}</span> norm remains one, by looking at a function with a big “spike” but total area 1 as shown here.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/spike-function.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption"><span class="math inline">\|f\|_{\mathrm{sup}}=a</span> and <span class="math inline">\|f\|_{L^{1}}=1</span>.</figcaption>
+</figure>
+</div>
+</section>
+<section id="norms-on-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="norms-on-matrices">Norms on Matrices</h3>
+<p>Now we consider norms on matrices and linear maps. Notice that if <span class="math inline">V</span> and <span class="math inline">W</span> are <span class="math inline">n</span> and <span class="math inline">m</span> dimensional vector spaces respectively over a field <span class="math inline">F</span>, then the choice of a basis for <span class="math inline">V</span> and <span class="math inline">W</span> allows us to identify the space of linear maps from <span class="math inline">V</span> to <span class="math inline">W</span> with <span class="math inline">M_{n\times m}(F)</span>. This in turn is an <span class="math inline">n\times m</span> dimensional vector space over <span class="math inline">F</span>.</p>
+<p>When <span class="math inline">F</span> is <span class="math inline">\mathbf{R}</span> or <span class="math inline">\mathbf{C}</span>, one choice for a norm on a matrix <span class="math inline">A=(a_{ij})</span> is the sup norm: <span class="math display">
+\|A\|_{\mathrm{sup}} = \sup_{1\le i\le n, 1\le j\le m} \{|a_{ij}|\}
+</span></p>
+<p>A second choice is the <span class="math inline">\ell^{2}</span> norm, also called the <em>Frobenius norm</em>: <span class="math display">
+\|A\|_{F} = \sqrt{\sum_{i,j} |a_{ij}|^2}.
+</span></p>
+<p>Observe for later that <span class="math display">
+\|A\|_{F}^2 = \mathrm{tr}(AA^{\top}) = \mathrm{tr}(A^{\top}A).
+</span></p>
+<p>Both of these norms are defined on matrices, not linear maps; they depend on the choice of bases for <span class="math inline">V</span> and <span class="math inline">W</span>.</p>
+<p><strong>Proposition:</strong> Let <span class="math inline">A</span> by an <span class="math inline">n\times m</span> matrix over <span class="math inline">\mathbf{R}</span> or <span class="math inline">\mathbf{C}</span>.<br>
+Then there is a constant <span class="math inline">C</span> such that the linear map <span class="math inline">v\mapsto Av</span> from <span class="math inline">F^{m}</span> to <span class="math inline">F^{n}</span> satisfies <span class="math display">
+\|Av\|\le C\|v\|
+</span> where <span class="math inline">\|v\|</span> is the Euclidean norm.</p>
+<p><strong>Proof:</strong> Following Conrad, we see that if <span class="math inline">v=(c_1,\ldots, c_{m})</span>, then <span class="math display">\begin{aligned}
+\|Av\| &amp;\le \sqrt{m}\|Av\|_{\mathrm{sup}} \\
+&amp;\le \sqrt{m}\sup_{1\le i\le n} |\sum_{i=1}^{m} a_{ij}c_{j}|\\
+&amp;\le \sqrt{m}\sup_{1\le i\le n}\sum_{j=1}^{n}
+|a_{ij}|\|v\|_{\mathrm{sup}} \\
+&amp;\le n\sqrt{m}\sup |a_{ij}|\|v\|_{\mathrm{sup}} \\
+&amp;\le (n\sqrt{m}\sup_{i,j}|a_{ij}|)\|v\|
+\end{aligned}
+</span> so we can use <span class="math display">
+C = n\sqrt{n}\sup_{ij}|a_{ij}|
+</span></p>
+</section>
+<section id="the-operator-norm" class="level3">
+<h3 class="anchored" data-anchor-id="the-operator-norm">The Operator Norm</h3>
+<p>The operator norm gives a basis-independent way to define a norm on linear maps from <span class="math inline">V</span> to <span class="math inline">W</span>, given norms on <span class="math inline">V</span> and <span class="math inline">W</span>. Let <span class="math inline">L:V\to W</span> be such a linear map. Define <span class="math display">
+\|L\|_{\mathrm{op}} = \inf_{v\in V} \frac{\|L(v)\|}{\|v\|}.
+</span></p>
+</section>
+<section id="the-frobenius-norm" class="level3">
+<h3 class="anchored" data-anchor-id="the-frobenius-norm">The Frobenius norm</h3>
+<p>We are interested in norms on matrices and linear maps that enable us to measure “distance” between maps and therefore characterize the idea of “best approximation.” We will consider two different matrix norms, the <em>operator norm</em> and the <em>frobenius norm.</em> The operator norm is invariant under change of basis and is therefore a norm on linear maps, while the frobenius norm is only invariant under unitary change of basis.</p>
+</section>
+<section id="the-operator-norm-1" class="level3">
+<h3 class="anchored" data-anchor-id="the-operator-norm-1">The operator norm</h3>
+<p>Let <span class="math inline">L</span> be a linear map <span class="math inline">L:V\to W</span> where <span class="math inline">V</span> is <span class="math inline">n</span>-dimensional and <span class="math inline">W</span> is <span class="math inline">m</span>-dimensional. Define <span class="math display">
+\|L\| = \sup_{v\in } \|Av\|
 </span></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
