@@ -6,7 +6,7 @@ title: "The Singular Value Decomposition"
 \newcommand{\supnorm}[1]{\|#1\|_{\mathrm{sup}}}
 
 The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices.
-Let $X$ be a real $n\times m$ matrix and let $D=X^{\top}X$.  $D$ is apositive symmetric $m\times m$ matrix and so we can apply
+Let $X$ be a real $n\times m$ matrix and let $D=X^{\top}X$.  $D$ is a positive semidefinite symmetric $m\times m$ matrix and so we can apply
 the spectral theorem to find an orthogonal matrix $P$ such that $P^{\top}DP=\Lambda$ where $\Lambda$ is diagonal.
 Put another way:
 $$
@@ -68,7 +68,7 @@ $$
 Here (assuming the $\sigma_{i}>0$ for $i\le k$), $X_{k}$ has rank $k$.  We will show that $X_{k}$ is the best approximation to the original matrix $X$ among all matrices of rank at most $k$ (and, after choosing orthonormal bases, the same holds for linear maps between inner product spaces). We will look at a variety of characterizations of "best," but for many applications the most useful one is that $X_{k}$ minimizes the squared error between the original $X=(x_{ij})$ and
 matrices $B=(b_{ij})$ of rank at most $k$:
 $$
-E(U,X) =  \sum_{i,j} (x_{ij}-b_{ij})^2.
+E(B,X) =\sum_{i,j} (x_{ij}-b_{ij})^2.
 $$
 
 
@@ -175,8 +175,10 @@ Therefore $\rho(v)\le B\|v\|_{\mathrm{sup}}$ with $B=\sum_{i=1}^{n}\rho(e_{i})$.
 
 **Lemma:** The norm $\rho$ is a continuous function in the metric topology given by $\supnorm{\cdot}$.
 
-**Proof:** Given $\epsilon>0$, we need to find $\delta$ so that $\supnorm{x-y}<\delta$ implies $\rho(x-y)<\epsilon$. 
-But $\rho(x-y)<B\supnorm(x-y)$, so we can take $\delta=\epsilon/B$. 
+**Proof:** Given $\epsilon>0$, we need to find $\delta$ so that $\supnorm{x-y}<\delta$ implies $|\rho(x)-\rho(y)|<\epsilon$.
+By the triangle inequality, $|\rho(x)-\rho(y)|\le\rho(x-y)\le B\supnorm{x-y}$, so we can take $\delta=\epsilon/B$ (any $\delta$ works if $B=0$).
+
+**Remark:** The proof so far works when $\rho$ is only a seminorm, not just a norm, but the next part needs $\rho(v)=0$ only when $v=0$. 
 
 **Lemma:** The unit sphere $\{v : \supnorm{v}= 1\}$ in $V$ is compact.
 
@@ -186,13 +188,13 @@ The open ball $\{v: \supnorm{v}<1\}$ is a finite product of open intervals, or o
 of the open ball in the closed ball, so it's closed; as a closed subset of a compact set, it is compact.
 
 Now consider the norm as a function on the unit sphere. As a continuous function on a compact set, it attains its minimum $A$.
-And since $\rho$ is nonzero on the unit sphere, $mAnot =0$.  It follows that
+And since $\rho$ is nonzero on the unit sphere, $A>0$.  It follows that, for $v\neq 0$,
 $$
 \rho(\frac{v}{\supnorm{v}})\ge A
 $$
 and therefore
 $$
-\rho(v)\ge A\supnorm(v).
+\rho(v)\ge A\supnorm{v}.
 $$
 
 Putting it all together we get
@@ -204,7 +206,7 @@ as desired.
 **Remark:** The key part of this result is the compactness of the closed intervals in $\R$ or closed disks in $\C$; these
 follow in general from the "Heine-Borel" theorem which says that closed and bounded subsets of $\R^{n}$ are compact. In
 [Equivalence of Norms](http://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf) Conrad describes the proof of 
-a more general result that all norms on a finite dimensional vector space over a complete valued field, meaning a complete field together with a choice of norm that induces the complete topology).
+a more general result that all norms on a finite dimensional vector space over a complete valued field (meaning a complete field together with a choice of norm that induces the complete topology) are equivalent.
 
 **Corollary:** Let $V$ and $W$ be  finite dimensional vector spaces (over $\R$ or $\C$). Then all linear maps from $V$ to $W$
 are continuous in any norm topology.  A set which is bounded in one norm is bounded in any norm; similarly for open, closed,
@@ -229,3 +231,83 @@ $$
 Notice that we can find a continuous function whose sup-norm is arbitrarily large, while its $L^{1}$ norm remains one, by looking at a function with a big "spike" but total area 1 as shown here.
 
 ![$\|f\|_{\mathrm{sup}}=a$ and $\|f\|_{L^{1}}=1$.](images/spike-function.png){width=70%}
+
+
+## Matrix Norms
+
+Now we turn to norms on matrices and linear maps.  The first thing to observe is that the space $M_{n\times m}(F)$ of $n\times m$ matrices over $F=\R$ or $F=\C$ is a copy of $F^{nm}$. Thus we have  the supnorm $\supnorm{\cdot}$ and the $\ell^{2}$ or Euclidean
+norm  $\|\cdot\|$ on matrices, and all norms on the space of matrices are equivalent.
+
+Let's focus on the case of linear maps $L:F^{n}\to F^{n}$ where $F=\R$ or $F=\C$.  Equivalently, we work with 
+square matrices $A\in M_{n}(F)$. Write $\rho_{A}(v)=\|Av\|$. In general,
+the function $\rho_{A}(v)=\|Av\|$ (here $\|\cdot\|$ is the $\ell^{2}$ norm in the standard basis of $F^{n}$)
+is a seminorm on $F^{n}$.  Indeed:
+
+- $\rho_{A}(v)=\|A(v)\|\ge 0$.
+- $\rho_{A}(v+w)=\|A(v+w)\| = \|A(v)+A(w)\|\le \|A(v)\|+\|A(w)\| = \rho_{A}(v)+\rho_{A}(w)$
+- $\rho_{A}(av) = \|A(av)\| = \|aA(v)\|=|a|\|A(v)\|= |a|\rho_{A}(v)$.
+
+As we pointed out above, this means that
+$\rho_{A}$ is a continuous function and there is a constant $C\ge 0$ such that
+$$
+\rho_{A}(v)\le C\|v\|
+$$
+for all $v$.  
+
+**Proposition:** There is a unique real number $b\ge 0$ such that $\rho_{A}(v)\le b\|v\|$ for all $v$, and, $b$ is minimal with this property.  
+
+**Proof:** Our estimate above shows that $\rho_{A}$ is bounded on the sphere $\{v: \|v\|=1\}$, which, as we saw above, is compact.
+Therefore $\rho_{A}$ attains its maximum and we set $b$ to be this maximum.
+
+**Definition:** The operator norm $\|A\|$ of $A$ is the number $b$ defined as the maximum 
+$$
+\|A\| = \sup_{v: \|v\|=1} \|A(v)\|
+$$
+
+
+**Proposition:**  The operator norm is in fact a norm on $M_{n}(F)$ when $F=\R$ or $F=\C$.  Further, if $B\in M_{n}(F)$, then:
+
+- $\|AB\|\le \|A\|\|B\|$
+- $\|A^{*}\|=\|A\|$
+- $\|A^{*}A\|=\|AA^{*}\| = \|A\|^2$ and therefore $\|A\|=\sqrt{\|A^{*}A\|}=\sqrt{\|AA^{*}\|}$
+- $|\langle Av, w\rangle|\le \|A\|\|v\|\|w\|$
+- The operator norm is equivalent to the sup norm on $M_{n}(F)$ with
+$$
+\supnorm{A}\le \|A\|\le n\sqrt{n}\supnorm{A}.
+$$
+
+In particular the operator norm gives $M_{n}(F)$ the topology of $F^{n^{2}}$, so $M_{n}(F)$ is complete relative to the operator norm (Cauchy sequences relative to the operator norm converge).
+
+**Proof:** This is Theorem 3.4 of [Computing the Norm of a Matrix](https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf)
+To check a few, first notice that:
+$$
+\|ABv\|\le \|A\|\|Bv\|\le \|A\|\|B\|\|v\|
+$$
+Since $\|AB\|$ is the smallest $C$ such that $\|(AB)v\|\le C\|v\|$ we have $\|AB\|\le \|A\|\|B\|$.
+
+The relationship with the adjoint $A^{*}$ (the conjugate transpose, which is just $A^{\top}$ when $F=\R$) is more interesting. We have
+$$
+\|Av\|^2 = \langle Av, Av\rangle = \langle v, A^{*}Av\rangle \le \|v\|\|A^{*}Av\|
+$$
+by the Cauchy--Schwarz inequality. This tells us that
+$$
+\|A\|^2\le \|A^{*}A\|\le \|A^{*}\|\|A\|
+$$
+The result we seek is obvious if $A=0$.  If $A$ is not zero, divide both sides by $\|A\|$ to get
+$$
+\|A\|\le \|A^{*}\|.
+$$
+
+Applying this to $A^{*}$ in place of $A$ (and using $(A^{*})^{*}=A$) gives
+$$
+\|A^{*}\|\le \|A\|
+$$
+
+so they are equal.  But then
+$$
+\|A\|^2\le \|A^{*}A\|\le \|A^{*}\|\|A\|\le \|A\|^2
+$$
+
+so $\|A\|^{2}=\|A^{*}A\|$ and similarly $\|A\|^{2}=\|AA^{*}\|$.
+
+Also, $|\langle Av, w\rangle|\le \|Av\|\|w\|\le \|A\|\|v\|\|w\|$ from the Cauchy--Schwarz inequality.
