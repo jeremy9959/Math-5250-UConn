@@ -3,6 +3,7 @@ title: "The Singular Value Decomposition"
 ---
 \newcommand{\R}{\mathbf{R}}
 \newcommand{\C}{\mathbf{C}}
+\newcommand{\supnorm}[1]{\|#1\|_{\mathrm{sup}}}
 
 The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices.
 Let $X$ be a real $n\times m$ matrix and let $D=X^{\top}X$.  $D$ is apositive symmetric $m\times m$ matrix and so we can apply
@@ -48,17 +49,14 @@ $$
 
 ## Low Rank Approximations
 
-Our goal is to apply the SVD to study the problem of approximating a linear map $L:\R^m\to\R^n$ by a map of lower rank.  As we will see later,
-such approximations have important applications in data science and other applied fields.  To make this notion precise, we will need
-to clarify how we measure the distance between linear maps.  Before diving into that question, though, let's indicate how the SVD plays a role. 
 
-One way to interpret the singular value decomposition is that allows one to write a linear transformation $L:\R^m\to\R^n$ as a sum of rank
+One way to interpret the singular value decomposition is that it allows one to write a linear transformation $L:\R^m\to\R^n$ as a sum of rank
 one maps.  This follows from the fact that, if we let $X$ be the matrix of $L$, then the reduced SVD tells us that
 $$
 X = \sum_{i=1}^{r} \sigma_{i}u_{i}v_{i}^{\top}.
 $$
 
-Here the $u_{i}$ and $v{i}$ are the columns of $U$ and $V$ respectively and the $\sigma_{i}$ are the singular values. 
+Here the $u_{i}$ and $v_{i}$ are the columns of $U$ and $V$ respectively and the $\sigma_{i}$ are the singular values. 
 Each $u_{i}v_{i}^{\top}$ is an $(n\times 1) \times (1\times m)$ matrix product, yielding an $n\times m$ matrix. It is rank one
 since its range is spanned by $u_{i}$.
 
@@ -67,11 +65,44 @@ $$
 X_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{\top}
 $$
 
-Here (assuming the $\sigma_{i}>0$ for $i\le k$), $X_{k}$ has rank $k$.  Our goal is to show that, in a precise sense, $X_{k}$ is the best approximation to the original matrix $X$ among all matrices of rank at most $k$ (and, after choosing orthonormal bases, the same holds for linear maps between inner product spaces). 
+Here (assuming the $\sigma_{i}>0$ for $i\le k$), $X_{k}$ has rank $k$.  We will show that $X_{k}$ is the best approximation to the original matrix $X$ among all matrices of rank at most $k$ (and, after choosing orthonormal bases, the same holds for linear maps between inner product spaces). We will look at a variety of characterizations of "best," but for many applications the most useful one is that $X_{k}$ minimizes the squared error between the original $X=(x_{ij})$ and
+matrices $B=(b_{ij})$ of rank at most $k$:
+$$
+E(U,X) =  \sum_{i,j} (x_{ij}-b_{ij})^2.
+$$
+
+
+### Application: Image Compression
+
+One application of the technique of "low-rank approximation" is to the problem of image compression.  A gray-scale image is basically an array of integers where each cell of the array corresponds to a pixel in the image, and the value represents how that pixel should be drawn ($0$ for black, $255$ for white).  A color image is generally represented by three arrays, with the color of each pixel represented by a 3-tuple giving the
+red, green, and blue intensity of that pixel.
+
+We consider the gray-scale case for simplicity.  Suppose $A$ is a matrix representing an $n\times n$ image, consisting of $n^{2}$
+integers between $0$ and $255$.  As $k$ increases, the rank $k$ approximations $A_{k}$ get close to $A$ and so represent "nearly" the same image.
+However, notice that storing $A$ requires $n^{2}$ numbers while storing $A_{k}$ requires $2kn+k=k(2n+1)$.
+
+For example, the following image, taken from the `scipy.datasets` package, is a $512\times 512$ gray-scale image represented by 
+a $512\times 512$ matrix $A$ of integers between $0$ and $255$.
+
+![The `ascent` image from `scipy.datasets`.](images/ascent.png){width=60%}
+
+We can compute the SVD of $A=U\Sigma V^{\top}$ where $U$ and $V$ are $512\times 512$ orthogonal matrices and $\Sigma$ is the diagonal
+matrix of singular values of $A$.  The largest of these is around $45500$ while the smallest is $.15$.  To see them more clearly,
+we plot them here on a logarithmic scale.
+
+![Singular values of the `ascent` image (log scale).](images/svd-ascent-singular-values.png){width=70%}
+
+As you can see, there are a relatively small number of "big ones" larger than $10^3$; then many between $10^3$ and $1$; and then a few more on the tail that are less than $1$.
+
+This figure shows the effect of low rank approximation on the image.
+
+
+![Rank 5, 20, and 50 SVD approximations of the `ascent` image.](images/svd-ascent-ranks.png){width=100%}
+
 
 ## Norms on Vectors, Matrices and Linear Maps
 
-Our discussion in this section follows Conrad's expository note [Computing the Norm of a Matrix](https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf)
+Our discussion in this section follows, in part,  Conrad's expository note [Computing the Norm of a Matrix](https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf)
 
 ### Vector Space Norms
 
@@ -90,7 +121,7 @@ There are two key examples of such norms.
 
 1. The "sup" norm relative to a basis.   Choose a basis $e_{1},\ldots, e_{n}$ for $V$.  Then define
 $$
-\|\sum_{i=1}^{n} a_{i}e_{i}\| = \sup\{|a_1|,\ldots, |a_{n}|\}.
+\|\sum_{i=1}^{n} a_{i}e_{i}\|_{\mathrm{sup}} = \sup\{|a_1|,\ldots, |a_{n}|\}.
 $$
 
 2. The "Euclidean" norm or $\ell^{2}$ norm defined by an inner product $\langle \cdot,\cdot\rangle$:
@@ -125,30 +156,66 @@ A\|v\|_{1}\le \|v\|_{2}\le B\|v\|_{1}
 $$
 for all $v\in V$. 
 
-***Remark:** Two equivalent norms on a finite dimensional vector space $V$ determine the same family of open sets on $V$ and the same family of bounded sets on $V$.
-Any closed and bounded subset of $V$  it lies inside a product of closed intervals or disks, and is therefore compact; 
-the same is true for any norm equivalent to the sup norm.  In particular the unit ball $\|v\|\le 1$ is compact for any such norm. 
 
-**Proposition:** The sup norm and the $\ell^{2}$ norm for the standard inner product are equivalent.
+In fact, on a finite dimensional vector space $V$ over $\R$ or $\C$, all norms on $V$ are equivalent.  
 
-This is because if $v=\sum_{i=1}^{n} a_{i}e_{i}$,
-then
+**Proposition:** All norms on $V=\R^{n}$ or $\C^{n}$ are equivalent.
+
+To prove this, we will show that any norm is in fact equivalent to the sup norm for the standard basis.  Let $\rho:V\to\R$ 
+be any norm.  Let $e_{1},\ldots, e_{n}$ be the standard basis of $V$.  Then if $v=\sum_{i=1}^{n} a_{i}e_{i}$, we have
+
+$$\begin{aligned}
+\rho(v) &= \rho(\sum_{i=1}^{n} a_{i}e_{i}) \\
+&\le \sum_{i=1}^{n} |a_{i}|\rho(e_{i}) \\
+&\le (\sum_{i=1}^{n}\rho(e_{i}))\|v\|_{\mathrm{sup}}
+\end{aligned}
 $$
-\sup_{i} \{|a_{i}|\} \le \sqrt{\sum_{i} |a_{i}|^2}\le 
-\sqrt{n}\sup_{i} \{|a_{i}|\}.
+
+Therefore $\rho(v)\le B\|v\|_{\mathrm{sup}}$ with $B=\sum_{i=1}^{n}\rho(e_{i})$. 
+
+**Lemma:** The norm $\rho$ is a continuous function in the metric topology given by $\supnorm{\cdot}$.
+
+**Proof:** Given $\epsilon>0$, we need to find $\delta$ so that $\supnorm{x-y}<\delta$ implies $\rho(x-y)<\epsilon$. 
+But $\rho(x-y)<B\supnorm(x-y)$, so we can take $\delta=\epsilon/B$. 
+
+**Lemma:** The unit sphere $\{v : \supnorm{v}= 1\}$ in $V$ is compact.
+
+**Proof:**  The unit ball $\{v:\supnorm{v}\le 1\}$ is compact, since it is either a finite product of copies of the
+interval $[-1,1]$ in the real case, or a finite product of copies of the closed disk $\{|z|\le 1\}$ in the complex case.
+The open ball $\{v: \supnorm{v}<1\}$ is a finite product of open intervals, or open disks, so it's open. The sphere is the complement
+of the open ball in the closed ball, so it's closed; as a closed subset of a compact set, it is compact.
+
+Now consider the norm as a function on the unit sphere. As a continuous function on a compact set, it attains its minimum $A$.
+And since $\rho$ is nonzero on the unit sphere, $mAnot =0$.  It follows that
+$$
+\rho(\frac{v}{\supnorm{v}})\ge A
+$$
+and therefore
+$$
+\rho(v)\ge A\supnorm(v).
 $$
 
-### Minkowski's Theorem
+Putting it all together we get
+$$
+A\supnorm{v}\le \rho(v)\le B\supnorm{v}.
+$$
+as desired. 
 
-In fact, a theorem of Minkowski states that *all* norms on a finite dimensional vector space over $\R$ or $\C$ are equivalent.  This result is a consequence of the fact that $\R$ and $\C$ are locally compact fields, and the proof involves the application of the Heine-Borel theorem that any bounded sequence in these fields has a convergent subsequence.  The proof (of a more general result on valued fields) is given in Conrad's
-[Equivalence of Norms](https://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf).
+**Remark:** The key part of this result is the compactness of the closed intervals in $\R$ or closed disks in $\C$; these
+follow in general from the "Heine-Borel" theorem which says that closed and bounded subsets of $\R^{n}$ are compact. In
+[Equivalence of Norms](http://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf) Conrad describes the proof of 
+a more general result that all norms on a finite dimensional vector space over a complete valued field, meaning a complete field together with a choice of norm that induces the complete topology).
 
+**Corollary:** Let $V$ and $W$ be  finite dimensional vector spaces (over $\R$ or $\C$). Then all linear maps from $V$ to $W$
+are continuous in any norm topology.  A set which is bounded in one norm is bounded in any norm; similarly for open, closed,
+or compact.   
 
+### The infinite dimensional case is different
 
-Furthermore, a finite dimensional vector space is complete with respect to the metric topology coming from one (or any) norm. 
+It is very definitely *false* that all norms on an infinite dimensional real or complex vector space
+are equivalent.
 
-It is worth noting that Minkowski's theorem
-is very definitely *false* for infinite dimensional vector spaces. For example, consider the space 
+For example, consider the space 
 $C([0,1])$ of continuous functions on the interval $[0,1]$.  Define two norms on this space.  The first
 is the "sup norm":
 $$
@@ -162,79 +229,3 @@ $$
 Notice that we can find a continuous function whose sup-norm is arbitrarily large, while its $L^{1}$ norm remains one, by looking at a function with a big "spike" but total area 1 as shown here.
 
 ![$\|f\|_{\mathrm{sup}}=a$ and $\|f\|_{L^{1}}=1$.](images/spike-function.png){width=70%}
-
-### Norms on Matrices
-
-Now we consider norms on matrices and linear maps. 
-Notice that if $V$ and $W$ are $n$ and $m$ dimensional vector spaces respectively over a field $F$, then the choice of a basis for $V$ and $W$ allows us to identify the space of linear maps from $V$ to $W$ with $M_{n\times m}(F)$.  This in turn is an $n\times m$ dimensional vector space over $F$.
-
-When $F$ is $\R$ or $\C$, one choice for a norm
-on a matrix $A=(a_{ij})$ is the sup norm: 
-$$
-\|A\|_{\mathrm{sup}} = \sup_{1\le i\le n, 1\le j\le m} \{|a_{ij}|\}
-$$
-
-A second choice is the $\ell^{2}$ norm, also called the *Frobenius norm*:
-$$
-\|A\|_{F} = \sqrt{\sum_{i,j} |a_{ij}|^2}.
-$$
-
-Observe for later that 
-$$
-\|A\|_{F}^2 = \mathrm{tr}(AA^{\top}) = \mathrm{tr}(A^{\top}A).
-$$
-
-Both of these norms are defined on matrices, not
-linear maps; they depend on the choice of bases for $V$ and $W$.  
-
-**Proposition:** Let $A$ by an $n\times m$ matrix over $\R$ or $\C$.  
-Then there is a constant $C$ such that
-the linear map $v\mapsto Av$ from $F^{m}$ to $F^{n}$ satisfies
-$$
-\|Av\|\le C\|v\|
-$$
-where $\|v\|$ is the Euclidean norm.
-
-**Proof:** Following Conrad, we see that if $v=(c_1,\ldots, c_{m})$, then
-$$\begin{aligned}
-\|Av\| &\le \sqrt{m}\|Av\|_{\mathrm{sup}} \\
-&\le \sqrt{m}\sup_{1\le i\le n} |\sum_{i=1}^{m} a_{ij}c_{j}|\\
-&\le \sqrt{m}\sup_{1\le i\le n}\sum_{j=1}^{n}
- |a_{ij}|\|v\|_{\mathrm{sup}} \\
- &\le n\sqrt{m}\sup |a_{ij}|\|v\|_{\mathrm{sup}} \\
- &\le (n\sqrt{m}\sup_{i,j}|a_{ij}|)\|v\|
- \end{aligned}
- $$
- so we can use
- $$
- C = n\sqrt{n}\sup_{ij}|a_{ij}|
- $$
-
-
-
-### The Operator Norm
-
-The operator norm gives a basis-independent way to define a norm on linear maps from $V$ to $W$, given
-norms on $V$ and $W$. 
-Let $L:V\to W$ be such a linear map.  Define
-$$
-\|L\|_{\mathrm{op}} = \inf_{v\in V} \frac{\|L(v)\|}{\|v\|}.
-$$
-
-
-
-
-### The Frobenius norm
-
-
-
-We are interested in norms on matrices and linear maps that enable us to measure "distance" between maps and therefore characterize the idea of "best approximation."  We will consider two different matrix norms, the *operator norm* and the *frobenius norm.*  The operator norm is invariant under change of basis and is therefore a norm on linear maps, while the frobenius norm is only invariant under unitary
-change of basis.
-
-### The operator norm
-
-Let $L$ be a linear map $L:V\to W$ where $V$ is $n$-dimensional and $W$ is $m$-dimensional.  Define
-$$
-\|L\| = \sup_{v\in } \|Av\|
-$$
-
