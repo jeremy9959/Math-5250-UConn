@@ -561,6 +561,7 @@ window.Quarto = {
   <li><a href="#vector-space-norms" id="toc-vector-space-norms" class="nav-link" data-scroll-target="#vector-space-norms">Vector Space Norms</a></li>
   <li><a href="#the-infinite-dimensional-case-is-different" id="toc-the-infinite-dimensional-case-is-different" class="nav-link" data-scroll-target="#the-infinite-dimensional-case-is-different">The infinite dimensional case is different</a></li>
   </ul></li>
+  <li><a href="#matrix-norms" id="toc-matrix-norms" class="nav-link" data-scroll-target="#matrix-norms">Matrix Norms</a></li>
   </ul>
 </nav>
     </div>
@@ -586,7 +587,7 @@ window.Quarto = {
 </header>
 
 
-<p>The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices. Let <span class="math inline">X</span> be a real <span class="math inline">n\times m</span> matrix and let <span class="math inline">D=X^{\top}X</span>. <span class="math inline">D</span> is apositive symmetric <span class="math inline">m\times m</span> matrix and so we can apply the spectral theorem to find an orthogonal matrix <span class="math inline">P</span> such that <span class="math inline">P^{\top}DP=\Lambda</span> where <span class="math inline">\Lambda</span> is diagonal. Put another way: <span class="math display">
+<p>The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices. Let <span class="math inline">X</span> be a real <span class="math inline">n\times m</span> matrix and let <span class="math inline">D=X^{\top}X</span>. <span class="math inline">D</span> is a positive semidefinite symmetric <span class="math inline">m\times m</span> matrix and so we can apply the spectral theorem to find an orthogonal matrix <span class="math inline">P</span> such that <span class="math inline">P^{\top}DP=\Lambda</span> where <span class="math inline">\Lambda</span> is diagonal. Put another way: <span class="math display">
 DP = P\Lambda
 </span></p>
 <p>which expresses the fact that the columns of <span class="math inline">P</span> are orthonormal eigenvectors for <span class="math inline">D</span>.</p>
@@ -613,7 +614,7 @@ X = \sum_{i=1}^{r} \sigma_{i}u_{i}v_{i}^{\top}.
 X_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{\top}
 </span></p>
 <p>Here (assuming the <span class="math inline">\sigma_{i}&gt;0</span> for <span class="math inline">i\le k</span>), <span class="math inline">X_{k}</span> has rank <span class="math inline">k</span>. We will show that <span class="math inline">X_{k}</span> is the best approximation to the original matrix <span class="math inline">X</span> among all matrices of rank at most <span class="math inline">k</span> (and, after choosing orthonormal bases, the same holds for linear maps between inner product spaces). We will look at a variety of characterizations of “best,” but for many applications the most useful one is that <span class="math inline">X_{k}</span> minimizes the squared error between the original <span class="math inline">X=(x_{ij})</span> and matrices <span class="math inline">B=(b_{ij})</span> of rank at most <span class="math inline">k</span>: <span class="math display">
-E(U,X) =  \sum_{i,j} (x_{ij}-b_{ij})^2.
+E(B,X) =\sum_{i,j} (x_{ij}-b_{ij})^2.
 </span></p>
 <section id="application-image-compression" class="level3">
 <h3 class="anchored" data-anchor-id="application-image-compression">Application: Image Compression</h3>
@@ -693,18 +694,19 @@ A\|v\|_{1}\le \|v\|_{2}\le B\|v\|_{1}
 </span></p>
 <p>Therefore <span class="math inline">\rho(v)\le B\|v\|_{\mathrm{sup}}</span> with <span class="math inline">B=\sum_{i=1}^{n}\rho(e_{i})</span>.</p>
 <p><strong>Lemma:</strong> The norm <span class="math inline">\rho</span> is a continuous function in the metric topology given by <span class="math inline">\|\cdot\|_{\mathrm{sup}}</span>.</p>
-<p><strong>Proof:</strong> Given <span class="math inline">\epsilon&gt;0</span>, we need to find <span class="math inline">\delta</span> so that <span class="math inline">\|x-y\|_{\mathrm{sup}}&lt;\delta</span> implies <span class="math inline">\rho(x-y)&lt;\epsilon</span>. But <span class="math inline">\rho(x-y)&lt;B\|(\|_{\mathrm{sup}}x-y)</span>, so we can take <span class="math inline">\delta=\epsilon/B</span>.</p>
+<p><strong>Proof:</strong> Given <span class="math inline">\epsilon&gt;0</span>, we need to find <span class="math inline">\delta</span> so that <span class="math inline">\|x-y\|_{\mathrm{sup}}&lt;\delta</span> implies <span class="math inline">|\rho(x)-\rho(y)|&lt;\epsilon</span>. By the triangle inequality, <span class="math inline">|\rho(x)-\rho(y)|\le\rho(x-y)\le B\|x-y\|_{\mathrm{sup}}</span>, so we can take <span class="math inline">\delta=\epsilon/B</span> (any <span class="math inline">\delta</span> works if <span class="math inline">B=0</span>).</p>
+<p><strong>Remark:</strong> The proof so far works when <span class="math inline">\rho</span> is only a seminorm, not just a norm, but the next part needs <span class="math inline">\rho(v)=0</span> only when <span class="math inline">v=0</span>.</p>
 <p><strong>Lemma:</strong> The unit sphere <span class="math inline">\{v : \|v\|_{\mathrm{sup}}= 1\}</span> in <span class="math inline">V</span> is compact.</p>
 <p><strong>Proof:</strong> The unit ball <span class="math inline">\{v:\|v\|_{\mathrm{sup}}\le 1\}</span> is compact, since it is either a finite product of copies of the interval <span class="math inline">[-1,1]</span> in the real case, or a finite product of copies of the closed disk <span class="math inline">\{|z|\le 1\}</span> in the complex case. The open ball <span class="math inline">\{v: \|v\|_{\mathrm{sup}}&lt;1\}</span> is a finite product of open intervals, or open disks, so it’s open. The sphere is the complement of the open ball in the closed ball, so it’s closed; as a closed subset of a compact set, it is compact.</p>
-<p>Now consider the norm as a function on the unit sphere. As a continuous function on a compact set, it attains its minimum <span class="math inline">A</span>. And since <span class="math inline">\rho</span> is nonzero on the unit sphere, <span class="math inline">mAnot =0</span>. It follows that <span class="math display">
+<p>Now consider the norm as a function on the unit sphere. As a continuous function on a compact set, it attains its minimum <span class="math inline">A</span>. And since <span class="math inline">\rho</span> is nonzero on the unit sphere, <span class="math inline">A&gt;0</span>. It follows that, for <span class="math inline">v\neq 0</span>, <span class="math display">
 \rho(\frac{v}{\|v\|_{\mathrm{sup}}})\ge A
 </span> and therefore <span class="math display">
-\rho(v)\ge A\|(\|_{\mathrm{sup}}v).
+\rho(v)\ge A\|v\|_{\mathrm{sup}}.
 </span></p>
 <p>Putting it all together we get <span class="math display">
 A\|v\|_{\mathrm{sup}}\le \rho(v)\le B\|v\|_{\mathrm{sup}}.
 </span> as desired.</p>
-<p><strong>Remark:</strong> The key part of this result is the compactness of the closed intervals in <span class="math inline">\mathbf{R}</span> or closed disks in <span class="math inline">\mathbf{C}</span>; these follow in general from the “Heine-Borel” theorem which says that closed and bounded subsets of <span class="math inline">\mathbf{R}^{n}</span> are compact. In <a href="http://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf">Equivalence of Norms</a> Conrad describes the proof of a more general result that all norms on a finite dimensional vector space over a complete valued field, meaning a complete field together with a choice of norm that induces the complete topology).</p>
+<p><strong>Remark:</strong> The key part of this result is the compactness of the closed intervals in <span class="math inline">\mathbf{R}</span> or closed disks in <span class="math inline">\mathbf{C}</span>; these follow in general from the “Heine-Borel” theorem which says that closed and bounded subsets of <span class="math inline">\mathbf{R}^{n}</span> are compact. In <a href="http://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf">Equivalence of Norms</a> Conrad describes the proof of a more general result that all norms on a finite dimensional vector space over a complete valued field (meaning a complete field together with a choice of norm that induces the complete topology) are equivalent.</p>
 <p><strong>Corollary:</strong> Let <span class="math inline">V</span> and <span class="math inline">W</span> be finite dimensional vector spaces (over <span class="math inline">\mathbf{R}</span> or <span class="math inline">\mathbf{C}</span>). Then all linear maps from <span class="math inline">V</span> to <span class="math inline">W</span> are continuous in any norm topology. A set which is bounded in one norm is bounded in any norm; similarly for open, closed, or compact.</p>
 </section>
 <section id="the-infinite-dimensional-case-is-different" class="level3">
@@ -722,9 +724,56 @@ A\|v\|_{\mathrm{sup}}\le \rho(v)\le B\|v\|_{\mathrm{sup}}.
 <figcaption><span class="math inline">\|f\|_{\mathrm{sup}}=a</span> and <span class="math inline">\|f\|_{L^{1}}=1</span>.</figcaption>
 </figure>
 </div>
-
-
 </section>
+</section>
+<section id="matrix-norms" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-norms">Matrix Norms</h2>
+<p>Now we turn to norms on matrices and linear maps. The first thing to observe is that the space <span class="math inline">M_{n\times m}(F)</span> of <span class="math inline">n\times m</span> matrices over <span class="math inline">F=\mathbf{R}</span> or <span class="math inline">F=\mathbf{C}</span> is a copy of <span class="math inline">F^{nm}</span>. Thus we have the supnorm <span class="math inline">\|\cdot\|_{\mathrm{sup}}</span> and the <span class="math inline">\ell^{2}</span> or Euclidean norm <span class="math inline">\|\cdot\|</span> on matrices, and all norms on the space of matrices are equivalent.</p>
+<p>Let’s focus on the case of linear maps <span class="math inline">L:F^{n}\to F^{n}</span> where <span class="math inline">F=\mathbf{R}</span> or <span class="math inline">F=\mathbf{C}</span>. Equivalently, we work with square matrices <span class="math inline">A\in M_{n}(F)</span>. Write <span class="math inline">\rho_{A}(v)=\|Av\|</span>. In general, the function <span class="math inline">\rho_{A}(v)=\|Av\|</span> (here <span class="math inline">\|\cdot\|</span> is the <span class="math inline">\ell^{2}</span> norm in the standard basis of <span class="math inline">F^{n}</span>) is a seminorm on <span class="math inline">F^{n}</span>. Indeed:</p>
+<ul>
+<li><span class="math inline">\rho_{A}(v)=\|A(v)\|\ge 0</span>.</li>
+<li><span class="math inline">\rho_{A}(v+w)=\|A(v+w)\| = \|A(v)+A(w)\|\le \|A(v)\|+\|A(w)\| = \rho_{A}(v)+\rho_{A}(w)</span></li>
+<li><span class="math inline">\rho_{A}(av) = \|A(av)\| = \|aA(v)\|=|a|\|A(v)\|= |a|\rho_{A}(v)</span>.</li>
+</ul>
+<p>As we pointed out above, this means that <span class="math inline">\rho_{A}</span> is a continuous function and there is a constant <span class="math inline">C\ge 0</span> such that <span class="math display">
+\rho_{A}(v)\le C\|v\|
+</span> for all <span class="math inline">v</span>.</p>
+<p><strong>Proposition:</strong> There is a unique real number <span class="math inline">b\ge 0</span> such that <span class="math inline">\rho_{A}(v)\le b\|v\|</span> for all <span class="math inline">v</span>, and, <span class="math inline">b</span> is minimal with this property.</p>
+<p><strong>Proof:</strong> Our estimate above shows that <span class="math inline">\rho_{A}</span> is bounded on the sphere <span class="math inline">\{v: \|v\|=1\}</span>, which, as we saw above, is compact. Therefore <span class="math inline">\rho_{A}</span> attains its maximum and we set <span class="math inline">b</span> to be this maximum.</p>
+<p><strong>Definition:</strong> The operator norm <span class="math inline">\|A\|</span> of <span class="math inline">A</span> is the number <span class="math inline">b</span> defined as the maximum <span class="math display">
+\|A\| = \sup_{v: \|v\|=1} \|A(v)\|
+</span></p>
+<p><strong>Proposition:</strong> The operator norm is in fact a norm on <span class="math inline">M_{n}(F)</span> when <span class="math inline">F=\mathbf{R}</span> or <span class="math inline">F=\mathbf{C}</span>. Further, if <span class="math inline">B\in M_{n}(F)</span>, then:</p>
+<ul>
+<li><span class="math inline">\|AB\|\le \|A\|\|B\|</span></li>
+<li><span class="math inline">\|A^{*}\|=\|A\|</span></li>
+<li><span class="math inline">\|A^{*}A\|=\|AA^{*}\| = \|A\|^2</span> and therefore <span class="math inline">\|A\|=\sqrt{\|A^{*}A\|}=\sqrt{\|AA^{*}\|}</span></li>
+<li><span class="math inline">|\langle Av, w\rangle|\le \|A\|\|v\|\|w\|</span></li>
+<li>The operator norm is equivalent to the sup norm on <span class="math inline">M_{n}(F)</span> with <span class="math display">
+\|A\|_{\mathrm{sup}}\le \|A\|\le n\sqrt{n}\|A\|_{\mathrm{sup}}.
+</span></li>
+</ul>
+<p>In particular the operator norm gives <span class="math inline">M_{n}(F)</span> the topology of <span class="math inline">F^{n^{2}}</span>, so <span class="math inline">M_{n}(F)</span> is complete relative to the operator norm (Cauchy sequences relative to the operator norm converge).</p>
+<p><strong>Proof:</strong> This is Theorem 3.4 of <a href="https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf">Computing the Norm of a Matrix</a> To check a few, first notice that: <span class="math display">
+\|ABv\|\le \|A\|\|Bv\|\le \|A\|\|B\|\|v\|
+</span> Since <span class="math inline">\|AB\|</span> is the smallest <span class="math inline">C</span> such that <span class="math inline">\|(AB)v\|\le C\|v\|</span> we have <span class="math inline">\|AB\|\le \|A\|\|B\|</span>.</p>
+<p>The relationship with the adjoint <span class="math inline">A^{*}</span> (the conjugate transpose, which is just <span class="math inline">A^{\top}</span> when <span class="math inline">F=\mathbf{R}</span>) is more interesting. We have <span class="math display">
+\|Av\|^2 = \langle Av, Av\rangle = \langle v, A^{*}Av\rangle \le \|v\|\|A^{*}Av\|
+</span> by the Cauchy–Schwarz inequality. This tells us that <span class="math display">
+\|A\|^2\le \|A^{*}A\|\le \|A^{*}\|\|A\|
+</span> The result we seek is obvious if <span class="math inline">A=0</span>. If <span class="math inline">A</span> is not zero, divide both sides by <span class="math inline">\|A\|</span> to get <span class="math display">
+\|A\|\le \|A^{*}\|.
+</span></p>
+<p>Applying this to <span class="math inline">A^{*}</span> in place of <span class="math inline">A</span> (and using <span class="math inline">(A^{*})^{*}=A</span>) gives <span class="math display">
+\|A^{*}\|\le \|A\|
+</span></p>
+<p>so they are equal. But then <span class="math display">
+\|A\|^2\le \|A^{*}A\|\le \|A^{*}\|\|A\|\le \|A\|^2
+</span></p>
+<p>so <span class="math inline">\|A\|^{2}=\|A^{*}A\|</span> and similarly <span class="math inline">\|A\|^{2}=\|AA^{*}\|</span>.</p>
+<p>Also, <span class="math inline">|\langle Av, w\rangle|\le \|Av\|\|w\|\le \|A\|\|v\|\|w\|</span> from the Cauchy–Schwarz inequality.</p>
+
+
 </section>
 
 </main> <!-- /main -->
