@@ -48,28 +48,26 @@ $$
 
 ## Low Rank Approximations
 
-Our goal is to apply the SVD to study the problem of approximating a linear map $L:A\to B$ by a map of lower rank.  As we will see later,
+Our goal is to apply the SVD to study the problem of approximating a linear map $L:\R^m\to\R^n$ by a map of lower rank.  As we will see later,
 such approximations have important applications in data science and other applied fields.  To make this notion precise, we will need
 to clarify how we measure the distance between linear maps.  Before diving into that question, though, let's indicate how the SVD plays a role. 
 
-One way to interpret the singular value decomposition is that allows one to write a linear transformation $L:A\to B$ where $A$ is $m$-dimensional and $B$ is $n$-dimensional as a sum of rank
-one maps.  This follows from the fact that, if we choose bases and let $X$ be the matrix of $L$, then the reduced SVD tells us that
+One way to interpret the singular value decomposition is that allows one to write a linear transformation $L:\R^m\to\R^n$ as a sum of rank
+one maps.  This follows from the fact that, if we let $X$ be the matrix of $L$, then the reduced SVD tells us that
 $$
 X = \sum_{i=1}^{r} \sigma_{i}u_{i}v_{i}^{\top}.
 $$
 
 Here the $u_{i}$ and $v{i}$ are the columns of $U$ and $V$ respectively and the $\sigma_{i}$ are the singular values. 
 Each $u_{i}v_{i}^{\top}$ is an $(n\times 1) \times (1\times m)$ matrix product, yielding an $n\times m$ matrix. It is rank one
-since its range is spanned by $u_{i}$. 
-
-The terms are linearly independent since we know $X$ has rank $r$. 
+since its range is spanned by $u_{i}$.
 
 Now consider the matrices obtained by truncating this sum:
 $$
 X_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{\top}
 $$
 
-Here $X_{k}$ has rank $k$.  Our goal is to show that, in a precise sense, $X_{k}$ is the "best" rank $k$ approximation to the original matrix $X$ (and the corresponding linear map is the best rank $k$ approximation to the original linear map). 
+Here (assuming the $\sigma_{i}>0$ for $i\le k$), $X_{k}$ has rank $k$.  Our goal is to show that, in a precise sense, $X_{k}$ is the best approximation to the original matrix $X$ among all matrices of rank at most $k$ (and, after choosing orthonormal bases, the same holds for linear maps between inner product spaces). 
 
 ## Norms on Vectors, Matrices and Linear Maps
 
@@ -77,17 +75,16 @@ Our discussion in this section follows Conrad's expository note [Computing the N
 
 ### Vector Space Norms
 
-Let $V$ be a (real or complex) vector space.  A norm on $V$
-is a function $\|\cdot\|\to \mathbf{R}$ such that:
+Let $V$ be a vector space over $F$, where $F$ is either $\R$ or $\C$.  A norm on $V$
+is a function $\|\cdot\|:V\to \R$ such that:
 
 - $\|v\|\ge 0$ for all $v\in V$, with equality if and only if $v=0$. 
 - $\|v+w\|\le \|v\|+\|w\|$ for all $v,w\in V$.
-- $\|cv\|=|c|\|v\|$ for $c\in\R$ and $v\in V$.
+- $\|cv\|=|c|\|v\|$ for $c\in F$ and $v\in V$.
 
-If the first condition is relaxed to just $\|v\|\ge 0$ for all $v\in V$, then $\|\cdot\|$ is called a seminorm.
+A function satisfying all these conditions except the requirement that $\|v\|=0$ only if $v=0$ is called a seminorm.
 
-The second condition (the triangle inequality) means that the function $d(v,w)=\|v-w\|$
-is a *metric* on $V$ in the sense of topology.
+These properties guarantee that the  function $d(v,w)=\|v-w\|$ satisfies the definition of a *metric* on $V$.
 
 There are two key examples of such norms.
 
@@ -102,32 +99,35 @@ $$
 \|v\| = \sqrt{\langle v,v\rangle}.
 $$
 
-The fact that satisfies the triangle inequality is a consequence of the Cauchy-Schwartz inequality
+The fact that this satisfies the triangle inequality is a consequence of the Cauchy--Schwarz inequality (proved [here](../Week5-6/W05.1.qmd#cauchy-schwarz) for real vector spaces):
 
 $$
 |\langle v,w\rangle|\le \sqrt{\langle v,v\rangle \langle w,w\rangle}.
 $$
 
-(see the [Cauchy--Schwarz inequality](../Week5-6/W05.1.qmd#cauchy-schwarz)).
 
-In particular
+Explicitly, 
 $$\begin{aligned}
-\|v-w\|^2&=\langle v-w, v-w\rangle \\
- &= \langle v,v\rangle -2\langle v,w\rangle +\langle w,w\rangle \\
+\|v+w\|^2&=\langle v+w, v+w\rangle \\
+ &= \langle v,v\rangle +2\mathrm{Re}\langle v,w\rangle +\langle w,w\rangle \\
 &\le \|v\|^2+2|\langle v,w\rangle| +\|w\|^2 \\
-&\le (\|v\|+\|w\|)^2
+&\le \|v\|^2 + 2\|v\|\|w\| + \|w\|^2\  \quad\text{(by Cauchy--Schwarz)}\\
+&= (\|v\|+\|w\|)^2
 \end{aligned}
 $$
+and taking the square root of both sides gives the triangle inequality. 
 
-If the inner product is the "standard one" then the $\ell^{2}$ norm gives the standard Euclidean distance in the standard coordinates. 
+If the inner product is the usual dot product, then the $\ell^{2}$ norm gives the  Euclidean distance. 
 
-**Definition:** Two norms $\|\cdot\|_1$ and $\|\cdot\|_{2}$ on a vector space are *equivalent* if they are each bounded by a constant multiple of the other.  In other words, the two norms are equivalent if there are constants $A$ and $B$ such that
+**Definition:** Two norms $\|\cdot\|_1$ and $\|\cdot\|_{2}$ on a vector space are *equivalent* if they are each bounded by a constant multiple of the other.  In other words, the two norms are equivalent if there are constants $A>0$ and $B>0$ such that
 $$
 A\|v\|_{1}\le \|v\|_{2}\le B\|v\|_{1}
 $$
 for all $v\in V$. 
 
-**Remark:** The metric topologies on $V$ coming from equivalent norms are the same, so, for example, if a series converges with respect to one norm, it converges with respect to every equivalent norm.  In a finite dimensional space, the "unit ball" $\|v\|_{\mathrm{sup}}\le 1$ is compact since it is topologically the product of closed intervals; hence the unit ball is compact under any norm equivalent to the sup norm. 
+***Remark:** Two equivalent norms on a finite dimensional vector space $V$ determine the same family of open sets on $V$ and the same family of bounded sets on $V$.
+Any closed and bounded subset of $V$  it lies inside a product of closed intervals or disks, and is therefore compact; 
+the same is true for any norm equivalent to the sup norm.  In particular the unit ball $\|v\|\le 1$ is compact for any such norm. 
 
 **Proposition:** The sup norm and the $\ell^{2}$ norm for the standard inner product are equivalent.
 
