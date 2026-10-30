@@ -311,3 +311,89 @@ $$
 so $\|A\|^{2}=\|A^{*}A\|$ and similarly $\|A\|^{2}=\|AA^{*}\|$.
 
 Also, $|\langle Av, w\rangle|\le \|Av\|\|w\|\le \|A\|\|v\|\|w\|$ from the Cauchy--Schwarz inequality.
+
+**Proposition:** If $A=A^{*}$ then
+$$
+\|A\| = \max_{\|v\|=1} |\langle Av, v\rangle| = \max \{|\lambda|\}
+$$
+where the max is over the set of eigenvalues of $A$. 
+
+**Proof:** One direction is proved above:
+$$
+|\langle Av, v\rangle|\le \|A\|\|v\|^2\le \|A\|
+$$
+when $\|v\|=1$.  For the other direction, consider the function
+$R:\F^{n}-\{0\}\to \R$:
+$$
+R(v) = \frac{|\langle Av, v\rangle|}{\|v\|^2}
+$$
+This function is called the "Rayleigh Quotient" for the map $A$.
+It is a continuous function of $v$, and since the unit sphere
+$\|v\|=1$ is compact, it attains a maximum on that sphere. Let $m>0$
+be that maximum.  Since the Rayleigh quotient $R$ is scale invariant in $v$,
+we have
+$$
+R(v)\ge m
+$$
+for all nonzero $v$.  In other words
+$$
+$|\langle Av, v\rangle| \le m \|v\|^2
+$$
+for all nonzero $v$.  Since it's also true when $v=0$, it's true on all
+of $\F^{n}$. 
+
+Now given $v,w\in\F^{n}$, we have the "polarization identity":
+$$
+\langle A(v+w),v+w\rangle -\langle A(v-w),v-w\rangle = 2(\langle Av,w\rangle
++\langle Aw,v \rangle) = 4\langle Av,w\rangle 
+$$
+where we have used that $A=A^{*}$.  Thus
+$$
+4|\langle Av, w\rangle \le m(\|v+w\|^2 + \|v-w\|^2).
+$$
+But 
+$$
+\|v+w\|^2 + \|v-w\|^2 = 2(\|v\|^2+\|w\|^2).
+$$
+
+so, for all $v,w$ we have: 
+
+$$
+\|\langle Av,w\rangle\| \le m\|v\|\|w\|
+$$
+
+If $w=Av$, this implies
+$$
+|\langle Av, Av\rangle| =\|Av\|^2 \le m\|v\|\|Av\|
+$$
+
+so, finally,
+
+$$
+\|Av\|\le m\|v\|
+$$
+which means $\|A\|\le m$ and, combined with our earlier estimate,
+that $\|A\|=m$. 
+
+Now suppose that $u$ is a unit vector such that $\langle Au,u\rangle=\|A\|$. 
+Let $\alpha=\|A\|$.  Consider
+$$
+\|Au-\alpha u\|^2 = \|Au\|^2-2\alpha (Au,u)+\alpha^2 =\|Au\|^2-\alpha^2
+$$
+
+using $A=A*$ as usual.  Since $\|Au\|^2\le \|A\|^2$, we have
+
+$$
+0 \le \|Au-\alpha u\|^2 \le \|A\|^2-\alpha^2 = 0
+$$
+so 
+$$
+Au=\alpha u
+$$
+
+Thus $\|A\|$ is an eigenvalue of $A$, and it must be the largest such.
+
+**Corollary:** Let $A$ be any $n\times n$ matrix.  Then $\|A\|$ is
+the largest singular value of $A$.
+
+**Proof:** We know that $\|A\|^2 = \|A^*A\|$.
