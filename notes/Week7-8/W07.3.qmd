@@ -48,7 +48,7 @@ X = U_{r}\Sigma_{r}V_{r}^{\top}.
 $$
 
 
-## Low Rank Approximations
+## Low Rank Approximation -- Overview
 
 
 One way to interpret the singular value decomposition is that it allows one to write a linear transformation $L:\R^m\to\R^n$ as a sum of rank
@@ -239,6 +239,8 @@ Notice that we can find a continuous function whose sup-norm is arbitrarily larg
 Now we turn to norms on matrices and linear maps.  The first thing to observe is that the space $M_{n\times m}(F)$ of $n\times m$ matrices over $F=\R$ or $F=\C$ is a copy of $F^{nm}$. Thus we have  the supnorm $\supnorm{\cdot}$ and the $\ell^{2}$ or Euclidean
 norm  $\|\cdot\|$ on matrices, and all norms on the space of matrices are equivalent.
 
+### The operator (or spectral) norm
+
 Let's focus on the case of linear maps $L:F^{n}\to F^{n}$ where $F=\R$ or $F=\C$.  Equivalently, we work with 
 square matrices $A\in M_{n}(F)$. Write $\rho_{A}(v)=\|Av\|$. In general,
 the function $\rho_{A}(v)=\|Av\|$ (here $\|\cdot\|$ is the $\ell^{2}$ norm in the standard basis of $F^{n}$)
@@ -260,7 +262,7 @@ for all $v$.
 **Proof:** Our estimate above shows that $\rho_{A}$ is bounded on the sphere $\{v: \|v\|=1\}$, which, as we saw above, is compact.
 Therefore $\rho_{A}$ attains its maximum and we set $b$ to be this maximum.
 
-**Definition:** The operator norm $\|A\|$ of $A$ is the number $b$ defined as the maximum 
+**Definition:** The operator norm (also called the *spectral norm*) $\|A\|$ of $A$ is the number $b$ defined as the maximum 
 $$
 \|A\| = \sup_{v: \|v\|=1} \|A(v)\|
 $$
@@ -404,8 +406,8 @@ the largest singular value of $A$.
 
 **Proof:** We know that $\|A\|^2 = \|A^{*}A\|$.
 
-The norm $\|A\|$ given by the largest of the singular values
-of $A$ is called the *spectral norm.*
+The fact that $\|A\|$ is the largest singular value of $A$ explains
+why the operator norm is also called the spectral norm. 
 
 Next, we consider a closely related norm, the Frobenius norm.
 
@@ -446,3 +448,13 @@ is the sum of the eigenvalues of this matrix.
 From this result we see that the spectral and Frobenius norms are closely related;
 the spectral norm considers the largest singular value, while the Frobenius norm considers them all. 
 
+## Low Rank Approximation - Proofs
+
+Now we return to the question of low-rank approximation.  Specifically,
+given an $n\times m$ matrix $A$ with entries in $\R$, we want to
+identify the matrix $A_{k}$ of rank $k$ such that either:
+
+- $\|A-A_{k}\|\le \|A-B\|$ for all $B$ of rank $k$ or less, or
+- $\frobnorm{A-A_{k}}\le \frobnorm{A-B}$ for all $B$ of rank $k$ or less. 
+
+It turns out that the answer to both questions is the same. 
