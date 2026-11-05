@@ -456,5 +456,58 @@ identify the matrix $A_{k}$ of rank $k$ such that either:
 
 - $\|A-A_{k}\|\le \|A-B\|$ for all $B$ of rank $k$ or less, or
 - $\frobnorm{A-A_{k}}\le \frobnorm{A-B}$ for all $B$ of rank $k$ or less. 
+ 
+It turns out that the answer to both questions is the same, and its the one alluded
+to at the beginning of this section.   Assume for simplicity that $n\le m$ and
+let
+$$
+A = U\Sigma V^{\top}
+$$
+be the SVD for $A$ with singular values $\sigma_{1}\ge \sigma_{2}\ge\cdots\ge\sigma_{n}\ge 0$.
+As above, for $k\le n$,  we set
+$$
+A_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{\top}
+$$
+where $u_{i}$ and $v_{i}$ are the columns of $U$ and $V$ respectively.
 
-It turns out that the answer to both questions is the same. 
+First we consider the approximation problem for the spectral norm (or operator norm).
+Let $B$ be any $n\times m$ matrix of rank at most $k$.  
+
+We can find an $n\times k$
+matrix $X$ and an $m\times k$ matrix $Y$ so that $B=XY^{\top}$.  To see why this is true,
+pick $k$ columns $b_{1},\ldots, b_{k}$ of $B$ that span the column space of $B$ and let $X$ be the $n\times k$
+matrix with these as columns.  Each column $b_{j}$, for  $1\le j\le m$, of $B$ is a linear combination
+$$
+b_{j} = \sum_{r=1}^{k} y_{jr}b_{r}.
+$$
+Let $Y$ be the $m\times k$ matrix $(y_{jr})$.  Then $XY^{\top}=B$. 
+
+Now $Y^{\top}$ is a $k\times m$ matrix.  The matrix $V$ from the SVD is an $m\times m$
+orthogonal matrix.  Then $Y^{\top}V$ is a $k\times m$ matrix; since $k\le m$, it has
+rank at most $k$ and therefore, if $v_{1},\ldots, v_{k+1}$ are the first $k+1$ columns
+of $V$, then there is a nonzero  linear combination of $Y^{\top}v_{1},\ldots, Y^{\top}v_{k+1}$
+that is equal to zero:
+$$
+\sum_{i=1}^{k+1} \gamma_{i}Y^{\top}v_{i} = Y^{\top}(\sum_{i=1}^{k+1} \gamma_{i}v_{i}) = 0.
+$$
+
+Let $w'=\sum_{i=1}^{k+1}\gamma_{i}v_{i}$ and let $w=w'/\|w'\|$.  Since the $v_{i}$
+are orthonormal, this amounts to scaling so that $\sum_{i=1}^{k+1}\gamma_{i}^2=1$.
+
+Finally, we have
+$$
+\|A-B\|^2\|w\|^2\ge \|(A-B)w\|^2 = \|Aw\|^2 = \|U\Sigma V^{\top}\sum \gamma_{i} v_{i}\|^2.
+$$
+Now $V^{\top}\sum \gamma_{i}v_{i}$ is an $m\times 1$ vector $h$ whose entries in positions
+$1$ through $k+1$ are the $\gamma_{i}$ and whose remaining entries are zero.  Then
+$\Sigma h$ has entries $\sigma_{i}\gamma_{i}$ in positions $0$ through $k+1$ and zeros elsewhere.
+Finally, since $U$ is orthogonal, 
+$$
+\|U\Sigma h\|^2=\|\Sigma h\|^2 = \sum_{i=1}^{k+1} \sigma_{i}^2\gamma_{i}^2.
+$$
+At last we have
+$$
+\|A-B\|^2\ge \sum_{i=1}^{k+1} \sigma_{i}^2\gamma_{i}^2\ge \sigma_{k+1}^2.
+$$
+
+Since we know that $\|A-A_k\|^2=\sigma_{k+1}^2$ we have our approximation result.
