@@ -4,6 +4,7 @@ title: "The Singular Value Decomposition"
 \newcommand{\R}{\mathbf{R}}
 \newcommand{\C}{\mathbf{C}}
 \newcommand{\supnorm}[1]{\|#1\|_{\mathrm{sup}}}
+\newcommand{\frobnorm}[1]{\|#1\|_{F}}
 
 The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices.
 Let $X$ be a real $n\times m$ matrix and let $D=X^{\top}X$.  $D$ is a positive semidefinite symmetric $m\times m$ matrix and so we can apply
@@ -86,7 +87,7 @@ a $512\times 512$ matrix $A$ of integers between $0$ and $255$.
 
 ![The `ascent` image from `scipy.datasets`.](images/ascent.png){width=60%}
 
-We can compute the SVD of $A=U\Sigma V^{\top}$ where $U$ and $V$ are $512\times 512$ orthogonal matrices and $\Sigma$ is the diagonal
+We can compute the SVD of $A=U\Sigma V^{\top}$ where $U$ annd $V$ are $512\times 512$ orthogonal matrices and $\Sigma$ is the diagonal
 matrix of singular values of $A$.  The largest of these is around $45500$ while the smallest is $.15$.  To see them more clearly,
 we plot them here on a logarithmic scale.
 
@@ -318,12 +319,14 @@ $$
 $$
 where the max is over the set of eigenvalues of $A$. 
 
-**Proof:** One direction is proved above:
+**Proof:** We showed above that
 $$
 |\langle Av, v\rangle|\le \|A\|\|v\|^2\le \|A\|
 $$
-when $\|v\|=1$.  For the other direction, consider the function
-$R:\F^{n}-\{0\}\to \R$:
+when $\|v\|=1$.  
+
+Now consider the function
+$R:F^{n}-\{0\}\to \R$:
 $$
 R(v) = \frac{|\langle Av, v\rangle|}{\|v\|^2}
 $$
@@ -333,23 +336,23 @@ $\|v\|=1$ is compact, it attains a maximum on that sphere. Let $m>0$
 be that maximum.  Since the Rayleigh quotient $R$ is scale invariant in $v$,
 we have
 $$
-R(v)\ge m
+R(v)\le  m
 $$
 for all nonzero $v$.  In other words
 $$
-$|\langle Av, v\rangle| \le m \|v\|^2
+|\langle Av, v\rangle| \le m \|v\|^2
 $$
 for all nonzero $v$.  Since it's also true when $v=0$, it's true on all
-of $\F^{n}$. 
+of $F^{n}$. 
 
-Now given $v,w\in\F^{n}$, we have the "polarization identity":
+Now given $v,w\in F^{n}$, we have the "polarization identity":
 $$
 \langle A(v+w),v+w\rangle -\langle A(v-w),v-w\rangle = 2(\langle Av,w\rangle
 +\langle Aw,v \rangle) = 4\langle Av,w\rangle 
 $$
 where we have used that $A=A^{*}$.  Thus
 $$
-4|\langle Av, w\rangle \le m(\|v+w\|^2 + \|v-w\|^2).
+4|\langle Av, w\rangle| \le m(\|v+w\|^2 + \|v-w\|^2).
 $$
 But 
 $$
@@ -359,7 +362,7 @@ $$
 so, for all $v,w$ we have: 
 
 $$
-\|\langle Av,w\rangle\| \le m\|v\|\|w\|
+|\langle Av,w\rangle| \le m\|v\|\|w\|
 $$
 
 If $w=Av$, this implies
@@ -372,8 +375,11 @@ so, finally,
 $$
 \|Av\|\le m\|v\|
 $$
-which means $\|A\|\le m$ and, combined with our earlier estimate,
-that $\|A\|=m$. 
+which means that, for all $v$,  
+$$
+|\langle Av, v\rangle| \le |A\|\le m=\sup_{\|v\|=1}\frac{\|\langle Av, v\rangle\|}{\|v\|^2}
+$$
+which forces $\|A\|=m$.
 
 Now suppose that $u$ is a unit vector such that $\langle Au,u\rangle=\|A\|$. 
 Let $\alpha=\|A\|$.  Consider
@@ -396,4 +402,47 @@ Thus $\|A\|$ is an eigenvalue of $A$, and it must be the largest such.
 **Corollary:** Let $A$ be any $n\times n$ matrix.  Then $\|A\|$ is
 the largest singular value of $A$.
 
-**Proof:** We know that $\|A\|^2 = \|A^*A\|$.
+**Proof:** We know that $\|A\|^2 = \|A^{*}A\|$.
+
+The norm $\|A\|$ given by the largest of the singular values
+of $A$ is called the *spectral norm.*
+
+Next, we consider a closely related norm, the Frobenius norm.
+
+### The Frobenius Norm
+
+When $F=\C$ or $F=\R$, the space of $n\times m$ matrices $M_{n\times m}(F)$ is a copy of
+$F^{nm}$ -- it's just vectors of length $nm$ written out in an array of size $n\times m$.
+The Frobenius norm is just the $\ell^{2}$ norm on this space.  If $A=(a_{ij})$
+then
+$$
+\frobnorm{A}^2 = \sum |a_{ij}|^2.
+$$
+
+**Lemma:** The inner product on $M_{n\times m}(F)$ defined by
+$$
+\langle (a_{ij}),(b_{ij})\rangle =\sum a_{ij}\overline{b_{ij}}
+$$
+can be computed as
+$$
+\langle A,B\rangle = \trace{A^{\top}\overline{B}}.
+$$
+In particular
+$$
+\frobnorm{A} = \trace{A^{\top}\overline{A}}.
+$$
+
+**Proof:** This follows from a calculation with the formula for matrix multiplication.
+
+**Proposition:** The Frobenius norm of $A$ is the sum of the squares
+of the singular values $\sigma_{1}\ge \cdots \ge sigma_{r}$ of $A$:
+$$
+\frobnorm{A} = \sqrt{\sum_{i=1}^{r} \sigma_{i}^2}.
+$$
+
+**Proof:** This follows from the fact that the trace of $A^{\top}\overline{A}$
+is the sum of the eigenvalues of this matrix. 
+
+From this result we see that the spectral and Frobenius norms are closely related;
+the spectral norm considers the largest singular value, while the Frobenius norm considers them all. 
+
