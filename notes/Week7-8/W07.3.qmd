@@ -5,6 +5,8 @@ title: "The Singular Value Decomposition"
 \newcommand{\C}{\mathbf{C}}
 \newcommand{\supnorm}[1]{\|#1\|_{\mathrm{sup}}}
 \newcommand{\frobnorm}[1]{\|#1\|_{F}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\trace}[1]{\mathrm{trace}(#1)}
 
 The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices.
 Let $X$ be a real $n\times m$ matrix and let $D=X^{\top}X$.  $D$ is a positive semidefinite symmetric $m\times m$ matrix and so we can apply
@@ -141,7 +143,7 @@ $$
 Explicitly, 
 $$\begin{aligned}
 \|v+w\|^2&=\langle v+w, v+w\rangle \\
- &= \langle v,v\rangle +2\mathrm{Re}\langle v,w\rangle +\langle w,w\rangle \\
+ &= \langle v,v\rangle +2\re\langle v,w\rangle +\langle w,w\rangle \\
 &\le \|v\|^2+2|\langle v,w\rangle| +\|w\|^2 \\
 &\le \|v\|^2 + 2\|v\|\|w\| + \|w\|^2 \quad\text{(by Cauchy--Schwarz)}\\
 &= (\|v\|+\|w\|)^2
@@ -360,95 +362,106 @@ $$
 when $\|v\|=1$.  
 
 Now consider the function
-$R:F^{n}-\{0\}\to \R$:
+$R:F^{n}\setminus\{0\}\to \R$:
 $$
-R(v) = \frac{|\langle Av, v\rangle|}{\|v\|^2}
+R(v) = \frac{|\langle Av, v\rangle|}{\|v\|^2}.
 $$
-This function is called the "Rayleigh Quotient" for the map $A$.
+This function is called the "Rayleigh quotient" for the map $A$.
 It is a continuous function of $v$, and since the unit sphere
-$\|v\|=1$ is compact, it attains a maximum on that sphere. Let $m>0$
+$\|v\|=1$ is compact, it attains a maximum on that sphere. Let $m\ge 0$
 be that maximum.  Since the Rayleigh quotient $R$ is scale invariant in $v$,
 we have
 $$
 R(v)\le  m
 $$
-for all nonzero $v$.  In other words
+for all nonzero $v$.  In other words,
 $$
 |\langle Av, v\rangle| \le m \|v\|^2
 $$
-for all nonzero $v$.  Since it's also true when $v=0$, it's true on all
-of $F^{n}$. 
+for all nonzero $v$.  Since this is also true when $v=0$, it is true on all
+of $F^{n}$.
+
+Since $\|A\|\ge R(v)$ for all nonzero $v$, we also
+have $\|A\|\ge m$. 
 
 Now given $v,w\in F^{n}$, we have the "polarization identity":
-$$
-\langle A(v+w),v+w\rangle -\langle A(v-w),v-w\rangle = 2(\langle Av,w\rangle
-+\langle Aw,v \rangle) = 4\langle Av,w\rangle 
+$$\begin{aligned}
+\langle A(v+w),v+w\rangle -\langle A(v-w),v-w\rangle &= 2(\langle Av,w\rangle
++\langle Aw,v \rangle)\\
+& = 4\re\langle Av,w\rangle 
+\end{aligned}
 $$
 where we have used that $A=A^{*}$.  Thus
 $$
-4|\langle Av, w\rangle| \le m(\|v+w\|^2 + \|v-w\|^2).
+4|\re\langle Av, w\rangle| \le m(\|v+w\|^2 + \|v-w\|^2).
 $$
-But 
+But
 $$
 \|v+w\|^2 + \|v-w\|^2 = 2(\|v\|^2+\|w\|^2).
 $$
+If we restrict to unit vectors $v$ and $w$, we have
+$$
+|\re\langle Av,w\rangle| \le m,
+$$
+and then, by scaling, that
+$$
+|\re\langle Av,w\rangle| \le m\|v\|\|w\|
+$$
+for all $v,w\in F^{n}$.
 
-so, for all $v,w$ we have: 
+If $w=Av$, then since $\langle Av,Av\rangle=\|Av\|^2$ is real, we have
+$$
+|\langle Av, Av\rangle| =\|Av\|^2 \le m\|v\|\|Av\|.
+$$
+This is trivial if $Av=0$; otherwise, dividing by $\|Av\|$ gives
+$$
+\|Av\|\le m\|v\|.
+$$
+This means that $\|A\|\le m$. 
+Putting the pieces together gives $\|A\|=m$. 
 
+To conclude, we have to make the connection with eigenvalues. 
+Suppose that $u$ is a unit vector such that $|\langle Au,u\rangle|=\|A\|$. 
+Let $\alpha=\langle Au,u\rangle = \pm\|A\|$.  Consider
 $$
-|\langle Av,w\rangle| \le m\|v\|\|w\|
+\|Au-\alpha u\|^2 = \|Au\|^2-2\alpha \langle Au,u\rangle+\alpha^2 =\|Au\|^2-\alpha^2,
 $$
+where we use that
+$\alpha$ is real 
+and $A=A^{*}$.
 
-If $w=Av$, this implies
+Now, since $\|u\|=1$, we know that 
+$\|Au\|^2\le \|A\|^2$ and therefore
 $$
-|\langle Av, Av\rangle| =\|Av\|^2 \le m\|v\|\|Av\|
+0 \le \|Au-\alpha u\|^2 \le \|A\|^2-\alpha^2 = 0,
 $$
-
-so, finally,
-
+so
 $$
-\|Av\|\le m\|v\|
-$$
-which means that, for all $v$,  
-$$
-|\langle Av, v\rangle| \le |A\|\le m=\sup_{\|v\|=1}\frac{\|\langle Av, v\rangle\|}{\|v\|^2}
-$$
-which forces $\|A\|=m$.
-
-Now suppose that $u$ is a unit vector such that $\langle Au,u\rangle=\|A\|$. 
-Let $\alpha=\|A\|$.  Consider
-$$
-\|Au-\alpha u\|^2 = \|Au\|^2-2\alpha (Au,u)+\alpha^2 =\|Au\|^2-\alpha^2
-$$
-
-using $A=A*$ as usual.  Since $\|Au\|^2\le \|A\|^2$, we have
-
-$$
-0 \le \|Au-\alpha u\|^2 \le \|A\|^2-\alpha^2 = 0
-$$
-so 
-$$
-Au=\alpha u
+Au=\alpha u.
 $$
 
-Thus $\|A\|$ is an eigenvalue of $A$, and it must be the largest such.
+Thus $\pm \|A\|$ is an eigenvalue of $A$. Since
+the equation $\|Av\|=|\lambda|\|v\|$ holds for every eigenvalue $\lambda$ and eigenvector $v$, 
+every eigenvalue satisfies $|\lambda|\le \|A\|. Therefore  $\|A\|=\max_{i}\{|\lambda_{i}|\}$
 
 **Corollary:** Let $A$ be any $n\times n$ matrix.  Then $\|A\|$ is
 the largest singular value of $A$.
 
-**Proof:** We know that $\|A\|^2 = \|A^{*}A\|$.
+**Proof:** We know that $\|A\|^2 = \|A^{*}A\|$. The matrix
+$A^{*}A$ is self-adjoint and has nonnegative eigenvalues that are the squares of the singular values of $A$.
+The largest such is $\sigma_{1}^2$,
+so $\|A\|=\sigma_{1}$.
 
 The fact that $\|A\|$ is the largest singular value of $A$ explains
 why the operator norm is also called the spectral norm. 
 
-Next, we consider a closely related norm, the Frobenius norm.
+
 
 ### The Frobenius Norm
 
-When $F=\C$ or $F=\R$, the space of $n\times m$ matrices $M_{n\times m}(F)$ is a copy of
-$F^{nm}$ -- it's just vectors of length $nm$ written out in an array of size $n\times m$.
-The Frobenius norm is just the $\ell^{2}$ norm on this space.  If $A=(a_{ij})$
-then
+Recall from our introduction that 
+the Frobenius norm is just the $\ell^{2}$ norm on the
+$nm$-dimensional space $M_{n\times m}(F)$.  If $A=(a_{ij})$ is in this space, then
 $$
 \frobnorm{A}^2 = \sum |a_{ij}|^2.
 $$
@@ -459,23 +472,23 @@ $$
 $$
 can be computed as
 $$
-\langle A,B\rangle = \trace{A^{\top}\overline{B}}.
+\langle A,B\rangle = \trace{B^{*}A}.
 $$
-In particular
+In particular,
 $$
-\frobnorm{A} = \trace{A^{\top}\overline{A}}.
+\frobnorm{A}^2 = \trace{A^{*}A}.
 $$
 
 **Proof:** This follows from a calculation with the formula for matrix multiplication.
 
-**Proposition:** The Frobenius norm of $A$ is the sum of the squares
-of the singular values $\sigma_{1}\ge \cdots \ge sigma_{r}$ of $A$:
+**Proposition:** The Frobenius norm of $A$ is the square root of the sum of the squares
+of the singular values $\sigma_{1}\ge \cdots \ge \sigma_{r}$ of $A$:
 $$
 \frobnorm{A} = \sqrt{\sum_{i=1}^{r} \sigma_{i}^2}.
 $$
 
-**Proof:** This follows from the fact that the trace of $A^{\top}\overline{A}$
-is the sum of the eigenvalues of this matrix. 
+**Proof:** This follows from the fact that $\trace{A^{*}A}$
+is the sum of the eigenvalues of $A^{*}A$, which are the $\sigma_{i}^{2}$ (together with zeros).
 
 From this result we see that the spectral and Frobenius norms are closely related;
 the spectral norm considers the largest singular value, while the Frobenius norm considers them all. 
