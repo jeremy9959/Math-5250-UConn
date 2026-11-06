@@ -8,7 +8,7 @@ title: "The Singular Value Decomposition"
 
 The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices.
 Let $X$ be a real $n\times m$ matrix and let $D=X^{\top}X$.  $D$ is a positive semidefinite symmetric $m\times m$ matrix and so we can apply
-the spectral theorem to find an orthogonal matrix $P$ such that $P^{\top}DP=\Lambda$ where $\Lambda$ is diagonal.
+the spectral theorem to find an orthogonal matrix $P$ such that $P^{\top}DP=\Lambda$ where $\Lambda$ is diagonal with entries $\Lambda_{ii}=\lambda_{i}$. 
 Put another way:
 $$
 DP = P\Lambda
@@ -20,16 +20,16 @@ Let's set $A=XP$.  Then $A^{\top}A=P^{\top}X^{\top}XP=\Lambda$.   This means tha
 
 From a geometric point of view, the entries of each row of $A$ are the coordinates of the corresponding row of $X$ in the orthonormal basis given by the columns of $P$. 
 
-If $D$ is positive definite, so all the $\lambda_{i}>0$, then we can normalize the columns of $A$ by setting $A_{1}=A\Lambda^{-1/2}$.  This happens if and only if $X$ has rank $m\le n$. 
+If $D$ is positive definite, so all the $\lambda_{i}>0$, then we can normalize the columns of $A$ by setting $A_{1}=A\Lambda^{-1/2}$.  This happens if and only if $X$ has rank $m$ (which forces m\le n$.)
 In this case $A_{1}^{\top}A_{1}=\Lambda^{-1/2}\Lambda\Lambda^{-1/2}=I$.
 So $A_{1}$ has orthonormal columns. 
 
-If $D$ has zero eigenvalues, then the matrix $A$ will have zero columns corresponding to the zero eigenvalues. So let's order the eigenvalues in descending order of size and suppose $\lambda_{r+1},\ldots, \lambda_{m}$ are all zero.  In this case, the rank of $X$ is $r$. Drop columns $r+1,\ldots, m$ from $A$, yielding $A_{r}$, and "shrink" $\Lambda$ so that it is $r\times r$
+If $D$ has zero eigenvalues, then the matrix $A$ will have zero columns corresponding to the zero eigenvalues. So let's rearrange things to order the eigenvalues in descending order of size and suppose $\lambda_{r+1},\ldots, \lambda_{m}$ are all zero.  In this case, the rank of $X$ is $r$. Drop columns $r+1,\ldots, m$ from $A$, yielding $A_{r}$, and "shrink" $\Lambda$ so that it is $r\times r$
 with the nonzero eigenvalues on the diagonal, yielding $\Lambda_{r}$.  Let $A_{1}=A_{r}\Lambda_{r}^{-1/2}$ as before. This $A_{1}$ is $n\times r$ and has orthonormal
 columns. 
 
 Complete the columns of $A_{1}$ to obtain an orthogonal $n\times n$ matrix $U$ by adding orthonormal columns $u_{r+1},\ldots, u_{n}$.
-Let $\sigma_{i}=\sqrt{\lambda_{i}}$ for $i=1,\ldots,m$ and let $\Sigma$ be the $n\times m$ "diagonal" matrix constructed from these "singular values."
+Let $\sigma_{i}=\sqrt{\lambda_{i}}$ for $i=1,\ldots,m$ and let $\Sigma$ be the $n\times m$ "diagonal" matrix constructed from these "singular values." (If $n<m$, then only $n$ elements will "fit" in the diagonal on $\Sigma$.  In that case  $\sigma_{i}=0$ for $m\ge i>n$ and we just drop these zeros.) 
 
 The key point now is that, in the product $U\Sigma$, the first $r$ columns are multiplied by the nonzero $\sqrt{\lambda_{i}}$, so 
 the first $r$ columns of $U\Sigma$ give the matrix $A_{1}\Lambda_{r}^{1/2}$, which agrees with the first $r$ columns of $A=XP$. 
@@ -40,9 +40,10 @@ $$
 XP = U\Sigma
 $$
 
-or $X=U\Sigma V^{\top}$ where $U$ is orthogonal, $\Sigma$ is $n\times m$ "diagonal", and $V=P$ is $m\times m$ orthogonal. This is called the *singular value decomposition* of $X$.  The diagonal entries of $\Sigma$ are called the singular values and are uniquely determined. 
+or $X=U\Sigma V^{\top}$ where $U$ is orthogonal, $\Sigma$ is $n\times m$ "diagonal", and $V=P$ is $m\times m$ orthogonal. This is called the *singular value decomposition* of $X$.  The diagonal entries of $\Sigma$ are called the singular values and the set of singular values
+is uniquely determined. 
 
-The "reduced" form of this decomposition keeps only the first $r$ columns of $U$, leaving an $n\times r$ matrix $U_{r}$; the first $r$ diagonal entries of $\Sigma$, leaving an $r\times r$ diagonal matrix $\Sigma_{r}$; and the first $r$ columns of $P$, yielding an $m\times r$ matrix $V_{r}$.   Then
+The "reduced" form of this decomposition keeps only the first $r$ columns of $U$, leaving an $n\times r$ matrix $U_{r}$; the first $r$ diagonal entries of $\Sigma$, leaving an $r\times r$ diagonal matrix $\Sigma_{r}$; and the first $r$ columns of $V$, yielding an $m\times r$ matrix $V_{r}$.   Then
 $$
 X = U_{r}\Sigma_{r}V_{r}^{\top}.
 $$
@@ -51,8 +52,7 @@ $$
 ## Low Rank Approximation -- Overview
 
 
-One way to interpret the singular value decomposition is that it allows one to write a linear transformation $L:\R^m\to\R^n$ as a sum of rank
-one maps.  This follows from the fact that, if we let $X$ be the matrix of $L$, then the reduced SVD tells us that
+One way to interpret the singular value decomposition is that it allows one to write a linear transformation $L:\R^m\to\R^n$ as a sum of rank-one maps.  This follows from the fact that, if we let $X$ be the matrix of $L$, then the reduced SVD tells us that
 $$
 X = \sum_{i=1}^{r} \sigma_{i}u_{i}v_{i}^{\top}.
 $$
@@ -61,15 +61,15 @@ Here the $u_{i}$ and $v_{i}$ are the columns of $U$ and $V$ respectively and the
 Each $u_{i}v_{i}^{\top}$ is an $(n\times 1) \times (1\times m)$ matrix product, yielding an $n\times m$ matrix. It is rank one
 since its range is spanned by $u_{i}$.
 
-Now consider the matrices obtained by truncating this sum:
+Now consider the matrices obtained by truncating this sum (where as usual the $\sigma_{i}$ are in descending order):
 $$
-X_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{\top}
+X_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{\top}.
 $$
 
-Here (assuming the $\sigma_{i}>0$ for $i\le k$), $X_{k}$ has rank $k$.  We will show that $X_{k}$ is the best approximation to the original matrix $X$ among all matrices of rank at most $k$ (and, after choosing orthonormal bases, the same holds for linear maps between inner product spaces). We will look at a variety of characterizations of "best," but for many applications the most useful one is that $X_{k}$ minimizes the squared error between the original $X=(x_{ij})$ and
+Here (assuming the $\sigma_{i}>0$ for $i\le k$), $X_{k}$ has rank $k$.  We will show that $X_{k}$ is a  best approximation to the original matrix $X$ among all matrices of rank at most $k$ (and, after choosing orthonormal bases, the same holds for linear maps between inner product spaces). We will look at a variety of characterizations of "best," but for many applications the most useful one is that $X_{k}$ minimizes the squared error between the original $X=(x_{ij})$ and
 matrices $B=(b_{ij})$ of rank at most $k$:
 $$
-E(B,X) =\sum_{i,j} (x_{ij}-b_{ij})^2.
+\frobnorm{X-B}^2 =\sum_{i,j} (x_{ij}-b_{ij})^2.
 $$
 
 
@@ -79,23 +79,23 @@ One application of the technique of "low-rank approximation" is to the problem o
 red, green, and blue intensity of that pixel.
 
 We consider the gray-scale case for simplicity.  Suppose $A$ is a matrix representing an $n\times n$ image, consisting of $n^{2}$
-integers between $0$ and $255$.  As $k$ increases, the rank $k$ approximations $A_{k}$ get close to $A$ and so represent "nearly" the same image.
-However, notice that storing $A$ requires $n^{2}$ numbers while storing $A_{k}$ requires $2kn+k=k(2n+1)$.
+integers between $0$ and $255$.  As $k$ increases, the rank-$k$ approximations $A_{k}$ get closer to $A$ and so represent "nearly" the same image.
+However, notice that storing $A$ requires $n^{2}$ numbers while storing $A_{k}$ requires $2kn+k=k(2n+1)$.  For $k$ small relative to $n$ this is a considerable savings. 
 
 For example, the following image, taken from the `scipy.datasets` package, is a $512\times 512$ gray-scale image represented by 
 a $512\times 512$ matrix $A$ of integers between $0$ and $255$.
 
 ![The `ascent` image from `scipy.datasets`.](images/ascent.png){width=60%}
 
-We can compute the SVD of $A=U\Sigma V^{\top}$ where $U$ annd $V$ are $512\times 512$ orthogonal matrices and $\Sigma$ is the diagonal
-matrix of singular values of $A$.  The largest of these is around $45500$ while the smallest is $.15$.  To see them more clearly,
+We can compute the SVD  $U\Sigma V^{\top}$ of $A$ where $U$ and $V$ are $512\times 512$ orthogonal matrices and $\Sigma$ is the diagonal
+matrix of singular values of $A$.  The largest of these is around $45500$ while the smallest is $0.15$.  To see them more clearly,
 we plot them here on a logarithmic scale.
 
 ![Singular values of the `ascent` image (log scale).](images/svd-ascent-singular-values.png){width=70%}
 
-As you can see, there are a relatively small number of "big ones" larger than $10^3$; then many between $10^3$ and $1$; and then a few more on the tail that are less than $1$.
+As you can see, there is a relatively small number of "big ones" larger than $10^3$; then many between $10^3$ and $1$; and then a few more on the tail that are less than $1$.
 
-This figure shows the effect of low rank approximation on the image.
+This figure shows the effect of low-rank approximation on the image.
 
 
 ![Rank 5, 20, and 50 SVD approximations of the `ascent` image.](images/svd-ascent-ranks.png){width=100%}
@@ -103,7 +103,7 @@ This figure shows the effect of low rank approximation on the image.
 
 ## Norms on Vectors, Matrices and Linear Maps
 
-Our discussion in this section follows, in part,  Conrad's expository note [Computing the Norm of a Matrix](https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf)
+Our discussion in this section follows, in part,  Conrad's expository note [Computing the Norm of a Matrix](https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf).
 
 ### Vector Space Norms
 
@@ -112,7 +112,7 @@ is a function $\|\cdot\|:V\to \R$ such that:
 
 - $\|v\|\ge 0$ for all $v\in V$, with equality if and only if $v=0$. 
 - $\|v+w\|\le \|v\|+\|w\|$ for all $v,w\in V$.
-- $\|cv\|=|c|\|v\|$ for $c\in F$ and $v\in V$.
+- $\|cv\|=|c|\|v\|$ for all $c\in F$ and $v\in V$.
 
 A function satisfying all these conditions except the requirement that $\|v\|=0$ only if $v=0$ is called a seminorm.
 
@@ -122,7 +122,7 @@ There are two key examples of such norms.
 
 1. The "sup" norm relative to a basis.   Choose a basis $e_{1},\ldots, e_{n}$ for $V$.  Then define
 $$
-\|\sum_{i=1}^{n} a_{i}e_{i}\|_{\mathrm{sup}} = \sup\{|a_1|,\ldots, |a_{n}|\}.
+\left\|\sum_{i=1}^{n} a_{i}e_{i}\right\|_{\mathrm{sup}} =\sup\{|a_1|,\ldots, |a_{n}|\}.
 $$
 
 2. The "Euclidean" norm or $\ell^{2}$ norm defined by an inner product $\langle \cdot,\cdot\rangle$:
@@ -143,7 +143,7 @@ $$\begin{aligned}
 \|v+w\|^2&=\langle v+w, v+w\rangle \\
  &= \langle v,v\rangle +2\mathrm{Re}\langle v,w\rangle +\langle w,w\rangle \\
 &\le \|v\|^2+2|\langle v,w\rangle| +\|w\|^2 \\
-&\le \|v\|^2 + 2\|v\|\|w\| + \|w\|^2\  \quad\text{(by Cauchy--Schwarz)}\\
+&\le \|v\|^2 + 2\|v\|\|w\| + \|w\|^2 \quad\text{(by Cauchy--Schwarz)}\\
 &= (\|v\|+\|w\|)^2
 \end{aligned}
 $$
@@ -151,35 +151,41 @@ and taking the square root of both sides gives the triangle inequality.
 
 If the inner product is the usual dot product, then the $\ell^{2}$ norm gives the  Euclidean distance. 
 
-**Definition:** Two norms $\|\cdot\|_1$ and $\|\cdot\|_{2}$ on a vector space are *equivalent* if they are each bounded by a constant multiple of the other.  In other words, the two norms are equivalent if there are constants $A>0$ and $B>0$ such that
+**Definition:** Two norms $\|\cdot\|_a$ and $\|\cdot\|_{b}$ on a vector space $V$ are *equivalent* if they are each bounded by a constant multiple of the other.  In other words, the two norms are equivalent if there are constants $A>0$ and $B>0$ such that
 $$
-A\|v\|_{1}\le \|v\|_{2}\le B\|v\|_{1}
+A\|v\|_{a}\le \|v\|_{b}\le B\|v\|_{a}
 $$
 for all $v\in V$. 
 
 
-In fact, on a finite dimensional vector space $V$ over $\R$ or $\C$, all norms on $V$ are equivalent.  
+In fact, on a finite-dimensional vector space $V$ over $\R$ or $\C$, all norms on $V$ are equivalent.  
 
-**Proposition:** All norms on $V=\R^{n}$ or $\C^{n}$ are equivalent.
+**Proposition:** All norms on a finite-dimensional vector space $V$ over $\R$ or $\C$ are equivalent.
 
-To prove this, we will show that any norm is in fact equivalent to the sup norm for the standard basis.  Let $\rho:V\to\R$ 
-be any norm.  Let $e_{1},\ldots, e_{n}$ be the standard basis of $V$.  Then if $v=\sum_{i=1}^{n} a_{i}e_{i}$, we have
+**Proof:** Choose a basis $e_1,\ldots, e_n$ for $V$
+and let 
+$$
+\supnorm{\sum_{i=1}^{n} a_{i}e_{i}} = \sup_{i}\{|a_{i}|\}.
+$$
+
+Now let $\rho$ be any other norm on $V$.     
+Then if $v=\sum_{i=1}^{n} a_{i}e_{i}$, we have
 
 $$\begin{aligned}
-\rho(v) &= \rho(\sum_{i=1}^{n} a_{i}e_{i}) \\
+\rho(v) &= \rho\left(\sum_{i=1}^{n} a_{i}e_{i}\right) \\
 &\le \sum_{i=1}^{n} |a_{i}|\rho(e_{i}) \\
-&\le (\sum_{i=1}^{n}\rho(e_{i}))\|v\|_{\mathrm{sup}}
+&\le \left(\sum_{i=1}^{n}\rho(e_{i})\right)\supnorm{v}
 \end{aligned}
 $$
 
-Therefore $\rho(v)\le B\|v\|_{\mathrm{sup}}$ with $B=\sum_{i=1}^{n}\rho(e_{i})$. 
+Therefore $\rho(v)\le B\supnorm{v}$ with $B=\sum_{i=1}^{n}\rho(e_{i})$. 
 
 **Lemma:** The norm $\rho$ is a continuous function in the metric topology given by $\supnorm{\cdot}$.
 
 **Proof:** Given $\epsilon>0$, we need to find $\delta$ so that $\supnorm{x-y}<\delta$ implies $|\rho(x)-\rho(y)|<\epsilon$.
 By the triangle inequality, $|\rho(x)-\rho(y)|\le\rho(x-y)\le B\supnorm{x-y}$, so we can take $\delta=\epsilon/B$ (any $\delta$ works if $B=0$).
 
-**Remark:** The proof so far works when $\rho$ is only a seminorm, not just a norm, but the next part needs $\rho(v)=0$ only when $v=0$. 
+**Remark:** The proof so far works even when $\rho$ is only a seminorm, not just a norm, but the next part needs $\rho(v)=0$ only when $v=0$. 
 
 **Lemma:** The unit sphere $\{v : \supnorm{v}= 1\}$ in $V$ is compact.
 
@@ -191,7 +197,7 @@ of the open ball in the closed ball, so it's closed; as a closed subset of a com
 Now consider the norm as a function on the unit sphere. As a continuous function on a compact set, it attains its minimum $A$.
 And since $\rho$ is nonzero on the unit sphere, $A>0$.  It follows that, for $v\neq 0$,
 $$
-\rho(\frac{v}{\supnorm{v}})\ge A
+\rho\left(\frac{v}{\supnorm{v}}\right)\ge A
 $$
 and therefore
 $$
@@ -200,46 +206,52 @@ $$
 
 Putting it all together we get
 $$
-A\supnorm{v}\le \rho(v)\le B\supnorm{v}.
+A\supnorm{v}\le \rho(v)\le B\supnorm{v}
 $$
 as desired. 
 
 **Remark:** The key part of this result is the compactness of the closed intervals in $\R$ or closed disks in $\C$; these
-follow in general from the "Heine-Borel" theorem which says that closed and bounded subsets of $\R^{n}$ are compact. In
-[Equivalence of Norms](http://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf) Conrad describes the proof of 
-a more general result that all norms on a finite dimensional vector space over a complete valued field (meaning a complete field together with a choice of norm that induces the complete topology) are equivalent.
+follow in general from the "Heine--Borel" theorem which says that closed and bounded subsets of $\R^{n}$ are compact. In
+[Equivalence of Norms](https://kconrad.math.uconn.edu/blurbs/gradnumthy/equivnorms.pdf) Conrad describes the proof of 
+a more general result that all norms on a finite-dimensional vector space over a complete valued field (meaning a  field together with a choice of norm that induces a complete topology) are equivalent.
 
-**Corollary:** Let $V$ and $W$ be  finite dimensional vector spaces (over $\R$ or $\C$). Then all linear maps from $V$ to $W$
+**Corollary:** Let $V$ and $W$ be finite-dimensional vector spaces (over $\R$ or $\C$). Then all linear maps from $V$ to $W$
 are continuous in any norm topology.  A set which is bounded in one norm is bounded in any norm; similarly for open, closed,
 or compact.   
 
-### The infinite dimensional case is different
+### The infinite-dimensional case is different
 
-It is very definitely *false* that all norms on an infinite dimensional real or complex vector space
+It is very definitely *false* that all norms on an infinite-dimensional real or complex vector space
 are equivalent.
 
 For example, consider the space 
 $C([0,1])$ of continuous functions on the interval $[0,1]$.  Define two norms on this space.  The first
 is the "sup norm":
 $$
-\|f\| = \sup_{0\le x\le 1} |f(x)|
+\supnorm{f} = \sup_{0\le x\le 1} |f(x)|,
 $$
 and the second is the $L^{1}$ norm:
 $$
-\|f\| = \int_{0}^{1} |f(x)|dx.
+\|f\|_{L^{1}}= \int_{0}^{1} |f(x)|\,dx.
 $$
 
-Notice that we can find a continuous function whose sup-norm is arbitrarily large, while its $L^{1}$ norm remains one, by looking at a function with a big "spike" but total area 1 as shown here.
+Notice that we can find a continuous function whose sup norm is arbitrarily large, while its $L^{1}$ norm remains $1$, by looking at a function with a big "spike" but total area $1$ as shown below.
+Therefore there is no constant $B$ such that
+$$
+\supnorm{f}\le B\|f\|_{L^{1}}
+$$
+for all $f$, and therefore these two norms aren't equivalent. 
 
 ![$\|f\|_{\mathrm{sup}}=a$ and $\|f\|_{L^{1}}=1$.](images/spike-function.png){width=70%}
 
 
 ## Matrix Norms
 
-Now we turn to norms on matrices and linear maps.  The first thing to observe is that the space $M_{n\times m}(F)$ of $n\times m$ matrices over $F=\R$ or $F=\C$ is a copy of $F^{nm}$. Thus we have  the supnorm $\supnorm{\cdot}$ and the $\ell^{2}$ or Euclidean
-norm  $\|\cdot\|$ on matrices, and all norms on the space of matrices are equivalent.
+Now we turn to norms on matrices and linear maps.  The first thing to observe is that the space $M_{n\times m}(F)$ of $n\times m$ matrices over $F=\R$ or $F=\C$ is a copy of $F^{nm}$. Therefore we have  the supnorm $\supnorm{\cdot}$ on matrices. In addition, we have 
+the "Frobenius norm" $\frobnorm{\cdot}$ which is just the  $\ell^{2}$ or Euclidean
+norm.   Our earlier work on equivalence of norms applies and therefore  all norms on the space of matrices are equivalent.
 
-### The operator (or spectral) norm
+### The operator norm
 
 Let's focus on the case of linear maps $L:F^{n}\to F^{n}$ where $F=\R$ or $F=\C$.  Equivalently, we work with 
 square matrices $A\in M_{n}(F)$. Write $\rho_{A}(v)=\|Av\|$. In general,
@@ -257,14 +269,34 @@ $$
 $$
 for all $v$.  
 
-**Proposition:** There is a unique real number $b\ge 0$ such that $\rho_{A}(v)\le b\|v\|$ for all $v$, and, $b$ is minimal with this property.  
+**Proposition:** There is a smallest real number $b\ge 0$ such that $\rho_{A}(v)\le b\|v\|$ for all $v$. 
 
-**Proof:** Our estimate above shows that $\rho_{A}$ is bounded on the sphere $\{v: \|v\|=1\}$, which, as we saw above, is compact.
-Therefore $\rho_{A}$ attains its maximum and we set $b$ to be this maximum.
-
-**Definition:** The operator norm (also called the *spectral norm*) $\|A\|$ of $A$ is the number $b$ defined as the maximum 
+**Proof:** 
+The sphere $\{v: \|v\|=1\}$ in $F^{n}$ is closed and bounded, hence compact. 
+Since $\rho_{A}$ is continuous,
+it attains its maximum and we set $b$ to be this maximum.
+Then
 $$
-\|A\| = \sup_{v: \|v\|=1} \|A(v)\|
+\rho_{A}(v/\|v\|)\le b 
+$$
+so 
+$$
+\rho_{A}(v)\le b\|v\|
+$$
+for any $v\not=0$ (and trivially for $v=0$ as well. )
+
+Let $v_{0}$ be the point at which $\rho_{A}(v_{0})=b$.
+Then if $\rho_{A}(v)\le c\|v\|$ for all $v$, substituting
+$v=v_{0}$ we get
+$$
+b\le c.
+$$
+
+So we have found our $b$. 
+
+**Definition:** The operator norm  $\|A\|$ of $A$ is the number $b$ defined as the maximum 
+$$
+\|A\| = \max_{v: \|v\|=1} \|A(v)\|.
 $$
 
 
@@ -284,38 +316,38 @@ In particular the operator norm gives $M_{n}(F)$ the topology of $F^{n^{2}}$, so
 **Proof:** This is Theorem 3.4 of [Computing the Norm of a Matrix](https://kconrad.math.uconn.edu/blurbs/linmultialg/matrixnorm.pdf)
 To check a few, first notice that:
 $$
-\|ABv\|\le \|A\|\|Bv\|\le \|A\|\|B\|\|v\|
+\|ABv\|\le \|A\|\|Bv\|\le \|A\|\|B\|\|v\|.
 $$
-Since $\|AB\|$ is the smallest $C$ such that $\|(AB)v\|\le C\|v\|$ we have $\|AB\|\le \|A\|\|B\|$.
+Since $\|AB\|$ is the smallest $C$ such that $\|(AB)v\|\le C\|v\|$ for all $v$,  we have $\|AB\|\le \|A\|\|B\|$.
 
 The relationship with the adjoint $A^{*}$ (the conjugate transpose, which is just $A^{\top}$ when $F=\R$) is more interesting. We have
 $$
-\|Av\|^2 = \langle Av, Av\rangle = \langle v, A^{*}Av\rangle \le \|v\|\|A^{*}Av\|
+\|Av\|^2 = \langle Av, Av\rangle = \langle v, A^{*}Av\rangle \le \|v\|\|A^{*}Av\|\le \|A^{*}A\|\|v\|^2
 $$
-by the Cauchy--Schwarz inequality. This tells us that
+by the Cauchy--Schwarz inequality and the definition of the $\|A^{*}A\|$. Taking the maximum over unit vectors $v$,
+and using $\|AB\|\le \|A\|\|B\|$, gives
 $$
-\|A\|^2\le \|A^{*}A\|\le \|A^{*}\|\|A\|
+\|A\|^2\le \|A^{*}A\|\le \|A^{*}\|\|A\|.
 $$
-The result we seek is obvious if $A=0$.  If $A$ is not zero, divide both sides by $\|A\|$ to get
+
+Clearly $\|A^{*}\|=\|A\|$ if $A=0$.   If $A$ is not zero, divide $\|A\|^2\le \|A^{*}\|\|A\|$ by $\|A\|$ to get
 $$
 \|A\|\le \|A^{*}\|.
 $$
 
 Applying this to $A^{*}$ in place of $A$ (and using $(A^{*})^{*}=A$) gives
 $$
-\|A^{*}\|\le \|A\|
+\|A^{*}\|\le \|A\|,
 $$
-
 so they are equal.  But then
 $$
-\|A\|^2\le \|A^{*}A\|\le \|A^{*}\|\|A\|\le \|A\|^2
+\|A\|^2\le \|A^{*}A\|\le \|A^{*}\|\|A\| = \|A\|^2,
 $$
+so $\|A\|^{2}=\|A^{*}A\|$. Applying this to $A^{*}$ gives $\|A^{*}\|^{2}=\|AA^{*}\|$, and since $\|A^{*}\|=\|A\|$ we get $\|A\|^{2}=\|AA^{*}\|$.
 
-so $\|A\|^{2}=\|A^{*}A\|$ and similarly $\|A\|^{2}=\|AA^{*}\|$.
+Also, $|\langle Av, w\rangle|\le \|Av\|\|w\|\le \|A\|\|v\|\|w\|$ by the Cauchy--Schwarz inequality and the definition of $\|A\|$.
 
-Also, $|\langle Av, w\rangle|\le \|Av\|\|w\|\le \|A\|\|v\|\|w\|$ from the Cauchy--Schwarz inequality.
-
-**Proposition:** If $A=A^{*}$ then
+**Proposition:** If $A=A^{*}$, then
 $$
 \|A\| = \max_{\|v\|=1} |\langle Av, v\rangle| = \max \{|\lambda|\}
 $$
@@ -458,7 +490,10 @@ identify the matrix $A_{k}$ of rank $k$ such that either:
 - $\frobnorm{A-A_{k}}\le \frobnorm{A-B}$ for all $B$ of rank $k$ or less. 
  
 It turns out that the answer to both questions is the same, and its the one alluded
-to at the beginning of this section.   Assume for simplicity that $n\le m$ and
+to at the beginning of this section.   For this proof we follow the argument laid out
+in the Wikipedia article [Low Rank Approximation](https://en.wikipedia.org/wiki/Low-rank_approximation).
+
+Assume for simplicity that $n\le m$ and
 let
 $$
 A = U\Sigma V^{\top}
@@ -511,3 +546,65 @@ $$
 $$
 
 Since we know that $\|A-A_k\|^2=\sigma_{k+1}^2$ we have our approximation result.
+
+Now let's look at the Frobenius norm.  Following the same line of argument as above,
+we need to show that if $B=XY^{\top}$ where $X$ and $Y$ are $n\times k$ and $m\times k$
+matrices respectively, then 
+$$
+\frobnorm{A-A_{k}}^2=\sum _{k+1}^{n} \sigma_{i}^2 u_{i}v_{i}^{\top}\le frobnorm{A-B}^2. 
+$$
+
+We first prove the following lemma.
+
+**Lemma:** Suppose that $A=A'+A''$.  Then for any $i,j\ge 1$, we have
+$$
+\sigma_{i+j-1}(A)\le \sigma_{i}(A')+\sigma_{j}(A''). 
+$$
+
+**Proof:** Notice that $\sigma_{1}(A-A_{i})=\sigma_{i}(A)$ for any $A$ where
+$A_{i}$ is the rank $i$ approximation.  Therefore
+$$\begin{aligned}
+\sigma_{i}(A')+\sigma_{j}(A'') &= \sigma_{1}(A'-A'_{i-1}) + \sigma_{1}(A''-A''_{j-1}) \\
+&\ge \sigma_{1}(A+A''-A'_{i-1}-A''_{j-1}) = \sigma_{1}(A-A'_{i-1}-A''_{j-1}) \\
+\end{aligned}
+$$
+where we've used the triangle inequality for the spectral norm. 
+
+Next notice that the rank of $A'_{i-1}+A''_{j-1}$ is at most $i+j-2$.  This is because, given matrices $R$ and $S$, the  column space of $R+S$ is contained in the sum
+of the column spaces of $R$ and $S$. 
+
+It follows that 
+$$
+\sigma_{1}(A-A'_{i-1}-A''_{j-1})\ge \sigma_{i+j-1}(A)
+$$
+
+This proves the lemma. 
+
+Now apply this lemma to $A=(A-B_{k})+B_{k}$ for any $i\ge 1$ and $j=k+1$.
+Then
+$$
+\sigma_{i}(A-B_{k})+\sigma_{k+1}(B_{k})\ge \sigma_{i+k}(A).
+$$
+
+But $\sigma_{k+1}(B_{k})=0$ since $B_{k}$ has rank $k$.  Therefore
+$$
+\sigma_{i}(A-B_{k})\ge \sigma_{i+k}(A)
+$$
+and 
+$$\begin{aligned}
+\frobnorm{A-B_{k}}^2 &= \sum_{i=1}^{n} \sigma_{i}(A-B_{k})^2 \\
+&\ge \sum_{i=k+1}^{n}\sigma_{i}(A)^2 \\
+&=\frobnorm{A-A_{k}}^2 \\
+\end{aligned}
+$$
+
+This gives us the approximation result for the Frobenius norm. 
+
+## Min-max and Max-min characterization of Singular Values
+
+For our last topic in this discussion of the singular value decomposition,
+we establish two results relating the Rayleigh quotient to the singular values.
+
+
+
+
