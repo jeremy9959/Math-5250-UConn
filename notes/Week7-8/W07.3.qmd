@@ -9,7 +9,7 @@ title: "The Singular Value Decomposition"
 \newcommand{\trace}[1]{\mathrm{trace}(#1)}
 
 The Singular Value Decomposition (SVD) is a version of the spectral theorem that applies to non-square matrices.
-Let $X$ be a  $n\times m$ matrix over $F$, where $F=\R$ of $\C$, and let $D=X^{*}X$.  $D$ is a positive semidefinite hermitian  $m\times m$ matrix and so we can apply
+Let $X$ be an  $n\times m$ matrix over $F$, where $F=\R$ or $\C$, and let $D=X^{*}X$.  $D$ is a positive semidefinite hermitian  $m\times m$ matrix and so we can apply
 the spectral theorem to find a unitary matrix $P$ such that $P^{*}DP=\Lambda$ where $\Lambda$ is diagonal with entries $\Lambda_{ii}=\lambda_{i}$. The $\lambda_{i}$ are nonnegative real numbers. 
 
 Put another way:
@@ -179,7 +179,7 @@ $$\begin{aligned}
 &\le \sum_{i=1}^{n} |a_{i}|\rho(e_{i}) \\
 &\le \left(\sum_{i=1}^{n}\rho(e_{i})\right)\supnorm{v}
 \end{aligned}
-$$
+$$ 164549 
 
 Therefore $\rho(v)\le B\supnorm{v}$ with $B=\sum_{i=1}^{n}\rho(e_{i})$. 
 
@@ -513,34 +513,63 @@ A = U\Sigma V^{*}
 $$
 be the SVD for $A$ with singular values $\sigma_{1}\ge \sigma_{2}\ge\cdots\ge\sigma_{n}\ge 0$.
 
-As above, for $k<n$,  we set
+
+
+  
+
+In preparation for our approximation result,  we prove the following lemmas.
+
+**Lemma A:** For $1\le j\le n$, let $v_1,\ldots, v_{j}$ be the first $j$ columns of $V$ (the first $j$ "right singular vectors").  If $w=\sum_{i=1}^{j} \gamma_{i}v_{i}$ is a unit vector, then 
+$$
+\|Aw\|\ge \sigma_{j}.
+$$
+
+**Proof:**
+Note that since the $v_{i}$ are orthonormal, the fact that $\|w\|^2=1$ means
+$\sum_{i=1}^{j} |\gamma_{i}|^2=1$.  Now $V^{*}w$ is an $m\times 1$ vector
+whose first $j$ entries are the $\gamma_{i}$ and whose remaining entries are zero. 
+Then $\Sigma V^{*}w$ is an $n\times 1$ matrix $h$ whose entries are $\sigma_{i}\gamma_{i}$ for $i=1,\ldots, j$ followed by zeros for $i=j+1,\ldots, m$. Finally, since $U$ is unitary, 
+$$\begin{aligned}
+\|Aw\|^2 &= \|U\Sigma V^{*}w\|^2 \\
+&= \|Uh\|^2 \\ 
+&= \sum_{i=1}^{j} \sigma_{i}^2|\gamma_{i}|^2 \\
+&\ge \min_{i=1}^{j}\{\sigma_{j}^2\}\sum |\gamma_{i}|^2 \\
+&\get \sigma_{j}^2.
+\end{aligned}
+$$
+
+**Lemma B:** Set $\sigma_{i}=0$ for $n<i\le m$. If $v_{j},\ldots, v_{m}$ are the last $m-j+1$ columns 
+of $V$, and $w$ is a unit vector in their span, then
+$$
+\|Aw\|\le \sigma_{j}
+$$
+
+**Proof:** The argument is essentially the same as for the previous lemma.
+
+
+
+
+**Proposition:** As before, for $k<n$,  set
 $$
 A_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{*},
 $$
-where $u_{i}$ and $v_{i}$ are the columns of $U$ and $V$ respectively. 
+where $u_{i}$ and $v_{i}$ are the columns of $U$ and $V$ respectively. Then
+$$
+\|A-B\|\ge \|A-A_{k}\|=\sigma_{k+1}
+$$
+for all matrices $B$ of rank at most $k$. 
 
-First we consider the approximation problem for the spectral norm (or operator norm).
-Let $B$ be any $n\times m$ matrix of rank at most $k$.  
+
+**Proof:** 
 
 We will construct a unit vector $w$ in the span of $v_{1},\ldots, v_{k+1}$ such that $Bw=0$.
-Consider the space $S$ which is the span of the first $k+1$ columns of $V$.  This space is $k+1$ dimensional since the columns are orthonormal.  Since $B$ has rank at most $k$, ghe image  $B(S)\subset F^{n}$ has dimension at most $k$,  and so (by rank--nullity) there must be a nonzero vector $w'$ in $S\cap \ker{B}$.  Normalizing this vector gives  $w=\sum_{i=1}^{k+1} \gamma_{i}v_{i}\in F^{m}$ with $\sum |\gamma_{i}|^2=1$. 
+Consider the space $S$ which is the span of the first $k+1$ columns of $V$.  This space is $(k+1)$-dimensional since the columns are orthonormal.  Since $B$ has rank at most $k$, the image  $B(S)\subset F^{n}$ has dimension at most $k$,  and so (by rank--nullity) there must be a nonzero vector $w'$ in $S\cap \ker{B}$.  Normalizing this vector gives  $w$.
 
 Now
 $$
-\|A-B\|^2\|w\|^2\ge \|(A-B)w\|^2 = \|Aw\|^2 = \|U\Sigma V^{*}\sum \gamma_{i} v_{i}\|^2.
+\|A-B\|^2\|w\|^2\ge \|(A-B)w\|^2 = \|Aw\|^2 \ge \sigma_{k+1}^2
 $$
-
-Now $V^{*}\sum \gamma_{i}v_{i}$ is an $m\times 1$ vector $h$ whose entries in positions
-$1$ through $k+1$ are the $\gamma_{i}$ and whose remaining entries are zero.  Then
-$\Sigma h$ has entries $\sigma_{i}\gamma_{i}$ in positions $1$ through $k+1$ and zeros elsewhere.
-Finally, since $U$ is unitary,
-$$
-\|U\Sigma h\|^2=\|\Sigma h\|^2 = \sum_{i=1}^{k+1} \sigma_{i}^2|\gamma_{i}|^2.
-$$
-At last, since $\sum_{i=1}^{k+1}|\gamma_{i}|^2=\|w\|^2=1$ and $\sigma_{i}\ge\sigma_{k+1}$ for $i\le k+1$, we have
-$$
-\|A-B\|^2\ge \sum_{i=1}^{k+1} \sigma_{i}^2|\gamma_{i}|^2\ge \sigma_{k+1}^2.
-$$
+by our Lemma A with $j=k+1$. 
 
 Since we know that $\|A-A_k\|^2=\sigma_{k+1}^2$, we have our approximation result.
 
@@ -612,5 +641,57 @@ This gives us the approximation result for the Frobenius norm.
 
 
 
+### The Courant minimax principle
 
+The Courant minimax principle is an elegant way to express the
+singular values of $A$.
 
+**Proposition:** For $1\le k\le n$ and subspaces $S$ and $T$ in $F^{m}$ we have:
+$$
+\sigma_{k}(A) = \max_{\dim{S}=k} \min_{\substack{u\in S}{\|v\|=1}}\|Au\|
+$$
+and
+$$
+\sigma_{k}(A) = \min_{\dim{T}=m-k+1}\max_{\substack{ u\in T}{\|u\|=1}} \|Au\|
+$$
+
+**Proof:** For the first claim, let $S$ be the span
+of $v_{1},\ldots, v_{k}$.  Then by Lemma A, 
+$$
+\min_{\substack{v\in S}{\|v\|=1}} \|Av\| \ge  \sigma_{k}.
+$$
+This proves that
+$$
+\max_{\dim(S)=k}\min_{\substack{v}\in S}{\v\|=1} \|Av\|\ge \sigma_{k}.
+$$
+
+Next let $S$ be any subspace of dimension $k$. The span $T$ of $v_{k},\ldots, v_{m}$ is $(m-k+1)$-dimensional,
+and since $\dim{S}+\dim{T}>m$ these two subspaces intersect nontrivially.
+If $w\in S\cap T$ is a unit vector, then we know by Lemma B
+that
+$$
+\|Aw\|\le \sigma_{k}.
+$$
+This implies that 
+$$
+\max_{\dim(S)=k}\min_{\substack{v}\in S}{\v\|=1} \|Av\|\le \sigma_{k},
+$$ 
+so we have the first equality.
+
+For the second, consider  the span  of the last $m-k+1$ right singular vectors and use Lemma B to obtain a unit vector $w$ with $\|Aw\|\le \sigma_{k}$;
+then argue that any other subspace $T$ of dimension $m-k+1$ has non trivial intersection with the span of the first $k$ right singular vectors to obtain a vector $w\in T$ with $\|Aw\|\ge\sigma_{k}$ and the equality follows.
+
+**Remark:** Strictly speaking, the Courant minimax principle is the assertion that, if $M$ is an $m\times m$ Hermitian matrix with
+eigenvalues $\lambda_{1}\ge \cdots \lambda_{m}$, then
+$$\begin{aligned}
+\lambda_{k} &= \max_{\dim{S}=k}\min_{x\in S, \|x\|=1}\langle Mx, x\rangle \\
+&= \min_{\dim{T}=m-k+1}\max_{x\in T, \|x\|=1}\langle Mx, x\rangle 
+\end{aligned}
+$$
+
+Setting $M=A^{*}A$ yields a Hermitian matrix with eigenvalues $\sigma_{i}^2$, and 
+$$
+\langle Mx, x\rangle = \langle Ax, Ax\rangle = \|Ax\|^2
+$$
+
+so our result is a special case of Courant's principle.
