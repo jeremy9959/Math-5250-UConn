@@ -522,32 +522,10 @@ where $u_{i}$ and $v_{i}$ are the columns of $U$ and $V$ respectively.
 First we consider the approximation problem for the spectral norm (or operator norm).
 Let $B$ be any $n\times m$ matrix of rank at most $k$.  
 
-**Lemma:** There is an
-$n\times k$
-matrix $X$ and an $m\times k$ matrix $Y$ so that $B=XY^{\top}$.  
+We will construct a unit vector $w$ in the span of $v_{1},\ldots, v_{k+1}$ such that $Bw=0$.
+Consider the space $S$ which is the span of the first $k+1$ columns of $V$.  This space is $k+1$ dimensional since the columns are orthonormal.  Since $B$ has rank at most $k$, ghe image  $B(S)\subset F^{n}$ has dimension at most $k$,  and so (by rank--nullity) there must be a nonzero vector $w'$ in $S\cap \ker{B}$.  Normalizing this vector gives  $w=\sum_{i=1}^{k+1} \gamma_{i}v_{i}\in F^{m}$ with $\sum |\gamma_{i}|^2=1$. 
 
-**Proof:** Pick $k$ columns $c_{1},\ldots, c_{k}$ of $B$ that span the column space of $B$ and let $X$ be the $n\times k$
-matrix with these as columns.  Each column $b_{j}$, for  $1\le j\le m$, of $B$ is a linear combination
-$$
-b_{j} = \sum_{s=1}^{k} y_{js}c_{s}.
-$$
-
-Let $Y$ be the $m\times k$ matrix $(y_{js})$.  Then $XY^{\top}=B$. 
-
-Now $Y^{\top}$ is a $k\times m$ matrix.  The matrix $V$ from the SVD is an $m\times m$
-unitary matrix.  Then $Y^{\top}V$ is a $k\times m$ matrix.
-If $v_{1},\ldots, v_{k+1}$ are the first $k+1$ columns
-of $V$, the $k+1$ vectors $Y^{\top}v_{1},\ldots, Y^{\top}v_{k+1}$ in $F^{k}$ are dependent. In other words we have a nontrivial linear combination of the $Y^{\top}v_{i}$ equal to zero:
-$$
-\sum_{i=1}^{k+1} \gamma'_{i}Y^{\top}v_{i} = Y^{\top}\left(\sum_{i=1}^{k+1} \gamma'_{i}v_{i}\right) = 0.
-$$
-
-Let $w'=\sum_{i=1}^{k+1}\gamma'_{i}v_{i}$.
-Since the $v_{i}$
-are orthonormal, they are independent, and since not all $\gamma'_{i}$ are zero, $w'\not=0$.  Let $\gamma_{i}=\gamma'_{i}/\|w'\|$. Then $w=\sum \gamma_{i}v_{i}$ is a unit vector in
-the kernel of $Y^{\top}$ and $Bw=0$. 
-
-Finally, we have
+Now
 $$
 \|A-B\|^2\|w\|^2\ge \|(A-B)w\|^2 = \|Aw\|^2 = \|U\Sigma V^{*}\sum \gamma_{i} v_{i}\|^2.
 $$

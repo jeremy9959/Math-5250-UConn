@@ -1,0 +1,11 @@
+**Lemma:** There is an
+$n\times k$
+matrix $X$ and an $m\times k$ matrix $Y$ so that $B=XY^{\top}$.  
+
+**Proof:** Pick $k$ columns $c_{1},\ldots, c_{k}$ of $B$ that span the column space of $B$ and let $X$ be the $n\times k$
+matrix with these as columns.  Each column $b_{j}$, for  $1\le j\le m$, of $B$ is a linear combination
+$$
+b_{j} = \sum_{s=1}^{k} y_{js}c_{s}.
+$$
+
+Let $Y$ be the $m\times k$ matrix $(y_{js})$.  Then $XY^{\top}=B$. 
