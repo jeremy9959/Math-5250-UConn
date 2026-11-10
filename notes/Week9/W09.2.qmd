@@ -1,7 +1,212 @@
 ---
-title: "Week 9 — Matrix and Operator Norms"
+title: "Low Rank Approximation"
 ---
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\supnorm}[1]{\|#1\|_{\mathrm{sup}}}
+\newcommand{\frobnorm}[1]{\|#1\|_{F}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\trace}[1]{\mathrm{trace}(#1)}
 
-## Placeholder
+This section uses the operator (spectral) norm and the Frobenius norm; see
+[Norms on Vectors, Matrices, and Linear Maps](../Week9/W09.1.qmd).
 
-Notes on matrix and operator norms, the Frobenius norm, and the operator norm formula in terms of the maximum eigenvalue of $AA^\top$.
+Now we return to the question of low-rank approximation.  Specifically,
+given an $n\times m$ matrix $A$ with entries in $F=\R$ or $F=\C$, we want to
+identify a matrix $A_{k}$ of rank at most $k$ solving each of the following problems:
+
+- $\|A-A_{k}\|\le \|A-B\|$ for all $B$ of rank $k$ or less (operator norm);
+- $\frobnorm{A-A_{k}}\le \frobnorm{A-B}$ for all $B$ of rank $k$ or less (Frobenius norm).
+
+It turns out that the answer to both questions is the same, and it is the truncated SVD described in the
+[overview](../Week7-8/W07.3.qmd#low-rank-approximation-overview) in the SVD notes.   For this proof we follow the argument laid out
+in the Wikipedia article [Low Rank Approximation](https://en.wikipedia.org/wiki/Low-rank_approximation).
+
+Since $A$ and $A^{*}$ have the same rank and the same norm (Frobenius or operator), we replace $A$ by $A^{*}$ if necessary and assume that $n\le m$.   Let
+$$
+A = U\Sigma V^{*}
+$$
+be the SVD for $A$ with singular values $\sigma_{1}\ge \sigma_{2}\ge\cdots\ge\sigma_{n}\ge 0$.
+
+
+
+  
+
+In preparation for our approximation result,  we prove the following lemmas.
+
+**Lemma A:** For $1\le j\le n$, let $v_1,\ldots, v_{j}$ be the first $j$ columns of $V$ (the first $j$ "right singular vectors").  If $w=\sum_{i=1}^{j} \gamma_{i}v_{i}$ is a unit vector, then 
+$$
+\|Aw\|\ge \sigma_{j}.
+$$
+
+**Proof:**
+Note that since the $v_{i}$ are orthonormal, the fact that $\|w\|^2=1$ means
+$\sum_{i=1}^{j} |\gamma_{i}|^2=1$.  Now $V^{*}w$ is an $m\times 1$ vector
+whose first $j$ entries are the $\gamma_{i}$ and whose remaining entries are zero. 
+Then $\Sigma V^{*}w$ is an $n\times 1$ matrix $h$ whose entries are $\sigma_{i}\gamma_{i}$ for $i=1,\ldots, j$ followed by zeros for $i=j+1,\ldots, n$. Finally, since $U$ is unitary, 
+$$\begin{aligned}
+\|Aw\|^2 &= \|U\Sigma V^{*}w\|^2 \\
+&= \|Uh\|^2 \\ 
+&= \sum_{i=1}^{j} \sigma_{i}^2|\gamma_{i}|^2 \\
+&\ge \min_{1\le i\le j}\{\sigma_{i}^2\}\sum |\gamma_{i}|^2 \\
+&\ge \sigma_{j}^2.
+\end{aligned}
+$$
+
+**Lemma B:** Set $\sigma_{i}=0$ for $n<i\le m$. If $v_{j},\ldots, v_{m}$ are the last $m-j+1$ columns 
+of $V$, and $w$ is a unit vector in their span, then
+$$
+\|Aw\|\le \sigma_{j}
+$$
+
+**Proof:** The argument is essentially the same as for the previous lemma.
+
+
+
+
+**Proposition:** As before, for $k<n$,  set
+$$
+A_{k} = \sum_{i=1}^{k} \sigma_{i}u_{i}v_{i}^{*},
+$$
+where $u_{i}$ and $v_{i}$ are the columns of $U$ and $V$ respectively. Then
+$$
+\|A-B\|\ge \|A-A_{k}\|=\sigma_{k+1}
+$$
+for all matrices $B$ of rank at most $k$. 
+
+
+**Proof:** 
+
+We will construct a unit vector $w$ in the span of $v_{1},\ldots, v_{k+1}$ such that $Bw=0$.
+Consider the space $S$ which is the span of the first $k+1$ columns of $V$.  This space is $(k+1)$-dimensional since the columns are orthonormal.  Since $B$ has rank at most $k$, the image  $B(S)\subset F^{n}$ has dimension at most $k$,  and so (by rank--nullity) there must be a nonzero vector $w'$ in $S\cap \ker{B}$.  Normalizing this vector gives  $w$.
+
+Now
+$$
+\|A-B\|^2\|w\|^2\ge \|(A-B)w\|^2 = \|Aw\|^2 \ge \sigma_{k+1}^2
+$$
+by our Lemma A with $j=k+1$. 
+
+Since we know that $\|A-A_k\|^2=\sigma_{k+1}^2$, we have our approximation result.
+
+Now let's look at the Frobenius norm.  
+
+We calculate:
+$$\begin{aligned}
+\frobnorm{A-A_{k}}^2 &= \frobnorm{\sum_{i=k+1}^{n}\sigma_{i}u_{i}v_{i}^{*}}^2\\
+&= \sum_{i=k+1}^{n}\sigma_{i}^2.
+\end{aligned}
+$$
+
+
+We need to show that 
+$$
+\frobnorm{A-A_{k}}^2\le \frobnorm{A-B}^2
+$$
+for any $n\times m$ matrix $B$ of rank at most $k$. 
+
+We first prove the following lemma.
+
+**Lemma:** Suppose that $A=A'+A''$ where $A$, $A'$, and $A''$ are $n\times m$ matrices over $F$. Then for any $i,j\ge 1$
+with $i+j-1\le n$,  we have
+$$
+\sigma_{i+j-1}(A)\le \sigma_{i}(A')+\sigma_{j}(A''). 
+$$
+
+**Proof:** Notice that $\sigma_{1}(A-A_{i})=\sigma_{i+1}(A)$ for any $A$ where
+$A_{i}$ is the rank $i$ approximation, with $A_{0}=0$.  Therefore
+$$\begin{aligned}
+\sigma_{i}(A')+\sigma_{j}(A'') &= \sigma_{1}(A'-A'_{i-1}) + \sigma_{1}(A''-A''_{j-1}) \\
+&\ge \sigma_{1}(A'+A''-A'_{i-1}-A''_{j-1}) = \sigma_{1}(A-A'_{i-1}-A''_{j-1}),
+\end{aligned}
+$$
+where we have used the triangle inequality for the spectral norm. 
+
+Next notice that the rank of $A'_{i-1}+A''_{j-1}$ is at most $i+j-2$.  This is because, given matrices $R$ and $S$, the  column space of $R+S$ is contained in the sum
+of the column spaces of $R$ and $S$. 
+
+Apply the operator norm result we have just established with
+$k=i+j-2$ to obtain:
+$$
+\sigma_{1}(A-A'_{i-1}-A''_{j-1})\ge \sigma_{i+j-1}(A).
+$$
+
+This proves the lemma. 
+
+Now apply this lemma to $A=(A-B)+B$ for any $1\le i\le n-k$ and $j=k+1$ where $B$ is an $n\times m$ matrix of rank at most $k$. 
+
+Then
+$$
+\sigma_{i}(A-B)+\sigma_{k+1}(B)\ge \sigma_{i+k}(A).
+$$
+
+But $\sigma_{k+1}(B)=0$ since $B$ has rank at most $k$.  Therefore
+$$
+\sigma_{i}(A-B)\ge \sigma_{i+k}(A),
+$$
+and
+$$\begin{aligned}
+\frobnorm{A-B}^2 &= \sum_{i=1}^{n} \sigma_{i}(A-B)^2 \\
+&\ge \sum_{i=1}^{n-k}\sigma_{i+k}(A)^2 \\
+&=\sum_{i=k+1}^{n}\sigma_{i}(A)^2 \\
+&=\frobnorm{A-A_{k}}^2.
+\end{aligned}
+$$
+
+This gives us the approximation result for the Frobenius norm. 
+
+
+
+## The Courant minimax principle
+
+The Courant minimax principle is an elegant way to express the
+singular values of $A$.
+
+**Proposition:** For $1\le k\le n$ and subspaces $S$ and $T$ in $F^{m}$ we have:
+$$
+\sigma_{k}(A) = \max_{\dim{S}=k} \min_{\substack{u\in S\\ \|u\|=1}}\|Au\|
+$$
+and
+$$
+\sigma_{k}(A) = \min_{\dim{T}=m-k+1}\max_{\substack{u\in T\\ \|u\|=1}} \|Au\|
+$$
+
+**Proof:** For the first claim, let $S$ be the span
+of $v_{1},\ldots, v_{k}$.  Then by Lemma A, 
+$$
+\min_{\substack{v\in S\\ \|v\|=1}} \|Av\| \ge  \sigma_{k}.
+$$
+This proves that
+$$
+\max_{\dim(S)=k}\min_{\substack{v\in S\\ \|v\|=1}} \|Av\|\ge \sigma_{k}.
+$$
+
+Next let $S$ be any subspace of dimension $k$. The span $T$ of $v_{k},\ldots, v_{m}$ is $(m-k+1)$-dimensional,
+and since $\dim{S}+\dim{T}>m$ these two subspaces intersect nontrivially.
+If $w\in S\cap T$ is a unit vector, then we know by Lemma B
+that
+$$
+\|Aw\|\le \sigma_{k}.
+$$
+This implies that 
+$$
+\max_{\dim(S)=k}\min_{\substack{v\in S\\ \|v\|=1}} \|Av\|\le \sigma_{k},
+$$ 
+so we have the first equality.
+
+For the second, consider  the span  of the last $m-k+1$ right singular vectors and use Lemma B to obtain a unit vector $w$ with $\|Aw\|\le \sigma_{k}$;
+then argue that any other subspace $T$ of dimension $m-k+1$ has non trivial intersection with the span of the first $k$ right singular vectors to obtain a vector $w\in T$ with $\|Aw\|\ge\sigma_{k}$ and the equality follows.
+
+**Remark:** Strictly speaking, the Courant minimax principle is the assertion that, if $M$ is an $m\times m$ Hermitian matrix with
+eigenvalues $\lambda_{1}\ge \cdots\ge \lambda_{m}$, then
+$$\begin{aligned}
+\lambda_{k} &= \max_{\dim{S}=k}\min_{x\in S, \|x\|=1}\langle Mx, x\rangle \\
+&= \min_{\dim{T}=m-k+1}\max_{x\in T, \|x\|=1}\langle Mx, x\rangle 
+\end{aligned}
+$$
+
+Setting $M=A^{*}A$ yields a Hermitian matrix with eigenvalues $\sigma_{i}^2$, and 
+$$
+\langle Mx, x\rangle = \langle Ax, Ax\rangle = \|Ax\|^2
+$$
+
+so our result is a special case of Courant's principle.

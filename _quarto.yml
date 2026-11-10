@@ -70,9 +70,9 @@ website:
             href: notes/Week7-8/W07.3.qmd
       - section: "Week 9 — Norms"
         contents:
-          - text: "Vector space norms and equivalence of norms"
+          - text: "Norms on Vectors, Matrices, and Linear Maps"
             href: notes/Week9/W09.1.qmd
-          - text: "Matrix and operator norms"
+          - text: "Low Rank Approximation"
             href: notes/Week9/W09.2.qmd
       - section: "Weeks 10–11 — Dual Spaces"
         contents:
