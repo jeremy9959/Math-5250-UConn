@@ -179,7 +179,7 @@ $$\begin{aligned}
 &\le \sum_{i=1}^{n} |a_{i}|\rho(e_{i}) \\
 &\le \left(\sum_{i=1}^{n}\rho(e_{i})\right)\supnorm{v}
 \end{aligned}
-$$ 164549 
+$$
 
 Therefore $\rho(v)\le B\supnorm{v}$ with $B=\sum_{i=1}^{n}\rho(e_{i})$. 
 
@@ -258,7 +258,7 @@ norm.   Our earlier work on equivalence of norms applies and therefore  all norm
 
 Let's focus on the case of linear maps $L:F^{m}\to F^{n}$ where $F=\R$ or $F=\C$.  Equivalently, we work with 
  matrices $A\in M_{n\times m}(F)$. Write $\rho_{A}(v)=\|Av\|$. In general,
-the function $\rho_{A}(v)=\|Av\|$ is a seminorm on $F^{m}$. Note that here $\|v\|$ is the $\ell^{2}$ norm of $v\in F^{m}$ while $\|Av\|$ is the $\ell^{2}$ norm of $Av$ on $F^{n}$). 
+the function $\rho_{A}(v)=\|Av\|$ is a seminorm on $F^{m}$. Note that here $\|v\|$ is the $\ell^{2}$ norm of $v\in F^{m}$ while $\|Av\|$ is the $\ell^{2}$ norm of $Av$ on $F^{n}$.
 Then:
 
 - $\rho_{A}(v)=\|A(v)\|\ge 0$.
@@ -308,8 +308,8 @@ $$
 - $\|AB\|\le \|A\|\|B\|$
 - $\|A^{*}\|=\|A\|$
 - $\|A^{*}A\|=\|AA^{*}\| = \|A\|^2$ and therefore $\|A\|=\sqrt{\|A^{*}A\|}=\sqrt{\|AA^{*}\|}$
-- $|\langle Av, w\rangle|\le \|A\|\|v\|\|w\|$ for $v\in F^{m}$, $w\in F^{m}$. 
-- The operator norm is equivalent to the sup norm on $M_{n}(F)$ with
+- $|\langle Av, w\rangle|\le \|A\|\|v\|\|w\|$ for $v\in F^{m}$, $w\in F^{n}$. 
+- The operator norm is equivalent to the sup norm on $M_{n\times m}(F)$ with
 $$
 \supnorm{A}\le \|A\|\le \sqrt{nm}\supnorm{A}.
 $$
@@ -443,7 +443,7 @@ $$
 
 Thus $\pm \|A\|$ is an eigenvalue of $A$. Since
 the equation $\|Av\|=|\lambda|\|v\|$ holds for every eigenvalue $\lambda$ and eigenvector $v$, 
-every eigenvalue satisfies $|\lambda|\le \|A\|. Therefore  $\|A\|=\max_{i}\{|\lambda_{i}|\}$
+every eigenvalue satisfies $|\lambda|\le \|A\|$. Therefore $\|A\|=\max_{i}\{|\lambda_{i}|\}$.
 
 **Corollary:** Let $A$ be any $n\times m$ matrix.  Then $\|A\|$ is
 the largest singular value of $A$.
@@ -528,13 +528,13 @@ $$
 Note that since the $v_{i}$ are orthonormal, the fact that $\|w\|^2=1$ means
 $\sum_{i=1}^{j} |\gamma_{i}|^2=1$.  Now $V^{*}w$ is an $m\times 1$ vector
 whose first $j$ entries are the $\gamma_{i}$ and whose remaining entries are zero. 
-Then $\Sigma V^{*}w$ is an $n\times 1$ matrix $h$ whose entries are $\sigma_{i}\gamma_{i}$ for $i=1,\ldots, j$ followed by zeros for $i=j+1,\ldots, m$. Finally, since $U$ is unitary, 
+Then $\Sigma V^{*}w$ is an $n\times 1$ matrix $h$ whose entries are $\sigma_{i}\gamma_{i}$ for $i=1,\ldots, j$ followed by zeros for $i=j+1,\ldots, n$. Finally, since $U$ is unitary, 
 $$\begin{aligned}
 \|Aw\|^2 &= \|U\Sigma V^{*}w\|^2 \\
 &= \|Uh\|^2 \\ 
 &= \sum_{i=1}^{j} \sigma_{i}^2|\gamma_{i}|^2 \\
-&\ge \min_{i=1}^{j}\{\sigma_{j}^2\}\sum |\gamma_{i}|^2 \\
-&\get \sigma_{j}^2.
+&\ge \min_{1\le i\le j}\{\sigma_{i}^2\}\sum |\gamma_{i}|^2 \\
+&\ge \sigma_{j}^2.
 \end{aligned}
 $$
 
@@ -648,21 +648,21 @@ singular values of $A$.
 
 **Proposition:** For $1\le k\le n$ and subspaces $S$ and $T$ in $F^{m}$ we have:
 $$
-\sigma_{k}(A) = \max_{\dim{S}=k} \min_{\substack{u\in S}{\|v\|=1}}\|Au\|
+\sigma_{k}(A) = \max_{\dim{S}=k} \min_{\substack{u\in S\\ \|u\|=1}}\|Au\|
 $$
 and
 $$
-\sigma_{k}(A) = \min_{\dim{T}=m-k+1}\max_{\substack{ u\in T}{\|u\|=1}} \|Au\|
+\sigma_{k}(A) = \min_{\dim{T}=m-k+1}\max_{\substack{u\in T\\ \|u\|=1}} \|Au\|
 $$
 
 **Proof:** For the first claim, let $S$ be the span
 of $v_{1},\ldots, v_{k}$.  Then by Lemma A, 
 $$
-\min_{\substack{v\in S}{\|v\|=1}} \|Av\| \ge  \sigma_{k}.
+\min_{\substack{v\in S\\ \|v\|=1}} \|Av\| \ge  \sigma_{k}.
 $$
 This proves that
 $$
-\max_{\dim(S)=k}\min_{\substack{v}\in S}{\v\|=1} \|Av\|\ge \sigma_{k}.
+\max_{\dim(S)=k}\min_{\substack{v\in S\\ \|v\|=1}} \|Av\|\ge \sigma_{k}.
 $$
 
 Next let $S$ be any subspace of dimension $k$. The span $T$ of $v_{k},\ldots, v_{m}$ is $(m-k+1)$-dimensional,
@@ -674,7 +674,7 @@ $$
 $$
 This implies that 
 $$
-\max_{\dim(S)=k}\min_{\substack{v}\in S}{\v\|=1} \|Av\|\le \sigma_{k},
+\max_{\dim(S)=k}\min_{\substack{v\in S\\ \|v\|=1}} \|Av\|\le \sigma_{k},
 $$ 
 so we have the first equality.
 
@@ -682,7 +682,7 @@ For the second, consider  the span  of the last $m-k+1$ right singular vectors a
 then argue that any other subspace $T$ of dimension $m-k+1$ has non trivial intersection with the span of the first $k$ right singular vectors to obtain a vector $w\in T$ with $\|Aw\|\ge\sigma_{k}$ and the equality follows.
 
 **Remark:** Strictly speaking, the Courant minimax principle is the assertion that, if $M$ is an $m\times m$ Hermitian matrix with
-eigenvalues $\lambda_{1}\ge \cdots \lambda_{m}$, then
+eigenvalues $\lambda_{1}\ge \cdots\ge \lambda_{m}$, then
 $$\begin{aligned}
 \lambda_{k} &= \max_{\dim{S}=k}\min_{x\in S, \|x\|=1}\langle Mx, x\rangle \\
 &= \min_{\dim{T}=m-k+1}\max_{x\in T, \|x\|=1}\langle Mx, x\rangle 
