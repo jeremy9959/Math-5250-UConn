@@ -1,7 +1,92 @@
 ---
-title: "Weeks 10–11 — Linear Functionals and the Dual Space"
+title: "Linear Functionals and the Dual Space"
 ---
 
-## Placeholder
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Hom}{\mathrm{Hom}}
 
-Notes on linear functionals, the dual space $V^*$, and its basic properties.
+Let $F$ be a field and let $V$ be a vector space over $F$.  A linear functional $f$
+on $V$ is a linear map
+$$
+f:V\to F.
+$$
+
+Here are some examples with $F=\R$. 
+
+1. let $V=\R^{n}$ and define $f((a_1,\ldots, a_n))=a_{1}$.
+2. $V$ is the space of continuous functions on the interval $[0,1]$.  If $v\in V$, then set $f(v)=v(0.5)$
+(the value of the function $v$ at $x=0.5$).
+3. Let $V$ be the space of continuous functions and let $f(v) =\int_{0}^{1} v(x)\,dx$.
+4. Let $V=F^{n}$ with the standard dot product, and let $w\in V$.  Set $f(v)=\langle w, v\rangle$. 
+
+**Definition:** The dual space $\Hom(V,F)$ is the vector space of linear functionals on $V$,
+where $(f_{1}+f_{2})(v)=f_{1}(v)+f_{2}(v)$ and $(af_1)(v)=a(f_1(v))$ for all linear functionals
+$f_{1}, f_{2}$ from $V$ to $F$.
+
+**Proposition:** If $V$ is finite-dimensional, then so is $\Hom(V,F)$, and $\dim{V}=\dim{\Hom(V,F)}$.
+
+**Proof:**  Choose a basis $e_{1},\ldots, e_{n}$ for $V$.  A linear functional on $V$ is determined by
+its values on the $e_{i}$ since
+$$
+f(\sum a_{i}e_{i})=\sum a_{i}f(e_{i})
+$$
+Let $e_{1}^*, e_{2}^*,\ldots, e_{n}^{*}$ be linear functionals defined by 
+$$
+e_{i}^{*}(e_{j}) = \delta_{ij}.
+$$
+Then one sees that $f = \sum f(e_{j})e_j^*$ so the $e_{i}^{*}$ span $\Hom(V,F)$. On the other hand
+if 
+$$
+\sum a_{j}e_{j}^{*}=0
+$$
+then
+$$
+(\sum a_{j}e_{j}^{*})(e_{i})=a_{i}=0
+$$
+so the $e_{j}^{*}$ are also linearly independent. 
+
+Let $V$ be a vector space over $F$.  Then the map
+$$
+\iota: V\to \Hom(\Hom(V,F),F)
+$$
+sending $v$ to the "evaluation map" $\iota(v)(f)=f(v)$ for $f\in \Hom(V,F)$ is injective.
+
+**Proof:** Chose a basis $\{e_{i}\}_{i\in I}$ for $V$  with index set $I$.  Choose $v\in V$ with $v\not=0$. Write
+$$
+v=\sum_{j\in J} a_{j}e_{j}
+$$
+where $J$ is a finite subset of $I$ and all $a_{j}$ are nonzero.  Choose $j\in J$ and let 
+$e_{j}^{*}$ be the linear functional such that $e_{j}^{*}(e_{j})=1$ and $e_{j}^{*}(e_{i})=0$
+for all $i\not=j$.  This is well defined and $e_{j}^{*}(v)=a_{j}\not=0$.  Thus for every
+$v\in V$ such that $v\not=0$, there is a linear functional $f\in \Hom(V,F)$ such that $f(v)\not=0$.
+So if $\iota(v)=0$, then $\iota(v)(f)=f(v)=0$ for all $f$, and thus $v=0$. 
+
+**Corollary:** If $V$ is finite-dimensional, then $\iota$ is an isomorphism.
+
+**Proof:** It is an injective map between vector spaces of the same dimension.
+
+On the other hand, if $V$ is infinite-dimensional then $\iota$ is never an isomorphism.
+To see this, suppose $V$ is infinite-dimensional and choose a basis $\{e_{i}\}_{i\in I}$ for $V$.
+Let $\{e_{i}^{*}\}$ be linear functionals defined so that $e_{i}^{*}(e_{j})=\delta_{ij}$. Extend
+this set to a basis $B$ of $\Hom(V,F)$. Finally,
+
+define $f\in\Hom(\Hom(V,F),F)$ by $f(e_{i}^{*})=1$ and  $f(v)=0$ for the remaining elements $v\in B$. 
+This $f$ cannot be in the image of $\iota$
+because, if $v\in V$, then
+$$
+v=\sum_{j\in J}a_{j}e_{j}
+$$
+where $J$ is a finite set, and thus $\iota(v)(e_{i}^{*})=e_{i}^{*}(v)=0$ for $i\not in J$. Since
+$f$ is nonzero on the infinite set of $e_{i}^{*}$, there is no $v$ with $f=\iota(v)$ 
+
+
+Thus we can strengthen our result.
+
+**Proposition:** $V$ is finite-dimensional if and only if $\iota$ is an isomorphism.
+
+One can show that if $V$ is infinite-dimensional then the dimension of $\Hom(\Hom(V,F),F)$ is strictly
+larger than the dimension of $V$.
+
+
+
+
