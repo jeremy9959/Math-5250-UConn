@@ -69,7 +69,6 @@ On the other hand, if $V$ is infinite-dimensional then $\iota$ is never an isomo
 To see this, suppose $V$ is infinite-dimensional and choose a basis $\{e_{i}\}_{i\in I}$ for $V$.
 Let $\{e_{i}^{*}\}$ be linear functionals defined so that $e_{i}^{*}(e_{j})=\delta_{ij}$. Extend
 this set to a basis $B$ of $\Hom(V,F)$. Finally,
-
 define $f\in\Hom(\Hom(V,F),F)$ by $f(e_{i}^{*})=1$ and  $f(v)=0$ for the remaining elements $v\in B$. 
 This $f$ cannot be in the image of $\iota$
 because, if $v\in V$, then
@@ -85,8 +84,104 @@ Thus we can strengthen our result.
 **Proposition:** $V$ is finite-dimensional if and only if $\iota$ is an isomorphism.
 
 One can show that if $V$ is infinite-dimensional then the dimension of $\Hom(\Hom(V,F),F)$ is strictly
-larger than the dimension of $V$.
+larger (in the sense of cardinality) than the dimension of $V$.
 
+### Duality and linear maps
+
+Now suppose that $V$ and $W$ are vector spaces over $F$
+and $L:V\to W$ is a linear map.  Suppose that $f\in \Hom(W,F)$.
+Then $L\circ f:V\to F$ is a linear functional.
+
+**Proposition:** Given $L:V\to W$, the map $L^{*}:\Hom(W,F)\to \Hom(V,F)$ defined by $L^{*}(f)=f\circ L$ is linear.  It is called the "dual linear map" to $L$.
+
+**Proof:**  Suppose $f,g\in\Hom(W,F)$.  Then 
+$$
+((af+b)\circ L)(v)=(af+g)(L(v))=af(L(v))+g(L(v))
+$$
+so 
+$$
+(af+g)\circ L = a(f\circ L) + g\circ L
+$$
+meaning $L^{*}(af+g)=aL^{*}(f)+L^{*}(g)$.
+
+Now suppose that $V$ and $W$ are finite dimensional and 
+let $L:V\to W$ be a linear map. Choose bases
+$A=\{a_1,\ldots a_n\}$ and $B=\{b_1,\ldots, b_m\}$ for $V$ and $W$.
+Let $X=[L]_{A}^{B}$ be the corresponding matrix for $L$ in these bases.
+
+Now the dual basis construction gives us bases $A^{*}=\{a_1^{*},\ldots, a_{n}^{*}\}$ and $B^{*}=\{b_1^{*},\ldots, b_{m}^{*}\}$
+for $V^{*}$ and $W^{*}$.
+
+**Proposition:** The matrix $Y=[L^{*}]_{B^{*}}^{A^{*}}$ of the dual map $L^{*}:W^{*}\to V^{*}$ relative to these dual bases satisfies $Y=X^{\top}$.
+
+**Proof:** By definition,
+$$
+L(a_{i}) = \sum_{j=1}^{m} x_{ji}b_{j}
+$$
+
+We need to compute $L^{*}(b_{i}^{*})$.  We see that
+$$\begin{aligned}
+L^{*}(b_{i}^{*})(a_{j}) &= (b_{i}^{*}\circ L)(a_{j})\\
+&= b_{i}^{*}(L(a_{j})) \\
+&= b_{i}^{*}(\sum_{k=1}^{m} x_{kj}b_{k}) \\
+&= x_{ij}.
+\end{aligned} 
+$$
+Since $f=\sum_{j=1}^{n} f(a_{j})a_{j}^{*}$ for any $f\in V^{*}$, we obtain
+$$
+L^{*}(b_{i}^{*}) = \sum_{j=1}^{n} x_{ij}a_{j}^{*} = \sum_{j=1}^{n} y_{ji}a_{j}^{*}
+$$
+so $x_{ij}=y_{ji}$ and $Y=X^{\top}$. 
+
+### Dual Maps, Subspaces, and Quotients
+
+Suppose $W$ is a vector space over $F$ and $V$ is a subspace
+of $W$.  Since the inclusion map $\alpha:V\to W$ is linear,
+there is a dual map 
+$$
+\alpha^{*}:\Hom(W,F)\to \Hom(V,F).
+$$
+This map is just the "restriction map" which takes a linear functional on $W$ and restricts its domain to $V$.  
+
+**Lemma:** The map $\alpha^{*}$ is surjective. Its kernel
+is the set of linear functionals $f:W\to F$ that vanish on $V$.
+
+**Proof:** It is clear that if $\alpha^{*}(f)=0$ if and only
+if $f(v)=0$ for all $v\in V$.  For the surjectivity, choose
+a basis for $V$ and extend it to a basis for $W$. A linear functional on $V$ can be extended to $W$ by setting it to zero
+on the basis elements for $W$ that aren't in $V$.
+
+Now look at the quotient map $\beta: W\to W/V$.  Again, this is
+linear, so there is a dual map
+$$
+\beta^{*}:\Hom(W/V,F)\to \Hom(W,F)
+$$
+To understand $\beta^{*}$, let $f:W/V\to F$ be a linear functional.
+Now choose $w\in W$.  Then $\beta^{*}(f)=f\cap\beta$ and
+$$
+(f\cap\beta)(w)=f(w+V).
+$$
+
+**Lemma:** The map $\beta^{*}$ is injective. The image of $\beta^{*}$ is the space of linear functionals on $W$ that vanish on $V$.  
+
+**Proof:** If $\beta^{*}(f)=0$, then $f\cap\beta(w)=f(w+V)=0$.
+Since every element of $W/V$ is of the form $w+V$ for some $w$,
+this implies $f=0$.  The image of $\beta^{*}$ is contained
+in the subspace of $\Hom(W,F)$ consisting of functionals vanishing on $V$, since if $w\in V$, then $\beta^{*}(f)(w)=f(w+V)=f(V)=0$.
+On the other hand, if $f:W\to F$ vanishes on $V$, then by the universal property of quotients we know that there is a map 
+$\overline{f}:W/V\to F$ such that $\overline{f}(w+V)=f(w)$ for all $w$.  Then $\beta^{*}(\overline{f})=f$. 
+
+**Proposition:** Suppose that 
+$$
+0\to A\stackrel{\alpha}{\to} B\stackrel{\beta}{\to} C\to 0
+$$
+is a short exact sequence of vector spaces.  Then
+$$
+0\to\Hom(C,F)\stackrel{\beta^{*}}{\to}\Hom(B,F)\stackrel{\alpha^{*}}{\to}\Hom(A,F)\to 0
+$$
+is also short exact. 
+
+**Proof:** Once we realize that $C=B/A$, this is the content of the two lemmas above. 
 
 
 

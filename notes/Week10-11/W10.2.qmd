@@ -1,7 +1,45 @@
 ---
-title: "Weeks 10–11 — Duality and Inner Products"
+title: "Duality and Inner Products"
 ---
 
-## Placeholder
+Now suppose that $V$ is an inner product space.  If $v\in V$,
+we can define a linear functional on $V$ by the formula
+$$
+f_{v}(w) = \langle w, v\rangle
+$$
 
-Notes on the relationship between duality and inner products, including the Riesz representation theorem.
+The linearity of $\langle\cdot\rangle$ in its first coordinate
+means that $f_{v}$ is linear.
+
+**Proposition:** Suppose that $V$ is finite dimensional. The map $V\to V^{*}$ defined by $v\mapso f_{v}$
+is bijective and conjugate linear (meaning that $f_{av_1+v_2}=\overline{a}f_{v_1}}+f_{v_{2}}).  In particular if $F=\R$ it is linear and therefore an isomorphism.
+
+**Proof:** If $f_{v}(w)=\langle w,v\rangle=0$ for all $w$, then $v=0$ by the nondegeneracy of the inner product, so the map is injective.  For surjectivity, construct an orthonormal basis $u_1,\ldots, u_{n}$ of $V$.  Let $f:V\to F$ be a linear functional.  Define
+$$
+v = \sum \overline{f(u_{i})}u_{i}.
+$$
+Then 
+$$\begin{aligned}
+f_{v}(u_{j}) &= \langle u_{j},\sum \overline{f(u_{i})}u_{i}\rangle \\
+&=\sum f(u_{i})\langle u_{j},u_{i}\rangle \\
+&= f(u_{i})
+\end{aligned}
+$$
+So $f_{v}$ agrees with $f$ on a basis and therefore everywhere.
+
+Also 
+$$\begin{aligned}
+f_{av_1+v_2}(w)&=\langle w, av_1+v_2\rangle \\
+&= \overline{a}\langle w,v_1\rangle + \langle w, v_2\rangle 
+\end{aligned}
+$$
+giving the conjugate linearity as claimed.
+
+**Remark:** This result is called the "finite dimensional
+Riesz Representation Theorem."  It is a very simple version of the 
+"big" Riesz theorem that describes linear functionals on spaces of functions in terms of measure theory.
+
+
+
+
+
