@@ -1,7 +1,73 @@
 ---
-title: "Week 12 — Bilinear Forms and Matrix Representations"
+title: Bilinear Forms and Matrix Representations"
 ---
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\C}{\mathbf{C}}
 
-## Placeholder
+In this section we discuss  bilinear forms over $\R$ and $\C$.  In some ways a bilinear form is a generalization of the notion of inner product, where we relax some of the conditions (such as symmetry or positive definiteness).  For a thorough discussion of this topic, see Keith Conrad's article [Bilinear Forms](https://kconrad.math.uconn.edu/blurbs/linmultialg/bilinearform.pdf).
 
-Notes on degenerate and nondegenerate bilinear forms, their matrix representations, and the effect of change of basis.
+In particular, we will consider only the case of vector spaces and bilinear forms over $\R$ or $\C$.  There are many interesting aspects over the theory over fields like $\Q$ or finite fields; see Conrad's notes for a discussion of this more general situation.
+
+The definition doesn't depend on the field $F$, however. 
+
+**Definition:** Let $F$ be a field and $V$ a vector space over $F$.  A bilinear form on $V$ is a function $B:V\times V\to F$ that is linear in each variable when the other is fixed.  In other words:
+
+$$\begin{aligned}
+B(au+v,w)&=aB(u,w)+B(v,w)\\
+B(u,av+w)&=aB(u,v)+B(u,w)\\
+\end{aligned}
+$$
+
+If $B(v,w)=B(w,v)$ for all $v,w\in V$, we call $B$ *symmetric*.  If $B(v,w)=-B(w,v)$ for all $v,w\in V$ we call $B$ *antisymmetric*  or *skew-symmetric.*. If $B(v,v)=0$ for all $v$ we call $B$ *alternating.*
+
+An inner product over a real vector space is a symmetric bilinear form.  This isn't true over a complex vector space, because we required such inner products to be *hermitian.*. 
+
+Other examples:
+
+- If $A\in M_{n}(F)$, then $B(v,w)=v^{\top}Aw$ is a bilinear form.
+- If $(u,v)$ and $(a,b)$ are in $F^{2}$, then 
+$ub-va$ is a skew-symmetric bilinear form on $F^{2}. 
+
+**Lemma:** Over $\R$ or $\C$ (or indeed any field of characteristic different from $2$), alternative forms are the same thing as skew-symmetric forms.
+
+**Proof:** If $B$ is alternating, then
+$B(x+y,x+y)=0=B(x,y)+B(y,x)$ so $B$ is skew-symmetric. If $B$ is skew-symmetric then
+$B(x,x)=-B(x,x)$ so $2B(x,x)=0$, so $B$ is alternating assuming $F$ does not have characteristic two.
+
+**From now on, every vector space is over $\R$ or $\C$.**
+
+**Proposition:** Every bilinear form $B$ on $V$ is expressible uniquely as a sum 
+$$
+B(u,v)=B_1(u,v)+B_2(u,)
+$$
+for all $u,v\in V$ where $B_1$ is symmetric and $B_2$ si skew-symmetric (alternating).
+
+**Proof:**
+Let 
+$$
+B_{1}(u,v) = \frac{B(u,v)+B(v,u)}{2}
+$$
+and
+$$
+B_{2}(u,v) = \frac{B(u,v)-B(v,u)}{2}.
+$$
+
+Finally, we have the *polarization identity*:
+Suppose $B$ is symmetric.  Then
+$$
+B(x,y) = \frac{1}{2}(B(x+y,x+y)-B(x,x)-B(y,y))
+$$
+
+So a symmetric bilinear form is determined by its values $B(v,v)$ for all $v\in V$. 
+
+### Orthogonality
+
+We can generalize the notion of orthogonality from inner products to general bilinear forms by saying that $w \perp v$ when $B(w,v)=0$ and, more generally, that given a subspace $W\subset V$, then
+$v\perp W$ provided $B(v,w)=0$ for all $w\in W$.
+
+In general, this relation need not be symmetric; for a general bilinear form, one can have 
+$B(v,w)=0$ (so $v\perp w$) but $B(w,v)\not=0$ so $w\not\perp v$.  For symmetric or alternating forms, however, the relation is symmetric since $B(v,w)=\pm B(w,v)$ for all $v,w\in V$ in these cases. 
+
+One can show (see Conrad, Proposition 1.17 ([Bilinear Forms](https://kconrad.math.uconn.edu/blurbs/linmultialg/bilinearform.pdf)) for the proof
+that $\perp$ is a symmetric relation if and only if $B$ is *either* symmetric or *alternating*.
+
