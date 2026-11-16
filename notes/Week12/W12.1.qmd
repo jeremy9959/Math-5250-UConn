@@ -68,6 +68,103 @@ $v\perp W$ provided $B(v,w)=0$ for all $w\in W$.
 In general, this relation need not be symmetric; for a general bilinear form, one can have 
 $B(v,w)=0$ (so $v\perp w$) but $B(w,v)\not=0$ so $w\not\perp v$.  For symmetric or alternating forms, however, the relation is symmetric since $B(v,w)=\pm B(w,v)$ for all $v,w\in V$ in these cases. 
 
-One can show (see Conrad, Proposition 1.17 ([Bilinear Forms](https://kconrad.math.uconn.edu/blurbs/linmultialg/bilinearform.pdf)) for the proof
-that $\perp$ is a symmetric relation if and only if $B$ is *either* symmetric or *alternating*.
+One can show (see Conrad, Proposition 1.17 ([Bilinear Forms](https://kconrad.math.uconn.edu/blurbs/linmultialg/bilinearform.pdf)) that
+$\perp$ is a symmetric relation if and only if $B$ is *either* symmetric or alternating.
 
+If $B$ is symmetric or alternating, and $W\subset V$ is a subspace, then just as we did earlier with inner products we define
+$$
+W^{\perp} = \{ v\in V: v \perp w\quad \forall w\in W\} 
+$$
+
+Since it is quite possible, depending on $B$, for some nonzero vectors $v$ to be perpendicular to themselves,
+one can have $W\cap W^{\perp}\not=0$.  For example if 
+$B$ is the alternating form
+$$
+B((x,y),(u,v))=xv-yu
+$$
+on $F^{2}$, and $W$ is the span of $(1,1)$, then
+$W^{\perp}=W$.  In fact every $v\in V$ is perpendicular to itself in this situation. 
+
+Notice that if $W\subset V$ is a subspace, then the restriction of a bilinear form $B$ on $V$ is a bilinear form on $W$.  Also, if $V_1$ and $V_2$ are vector spaces with bilinear forms $B_1$ and $B_2$, then one can construct a bilinear form $B=B_1\oplus B_2$ on $V_1\oplus V_2$ by
+setting
+$$
+B((x,y),(z,w))=B_1(x,z)+B_2(y,w).
+$$
+
+In this construction $V_1$ and $V_2$
+are orthogonal in the sum, and so this sum is called the *orthogonal direct sum* of $B_1$ and $B_2$. Also, the restriction of $B$ to $V_1$ and $V_2$ recovers $B_1$ and $B_2$. 
+
+### Bilinear forms and duality
+
+Let $V$ be a vector space over $F$ with a bilinear form $B$.  For fixed $v\in V$, the map $f(w)=B(v,w)$ is a linear functional on $V$ and hence an element of the dual space $\Hom(V,F)$.  This gives a linear map 
+$$
+L_{B}: V\to \Hom(V,F).
+$$
+
+Alternatively we can fix $v\in V$ and define $g_{v}(w)=B(w,v)$.  This gives a map $R_{B}:V\to \Hom(V,F)$.  
+
+**Proposition:** If $V$ is finite dimensional, and we identify $V$ with $\Hom(V,\Hom(V,F))$ then the two maps $L_{B}$ and $R_{B}$ are dual to one another.  In particular
+$$
+L_{B}^{*}:V=\Hom(V,\Hom(V,F))\to \Hom(V,F)
+$$
+is the same as $R_{B}$ and vice versa.
+
+**Proof:** This is a matter of keeping track of definitions.  If $v\in V$,
+then the associated linear map from $\Hom(V,F)$ to $F$ is evaluation: $\delta_{v}:f\mapsto f(v)$.  Then
+$$
+L_{B}^{*}(\delta_{v})=\delta_{v}\circ L_{B}
+$$
+But
+$$
+\delta_{v}\circ L_{B}(w) = \delta_{v}(w\mapsto B(w,\cdot))=B(w,v)
+$$
+which is the same as $R_{B}(v)=B(\cdot, v)$ so $R_{B}(v)(w)=B(w,v)$.
+
+### The Matrix of a Bilinear Form
+
+Given a bilinear form on (finite dimensional) $V$, we can choose a basis $E=\{e_{1},\ldots e_{n}\}$ for $V$.  Then $B$ is determined by the values $B(e_{i},e_{j})$ for $1\le i,j\le n$.  Let $M$
+be the $n\times n$ matrix with these entries.  Then it's easy to see by linearity that
+$$
+B(v,w) = [v]_{E}^{\top}M[w]_{E}
+$$
+
+Conversely, given an $n\times n$ matrix, the formula above gives a bilinear form on $F^{n}$.  Thus we may
+construct any bilinear form on $V$ by choosing a basis (an isomorphism with $F^{n}$) and an $n\times n$ matrix.
+
+**Example:** Let $V=F^{n}$ and choose integers $p,q$ with $p+q=n$.  Let
+$M$ be the matrix
+
+$$
+M = \left(\begin{matrix} I_{p} & 0 \\
+0 & -I_{q} \end{matrix}\right)
+$$
+
+where $I_{k}$ is the identity matrix.  This creates a "pseudoEuclidean space" with signature $p,q$.  If $p=3$ and $q=1$ we obtain Minkowski space, which is the flat spacetime of special relativity.
+
+One can show (see Conrad, Theorem 2.5) that the matrix $M$ defined above is the
+matrix of the linear map $R_{B}:V\to \Hom(V,F)$ relative to the choice of the basis $E$ on $V$ and its dual on $\Hom(V,F)$.  He uses this to give a "coordinate free" proof of the following facts:
+
+1. $B$ is symmetric iff $M$ is symmetric.
+2. B is skew-symmetric (alternating) iff $M^{\top}=-M^{\top}$.
+
+One can also show (either in a fancy way as Conrad does, or by calculating)
+that if $C$ is a change of basis matrix from $E_{1}$ to $E_{2}$, 
+and $B$ is a bilinear form on $V$ with matrix $M$ relative to $E_{1}$, then
+the matrix of $B$ relative to $E_{2}$
+is 
+$$
+M' = C^{\top}M C.
+$$
+
+If  $B_{2}$ is a bilinear forms on $V_{2}$, and $L:V_{1}\to V_{2}$ is a linear map, then
+$$
+B_{1}(v,w)=B_{2}(Lv,Lw)
+$$
+is a bilinear form on $V_{1}$ (called the pullback of $B_{2}$ to $B_{1}$).
+
+If we are given forms $B_{1}$ and $B_{2}$ on $V_{1}$ and $B_{2}$ respectively, then we say $B_{1}$ and $B_{2}$ are equivalent if there is a linear isomorphism from $V_{1}$ to $V_{2}$ so that the pullback of $B_{2}$ is $B_{1}$. 
+
+In matrix terms, two bilinear forms $B_{1}$ and $B_{2}$ with matrix representations $M_{1}$ and $M_{2}$ are equivalent if there is an invertible matrix $C$ so that
+$$
+C^{\top}M_{1}C = M_{2}.
+$$
