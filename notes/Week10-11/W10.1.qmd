@@ -13,11 +13,11 @@ $$
 
 Here are some examples with $F=\R$. 
 
-1. let $V=\R^{n}$ and define $f((a_1,\ldots, a_n))=a_{1}$.
+1. Let $V=\R^{n}$ and define $f((a_1,\ldots, a_n))=a_{1}$.
 2. $V$ is the space of continuous functions on the interval $[0,1]$.  If $v\in V$, then set $f(v)=v(0.5)$
 (the value of the function $v$ at $x=0.5$).
-3. Let $V$ be the space of continuous functions and let $f(v) =\int_{0}^{1} v(x)\,dx$.
-4. Let $V=F^{n}$ with the standard dot product, and let $w\in V$.  Set $f(v)=\langle w, v\rangle$. 
+3. Let $V$ be the space of continuous functions on $[0,1]$ and let $f(v) =\int_{0}^{1} v(x)\,dx$.
+4. Let $V=\R^{n}$ with the standard dot product, and let $w\in V$.  Set $f(v)=\langle w, v\rangle$. 
 
 **Definition:** The dual space $\Hom(V,F)$ is the vector space of linear functionals on $V$,
 where $(f_{1}+f_{2})(v)=f_{1}(v)+f_{2}(v)$ and $(af_1)(v)=a(f_1(v))$ for all linear functionals
@@ -28,36 +28,39 @@ $f_{1}, f_{2}$ from $V$ to $F$.
 **Proof:**  Choose a basis $e_{1},\ldots, e_{n}$ for $V$.  A linear functional on $V$ is determined by
 its values on the $e_{i}$ since
 $$
-f(\sum a_{i}e_{i})=\sum a_{i}f(e_{i})
+f(\sum a_{i}e_{i})=\sum a_{i}f(e_{i}).
 $$
-Let $e_{1}^*, e_{2}^*,\ldots, e_{n}^{*}$ be linear functionals defined by 
+Let $\hat{e}_{1}, \hat{e}_{2},\ldots, \hat{e}_{n}$ be linear functionals defined by 
 $$
-e_{i}^{*}(e_{j}) = \delta_{ij}.
+\hat{e}_{i}(e_{j}) = \delta_{ij}
 $$
-Then one sees that $f = \sum f(e_{j})e_j^*$ so the $e_{i}^{*}$ span $\Hom(V,F)$. On the other hand
+(and extended linearly to all of $V$).
+Then one sees that $f = \sum f(e_{j})\hat{e}_j$ so the $\hat{e}_{i}$ span $\Hom(V,F)$. On the other hand
 if 
 $$
-\sum a_{j}e_{j}^{*}=0
+\sum a_{j}\hat{e}_{j}=0
 $$
 then
 $$
-(\sum a_{j}e_{j}^{*})(e_{i})=a_{i}=0
+(\sum a_{j}\hat{e}_{j})(e_{i})=a_{i}=0
 $$
-so the $e_{j}^{*}$ are also linearly independent. 
+so the $\hat{e}_{j}$ are also linearly independent. 
 
-Let $V$ be a vector space over $F$.  Then the map
+**Proposition:** Let $V$ be a vector space over $F$.  Then the map
 $$
 \iota: V\to \Hom(\Hom(V,F),F)
 $$
 sending $v$ to the "evaluation map" $\iota(v)(f)=f(v)$ for $f\in \Hom(V,F)$ is injective.
 
-**Proof:** Chose a basis $\{e_{i}\}_{i\in I}$ for $V$  with index set $I$.  Choose $v\in V$ with $v\not=0$. Write
+**Proof:** Choose a basis $\{e_{i}\}_{i\in I}$ for $V$  with index set $I$ (in the infinite-dimensional
+case, the existence of a basis follows from Zorn's lemma).  Choose $v\in V$ with $v\not=0$. Write
 $$
 v=\sum_{j\in J} a_{j}e_{j}
 $$
-where $J$ is a finite subset of $I$ and all $a_{j}$ are nonzero.  Choose $j\in J$ and let 
-$e_{j}^{*}$ be the linear functional such that $e_{j}^{*}(e_{j})=1$ and $e_{j}^{*}(e_{i})=0$
-for all $i\not=j$.  This is well defined and $e_{j}^{*}(v)=a_{j}\not=0$.  Thus for every
+where $J$ is a finite subset of $I$ and all $a_{j}$ are nonzero.  Choose $k\in J$ and let
+$\hat{e}_{k}$ be the linear functional such that $\hat{e}_{k}(e_{k})=1$ and $\hat{e}_{k}(e_{i})=0$
+for all $i\not=k$.  This is well defined, because a linear map can be given arbitrary values
+on a basis, and $\hat{e}_{k}(v)=a_{k}\not=0$.  Thus for every
 $v\in V$ such that $v\not=0$, there is a linear functional $f\in \Hom(V,F)$ such that $f(v)\not=0$.
 So if $\iota(v)=0$, then $\iota(v)(f)=f(v)=0$ for all $f$, and thus $v=0$. 
 
@@ -67,70 +70,74 @@ So if $\iota(v)=0$, then $\iota(v)(f)=f(v)=0$ for all $f$, and thus $v=0$.
 
 On the other hand, if $V$ is infinite-dimensional then $\iota$ is never an isomorphism.
 To see this, suppose $V$ is infinite-dimensional and choose a basis $\{e_{i}\}_{i\in I}$ for $V$.
-Let $\{e_{i}^{*}\}$ be linear functionals defined so that $e_{i}^{*}(e_{j})=\delta_{ij}$. Extend
+Let $\{\hat{e}_{i}\}$ be linear functionals defined so that $\hat{e}_{i}(e_{j})=\delta_{ij}$.
+These are linearly independent by the same argument as in the finite-dimensional case: if a
+finite linear combination $\sum a_{j}\hat{e}_{j}$ is zero, evaluating it at $e_{i}$ shows $a_{i}=0$. Extend
 this set to a basis $B$ of $\Hom(V,F)$. Finally,
-define $f\in\Hom(\Hom(V,F),F)$ by $f(e_{i}^{*})=1$ and  $f(v)=0$ for the remaining elements $v\in B$. 
-This $f$ cannot be in the image of $\iota$
+define $\varphi\in\Hom(\Hom(V,F),F)$ by $\varphi(\hat{e}_{i})=1$ for all $i\in I$ and $\varphi(g)=0$
+for the remaining elements $g\in B$.
+This $\varphi$ cannot be in the image of $\iota$
 because, if $v\in V$, then
 $$
 v=\sum_{j\in J}a_{j}e_{j}
 $$
-where $J$ is a finite set, and thus $\iota(v)(e_{i}^{*})=e_{i}^{*}(v)=0$ for $i\not in J$. Since
-$f$ is nonzero on the infinite set of $e_{i}^{*}$, there is no $v$ with $f=\iota(v)$ 
+where $J$ is a finite set, and thus $\iota(v)(\hat{e}_{i})=\hat{e}_{i}(v)=0$ for $i\notin J$. Since
+$I$ is infinite and $J$ is finite, there is some $i\notin J$, and then
+$\varphi(\hat{e}_{i})=1\neq 0=\iota(v)(\hat{e}_{i})$. So $\varphi\neq\iota(v)$ for every $v\in V$.
 
 
 Thus we can strengthen our result.
 
 **Proposition:** $V$ is finite-dimensional if and only if $\iota$ is an isomorphism.
 
-One can show that if $V$ is infinite-dimensional then the dimension of $\Hom(\Hom(V,F),F)$ is strictly
-larger (in the sense of cardinality) than the dimension of $V$.
+One can show that if $V$ is infinite-dimensional then the dimension of $\Hom(V,F)$ is strictly larger (in the sense of cardinality) than the dimension of $V$.  This is called the Erdős–Kaplansky Theorem.
 
-### Duality and linear maps
+### Duality and Linear Maps
 
 Now suppose that $V$ and $W$ are vector spaces over $F$
 and $L:V\to W$ is a linear map.  Suppose that $f\in \Hom(W,F)$.
-Then $L\circ f:V\to F$ is a linear functional.
+Then $f\circ L:V\to F$ is a linear functional.
 
-**Proposition:** Given $L:V\to W$, the map $L^{*}:\Hom(W,F)\to \Hom(V,F)$ defined by $L^{*}(f)=f\circ L$ is linear.  It is called the "dual linear map" to $L$.
+**Proposition:** Given $L:V\to W$, the map $\hat{L}:\Hom(W,F)\to \Hom(V,F)$ defined by $\hat{L}(f)=f\circ L$ is linear.  It is called the "dual linear map" to $L$.
 
-**Proof:**  Suppose $f,g\in\Hom(W,F)$.  Then 
+**Proof:**  Suppose $f,g\in\Hom(W,F)$ and $a\in F$.  Then for $v\in V$,
 $$
-((af+b)\circ L)(v)=(af+g)(L(v))=af(L(v))+g(L(v))
+((af+g)\circ L)(v)=(af+g)(L(v))=af(L(v))+g(L(v)),
 $$
-so 
+so
 $$
-(af+g)\circ L = a(f\circ L) + g\circ L
+(af+g)\circ L = a(f\circ L) + g\circ L,
 $$
-meaning $L^{*}(af+g)=aL^{*}(f)+L^{*}(g)$.
+meaning $\hat{L}(af+g)=a\hat{L}(f)+\hat{L}(g)$.
 
-Now suppose that $V$ and $W$ are finite dimensional and 
+Now suppose that $V$ and $W$ are finite-dimensional and
 let $L:V\to W$ be a linear map. Choose bases
-$A=\{a_1,\ldots a_n\}$ and $B=\{b_1,\ldots, b_m\}$ for $V$ and $W$.
+$A=\{a_1,\ldots, a_n\}$ and $B=\{b_1,\ldots, b_m\}$ for $V$ and $W$.
 Let $X=[L]_{A}^{B}$ be the corresponding matrix for $L$ in these bases.
 
-Now the dual basis construction gives us bases $A^{*}=\{a_1^{*},\ldots, a_{n}^{*}\}$ and $B^{*}=\{b_1^{*},\ldots, b_{m}^{*}\}$
-for $V^{*}$ and $W^{*}$.
+Now the dual basis construction gives us bases $\hat{A}=\{\hat{a}_1,\ldots, \hat{a}_{n}\}$ and $\hat{B}=\{\hat{b}_1,\ldots, \hat{b}_{m}\}$
+for $\Hom(V,F)$ and $\Hom(W,F)$.
 
-**Proposition:** The matrix $Y=[L^{*}]_{B^{*}}^{A^{*}}$ of the dual map $L^{*}:W^{*}\to V^{*}$ relative to these dual bases satisfies $Y=X^{\top}$.
+**Proposition:** The matrix $Y=[\hat{L}]_{\hat{B}}^{\hat{A}}$ of the dual map $\hat{L}:\Hom(W,F)\to \Hom(V,F)$ relative to these dual bases satisfies $Y=X^{\top}$.
 
 **Proof:** By definition,
 $$
-L(a_{i}) = \sum_{j=1}^{m} x_{ji}b_{j}
+L(a_{j}) = \sum_{k=1}^{m} x_{kj}b_{k}.
 $$
 
-We need to compute $L^{*}(b_{i}^{*})$.  We see that
+We need to compute $\hat{L}(\hat{b}_{i})$.  We see that
 $$\begin{aligned}
-L^{*}(b_{i}^{*})(a_{j}) &= (b_{i}^{*}\circ L)(a_{j})\\
-&= b_{i}^{*}(L(a_{j})) \\
-&= b_{i}^{*}(\sum_{k=1}^{m} x_{kj}b_{k}) \\
+\hat{L}(\hat{b}_{i})(a_{j}) &= (\hat{b}_{i}\circ L)(a_{j})\\
+&= \hat{b}_{i}(L(a_{j})) \\
+&= \hat{b}_{i}(\sum_{k=1}^{m} x_{kj}b_{k}) \\
 &= x_{ij}.
 \end{aligned} 
 $$
-Since $f=\sum_{j=1}^{n} f(a_{j})a_{j}^{*}$ for any $f\in V^{*}$, we obtain
+Since $f=\sum_{j=1}^{n} f(a_{j})\hat{a}_{j}$ for any $f\in \Hom(V,F)$, we obtain
 $$
-L^{*}(b_{i}^{*}) = \sum_{j=1}^{n} x_{ij}a_{j}^{*} = \sum_{j=1}^{n} y_{ji}a_{j}^{*}
+\hat{L}(\hat{b}_{i}) = \sum_{j=1}^{n} x_{ij}\hat{a}_{j} = \sum_{j=1}^{n} y_{ji}\hat{a}_{j},
 $$
+where the second equality is the definition of $Y$,
 so $x_{ij}=y_{ji}$ and $Y=X^{\top}$. 
 
 ### Dual Maps, Subspaces, and Quotients
@@ -139,37 +146,37 @@ Suppose $W$ is a vector space over $F$ and $V$ is a subspace
 of $W$.  Since the inclusion map $\alpha:V\to W$ is linear,
 there is a dual map 
 $$
-\alpha^{*}:\Hom(W,F)\to \Hom(V,F).
+\hat{\alpha}:\Hom(W,F)\to \Hom(V,F).
 $$
 This map is just the "restriction map" which takes a linear functional on $W$ and restricts its domain to $V$.  
 
-**Lemma:** The map $\alpha^{*}$ is surjective. Its kernel
+**Lemma:** The map $\hat{\alpha}$ is surjective. Its kernel
 is the set of linear functionals $f:W\to F$ that vanish on $V$.
 
-**Proof:** It is clear that if $\alpha^{*}(f)=0$ if and only
+**Proof:** It is clear that $\hat{\alpha}(f)=0$ if and only
 if $f(v)=0$ for all $v\in V$.  For the surjectivity, choose
 a basis for $V$ and extend it to a basis for $W$. A linear functional on $V$ can be extended to $W$ by setting it to zero
-on the basis elements for $W$ that aren't in $V$.
+on the basis elements for $W$ that aren't in $V$, and $\hat{\alpha}$ maps this extension to the original functional.
 
 Now look at the quotient map $\beta: W\to W/V$.  Again, this is
 linear, so there is a dual map
 $$
-\beta^{*}:\Hom(W/V,F)\to \Hom(W,F)
+\hat{\beta}:\Hom(W/V,F)\to \Hom(W,F).
 $$
-To understand $\beta^{*}$, let $f:W/V\to F$ be a linear functional.
-Now choose $w\in W$.  Then $\beta^{*}(f)=f\cap\beta$ and
+To understand $\hat{\beta}$, let $f:W/V\to F$ be a linear functional.
+Then $\hat{\beta}(f)=f\circ\beta$, so for $w\in W$,
 $$
-(f\cap\beta)(w)=f(w+V).
+(f\circ\beta)(w)=f(w+V).
 $$
 
-**Lemma:** The map $\beta^{*}$ is injective. The image of $\beta^{*}$ is the space of linear functionals on $W$ that vanish on $V$.  
+**Lemma:** The map $\hat{\beta}$ is injective. The image of $\hat{\beta}$ is the space of linear functionals on $W$ that vanish on $V$.  
 
-**Proof:** If $\beta^{*}(f)=0$, then $f\cap\beta(w)=f(w+V)=0$.
+**Proof:** If $\hat{\beta}(f)=0$, then $(f\circ\beta)(w)=f(w+V)=0$ for all $w\in W$.
 Since every element of $W/V$ is of the form $w+V$ for some $w$,
-this implies $f=0$.  The image of $\beta^{*}$ is contained
-in the subspace of $\Hom(W,F)$ consisting of functionals vanishing on $V$, since if $w\in V$, then $\beta^{*}(f)(w)=f(w+V)=f(V)=0$.
+this implies $f=0$.  The image of $\hat{\beta}$ is contained
+in the subspace of $\Hom(W,F)$ consisting of functionals vanishing on $V$, since if $w\in V$, then $w+V=V$ is the zero element of $W/V$, so $\hat{\beta}(f)(w)=f(w+V)=f(V)=0$.
 On the other hand, if $f:W\to F$ vanishes on $V$, then by the universal property of quotients we know that there is a map 
-$\overline{f}:W/V\to F$ such that $\overline{f}(w+V)=f(w)$ for all $w$.  Then $\beta^{*}(\overline{f})=f$. 
+$\overline{f}:W/V\to F$ such that $\overline{f}(w+V)=f(w)$ for all $w$.  Then $\hat{\beta}(\overline{f})=f$. 
 
 **Proposition:** Suppose that 
 $$
@@ -177,11 +184,13 @@ $$
 $$
 is a short exact sequence of vector spaces.  Then
 $$
-0\to\Hom(C,F)\stackrel{\beta^{*}}{\to}\Hom(B,F)\stackrel{\alpha^{*}}{\to}\Hom(A,F)\to 0
+0\to\Hom(C,F)\stackrel{\hat{\beta}}{\to}\Hom(B,F)\stackrel{\hat{\alpha}}{\to}\Hom(A,F)\to 0
 $$
 is also short exact. 
 
-**Proof:** Once we realize that $C=B/A$, this is the content of the two lemmas above. 
+**Proof:** Since $\alpha$ is injective, we may identify $A$ with the subspace $\alpha(A)$ of $B$.
+Since $\beta$ is surjective with kernel $\alpha(A)$, it induces an isomorphism $B/\alpha(A)\cong C$.
+With these identifications, this is the content of the two lemmas above.
 
 
 
