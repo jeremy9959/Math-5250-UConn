@@ -92,6 +92,7 @@ Thus we can strengthen our result.
 
 One can show that if $V$ is infinite-dimensional then the dimension of $\Hom(V,F)$ is strictly larger (in the sense of cardinality) than the dimension of $V$.  This is called the Erdős–Kaplansky Theorem.
 
+
 ### Duality and Linear Maps
 
 Now suppose that $V$ and $W$ are vector spaces over $F$
