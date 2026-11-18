@@ -168,3 +168,83 @@ In matrix terms, two bilinear forms $B_{1}$ and $B_{2}$ with matrix representati
 $$
 C^{\top}M_{1}C = M_{2}.
 $$
+
+### Nondegenerate Forms
+
+A bilinear form $B$ on a finite-dimensional vector space $V$ is called *nondegenerate* if any of the following conditions are satisfied:
+
+1. There is a basis $E=\{e_1,\ldots, e_{n}\}$ so that the matrix $M=(B(e_{i},e_{j}))_{1\le i,j\le n}$ is invertible. 
+2. If $B(v,v')=0$ for all $v'\in V$ implies $v=0$.
+3.  The map $L_{B}:V\to \Hom(V,F)$ given by $L_{B}(v)(w)=B(v,w)$
+is surjective.
+4.  The map $L_{B}:V\to \Hom(V,F)$ given by $R_{B}(v)(w)=B(w,v)$
+is bijective.
+
+Following Conrad Theorem 3.1, points 2,3, and 4 say that $L_{B}$ is respectively injective, surjective, and bijective.  Since $V$ and $\Hom(V,F)$ are vector spaces of the same dimension these are equivalent.   On the other hand, the matrix $M$ is the matrix
+of the map $R_{B}$ in the basis $E$ on $V$ and $\hat{E}=\{\hat{e}_{1},\ldots, \hat{e_{n}}\}$ on $\Hom(V,F)$.  To see this,
+we need to compute $R_{B}(e_{i})$ in terms of the $\hat{e}_{j}$.
+Since
+$$
+R_{B}(e_{i})(e_{j})=B(e_{j},e_{i})=M_{ji}
+$$
+we have
+$$
+R_{B}(e_{i}) = \sum M_{ji}\hat{e_{j}}
+$$
+which shows that the columns of $M$ express $R_{B}(e_{i})$ in terms
+of $\hat{e_{j}}$ as desired. 
+Thus the first condition is equivalent to $R_{B}$ being bijective.
+Since $L_{B}$ is the dual of $R_{B}$, the invertibility of $R_{B}$ is equivalent to that of $L_{B}$.  (Their matrices are transposes so they have the same rank).
+
+If $B$ is not nondegenerate, it is degenerate.  
+
+**Examples:**
+
+1.  The dot product is nondegenerate.
+2.  The bilinear form defining $\R^{p,q}$ is nondegenerate.
+3.  The bilinear form $B((a,b),(c,d))=ad-bc$ is nondegenerate.
+4. Inner products over $\R$ are nondegenerate bilinear forms.  Over $\C$, they are not bilinear because of the Hermitian condition.
+5.  The space $\R^{2,1}$ is non degenerate, but the $(2,1)$-bilinear form restricted to the plane spanned by $v_1=(1,0,1)$
+and $v_2=(0,1,0)$ is degenerate.  Indeed $B(v_1,v_1)=1^2-1^2=0$
+and $B(v_1,v_2)=0$ so $v_1 \perp v_1$ and $v_1 \perp v_2$.   So *the restriction of a nondegenerate form to a subspace need not be nondegenerate.
+
+### Orthogonal Bases (Symmetric Forms)
+
+Our goal now is to classify symmetric and alternating forms (as usual, over $\R$ or $\C$).  Let's consider the symmetric case first. So fix $V$ with a symmetric bilinear form $B$. 
+
+As with inner products, we say a basis $E=\{e_1,\ldots, e_{n}\}$
+is *orthogonal* if $B(e_{i},e_{j})=0$ whenever $i\not=j$.  (In the one dimensional case, any basis is orthogonal by definition). 
+
+**Lemma:** If $B$ is not identically zero, then there is a vector $v$ with $B(v,v)\not=0$.  
+
+**Proof:** We showed earlier that any symmetric form is determined by its values $B(v,v)$ via the polarization identity
+$$
+B(v+w,v+w)=B(v,v)+2B(v,w)+B(w,w)
+$$
+so if $B(v,v)=0$ for all $v$ then $B(v,w)=0$ for all pairs $v,w\in V$.
+
+**Lemma:** If $v\in V$ has $B(v,v)\not=0$, then 
+$$
+V = Fv\oplus v^{\perp}
+$$
+is an orthogonal decomposition of $V$.  The restriction of $B$ to $v^{\perp}$ is nondegenerate.
+
+**Proof:** Given $v'\in V$, notice that
+$$
+v' = \frac{B(v',v)}{B(v,v)}v + (v'-\frac{B(v',v)}{B(v,v)}v)
+$$
+The second term in the sum is orthogonal to $v$ so this shows
+that $Fv+v^{\perp}=V$.  Since $B(v,v)\not=0$, the intersection 
+of $Fv$ with $v^{\perp}$ is zero. so the sum is direct.
+
+To check the nondegeneracy, suppose $v'\in v^{\perp}$ satisfies
+$B(v',w)=0$ for all $w\in v^{\perp}$.  Then $B(v', av+w)=0$
+for all $w\in v^{\perp}$ and $a\in F$.  Since the collection of  $av+w$ span $V$, The nondegeneracy of $B$
+on $V$ implies $v'=0$.  
+
+**Theorem:** $V$ has an orthogonal basis for $B$.
+
+**Proof:** Use the above argument inductively.  Note that this is essentially the Gram--Schmidt process.  We can't get an *orthonormal* basis because $B(v,v)$ could be zero without $v=0$;
+and even if $B(v,v)$ isn't zero it need not be a square.
+
+**Corollary:** Given a symmetric matrix $M$, there is an invertible matrix $C$ so that $C^{\top}MC$ is diagonal. 
