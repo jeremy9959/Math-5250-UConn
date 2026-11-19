@@ -5,6 +5,7 @@ project:
     - "*.md"
     - "!notes/Week7-8/QR-algorithm-animation.ipynb"
     - "!claude/"
+    - "!NOTES.md"
 
 website:
   title: "Math 5250: Graduate Linear Algebra"
@@ -76,12 +77,10 @@ website:
             href: notes/Week9/W09.2.qmd
       - section: "Weeks 10–11 — Dual Spaces"
         contents:
-          - text: "Linear functionals and the dual space"
+          - text: "Linear Functionals and The Dual Space"
             href: notes/Week10-11/W10.1.qmd
-          - text: "Duality and inner products"
+          - text: "Duality and Inner Products"
             href: notes/Week10-11/W10.2.qmd
-          - text: "Dual bases, linear maps, and double duality"
-            href: notes/Week10-11/W10.3.qmd
       - section: "Week 12 — Bilinear Forms"
         contents:
           - text: "Bilinear forms and matrix representations"

@@ -60,33 +60,34 @@ title: Math 5250 Schedule
   <td><a href="notes/Week5-6/W05.2.qmd">Self-adjoint and unitary operators; spectral resolution; positive operators</a></td></tr>
 <tr><td>Tu 10/13</td>
   <td>Matrix Decompositions</td>
-  <td><a href="notes/Week7-8/W07.1.qmd">LU, QR, and Polar Decompositions/>
+  <td><a href="notes/Week7-8/W07.1.qmd">LU, QR, and Polar Decompositions</a></td></tr>
+<tr class="week-end"><td>Th 10/15</td>
   <td>Matrix Decompositions</td>
-  <td><a href="notes/Week7-8/W07.2.qmd">Legendre Polynomials and the Legendre Equation</a></td></tr>
+  <td><a href="notes/Week7-8/W07.1.qmd">LU, QR, and Polar Decompositions (continued)</a></td></tr>
 <tr><td>Tu 10/20</td>
   <td>Matrix Decompositions</td>
-  <td><a href="notes/Week7-8/W07.3.qmd">Singular Value Decomposition and Applications</a></td></tr>
+  <td><a href="notes/Week7-8/W07.2.qmd">Legendre Polynomials and the Legendre Equation</a></td></tr>
 <tr class="week-end"><td>Th 10/22</td>
-  <td>Midterm</td>
-  <td>Midterm Exam</td></tr>
+  <td>Matrix Decompositions</td>
+  <td><a href="notes/Week7-8/W07.3.qmd">Singular Value Decomposition and Applications</a></td></tr>
 <tr><td>Tu 10/27</td>
+  <td>Matrix Decompositions</td>
+  <td><a href="notes/Week7-8/W07.3.qmd">Singular Value Decomposition (continued)</a></td></tr>
+<tr class="week-end"><td>Th 10/29</td>
   <td>Norms</td>
   <td><a href="notes/Week9/W09.1.qmd">Norms on vectors, matrices, and linear maps; equivalence of norms; operator and Frobenius norms</a></td></tr>
-<tr class="week-end"><td>Th 10/29</td>
-  <td>Low Rank Approximations</td>
-  <td><a href="notes/Week9/W09.2.qmd">Best low rank approximation via the SVD; Courant minimax principle</a></td></tr>
 <tr><td>Tu 11/03</td>
-  <td>Dual Spaces</td>
-  <td><a href="notes/Week10-11/W10.1.qmd">Linear functionals and the dual space</a></td></tr>
+  <td>Norms</td>
+  <td><a href="notes/Week9/W09.1.qmd">Norms on vectors and matrices (continued)</a></td></tr>
 <tr class="week-end"><td>Th 11/05</td>
-  <td>Dual Spaces</td>
-  <td><a href="notes/Week10-11/W10.2.qmd">Duality and inner products</a></td></tr>
+  <td>Low Rank Approximations</td>
+  <td><a href="notes/Week9/W09.2.qmd">Best Low Rank Approximation</a></td></tr>
 <tr><td>Tu 11/10</td>
   <td>Dual Spaces</td>
-  <td><a href="notes/Week10-11/W10.3.qmd">Dual bases and linear maps, transpose matrix, double duality</a></td></tr>
+  <td><a href="notes/Week10-11/W10.1.qmd">Linear Functionals and the Dual Space</a></td></tr>
 <tr class="week-end"><td>Th 11/12</td>
   <td>Dual Spaces</td>
-  <td>Applications and examples</td></tr>
+  <td><a href="notes/Week10-11/W10.2.qmd">Duality and Inner Products</a></td></tr>
 <tr><td>Tu 11/17</td>
   <td>Bilinear Forms</td>
   <td><a href="notes/Week12/W12.1.qmd">Bilinear forms, matrix representation, change of basis</a></td></tr>
