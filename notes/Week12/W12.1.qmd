@@ -1,12 +1,14 @@
 ---
-title: Bilinear Forms and Matrix Representations"
+title: "Bilinear Forms and Matrix Representations"
 ---
 \newcommand{\R}{\mathbf{R}}
 \newcommand{\C}{\mathbf{C}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Hom}{\mathrm{Hom}}
 
 In this section we discuss  bilinear forms over $\R$ and $\C$.  In some ways a bilinear form is a generalization of the notion of inner product, where we relax some of the conditions (such as symmetry or positive definiteness).  For a thorough discussion of this topic, see Keith Conrad's article [Bilinear Forms](https://kconrad.math.uconn.edu/blurbs/linmultialg/bilinearform.pdf).
 
-In particular, we will consider only the case of vector spaces and bilinear forms over $\R$ or $\C$.  There are many interesting aspects over the theory over fields like $\Q$ or finite fields; see Conrad's notes for a discussion of this more general situation.
+In particular, we will consider only the case of vector spaces and bilinear forms over $\R$ or $\C$.  There are many interesting aspects of the theory over fields like $\Q$ or finite fields; see Conrad's notes for a discussion of this more general situation.
 
 The definition doesn't depend on the field $F$, however. 
 
@@ -14,21 +16,21 @@ The definition doesn't depend on the field $F$, however.
 
 $$\begin{aligned}
 B(au+v,w)&=aB(u,w)+B(v,w)\\
-B(u,av+w)&=aB(u,v)+B(u,w)\\
+B(u,av+w)&=aB(u,v)+B(u,w)
 \end{aligned}
 $$
 
-If $B(v,w)=B(w,v)$ for all $v,w\in V$, we call $B$ *symmetric*.  If $B(v,w)=-B(w,v)$ for all $v,w\in V$ we call $B$ *antisymmetric*  or *skew-symmetric.*. If $B(v,v)=0$ for all $v$ we call $B$ *alternating.*
+If $B(v,w)=B(w,v)$ for all $v,w\in V$, we call $B$ *symmetric*.  If $B(v,w)=-B(w,v)$ for all $v,w\in V$ we call $B$ *antisymmetric*  or *skew-symmetric*. If $B(v,v)=0$ for all $v$ we call $B$ *alternating.*
 
-An inner product over a real vector space is a symmetric bilinear form.  This isn't true over a complex vector space, because we required such inner products to be *hermitian.*. 
+An inner product over a real vector space is a symmetric bilinear form.  This isn't true over a complex vector space, because we required such inner products to be *hermitian*. 
 
 Other examples:
 
 - If $A\in M_{n}(F)$, then $B(v,w)=v^{\top}Aw$ is a bilinear form.
 - If $(u,v)$ and $(a,b)$ are in $F^{2}$, then 
-$ub-va$ is a skew-symmetric bilinear form on $F^{2}. 
+$ub-va$ is a skew-symmetric bilinear form on $F^{2}$.
 
-**Lemma:** Over $\R$ or $\C$ (or indeed any field of characteristic different from $2$), alternative forms are the same thing as skew-symmetric forms.
+**Lemma:** Over $\R$ or $\C$ (or indeed any field of characteristic different from $2$), alternating forms are the same thing as skew-symmetric forms.
 
 **Proof:** If $B$ is alternating, then
 $B(x+y,x+y)=0=B(x,y)+B(y,x)$ so $B$ is skew-symmetric. If $B$ is skew-symmetric then
@@ -38,9 +40,9 @@ $B(x,x)=-B(x,x)$ so $2B(x,x)=0$, so $B$ is alternating assuming $F$ does not hav
 
 **Proposition:** Every bilinear form $B$ on $V$ is expressible uniquely as a sum 
 $$
-B(u,v)=B_1(u,v)+B_2(u,)
+B(u,v)=B_1(u,v)+B_2(u,v)
 $$
-for all $u,v\in V$ where $B_1$ is symmetric and $B_2$ si skew-symmetric (alternating).
+for all $u,v\in V$ where $B_1$ is symmetric and $B_2$ is skew-symmetric (alternating).
 
 **Proof:**
 Let 
@@ -51,6 +53,8 @@ and
 $$
 B_{2}(u,v) = \frac{B(u,v)-B(v,u)}{2}.
 $$
+To see uniqueness, if $B=B_1+B_2=B_1'+B_2'$, then $B_1-B_1'=B_2'-B_2$.  The left side is symmetric, the right side alternating, so both sides are zero.
+
 
 Finally, we have the *polarization identity*:
 Suppose $B$ is symmetric.  Then
@@ -68,7 +72,7 @@ $v\perp W$ provided $B(v,w)=0$ for all $w\in W$.
 In general, this relation need not be symmetric; for a general bilinear form, one can have 
 $B(v,w)=0$ (so $v\perp w$) but $B(w,v)\not=0$ so $w\not\perp v$.  For symmetric or alternating forms, however, the relation is symmetric since $B(v,w)=\pm B(w,v)$ for all $v,w\in V$ in these cases. 
 
-One can show (see Conrad, Proposition 1.17 ([Bilinear Forms](https://kconrad.math.uconn.edu/blurbs/linmultialg/bilinearform.pdf)) that
+One can show (see Conrad, Theorem 1.17 ([Bilinear Forms](https://kconrad.math.uconn.edu/blurbs/linmultialg/bilinearform.pdf)) that
 $\perp$ is a symmetric relation if and only if $B$ is *either* symmetric or alternating.
 
 If $B$ is symmetric or alternating, and $W\subset V$ is a subspace, then just as we did earlier with inner products we define
@@ -103,26 +107,27 @@ $$
 
 Alternatively we can fix $v\in V$ and define $g_{v}(w)=B(w,v)$.  This gives a map $R_{B}:V\to \Hom(V,F)$.  
 
-**Proposition:** If $V$ is finite dimensional, and we identify $V$ with $\Hom(V,\Hom(V,F))$ then the two maps $L_{B}$ and $R_{B}$ are dual to one another.  In particular
+**Proposition:** If $V$ is finite dimensional, and we identify $V$ with $\Hom(\Hom(V,F),F)$ then the two maps $L_{B}$ and $R_{B}$ are dual to one another.  In particular
 $$
-L_{B}^{*}:V=\Hom(V,\Hom(V,F))\to \Hom(V,F)
+\hat{L}_{B}:V=\Hom(\Hom(V,F),F)\to \Hom(V,F)
 $$
 is the same as $R_{B}$ and vice versa.
 
 **Proof:** This is a matter of keeping track of definitions.  If $v\in V$,
 then the associated linear map from $\Hom(V,F)$ to $F$ is evaluation: $\delta_{v}:f\mapsto f(v)$.  Then
 $$
-L_{B}^{*}(\delta_{v})=\delta_{v}\circ L_{B}
+\hat{L}_{B}(\delta_{v})=\delta_{v}\circ L_{B}
 $$
 But
 $$
-\delta_{v}\circ L_{B}(w) = \delta_{v}(w\mapsto B(w,\cdot))=B(w,v)
+\hat{L}_{B}(\delta_{v})(w)=(\delta_{v}\circ L_{B})(w) = \delta_{v}(L_{B}(w))=L_{B}(w)(v) = B(w,v).
 $$
-which is the same as $R_{B}(v)=B(\cdot, v)$ so $R_{B}(v)(w)=B(w,v)$.
+Since $R_{B}(v)=B(\cdot, v)$, we have $R_{B}(v)(w)=B(w,v)$, so $\hat{L}_{B}(\delta_{v})=R_{B}(v)$.  The other duality follows similarly or via the fact
+that $\hat{\hat{L}}_{B}=L_{B}=\hat{R}_{B}$.
 
 ### The Matrix of a Bilinear Form
 
-Given a bilinear form on (finite dimensional) $V$, we can choose a basis $E=\{e_{1},\ldots e_{n}\}$ for $V$.  Then $B$ is determined by the values $B(e_{i},e_{j})$ for $1\le i,j\le n$.  Let $M$
+Given a bilinear form on (finite dimensional) $V$, we can choose a basis $E=\{e_{1},\ldots, e_{n}\}$ for $V$.  Then $B$ is determined by the values $B(e_{i},e_{j})$ for $1\le i,j\le n$.  Let $M$
 be the $n\times n$ matrix with these entries.  Then it's easy to see by linearity that
 $$
 B(v,w) = [v]_{E}^{\top}M[w]_{E}
@@ -139,16 +144,17 @@ M = \left(\begin{matrix} I_{p} & 0 \\
 0 & -I_{q} \end{matrix}\right)
 $$
 
-where $I_{k}$ is the identity matrix.  This creates a "pseudoEuclidean space" with signature $p,q$.  If $p=3$ and $q=1$ we obtain Minkowski space, which is the flat spacetime of special relativity.
+where $I_{k}$ is the identity matrix.  This creates a "pseudo-Euclidean space" with signature $p,q$.  If $p=3$ and $q=1$ we obtain Minkowski space, which is the flat spacetime of special relativity.
 
 One can show (see Conrad, Theorem 2.5) that the matrix $M$ defined above is the
 matrix of the linear map $R_{B}:V\to \Hom(V,F)$ relative to the choice of the basis $E$ on $V$ and its dual on $\Hom(V,F)$.  He uses this to give a "coordinate free" proof of the following facts:
 
 1. $B$ is symmetric iff $M$ is symmetric.
-2. B is skew-symmetric (alternating) iff $M^{\top}=-M^{\top}$.
+2. $B$ is skew-symmetric (alternating) iff $M^{\top}=-M$.
 
 One can also show (either in a fancy way as Conrad does, or by calculating)
-that if $C$ is a change of basis matrix from $E_{1}$ to $E_{2}$, 
+that if $C$ is a change of basis matrix whose columns express the elements of a basis $E_{2}$ in
+terms of $E_{1}$, 
 and $B$ is a bilinear form on $V$ with matrix $M$ relative to $E_{1}$, then
 the matrix of $B$ relative to $E_{2}$
 is 
@@ -156,13 +162,13 @@ $$
 M' = C^{\top}M C.
 $$
 
-If  $B_{2}$ is a bilinear forms on $V_{2}$, and $L:V_{1}\to V_{2}$ is a linear map, then
+If  $B_{2}$ is a bilinear form on $V_{2}$, and $L:V_{1}\to V_{2}$ is a linear map, then
 $$
 B_{1}(v,w)=B_{2}(Lv,Lw)
 $$
-is a bilinear form on $V_{1}$ (called the pullback of $B_{2}$ to $B_{1}$).
+is a bilinear form on $V_{1}$ (called the pullback of $B_{2}$ to $V_{1}$).
 
-If we are given forms $B_{1}$ and $B_{2}$ on $V_{1}$ and $B_{2}$ respectively, then we say $B_{1}$ and $B_{2}$ are equivalent if there is a linear isomorphism from $V_{1}$ to $V_{2}$ so that the pullback of $B_{2}$ is $B_{1}$. 
+If we are given forms $B_{1}$ and $B_{2}$ on $V_{1}$ and $V_{2}$ respectively, then we say $B_{1}$ and $B_{2}$ are equivalent if there is a linear isomorphism from $V_{1}$ to $V_{2}$ so that the pullback of $B_{2}$ is $B_{1}$. 
 
 In matrix terms, two bilinear forms $B_{1}$ and $B_{2}$ with matrix representations $M_{1}$ and $M_{2}$ are equivalent if there is an invertible matrix $C$ so that
 $$

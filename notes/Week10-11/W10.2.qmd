@@ -2,6 +2,9 @@
 title: "Duality and Inner Products"
 ---
 
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
 Now suppose that $V$ is an inner product space.  If $v\in V$,
 we can define a linear functional on $V$ by the formula
 $$
@@ -11,8 +14,8 @@ $$
 The linearity of $\langle\cdot\rangle$ in its first coordinate
 means that $f_{v}$ is linear.
 
-**Proposition:** Suppose that $V$ is finite dimensional. The map $V\to V^{*}$ defined by $v\mapso f_{v}$
-is bijective and conjugate linear (meaning that $f_{av_1+v_2}=\overline{a}f_{v_1}}+f_{v_{2}}).  In particular if $F=\R$ it is linear and therefore an isomorphism.
+**Proposition:** Suppose that $V$ is finite dimensional. The map $V\to \Hom(V,F)$ defined by $v\mapsto f_{v}$
+is bijective and conjugate linear (meaning that $f_{av_1+v_2}=\overline{a}f_{v_1}+f_{v_{2}}$).  In particular if $F=\R$ it is linear and therefore an isomorphism.
 
 **Proof:** If $f_{v}(w)=\langle w,v\rangle=0$ for all $w$, then $v=0$ by the nondegeneracy of the inner product, so the map is injective.  For surjectivity, construct an orthonormal basis $u_1,\ldots, u_{n}$ of $V$.  Let $f:V\to F$ be a linear functional.  Define
 $$
@@ -22,7 +25,7 @@ Then
 $$\begin{aligned}
 f_{v}(u_{j}) &= \langle u_{j},\sum \overline{f(u_{i})}u_{i}\rangle \\
 &=\sum f(u_{i})\langle u_{j},u_{i}\rangle \\
-&= f(u_{i})
+&= f(u_{j})
 \end{aligned}
 $$
 So $f_{v}$ agrees with $f$ on a basis and therefore everywhere.
